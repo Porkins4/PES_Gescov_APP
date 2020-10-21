@@ -21,4 +21,13 @@
     <style name="Theme.Gescov_DarkGreenText" parent="@style/TextAppearance.AppCompat.Body1">
         <item name="android:textColor">@color/dark_green</item>
     </style>
+
+    <style name="Theme.Gescov.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Gescov.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Gescov.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
