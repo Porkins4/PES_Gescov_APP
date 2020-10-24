@@ -26,9 +26,12 @@ import java.util.concurrent.ExecutionException;
  * create an instance of this fragment.
  */
 public class ContagionListFragment extends Fragment {
-    ListView ListaCont;
-    ContagionController controller;
-    View thisview;
+    private ListView ListaCont;
+    private ContagionController controller;
+    private View thisview;
+    private List<String> names;
+    private List<String> contagionDate;
+    private  ContagionListAdapter adapter;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -77,6 +80,12 @@ public class ContagionListFragment extends Fragment {
         // Inflate the layout for this fragment
         controller = new ContagionController(this);
         thisview = inflater.inflate(R.layout.contagionlist, container, false);
+         names = new ArrayList<>();
+         contagionDate = new ArrayList<>();
+         ListaCont = (ListView) thisview.findViewById(R.id.ListaCont)  ;
+         adapter = new ContagionListAdapter(ListaCont.getContext(), names, contagionDate);
+
+        ListaCont.setAdapter(adapter);
         try {
             refresh();
         } catch (InterruptedException e) {
@@ -93,24 +102,15 @@ public class ContagionListFragment extends Fragment {
         controller.refresh();
     }
     public void updateData(String info) throws JSONException {
-
         JSONArray response = new JSONArray(info);
-        List<String> Names = new ArrayList<>();
-        List<String> ContagionDate = new ArrayList<>();
+
         for (int i = 0; i < response.length(); ++i) {
             JSONObject aux = response.getJSONObject(i);
             String date = aux.getString("startContagion");
-            String filter = "";
-            int index = 0;
-            while ( date.charAt(index) != 'T') {
-                filter += date.charAt(index);
-                ++index;
-            }
-            Names.add(aux.getString("nameInfected"));
-            ContagionDate.add("FIB-Positiu des de " + filter);
+            String filter = date.substring(0,10);
+            names.add(aux.getString("nameInfected"));
+            contagionDate.add("FIB-Positiu des de " + filter);
         }
-        ListaCont = (ListView) thisview.findViewById(R.id.ListaCont)  ;
-        ContagionListAdapter adapter = new ContagionListAdapter(ListaCont.getContext(), Names,ContagionDate);
-        ListaCont.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 }
