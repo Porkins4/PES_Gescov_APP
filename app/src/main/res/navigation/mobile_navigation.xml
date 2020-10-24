@@ -23,10 +23,10 @@
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
-        android:id="@+id/blankFragment"
-        android:name="com.example.gescov.BlankFragment"
+        android:id="@+id/visualizarAula"
+        android:name="com.example.gescov.showDistributionFragment"
         android:label="fragment_blank"
-        tools:layout="@layout/fragment_blank" />
+        tools:layout="@layout/VisualizarAula" />
     <fragment
         android:id="@+id/ContagionList"
         android:name="com.example.gescov.PresentationLayer.ContagionList.ContagionListFragment"
