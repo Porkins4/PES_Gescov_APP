@@ -21,9 +21,9 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/Catalan_visualizar_aula" />
         <item
-            android:id="@+id/blankFragment2"
+            android:id="@+id/ContagionList"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/contagion_list" />
         <item
             android:id="@+id/blankFragment3"
             android:icon="@drawable/ic_menu_slideshow"
