@@ -1,22 +1,22 @@
 package com.example.gescov.PresentationLayer.ContagionList.Controllers;
 
-import com.example.gescov.DomainLayer.ContagionModelController;
-import com.example.gescov.DomainLayer.IContagionModelControles;
+
+
+import com.example.gescov.DomainLayer.Controllers.ModelController;
 import com.example.gescov.PresentationLayer.ContagionList.ContagionListFragment;
 
 import org.json.JSONException;
 
-import java.util.concurrent.ExecutionException;
 
 public class ContagionController {
     private ContagionListFragment Cl;
-    private IContagionModelControles CM;
+    private  ViewLayerController viewLayerController;
 
     public ContagionController(ContagionListFragment contagionlist ) {
         Cl = contagionlist;
-        CM = new ContagionModelController();
+        viewLayerController = new ViewLayerController();
     }
-    public void refresh() throws ExecutionException, InterruptedException, JSONException {
-        Cl.updateData(CM.getAllContagions());
+    public void refresh() throws  JSONException {
+        Cl.updateData(viewLayerController.getAllContagions());
     }
 }

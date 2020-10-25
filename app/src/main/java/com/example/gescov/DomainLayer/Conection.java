@@ -46,8 +46,6 @@ public class Conection extends AsyncTask<String,String,String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return "Fallo al crear URL o en Hacer la conexión";
     }
-
 }
