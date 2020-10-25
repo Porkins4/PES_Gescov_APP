@@ -88,11 +88,7 @@ public class ContagionListFragment extends Fragment {
         ListaCont.setAdapter(adapter);
         try {
             refresh();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (InterruptedException | ExecutionException |JSONException   e) {
             e.printStackTrace();
         }
         return thisview;

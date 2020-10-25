@@ -26,7 +26,7 @@
         android:id="@+id/visualizarAula"
         android:name="com.example.gescov.showDistributionFragment"
         android:label="fragment_blank"
-        tools:layout="@layout/VisualizarAula" />
+        tools:layout="@layout/fragment_show_distribution" />
     <fragment
         android:id="@+id/ContagionList"
         android:name="com.example.gescov.PresentationLayer.ContagionList.ContagionListFragment"
