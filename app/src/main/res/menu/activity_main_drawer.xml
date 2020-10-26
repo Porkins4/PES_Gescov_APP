@@ -25,9 +25,9 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" />
         <item
-            android:id="@+id/blankFragment3"
+            android:id="@+id/schoolAdministration"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/menu_schools_administration" />
     </group>
 
 </menu>

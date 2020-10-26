@@ -23,6 +23,13 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_schools_administration">Schools Administration</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- School Administration -->
+    <string name="create_school_form_school_name">School name</string>
+    <string name="create_school_form_school_code">School codi</string>
+    <string name="create_school_form_school_button">Create School</string>
 </resources>
