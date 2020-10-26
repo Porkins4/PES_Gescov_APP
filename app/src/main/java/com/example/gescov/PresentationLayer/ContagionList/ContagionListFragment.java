@@ -98,14 +98,19 @@ public class ContagionListFragment extends Fragment {
         controller.refresh();
     }
     public void updateData(String info) throws JSONException {
+        System.out.println(info + "la info");
         JSONArray response = new JSONArray(info);
 
         for (int i = 0; i < response.length(); ++i) {
             JSONObject aux = response.getJSONObject(i);
             String date = aux.getString("startContagion");
+            String nameaux = aux.getString("nameInfected");
+            JSONObject student = new JSONObject(nameaux);
             String filter = date.substring(0,10);
-            names.add(aux.getString("nameInfected"));
-            contagionDate.add("FIB-Positiu des de " + filter);
+            names.add(student.getString("name"));
+            String school = student.getString("school");
+            JSONObject studentSchool = new JSONObject(school);
+            contagionDate.add(studentSchool.getString("name")+"-Positiu des de " + filter);
         }
         adapter.notifyDataSetChanged();
     }

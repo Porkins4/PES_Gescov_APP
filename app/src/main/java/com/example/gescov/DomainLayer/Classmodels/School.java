@@ -6,7 +6,7 @@ public class School {
     private  String name;
 
     public School() {
-        id = "ETSAB";
+        id = "FIB";
     }
 
     public School(String name) {
