@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SchoolsAdministration.CreateSchoolFormActivity">
+    tools:context=".ViewLayer.SchoolsAdministration.CreateSchoolFormActivity">
 
     <TextView
         android:id="@+id/create_school_form_code_text"

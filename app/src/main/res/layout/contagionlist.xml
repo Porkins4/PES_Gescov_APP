@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:backgroundTint="#FFFFFF"
-    tools:context=".PresentationLayer.ContagionList.ContagionListFragment">
+    tools:context=".ViewLayer.ContagionList.ContagionListFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -105,7 +105,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/ListaCont"
+        android:id="@+id/contagion_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SchoolsAdministration.SchoolsAdministrationFagment">
+    tools:context=".ViewLayer.SchoolsAdministration.SchoolsAdministrationFagment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
