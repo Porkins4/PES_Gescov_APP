@@ -82,30 +82,30 @@ public class ContagionListFragment extends Fragment {
         thisview = inflater.inflate(R.layout.contagionlist, container, false);
          names = new ArrayList<>();
          contagionDate = new ArrayList<>();
-         ListaCont = (ListView) thisview.findViewById(R.id.ListaCont)  ;
+         ListaCont = (ListView) thisview.findViewById(R.id.ListaCont);
          adapter = new ContagionListAdapter(ListaCont.getContext(), names, contagionDate);
 
         ListaCont.setAdapter(adapter);
         try {
+            System.out.println("otra veh");
             refresh();
-        } catch (InterruptedException | ExecutionException |JSONException   e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return thisview;
     }
 
-    private void refresh() throws InterruptedException, ExecutionException, JSONException {
+    private void refresh() throws JSONException {
         controller.refresh();
     }
     public void updateData(String info) throws JSONException {
-        System.out.println(info + "la info");
         JSONArray response = new JSONArray(info);
 
         for (int i = 0; i < response.length(); ++i) {
             JSONObject aux = response.getJSONObject(i);
-            String date = aux.getString("startContagion");
             String nameaux = aux.getString("nameInfected");
             JSONObject student = new JSONObject(nameaux);
+            String date = aux.getString("startContagion");
             String filter = date.substring(0,10);
             names.add(student.getString("name"));
             String school = student.getString("school");

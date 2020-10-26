@@ -28,4 +28,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="contagion_list">"Llista de contagis "</string>
     <string name="catalan_tableStatus_Free">Lliure</string>
+    <!-- Aula -->
+    <string name= "aula">Aula</string>
+    <!-- Aula -->
+    <string name="contagionlist">Llista de Contagis</string>
+
 </resources>

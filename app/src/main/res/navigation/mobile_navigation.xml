@@ -25,12 +25,12 @@
     <fragment
         android:id="@+id/visualizarAula"
         android:name="com.example.gescov.showDistributionFragment"
-        android:label="fragment_blank"
+        android:label="@string/aula"
         tools:layout="@layout/fragment_show_distribution" />
     <fragment
         android:id="@+id/ContagionList"
         android:name="com.example.gescov.PresentationLayer.ContagionList.ContagionListFragment"
-        android:label="fragment_blank2"
+        android:label="@string/contagionlist"
         tools:layout="@layout/contagionlist" />
     <fragment
         android:id="@+id/blankFragment3"
