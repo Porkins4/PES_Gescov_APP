@@ -23,6 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gescov.DomainLayer.Controllers.ModelController;
 import com.example.gescov.R;
 import com.example.gescov.navigation.NavigationMenu;
 import com.example.gescov.ui.login.LoginViewModel;
@@ -31,10 +32,12 @@ import com.example.gescov.ui.login.LoginViewModelFactory;
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+    private ModelController mController;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mController = new ModelController(); // aqui se crea el controlador
         setContentView(R.layout.activity_login);
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
@@ -73,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
+
                 }
                 setResult(Activity.RESULT_OK);
 
@@ -123,6 +127,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
+        mController.CreateUser(model.getDisplayName());
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         Intent intent = new Intent(this, NavigationMenu.class);
         startActivity(intent);

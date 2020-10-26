@@ -17,13 +17,13 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" />
         <item
-            android:id="@+id/blankFragment"
+            android:id="@+id/visualizarAula"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/Catalan_visualizar_aula" />
         <item
-            android:id="@+id/blankFragment2"
+            android:id="@+id/ContagionList"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/contagion_list" />
         <item
             android:id="@+id/schoolAdministration"
             android:icon="@drawable/ic_menu_slideshow"
