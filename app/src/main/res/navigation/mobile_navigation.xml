@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/visualizarAula"
-        android:name="com.example.gescov.ViewLayer.ClassroomDistribution.ShowDistributionFragment"
+        android:name="com.example.gescov.ViewLayer.ClassroomDistribution.ClassroomDistributionFragment"
         android:label="@string/aula"
         tools:layout="@layout/fragment_show_distribution" />
     <fragment

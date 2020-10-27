@@ -14,4 +14,8 @@ public class ViewLayerController {
        return Mc.getAllContagions();
 
     }
+
+    public String getClassroomDimensions(String schoolId, String classroomId) {
+        return Mc.getClassroomDimensions(schoolId, classroomId);
+    }
 }

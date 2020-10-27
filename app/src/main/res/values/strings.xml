@@ -37,7 +37,10 @@
     <string name="catalan_tableStatus_Free">Lliure</string>
 
     <!-- Aula -->
-    <string name= "aula">Aula</string>
+    <string name="aula">Aula</string>
+    <string name="Catalan_mark_position">Marcar Posició</string>
+    <string name="Catalan_confirmation_Question">Desitges marcar la teva assistencia en aquesta posició?</string>
+
 
     <!-- Llista de Contagis -->
     <string name="contagionlist">Llista de Contagis</string>

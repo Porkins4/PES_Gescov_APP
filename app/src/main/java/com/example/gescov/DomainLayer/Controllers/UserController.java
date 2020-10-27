@@ -21,4 +21,14 @@ public class UserController {
     public String getContagionsOfMyCenter() {
         return user.getCntagionsOfCenter();
     }
+
+    //stub at the moment
+    public boolean containsSchool(String schoolId) {
+        return true;
+    }
+
+    //el colegio es contenido por el usuario
+    public String getClassroomDimensions(String schoolId, String classroomId) {
+        return user.getClassroomDimensions(schoolId,classroomId);
+    }
 }

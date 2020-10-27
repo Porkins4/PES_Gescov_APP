@@ -46,4 +46,8 @@ public class User {
         IContagionService icontragionService = ServicesFactory.getContagionService();
         return icontragionService.getContagionList(name,schoolId);
     }
+
+    public String getClassroomDimensions(String schoolId, String classroomId) {
+        return schools.getClassroomDimensions(schoolId,classroomId);
+    }
 }

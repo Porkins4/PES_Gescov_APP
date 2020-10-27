@@ -1,16 +1,23 @@
 package com.example.gescov.ViewLayer.ClassroomDistribution;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.gescov.R;
+import com.example.gescov.ViewLayer.MarkPositionInClassroom.MarkPositionInClassroom;
 
 public class ClassroomDistributionTableWidget {
 
+    private int rowPos, colPos;
+    private String studentId;
     private Button table;
     private TextView studentName;
     private View inflated_Layout;
+    private ClassroomDistributionFragment parentFragment;
 
     public ClassroomDistributionTableWidget() {
 
@@ -35,9 +42,25 @@ public class ClassroomDistributionTableWidget {
             table.setBackgroundColor(table.getResources().getColor(R.color.free_site));
             table.setText(table.getResources().getText(R.string.catalan_tableStatus_Free));
             studentName.setText("");
+            createListener();
         } else {
             table.setBackgroundColor(table.getResources().getColor(R.color.occuped_site));
             studentName.setText(s);
         }
+    }
+
+    private void createListener() {
+        table.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        parentFragment.launchMarkPosition(studentId,rowPos,colPos);
+                    }
+                }
+        );
+    }
+
+    public void setFragment(ClassroomDistributionFragment classroomDistributionFragment) {
+        parentFragment = classroomDistributionFragment;
     }
 }

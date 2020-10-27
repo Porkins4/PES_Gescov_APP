@@ -1,5 +1,6 @@
 package com.example.gescov.ViewLayer.ClassroomDistribution;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,16 +11,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gescov.R;
+import com.example.gescov.ViewLayer.MarkPositionInClassroom.MarkPositionInClassroom;
+import com.example.gescov.ViewLayer.PresentationControlFactory;
+import com.example.gescov.ViewLayer.ViewLayerController;
 
 import androidx.gridlayout.widget.GridLayout;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ShowDistributionFragment#newInstance} factory method to
+ * Use the {@link ClassroomDistributionFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ShowDistributionFragment extends Fragment {
+public class ClassroomDistributionFragment extends Fragment {
+
+    //-----------------------------
+    //my atributes
+    private ClassroomDistributionController controller;
+    //-----------------------------
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,7 +49,7 @@ public class ShowDistributionFragment extends Fragment {
             {"-1","Anas","-1","Isaac"},
     };
 
-    public ShowDistributionFragment() {
+    public ClassroomDistributionFragment() {
         // Required empty public constructor
     }
 
@@ -50,8 +62,8 @@ public class ShowDistributionFragment extends Fragment {
      * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ShowDistributionFragment newInstance(String param1, String param2) {
-        ShowDistributionFragment fragment = new ShowDistributionFragment();
+    public static ClassroomDistributionFragment newInstance(String param1, String param2) {
+        ClassroomDistributionFragment fragment = new ClassroomDistributionFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -73,21 +85,52 @@ public class ShowDistributionFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View thisView = inflater.inflate(R.layout.fragment_show_distribution, container, false);
+        controller = new ClassroomDistributionController();
         showDistribution(thisView);
         return thisView;
     }
 
     private void showDistribution(View thisView) {
         gridLayout = (GridLayout) thisView.findViewById(R.id.show_distribution_grid);
-        gridLayout.setRowCount(distr.length);//filas del grid
-        gridLayout.setColumnCount(distr[0].length); //columnas del grid
+        JSONObject jsonDimensions = getClassDimensionsFromController();
+        int rows = getJSONvalue(jsonDimensions,"first");
+        int cols = getJSONvalue(jsonDimensions,"second");
+        gridLayout.setRowCount(rows);//filas del grid
+        gridLayout.setColumnCount(cols); //columnas del grid
 
-        for(int i = 0; i < distr.length; ++i) {
-            for (int j = 0; j < distr[0].length; ++j) {
+        for(int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
                 ClassroomDistributionTableWidget y = new ClassroomDistributionTableWidget(getLayoutInflater().inflate(R.layout.table_item,null,false));
-                y.initTable(distr[i][j]);
+                //y.setValues("userId","fila","columna"); -> estos serian los valores que guardaria en eun widget
+                y.initTable("0"); //de momento solo se utiliza esta llamada.
+                y.setFragment(this);
                 gridLayout.addView(y.getTableLayout());
             }
         }
+    }
+
+    private int getJSONvalue (JSONObject o, String field) {
+        try {
+            return Integer.parseInt(o.getString(field));
+        } catch (JSONException e) {
+            System.out.println("Error while getting dimension parameter");
+        }
+        return -1;
+    }
+
+    private JSONObject getClassDimensionsFromController() {
+        String dimensions = controller.getClassDimensions("harcoded school","class Id");
+        System.out.println(dimensions);//HEY, BORRAME
+        try {
+            return new JSONObject(dimensions);
+        } catch (JSONException e) {
+            System.out.println("Error while trying to create JSON object with dimensions");
+        }
+        return null;
+    }
+
+    public void launchMarkPosition(String studentId, int rowPos, int colPos) {
+        Intent i = new Intent(getActivity(), MarkPositionInClassroom.class);
+        startActivity(i);
     }
 }
