@@ -37,7 +37,7 @@
     <string name="catalan_tableStatus_Free">Lliure</string>
 
     <!-- Aula -->
-    <string name= "aula">Aula</string>
+    <string name="aula">Aula</string>
 
     <!-- Llista de Contagis -->
     <string name="contagionlist">Llista de Contagis</string>

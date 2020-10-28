@@ -4,6 +4,9 @@ public class School {
 
     private String id;
     private  String name;
+    private  String address;
+    private  String state;
+    private  String creator;
 
     public School() {
         id = "FIB";

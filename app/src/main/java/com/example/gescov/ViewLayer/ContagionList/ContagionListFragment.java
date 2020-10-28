@@ -100,14 +100,21 @@ public class ContagionListFragment extends Fragment {
 
         for (int i = 0; i < response.length(); ++i) {
             JSONObject aux = response.getJSONObject(i);
-            String nameaux = aux.getString("nameInfected");
+            System.out.println(aux.toString()+"el objeto enetro");
+            String nameaux = aux.getString("infected");
+
             JSONObject student = new JSONObject(nameaux);
+            System.out.println(student.getString("name"));
             String date = aux.getString("startContagion");
             String filter = date.substring(0,10);
             names.add(student.getString("name"));
-            String school = student.getString("school");
-            JSONObject studentSchool = new JSONObject(school);
-            contagionDate.add(studentSchool.getString("name")+"-Positiu des de " + filter);
+
+            String school = student.getString("schools");
+            System.out.println(school);
+            JSONArray userSchools = new JSONArray(school);
+            JSONObject school1 = userSchools.getJSONObject(0);
+
+            contagionDate.add(school1.getString("name")+"-Positiu des de " + filter);
         }
         adapter.notifyDataSetChanged();
     }

@@ -1,9 +1,11 @@
 package com.example.gescov.ViewLayer.navigation.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -27,6 +29,18 @@ public class HomeFragment extends Fragment {
                 textView.setText(s);
             }
         });*/
+        Button report = (Button) root.findViewById(R.id.report);
+        report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),CovidNotificationActivity.class);
+                intent.putExtra("NameInfected","Victor Martinez");
+                //if (intent.hasExtra("NameInfected")) System.out.println(intent.getExtras().getString("NameInfected"));
+                intent.putExtra("School","FIB");
+                startActivity(intent);
+            }
+        });
+
         return root;
     }
 }
