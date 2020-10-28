@@ -21,4 +21,8 @@ public class UserController {
     public String getContagionsOfMyCenter() {
         return user.getCntagionsOfCenter();
     }
+
+    public String getAllSchools() {
+        return user.getAllSchools();
+    }
 }

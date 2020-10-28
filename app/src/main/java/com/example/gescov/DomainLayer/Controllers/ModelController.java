@@ -16,8 +16,13 @@ public class ModelController {
     public String getAllContagions() {
        return userController.getContagionsOfMyCenter();
     }
+
     public void CreateUser(String nameuser) {
         userController = new UserController();
         userController.initUser();// remember to modify this when u have an user
+    }
+
+    public String getAllSchools() {
+        return userController.getAllSchools();
     }
 }

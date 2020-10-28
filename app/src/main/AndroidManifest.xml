@@ -13,6 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gescov">
         <activity android:name=".ViewLayer.navigation.ui.home.CovidNotificationActivity"></activity>
+        <activity
+            android:name=".ViewLayer.SchoolClassroomList.SchoolClassromListActivity"
+            android:label="@string/title_activity_school_classrom_list"
+            android:theme="@style/Theme.Gescov.NoActionBar"></activity>
+        <activity android:name=".ViewLayer.SchoolsAdministration.CreateSchoolFormActivity" />
+        <activity
+            android:name=".ViewLayer.SchoolClassroomList.SchoolClassromListActivity"
+            android:label="@string/title_activity_school_classrom_list"
+            android:theme="@style/Theme.Gescov.NoActionBar"></activity>
         <activity android:name=".ViewLayer.SchoolsAdministration.CreateSchoolFormActivity" />
         <activity
             android:name=".ViewLayer.navigation.NavigationMenu"
@@ -28,5 +37,8 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

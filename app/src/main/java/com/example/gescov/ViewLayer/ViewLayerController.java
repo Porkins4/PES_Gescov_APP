@@ -4,14 +4,17 @@ import com.example.gescov.DomainLayer.Controllers.ModelController;
 
 
 public class ViewLayerController {
-    ModelController Mc;
+    ModelController modelController;
 
     public ViewLayerController() {
-        Mc = new ModelController();
+        modelController = new ModelController();
     }
 
     public String getAllContagions() {
-       return Mc.getAllContagions();
+       return modelController.getAllContagions();
+    }
 
+    public String getAllSchools() {
+       return modelController.getAllSchools();
     }
 }

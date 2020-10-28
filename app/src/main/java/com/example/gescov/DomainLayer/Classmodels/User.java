@@ -1,6 +1,7 @@
 package com.example.gescov.DomainLayer.Classmodels;
 
 import com.example.gescov.DomainLayer.Services.IContagionService;
+import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 
 public class User {
@@ -45,5 +46,10 @@ public class User {
         String schoolId = schools.getId();
         IContagionService icontragionService = ServicesFactory.getContagionService();
         return icontragionService.getContagionList(name,schoolId);
+    }
+
+    public String getAllSchools() {
+        ISchoolService schoolService = ServicesFactory.getSchoolService();
+        return schoolService.getAllSchools();
     }
 }

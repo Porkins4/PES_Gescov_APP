@@ -23,7 +23,7 @@
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
-        android:id="@+id/visualizarAula"
+        android:id="@+id/visualizar_aula"
         android:name="com.example.gescov.ViewLayer.ClassroomDistribution.ShowDistributionFragment"
         android:label="@string/aula"
         tools:layout="@layout/fragment_show_distribution" />

@@ -1,8 +1,18 @@
 package com.example.gescov.DomainLayer.Services;
 
 public class ServicesFactory {
-    private static IContagionService icontagionservice  = new ContagionServiceImplementor();
+    private static IContagionService contagionservice;
+    private static ISchoolService schoolService;
+
     public static IContagionService getContagionService() {
-        return icontagionservice;
+        if (contagionservice != null) return contagionservice;
+        contagionservice = new ContagionServiceImplementor();
+        return contagionservice;
+    }
+
+    public static ISchoolService getSchoolService() {
+        if (schoolService != null) return schoolService;
+        schoolService = new SchoolServiceImplementor();
+        return schoolService;
     }
 }

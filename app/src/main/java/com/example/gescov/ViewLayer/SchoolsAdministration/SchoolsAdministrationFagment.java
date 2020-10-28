@@ -12,7 +12,15 @@ import android.widget.ListView;
 
 import com.example.gescov.ViewLayer.PresentationControlFactory;
 import com.example.gescov.R;
+import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolClassroomsCrontroller;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +29,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  */
 public class SchoolsAdministrationFagment extends Fragment {
 
+    SchoolsCrontroller controller;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -55,6 +64,9 @@ public class SchoolsAdministrationFagment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        controller = PresentationControlFactory.getSchoolsCrontroller();
+        controller.setSchoolsAdministrationFragment(this);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -64,18 +76,38 @@ public class SchoolsAdministrationFagment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View thisView = inflater.inflate(R.layout.fragment_school_administration, container, false);
-        FloatingActionButton fab = thisView.findViewById(R.id.addSchoolButton);
+        FloatingActionButton fab = thisView.findViewById(R.id.add_school_button);
         ListView list = (ListView) thisView.findViewById(R.id.schools_list);
 
-        SchoolsCrontroller schoolsCrontroller = PresentationControlFactory.getSchoolsCrontroller();
-        schoolsCrontroller.setSchoolListViewAdapter(list.getContext());
-        SchoolListViewAdapter adapter = schoolsCrontroller.getSchoolListViewSchoolAdapter();
+        controller.setSchoolListViewAdapter(list.getContext());
+        SchoolListViewAdapter adapter = controller.getSchoolListViewSchoolAdapter();
         list.setAdapter(adapter);
+        try {
+            controller.refresh();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         fab.setOnClickListener(e -> {
             Intent intent = new Intent(getActivity(), CreateSchoolFormActivity.class);
             startActivity(intent);
         });
         return thisView;
+    }
+
+    public void updateData(String info) throws JSONException {
+        JSONArray response = new JSONArray(info);
+        for (int i = 0; i < response.length(); ++i) {
+            JSONObject aux = response.getJSONObject(i);
+            String nameSchool = aux.getString("name");
+            controller.getSchoolListViewSchoolAdapter().addItem(nameSchool);
+            System.out.println(nameSchool);
+            System.out.println(aux.toString()+"el objeto enetro");
+            //I/System.out: {"id":{"timestamp":1603915614,"date":"2020-10-28T20:06:54.000+00:00"},"name":"FIB","state":"open","address":"Carrer Jordi Girona, 1-3","longitude":0,"latitude":0,"creator":"Xicu Torres"}el objeto enetro
+
+        }
+        controller.getSchoolListViewSchoolAdapter().notifyDataSetChanged();
     }
 }

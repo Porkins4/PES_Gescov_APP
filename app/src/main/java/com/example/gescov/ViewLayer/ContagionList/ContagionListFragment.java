@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.gescov.R;
+import com.example.gescov.ViewLayer.PresentationControlFactory;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -76,7 +77,9 @@ public class ContagionListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        controller = new ContagionController(this);
+        controller = PresentationControlFactory.getContagionController();
+        controller.setContagionListFragment(this);
+
         thisView = inflater.inflate(R.layout.contagionlist, container, false);
         names = new ArrayList<>();
         contagionDate = new ArrayList<>();
@@ -85,16 +88,13 @@ public class ContagionListFragment extends Fragment {
 
         contagionList.setAdapter(adapter);
         try {
-            refresh();
+            controller.refresh();
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return thisView;
     }
 
-    private void refresh() throws JSONException {
-        controller.refresh();
-    }
     public void updateData(String info) throws JSONException {
         JSONArray response = new JSONArray(info);
 

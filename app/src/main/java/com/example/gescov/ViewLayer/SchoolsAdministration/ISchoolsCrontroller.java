@@ -1,5 +1,7 @@
 package com.example.gescov.ViewLayer.SchoolsAdministration;
 
+import org.json.JSONException;
+
 import java.util.List;
 
 interface ISchoolsCrontroller {
@@ -7,4 +9,6 @@ interface ISchoolsCrontroller {
 
     public SchoolListViewAdapter getSchoolListViewSchoolAdapter();
     public List<String> getSchoolNamesList();
+
+    void refresh() throws JSONException;
 }
