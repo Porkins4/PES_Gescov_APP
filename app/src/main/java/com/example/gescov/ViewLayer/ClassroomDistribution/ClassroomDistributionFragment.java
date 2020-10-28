@@ -10,6 +10,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.Cache;
+import com.android.volley.Network;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.BasicNetwork;
+import com.android.volley.toolbox.DiskBasedCache;
+import com.android.volley.toolbox.HurlStack;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.gescov.R;
 import com.example.gescov.ViewLayer.MarkPositionInClassroom.MarkPositionInClassroom;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
@@ -17,6 +29,7 @@ import com.example.gescov.ViewLayer.ViewLayerController;
 
 import androidx.gridlayout.widget.GridLayout;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,6 +56,7 @@ public class ClassroomDistributionFragment extends Fragment {
     private String mParam2;
 
     private GridLayout gridLayout;
+    private ClassroomDistributionTableWidget [][] distribution;
     private String [][] distr = {
             {"-1","Albert","-1","Ponç"},
             {"Pablo","-1","0","-1"},
@@ -97,6 +111,7 @@ public class ClassroomDistributionFragment extends Fragment {
         int cols = getJSONvalue(jsonDimensions,"second");
         gridLayout.setRowCount(rows);//filas del grid
         gridLayout.setColumnCount(cols); //columnas del grid
+        distribution = new ClassroomDistributionTableWidget[rows][cols];
 
         for(int i = 0; i < rows; ++i) {
             for (int j = 0; j < cols; ++j) {
@@ -104,9 +119,44 @@ public class ClassroomDistributionFragment extends Fragment {
                 //y.setValues("userId","fila","columna"); -> estos serian los valores que guardaria en eun widget
                 y.initTable("0"); //de momento solo se utiliza esta llamada.
                 y.setFragment(this);
+                distribution[i][j] = y;
                 gridLayout.addView(y.getTableLayout());
             }
         }
+        
+        //showStudents();
+    }
+
+    private void showStudents() {
+        RequestQueue rq;
+        Cache cache = new DiskBasedCache(this.getContext().getCacheDir(), 5 * 1024 * 1024); // 1MB cap
+
+        // Set up the network to use HttpURLConnection as the HTTP client.
+        Network network = new BasicNetwork(new HurlStack());
+
+        rq = new RequestQueue(cache,network);
+        String uri = "h ";
+        JsonArrayRequest jr = new JsonArrayRequest(
+                 uri, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                System.out.println(response.toString());
+                for (int i = 0; i < response.length(); ++i) {
+                    try {
+                        JSONObject k = response.getJSONObject(i);
+                        System.out.println(k.getString("posCol"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (error.networkResponse != null)System.out.println("fallaste puto");
+                else System.out.println("todo ok papi");
+            }
+        });
     }
 
     private int getJSONvalue (JSONObject o, String field) {
