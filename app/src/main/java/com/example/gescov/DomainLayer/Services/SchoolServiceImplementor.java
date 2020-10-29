@@ -26,7 +26,7 @@ public class SchoolServiceImplementor implements ISchoolService {
 
     @Override
     public String getStudentsInClassroom(String classroom) {
-        conection = new SchoolServiceConnections();
+        conection = new Conection();
         String response = null;
         try {
             response = conection.execute(GET_CLASSROOM_STUDENTS_URI+"?nameCen=A4S101 ").get();

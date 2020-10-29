@@ -36,12 +36,12 @@ public class School {
     }
 
     public String getClassroomDimensions(String schoolId, String classroomId) {
-        ISchoolService iSchoolService = ServicesFactory.getiSchoolService();
+        ISchoolService iSchoolService = ServicesFactory.getSchoolService();
         return iSchoolService.getDimensions(schoolId,classroomId);
     }
 
     public String getStudentsInClassroom(String classroom) {
-        ISchoolService iSchoolService = ServicesFactory.getiSchoolService();
+        ISchoolService iSchoolService = ServicesFactory.getSchoolService();
         return iSchoolService.getStudentsInClassroom(classroom);
     }
 }

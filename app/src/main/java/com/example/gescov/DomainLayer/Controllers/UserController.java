@@ -34,7 +34,8 @@ public class UserController {
 
     //el colegio es contenido por el usuario
     public String getClassroomDimensions(String schoolId, String classroomId) {
-        return user.getClassroomDimensions(schoolId,classroomId);
+        return user.getClassroomDimensions(schoolId, classroomId);
+    }
 
     public String getAllSchools() {
         return user.getAllSchools();

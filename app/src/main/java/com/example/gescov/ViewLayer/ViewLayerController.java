@@ -11,7 +11,7 @@ public class ViewLayerController {
     }
 
     public String getStudentsInClassroom(String classroom) {
-        return Mc.getStudentsInClassroom(classroom);
+        return modelController.getStudentsInClassroom(classroom);
     }
 
     public String getAllContagions() {
@@ -27,6 +27,6 @@ public class ViewLayerController {
     }
 
     public String getClassroomDimensions(String schoolId, String classroomId) {
-        return Mc.getClassroomDimensions(schoolId, classroomId);
+        return modelController.getClassroomDimensions(schoolId, classroomId);
     }
 }

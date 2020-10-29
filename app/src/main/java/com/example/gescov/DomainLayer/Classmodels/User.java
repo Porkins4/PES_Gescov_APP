@@ -56,6 +56,7 @@ public class User {
 
     public String getStudentsInClassroom(String classroom) {
         return schools.getStudentsInClassroom(classroom);
+    }
 
     public String getAllSchools() {
         ISchoolService schoolService = ServicesFactory.getSchoolService();

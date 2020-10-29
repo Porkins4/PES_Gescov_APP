@@ -6,8 +6,6 @@ public class ModelController {
 
     private UserController userController;
 
-
-
     public ModelController() {
         userController = new UserController();
     }
@@ -30,6 +28,7 @@ public class ModelController {
 
     public String getStudentsInClassroom(String classroom) {
         return userController.getStudentsInClassroom(classroom);
+    }
 
     public String getAllSchools() {
         return userController.getAllSchools();
