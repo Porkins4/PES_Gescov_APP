@@ -6,9 +6,11 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 
+import android.util.JsonReader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.android.volley.Cache;
 import com.android.volley.Network;
@@ -44,6 +46,8 @@ public class ClassroomDistributionFragment extends Fragment {
     //-----------------------------
     //my atributes
     private ClassroomDistributionController controller;
+    private GridLayout gridLayout;
+    private ClassroomDistributionTableWidget [][] distribution;
     //-----------------------------
 
     // TODO: Rename parameter arguments, choose names that match
@@ -55,8 +59,7 @@ public class ClassroomDistributionFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private GridLayout gridLayout;
-    private ClassroomDistributionTableWidget [][] distribution;
+
     private String [][] distr = {
             {"-1","Albert","-1","Ponç"},
             {"Pablo","-1","0","-1"},
@@ -85,6 +88,7 @@ public class ClassroomDistributionFragment extends Fragment {
         return fragment;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,6 +108,14 @@ public class ClassroomDistributionFragment extends Fragment {
         return thisView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        int toastTime = Toast.LENGTH_SHORT;
+        Toast x = Toast.makeText(this.getContext(), getResources().getText(R.string.Catalan_successful_reservation),toastTime);
+        x.show();
+    }
+
     private void showDistribution(View thisView) {
         gridLayout = (GridLayout) thisView.findViewById(R.id.show_distribution_grid);
         JSONObject jsonDimensions = getClassDimensionsFromController();
@@ -119,44 +131,34 @@ public class ClassroomDistributionFragment extends Fragment {
                 //y.setValues("userId","fila","columna"); -> estos serian los valores que guardaria en eun widget
                 y.initTable("0"); //de momento solo se utiliza esta llamada.
                 y.setFragment(this);
+                y.setColPos(j);
+                y.setRowPos(i);
                 distribution[i][j] = y;
                 gridLayout.addView(y.getTableLayout());
             }
         }
-        
-        //showStudents();
+        showStudents();
     }
 
     private void showStudents() {
-        RequestQueue rq;
-        Cache cache = new DiskBasedCache(this.getContext().getCacheDir(), 5 * 1024 * 1024); // 1MB cap
-
-        // Set up the network to use HttpURLConnection as the HTTP client.
-        Network network = new BasicNetwork(new HurlStack());
-
-        rq = new RequestQueue(cache,network);
-        String uri = "h ";
-        JsonArrayRequest jr = new JsonArrayRequest(
-                 uri, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                System.out.println(response.toString());
-                for (int i = 0; i < response.length(); ++i) {
-                    try {
-                        JSONObject k = response.getJSONObject(i);
-                        System.out.println(k.getString("posCol"));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
+        JSONArray response = null;
+        try {
+            response = new JSONArray(controller.getStudentsInClassroom("hardcodeClassroom"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        for (int i = 0; i < response.length(); ++i) {
+            JSONObject o = null;
+            try {
+                o = response.getJSONObject(i);
+                int row = Integer.parseInt(o.getString("posRow"));
+                int col = Integer.parseInt(o.getString("posCol"));
+                JSONObject student = new JSONObject(o.getString("student"));
+                distribution[row][col].initTable(student.getString("name"));
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (error.networkResponse != null)System.out.println("fallaste puto");
-                else System.out.println("todo ok papi");
-            }
-        });
+        }
     }
 
     private int getJSONvalue (JSONObject o, String field) {
@@ -181,6 +183,9 @@ public class ClassroomDistributionFragment extends Fragment {
 
     public void launchMarkPosition(String studentId, int rowPos, int colPos) {
         Intent i = new Intent(getActivity(), MarkPositionInClassroom.class);
+        i.putExtra("row",rowPos);
+        i.putExtra("col",colPos);
+        i.putExtra("studentName", "Marquitos");
         startActivity(i);
     }
 }

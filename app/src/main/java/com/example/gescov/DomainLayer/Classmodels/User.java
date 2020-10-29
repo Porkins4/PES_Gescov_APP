@@ -50,4 +50,8 @@ public class User {
     public String getClassroomDimensions(String schoolId, String classroomId) {
         return schools.getClassroomDimensions(schoolId,classroomId);
     }
+
+    public String getStudentsInClassroom(String classroom) {
+        return schools.getStudentsInClassroom(classroom);
+    }
 }

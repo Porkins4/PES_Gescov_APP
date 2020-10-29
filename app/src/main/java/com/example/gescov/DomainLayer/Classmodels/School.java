@@ -36,4 +36,9 @@ public class School {
         ISchoolService iSchoolService = ServicesFactory.getiSchoolService();
         return iSchoolService.getDimensions(schoolId,classroomId);
     }
+
+    public String getStudentsInClassroom(String classroom) {
+        ISchoolService iSchoolService = ServicesFactory.getiSchoolService();
+        return iSchoolService.getStudentsInClassroom(classroom);
+    }
 }

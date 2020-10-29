@@ -9,6 +9,10 @@ public class UserController {
         user = new User();
     }
 
+    public String getStudentsInClassroom(String classroom) {
+        return user.getStudentsInClassroom(classroom);
+    }
+
     public void initUser() {
         user = new User();
     }

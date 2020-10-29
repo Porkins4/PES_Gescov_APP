@@ -10,6 +10,10 @@ public class ViewLayerController {
         Mc = new ModelController();
     }
 
+    public String getStudentsInClassroom(String classroom) {
+        return Mc.getStudentsInClassroom(classroom);
+    }
+
     public String getAllContagions() {
        return Mc.getAllContagions();
 

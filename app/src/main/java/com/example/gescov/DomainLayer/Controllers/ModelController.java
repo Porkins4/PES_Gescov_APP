@@ -24,4 +24,8 @@ public class ModelController {
         if (userController.containsSchool(schoolId)) return userController.getClassroomDimensions(schoolId, classroomId);
         return "-1";
     }
+
+    public String getStudentsInClassroom(String classroom) {
+        return userController.getStudentsInClassroom(classroom);
+    }
 }

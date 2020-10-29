@@ -1,21 +1,28 @@
 package com.example.gescov.ViewLayer.ClassroomDistribution;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import androidx.fragment.app.Fragment;
+import android.widget.Toast;
 
 import com.example.gescov.R;
-import com.example.gescov.ViewLayer.MarkPositionInClassroom.MarkPositionInClassroom;
 
 public class ClassroomDistributionTableWidget {
 
-    private int rowPos, colPos;
+    private int rowPos;
+    private int colPos;
+
+    public void setRowPos(int rowPos) {
+        this.rowPos = rowPos;
+    }
+
+    public void setColPos(int colPos) {
+        this.colPos = colPos;
+    }
+
     private String studentId;
     private Button table;
-    private TextView studentName;
+    private TextView studentView;
     private View inflated_Layout;
     private ClassroomDistributionFragment parentFragment;
 
@@ -26,7 +33,7 @@ public class ClassroomDistributionTableWidget {
     public ClassroomDistributionTableWidget(View k) {
         inflated_Layout = k;
         table = k.findViewById(R.id.table_button);
-        studentName = k.findViewById(R.id.student_name);
+        studentView = k.findViewById(R.id.student_name);
     }
 
     public View getTableLayout () {
@@ -34,18 +41,20 @@ public class ClassroomDistributionTableWidget {
     }
 
     public void initTable(String s) {
+        if (table.getText().equals("x") || table.getText().equals(table.getResources().getText(R.string.catalan_tableStatus_Free))) table.setText("");
         if (s.equals("-1")) {
             table.setBackgroundColor(table.getResources().getColor(R.color.unabled_site));
             table.setText("x");
-            studentName.setText("");
+            studentView.setText("");
+
         } else if (s.equals("0")) {
             table.setBackgroundColor(table.getResources().getColor(R.color.free_site));
             table.setText(table.getResources().getText(R.string.catalan_tableStatus_Free));
-            studentName.setText("");
+            studentView.setText("");
             createListener();
         } else {
             table.setBackgroundColor(table.getResources().getColor(R.color.occuped_site));
-            studentName.setText(s);
+            studentView.setText(s);
         }
     }
 
@@ -54,7 +63,14 @@ public class ClassroomDistributionTableWidget {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        parentFragment.launchMarkPosition(studentId,rowPos,colPos);
+                        //------------------------------------------------------------------
+                        //messages in case that the table is not available for a reservation, otherwise launchs activity to reserve a table
+                        int toastTime = Toast.LENGTH_SHORT;
+                        if (table.getText().equals("x")) Toast.makeText(parentFragment.getContext(),table.getResources().getText(R.string.Catalan_table_not_available),toastTime).show();
+                        else if (table.getText().equals("")) Toast.makeText(parentFragment.getContext(),table.getResources().getText(R.string.Catalan_table_already_assigned),toastTime).show();
+                        else parentFragment.launchMarkPosition(studentId,rowPos,colPos);
+                        //------------------------------------------------------------------
+
                     }
                 }
         );

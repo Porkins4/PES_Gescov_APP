@@ -36,13 +36,16 @@
     <string name="contagion_list">"Llista de contagis "</string>
     <string name="catalan_tableStatus_Free">Lliure</string>
 
-    <!-- Aula -->
-    <string name="aula">Aula</string>
+    <!-- Classroom distribution -->
+    <string name="Catalan_classroom_name">Aula</string>
     <string name="Catalan_mark_position">Marcar Posició</string>
     <string name="Catalan_confirmation_Question">Desitges marcar la teva assistencia en aquesta posició?</string>
-
+    <string name="Catalan_table_already_assigned">La taula ja está ocupada per algú</string>
+    <string name="Catalan_table_not_available">No pots seure a aquesta taula</string>
+    <string name="Catalan_successful_reservation">Reserva feta amb èxit</string>
 
     <!-- Llista de Contagis -->
     <string name="contagionlist">Llista de Contagis</string>
+
 
 </resources>
