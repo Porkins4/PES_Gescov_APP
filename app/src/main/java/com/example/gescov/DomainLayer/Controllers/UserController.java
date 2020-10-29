@@ -26,6 +26,7 @@ public class UserController {
         return user.getCntagionsOfCenter();
     }
 
+
     //stub at the moment
     public boolean containsSchool(String schoolId) {
         return true;
@@ -34,5 +35,14 @@ public class UserController {
     //el colegio es contenido por el usuario
     public String getClassroomDimensions(String schoolId, String classroomId) {
         return user.getClassroomDimensions(schoolId,classroomId);
+
+    public String getAllSchools() {
+        return user.getAllSchools();
+    }
+
+    public Boolean notifyInfected() {
+        // el comportamineto seria obtener la escuela de nuestro usuario y pasarsela
+        return user.notifiyContagion();
+
     }
 }

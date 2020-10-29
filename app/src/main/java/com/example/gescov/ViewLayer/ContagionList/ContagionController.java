@@ -2,20 +2,22 @@ package com.example.gescov.ViewLayer.ContagionList;
 
 
 
+import com.example.gescov.ViewLayer.PresentationControlFactory;
+import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsAdministrationFagment;
 import com.example.gescov.ViewLayer.ViewLayerController;
 
 import org.json.JSONException;
 
 
 public class ContagionController {
-    private ContagionListFragment Cl;
+    private ContagionListFragment contagionListFragment;
     private ViewLayerController viewLayerController;
 
-    public ContagionController(ContagionListFragment contagionlist ) {
-        Cl = contagionlist;
-        viewLayerController = new ViewLayerController();
-    }
     public void refresh() throws  JSONException {
-        Cl.updateData(viewLayerController.getAllContagions());
+        contagionListFragment.updateData(PresentationControlFactory.getViewLayerController().getAllContagions());
+    }
+
+    public void setContagionListFragment(ContagionListFragment fragment) {
+        this.contagionListFragment = fragment;
     }
 }

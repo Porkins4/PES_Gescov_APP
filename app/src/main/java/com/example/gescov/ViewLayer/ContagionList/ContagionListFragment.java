@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.gescov.R;
+import com.example.gescov.ViewLayer.PresentationControlFactory;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -76,7 +77,9 @@ public class ContagionListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        controller = new ContagionController(this);
+        controller = PresentationControlFactory.getContagionController();
+        controller.setContagionListFragment(this);
+
         thisView = inflater.inflate(R.layout.contagionlist, container, false);
         names = new ArrayList<>();
         contagionDate = new ArrayList<>();
@@ -85,29 +88,29 @@ public class ContagionListFragment extends Fragment {
 
         contagionList.setAdapter(adapter);
         try {
-            refresh();
+            controller.refresh();
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return thisView;
     }
 
-    private void refresh() throws JSONException {
-        controller.refresh();
-    }
     public void updateData(String info) throws JSONException {
         JSONArray response = new JSONArray(info);
 
         for (int i = 0; i < response.length(); ++i) {
             JSONObject aux = response.getJSONObject(i);
-            String nameaux = aux.getString("nameInfected");
+            String nameaux = aux.getString("infected");
             JSONObject student = new JSONObject(nameaux);
+            System.out.println(student.getString("name"));
             String date = aux.getString("startContagion");
             String filter = date.substring(0,10);
             names.add(student.getString("name"));
-            String school = student.getString("school");
-            JSONObject studentSchool = new JSONObject(school);
-            contagionDate.add(studentSchool.getString("name")+"-Positiu des de " + filter);
+            String school = student.getString("schools");
+            System.out.println(school);
+            JSONArray userSchools = new JSONArray(school);
+            JSONObject school1 = userSchools.getJSONObject(0);
+            contagionDate.add(school1.getString("name")+"-Positiu des de " + filter);
         }
         adapter.notifyDataSetChanged();
     }

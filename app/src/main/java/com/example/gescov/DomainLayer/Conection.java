@@ -14,9 +14,7 @@ public class Conection extends AsyncTask<String,String,String> {
     protected String doInBackground(String... strings) {
         URL url = null;
         try {
-            System.out.println("im here ");
             url = new URL(strings[0]);
-            System.out.println("aun no he fallado ");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

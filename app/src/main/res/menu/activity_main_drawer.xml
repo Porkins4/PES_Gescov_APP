@@ -17,7 +17,7 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" />
         <item
-            android:id="@+id/visualizarAula"
+            android:id="@+id/visualizar_aula"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/Catalan_visualizar_aula" />
         <item

@@ -4,10 +4,10 @@ import com.example.gescov.DomainLayer.Controllers.ModelController;
 
 
 public class ViewLayerController {
-    ModelController Mc;
+    private  ModelController modelController;
 
     public ViewLayerController() {
-        Mc = new ModelController();
+        modelController = new ModelController();
     }
 
     public String getStudentsInClassroom(String classroom) {
@@ -15,8 +15,15 @@ public class ViewLayerController {
     }
 
     public String getAllContagions() {
-       return Mc.getAllContagions();
+       return modelController.getAllContagions();
+    }
 
+    public String getAllSchools() {
+       return modelController.getAllSchools();
+    }
+
+    public Boolean notifyInfected() {
+        return modelController.notifyInfected();
     }
 
     public String getClassroomDimensions(String schoolId, String classroomId) {

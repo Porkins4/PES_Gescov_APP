@@ -1,4 +1,4 @@
-package com.example.gescov.ViewLayer.navigation.ui.home;
+package com.example.gescov.ViewLayer.home;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

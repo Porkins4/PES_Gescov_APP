@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.gescov.ViewLayer.navigation.ui.home.HomeFragment"
+        android:name="com.example.gescov.ViewLayer.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
@@ -23,9 +23,11 @@
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
-        android:id="@+id/visualizarAula"
-        android:name="com.example.gescov.ViewLayer.ClassroomDistribution.ClassroomDistributionFragment"
-        android:label="@string/Catalan_classroom_name"
+
+
+        android:id="@+id/visualizar_aula"
+        android:name="com.example.gescov.ViewLayer.ClassroomDistribution.ShowDistributionFragment"
+        android:label="@string/aula"
         tools:layout="@layout/fragment_show_distribution" />
     <fragment
         android:id="@+id/ContagionList"
