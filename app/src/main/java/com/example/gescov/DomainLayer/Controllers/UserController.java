@@ -25,4 +25,10 @@ public class UserController {
     public String getAllSchools() {
         return user.getAllSchools();
     }
+
+    public Boolean notifyInfected() {
+        // el comportamineto seria obtener la escuela de nuestro usuario y pasarsela
+        return user.notifiyContagion();
+
+    }
 }

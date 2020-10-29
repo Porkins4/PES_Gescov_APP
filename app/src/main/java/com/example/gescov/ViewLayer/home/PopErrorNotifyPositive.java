@@ -1,4 +1,4 @@
-package com.example.gescov.ViewLayer.navigation.ui.home;
+package com.example.gescov.ViewLayer.home;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class PopErrorNotifyPositive extends AppCompatDialogFragment {

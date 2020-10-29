@@ -1,4 +1,4 @@
-package com.example.gescov.ViewLayer.navigation.ui.home;
+package com.example.gescov.ViewLayer.home;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +16,7 @@ import com.example.gescov.R;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-
+    private HomeController homeController;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -35,7 +35,6 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),CovidNotificationActivity.class);
                 intent.putExtra("NameInfected","Victor Martinez");
-                //if (intent.hasExtra("NameInfected")) System.out.println(intent.getExtras().getString("NameInfected"));
                 intent.putExtra("School","FIB");
                 startActivity(intent);
             }

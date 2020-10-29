@@ -4,7 +4,7 @@ import com.example.gescov.DomainLayer.Controllers.ModelController;
 
 
 public class ViewLayerController {
-    ModelController modelController;
+    private  ModelController modelController;
 
     public ViewLayerController() {
         modelController = new ModelController();
@@ -16,5 +16,9 @@ public class ViewLayerController {
 
     public String getAllSchools() {
        return modelController.getAllSchools();
+    }
+
+    public Boolean notifyInfected() {
+        return modelController.notifyInfected();
     }
 }

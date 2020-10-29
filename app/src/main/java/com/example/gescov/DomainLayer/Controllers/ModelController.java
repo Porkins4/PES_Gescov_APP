@@ -5,8 +5,8 @@ import com.example.gescov.DomainLayer.Conection;
 public class ModelController {
 
 
-    UserController userController;
-    Conection c;
+    private UserController userController;
+    private Conection c;
 
     public ModelController() {
         c = new Conection();
@@ -24,5 +24,10 @@ public class ModelController {
 
     public String getAllSchools() {
         return userController.getAllSchools();
+    }
+
+    public Boolean notifyInfected() {
+        // para obtener la School
+        return userController.notifyInfected();
     }
 }

@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gescov">
-        <activity android:name=".ViewLayer.navigation.ui.home.CovidNotificationActivity"></activity>
+        <activity android:name=".ViewLayer.home.CovidNotificationActivity"></activity>
         <activity
             android:name=".ViewLayer.SchoolClassroomList.SchoolClassromListActivity"
             android:label="@string/title_activity_school_classrom_list"

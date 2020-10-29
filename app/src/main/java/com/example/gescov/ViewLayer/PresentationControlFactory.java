@@ -1,15 +1,16 @@
 package com.example.gescov.ViewLayer;
 
-import com.example.gescov.DomainLayer.Controllers.ModelController;
 import com.example.gescov.ViewLayer.ContagionList.ContagionController;
 import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolClassroomsCrontroller;
 import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsCrontroller;
+import com.example.gescov.ViewLayer.home.NotifyContagionController;
 
 public class PresentationControlFactory {
     private static ViewLayerController viewLayerController;
     private static SchoolsCrontroller schoolsCrontroller;
     private static SchoolClassroomsCrontroller classroomsCrontroller;
     private static ContagionController contagionCrontroller;
+    private static NotifyContagionController notifyContagionController;
 
     public static ViewLayerController getViewLayerController() {
         if (viewLayerController != null)
@@ -37,4 +38,11 @@ public class PresentationControlFactory {
         contagionCrontroller = new ContagionController();
         return contagionCrontroller;
     }
+    public static NotifyContagionController getNotifyContagionController () {
+        if (notifyContagionController != null)
+            return notifyContagionController;
+        notifyContagionController = new NotifyContagionController();
+        return notifyContagionController;
+    }
+
 }
