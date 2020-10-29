@@ -9,6 +9,10 @@ public class UserController {
         user = new User();
     }
 
+    public String getStudentsInClassroom(String classroom) {
+        return user.getStudentsInClassroom(classroom);
+    }
+
     public void initUser() {
         user = new User();
     }
@@ -21,6 +25,16 @@ public class UserController {
     public String getContagionsOfMyCenter() {
         return user.getCntagionsOfCenter();
     }
+
+
+    //stub at the moment
+    public boolean containsSchool(String schoolId) {
+        return true;
+    }
+
+    //el colegio es contenido por el usuario
+    public String getClassroomDimensions(String schoolId, String classroomId) {
+        return user.getClassroomDimensions(schoolId,classroomId);
 
     public String getAllSchools() {
         return user.getAllSchools();

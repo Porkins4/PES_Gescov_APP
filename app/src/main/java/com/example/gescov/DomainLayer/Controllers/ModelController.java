@@ -4,12 +4,11 @@ import com.example.gescov.DomainLayer.Conection;
 
 public class ModelController {
 
-
     private UserController userController;
-    private Conection c;
+
+
 
     public ModelController() {
-        c = new Conection();
         userController = new UserController();
     }
 
@@ -22,6 +21,16 @@ public class ModelController {
         userController.initUser();// remember to modify this when u have an user
     }
 
+
+    //-1 means that user is not linked to the specified school
+    public String getClassroomDimensions(String schoolId, String classroomId) {
+        if (userController.containsSchool(schoolId)) return userController.getClassroomDimensions(schoolId, classroomId);
+        return "-1";
+    }
+
+    public String getStudentsInClassroom(String classroom) {
+        return userController.getStudentsInClassroom(classroom);
+
     public String getAllSchools() {
         return userController.getAllSchools();
     }
@@ -29,5 +38,6 @@ public class ModelController {
     public Boolean notifyInfected() {
         // para obtener la School
         return userController.notifyInfected();
+
     }
 }

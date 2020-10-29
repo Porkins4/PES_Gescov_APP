@@ -49,6 +49,14 @@ public class User {
         return icontragionService.getContagionList(name,schoolId);
     }
 
+
+    public String getClassroomDimensions(String schoolId, String classroomId) {
+        return schools.getClassroomDimensions(schoolId,classroomId);
+    }
+
+    public String getStudentsInClassroom(String classroom) {
+        return schools.getStudentsInClassroom(classroom);
+
     public String getAllSchools() {
         ISchoolService schoolService = ServicesFactory.getSchoolService();
         return schoolService.getAllSchools();
@@ -57,5 +65,6 @@ public class User {
     public Boolean notifiyContagion() {
         INotifyService notifyService = ServicesFactory.getNotifyService();
         return notifyService.notifyContagion();
+
     }
 }

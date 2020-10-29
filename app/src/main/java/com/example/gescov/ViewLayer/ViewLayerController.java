@@ -10,6 +10,10 @@ public class ViewLayerController {
         modelController = new ModelController();
     }
 
+    public String getStudentsInClassroom(String classroom) {
+        return Mc.getStudentsInClassroom(classroom);
+    }
+
     public String getAllContagions() {
        return modelController.getAllContagions();
     }
@@ -20,5 +24,9 @@ public class ViewLayerController {
 
     public Boolean notifyInfected() {
         return modelController.notifyInfected();
+    }
+
+    public String getClassroomDimensions(String schoolId, String classroomId) {
+        return Mc.getClassroomDimensions(schoolId, classroomId);
     }
 }

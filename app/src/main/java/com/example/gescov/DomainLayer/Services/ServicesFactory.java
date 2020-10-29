@@ -5,6 +5,7 @@ public class ServicesFactory {
     private static ISchoolService schoolService;
     private static  INotifyService notifyService;
 
+
     public static IContagionService getContagionService() {
         if (contagionservice != null) return contagionservice;
         contagionservice = new ContagionServiceImplementor();
