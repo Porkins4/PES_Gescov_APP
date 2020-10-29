@@ -1,4 +1,4 @@
-package com.example.gescov.ui.login;
+package com.example.gescov.ViewLayer.login;
 
 /**
  * Class exposing authenticated user details to the UI.

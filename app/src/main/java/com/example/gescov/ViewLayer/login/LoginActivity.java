@@ -1,10 +1,11 @@
-package com.example.gescov.ui.login;
+package com.example.gescov.ViewLayer.login;
 
 import android.app.Activity;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -22,17 +23,19 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gescov.DomainLayer.Controllers.ModelController;
 import com.example.gescov.R;
-import com.example.gescov.ui.login.LoginViewModel;
-import com.example.gescov.ui.login.LoginViewModelFactory;
+import com.example.gescov.ViewLayer.navigation.NavigationMenu;
 
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+    private ModelController mController;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mController = new ModelController(); // aqui se crea el controlador
         setContentView(R.layout.activity_login);
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
@@ -41,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -70,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
+
                 }
                 setResult(Activity.RESULT_OK);
 
@@ -120,8 +125,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
+        mController.CreateUser(model.getDisplayName());
         String welcome = getString(R.string.welcome) + model.getDisplayName();
-        // TODO : initiate successful logged in experience
+        Intent intent = new Intent(this, NavigationMenu.class);
+        startActivity(intent);
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
     }
 

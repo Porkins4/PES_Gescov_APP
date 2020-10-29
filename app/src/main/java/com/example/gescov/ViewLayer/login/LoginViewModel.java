@@ -1,4 +1,4 @@
-package com.example.gescov.ui.login;
+package com.example.gescov.ViewLayer.login;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
