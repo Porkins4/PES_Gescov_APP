@@ -8,4 +8,5 @@ public interface ISchoolService {
 
     String getAllSchools();
 
+    void sendReservationRequest(String name, String classroom, int row, int col);
 }

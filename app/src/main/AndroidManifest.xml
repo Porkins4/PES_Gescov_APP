@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,20 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gescov">
-
-        <activity android:name=".ViewLayer.MarkPositionInClassroom.MarkPositionInClassroom"></activity>
-
-        <activity android:name=".ViewLayer.home.CovidNotificationActivity"></activity>
+        <activity android:name=".ViewLayer.ClassroomDistribution.ClassroomDitributionActivity"></activity>
+        <activity android:name=".ViewLayer.MarkPositionInClassroom.MarkPositionInClassroom" />
+        <activity android:name=".ViewLayer.home.CovidNotificationActivity" />
         <activity
             android:name=".ViewLayer.SchoolClassroomList.SchoolClassromListActivity"
             android:label="@string/title_activity_school_classrom_list"
-            android:theme="@style/Theme.Gescov.NoActionBar"></activity>
-        <activity android:name=".ViewLayer.SchoolsAdministration.CreateSchoolFormActivity" />
-        <activity
-            android:name=".ViewLayer.SchoolClassroomList.SchoolClassromListActivity"
-            android:label="@string/title_activity_school_classrom_list"
-            android:theme="@style/Theme.Gescov.NoActionBar"></activity>
-
+            android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".ViewLayer.SchoolsAdministration.CreateSchoolFormActivity" />
         <activity
             android:name=".ViewLayer.navigation.NavigationMenu"
@@ -41,11 +36,5 @@
             </intent-filter>
         </activity>
     </application>
-
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
 
 </manifest>

@@ -46,4 +46,8 @@ public class UserController {
         return user.notifiyContagion();
 
     }
+
+    public void sendReservationRequest(String aula, int row, int col) {
+        user.sendReservationRequest(aula,row,col);
+    }
 }

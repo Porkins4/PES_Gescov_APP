@@ -24,7 +24,7 @@ public class ClassroomDistributionTableWidget {
     private Button table;
     private TextView studentView;
     private View inflated_Layout;
-    private ClassroomDistributionFragment parentFragment;
+    private ClassroomDitributionActivity parentActivity;
 
     public ClassroomDistributionTableWidget() {
 
@@ -66,9 +66,9 @@ public class ClassroomDistributionTableWidget {
                         //------------------------------------------------------------------
                         //messages in case that the table is not available for a reservation, otherwise launchs activity to reserve a table
                         int toastTime = Toast.LENGTH_SHORT;
-                        if (table.getText().equals("x")) Toast.makeText(parentFragment.getContext(),table.getResources().getText(R.string.Catalan_table_not_available),toastTime).show();
-                        else if (table.getText().equals("")) Toast.makeText(parentFragment.getContext(),table.getResources().getText(R.string.Catalan_table_already_assigned),toastTime).show();
-                        else parentFragment.launchMarkPosition(studentId,rowPos,colPos);
+                        if (table.getText().equals("x")) Toast.makeText(parentActivity,table.getResources().getText(R.string.Catalan_table_not_available),toastTime).show();
+                        else if (table.getText().equals("")) Toast.makeText(parentActivity,table.getResources().getText(R.string.Catalan_table_already_assigned),toastTime).show();
+                        else parentActivity.launchMarkPosition(studentId,rowPos,colPos);
                         //------------------------------------------------------------------
 
                     }
@@ -76,7 +76,7 @@ public class ClassroomDistributionTableWidget {
         );
     }
 
-    public void setFragment(ClassroomDistributionFragment classroomDistributionFragment) {
-        parentFragment = classroomDistributionFragment;
+    public void setFragment(ClassroomDitributionActivity classroomDistributionFragment) {
+        parentActivity = classroomDistributionFragment;
     }
 }

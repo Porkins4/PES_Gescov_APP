@@ -29,4 +29,8 @@ public class ViewLayerController {
     public String getClassroomDimensions(String schoolId, String classroomId) {
         return modelController.getClassroomDimensions(schoolId, classroomId);
     }
+
+    public void sendReservationRequest(String aula, int row, int col) {
+        modelController.sendReservationRequest(aula,row,col);
+    }
 }

@@ -39,4 +39,8 @@ public class ModelController {
         return userController.notifyInfected();
 
     }
+
+    public void sendReservationRequest(String aula, int row, int col) {
+        userController.sendReservationRequest(aula,row,col);
+    }
 }

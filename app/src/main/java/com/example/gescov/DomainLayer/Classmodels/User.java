@@ -68,4 +68,9 @@ public class User {
         return notifyService.notifyContagion();
 
     }
+
+    public void sendReservationRequest(String aula, int row, int col) {
+        ISchoolService schoolService = ServicesFactory.getSchoolService();
+        schoolService.sendReservationRequest(name,aula,row,col);
+    }
 }
