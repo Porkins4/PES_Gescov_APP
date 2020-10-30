@@ -50,4 +50,8 @@ public class UserController {
     public void sendReservationRequest(String aula, int row, int col) {
         user.sendReservationRequest(aula,row,col);
     }
+
+    public void createSchool(String schoolName, String schoolAddress) {
+        user.createSchool(schoolName,schoolAddress);
+    }
 }

@@ -33,4 +33,8 @@ public class ViewLayerController {
     public void sendReservationRequest(String aula, int row, int col) {
         modelController.sendReservationRequest(aula,row,col);
     }
+
+    public void createSchool(String schoolName, String schoolAddress) {
+        modelController.createSchool(schoolName,schoolAddress);
+    }
 }

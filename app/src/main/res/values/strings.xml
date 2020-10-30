@@ -36,8 +36,14 @@
     <string name="create_school_form_school_name">School name</string>
     <string name="create_school_form_school_code">School codi</string>
     <string name="create_school_form_school_button">Create School</string>
-    <string name="contagion_list">"Llista de contagis "</string>
-    <string name="catalan_tableStatus_Free">Lliure</string>
+
+    <string name="Catalan_create_school_form_school_name">Nom Escola</string>
+    <string name="Catalan_create_school_form_school_address">Adreça Escola</string>
+    <string name="Catalan_create_school_form_school_state">Estat Escola</string>
+    <string name="Catalan_create_school_form_school_code">Codi Escola</string>
+    <string name="Catalan_create_school_form_school_button">Crea Escola</string>
+
+
 
 
     <!-- Classroom distribution -->
@@ -47,10 +53,12 @@
     <string name="Catalan_table_already_assigned">La taula ja está ocupada per algú</string>
     <string name="Catalan_table_not_available">No pots seure a aquesta taula</string>
     <string name="Catalan_successful_reservation">Reserva feta amb èxit</string>
+    <string name="catalan_tableStatus_Free">Lliure</string>
 
 
     <!-- Llista de Contagis -->
     <string name="contagionlist">Llista de Contagis</string>
+    <string name="contagion_list">"Llista de contagis "</string>
     <string name="title_activity_school_classrom_list">Aules</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

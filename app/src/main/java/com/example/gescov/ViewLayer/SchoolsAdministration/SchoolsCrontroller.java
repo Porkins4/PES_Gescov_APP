@@ -49,6 +49,12 @@ public class SchoolsCrontroller implements ISchoolsCrontroller{
     }
 
     @Override
+    public void createSchool1(String schoolName, String schoolAddress) {
+        PresentationControlFactory.getViewLayerController().createSchool(schoolName,schoolAddress);
+
+    }
+
+    @Override
     public void refresh() throws JSONException {
         fragment.updateData(PresentationControlFactory.getViewLayerController().getAllSchools());
     }

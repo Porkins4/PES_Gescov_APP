@@ -73,4 +73,9 @@ public class User {
         ISchoolService schoolService = ServicesFactory.getSchoolService();
         schoolService.sendReservationRequest(name,aula,row,col);
     }
+
+    public void createSchool(String schoolName, String schoolAddress) {
+        ISchoolService schoolService = ServicesFactory.getSchoolService();
+        schoolService.createRequest(schoolName,schoolAddress,name);
+    }
 }

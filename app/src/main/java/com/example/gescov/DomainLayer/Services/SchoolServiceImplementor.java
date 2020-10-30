@@ -21,6 +21,7 @@ public class SchoolServiceImplementor implements ISchoolService {
     private final String GET_CLASSROOM_DIMENSIONS_URI = "https://gescov.herokuapp.com/api/classroom/distribution";
     private final String GET_CLASSROOM_STUDENTS_URI = "https://gescov.herokuapp.com/api/assignment/classroom";
     private final String POST_ASSIGNMENT_URI = "https://gescov.herokuapp.com/api/assignment";
+    private final String POST_CREATE_SCHOOL_URI = "https://gescov.herokuapp.com/api/school";
 
     public SchoolServiceImplementor() { }
 
@@ -68,8 +69,6 @@ public class SchoolServiceImplementor implements ISchoolService {
 
     @Override
     public void sendReservationRequest(String name, String aula, int row, int col) {
-        Context actualContext = ActualContext.getContext();
-        System.out.println("fila " + row + " Columna " + col);
         try {
             JSONObject postData = new JSONObject(
                     "{\n" +
@@ -146,5 +145,49 @@ public class SchoolServiceImplementor implements ISchoolService {
         } catch (JSONException e) {
             System.out.println("Error while creating data for the reservation");
         }
+    }
+
+    @Override
+    public void createRequest(String schoolName, String schoolAddress,String creator) {
+        System.out.println(schoolName);
+        System.out.println(schoolAddress);
+        System.out.println(creator);
+        try {
+            JSONObject school = new JSONObject("{\n" +
+                    "    \"address\": \""+schoolAddress+"\",\n" +
+                    "    \"name\": \""+schoolName+"\",\n" +
+                    "    \"state\": \"open\",\n" +
+                    "    \"creator\": \""+creator+"\",\n" +
+                    "    \"administrators\": [\n" +
+                    "        \""+creator+"\"\n" +
+                    "    ]\n" +
+                    "}"
+
+            );
+
+            RequestQueue requestQueue = Volley.newRequestQueue(ActualContext.getContext());
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                    Request.Method.POST, POST_CREATE_SCHOOL_URI, school,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
+                        System.out.println("something went wrong :(");
+                    }
+                }
+            });
+
+            requestQueue.add(jsonObjectRequest);
+
+        } catch (JSONException e) {
+            System.out.println("Error while creating data for the reservation");
+        }
+
     }
 }

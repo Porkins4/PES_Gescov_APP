@@ -9,6 +9,6 @@ interface ISchoolsCrontroller {
 
     public SchoolListViewAdapter getSchoolListViewSchoolAdapter();
     public List<String> getSchoolNamesList();
-
+    public void createSchool1 ( String schoolName , String schoolAddress );
     void refresh() throws JSONException;
 }
