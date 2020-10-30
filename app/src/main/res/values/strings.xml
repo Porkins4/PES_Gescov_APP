@@ -44,8 +44,6 @@
     <string name="Catalan_create_school_form_school_button">Crea Escola</string>
 
 
-
-
     <!-- Classroom distribution -->
     <string name="Catalan_classroom_name">Aula</string>
     <string name="Catalan_mark_position">Marcar Posició</string>
@@ -54,6 +52,11 @@
     <string name="Catalan_table_not_available">No pots seure a aquesta taula</string>
     <string name="Catalan_successful_reservation">Reserva feta amb èxit</string>
     <string name="catalan_tableStatus_Free">Lliure</string>
+    <string name="create_classroom_form_name">Nom Aula</string>
+    <string name="create_classroom_form_capacity">Capacitat</string>
+    <string name="create_classroom_form_rows">Files</string>
+    <string name="create_classroom_form_cols">Columnes</string>
+    <string name="create_classroom_form_button">Crear Aula</string>
 
 
     <!-- Llista de Contagis -->

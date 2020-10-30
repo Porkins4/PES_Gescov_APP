@@ -2,12 +2,16 @@ package com.example.gescov.ViewLayer.SchoolClassroomList;
 
 import android.content.Context;
 
+import com.example.gescov.DomainLayer.Classmodels.School;
+import com.example.gescov.ViewLayer.PresentationControlFactory;
+import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsCrontroller;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SchoolClassroomsCrontroller implements ISchoolClassroomsCrontroller {
+public class SchoolClassroomsCrontroller {
 
     private ClassroomListViewAdapter classroomListViewAdapter;
     private List<String> classroomNamesList;
@@ -28,17 +32,15 @@ public class SchoolClassroomsCrontroller implements ISchoolClassroomsCrontroller
         classroomListViewAdapter = new ClassroomListViewAdapter(context, getList());
     }
 
-    @Override
-    public void createClassroom(String schoolName, String schoolCode) {
-
+    public void createClassroom(String classroomName, String classrooomCapacity, String classroomRows, String classroomCols) {
+        School currentSchool = PresentationControlFactory.getSchoolsCrontroller().getCurrentSchool();
+        PresentationControlFactory.getViewLayerController().createClassroom(currentSchool, classroomName, classrooomCapacity, classroomRows, classroomCols);
     }
 
-    @Override
     public ClassroomListViewAdapter getClassroomListViewSchoolAdapter() {
         return classroomListViewAdapter;
     }
 
-    @Override
     public List<String> getList() {
         if (classroomNamesList != null)
             return classroomNamesList;

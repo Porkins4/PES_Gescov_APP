@@ -2,26 +2,24 @@ package com.example.gescov.ViewLayer.SchoolsAdministration;
 
 import android.content.Context;
 
-import com.example.gescov.DomainLayer.Controllers.ModelController;
+import com.example.gescov.DomainLayer.Classmodels.School;
+import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
-import com.example.gescov.ViewLayer.ViewLayerController;
 
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class SchoolsCrontroller implements ISchoolsCrontroller{
+public class SchoolsCrontroller{
 
     private SchoolListViewAdapter schoolListViewAdapter;
     private List<String> schoolNamesList;
 
     private SchoolsAdministrationFagment fragment;
-
-    @Override
-    public void createSchool(String schoolName, String schoolCode) {
-
-    }
+    private HashMap<String, School> schoolHash;
+    private School currentSchool;
 
     public void setSchoolsAdministrationFragment(SchoolsAdministrationFagment fragment) {
         this.fragment = fragment;
@@ -35,28 +33,34 @@ public class SchoolsCrontroller implements ISchoolsCrontroller{
         schoolListViewAdapter = new SchoolListViewAdapter(context, getSchoolNamesList());
     }
 
-    @Override
-    public SchoolListViewAdapter getSchoolListViewSchoolAdapter() {
+    public SchoolListViewAdapter getSchoolListViewSchoolAdapter() throws AdapterNotSetException {
+        if (schoolListViewAdapter == null) {
+            throw new AdapterNotSetException();
+        }
         return schoolListViewAdapter;
     }
 
-    @Override
     public List<String> getSchoolNamesList() {
         if (schoolNamesList != null)
             return schoolNamesList;
-        hardcodedSchoolList();
+        //hardcodedSchoolList();
+        schoolNamesList = new ArrayList<>();
         return schoolNamesList;
     }
 
-    @Override
-    public void createSchool1(String schoolName, String schoolAddress) {
-        PresentationControlFactory.getViewLayerController().createSchool(schoolName,schoolAddress);
-
+    public void refreshSchoolsList() throws JSONException, AdapterNotSetException {
+        List<School> schoolsList = PresentationControlFactory.getViewLayerController().getAllSchools();
+        this.schoolHash = new HashMap<>();
+        schoolNamesList = new ArrayList();
+        for (School school : schoolsList) {
+            schoolHash.put(school.getName(), school);
+            schoolNamesList.add(school.getName());
+        }
+        getSchoolListViewSchoolAdapter().notifyDataSetChanged();
     }
 
-    @Override
-    public void refresh() throws JSONException {
-        fragment.updateData(PresentationControlFactory.getViewLayerController().getAllSchools());
+    public void createSchool(String schoolId, String schoolName, String schoolAddress, String schoolState, String schoolCreator) {
+        PresentationControlFactory.getViewLayerController().createSchool(schoolId, schoolName, schoolAddress, schoolState, schoolCreator);
     }
 
     private void hardcodedSchoolList () {
@@ -64,5 +68,13 @@ public class SchoolsCrontroller implements ISchoolsCrontroller{
         for (int i = 0; i < 10; i++) {
             schoolNamesList.add("Escola de perdedors");
         }
+    }
+
+    public void setCurrentSchool(String currentSchool) {
+        this.currentSchool = schoolHash.get(currentSchool);
+    }
+
+    public School getCurrentSchool() {
+        return currentSchool;
     }
 }

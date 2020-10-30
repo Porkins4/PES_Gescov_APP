@@ -1,6 +1,11 @@
 package com.example.gescov.ViewLayer;
 
+import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Controllers.ModelController;
+
+import org.json.JSONException;
+
+import java.util.List;
 
 
 public class ViewLayerController {
@@ -18,7 +23,7 @@ public class ViewLayerController {
        return modelController.getAllContagions();
     }
 
-    public String getAllSchools() {
+    public List<School> getAllSchools() throws JSONException {
        return modelController.getAllSchools();
     }
 
@@ -34,7 +39,11 @@ public class ViewLayerController {
         modelController.sendReservationRequest(aula,row,col);
     }
 
-    public void createSchool(String schoolName, String schoolAddress) {
-        modelController.createSchool(schoolName,schoolAddress);
+    public void createSchool(String schoolId, String schoolName, String schoolAddress, String schoolState, String schoolCreator) {
+        modelController.createSchool(schoolId, schoolName, schoolAddress, schoolState, schoolCreator);
+    }
+
+    public void createClassroom(School currentSchool, String classroomName, String classrooomCapacity, String classroomRows, String classroomCols) {
+        modelController.createClassroom(currentSchool, classroomName, classrooomCapacity, classroomRows, classroomCols);
     }
 }

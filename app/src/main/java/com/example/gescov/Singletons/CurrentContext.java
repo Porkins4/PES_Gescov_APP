@@ -2,7 +2,7 @@ package com.example.gescov.Singletons;
 
 import android.content.Context;
 
-public class ActualContext {
+public class CurrentContext {
     private static Context context;
 
     public static Context getContext() {
@@ -10,6 +10,6 @@ public class ActualContext {
     }
 
     public static void setContext(Context context) {
-        ActualContext.context = context;
+        CurrentContext.context = context;
     }
 }

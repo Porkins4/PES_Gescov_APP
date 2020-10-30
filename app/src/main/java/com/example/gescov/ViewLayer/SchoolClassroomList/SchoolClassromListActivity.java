@@ -1,8 +1,10 @@
 package com.example.gescov.ViewLayer.SchoolClassroomList;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.gescov.ViewLayer.PresentationControlFactory;
+import com.example.gescov.ViewLayer.SchoolsAdministration.CreateSchoolFormActivity;
 import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolListViewAdapter;
 import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsCrontroller;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -27,12 +29,9 @@ public class SchoolClassromListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
+        fab.setOnClickListener(e -> {
+            Intent intent = new Intent(this, CreateClassroomFormActivity.class);
+            startActivity(intent);
         });
 
         ListView list = (ListView) findViewById(R.id.classrooms_list);

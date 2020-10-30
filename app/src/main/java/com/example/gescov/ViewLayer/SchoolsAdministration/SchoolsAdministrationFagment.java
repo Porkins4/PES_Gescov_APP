@@ -10,17 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.example.gescov.Singletons.CurrentContext;
+import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
 import com.example.gescov.R;
-import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolClassroomsCrontroller;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -80,13 +76,18 @@ public class SchoolsAdministrationFagment extends Fragment {
         View thisView = inflater.inflate(R.layout.fragment_school_administration, container, false);
         FloatingActionButton fab = thisView.findViewById(R.id.add_school_button);
         ListView list = (ListView) thisView.findViewById(R.id.schools_list);
-
+        CurrentContext.setContext(this.getContext());
         controller.setSchoolListViewAdapter(list.getContext());
-        SchoolListViewAdapter adapter = controller.getSchoolListViewSchoolAdapter();
+        SchoolListViewAdapter adapter = null;
+        try {
+            adapter = controller.getSchoolListViewSchoolAdapter();
+        } catch (AdapterNotSetException e) {
+            e.printStackTrace();
+        }
         list.setAdapter(adapter);
         try {
-            controller.refresh();
-        } catch (JSONException e) {
+            controller.refreshSchoolsList();
+        } catch (JSONException | AdapterNotSetException e) {
             e.printStackTrace();
         }
 
@@ -95,19 +96,5 @@ public class SchoolsAdministrationFagment extends Fragment {
             startActivity(intent);
         });
         return thisView;
-    }
-
-    public void updateData(String info) throws JSONException {
-        JSONArray response = new JSONArray(info);
-        for (int i = 0; i < response.length(); ++i) {
-            JSONObject aux = response.getJSONObject(i);
-            String nameSchool = aux.getString("name");
-            controller.getSchoolListViewSchoolAdapter().addItem(nameSchool);
-            System.out.println(nameSchool);
-            System.out.println(aux.toString()+"el objeto enetro");
-            //I/System.out: {"id":{"timestamp":1603915614,"date":"2020-10-28T20:06:54.000+00:00"},"name":"FIB","state":"open","address":"Carrer Jordi Girona, 1-3","longitude":0,"latitude":0,"creator":"Xicu Torres"}el objeto enetro
-
-        }
-        controller.getSchoolListViewSchoolAdapter().notifyDataSetChanged();
     }
 }

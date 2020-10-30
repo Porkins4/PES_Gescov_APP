@@ -1,7 +1,5 @@
 package com.example.gescov.DomainLayer.Services;
 
-import android.content.Context;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -9,7 +7,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.gescov.DomainLayer.Conection;
-import com.example.gescov.Singletons.ActualContext;
+import com.example.gescov.Singletons.CurrentContext;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,6 +20,7 @@ public class SchoolServiceImplementor implements ISchoolService {
     private final String GET_CLASSROOM_STUDENTS_URI = "https://gescov.herokuapp.com/api/assignment/classroom";
     private final String POST_ASSIGNMENT_URI = "https://gescov.herokuapp.com/api/assignment";
     private final String POST_CREATE_SCHOOL_URI = "https://gescov.herokuapp.com/api/school";
+    private final String POST_CREATE_CLASSROOM_URI = "https://gescov.herokuapp.com/api/classroom";
 
     public SchoolServiceImplementor() { }
 
@@ -122,7 +121,7 @@ public class SchoolServiceImplementor implements ISchoolService {
                             "}"
             );
 
-            RequestQueue requestQueue = Volley.newRequestQueue(ActualContext.getContext());
+            RequestQueue requestQueue = Volley.newRequestQueue(CurrentContext.getContext());
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.POST, POST_ASSIGNMENT_URI, postData,
@@ -148,7 +147,7 @@ public class SchoolServiceImplementor implements ISchoolService {
     }
 
     @Override
-    public void createRequest(String schoolName, String schoolAddress,String creator) {
+    public void createSchoolRequest(String schoolName, String schoolAddress, String creator) {
         System.out.println(schoolName);
         System.out.println(schoolAddress);
         System.out.println(creator);
@@ -162,10 +161,9 @@ public class SchoolServiceImplementor implements ISchoolService {
                     "        \""+creator+"\"\n" +
                     "    ]\n" +
                     "}"
-
             );
 
-            RequestQueue requestQueue = Volley.newRequestQueue(ActualContext.getContext());
+            RequestQueue requestQueue = Volley.newRequestQueue(CurrentContext.getContext());
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.POST, POST_CREATE_SCHOOL_URI, school,
@@ -190,4 +188,49 @@ public class SchoolServiceImplementor implements ISchoolService {
         }
 
     }
+
+    @Override
+    public void createClassroomRequest(String schoolName, String schoolAdress, String schoolState, float schoolLatitude, float schoolLongitude, String schoolCreator, String classroomName, String classrooomCapacity, String classroomRows, String classroomCols) {
+        JSONObject classroom = new JSONObject();
+        try {
+            classroom.put("name", classroomName);
+            classroom.put("capacity", classrooomCapacity);
+            classroom.put("numRows", classroomRows);
+            classroom.put("numCols", classroomCols);
+
+            JSONObject school = new JSONObject();
+            school.put("name", schoolName);
+            school.put("address", schoolAdress);
+            school.put("state", schoolState);
+            school.put("latitude", schoolLatitude);
+            school.put("longitude", schoolLongitude);
+            school.put("creator", schoolCreator);
+
+            classroom.put("school", school);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        RequestQueue requestQueue = Volley.newRequestQueue(CurrentContext.getContext());
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.POST, POST_CREATE_CLASSROOM_URI, classroom,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
+                    System.out.println("something went wrong :(");
+                }
+            }
+        });
+
+        requestQueue.add(jsonObjectRequest);
+
+}
+
 }

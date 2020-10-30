@@ -6,13 +6,20 @@ import com.example.gescov.DomainLayer.Services.ServicesFactory;
 public class School {
 
     private String id;
-    private  String name;
-    private  String address;
-    private  String state;
-    private  String creator;
+    private String name;
+    private String address;
+    private String state;
+    private String creator;
+    private float latitude;
+    private float longitude;
 
-    public School() {
-        id = "FIB";
+    public School(String id, String name, String address, String state, String creator) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.state = state;
+        this.creator = creator;
+        longitude = latitude = 0;
     }
 
     public School(String name) {
@@ -43,5 +50,22 @@ public class School {
     public String getStudentsInClassroom(String classroom) {
         ISchoolService iSchoolService = ServicesFactory.getSchoolService();
         return iSchoolService.getStudentsInClassroom(classroom);
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+    public void createClassroom(String classroomName, String classrooomCapacity, String classroomRows, String classroomCols) {
+        ISchoolService schoolService = ServicesFactory.getSchoolService();
+        schoolService.createClassroomRequest(name, address, state, latitude, longitude, creator, classroomName, classrooomCapacity, classroomRows, classroomCols);
     }
 }

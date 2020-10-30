@@ -13,7 +13,7 @@ public class User {
 
     public  User(){
         name = "El Bixo";
-        schools = new School();
+        schools = new School("fib", "fib", "adress", "state", "creator");
     }
     public User(String name) {
         this.name = name;
@@ -76,6 +76,6 @@ public class User {
 
     public void createSchool(String schoolName, String schoolAddress) {
         ISchoolService schoolService = ServicesFactory.getSchoolService();
-        schoolService.createRequest(schoolName,schoolAddress,name);
+        schoolService.createSchoolRequest(schoolName,schoolAddress,name);
     }
 }

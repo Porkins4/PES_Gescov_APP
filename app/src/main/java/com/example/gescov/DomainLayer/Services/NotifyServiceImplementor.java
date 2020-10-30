@@ -5,16 +5,11 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.RequestFuture;
 import com.android.volley.toolbox.Volley;
-import com.example.gescov.Singletons.ActualContext;
+import com.example.gescov.Singletons.CurrentContext;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 public class NotifyServiceImplementor implements INotifyService {
     private RequestQueue Queu;
@@ -22,7 +17,7 @@ public class NotifyServiceImplementor implements INotifyService {
     @Override
     public Boolean notifyContagion() {
         success = true;
-        Queu =  Volley.newRequestQueue(ActualContext.getContext());
+        Queu =  Volley.newRequestQueue(CurrentContext.getContext());
         JSONObject contagion;
         try {
             contagion = new JSONObject("{\n" +

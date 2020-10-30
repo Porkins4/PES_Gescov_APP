@@ -61,6 +61,7 @@ public class SchoolListViewAdapter extends BaseAdapter {
         TextView name = (TextView) v.findViewById(R.id.school_name);
         name.setOnClickListener(e-> {
             SchoolsCrontroller controller = PresentationControlFactory.getSchoolsCrontroller();
+            controller.setCurrentSchool(name.getText().toString());
             SchoolsAdministrationFagment fragment = controller.getSchoolsAdministrationFragment();
             Intent intent = new Intent(fragment.getContext(), SchoolClassromListActivity.class);
             fragment.startActivity(intent);
