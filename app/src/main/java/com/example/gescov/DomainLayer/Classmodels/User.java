@@ -7,12 +7,12 @@ import com.example.gescov.DomainLayer.Services.ServicesFactory;
 public class User {
 
     private String name;
-    private School schools;
+    private School school;
     private String id;
 
     public  User(){
         name = "El Bixo";
-        schools = new School("fib", "fib", "adress", "state", "creator");
+        school = new School("FIB", "FIB", "adress", "state", "creator");
     }
     public User(String name) {
         this.name = name;
@@ -26,12 +26,12 @@ public class User {
         this.name = name;
     }
 
-    public School getSchools() {
-        return schools;
+    public School getSchool() {
+        return school;
     }
 
-    public void setSchools(School schools) {
-        this.schools = schools;
+    public void setSchool(School school) {
+        this.school = school;
     }
 
     public String getId() {
@@ -43,18 +43,18 @@ public class User {
     }
 
     public String getCntagionsOfCenter() {
-        String schoolId = schools.getId();
+        String schoolId = school.getId();
         IContagionService icontragionService = ServicesFactory.getContagionService();
         return icontragionService.getContagionList(name,schoolId);
     }
 
 
     public String getClassroomDimensions(String schoolId, String classroomId) {
-        return schools.getClassroomDimensions(schoolId,classroomId);
+        return school.getClassroomDimensions(schoolId,classroomId);
     }
 
     public String getStudentsInClassroom(String classroom) {
-        return schools.getStudentsInClassroom(classroom);
+        return school.getStudentsInClassroom(classroom);
     }
 
     public String getAllSchools() {
