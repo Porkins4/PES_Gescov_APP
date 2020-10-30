@@ -103,8 +103,6 @@ public class SchoolsAdministrationFagment extends Fragment {
             JSONObject aux = response.getJSONObject(i);
             String nameSchool = aux.getString("name");
             controller.getSchoolListViewSchoolAdapter().addItem(nameSchool);
-            System.out.println(nameSchool);
-            System.out.println(aux.toString()+"el objeto enetro");
             //I/System.out: {"id":{"timestamp":1603915614,"date":"2020-10-28T20:06:54.000+00:00"},"name":"FIB","state":"open","address":"Carrer Jordi Girona, 1-3","longitude":0,"latitude":0,"creator":"Xicu Torres"}el objeto enetro
 
         }

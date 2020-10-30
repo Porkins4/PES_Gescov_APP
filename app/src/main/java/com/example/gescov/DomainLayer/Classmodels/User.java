@@ -1,7 +1,6 @@
 package com.example.gescov.DomainLayer.Classmodels;
 
 import com.example.gescov.DomainLayer.Services.IContagionService;
-import com.example.gescov.DomainLayer.Services.INotifyService;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 
@@ -64,8 +63,8 @@ public class User {
     }
 
     public Boolean notifiyContagion() {
-        INotifyService notifyService = ServicesFactory.getNotifyService();
-        return notifyService.notifyContagion();
+        IContagionService contagionServiceService = ServicesFactory.getContagionService();
+        return contagionServiceService.notifyContagion();
 
     }
 

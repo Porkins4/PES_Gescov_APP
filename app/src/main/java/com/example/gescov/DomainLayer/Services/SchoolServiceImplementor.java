@@ -149,9 +149,6 @@ public class SchoolServiceImplementor implements ISchoolService {
 
     @Override
     public void createRequest(String schoolName, String schoolAddress,String creator) {
-        System.out.println(schoolName);
-        System.out.println(schoolAddress);
-        System.out.println(creator);
         try {
             JSONObject school = new JSONObject("{\n" +
                     "    \"address\": \""+schoolAddress+"\",\n" +

@@ -44,7 +44,8 @@ public class SchoolsCrontroller implements ISchoolsCrontroller{
     public List<String> getSchoolNamesList() {
         if (schoolNamesList != null)
             return schoolNamesList;
-        hardcodedSchoolList();
+        schoolNamesList = new ArrayList<>();
+       //º hardcodedSchoolList();
         return schoolNamesList;
     }
 
