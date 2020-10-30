@@ -7,7 +7,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.gescov.DomainLayer.Conection;
-import com.example.gescov.Singletons.ActualContext;
+import com.example.gescov.Singletons.CurrentContext;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,7 +17,7 @@ import java.util.concurrent.ExecutionException;
 public class ContagionServiceImplementor implements IContagionService {
 
     private Conection conection;
-    private RequestQueue Queu;
+    private RequestQueue queue;
     private Boolean success;
     public ContagionServiceImplementor() {
     }
@@ -41,7 +41,7 @@ public class ContagionServiceImplementor implements IContagionService {
     }
     public Boolean notifyContagion() {
         success = true;
-        Queu =  Volley.newRequestQueue(ActualContext.getContext());
+        queue =  Volley.newRequestQueue(CurrentContext.getContext());
         JSONObject contagion;
         try {
             contagion = new JSONObject("{\n" +
@@ -74,7 +74,7 @@ public class ContagionServiceImplementor implements IContagionService {
                             }
                         }
                     });
-            Queu.add(jsonObjectRequest);
+            queue.add(jsonObjectRequest);
         } catch (JSONException e) {
             e.printStackTrace();
         }
