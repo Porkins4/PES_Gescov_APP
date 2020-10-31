@@ -51,6 +51,7 @@ public class ClassroomDitributionActivity extends AppCompatActivity {
                 gridLayout.addView(y.getTableLayout());
             }
         }
+
         showStudents();
     }
 

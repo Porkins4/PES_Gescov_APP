@@ -44,14 +44,15 @@ public class ContagionServiceImplementor implements IContagionService {
         queue =  Volley.newRequestQueue(CurrentContext.getContext());
         JSONObject contagion;
         try {
-            contagion = new JSONObject("{\n" +
+            contagion = new JSONObject(
+                    "{\n" +
                     "    \"infected\":{\n" +
-                    "        \"name\": \"Jhon\",\n" +
+                    "        \"name\": \"Marc\",\n" +
                     "        \"schools\": [\n" +
                     "            {\n" +
-                    "                \"address\": \"Carrer de Pau Gargallo, 14\",\n" +
+                    "                \"address\": \"Carrer Jordi Girona, 1-3\",\n" +
                     "                \"name\": \"FIB\",\n" +
-                    "                \"state\": \"open\"\n" +
+                    "               \"creator\": \"Xicu Torres\"\n" +
                     "            } \n" +
                     "        ]\n" +
                     "    }\n" +

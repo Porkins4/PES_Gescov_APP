@@ -29,7 +29,7 @@ public class SchoolServiceImplementor implements ISchoolService {
         conection = new Conection();
         String response = null;
         try {
-            response = conection.execute(GET_CLASSROOM_DIMENSIONS_URI+"?id=5f9aaa1c2a2e9d3d80ff83b2").get();
+            response = conection.execute(GET_CLASSROOM_DIMENSIONS_URI+"?id=5f9c4a749213971828f1ace8").get();
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -42,7 +42,7 @@ public class SchoolServiceImplementor implements ISchoolService {
         conection = new Conection();
         String response = null;
         try {
-            response = conection.execute(GET_CLASSROOM_STUDENTS_URI+"?nameCen=A4S101").get();
+            response = conection.execute(GET_CLASSROOM_STUDENTS_URI+"?nameCen=A5S101").get();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -86,7 +86,7 @@ public class SchoolServiceImplementor implements ISchoolService {
                             "},\n" +
                             "    \"classSession\":{\n" +
                             "    \"classroom\":{\n" +
-                            "        \"name\": \"A4S101\",\n" +
+                            "        \"name\": \"A5S201\",\n" +
                             "        \"capacity\": \"25\",\n" +
                             "        \"numRows\":\"5\",\n" +
                             "        \"numCols\":\"10\",\n" +
