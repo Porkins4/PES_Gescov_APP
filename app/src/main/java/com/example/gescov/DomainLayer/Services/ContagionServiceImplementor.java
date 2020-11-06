@@ -1,5 +1,7 @@
 package com.example.gescov.DomainLayer.Services;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -9,6 +11,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.gescov.DomainLayer.Conection;
 import com.example.gescov.Singletons.CurrentContext;
+import com.example.gescov.ViewLayer.home.ContagionRequestResult;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.concurrent.ExecutionException;
@@ -17,7 +21,6 @@ public class ContagionServiceImplementor implements IContagionService {
 
     private Conection conection;
     private RequestQueue queue;
-    private Boolean success;
     private final String ContagionLink = "https://gescov.herokuapp.com/api/contagion";
 
     public ContagionServiceImplementor() {}
@@ -36,8 +39,7 @@ public class ContagionServiceImplementor implements IContagionService {
     }
 
 
-    public Boolean notifyContagion() {
-        success = true;
+    public void notifyContagion(MutableLiveData<ContagionRequestResult> result) {
         queue =  Volley.newRequestQueue(CurrentContext.getContext());
         JSONObject contagion;
         try {
@@ -59,21 +61,26 @@ public class ContagionServiceImplementor implements IContagionService {
 
                         @Override
                         public void onResponse(JSONObject response) {
+                            System.out.println("kpoaskfpokqwpokfokwpeofk");
                         }
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             // TODO: Handle error
+                            ContagionRequestResult aux = new ContagionRequestResult();
+                            aux.setError(true);
                             if (error.networkResponse != null && error.networkResponse.statusCode == 400 ) {
-                                success = false;
                             }
+                            else if(error.networkResponse == null ) {
+                                aux.setError(false);
+                            }
+                            result.setValue(aux);
                         }
                     });
             queue.add(jsonObjectRequest);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return success;
     }
 
     @Override

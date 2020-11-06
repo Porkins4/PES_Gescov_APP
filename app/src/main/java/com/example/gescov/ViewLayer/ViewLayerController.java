@@ -1,7 +1,10 @@
 package com.example.gescov.ViewLayer;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Controllers.ModelController;
+import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 
 import org.json.JSONException;
 
@@ -27,8 +30,8 @@ public class ViewLayerController {
        return modelController.getAllSchools();
     }
 
-    public Boolean notifyInfected() {
-        return modelController.notifyInfected();
+    public void notifyInfected(MutableLiveData<ContagionRequestResult> result) {
+        modelController.notifyInfected(result);
     }
 
     public String getClassroomDimensions(String schoolId, String classroomId) {

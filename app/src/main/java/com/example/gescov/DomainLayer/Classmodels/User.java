@@ -1,8 +1,11 @@
 package com.example.gescov.DomainLayer.Classmodels;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.DomainLayer.Services.IContagionService;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
+import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 
 public class User {
 
@@ -62,9 +65,9 @@ public class User {
         return schoolService.getAllSchools();
     }
 
-    public Boolean notifiyContagion() {
+    public void notifiyContagion(MutableLiveData<ContagionRequestResult> result) {
         IContagionService contagionService = ServicesFactory.getContagionService();
-        return contagionService.notifyContagion();
+        contagionService.notifyContagion(result);
 
     }
 

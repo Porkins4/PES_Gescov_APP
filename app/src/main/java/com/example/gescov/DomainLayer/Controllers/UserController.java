@@ -1,6 +1,9 @@
 package com.example.gescov.DomainLayer.Controllers;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.DomainLayer.Classmodels.User;
+import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 
 public class UserController {
     private User user;
@@ -41,9 +44,9 @@ public class UserController {
         return user.getAllSchools();
     }
 
-    public Boolean notifyInfected() {
+    public void notifyInfected(MutableLiveData<ContagionRequestResult> result) {
         // el comportamineto seria obtener la escuela de nuestro usuario y pasarsela
-        return user.notifiyContagion();
+        user.notifiyContagion(result);
 
     }
 
