@@ -30,7 +30,7 @@
 
     <!-- School Administration -->
     <string name="menu_home">Inici</string>
-    <string name="notify_state">Notificar Estado</string>
+
 
     <!-- School Administration -->
     <string name="create_school_form_school_name">School name</string>
@@ -71,6 +71,13 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+
+    <!-- Strings used for daily test -->
+    <string name="dailyTest">Test de seguiment</string>
+
+    <!-- Strings notifying the state -->
+    <string name="notify_state">Notificar Estado</string>
 
 
 </resources>
