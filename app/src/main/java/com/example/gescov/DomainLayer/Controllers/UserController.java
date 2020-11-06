@@ -54,4 +54,8 @@ public class UserController {
     public void createSchool(String schoolName, String schoolAddress) {
         user.createSchool(schoolName,schoolAddress);
     }
+
+    public void notifyRecovery() {
+        user.notifyRecovery();
+    }
 }

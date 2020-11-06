@@ -63,8 +63,8 @@ public class User {
     }
 
     public Boolean notifiyContagion() {
-        IContagionService contagionServiceService = ServicesFactory.getContagionService();
-        return contagionServiceService.notifyContagion();
+        IContagionService contagionService = ServicesFactory.getContagionService();
+        return contagionService.notifyContagion();
 
     }
 
@@ -76,5 +76,10 @@ public class User {
     public void createSchool(String schoolName, String schoolAddress) {
         ISchoolService schoolService = ServicesFactory.getSchoolService();
         schoolService.createSchoolRequest(schoolName,schoolAddress,name);
+    }
+
+    public void notifyRecovery() {
+        IContagionService contagionService = ServicesFactory.getContagionService();
+        contagionService.notifyRecovery();
     }
 }

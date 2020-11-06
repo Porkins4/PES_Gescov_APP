@@ -59,4 +59,8 @@ public class ModelController {
     public void createClassroom(School currentSchool, String classroomName, String classrooomCapacity, String classroomRows, String classroomCols) {
         currentSchool.createClassroom(classroomName, classrooomCapacity, classroomRows, classroomCols);
     }
+
+    public void notifyRecovery() {
+        userController.notifyRecovery();
+    }
 }

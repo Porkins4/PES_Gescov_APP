@@ -46,4 +46,8 @@ public class ViewLayerController {
     public void createClassroom(School currentSchool, String classroomName, String classrooomCapacity, String classroomRows, String classroomCols) {
         modelController.createClassroom(currentSchool, classroomName, classrooomCapacity, classroomRows, classroomCols);
     }
+
+    public void notifyRecovery() {
+        modelController.notifyRecovery();
+    }
 }

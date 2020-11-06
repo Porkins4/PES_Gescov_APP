@@ -6,4 +6,8 @@ public class NotifyContagionController {
     public Boolean notifyInfected() {
        return PresentationControlFactory.getViewLayerController().notifyInfected();
     }
+
+    public void notifyRecovery() {
+        PresentationControlFactory.getViewLayerController().notifyRecovery();
+    }
 }
