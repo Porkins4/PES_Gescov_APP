@@ -1,17 +1,25 @@
 package com.example.gescov.DomainLayer.Services;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.gescov.DomainLayer.Conection;
 import com.example.gescov.Singletons.CurrentContext;
+import com.example.gescov.Singletons.VolleyServices;
+import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class SchoolServiceImplementor implements ISchoolService {
@@ -21,6 +29,7 @@ public class SchoolServiceImplementor implements ISchoolService {
     private final String POST_ASSIGNMENT_URI = "https://gescov.herokuapp.com/api/assignment";
     private final String POST_CREATE_SCHOOL_URI = "https://gescov.herokuapp.com/api/school";
     private final String POST_CREATE_CLASSROOM_URI = "https://gescov.herokuapp.com/api/classroom";
+    private final String GET_STUDENTS_IN_CLASS_SESSION = "https://gescov.herokuapp.com/api/assignment/classroom";
 
     public SchoolServiceImplementor() { }
 
@@ -231,6 +240,44 @@ public class SchoolServiceImplementor implements ISchoolService {
 
         requestQueue.add(jsonObjectRequest);
 
-}
+    }
+
+    @Override
+    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
+        Response.Listener<JSONArray> listener = new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                StudentsInClassSessionResult result = new StudentsInClassSessionResult();
+                try {
+                    List<String> studentsList = new ArrayList<>();
+                    for (int i = 0; i < response.length(); ++i) {
+                        JSONObject assignment = response.getJSONObject(i);
+                        JSONObject student = new JSONObject(assignment.getString("student"));
+                        studentsList.add(student.getString("name"));
+                    }
+                    result.setStudentNames(studentsList);
+                    result.setError(false);
+                    studentsResult.setValue(result);
+                } catch (JSONException e) {
+                        result.setError(true);
+                        studentsResult.setValue(result);
+                        System.out.println("error while trying to transform JSON results");
+                }
+            }
+        };
+
+        Response.ErrorListener errorListener = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                StudentsInClassSessionResult result = new StudentsInClassSessionResult();
+                result.setError(true);
+                studentsResult.setValue(result);
+                System.out.println("something went wrong");
+            }
+        };
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET,GET_STUDENTS_IN_CLASS_SESSION + "?name=A5S201",null,listener,errorListener);
+        VolleyServices.addJSONArrayRequest(request);
+    }
+
 
 }

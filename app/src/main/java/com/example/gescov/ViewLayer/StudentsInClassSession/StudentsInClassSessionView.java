@@ -1,17 +1,27 @@
 package com.example.gescov.ViewLayer.StudentsInClassSession;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.gescov.R;
+import com.example.gescov.Singletons.VolleyServices;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,22 +33,46 @@ public class StudentsInClassSessionView extends AppCompatActivity {
     private List<String> studentsList;
     private Context context;
     private StudentsInClassSessionAdapter adapter;
+    private ProgressBar progressBar;
+    private TextView loadingTextView;
+    private StudentsInClassSessionViewModel studentsInClassSessionViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_students_in_class_session_view);
         initView();
-        initUpdateButton();
     }
 
     private void initView() {
-        studentsList = new ArrayList<>();
+        initPrivateAttribs();
+        setResponseListener();
+        initUpdateButton();
+
+        loadingTextView.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    private void initPrivateAttribs() {
         context = this;
         listView = (ListView) findViewById(R.id.list_view_students_in_class_session);
-        adapter = new StudentsInClassSessionAdapter(context,studentsList);
-        studentsList.add("jose");
-        listView.setAdapter(adapter);
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar_students_in_class_session);
+        loadingTextView = (TextView) findViewById(R.id.loading_text_view_students_in_class_session);
+
+        loadingTextView.setText("cargando...");
+    }
+
+    private void setResponseListener() {
+        studentsInClassSessionViewModel = new ViewModelProvider(this).get(StudentsInClassSessionViewModel.class);
+        studentsInClassSessionViewModel.getStudents().observe(this, new Observer<StudentsInClassSessionResult>() {
+            @Override
+            public void onChanged(StudentsInClassSessionResult studentNames) {
+                adapter = new StudentsInClassSessionAdapter(context,studentNames.getStudentNames());
+                listView.setAdapter(adapter);
+                loadingTextView.setVisibility(View.INVISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+        });
     }
 
     private void initUpdateButton() {
@@ -47,15 +81,19 @@ public class StudentsInClassSessionView extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        updateList();
+                        //------------------------
+                        // for the ui update
+                        studentsInClassSessionViewModel.clearDataset();
+                        adapter.notifyDataSetChanged();
+                        loadingTextView.setVisibility(View.VISIBLE);
+                        progressBar.setVisibility(View.VISIBLE);
+                        //------------------------
+
+                        studentsInClassSessionViewModel.update();
                     }
                 }
         );
     }
 
-    private void updateList() {
-        studentsList.add("antonio");
-        studentsList.add("Ponc");
-        adapter.notifyDataSetChanged();
-    }
+
 }

@@ -1,6 +1,11 @@
 package com.example.gescov.DomainLayer.Controllers;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.DomainLayer.Classmodels.User;
+import com.example.gescov.DomainLayer.Services.ISchoolService;
+import com.example.gescov.DomainLayer.Services.ServicesFactory;
+import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 
 public class UserController {
     private User user;
@@ -53,5 +58,10 @@ public class UserController {
 
     public void createSchool(String schoolName, String schoolAddress) {
         user.createSchool(schoolName,schoolAddress);
+    }
+
+    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
+        ISchoolService iSchoolService = ServicesFactory.getSchoolService();
+        iSchoolService.getStudentsInClassSession(studentsResult);
     }
 }

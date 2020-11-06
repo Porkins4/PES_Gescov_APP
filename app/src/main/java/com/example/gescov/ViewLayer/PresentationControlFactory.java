@@ -5,6 +5,7 @@ import com.example.gescov.ViewLayer.MarkPositionInClassroom.MarkPositionInClassr
 import com.example.gescov.ViewLayer.MarkPositionInClassroom.MarkPositionInClassroomController;
 import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolClassroomsCrontroller;
 import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsCrontroller;
+import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionController;
 import com.example.gescov.ViewLayer.home.NotifyContagionController;
 
 public class PresentationControlFactory {
@@ -14,6 +15,7 @@ public class PresentationControlFactory {
     private static ContagionController contagionCrontroller;
     private static NotifyContagionController notifyContagionController;
     private static MarkPositionInClassroomController markPositionInClassroomController;
+    private static StudentsInClassSessionController studentsInClassSessionController;
 
     public static ViewLayerController getViewLayerController() {
         if (viewLayerController != null)
@@ -52,5 +54,12 @@ public class PresentationControlFactory {
             return markPositionInClassroomController;
         markPositionInClassroomController = new MarkPositionInClassroomController();
         return markPositionInClassroomController;
+    }
+
+    public static StudentsInClassSessionController getStudentsInClassSessionController () {
+        if (studentsInClassSessionController != null)
+            return studentsInClassSessionController;
+        studentsInClassSessionController = new StudentsInClassSessionController();
+        return studentsInClassSessionController;
     }
 }

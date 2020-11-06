@@ -1,7 +1,10 @@
 package com.example.gescov.ViewLayer;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Controllers.ModelController;
+import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 
 import org.json.JSONException;
 
@@ -45,5 +48,9 @@ public class ViewLayerController {
 
     public void createClassroom(School currentSchool, String classroomName, String classrooomCapacity, String classroomRows, String classroomCols) {
         modelController.createClassroom(currentSchool, classroomName, classrooomCapacity, classroomRows, classroomCols);
+    }
+
+    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
+        modelController.getStudentsInClassSession(studentsResult);
     }
 }

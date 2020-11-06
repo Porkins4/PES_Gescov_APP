@@ -1,5 +1,9 @@
 package com.example.gescov.DomainLayer.Services;
 
+import androidx.lifecycle.MutableLiveData;
+
+import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
+
 public interface ISchoolService {
 
     String getDimensions(String schoolId, String classroomId);
@@ -13,4 +17,6 @@ public interface ISchoolService {
     void createSchoolRequest(String schoolName, String schoolAddress, String creator);
 
     void createClassroomRequest(String schoolName, String schoolAddress, String schoolState, float schoolLatitude, float schoolLongitude, String schoolCreator, String classroomName, String classrooomCapacity, String classroomRows, String classroomCols);
+
+    void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult);
 }
