@@ -63,7 +63,7 @@ public class ModelController {
         currentSchool.createClassroom(classroomName, classrooomCapacity, classroomRows, classroomCols);
     }
 
-    public void notifyRecovery() {
-        userController.notifyRecovery();
+    public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
+        userController.notifyRecovery(result);
     }
 }

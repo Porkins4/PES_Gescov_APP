@@ -58,7 +58,7 @@ public class UserController {
         user.createSchool(schoolName,schoolAddress);
     }
 
-    public void notifyRecovery() {
-        user.notifyRecovery();
+    public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
+        user.notifyRecovery(result);
     }
 }

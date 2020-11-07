@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import com.example.gescov.R;
@@ -27,8 +28,14 @@ public class CovidNotificationActivity extends AppCompatActivity {
         covidNotificationViewModel.getPostResult().observe(this, new Observer<ContagionRequestResult>() {
             @Override
             public void onChanged(ContagionRequestResult contagionRequestResult) {
-                if ( contagionRequestResult.getError() ) {
-                    OpenError();
+
+                Pair<String,Boolean> response = contagionRequestResult.getError();
+
+                if ( response.first == "notifyPositive" && response.second ) {
+                    OpenPopup("notifyPositive");
+                }
+                else if ( response.first == "notifyRecovery" && response.second) {
+                    OpenPopup("notifyRecovery");
                 }
             }
         });
@@ -63,13 +70,19 @@ public class CovidNotificationActivity extends AppCompatActivity {
         notifyRecover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                notifyContagionState.notifyRecovery();
+                covidNotificationViewModel.notifyRecoveryResult();
             }
         });
     }
 
-    private void OpenError() {
-        PopErrorNotifyPositive error = new PopErrorNotifyPositive();
-        error.show(getSupportFragmentManager(),"Tag");
+    private void OpenPopup(String notification) {
+        if (notification == "notifyPositive"){
+            PopErrorNotifyPositive error = new PopErrorNotifyPositive();
+            error.show(getSupportFragmentManager(),"Tag");
+        }
+        else {
+            PopErrorNotifyRecovery error = new PopErrorNotifyRecovery();
+            error.show(getSupportFragmentManager(),"Tag");
+        }
     }
 }

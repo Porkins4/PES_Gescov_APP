@@ -7,5 +7,5 @@ import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 public interface IContagionService {
     String getContagionList(String userId, String schoolId);
     void notifyContagion(MutableLiveData<ContagionRequestResult> result);
-    void notifyRecovery();
+    void notifyRecovery(MutableLiveData<ContagionRequestResult> result);
 }

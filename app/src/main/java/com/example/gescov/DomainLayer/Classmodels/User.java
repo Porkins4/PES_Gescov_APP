@@ -81,8 +81,8 @@ public class User {
         schoolService.createSchoolRequest(schoolName,schoolAddress,name);
     }
 
-    public void notifyRecovery() {
+    public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
         IContagionService contagionService = ServicesFactory.getContagionService();
-        contagionService.notifyRecovery();
+        contagionService.notifyRecovery(result);
     }
 }

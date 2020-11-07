@@ -1,5 +1,7 @@
 package com.example.gescov.DomainLayer.Services;
 
+import android.util.Pair;
+
 import androidx.lifecycle.MutableLiveData;
 
 import com.android.volley.Request;
@@ -68,12 +70,8 @@ public class ContagionServiceImplementor implements IContagionService {
                         public void onErrorResponse(VolleyError error) {
                             // TODO: Handle error
                             ContagionRequestResult aux = new ContagionRequestResult();
-                            aux.setError(true);
-                            if (error.networkResponse != null && error.networkResponse.statusCode == 400 ) {
-                            }
-                            else if(error.networkResponse == null ) {
-                                aux.setError(false);
-                            }
+                            aux.setError(new Pair<String,Boolean> ("notifyPositive",true));
+                            if(error.networkResponse == null ) aux.setError(new Pair<String,Boolean> ("notifyPositive",false));
                             result.setValue(aux);
                         }
                     });
@@ -84,7 +82,7 @@ public class ContagionServiceImplementor implements IContagionService {
     }
 
     @Override
-    public void notifyRecovery() {
+    public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
         queue =  Volley.newRequestQueue(CurrentContext.getContext());
         String name = "El Bixo";
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, ContagionLink+"?nameInfected="+name,
@@ -96,6 +94,10 @@ public class ContagionServiceImplementor implements IContagionService {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                ContagionRequestResult aux = new ContagionRequestResult();
+                aux.setError(new Pair<String,Boolean> ("notifyRecovery",true));
+                if (error.networkResponse == null) aux.setError(new Pair<String,Boolean> ("notifyRecovery",false));
+                result.setValue(aux);
             }
         });
         queue.add(stringRequest);

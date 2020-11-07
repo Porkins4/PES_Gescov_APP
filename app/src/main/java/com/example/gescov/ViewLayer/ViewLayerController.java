@@ -50,7 +50,7 @@ public class ViewLayerController {
         modelController.createClassroom(currentSchool, classroomName, classrooomCapacity, classroomRows, classroomCols);
     }
 
-    public void notifyRecovery() {
-        modelController.notifyRecovery();
+    public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
+        modelController.notifyRecovery(result);
     }
 }

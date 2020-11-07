@@ -9,7 +9,7 @@ public class NotifyContagionController {
         PresentationControlFactory.getViewLayerController().notifyInfected(result);
     }
 
-    public void notifyRecovery() {
-        PresentationControlFactory.getViewLayerController().notifyRecovery();
+    public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
+        PresentationControlFactory.getViewLayerController().notifyRecovery(result);
     }
 }
