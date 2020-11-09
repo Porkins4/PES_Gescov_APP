@@ -6,7 +6,7 @@
     <string name="action_sign_in">Sign in</string>
     <string name="action_register">Register</string>
     <string name="action_log_in">Log in</string>
-    <string name="welcome">"Welcome !"</string>
+    <string name="welcome">"Benvingut"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
@@ -72,5 +72,11 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
+    <!-- Sign in -->
+    <string name="welcome_hint">Benvingut</string>
+    <string name="name_hint">Nom i cognom</string>
+    <string name="introduce_email_hint">Correu electrònic</string>
+    <string name="Password_hint">Contrasenya</string>
+    <string name="sign_in_button_text">Registrat</string>
 
 </resources>
