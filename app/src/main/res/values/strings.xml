@@ -77,6 +77,6 @@
     <string name="name_hint">Nom i cognom</string>
     <string name="introduce_email_hint">Correu electrònic</string>
     <string name="Password_hint">Contrasenya</string>
-    <string name="sign_in_button_text">Registrat</string>
+    <string name="sign_in_button_text">Registra\'t</string>
 
 </resources>
