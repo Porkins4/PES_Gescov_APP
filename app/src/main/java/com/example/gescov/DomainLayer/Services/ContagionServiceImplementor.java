@@ -12,6 +12,7 @@ import com.example.gescov.Singletons.CurrentContext;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class ContagionServiceImplementor implements IContagionService {
@@ -22,6 +23,12 @@ public class ContagionServiceImplementor implements IContagionService {
     public ContagionServiceImplementor() {
     }
 
+
+    @Override
+    public void sendAnswers(List<Boolean> answers) {
+
+
+    }
 
     @Override
     public String getContagionList(String userId, String schoolId) {

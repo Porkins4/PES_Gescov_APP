@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Gescov</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -74,8 +74,16 @@
 
 
     <!-- Strings used for daily test -->
-    <string name="dailyTest">Test de seguiment</string>
-
+    <string name="dailyTest">Realitza el teu Test de seguiment</string>
+    <string name="firstQuestion">Tens tos seca i persistent?  </string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+    <string name="secondQuestion">Tens dolor muscular?  </string>
+    <string name="thirdQuestion">Has tingut una pèrdua d\'olfacte i gust de recent aparició?  </string>
+    <string name="fourthQuestion" >Tens sensació de falta d\'aire?  </string>
+    <string name="fifthQuestion">Tens febre? (+37.7°C)  </string>
+    <string name="titleTests">Quins símptomes tens? </string>
+    <string name="sendAnswers">Finalitzar Test </string>
     <!-- Strings notifying the state -->
     <string name="notify_state">Notificar Estado</string>
 

@@ -11,8 +11,6 @@ import org.json.JSONException;
 
 public class ContagionController {
     private ContagionListFragment contagionListFragment;
-    private ViewLayerController viewLayerController;
-
     public void refresh() throws  JSONException {
         contagionListFragment.updateData(PresentationControlFactory.getViewLayerController().getAllContagions());
     }

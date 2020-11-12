@@ -2,6 +2,8 @@ package com.example.gescov.DomainLayer.Controllers;
 
 import com.example.gescov.DomainLayer.Classmodels.User;
 
+import java.util.List;
+
 public class UserController {
     private User user;
 
@@ -53,5 +55,9 @@ public class UserController {
 
     public void createSchool(String schoolName, String schoolAddress) {
         user.createSchool(schoolName,schoolAddress);
+    }
+
+    public void sendAnswers(List<Boolean> answers) {
+        user.sendAnswers(answers);
     }
 }

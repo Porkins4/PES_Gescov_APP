@@ -4,6 +4,8 @@ import com.example.gescov.DomainLayer.Services.IContagionService;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 
+import java.util.List;
+
 public class User {
 
     private String name;
@@ -48,7 +50,6 @@ public class User {
         return icontragionService.getContagionList(name,schoolId);
     }
 
-
     public String getClassroomDimensions(String schoolId, String classroomId) {
         return school.getClassroomDimensions(schoolId,classroomId);
     }
@@ -65,7 +66,6 @@ public class User {
     public Boolean notifiyContagion() {
         IContagionService contagionServiceService = ServicesFactory.getContagionService();
         return contagionServiceService.notifyContagion();
-
     }
 
     public void sendReservationRequest(String aula, int row, int col) {
@@ -76,5 +76,10 @@ public class User {
     public void createSchool(String schoolName, String schoolAddress) {
         ISchoolService schoolService = ServicesFactory.getSchoolService();
         schoolService.createSchoolRequest(schoolName,schoolAddress,name);
+    }
+
+    public void sendAnswers(List<Boolean> answers) {
+        IContagionService iContagionService = ServicesFactory.getContagionService();
+        iContagionService.sendAnswers(answers);
     }
 }
