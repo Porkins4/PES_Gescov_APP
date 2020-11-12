@@ -15,7 +15,7 @@ public class User {
 
     public  User(){
         name = "El Bixo";
-        school = new School("FIB", "FIB", "adress", "state", "creator");
+        school = new School("5fa9d285e59d4c4c5d571519", "FIB", "adress", "state", "creator");
     }
     public User(String name) {
         this.name = name;

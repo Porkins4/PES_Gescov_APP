@@ -32,7 +32,7 @@ public class ContagionServiceImplementor implements IContagionService {
         conection = new Conection();
         String response = null;
         try {
-            response = conection.execute(ContagionLink+"/now?nameCen="+schoolId).get();
+            response = conection.execute(ContagionLink+"/now?schoolID="+schoolId).get();
         } catch (ExecutionException  | InterruptedException e ){
             e.printStackTrace();
         }
@@ -47,23 +47,15 @@ public class ContagionServiceImplementor implements IContagionService {
         try {
             contagion = new JSONObject(
                     "{\n" +
-                    "    \"infected\":{\n" +
-                    "        \"name\": \"El Bixo\",\n" +
-                    "        \"schools\": [\n" +
-                    "            {\n" +
-                    "                \"address\": \"Carrer Jordi Girona, 1-3\",\n" +
-                    "                \"name\": \"FIB\",\n" +
-                    "               \"creator\": \"Xicu Torres\"\n" +
-                    "            } \n" +
-                    "        ]\n" +
-                    "    }\n" +
-                    "}");
+                            "\"infectedID\" :\"5fa9d4aee59d4c4c5d57151c\",\n" +
+                            "\"inCon\" :\"true\"\n" +
+                            "}");
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                     (Request.Method.POST, ContagionLink, contagion, new Response.Listener<JSONObject>() {
 
                         @Override
                         public void onResponse(JSONObject response) {
-                            System.out.println("kpoaskfpokqwpokfokwpeofk");
+                            System.out.println(response );
                         }
                     }, new Response.ErrorListener() {
                         @Override

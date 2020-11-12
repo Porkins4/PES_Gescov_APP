@@ -61,4 +61,5 @@ public class UserController {
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
         user.notifyRecovery(result);
     }
+
 }
