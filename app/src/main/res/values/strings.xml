@@ -79,4 +79,8 @@
     <string name="Password_hint">Contrasenya</string>
     <string name="sign_in_button_text">Registra\'t</string>
 
+    <!-- Log out-->
+    <string name="logout_text">Tancar sessió</string>
+    <string name="logout_successful">Sessió tancada correctament</string>
+
 </resources>
