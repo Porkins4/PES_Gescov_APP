@@ -4,6 +4,11 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
+import com.example.gescov.DomainLayer.Services.ISchoolService;
+import com.example.gescov.DomainLayer.Services.ServicesFactory;
+import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
+import java.util.List;
+
 
 public class UserController {
     private User user;
@@ -58,8 +63,22 @@ public class UserController {
         user.createSchool(schoolName,schoolAddress);
     }
 
+
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
         user.notifyRecovery(result);
+    }
+
+    public void sendAnswers(List<Boolean> answers) {
+        user.sendAnswers(answers);
+    }
+  
+    public void checkLoginUser(MutableLiveData<TokenVerificationResult> r) {
+        ISchoolService schoolService = ServicesFactory.getSchoolService();
+        schoolService.checkUserLogin(r);
+    }
+
+    public void updateUserId(String userId) {
+        user.setId(userId);
     }
 
 }

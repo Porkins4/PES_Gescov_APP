@@ -1,11 +1,13 @@
 package com.example.gescov.ViewLayer;
 
 import com.example.gescov.ViewLayer.ContagionList.ContagionController;
+import com.example.gescov.ViewLayer.MainView.MainScreenController;
 import com.example.gescov.ViewLayer.MarkPositionInClassroom.MarkPositionInClassroom;
 import com.example.gescov.ViewLayer.MarkPositionInClassroom.MarkPositionInClassroomController;
 import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolClassroomsCrontroller;
 import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsCrontroller;
 import com.example.gescov.ViewLayer.home.NotifyContagionController;
+import com.example.gescov.ViewLayer.home.TracingTestController;
 
 public class PresentationControlFactory {
     private static ViewLayerController viewLayerController;
@@ -14,6 +16,8 @@ public class PresentationControlFactory {
     private static ContagionController contagionCrontroller;
     private static NotifyContagionController notifyContagionController;
     private static MarkPositionInClassroomController markPositionInClassroomController;
+    private static TracingTestController tracingTestController;
+    private static MainScreenController mainScreenController;
 
     public static ViewLayerController getViewLayerController() {
         if (viewLayerController != null)
@@ -52,5 +56,20 @@ public class PresentationControlFactory {
             return markPositionInClassroomController;
         markPositionInClassroomController = new MarkPositionInClassroomController();
         return markPositionInClassroomController;
+    }
+
+
+    public static TracingTestController getTracingTestControllerController() {
+        if (tracingTestController != null)
+            return tracingTestController;
+        tracingTestController = new TracingTestController();
+        return tracingTestController;
+    }
+  
+    public static MainScreenController getMainScreenController() {
+        if (mainScreenController != null)
+            return mainScreenController;
+        mainScreenController = new MainScreenController();
+        return mainScreenController;
     }
 }

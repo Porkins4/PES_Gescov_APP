@@ -6,6 +6,8 @@ import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Conection;
 import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
+import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
+
 
 import org.json.JSONException;
 
@@ -65,5 +67,17 @@ public class ModelController {
 
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
         userController.notifyRecovery(result);
+    }
+  
+    public void sendAnswers(List<Boolean> answers) {
+        userController.sendAnswers(answers);
+    }
+
+    public void checkLoginUser(MutableLiveData<TokenVerificationResult> r) {
+        userController.checkLoginUser(r);
+    }
+
+    public void updateUserId(String userId) {
+        userController.updateUserId(userId);
     }
 }
