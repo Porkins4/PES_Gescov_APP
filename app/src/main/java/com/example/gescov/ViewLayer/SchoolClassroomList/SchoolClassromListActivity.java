@@ -3,6 +3,7 @@ package com.example.gescov.ViewLayer.SchoolClassroomList;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
 import com.example.gescov.ViewLayer.SchoolsAdministration.CreateSchoolFormActivity;
 import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolListViewAdapter;
@@ -17,6 +18,8 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.example.gescov.R;
+
+import org.json.JSONException;
 
 public class SchoolClassromListActivity extends AppCompatActivity {
 
@@ -39,5 +42,12 @@ public class SchoolClassromListActivity extends AppCompatActivity {
         controller.setSchoolListViewAdapter(list.getContext());
         ClassroomListViewAdapter adapter = controller.getClassroomListViewSchoolAdapter();
         list.setAdapter(adapter);
+        try {
+            controller.refreshList();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (AdapterNotSetException e) {
+            e.printStackTrace();
+        }
     }
 }

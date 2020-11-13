@@ -1,16 +1,17 @@
 package com.example.gescov.ViewLayer;
 
-import androidx.lifecycle.MutableLiveData;
-
+import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Controllers.ModelController;
+import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
-import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 
 import org.json.JSONException;
 
 import java.util.List;
+
+import androidx.lifecycle.MutableLiveData;
 
 
 public class ViewLayerController {
@@ -25,11 +26,11 @@ public class ViewLayerController {
     }
 
     public String getAllContagions() {
-       return modelController.getAllContagions();
+        return modelController.getAllContagions();
     }
 
     public List<School> getAllSchools() throws JSONException {
-       return modelController.getAllSchools();
+        return modelController.getAllSchools();
     }
 
     public void notifyInfected(MutableLiveData<ContagionRequestResult> result) {
@@ -44,12 +45,20 @@ public class ViewLayerController {
         modelController.sendReservationRequest(aula,row,col);
     }
 
-    public void createSchool(String schoolId, String schoolName, String schoolAddress, String schoolState, String schoolCreator) {
-        modelController.createSchool(schoolId, schoolName, schoolAddress, schoolState, schoolCreator);
+    public void createSchool( String schoolName, String schoolAddress, String schoolState, String schoolWebsite) {
+        modelController.createSchool(schoolName, schoolAddress, schoolState, schoolWebsite);
     }
 
     public void createClassroom(School currentSchool, String classroomName, String classrooomCapacity, String classroomRows, String classroomCols) {
         modelController.createClassroom(currentSchool, classroomName, classrooomCapacity, classroomRows, classroomCols);
+    }
+
+    public void deleteSchool(School school) {
+        modelController.deleteSchool(school.getId());
+    }
+
+    public List<Classroom> getSchoolClassrooms(String schoolName) {
+        return modelController.getSchoolClassrooms(schoolName);
     }
 
     public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {

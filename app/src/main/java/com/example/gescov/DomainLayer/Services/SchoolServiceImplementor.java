@@ -1,6 +1,10 @@
 package com.example.gescov.DomainLayer.Services;
 
 import androidx.lifecycle.MutableLiveData;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class SchoolServiceImplementor implements ISchoolService {
+public class SchoolServiceImplementor implements ISchoolService, Callback<ResponseBody> {
     private Conection conection;
     private final String GET_CLASSROOM_DIMENSIONS_URI = "https://gescov.herokuapp.com/api/classroom/distribution";
     private final String GET_CLASSROOM_STUDENTS_URI = "https://gescov.herokuapp.com/api/assignment/classroom";
@@ -33,6 +37,8 @@ public class SchoolServiceImplementor implements ISchoolService {
     private final String POST_CREATE_CLASSROOM_URI = "https://gescov.herokuapp.com/api/classroom";
     private final String GET_STUDENTS_IN_CLASS_SESSION = "https://gescov.herokuapp.com/api/assignment/classroom";
     private final String GET_CHECK_LOGIN = "https://gescov.herokuapp.com/api/user/";
+    private final String GET_SCHOOL_CLASSROOMS_URI = "https://gescov.herokuapp.com/api/classroom/school";
+    private final String DELETE_SCHOOL_URI = "https://gescov.herokuapp.com/api/school";
 
     public SchoolServiceImplementor() { }
 
@@ -159,21 +165,20 @@ public class SchoolServiceImplementor implements ISchoolService {
     }
 
     @Override
-    public void createSchoolRequest(String schoolName, String schoolAddress, String creator) {
-        System.out.println(schoolName);
-        System.out.println(schoolAddress);
-        System.out.println(creator);
+    public void createSchoolRequest(String schoolName, String schoolAddress, String schoolState, String schoolWebsite, List<String> administratorsList, String creatorID) {
+
         try {
-            JSONObject school = new JSONObject("{\n" +
-                    "    \"address\": \""+schoolAddress+"\",\n" +
-                    "    \"name\": \""+schoolName+"\",\n" +
-                    "    \"state\": \"open\",\n" +
-                    "    \"creator\": \""+creator+"\",\n" +
-                    "    \"administrators\": [\n" +
-                    "        \""+creator+"\"\n" +
-                    "    ]\n" +
-                    "}"
-            );
+            JSONObject school = new JSONObject();
+            school.put("address", schoolAddress);
+            school.put("name", schoolName);
+            school.put("state", schoolState);
+            school.put("website", schoolWebsite);
+            JSONArray administrators = new JSONArray();
+            for (String admin : administratorsList) {
+                administrators.put(admin);
+            }
+            school.put("administratorsID", administrators);
+            school.put("creatorID", creatorID);
 
             RequestQueue requestQueue = Volley.newRequestQueue(CurrentContext.getContext());
 
@@ -243,6 +248,49 @@ public class SchoolServiceImplementor implements ISchoolService {
 
         requestQueue.add(jsonObjectRequest);
 
+    }
+
+    @Override
+    public void deleteSchoolRequest(String schoolId, String userID) {
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://gescov.herokuapp.com/")
+                .build();
+
+        DeleteSchoolService deleteSchoolService = retrofit.create(DeleteSchoolService.class);
+
+        Call<ResponseBody> call = deleteSchoolService.deleteSchoolById(schoolId, userID);
+        call.enqueue(this);
+    }
+
+    @Override
+    public String getSchoolClassrooms(String schoolName, String userName) {
+        conection = new Conection();
+        String response = null;
+        try {
+            response = conection.execute(GET_SCHOOL_CLASSROOMS_URI + "?schoolName=" + schoolName).get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (response == null) return "Failure at getting students in the specified classroom";
+        return response;
+    }
+
+    @Override
+    public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+        if(response.isSuccessful()) {
+            System.out.println("School deleted");
+        } else {
+            System.out.println(response.errorBody());
+        }
+    }
+
+    @Override
+    public void onFailure(Call<ResponseBody> call, Throwable t) {
+        System.out.println("School not deleted");
     }
 
     @Override

@@ -59,8 +59,16 @@ public class UserController {
         user.sendReservationRequest(aula,row,col);
     }
 
-    public void createSchool(String schoolName, String schoolAddress) {
-        user.createSchool(schoolName,schoolAddress);
+    public void createSchool(String schoolName, String schoolAddress, String schoolState, String schoolWebsite) {
+        user.createSchool(schoolName, schoolAddress, schoolState, schoolWebsite);
+    }
+
+    public void deleteSchool(String schoolId) {
+        user.deleteSchool(schoolId);
+    }
+
+    public String getSchoolClassrooms(String schoolName) {
+        return user.getSchoolClassrooms(schoolName);
     }
 
 

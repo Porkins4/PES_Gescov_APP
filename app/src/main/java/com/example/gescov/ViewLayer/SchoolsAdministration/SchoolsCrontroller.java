@@ -1,6 +1,7 @@
 package com.example.gescov.ViewLayer.SchoolsAdministration;
 
 import android.content.Context;
+import android.widget.Adapter;
 
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
@@ -15,7 +16,7 @@ import java.util.List;
 public class SchoolsCrontroller{
 
     private SchoolListViewAdapter schoolListViewAdapter;
-    private List<String> schoolNamesList;
+    private List<School> schoolsList;
 
     private SchoolsAdministrationFagment fragment;
     private HashMap<String, School> schoolHash;
@@ -29,45 +30,37 @@ public class SchoolsCrontroller{
         return fragment;
     }
 
-    public void setSchoolListViewAdapter(Context context) {
-        schoolListViewAdapter = new SchoolListViewAdapter(context, getSchoolNamesList());
+    public void createSchoolListViewAdapter(Context context) {
+        schoolListViewAdapter = new SchoolListViewAdapter(context, getSchoolsList());
     }
 
-    public SchoolListViewAdapter getSchoolListViewSchoolAdapter() throws AdapterNotSetException {
+    public SchoolListViewAdapter getSchoolListViewAdapter() throws AdapterNotSetException {
         if (schoolListViewAdapter == null) {
             throw new AdapterNotSetException();
         }
         return schoolListViewAdapter;
     }
 
-    public List<String> getSchoolNamesList() {
-        if (schoolNamesList != null)
-            return schoolNamesList;
+    public List<School> getSchoolsList() {
+        if (schoolsList != null)
+            return schoolsList;
         //hardcodedSchoolList();
-        schoolNamesList = new ArrayList<>();
-        return schoolNamesList;
+        schoolsList = new ArrayList<>();
+        return schoolsList;
     }
 
     public void refreshSchoolsList() throws JSONException, AdapterNotSetException {
         List<School> schoolsList = PresentationControlFactory.getViewLayerController().getAllSchools();
         this.schoolHash = new HashMap<>();
-        schoolNamesList = new ArrayList();
+        this.schoolsList = schoolsList;
         for (School school : schoolsList) {
             schoolHash.put(school.getName(), school);
-            schoolNamesList.add(school.getName());
         }
-        getSchoolListViewSchoolAdapter().notifyDataSetChanged();
+        getSchoolListViewAdapter().notifyDataSetChanged();
     }
 
-    public void createSchool(String schoolId, String schoolName, String schoolAddress, String schoolState, String schoolCreator) {
-        PresentationControlFactory.getViewLayerController().createSchool(schoolId, schoolName, schoolAddress, schoolState, schoolCreator);
-    }
-
-    private void hardcodedSchoolList () {
-        schoolNamesList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            schoolNamesList.add("Escola de perdedors");
-        }
+    public void createSchool(String schoolName, String schoolAddress, String schoolState, String schoolWebsite) {
+        PresentationControlFactory.getViewLayerController().createSchool(schoolName, schoolAddress, schoolState, schoolWebsite);
     }
 
     public void setCurrentSchool(String currentSchool) {
@@ -76,5 +69,16 @@ public class SchoolsCrontroller{
 
     public School getCurrentSchool() {
         return currentSchool;
+    }
+
+    public void deleteSchool(School school) {
+        PresentationControlFactory.getViewLayerController().deleteSchool(school);
+        try {
+            refreshSchoolsList();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (AdapterNotSetException e) {
+            e.printStackTrace();
+        }
     }
 }

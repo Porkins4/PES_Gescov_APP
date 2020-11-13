@@ -77,10 +77,10 @@ public class SchoolsAdministrationFagment extends Fragment {
         FloatingActionButton fab = thisView.findViewById(R.id.add_school_button);
         ListView list = (ListView) thisView.findViewById(R.id.schools_list);
         CurrentContext.setContext(this.getContext());
-        controller.setSchoolListViewAdapter(list.getContext());
+        controller.createSchoolListViewAdapter(list.getContext());
         SchoolListViewAdapter adapter = null;
         try {
-            adapter = controller.getSchoolListViewSchoolAdapter();
+            adapter = controller.getSchoolListViewAdapter();
         } catch (AdapterNotSetException e) {
             e.printStackTrace();
         }

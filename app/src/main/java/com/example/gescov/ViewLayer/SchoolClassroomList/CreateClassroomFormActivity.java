@@ -21,7 +21,7 @@ public class CreateClassroomFormActivity extends AppCompatActivity {
         EditText classroomCapacity = (EditText) findViewById(R.id.create_classroom_form_capacity_input);
         EditText classroomRows = (EditText) findViewById(R.id.create_classroom_form_rows);
         EditText classroomColumns = (EditText) findViewById(R.id.create_classroom_form_columns);
-        Button createClassroomButton = (Button) findViewById(R.id.create_school_form_create_button);
+        Button createClassroomButton = (Button) findViewById(R.id.create_classroom_form_create_button);
 
         createClassroomButton.setOnClickListener(e -> {
             SchoolClassroomsCrontroller classroomsCrontroller = PresentationControlFactory.getClassroomsCrontroller();

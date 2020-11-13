@@ -41,7 +41,7 @@ public class ContagionListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View v = mInflater.inflate(R.layout.mylistofcontagion,null);
+        View v = mInflater.inflate(R.layout.contagion_user_list_item,null);
         TextView name = (TextView) v.findViewById(R.id.name);
         TextView description = (TextView) v.findViewById(R.id.description);
         String NameAtposition = names.get(position);
