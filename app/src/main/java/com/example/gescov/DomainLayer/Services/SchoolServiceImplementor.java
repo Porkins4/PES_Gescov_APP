@@ -8,11 +8,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.gescov.DomainLayer.Conection;
 import com.example.gescov.Singletons.CurrentContext;
 import com.example.gescov.Singletons.VolleyServices;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,6 +32,7 @@ public class SchoolServiceImplementor implements ISchoolService {
     private final String POST_CREATE_SCHOOL_URI = "https://gescov.herokuapp.com/api/school";
     private final String POST_CREATE_CLASSROOM_URI = "https://gescov.herokuapp.com/api/classroom";
     private final String GET_STUDENTS_IN_CLASS_SESSION = "https://gescov.herokuapp.com/api/assignment/classroom";
+    private final String GET_CHECK_LOGIN = "https://gescov.herokuapp.com/api/user/";
 
     public SchoolServiceImplementor() { }
 
@@ -279,5 +282,26 @@ public class SchoolServiceImplementor implements ISchoolService {
         VolleyServices.addJSONArrayRequest(request);
     }
 
+
+    @Override
+    public void checkUserLogin(MutableLiveData<TokenVerificationResult> r) {
+        RequestQueue requestQueue = Volley.newRequestQueue(CurrentContext.getContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_CHECK_LOGIN+(r.getValue()).getUserToken(),
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println(response);
+                        TokenVerificationResult result = new TokenVerificationResult(true, response);
+                        r.setValue(result);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                TokenVerificationResult result = new TokenVerificationResult(false, null);
+                r.setValue(result);
+            }
+        });
+        requestQueue.add(stringRequest);
+    }
 
 }

@@ -5,7 +5,10 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
+import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.ViewLayer.home.ContagionRequestResult;
+import java.util.List;
 
 public class UserController {
     private User user;
@@ -46,9 +49,9 @@ public class UserController {
         return user.getAllSchools();
     }
 
-    public Boolean notifyInfected() {
+    public void notifyInfected(MutableLiveData<ContagionRequestResult> result) {
         // el comportamineto seria obtener la escuela de nuestro usuario y pasarsela
-        return user.notifiyContagion();
+        user.notifiyContagion(result);
 
     }
 
@@ -60,8 +63,27 @@ public class UserController {
         user.createSchool(schoolName,schoolAddress);
     }
 
+
     public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
         ISchoolService iSchoolService = ServicesFactory.getSchoolService();
         iSchoolService.getStudentsInClassSession(studentsResult);
     }
+
+    public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
+        user.notifyRecovery(result);
+    }
+
+    public void sendAnswers(List<Boolean> answers) {
+        user.sendAnswers(answers);
+    }
+  
+    public void checkLoginUser(MutableLiveData<TokenVerificationResult> r) {
+        ISchoolService schoolService = ServicesFactory.getSchoolService();
+        schoolService.checkUserLogin(r);
+    }
+
+    public void updateUserId(String userId) {
+        user.setId(userId);
+    }
+
 }

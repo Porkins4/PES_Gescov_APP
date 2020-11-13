@@ -6,9 +6,9 @@ import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Conection;
 import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
-
+import com.example.gescov.ViewLayer.home.ContagionRequestResult;
+import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 import org.json.JSONException;
-
 import java.util.List;
 
 public class ModelController {
@@ -49,9 +49,9 @@ public class ModelController {
         userController.createSchool(schoolName,schoolAddress);
     }
 
-    public Boolean notifyInfected() {
+    public void notifyInfected(MutableLiveData<ContagionRequestResult> result) {
         // para obtener la School
-        return userController.notifyInfected();
+        userController.notifyInfected(result);
 
     }
 
@@ -65,5 +65,21 @@ public class ModelController {
 
     public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
         userController.getStudentsInClassSession(studentsResult);
+    }
+  
+    public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
+        userController.notifyRecovery(result);
+    }
+  
+    public void sendAnswers(List<Boolean> answers) {
+        userController.sendAnswers(answers);
+    }
+
+    public void checkLoginUser(MutableLiveData<TokenVerificationResult> r) {
+        userController.checkLoginUser(r);
+    }
+
+    public void updateUserId(String userId) {
+        userController.updateUserId(userId);
     }
 }

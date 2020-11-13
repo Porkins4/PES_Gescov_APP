@@ -17,6 +17,7 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private HomeController homeController;
+    private Intent intent;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -29,16 +30,26 @@ public class HomeFragment extends Fragment {
                 textView.setText(s);
             }
         });*/
+        Button takeTest = (Button) root.findViewById(R.id.takeTest);
         Button report = (Button) root.findViewById(R.id.report);
         report.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),CovidNotificationActivity.class);
+                intent = new Intent(getActivity(),CovidNotificationActivity.class);
                 intent.putExtra("NameInfected","Victor Martinez");
                 intent.putExtra("School","FIB");
                 startActivity(intent);
             }
         });
+
+        takeTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getActivity(),DailyTestActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         return root;
     }
