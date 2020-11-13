@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.gescov.R;
-import com.example.gescov.Singletons.CurrentContext;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
 
 public class MarkPositionInClassroom extends AppCompatActivity {
@@ -27,7 +26,6 @@ public class MarkPositionInClassroom extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         MarkPositionInClassroomController controller = PresentationControlFactory.getMarkPositionInClassroomController();
-                        CurrentContext.setContext(context);
                         controller.sendReservationRequest("aula",getIntent().getExtras().getInt("row"),getIntent().getExtras().getInt("col"));
                         finish();
                     }

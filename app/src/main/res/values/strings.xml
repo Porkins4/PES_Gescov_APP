@@ -112,5 +112,7 @@
 
     <!-- Strings notifying the state -->
     <string name="notify_state">Notificar Estado</string>
+    <string name="succesPositiveNotification">S\'ha notificat correctament el teu positiu</string>
+    <string name="succesRecoveryNotification">S\'ha notificat la teva recuperació correctament</string>
 
 </resources>

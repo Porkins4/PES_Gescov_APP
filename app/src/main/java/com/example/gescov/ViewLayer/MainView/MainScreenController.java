@@ -15,4 +15,8 @@ public class MainScreenController {
     public void updateUserId(String userId) {
         PresentationControlFactory.getViewLayerController().updateUserId(userId);
     }
+
+    public void updateUserName(String userName) {
+        PresentationControlFactory.getViewLayerController().updateUserName(userName);
+    }
 }

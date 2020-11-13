@@ -98,4 +98,12 @@ public class ModelController {
     public String getUserId() {
         return userController.getUserId();
     }
+
+    public void updateUserName(String userName) {
+        userController.updateUserName(userName);
+    }
+
+    public void setContagionId(String contagionId) {
+        userController.setContagionId(contagionId);
+    }
 }

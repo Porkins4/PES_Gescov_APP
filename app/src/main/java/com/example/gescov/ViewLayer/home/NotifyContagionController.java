@@ -12,4 +12,8 @@ public class NotifyContagionController {
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
         PresentationControlFactory.getViewLayerController().notifyRecovery(result);
     }
+
+    public void setContagionId(String contagionId) {
+        PresentationControlFactory.getViewLayerController().setContagionId(contagionId);
+    }
 }

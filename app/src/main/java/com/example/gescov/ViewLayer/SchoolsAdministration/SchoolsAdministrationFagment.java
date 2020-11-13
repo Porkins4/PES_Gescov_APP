@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.example.gescov.Singletons.CurrentContext;
 import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
 import com.example.gescov.R;
@@ -76,7 +75,6 @@ public class SchoolsAdministrationFagment extends Fragment {
         View thisView = inflater.inflate(R.layout.fragment_school_administration, container, false);
         FloatingActionButton fab = thisView.findViewById(R.id.add_school_button);
         ListView list = (ListView) thisView.findViewById(R.id.schools_list);
-        CurrentContext.setContext(this.getContext());
         controller.createSchoolListViewAdapter(list.getContext());
         SchoolListViewAdapter adapter = null;
         try {

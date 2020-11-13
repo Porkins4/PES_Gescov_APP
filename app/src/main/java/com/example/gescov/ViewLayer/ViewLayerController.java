@@ -84,4 +84,12 @@ public class ViewLayerController {
     public String getUserId() {
         return modelController.getUserId();
     }
+
+    public void updateUserName(String userName) {
+        modelController.updateUserName(userName);
+    }
+
+    public void setContagionId(String contagionId) {
+        modelController.setContagionId(contagionId);
+    }
 }

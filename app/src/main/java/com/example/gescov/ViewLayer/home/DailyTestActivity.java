@@ -1,7 +1,7 @@
 package com.example.gescov.ViewLayer.home;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Context;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +10,6 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.gescov.R;
-import com.example.gescov.Singletons.CurrentContext;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,26 +21,27 @@ public class DailyTestActivity extends AppCompatActivity {
     List<Boolean> answers;
     RadioButton buttonIngroup;
     TracingTestController tracingTestController;
-    private Context thisContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_test);
-        thisContext = this;
-        CurrentContext.setContext(thisContext);
         tracingTestController = PresentationControlFactory.getTracingTestControllerController();
         answers = new ArrayList<>();
         Button sendTest = findViewById(R.id.sendTest);
         sendTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fillAnswers();
-                tracingTestController.sendAnswers(answers);
-                Toast.makeText(thisContext, "Respostes enviades :)", Toast.LENGTH_LONG).show();
-                finish();
+                sendTests();
             }
         });
+    }
+
+    private void sendTests() {
+        fillAnswers();
+        tracingTestController.sendAnswers(answers);
+        Toast.makeText( this, "Respostes enviades :)", Toast.LENGTH_LONG).show();
+        finish();
     }
 
 

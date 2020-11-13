@@ -13,19 +13,20 @@ import java.util.List;
 public class User {
 
     private String name;
-    private School school;
+    private School schools;
     private String id;
+    private String idContagion;
+    private String ConfirmedInfected;
+
 
     public  User() {
-        name = "El Bixo";
-        school = new School("FIB");
-        school.setId("5fa9d285e59d4c4c5d571519");
-        id = "5fa9d10c8b2a355d3cd4127a";
+        //name = "El Bixo";
+        schools = new School("FIB");
+        schools.setId("5fa9d285e59d4c4c5d571519");
+        //id = "5fa9d10c8b2a355d3cd4127a";
     }
 
-    public User(String name) {
-        this.name = name;
-    }
+    public User(String name) { this.name = name;}
 
     public String getName() {
         return name;
@@ -35,12 +36,12 @@ public class User {
         this.name = name;
     }
 
-    public School getSchool() {
-        return school;
+    public School getSchools() {
+        return schools;
     }
 
-    public void setSchool(School school) {
-        this.school = school;
+    public void setSchools(School schools) {
+        this.schools = schools;
     }
 
     public String getId() {
@@ -51,18 +52,27 @@ public class User {
         this.id = id;
     }
 
+    public String getIdContagion() { return idContagion; }
+
+    public void setIdContagion(String idContagion) { this.idContagion = idContagion; }
+
+    public String getConfirmedInfected() { return ConfirmedInfected; }
+
+    public void setConfirmedInfected(String confirmedInfected) { ConfirmedInfected = confirmedInfected; }
+
     public String getCntagionsOfCenter() {
-        String schoolId = school.getId();
+        // ahora es una lista de schools
+        String schoolId = schools.getId();
         IContagionService icontragionService = ServicesFactory.getContagionService();
         return icontragionService.getContagionList(name,schoolId);
     }
 
     public String getClassroomDimensions(String schoolId, String classroomId) {
-        return school.getClassroomDimensions(schoolId,classroomId);
+        return schools.getClassroomDimensions(schoolId,classroomId);
     }
 
     public String getStudentsInClassroom(String classroom) {
-        return school.getStudentsInClassroom(classroom);
+        return schools.getStudentsInClassroom(classroom);
     }
 
     public String getAllSchools() {
@@ -72,8 +82,9 @@ public class User {
 
 
     public void notifiyContagion(MutableLiveData<ContagionRequestResult> result) {
+        ConfirmedInfected = "true";
         IContagionService contagionService = ServicesFactory.getContagionService();
-        contagionService.notifyContagion(result);
+        contagionService.notifyContagion(result,ConfirmedInfected,id);
     }
 
 
@@ -103,12 +114,13 @@ public class User {
 
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
         IContagionService contagionService = ServicesFactory.getContagionService();
-        contagionService.notifyRecovery(result);
+        contagionService.notifyRecovery(result,id);
     }
 
     public void sendAnswers(List<Boolean> answers) {
-        IContagionService iContagionService = ServicesFactory.getContagionService();
-        iContagionService.sendAnswers(answers);
-
+        if ( idContagion != null) {
+            IContagionService iContagionService = ServicesFactory.getContagionService();
+            iContagionService.sendAnswers(answers, idContagion);
+        }
     }
 }

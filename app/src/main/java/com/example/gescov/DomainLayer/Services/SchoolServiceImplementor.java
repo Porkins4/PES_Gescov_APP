@@ -15,7 +15,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.gescov.DomainLayer.Conection;
-import com.example.gescov.Singletons.CurrentContext;
 import com.example.gescov.Singletons.VolleyServices;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
@@ -139,7 +138,7 @@ public class SchoolServiceImplementor implements ISchoolService, Callback<Respon
                             "}"
             );
 
-            RequestQueue requestQueue = Volley.newRequestQueue(CurrentContext.getContext());
+            RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.POST, POST_ASSIGNMENT_URI, postData,
@@ -180,7 +179,7 @@ public class SchoolServiceImplementor implements ISchoolService, Callback<Respon
             school.put("administratorsID", administrators);
             school.put("creatorID", creatorID);
 
-            RequestQueue requestQueue = Volley.newRequestQueue(CurrentContext.getContext());
+            RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.POST, POST_CREATE_SCHOOL_URI, school,
@@ -228,7 +227,7 @@ public class SchoolServiceImplementor implements ISchoolService, Callback<Respon
             e.printStackTrace();
         }
 
-        RequestQueue requestQueue = Volley.newRequestQueue(CurrentContext.getContext());
+        RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST, POST_CREATE_CLASSROOM_URI, classroom,

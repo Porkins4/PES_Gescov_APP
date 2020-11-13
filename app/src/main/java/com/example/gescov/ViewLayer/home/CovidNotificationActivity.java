@@ -4,18 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
 import com.example.gescov.R;
-import com.example.gescov.Singletons.CurrentContext;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
 
 
 public class CovidNotificationActivity extends AppCompatActivity {
-    private  Context thisContext;
     private NotifyContagionController notifyContagionState;
     private CovidNotificationViewModel covidNotificationViewModel;
 
@@ -30,25 +29,37 @@ public class CovidNotificationActivity extends AppCompatActivity {
             public void onChanged(ContagionRequestResult contagionRequestResult) {
 
                 Pair<String,Boolean> response = contagionRequestResult.getError();
-
-                if ( response.first == "notifyPositive" && response.second ) {
-                    OpenPopup("notifyPositive");
+                if (response.first == "notifyPositive" ) {
+                    if (response.second ) {
+                        OpenPopup("notifyPositive");
+                    }
+                    else {
+                        succesfulContagionRequest(contagionRequestResult);
+                    }
                 }
-                else if ( response.first == "notifyRecovery" && response.second) {
-                    OpenPopup("notifyRecovery");
+                else if ( response.first == "notifyRecovery" ) {
+                    if (response.second ) {
+                        OpenPopup("notifyRecovery");
+                    }
+                    else {
+                        System.out.println("wazzuuuup");
+                        succesfulRecovery();
+                    }
                 }
             }
         });
-        thisContext = this;
         notifyContagionState =  PresentationControlFactory.getNotifyContagionController();
-        //esto cuando tengas el usuario revisalo
-        if (getIntent().hasExtra("NameInfected")) {
-            String name = getIntent().getExtras().getString("NameInfected");
-            String school = getIntent().getExtras().getString("School");
-        }
-        CurrentContext.setContext(thisContext);
     }
 
+    private void succesfulRecovery() {
+        Toast.makeText(this,R.string.succesRecoveryNotification,Toast.LENGTH_LONG).show();
+        PresentationControlFactory.getNotifyContagionController().setContagionId(null);
+    }
+
+    private void succesfulContagionRequest(ContagionRequestResult contagionRequestResult) {
+        Toast.makeText(this,R.string.succesPositiveNotification,Toast.LENGTH_LONG).show();
+        PresentationControlFactory.getNotifyContagionController().setContagionId(contagionRequestResult.getContagionId());
+    }
 
     private void initButtonNotifyPositive() {
         Button notifyPositive = (Button) findViewById(R.id.notifypositive);

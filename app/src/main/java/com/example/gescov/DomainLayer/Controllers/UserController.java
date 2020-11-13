@@ -24,10 +24,6 @@ public class UserController {
     public void initUser() {
         user = new User();
     }
-    public void initUser(String nameuser) {
-        user = new User(nameuser);
-        System.out.println(user.getName());
-    }
 
 
     public String getContagionsOfMyCenter() {
@@ -96,5 +92,14 @@ public class UserController {
 
     public String getUserId() {
         return user.getId();
+    }
+
+    public void updateUserName(String userName) {
+        user.setName(userName);
+    }
+
+    public void setContagionId(String contagionId) {
+        user.setIdContagion(contagionId);
+        System.out.println(user.getIdContagion());
     }
 }

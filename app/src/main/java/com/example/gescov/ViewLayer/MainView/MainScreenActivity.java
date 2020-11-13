@@ -7,12 +7,10 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.widget.Toast;
 
 import com.example.gescov.LoggedInUser;
 import com.example.gescov.R;
-import com.example.gescov.Singletons.CurrentContext;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
 import com.example.gescov.ViewLayer.SignUpIn.LoginActivity;
 import com.example.gescov.ViewLayer.navigation.NavigationMenu;
@@ -39,18 +37,23 @@ public class MainScreenActivity extends AppCompatActivity {
 
     private void setResponseListener(String token) {
         mainScreenViewModel = new ViewModelProvider(this).get(MainScreenViewModel.class);
-        CurrentContext.setContext(this);
         mainScreenViewModel.setToken(token);
         mainScreenViewModel.getRequestResult().observe(this, new Observer<TokenVerificationResult>() {
             @Override
             public void onChanged(TokenVerificationResult tokenVerificationResult) {
                 if (tokenVerificationResult.getSuccess()) {
                     updateUserId();
+                    updateUserName();
                     showMenu();
                 }
             }
         });
     }
+
+    private void updateUserName() {
+        PresentationControlFactory.getMainScreenController().updateUserName(LoggedInUser.getUserName());
+    }
+
 
     private void updateUserId() {
         PresentationControlFactory.getMainScreenController().updateUserId(mainScreenViewModel.getRequestResult().getValue().getUserId());
