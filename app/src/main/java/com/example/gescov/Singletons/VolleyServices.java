@@ -41,4 +41,8 @@ public class VolleyServices {
     public static void setContext(Context context) {
         ctx = context;
     }
+
+    public static Context getCtx() {
+        return ctx;
+    }
 }

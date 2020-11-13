@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/theback"
     tools:context=".ViewLayer.home.DailyTestActivity">
 
     <ScrollView
@@ -26,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/firstQuestion"
+                android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -38,13 +40,17 @@
                     android:id="@+id/firstYes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/yes" />
+                    android:text="@string/yes"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/firstNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/no" />
+                    android:text="@string/no"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
             </RadioGroup>
 
             <TextView
@@ -52,6 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/secondQuestion"
+                android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -64,13 +71,17 @@
                     android:id="@+id/secondYes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/yes" />
+                    android:text="@string/yes"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/secondNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/no" />
+                    android:text="@string/no"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
             </RadioGroup>
 
             <TextView
@@ -78,6 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/thirdQuestion"
+                android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -90,13 +102,17 @@
                     android:id="@+id/thirdYes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/yes" />
+                    android:text="@string/yes"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/thirdNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/no" />
+                    android:text="@string/no"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
             </RadioGroup>
 
             <TextView
@@ -104,6 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/fourthQuestion"
+                android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -116,13 +133,17 @@
                     android:id="@+id/fourthYes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/yes" />
+                    android:text="@string/yes"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/fourthNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/no" />
+                    android:text="@string/no"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
             </RadioGroup>
 
             <TextView
@@ -130,6 +151,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/fifthQuestion"
+                android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -142,13 +164,17 @@
                     android:id="@+id/fifthYes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/yes" />
+                    android:text="@string/yes"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/fifthNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/no" />
+                    android:text="@string/no"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
             </RadioGroup>
 
             <Button
@@ -156,7 +182,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/sendAnswers" />
+                android:text="@string/sendAnswers"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </ScrollView>
@@ -166,8 +193,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/titleTests"
+        android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
