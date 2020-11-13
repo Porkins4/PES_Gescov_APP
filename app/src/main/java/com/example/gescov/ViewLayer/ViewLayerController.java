@@ -50,6 +50,10 @@ public class ViewLayerController {
         modelController.createClassroom(currentSchool, classroomName, classrooomCapacity, classroomRows, classroomCols);
     }
 
+    public void sendAnswers(List<Boolean> answers) {
+        modelController.sendAnswers(answers);
+    }
+  
     public void checkLoginUser(MutableLiveData<TokenVerificationResult> r) {
         modelController.checkLoginUser(r);
     }

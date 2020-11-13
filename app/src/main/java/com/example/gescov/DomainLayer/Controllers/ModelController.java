@@ -63,6 +63,10 @@ public class ModelController {
         currentSchool.createClassroom(classroomName, classrooomCapacity, classroomRows, classroomCols);
     }
 
+    public void sendAnswers(List<Boolean> answers) {
+        userController.sendAnswers(answers);
+    }
+
     public void checkLoginUser(MutableLiveData<TokenVerificationResult> r) {
         userController.checkLoginUser(r);
     }

@@ -7,6 +7,8 @@ import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 
+import java.util.List;
+
 public class UserController {
     private User user;
 
@@ -60,6 +62,10 @@ public class UserController {
         user.createSchool(schoolName,schoolAddress);
     }
 
+    public void sendAnswers(List<Boolean> answers) {
+        user.sendAnswers(answers);
+    }
+  
     public void checkLoginUser(MutableLiveData<TokenVerificationResult> r) {
         ISchoolService schoolService = ServicesFactory.getSchoolService();
         schoolService.checkUserLogin(r);

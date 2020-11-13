@@ -14,9 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gescov">
+        
+        <activity android:name=".ViewLayer.home.DailyTestActivity"></activity>
         <activity android:name=".ViewLayer.SignUpIn.LoginActivity"></activity>
         <activity android:name=".ViewLayer.SignIn.SignInActivity" />
         <activity android:name=".ViewLayer.login.LoginActivity" />
+
         <activity android:name=".ViewLayer.SchoolClassroomList.CreateClassroomFormActivity" />
         <activity android:name=".ViewLayer.ClassroomDistribution.ClassroomDitributionActivity" />
         <activity android:name=".ViewLayer.MarkPositionInClassroom.MarkPositionInClassroom" />

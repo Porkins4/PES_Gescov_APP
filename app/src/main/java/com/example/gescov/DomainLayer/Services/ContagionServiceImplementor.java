@@ -12,6 +12,7 @@ import com.example.gescov.Singletons.CurrentContext;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class ContagionServiceImplementor implements IContagionService {
@@ -24,15 +25,48 @@ public class ContagionServiceImplementor implements IContagionService {
 
 
     @Override
+    public void sendAnswers(List<Boolean> answers) {
+        queue =  Volley.newRequestQueue(CurrentContext.getContext());
+        String url = "https://gescov.herokuapp.com/api/tracingTest";
+        try {
+            JSONObject userAnswers = new JSONObject("{\n" +
+                    "\"answers\" : [\n" +
+                    "    \""+answers.get(0).toString()+"\",\n" +
+                    "    \""+answers.get(1).toString()+"\",\n" +
+                    "    \""+answers.get(2).toString()+"\",\n" +
+                    "    \""+answers.get(3).toString()+"\",\n" +
+                    "    \""+answers.get(4).toString()+"\"\n" +
+                    "],\n" +
+                    "\"contID\": \"5fadc098aefa495c4e20f264\"\n" +
+                    "}");
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                    (Request.Method.POST, url, userAnswers, new Response.Listener<JSONObject>() {
+
+                        @Override
+                        public void onResponse(JSONObject response) {
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+                    });
+            queue.add(jsonObjectRequest);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
     public String getContagionList(String userId, String schoolId) {
         //call back-end Service
         conection = new Conection();
         String response = null;
        // hay que poner el identificador del usuario y el centro
         try {
-
             response = conection.execute("https://gescov.herokuapp.com/api/contagion/now?nameCen="+schoolId).get();
-
         } catch (ExecutionException  | InterruptedException e ){
             e.printStackTrace();
         }
