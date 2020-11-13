@@ -55,13 +55,10 @@ public class NavigationMenu extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        //MenuItem settingsButton = (MenuItem) navController.getViewModelStoreOwner(R.id.action_settings);
-        MenuItem settingsButton = toolbar.getMenu().findItem(R.id.action_settings);
-        MenuItem logoutButton = navigationView.getMenu().findItem(R.id.nav_gallery);
+        MenuItem logoutButton = navigationView.getMenu().findItem(R.id.logout);
 
         logoutButton.setOnMenuItemClickListener(e -> {
-            System.out.println("logout");
-            Toast.makeText(getApplicationContext(), "You have successfully logged out", Toast.LENGTH_LONG).show();
+            logout_func();
             return true;
         });
     }
@@ -88,7 +85,7 @@ public class NavigationMenu extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        // ...
+                        Toast.makeText(getApplicationContext(), R.string.logout_successful, Toast.LENGTH_LONG).show();
                         showLoginView();
                     }
                 });

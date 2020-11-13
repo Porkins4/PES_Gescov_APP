@@ -4,11 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
-
 import com.example.gescov.LoggedInUser;
 import com.example.gescov.R;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
@@ -123,5 +121,11 @@ public class MainScreenActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
         Intent i = new Intent(this, NavigationMenu.class);
         startActivity(i);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initGoogleClient();
     }
 }
