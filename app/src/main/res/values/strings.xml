@@ -82,7 +82,7 @@
     <!-- Log out-->
     <string name="logout_text">Tancar sessió</string>
     <string name="logout_successful">Sessió tancada correctament</string>
-    <string name="server_client_id">"673967911868-q9jgm7i3ijsjn0ft3bs6avvpot02a0nl.apps.googleusercontent.com"</string>
+    <string name="server_client_id">"673967911868-ha5leruafdg9oel0u82rkb964u5uico1.apps.googleusercontent.com"</string>
 
 
     <!-- Strings used for daily test -->
