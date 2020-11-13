@@ -1,8 +1,11 @@
 package com.example.gescov.DomainLayer.Classmodels;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.DomainLayer.Services.IContagionService;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
+import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 
 import java.util.List;
 
@@ -14,7 +17,7 @@ public class User {
 
     public  User(){
         name = "El Bixo";
-        school = new School("FIB", "FIB", "adress", "state", "creator");
+        school = new School("5fa9d285e59d4c4c5d571519", "FIB", "adress", "state", "creator");
     }
     public User(String name) {
         this.name = name;
@@ -63,10 +66,12 @@ public class User {
         return schoolService.getAllSchools();
     }
 
-    public Boolean notifiyContagion() {
-        IContagionService contagionServiceService = ServicesFactory.getContagionService();
-        return contagionServiceService.notifyContagion();
+
+    public void notifiyContagion(MutableLiveData<ContagionRequestResult> result) {
+        IContagionService contagionService = ServicesFactory.getContagionService();
+        contagionService.notifyContagion(result);
     }
+
 
     public void sendReservationRequest(String aula, int row, int col) {
         ISchoolService schoolService = ServicesFactory.getSchoolService();
@@ -78,8 +83,14 @@ public class User {
         schoolService.createSchoolRequest(schoolName,schoolAddress,name);
     }
 
+
+    public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
+        IContagionService contagionService = ServicesFactory.getContagionService();
+        contagionService.notifyRecovery(result);
+    }
     public void sendAnswers(List<Boolean> answers) {
         IContagionService iContagionService = ServicesFactory.getContagionService();
         iContagionService.sendAnswers(answers);
+
     }
 }

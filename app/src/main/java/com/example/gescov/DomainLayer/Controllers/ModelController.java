@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Conection;
 import com.example.gescov.DomainLayer.DomainControlFactory;
+import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
+
 
 import org.json.JSONException;
 
@@ -49,9 +51,9 @@ public class ModelController {
         userController.createSchool(schoolName,schoolAddress);
     }
 
-    public Boolean notifyInfected() {
+    public void notifyInfected(MutableLiveData<ContagionRequestResult> result) {
         // para obtener la School
-        return userController.notifyInfected();
+        userController.notifyInfected(result);
 
     }
 
@@ -63,6 +65,10 @@ public class ModelController {
         currentSchool.createClassroom(classroomName, classrooomCapacity, classroomRows, classroomCols);
     }
 
+    public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
+        userController.notifyRecovery(result);
+    }
+  
     public void sendAnswers(List<Boolean> answers) {
         userController.sendAnswers(answers);
     }
