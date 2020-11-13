@@ -2,6 +2,8 @@ package com.example.gescov.ViewLayer.MainView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +12,8 @@ import android.widget.Toast;
 
 import com.example.gescov.LoggedInUser;
 import com.example.gescov.R;
+import com.example.gescov.Singletons.CurrentContext;
+import com.example.gescov.ViewLayer.PresentationControlFactory;
 import com.example.gescov.ViewLayer.SignUpIn.LoginActivity;
 import com.example.gescov.ViewLayer.navigation.NavigationMenu;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -20,27 +24,36 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-public class MainViewActivity extends AppCompatActivity {
+public class MainScreenActivity extends AppCompatActivity {
 
     private GoogleSignInClient googleSignInClient;
+    private MainScreenViewModel mainScreenViewModel;
 
     private GoogleSignInAccount account;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_view);
-        /*CountDownTimer timer = new CountDownTimer(1500,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-        }.start();*/
         initGoogleClient();
+    }
+
+    private void setResponseListener(String token) {
+        mainScreenViewModel = new ViewModelProvider(this).get(MainScreenViewModel.class);
+        CurrentContext.setContext(this);
+        mainScreenViewModel.setToken(token);
+        mainScreenViewModel.getRequestResult().observe(this, new Observer<TokenVerificationResult>() {
+            @Override
+            public void onChanged(TokenVerificationResult tokenVerificationResult) {
+                if (tokenVerificationResult.getSuccess()) {
+                    updateUserId();
+                    showMenu();
+                }
+            }
+        });
+    }
+
+    private void updateUserId() {
+        PresentationControlFactory.getMainScreenController().updateUserId(mainScreenViewModel.getRequestResult().getValue().getUserId());
     }
 
     private void initGoogleClient() {
@@ -63,7 +76,7 @@ public class MainViewActivity extends AppCompatActivity {
     private void handleSignInResult(Task<GoogleSignInAccount> task) {
         try {
             GoogleSignInAccount account = task.getResult(ApiException.class);
-            LoggedInUser.setCurrentLoggedUser(account);
+            this.account = account;
             succesfullLoginUI();
             // TODO(developer): send ID Token to server and validate
         } catch (ApiException e) {
@@ -79,14 +92,32 @@ public class MainViewActivity extends AppCompatActivity {
     private void checkUserLoggedIn() {
         account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null) succesfullLoginUI();
-        else startLoginActivity();
+        else {
+            logout();
+        }
+    }
+
+    private void logout() {
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(this,gso);
+        googleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // ...
+                        startLoginActivity();
+                    }
+                });
     }
 
     private void succesfullLoginUI() {
         LoggedInUser.setCurrentLoggedUser(account);
+        setResponseListener(account.getIdToken());
+    }
+
+    private void showMenu() {
         String welcome = getString(R.string.welcome) + " " + LoggedInUser.getUserName();
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
-
         Intent i = new Intent(this, NavigationMenu.class);
         startActivity(i);
     }
