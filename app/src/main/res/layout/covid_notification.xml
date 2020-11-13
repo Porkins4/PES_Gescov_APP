@@ -18,7 +18,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="390"
+        android:layout_width="390dp"
         android:layout_height="match_parent"
         android:layout_marginTop="350dp"
         android:gravity="center"
