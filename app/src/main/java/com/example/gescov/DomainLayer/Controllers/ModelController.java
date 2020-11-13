@@ -1,11 +1,13 @@
 package com.example.gescov.DomainLayer.Controllers;
 
+import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Conection;
 import com.example.gescov.DomainLayer.DomainControlFactory;
 
 import org.json.JSONException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModelController {
@@ -42,8 +44,8 @@ public class ModelController {
         return DomainControlFactory.getSchoolsModelCrontroller().getSchoolsList();
     }
 
-    public void createSchool(String schoolId, String schoolName, String schoolAddress, String schoolState, String schoolCreator) {
-        userController.createSchool(schoolName,schoolAddress);
+    public void createSchool(String schoolName, String schoolAddress, String schoolState, String schoolWebsite) {
+        userController.createSchool(schoolName,schoolAddress, schoolState, schoolWebsite);
     }
 
     public Boolean notifyInfected() {
@@ -58,5 +60,15 @@ public class ModelController {
 
     public void createClassroom(School currentSchool, String classroomName, String classrooomCapacity, String classroomRows, String classroomCols) {
         currentSchool.createClassroom(classroomName, classrooomCapacity, classroomRows, classroomCols);
+    }
+
+    public void deleteSchool(String schoolId) {
+        userController.deleteSchool(schoolId);
+    }
+
+    public List<Classroom> getSchoolClassrooms(String schoolName) {
+        String classroomsString = userController.getSchoolClassrooms(schoolName);
+        DomainControlFactory.getClassroomModelController().setClassroomList(classroomsString);
+        return DomainControlFactory.getClassroomModelController().getList();
     }
 }

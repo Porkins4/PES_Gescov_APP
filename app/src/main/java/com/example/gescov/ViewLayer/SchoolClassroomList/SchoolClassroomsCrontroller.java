@@ -2,9 +2,14 @@ package com.example.gescov.ViewLayer.SchoolClassroomList;
 
 import android.content.Context;
 
+import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
+import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
-import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsCrontroller;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SchoolClassroomsCrontroller {
 
     private ClassroomListViewAdapter classroomListViewAdapter;
-    private List<String> classroomNamesList;
+    private List<Classroom> classroomsList;
 
     private AppCompatActivity classroomActivity;
 
@@ -41,17 +46,44 @@ public class SchoolClassroomsCrontroller {
         return classroomListViewAdapter;
     }
 
-    public List<String> getList() {
-        if (classroomNamesList != null)
-            return classroomNamesList;
-        hardcodedSchoolList();
-        return classroomNamesList;
+    public List<Classroom> getList() {
+        if (classroomsList != null)
+            return classroomsList;
+        //hardcodedSchoolList();
+        classroomsList = new ArrayList<>();
+        return classroomsList;
+    }
+
+    public void refreshList() throws JSONException, AdapterNotSetException {
+        this.classroomsList = PresentationControlFactory.getViewLayerController().getSchoolClassrooms(PresentationControlFactory.getSchoolsCrontroller().getCurrentSchool().getName());
+        getClassroomListViewSchoolAdapter().notifyDataSetChanged();
     }
 
     private void hardcodedSchoolList () {
-        classroomNamesList = new ArrayList<>();
+        classroomsList = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
-            classroomNamesList.add("Aula" + i);
+            classroomsList.add(new Classroom("id", "Aula" + i, 6, 6, 30));
         }
+    }
+
+    public void setClassroomList(String classroomsString) {
+        JSONArray response = null;
+        try {
+            response = new JSONArray(classroomsString);
+            classroomsList = new ArrayList();
+            for (int i = 0; i < response.length(); ++i) {
+
+                JSONObject aux = response.getJSONObject(i);
+                String id = aux.getString("id");
+                String name = aux.getString("name");
+                int rows = aux.getInt("numRows");
+                int columns = aux.getInt("numCols");
+                int capacity = aux.getInt("capacity");
+                classroomsList.add(new Classroom(id, name, rows, columns, capacity));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 }

@@ -4,6 +4,11 @@ import com.example.gescov.DomainLayer.Services.IContagionService;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Retrofit;
+
 public class User {
 
     private String name;
@@ -12,7 +17,8 @@ public class User {
 
     public  User(){
         name = "El Bixo";
-        school = new School("FIB", "FIB", "adress", "state", "creator");
+        school = new School("FIB");
+        id = "5fa9d10c8b2a355d3cd4127a";
     }
     public User(String name) {
         this.name = name;
@@ -73,8 +79,23 @@ public class User {
         schoolService.sendReservationRequest(name,aula,row,col);
     }
 
-    public void createSchool(String schoolName, String schoolAddress) {
+    public void createSchool(String schoolName, String schoolAddress, String schoolState, String schoolWebsite) {
         ISchoolService schoolService = ServicesFactory.getSchoolService();
-        schoolService.createSchoolRequest(schoolName,schoolAddress,name);
+        List<String> administratorsList = new ArrayList<>();
+        administratorsList.add(id);
+        schoolService.createSchoolRequest(schoolName, schoolAddress, schoolState, schoolWebsite, administratorsList, id);
+    }
+
+    public void deleteSchool(String schoolId) {
+        ISchoolService schoolService = ServicesFactory.getSchoolService();
+        schoolService.deleteSchoolRequest(schoolId, this.id);
+
+        //ISchoolService schoolService = retrofit.create(ISchoolService.class);
+
+    }
+
+    public String getSchoolClassrooms(String schoolName) {
+        ISchoolService schoolService = ServicesFactory.getSchoolService();
+        return schoolService.getSchoolClassrooms(schoolName, this.name);
     }
 }

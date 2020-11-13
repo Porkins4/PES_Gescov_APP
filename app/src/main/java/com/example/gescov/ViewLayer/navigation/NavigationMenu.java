@@ -1,7 +1,10 @@
 package com.example.gescov.ViewLayer.navigation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -38,6 +41,15 @@ public class NavigationMenu extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        //MenuItem settingsButton = (MenuItem) navController.getViewModelStoreOwner(R.id.action_settings);
+        MenuItem settingsButton = toolbar.getMenu().findItem(R.id.action_settings);
+        MenuItem logoutButton = navigationView.getMenu().findItem(R.id.nav_gallery);
+
+        logoutButton.setOnMenuItemClickListener(e -> {
+            System.out.println("logout");
+            Toast.makeText(getApplicationContext(), "You have successfully logged out", Toast.LENGTH_LONG).show();
+            return true;
+        });
     }
 
     @Override

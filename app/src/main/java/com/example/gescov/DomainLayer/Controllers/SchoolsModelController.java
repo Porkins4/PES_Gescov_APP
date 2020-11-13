@@ -22,8 +22,17 @@ public class SchoolsModelController {
             String nameSchool = aux.getString("name");
             String stateSchool = aux.getString("state");
             String addressSchool = aux.getString("address");
-            String creatorSchool = aux.getString("creator");
-            schoolsList.add(new School(idSchool, nameSchool, addressSchool, stateSchool, creatorSchool));
+            String emailSchool = null;//aux.getString("email");
+            String phone = aux.getString("phone");
+            int longitude = aux.getInt("longitude");
+            int latitude = aux.getInt("longitude");
+            List<String> listAdminsID = new ArrayList<>();
+            JSONArray adminsArray = aux.getJSONArray("administratorsID");
+            for (int admin = 0; admin < adminsArray.length(); admin++) {
+                listAdminsID.add(adminsArray.getString(admin));
+            };
+            String creatorSchoolID = aux.getString("creatorID");
+            schoolsList.add(new School(idSchool, nameSchool, addressSchool, stateSchool, creatorSchoolID, emailSchool, phone, longitude, latitude, listAdminsID));
         }
     }
 

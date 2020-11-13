@@ -8,37 +8,21 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.R;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
-import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolClassromListActivity;
-import com.example.gescov.ViewLayer.navigation.NavigationMenu;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SchoolListViewAdapter extends BaseAdapter {
 
-    private List<String> schoolList;
+    private List<School> schoolList;
     private LayoutInflater mInflater;
 
-    public SchoolListViewAdapter(Context c, List<String> l) {
+    public SchoolListViewAdapter(Context c, List<School> l) {
         schoolList = l;
         mInflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
-
-    public List<String> getNameList() {
-        if (schoolList != null)
-        return schoolList;
-        schoolList = new ArrayList<>();
-        return schoolList;
-    }
-
-    public void addItem(String name) {
-        //replace to a call to SchoolsController to manage the new school.
-        schoolList.add(name);
-        notifyDataSetChanged();
-    }
-
 
     @Override
     public int getCount() {
@@ -59,15 +43,20 @@ public class SchoolListViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = mInflater.inflate(R.layout.school_list_item, null);
         TextView name = (TextView) v.findViewById(R.id.school_name);
-        name.setOnClickListener(e-> {
+        TextView address = (TextView) v.findViewById(R.id.school_address);
+        TextView state = (TextView) v.findViewById(R.id.school_state);
+
+        name.setText(schoolList.get(position).getName());
+        address.setText(schoolList.get(position).getAddress());
+        state.setText(schoolList.get(position).getState());
+
+        v.setOnClickListener(e-> {
             SchoolsCrontroller controller = PresentationControlFactory.getSchoolsCrontroller();
-            controller.setCurrentSchool(name.getText().toString());
+            controller.setCurrentSchool(((TextView) e.findViewById(R.id.school_name)).getText().toString());
             SchoolsAdministrationFagment fragment = controller.getSchoolsAdministrationFragment();
-            Intent intent = new Intent(fragment.getContext(), SchoolClassromListActivity.class);
+            Intent intent = new Intent(fragment.getContext(), SchoolDetails.class);
             fragment.startActivity(intent);
         });
-        String n = schoolList.get(position);
-        name.setText(n);
         return v;
     }
 }
