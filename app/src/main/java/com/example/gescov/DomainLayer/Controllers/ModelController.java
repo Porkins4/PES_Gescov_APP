@@ -82,4 +82,8 @@ public class ModelController {
     public void updateUserId(String userId) {
         userController.updateUserId(userId);
     }
+
+    public String getUserId() {
+        return userController.getUserId();
+    }
 }

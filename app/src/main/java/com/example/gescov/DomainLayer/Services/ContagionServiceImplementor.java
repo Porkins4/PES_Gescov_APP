@@ -40,7 +40,7 @@ public class ContagionServiceImplementor implements IContagionService {
                     "    \""+answers.get(3).toString()+"\",\n" +
                     "    \""+answers.get(4).toString()+"\"\n" +
                     "],\n" +
-                    "\"contID\": \"5fadc098aefa495c4e20f264\"\n" +
+                    "\"contID\": \"5faeb44b7635de0ccea64469\"\n" +
                     "}");
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
@@ -65,6 +65,7 @@ public class ContagionServiceImplementor implements IContagionService {
     @Override
     public String getContagionList(String userId, String schoolId) {
         conection = new Conection();
+        System.out.println(schoolId + "----------------------");
         String response = null;
         try {
             response = conection.execute(ContagionLink+"/now?schoolID="+schoolId).get();

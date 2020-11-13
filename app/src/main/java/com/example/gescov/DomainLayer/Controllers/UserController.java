@@ -86,4 +86,7 @@ public class UserController {
         user.setId(userId);
     }
 
+    public String getUserId() {
+        return user.getId();
+    }
 }

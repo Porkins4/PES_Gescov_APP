@@ -71,4 +71,8 @@ public class ViewLayerController {
     public void updateUserId(String userId) {
         modelController.updateUserId(userId);
     }
+
+    public String getUserId() {
+        return modelController.getUserId();
+    }
 }

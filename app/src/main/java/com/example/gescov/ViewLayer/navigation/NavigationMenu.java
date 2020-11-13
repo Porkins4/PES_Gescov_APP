@@ -6,6 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.gescov.ViewLayer.ContagionList.ContagionListFragment;
+import com.example.gescov.ViewLayer.PresentationControlFactory;
+import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsAdministrationFagment;
 import com.example.gescov.ViewLayer.SignUpIn.LoginActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -16,8 +19,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -26,7 +31,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import com.example.gescov.R;
 
-public class NavigationMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class NavigationMenu extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout drawer;
@@ -50,8 +55,6 @@ public class NavigationMenu extends AppCompatActivity implements NavigationView.
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        navigationView.setNavigationItemSelectedListener(this);
-
     }
 
 
@@ -69,34 +72,22 @@ public class NavigationMenu extends AppCompatActivity implements NavigationView.
                 || super.onSupportNavigateUp();
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // Handle navigation view item clicks here.
-        switch (item.getItemId()) {
-
-            case R.id.logout:
-                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-                GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(this,gso);
-                googleSignInClient.signOut()
-                        .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                // ...
-                                showLoginView();
-                            }
-                        });
-                break;
-            default:
-                break;
-        }
-        //close navigation drawer
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+    private void logout_func() {
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(this,gso);
+        googleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // ...
+                        showLoginView();
+                    }
+                });
     }
 
     private void showLoginView() {
         String logout = getString(R.string.logout_successful);
-        Toast.makeText(getApplicationContext(), logout, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), logout, Toast.LENGTH_SHORT).show();
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
     }
