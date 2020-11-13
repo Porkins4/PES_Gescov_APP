@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Controllers.ModelController;
+import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 
@@ -51,6 +52,10 @@ public class ViewLayerController {
         modelController.createClassroom(currentSchool, classroomName, classrooomCapacity, classroomRows, classroomCols);
     }
 
+    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
+        modelController.getStudentsInClassSession(studentsResult);
+    }
+  
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
         modelController.notifyRecovery(result);
     }

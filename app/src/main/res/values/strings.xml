@@ -96,8 +96,8 @@
     <string name="fifthQuestion">Tens febre? (+37.7°C)  </string>
     <string name="titleTests">Quins símptomes tens? </string>
     <string name="sendAnswers">Finalitzar Test </string>
-    <!-- Strings notifying the state -->
+    
+  <!-- Strings notifying the state -->
     <string name="notify_state">Notificar Estado</string>
-
 
 </resources>

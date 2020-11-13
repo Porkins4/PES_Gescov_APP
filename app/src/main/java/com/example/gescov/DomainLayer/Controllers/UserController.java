@@ -3,12 +3,12 @@ package com.example.gescov.DomainLayer.Controllers;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.User;
-import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
+import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 import java.util.List;
-
 
 public class UserController {
     private User user;
@@ -63,6 +63,11 @@ public class UserController {
         user.createSchool(schoolName,schoolAddress);
     }
 
+
+    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
+        ISchoolService iSchoolService = ServicesFactory.getSchoolService();
+        iSchoolService.getStudentsInClassSession(studentsResult);
+    }
 
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
         user.notifyRecovery(result);

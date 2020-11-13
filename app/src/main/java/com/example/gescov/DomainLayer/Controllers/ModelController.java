@@ -5,12 +5,10 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Conection;
 import com.example.gescov.DomainLayer.DomainControlFactory;
+import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
-
-
 import org.json.JSONException;
-
 import java.util.List;
 
 public class ModelController {
@@ -65,6 +63,10 @@ public class ModelController {
         currentSchool.createClassroom(classroomName, classrooomCapacity, classroomRows, classroomCols);
     }
 
+    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
+        userController.getStudentsInClassSession(studentsResult);
+    }
+  
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
         userController.notifyRecovery(result);
     }
