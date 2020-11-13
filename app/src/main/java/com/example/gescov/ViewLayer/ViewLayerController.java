@@ -1,7 +1,10 @@
 package com.example.gescov.ViewLayer;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Controllers.ModelController;
+import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 
 import org.json.JSONException;
 
@@ -45,5 +48,13 @@ public class ViewLayerController {
 
     public void createClassroom(School currentSchool, String classroomName, String classrooomCapacity, String classroomRows, String classroomCols) {
         modelController.createClassroom(currentSchool, classroomName, classrooomCapacity, classroomRows, classroomCols);
+    }
+
+    public void checkLoginUser(MutableLiveData<TokenVerificationResult> r) {
+        modelController.checkLoginUser(r);
+    }
+
+    public void updateUserId(String userId) {
+        modelController.updateUserId(userId);
     }
 }
