@@ -1,6 +1,7 @@
 package com.example.gescov.ViewLayer.SchoolClassroomList;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.R;
+import com.example.gescov.ViewLayer.ClassroomDistribution.ClassroomDistributionActivity;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
 
 import java.util.ArrayList;
@@ -58,8 +60,9 @@ public class ClassroomListViewAdapter extends BaseAdapter {
         name.setOnClickListener(e-> {
             SchoolClassroomsCrontroller controller = PresentationControlFactory.getClassroomsCrontroller();
             SchoolClassromListActivity activity = (SchoolClassromListActivity) controller.getSchoolsAdministrationActivity();
-            //TODO Intent intent = new Intent(activity, .class);
-            //activity.startActivity(intent);
+            Intent intent = new Intent(activity, ClassroomDistributionActivity.class);
+            intent.putExtra("classroom_id", classroomList.get(position).getId());
+            activity.startActivity(intent);
         });
         name.setText(classroomList.get(position).getName());
         capacity.setText(String.valueOf(classroomList.get(position).getCapacity() + " " + v.getResources().getText(R.string.classroom_capacity)));

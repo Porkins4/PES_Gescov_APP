@@ -14,18 +14,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ClassroomDitributionActivity extends AppCompatActivity {
+public class ClassroomDistributionActivity extends AppCompatActivity {
 
     //my atributes
     private ClassroomDistributionController controller;
     private GridLayout gridLayout;
     private ClassroomDistributionTableWidget [][] distribution;
+    private String classroomId;
     //-----------------------------
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classroom_ditribution);
+        classroomId = getIntent().getStringExtra("classroom_id");
         controller = new ClassroomDistributionController();
         showDistribution();
     }

@@ -24,7 +24,7 @@ public class ClassroomDistributionTableWidget {
     private Button table;
     private TextView studentView;
     private View inflated_Layout;
-    private ClassroomDitributionActivity parentActivity;
+    private ClassroomDistributionActivity parentActivity;
 
     public ClassroomDistributionTableWidget() {
 
@@ -76,7 +76,7 @@ public class ClassroomDistributionTableWidget {
         );
     }
 
-    public void setFragment(ClassroomDitributionActivity classroomDistributionFragment) {
+    public void setFragment(ClassroomDistributionActivity classroomDistributionFragment) {
         parentActivity = classroomDistributionFragment;
     }
 }
