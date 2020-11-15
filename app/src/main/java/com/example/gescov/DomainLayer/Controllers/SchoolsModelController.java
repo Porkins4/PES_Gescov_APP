@@ -1,6 +1,7 @@
 package com.example.gescov.DomainLayer.Controllers;
 
 import com.example.gescov.DomainLayer.Classmodels.School;
+import com.example.gescov.DomainLayer.DomainControlFactory;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -8,6 +9,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.ResponseBody;
+import retrofit2.Response;
 
 public class SchoolsModelController {
     private List<School> schoolsList;
@@ -36,8 +40,30 @@ public class SchoolsModelController {
         }
     }
 
+    public List<School> getAllSchools() throws JSONException {
+        String schoolsString = DomainControlFactory.getUserController().getAllSchools();
+        setSchoolsList(schoolsString);
+        return getSchoolsList();
+    }
+
+    public void createSchool(String schoolName, String schoolAddress, String schoolState, String schoolWebsite) {
+        DomainControlFactory.getUserController().createSchool(schoolName,schoolAddress, schoolState, schoolWebsite);
+    }
+
     public List<School> getSchoolsList() {
         return schoolsList;
     }
 
+    public void refreshSchoolList() {
+        DomainControlFactory.getUserController().refreshSchoolList();
+    }
+
+    public void refreshSchoolList(String schoolsResponse) {
+        try {
+            setSchoolsList(schoolsResponse);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        DomainControlFactory.getModelController().refreshSchoolListInView(getSchoolsList());
+    }
 }

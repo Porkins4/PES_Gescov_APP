@@ -59,6 +59,15 @@ public class SchoolsCrontroller{
         getSchoolListViewAdapter().notifyDataSetChanged();
     }
 
+    public void refreshSchoolsList(List<School> schoolsList) throws JSONException, AdapterNotSetException {
+        this.schoolHash = new HashMap<>();
+        this.schoolsList = schoolsList;
+        for (School school : schoolsList) {
+            schoolHash.put(school.getName(), school);
+        }
+        getSchoolListViewAdapter().notifyDataSetChanged();
+    }
+
     public void createSchool(String schoolName, String schoolAddress, String schoolState, String schoolWebsite) {
         PresentationControlFactory.getViewLayerController().createSchool(schoolName, schoolAddress, schoolState, schoolWebsite);
     }

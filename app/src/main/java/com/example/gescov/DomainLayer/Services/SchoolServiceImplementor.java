@@ -15,8 +15,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.gescov.DomainLayer.Conection;
+import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.Singletons.VolleyServices;
-import com.example.gescov.ViewLayer.PresentationControlFactory;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class SchoolServiceImplementor implements ISchoolService, Callback<ResponseBody> {
+public class SchoolServiceImplementor implements ISchoolService {
     private Conection conection;
     private final String GET_CLASSROOM_DIMENSIONS_URI = "https://gescov.herokuapp.com/api/classroom/distribution";
     private final String GET_CLASSROOM_STUDENTS_URI = "https://gescov.herokuapp.com/api/assignment/classroom";
@@ -235,7 +235,7 @@ public class SchoolServiceImplementor implements ISchoolService, Callback<Respon
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-
+                        DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -248,20 +248,6 @@ public class SchoolServiceImplementor implements ISchoolService, Callback<Respon
 
         requestQueue.add(jsonObjectRequest);
 
-    }
-
-    @Override
-    public void deleteSchoolRequest(String schoolId, String userID) {
-
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://gescov.herokuapp.com/")
-                .build();
-
-        DeleteSchoolService deleteSchoolService = retrofit.create(DeleteSchoolService.class);
-
-        Call<ResponseBody> call = deleteSchoolService.deleteSchoolById(schoolId, userID);
-        call.enqueue(this);
     }
 
     @Override
@@ -279,19 +265,6 @@ public class SchoolServiceImplementor implements ISchoolService, Callback<Respon
         return response;
     }
 
-    @Override
-    public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
-        if(response.isSuccessful()) {
-            System.out.println("School deleted");
-        } else {
-            System.out.println(response.errorBody());
-        }
-    }
-
-    @Override
-    public void onFailure(Call<ResponseBody> call, Throwable t) {
-        System.out.println("School not deleted");
-    }
 
     @Override
     public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {

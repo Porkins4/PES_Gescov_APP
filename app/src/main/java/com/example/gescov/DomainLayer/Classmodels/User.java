@@ -80,6 +80,9 @@ public class User {
         return schoolService.getAllSchools();
     }
 
+    public void refreshSchoolList() {
+        ServicesFactory.getRefreshSchoolResponseController().refreshSchoolList(this.id);
+    }
 
     public void notifiyContagion(MutableLiveData<ContagionRequestResult> result) {
         ConfirmedInfected = "true";
@@ -101,8 +104,7 @@ public class User {
     }
 
     public void deleteSchool(String schoolId) {
-        ISchoolService schoolService = ServicesFactory.getSchoolService();
-        schoolService.deleteSchoolRequest(schoolId, this.id);
+        ServicesFactory.getDeleteSchoolResponseController().deleteSchoolRequest(schoolId, this.id);
 
         //ISchoolService schoolService = retrofit.create(ISchoolService.class);
     }

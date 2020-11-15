@@ -6,7 +6,9 @@ import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Conection;
 import com.example.gescov.DomainLayer.DomainControlFactory;
+import com.example.gescov.ViewLayer.PresentationControlFactory;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.ViewLayer.ViewLayerController;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 import org.json.JSONException;
@@ -15,9 +17,11 @@ import java.util.List;
 public class ModelController {
 
     private UserController userController;
+    private ViewLayerController viewLayerController;
 
     public ModelController() {
         userController = DomainControlFactory.getUserController();
+        viewLayerController = PresentationControlFactory.getViewLayerController();
     }
 
     public String getAllContagions() {
@@ -41,13 +45,11 @@ public class ModelController {
     }
 
     public List<School> getAllSchools() throws JSONException {
-        String schoolsString = userController.getAllSchools();
-        DomainControlFactory.getSchoolsModelCrontroller().setSchoolsList(schoolsString);
-        return DomainControlFactory.getSchoolsModelCrontroller().getSchoolsList();
+        return DomainControlFactory.getSchoolsModelCrontroller().getAllSchools();
     }
 
     public void createSchool(String schoolName, String schoolAddress, String schoolState, String schoolWebsite) {
-        userController.createSchool(schoolName,schoolAddress, schoolState, schoolWebsite);
+        DomainControlFactory.getSchoolsModelCrontroller().createSchool(schoolName, schoolAddress, schoolState, schoolWebsite);
     }
 
     public void notifyInfected(MutableLiveData<ContagionRequestResult> result) {
@@ -105,5 +107,9 @@ public class ModelController {
 
     public void setContagionId(String contagionId) {
         userController.setContagionId(contagionId);
+    }
+
+    public void refreshSchoolListInView(List<School> schoolsList) {
+        viewLayerController.refreshSchoolList(schoolsList);
     }
 }

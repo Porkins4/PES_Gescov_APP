@@ -6,7 +6,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface DeleteSchoolService {
+public interface IDeleteSchoolService {
 
     @DELETE ("api/school/{id}")
     Call<ResponseBody> deleteSchoolById(@Path("id") String id, @Query("adminID") String userID);

@@ -3,6 +3,8 @@ package com.example.gescov.ViewLayer;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Controllers.ModelController;
+import com.example.gescov.DomainLayer.DomainControlFactory;
+import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
@@ -18,7 +20,7 @@ public class ViewLayerController {
     private  ModelController modelController;
 
     public ViewLayerController() {
-        modelController = new ModelController();
+        modelController = DomainControlFactory.getModelController();
     }
 
     public String getStudentsInClassroom(String classroom) {
@@ -91,5 +93,15 @@ public class ViewLayerController {
 
     public void setContagionId(String contagionId) {
         modelController.setContagionId(contagionId);
+    }
+
+    public void refreshSchoolList(List<School> schoolsList) {
+        try {
+            PresentationControlFactory.getSchoolsCrontroller().refreshSchoolsList(schoolsList);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (AdapterNotSetException e) {
+            e.printStackTrace();
+        }
     }
 }

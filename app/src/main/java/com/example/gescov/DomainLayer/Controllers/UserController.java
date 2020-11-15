@@ -11,23 +11,23 @@ import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 import java.util.List;
 
 public class UserController {
-    private User user;
+    private User loggedUser;
 
     public UserController() {
-        user = new User();
+        loggedUser = new User();
     }
 
     public String getStudentsInClassroom(String classroom) {
-        return user.getStudentsInClassroom(classroom);
+        return loggedUser.getStudentsInClassroom(classroom);
     }
 
     public void initUser() {
-        user = new User();
+        loggedUser = new User();
     }
 
 
     public String getContagionsOfMyCenter() {
-        return user.getCntagionsOfCenter();
+        return loggedUser.getCntagionsOfCenter();
     }
 
 
@@ -38,33 +38,37 @@ public class UserController {
 
     //el colegio es contenido por el usuario
     public String getClassroomDimensions(String schoolId, String classroomId) {
-        return user.getClassroomDimensions(schoolId, classroomId);
+        return loggedUser.getClassroomDimensions(schoolId, classroomId);
     }
 
     public String getAllSchools() {
-        return user.getAllSchools();
+        return loggedUser.getAllSchools();
+    }
+
+    public void refreshSchoolList() {
+        loggedUser.refreshSchoolList();
     }
 
     public void notifyInfected(MutableLiveData<ContagionRequestResult> result) {
         // el comportamineto seria obtener la escuela de nuestro usuario y pasarsela
-        user.notifiyContagion(result);
+        loggedUser.notifiyContagion(result);
 
     }
 
     public void sendReservationRequest(String aula, int row, int col) {
-        user.sendReservationRequest(aula,row,col);
+        loggedUser.sendReservationRequest(aula,row,col);
     }
 
     public void createSchool(String schoolName, String schoolAddress, String schoolState, String schoolWebsite) {
-        user.createSchool(schoolName, schoolAddress, schoolState, schoolWebsite);
+        loggedUser.createSchool(schoolName, schoolAddress, schoolState, schoolWebsite);
     }
 
     public void deleteSchool(String schoolId) {
-        user.deleteSchool(schoolId);
+        loggedUser.deleteSchool(schoolId);
     }
 
     public String getSchoolClassrooms(String schoolName) {
-        return user.getSchoolClassrooms(schoolName);
+        return loggedUser.getSchoolClassrooms(schoolName);
     }
 
 
@@ -74,11 +78,11 @@ public class UserController {
     }
 
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
-        user.notifyRecovery(result);
+        loggedUser.notifyRecovery(result);
     }
 
     public void sendAnswers(List<Boolean> answers) {
-        user.sendAnswers(answers);
+        loggedUser.sendAnswers(answers);
     }
   
     public void checkLoginUser(MutableLiveData<TokenVerificationResult> r) {
@@ -87,19 +91,20 @@ public class UserController {
     }
 
     public void updateUserId(String userId) {
-        user.setId(userId);
+        loggedUser.setId(userId);
     }
 
     public String getUserId() {
-        return user.getId();
+        return loggedUser.getId();
     }
 
     public void updateUserName(String userName) {
-        user.setName(userName);
+        loggedUser.setName(userName);
     }
 
     public void setContagionId(String contagionId) {
-        user.setIdContagion(contagionId);
-        System.out.println(user.getIdContagion());
+        loggedUser.setIdContagion(contagionId);
+        System.out.println(loggedUser.getIdContagion());
     }
+
 }

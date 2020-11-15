@@ -22,8 +22,6 @@ public interface ISchoolService {
 
     void createClassroomRequest(String schoolName, String schoolAddress, String schoolState, float schoolLatitude, float schoolLongitude, String schoolCreator, String classroomName, String classrooomCapacity, String classroomRows, String classroomCols);
 
-    void deleteSchoolRequest(String schoolID, String userID);
-
     String getSchoolClassrooms(String schoolId, String userName);
 
     void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult);
