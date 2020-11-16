@@ -23,7 +23,6 @@ public class User {
         //name = "El Bixo";
         schools = new School("FIB");
         schools.setId("5fa9d285e59d4c4c5d571519");
-        //id = "5fa9d10c8b2a355d3cd4127a";
     }
 
     public User(String name) { this.name = name;}

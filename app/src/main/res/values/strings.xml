@@ -44,6 +44,8 @@
     <string name="Catalan_create_school_form_school_state">Estat Escola</string>
     <string name="Catalan_create_school_form_school_code">Codi Escola</string>
     <string name="Catalan_create_school_form_school_button">Crea Escola</string>
+    <string name="create_school_validate_fields">Valida els camps, si us plau.</string>
+
 
     <!-- School Details -->
     <string name="school_details_delete_school">Elimina escola</string>
