@@ -12,6 +12,8 @@ import com.example.gescov.ViewLayer.ViewLayerController;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 import org.json.JSONException;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModelController {
@@ -22,6 +24,7 @@ public class ModelController {
     public ModelController() {
         userController = DomainControlFactory.getUserController();
         viewLayerController = PresentationControlFactory.getViewLayerController();
+
     }
 
     public String getAllContagions() {
@@ -44,8 +47,8 @@ public class ModelController {
         return userController.getStudentsInClassroom(classroom);
     }
 
-    public List<School> getAllSchools() throws JSONException {
-        return DomainControlFactory.getSchoolsModelCrontroller().getAllSchools();
+    public void getAllSchools() throws JSONException {
+        DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList();
     }
 
     public void createSchool(String schoolName, String schoolAddress, String schoolState, String schoolWebsite) {

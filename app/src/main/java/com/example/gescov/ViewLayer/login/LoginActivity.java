@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gescov.DomainLayer.Controllers.ModelController;
+import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.R;
 import com.example.gescov.ViewLayer.navigation.NavigationMenu;
 
@@ -35,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mController = new ModelController(); // aqui se crea el controlador
+        mController = DomainControlFactory.getModelController(); // aqui se crea el controlador
         setContentView(R.layout.activity_login);
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);

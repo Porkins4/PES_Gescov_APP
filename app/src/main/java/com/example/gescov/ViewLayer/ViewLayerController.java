@@ -17,82 +17,80 @@ import androidx.lifecycle.MutableLiveData;
 
 
 public class ViewLayerController {
-    private  ModelController modelController;
 
     public ViewLayerController() {
-        modelController = DomainControlFactory.getModelController();
     }
 
     public String getStudentsInClassroom(String classroom) {
-        return modelController.getStudentsInClassroom(classroom);
+        return DomainControlFactory.getModelController().getStudentsInClassroom(classroom);
     }
 
     public String getAllContagions() {
-        return modelController.getAllContagions();
+        return DomainControlFactory.getModelController().getAllContagions();
     }
 
-    public List<School> getAllSchools() throws JSONException {
-        return modelController.getAllSchools();
+    public void getAllSchools() throws JSONException {
+        DomainControlFactory.getModelController().getAllSchools();
     }
 
     public void notifyInfected(MutableLiveData<ContagionRequestResult> result) {
-        modelController.notifyInfected(result);
+        DomainControlFactory.getModelController().notifyInfected(result);
     }
 
     public String getClassroomDimensions(String schoolId, String classroomId) {
-        return modelController.getClassroomDimensions(schoolId, classroomId);
+        return DomainControlFactory.getModelController().getClassroomDimensions(schoolId, classroomId);
     }
 
     public void sendReservationRequest(String aula, int row, int col) {
-        modelController.sendReservationRequest(aula,row,col);
+        DomainControlFactory.getModelController().sendReservationRequest(aula,row,col);
     }
 
     public void createSchool( String schoolName, String schoolAddress, String schoolState, String schoolWebsite) {
-        modelController.createSchool(schoolName, schoolAddress, schoolState, schoolWebsite);
+        DomainControlFactory.getModelController().createSchool(schoolName, schoolAddress, schoolState, schoolWebsite);
     }
 
     public void createClassroom(School currentSchool, String classroomName, String classrooomCapacity, String classroomRows, String classroomCols) {
-        modelController.createClassroom(currentSchool, classroomName, classrooomCapacity, classroomRows, classroomCols);
+        DomainControlFactory.getModelController().createClassroom(currentSchool, classroomName, classrooomCapacity, classroomRows, classroomCols);
     }
 
     public void deleteSchool(School school) {
-        modelController.deleteSchool(school.getId());
+        DomainControlFactory.getModelController().deleteSchool(school.getId());
     }
 
     public List<Classroom> getSchoolClassrooms(String schoolName) {
-        return modelController.getSchoolClassrooms(schoolName);
+        return DomainControlFactory.getModelController().getSchoolClassrooms(schoolName);
     }
 
     public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
-        modelController.getStudentsInClassSession(studentsResult);
+        DomainControlFactory.getModelController().getStudentsInClassSession(studentsResult);
     }
   
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
-        modelController.notifyRecovery(result);
+        DomainControlFactory.getModelController().notifyRecovery(result);
     }
   
     public void sendAnswers(List<Boolean> answers) {
-        modelController.sendAnswers(answers);
+        DomainControlFactory.getModelController().sendAnswers(answers);
     }
   
     public void checkLoginUser(MutableLiveData<TokenVerificationResult> r) {
-        modelController.checkLoginUser(r);
+        DomainControlFactory.getModelController().checkLoginUser(r);
     }
 
     public void updateUserId(String userId) {
-        modelController.updateUserId(userId);
+        DomainControlFactory.getModelController().updateUserId(userId);
     }
 
     public String getUserId() {
-        return modelController.getUserId();
+        return DomainControlFactory.getModelController().getUserId();
     }
 
     public void updateUserName(String userName) {
-        modelController.updateUserName(userName);
+        DomainControlFactory.getModelController().updateUserName(userName);
     }
 
     public void setContagionId(String contagionId) {
-        modelController.setContagionId(contagionId);
+        DomainControlFactory.getModelController().setContagionId(contagionId);
     }
 
     public void refreshSchoolList(List<School> schoolsList) {

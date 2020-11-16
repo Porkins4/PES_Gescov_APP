@@ -24,6 +24,10 @@ public class SchoolListViewAdapter extends BaseAdapter {
         mInflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    public void setSchoolList (List<School> schoolList) {
+        this.schoolList = schoolList;
+    }
+
     @Override
     public int getCount() {
         return schoolList.size();

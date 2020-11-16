@@ -4,6 +4,7 @@ import com.example.gescov.DomainLayer.Services.ResponseControllers.DeleteSchoolR
 import com.example.gescov.DomainLayer.Services.ResponseControllers.RefreshSchoolResponseController;
 
 import retrofit2.Retrofit;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ServicesFactory {
 
@@ -19,6 +20,7 @@ public class ServicesFactory {
         if (retrofit != null) return retrofit;
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://gescov.herokuapp.com/")
+                .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
         return retrofit;
     }
@@ -37,14 +39,14 @@ public class ServicesFactory {
 
     public static DeleteSchoolResponseController getDeleteSchoolResponseController() {
         if (deleteSchoolResponseController != null) return deleteSchoolResponseController;
-        deleteSchoolResponseController = new DeleteSchoolResponseController(retrofit);
+        deleteSchoolResponseController = new DeleteSchoolResponseController(getRetrofit());
         return deleteSchoolResponseController;
     }
 
 
     public static RefreshSchoolResponseController getRefreshSchoolResponseController() {
         if (refreshSchoolResponseController != null) return refreshSchoolResponseController;
-        refreshSchoolResponseController = new RefreshSchoolResponseController(retrofit);
+        refreshSchoolResponseController = new RefreshSchoolResponseController(getRetrofit());
         return refreshSchoolResponseController;
     }
 }

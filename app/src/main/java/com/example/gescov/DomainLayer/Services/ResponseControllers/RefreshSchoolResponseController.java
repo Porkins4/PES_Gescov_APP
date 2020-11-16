@@ -11,7 +11,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class RefreshSchoolResponseController implements Callback<ResponseBody> {
+public class RefreshSchoolResponseController implements Callback<String> {
 
     private final Retrofit retrofit;
 
@@ -20,19 +20,19 @@ public class RefreshSchoolResponseController implements Callback<ResponseBody> {
     }
 
     @Override
-    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-        DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList(response.toString());
+    public void onResponse(Call<String> call, Response<String> response) {
+        DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList(response.body().toString());
     }
 
     @Override
-    public void onFailure(Call<ResponseBody> call, Throwable t) {
+    public void onFailure(Call<String> call, Throwable t) {
 
     }
 
     public void refreshSchoolList(String userId) {
         IRefreshSchoolService refreshSchoolService = retrofit.create(IRefreshSchoolService.class);
 
-        Call<ResponseBody> call = refreshSchoolService.refreshSchoolList();
+        Call<String> call = refreshSchoolService.refreshSchoolList();
         call.enqueue(this);
     }
 }

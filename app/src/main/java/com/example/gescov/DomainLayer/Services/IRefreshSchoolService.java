@@ -8,5 +8,5 @@ import retrofit2.http.Query;
 
 public interface IRefreshSchoolService {
     @GET("api/school/")
-    Call<ResponseBody> refreshSchoolList();
+    Call<String> refreshSchoolList();
 }
