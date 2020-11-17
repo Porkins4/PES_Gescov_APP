@@ -57,8 +57,8 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().deleteSchool(school.getId());
     }
 
-    public List<Classroom> getSchoolClassrooms(String schoolName) {
-        return DomainControlFactory.getModelController().getSchoolClassrooms(schoolName);
+    public void getSchoolClassrooms(String schoolName) {
+        DomainControlFactory.getModelController().getSchoolClassrooms(schoolName);
     }
 
     public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
@@ -101,5 +101,13 @@ public class ViewLayerController {
         } catch (AdapterNotSetException e) {
             e.printStackTrace();
         }
+    }
+
+    public void refreshSchoolClassroomList(List<Classroom> classroomsList) {
+        PresentationControlFactory.getClassroomsCrontroller().refreshList(classroomsList);
+    }
+
+    public void setCurrentSchool(School currentSchool) {
+        DomainControlFactory.getModelController().setCurrentSchool(currentSchool);
     }
 }

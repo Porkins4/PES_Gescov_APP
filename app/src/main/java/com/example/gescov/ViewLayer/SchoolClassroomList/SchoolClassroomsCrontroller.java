@@ -12,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,10 +55,16 @@ public class SchoolClassroomsCrontroller {
         return classroomsList;
     }
 
-    public void refreshList() throws JSONException, AdapterNotSetException {
-        this.classroomsList = PresentationControlFactory.getViewLayerController().getSchoolClassrooms(PresentationControlFactory.getSchoolsCrontroller().getCurrentSchool().getName());
+    public void refreshList() {
+        PresentationControlFactory.getViewLayerController().getSchoolClassrooms(PresentationControlFactory.getSchoolsCrontroller().getCurrentSchool().getName());
+    }
+
+    public void refreshList(List<Classroom> classroomsList) {
+        this.classroomsList = classroomsList;
+        getClassroomListViewSchoolAdapter().setList(classroomsList);
         getClassroomListViewSchoolAdapter().notifyDataSetChanged();
     }
+
 
     private void hardcodedSchoolList () {
         classroomsList = new ArrayList<>();
@@ -66,24 +73,6 @@ public class SchoolClassroomsCrontroller {
         }
     }
 
-    public void setClassroomList(String classroomsString) {
-        JSONArray response = null;
-        try {
-            response = new JSONArray(classroomsString);
-            classroomsList = new ArrayList();
-            for (int i = 0; i < response.length(); ++i) {
 
-                JSONObject aux = response.getJSONObject(i);
-                String id = aux.getString("id");
-                String name = aux.getString("name");
-                int rows = aux.getInt("numRows");
-                int columns = aux.getInt("numCols");
-                int capacity = aux.getInt("capacity");
-                classroomsList.add(new Classroom(id, name, rows, columns, capacity));
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
-    }
 }

@@ -3,6 +3,7 @@ package com.example.gescov.DomainLayer.Classmodels;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Services.IContagionService;
+import com.example.gescov.DomainLayer.Services.IRefreshSchoolClassroomsService;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
@@ -108,9 +109,8 @@ public class User {
         //ISchoolService schoolService = retrofit.create(ISchoolService.class);
     }
 
-    public String getSchoolClassrooms(String schoolName) {
-        ISchoolService schoolService = ServicesFactory.getSchoolService();
-        return schoolService.getSchoolClassrooms(schoolName, this.name);
+    public void getSchoolClassrooms(String schoolName) {
+        ServicesFactory.getRefreshSchoolClassroomsResponseController().refreshSchoolClassroomsList(schoolName);
     }
 
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {

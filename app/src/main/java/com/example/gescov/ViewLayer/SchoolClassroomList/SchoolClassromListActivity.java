@@ -37,17 +37,13 @@ public class SchoolClassromListActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        ListView list = (ListView) findViewById(R.id.classrooms_list);
+        ListView list = findViewById(R.id.classrooms_list);
         SchoolClassroomsCrontroller controller = PresentationControlFactory.getClassroomsCrontroller();
         controller.setSchoolListViewAdapter(list.getContext());
         ClassroomListViewAdapter adapter = controller.getClassroomListViewSchoolAdapter();
         list.setAdapter(adapter);
-        try {
-            controller.refreshList();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (AdapterNotSetException e) {
-            e.printStackTrace();
-        }
+
+        controller.refreshList();
+
     }
 }

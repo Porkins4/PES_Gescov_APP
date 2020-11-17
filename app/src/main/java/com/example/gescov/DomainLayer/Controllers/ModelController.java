@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
-import com.example.gescov.DomainLayer.Conection;
 import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
@@ -13,7 +12,6 @@ import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 import org.json.JSONException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ModelController {
@@ -73,10 +71,8 @@ public class ModelController {
         userController.deleteSchool(schoolId);
     }
 
-    public List<Classroom> getSchoolClassrooms(String schoolName) {
-        String classroomsString = userController.getSchoolClassrooms(schoolName);
-        DomainControlFactory.getClassroomModelController().setClassroomList(classroomsString);
-        return DomainControlFactory.getClassroomModelController().getList();
+    public void getSchoolClassrooms(String schoolName) {
+        userController.refreshSchoolClassrooms(schoolName);
     }
 
 
@@ -114,5 +110,13 @@ public class ModelController {
 
     public void refreshSchoolListInView(List<School> schoolsList) {
         viewLayerController.refreshSchoolList(schoolsList);
+    }
+
+    public void refreshSchoolClassroomsListInView(List<Classroom> classroomsList) {
+        viewLayerController.refreshSchoolClassroomList(classroomsList);
+    }
+
+    public void setCurrentSchool(School currentSchool) {
+        DomainControlFactory.getSchoolsModelCrontroller().setCurrentSchool(currentSchool);
     }
 }

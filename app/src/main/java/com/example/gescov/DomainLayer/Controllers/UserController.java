@@ -67,8 +67,8 @@ public class UserController {
         loggedUser.deleteSchool(schoolId);
     }
 
-    public String getSchoolClassrooms(String schoolName) {
-        return loggedUser.getSchoolClassrooms(schoolName);
+    public void refreshSchoolClassrooms(String schoolName) {
+        loggedUser.getSchoolClassrooms(schoolName);
     }
 
 

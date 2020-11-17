@@ -70,4 +70,9 @@ public class ClassroomListViewAdapter extends BaseAdapter {
         columns.setText(String.valueOf(classroomList.get(position).getColumns() + " " + v.getResources().getText(R.string.classroom_cols)));
         return v;
     }
+
+    public void setList(List<Classroom> classroomsList) {
+        this.classroomList = classroomsList;
+        notifyDataSetChanged();
+    }
 }

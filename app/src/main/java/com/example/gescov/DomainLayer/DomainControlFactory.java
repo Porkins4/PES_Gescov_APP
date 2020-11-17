@@ -1,6 +1,7 @@
 package com.example.gescov.DomainLayer;
 
 import com.example.gescov.DomainLayer.Controllers.ModelController;
+import com.example.gescov.DomainLayer.Controllers.SchoolClassroomsModelController;
 import com.example.gescov.DomainLayer.Controllers.SchoolsModelController;
 import com.example.gescov.DomainLayer.Controllers.UserController;
 import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolClassroomsCrontroller;
@@ -8,7 +9,7 @@ import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsCrontroller;
 
 public class DomainControlFactory {
     private static SchoolsModelController schoolsModelController;
-    private static SchoolClassroomsCrontroller classroomsController;
+    private static SchoolClassroomsModelController classroomsController;
     private static UserController userController;
     private static ModelController modelController;
 
@@ -26,10 +27,10 @@ public class DomainControlFactory {
         return userController;
     }
 
-    public static SchoolClassroomsCrontroller getClassroomModelController() {
+    public static SchoolClassroomsModelController getClassroomModelController() {
         if (classroomsController != null)
             return classroomsController;
-        classroomsController = new SchoolClassroomsCrontroller();
+        classroomsController = new SchoolClassroomsModelController();
         return classroomsController;
     }
 

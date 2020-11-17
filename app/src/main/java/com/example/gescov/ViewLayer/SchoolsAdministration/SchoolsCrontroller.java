@@ -69,6 +69,7 @@ public class SchoolsCrontroller{
 
     public void setCurrentSchool(String currentSchool) {
         this.currentSchool = schoolHash.get(currentSchool);
+        PresentationControlFactory.getViewLayerController().setCurrentSchool(this.currentSchool);
     }
 
     public School getCurrentSchool() {

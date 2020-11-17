@@ -38,7 +38,6 @@ public class SchoolServiceImplementor implements ISchoolService {
     private final String GET_STUDENTS_IN_CLASS_SESSION = "https://gescov.herokuapp.com/api/assignment/classroom";
     private final String GET_CHECK_LOGIN = "https://gescov.herokuapp.com/api/user/";
     private final String GET_SCHOOL_CLASSROOMS_URI = "https://gescov.herokuapp.com/api/classroom/school";
-    private final String DELETE_SCHOOL_URI = "https://gescov.herokuapp.com/api/school";
 
     public SchoolServiceImplementor() { }
 
@@ -214,16 +213,7 @@ public class SchoolServiceImplementor implements ISchoolService {
             classroom.put("capacity", classrooomCapacity);
             classroom.put("numRows", classroomRows);
             classroom.put("numCols", classroomCols);
-
-            JSONObject school = new JSONObject();
-            school.put("name", schoolName);
-            school.put("address", schoolAdress);
-            school.put("state", schoolState);
-            school.put("latitude", schoolLatitude);
-            school.put("longitude", schoolLongitude);
-            school.put("creator", schoolCreator);
-
-            classroom.put("school", school);
+            classroom.put("schoolID", DomainControlFactory.getSchoolsModelCrontroller().getCurrentSchool().getId());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -235,7 +225,7 @@ public class SchoolServiceImplementor implements ISchoolService {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList();
+                        DomainControlFactory.getUserController().refreshSchoolClassrooms(DomainControlFactory.getSchoolsModelCrontroller().getCurrentSchool().getName());
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -249,22 +239,6 @@ public class SchoolServiceImplementor implements ISchoolService {
         requestQueue.add(jsonObjectRequest);
 
     }
-
-    @Override
-    public String getSchoolClassrooms(String schoolName, String userName) {
-        conection = new Conection();
-        String response = null;
-        try {
-            response = conection.execute(GET_SCHOOL_CLASSROOMS_URI + "?schoolName=" + schoolName).get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        if (response == null) return "Failure at getting students in the specified classroom";
-        return response;
-    }
-
 
     @Override
     public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {

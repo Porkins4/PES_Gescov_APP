@@ -10,11 +10,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.ResponseBody;
-import retrofit2.Response;
-
 public class SchoolsModelController {
     private List<School> schoolsList;
+    private School currentSchool;
 
     public void setSchoolsList(String schoolsString) throws JSONException {
         JSONArray response = new JSONArray(schoolsString);
@@ -65,5 +63,13 @@ public class SchoolsModelController {
             e.printStackTrace();
         }
         DomainControlFactory.getModelController().refreshSchoolListInView(getSchoolsList());
+    }
+
+    public void setCurrentSchool(School currentSchool) {
+        this.currentSchool = currentSchool;
+    }
+
+    public School getCurrentSchool() {
+        return currentSchool;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.gescov.DomainLayer.Services;
 
 import com.example.gescov.DomainLayer.Services.ResponseControllers.DeleteSchoolResponseController;
+import com.example.gescov.DomainLayer.Services.ResponseControllers.RefreshSchoolClassroomsResponseController;
 import com.example.gescov.DomainLayer.Services.ResponseControllers.RefreshSchoolResponseController;
 
 import retrofit2.Retrofit;
@@ -15,6 +16,7 @@ public class ServicesFactory {
     private static ISchoolService schoolService;
     private static DeleteSchoolResponseController deleteSchoolResponseController;
     private static RefreshSchoolResponseController refreshSchoolResponseController;
+    private static RefreshSchoolClassroomsResponseController refreshSchoolClassroomsResponseController;
 
     private static Retrofit getRetrofit() {
         if (retrofit != null) return retrofit;
@@ -49,4 +51,11 @@ public class ServicesFactory {
         refreshSchoolResponseController = new RefreshSchoolResponseController(getRetrofit());
         return refreshSchoolResponseController;
     }
+
+    public static RefreshSchoolClassroomsResponseController getRefreshSchoolClassroomsResponseController() {
+        if (refreshSchoolClassroomsResponseController != null) return refreshSchoolClassroomsResponseController;
+        refreshSchoolClassroomsResponseController = new RefreshSchoolClassroomsResponseController(getRetrofit());
+        return refreshSchoolClassroomsResponseController;
+    }
+
 }
