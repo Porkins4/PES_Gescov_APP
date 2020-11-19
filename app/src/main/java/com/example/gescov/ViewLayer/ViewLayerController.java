@@ -45,12 +45,16 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().sendReservationRequest(aula,row,col);
     }
 
-    public void createSchool( String schoolName, String schoolAddress, String schoolState, String schoolWebsite) {
-        DomainControlFactory.getModelController().createSchool(schoolName, schoolAddress, schoolState, schoolWebsite);
+    public void createSchool( String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
+        DomainControlFactory.getModelController().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite);
     }
 
-    public void createClassroom(School currentSchool, String classroomName, String classrooomCapacity, String classroomRows, String classroomCols) {
-        DomainControlFactory.getModelController().createClassroom(currentSchool, classroomName, classrooomCapacity, classroomRows, classroomCols);
+    public void createClassroom(School currentSchool, String classroomName, int classroomRows, int classroomCols) {
+        DomainControlFactory.getModelController().createClassroom(currentSchool, classroomName, classroomRows, classroomCols);
+    }
+
+    public void updateClassroom(String classroomid, String classroomName, int numRows, int numCols) {
+        DomainControlFactory.getModelController().updateClassroom(classroomid, classroomName, numRows, numCols);
     }
 
     public void deleteSchool(School school) {

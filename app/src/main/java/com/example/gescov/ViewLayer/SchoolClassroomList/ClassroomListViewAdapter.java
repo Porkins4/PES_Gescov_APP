@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
@@ -20,8 +21,10 @@ public class ClassroomListViewAdapter extends BaseAdapter {
 
     private List<Classroom> classroomList;
     private LayoutInflater mInflater;
+    private Context context;
 
     public ClassroomListViewAdapter(Context c, List<Classroom> l) {
+        context = c;
         classroomList = l;
         mInflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -57,12 +60,20 @@ public class ClassroomListViewAdapter extends BaseAdapter {
         TextView capacity = (TextView) v.findViewById(R.id.classroom_capacity);
         TextView rows = (TextView) v.findViewById(R.id.classroom_rows);
         TextView columns = (TextView) v.findViewById(R.id.classroom_columns);
-        name.setOnClickListener(e-> {
+        Button editButton = v.findViewById(R.id.classroom_list_item_edit_button);
+
+
+        editButton.setOnClickListener(e-> {
             SchoolClassroomsCrontroller controller = PresentationControlFactory.getClassroomsCrontroller();
-            SchoolClassromListActivity activity = (SchoolClassromListActivity) controller.getSchoolsAdministrationActivity();
-            Intent intent = new Intent(activity, ClassroomDistributionActivity.class);
-            intent.putExtra("classroom_id", classroomList.get(position).getId());
-            activity.startActivity(intent);
+            Intent intent = new Intent(context, EditClassroomFormActivity.class);
+            intent.putExtra("classroom_position", position);
+            context.startActivity(intent);
+        });
+
+        name.setOnClickListener(e-> {
+            Intent intent = new Intent(context, ClassroomDistributionActivity.class);
+            intent.putExtra("classroom", classroomList.get(position).getId());
+            context.startActivity(intent);
         });
         name.setText(classroomList.get(position).getName());
         capacity.setText(String.valueOf(classroomList.get(position).getCapacity() + " " + v.getResources().getText(R.string.classroom_capacity)));

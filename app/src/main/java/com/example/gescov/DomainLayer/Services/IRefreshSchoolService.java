@@ -7,6 +7,6 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface IRefreshSchoolService {
-    @GET("api/school/")
+    @GET("api/schools/")
     Call<String> refreshSchoolList();
 }

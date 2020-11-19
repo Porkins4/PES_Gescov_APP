@@ -2,6 +2,7 @@ package com.example.gescov.DomainLayer.Classmodels;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.DomainLayer.Services.IContagionService;
 import com.example.gescov.DomainLayer.Services.IRefreshSchoolClassroomsService;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
@@ -96,11 +97,11 @@ public class User {
         schoolService.sendReservationRequest(name,aula,row,col);
     }
 
-    public void createSchool(String schoolName, String schoolAddress, String schoolState, String schoolWebsite) {
+    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
         ISchoolService schoolService = ServicesFactory.getSchoolService();
         List<String> administratorsList = new ArrayList<>();
         administratorsList.add(id);
-        schoolService.createSchoolRequest(schoolName, schoolAddress, schoolState, schoolWebsite, administratorsList, id);
+        schoolService.createSchoolRequest(schoolName, schoolAddress, schoolTelephone, schoolWebsite, administratorsList, id);
     }
 
     public void deleteSchool(String schoolId) {
@@ -123,5 +124,9 @@ public class User {
             IContagionService iContagionService = ServicesFactory.getContagionService();
             iContagionService.sendAnswers(answers, idContagion);
         }
+    }
+
+    public void updateSchoolClassroom(String classroomId, String classroomName, int numRows, int numCols, int capacity) {
+        ServicesFactory.getUpdateSchoolClassroomController().updateSchoolClassroom(classroomId, classroomName, numRows, numCols, capacity);
     }
 }

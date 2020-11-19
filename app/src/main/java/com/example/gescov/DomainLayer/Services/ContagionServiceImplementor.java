@@ -25,8 +25,8 @@ public class ContagionServiceImplementor implements IContagionService {
 
     private Conection conection;
     private RequestQueue queue;
-    private final String ContagionLink = "https://gescov.herokuapp.com/api/contagion";
-    private final String TracingTestLink = "https://gescov.herokuapp.com/api/tracingTest";
+    private final String ContagionLink = "https://gescov.herokuapp.com/api/contagions";
+    private final String TracingTestLink = "https://gescov.herokuapp.com/api/tracingTests";
 
     public ContagionServiceImplementor() {}
 

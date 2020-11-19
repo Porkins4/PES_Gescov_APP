@@ -3,6 +3,7 @@ package com.example.gescov.DomainLayer.Services;
 import com.example.gescov.DomainLayer.Services.ResponseControllers.DeleteSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.ResponseControllers.RefreshSchoolClassroomsResponseController;
 import com.example.gescov.DomainLayer.Services.ResponseControllers.RefreshSchoolResponseController;
+import com.example.gescov.DomainLayer.Services.ResponseControllers.UpdateSchoolClassroomSchoolResponseController;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -17,6 +18,7 @@ public class ServicesFactory {
     private static DeleteSchoolResponseController deleteSchoolResponseController;
     private static RefreshSchoolResponseController refreshSchoolResponseController;
     private static RefreshSchoolClassroomsResponseController refreshSchoolClassroomsResponseController;
+    private static UpdateSchoolClassroomSchoolResponseController updateSchoolClassroomsResponseController;
 
     private static Retrofit getRetrofit() {
         if (retrofit != null) return retrofit;
@@ -58,4 +60,9 @@ public class ServicesFactory {
         return refreshSchoolClassroomsResponseController;
     }
 
+    public static UpdateSchoolClassroomSchoolResponseController getUpdateSchoolClassroomController() {
+        if (updateSchoolClassroomsResponseController != null) return updateSchoolClassroomsResponseController;
+        updateSchoolClassroomsResponseController = new UpdateSchoolClassroomSchoolResponseController(getRetrofit());
+        return updateSchoolClassroomsResponseController;
+    }
 }

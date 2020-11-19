@@ -30,17 +30,17 @@ public class SchoolClassroomsCrontroller {
         this.classroomActivity = classroomActivity;
     }
 
-    public AppCompatActivity getSchoolsAdministrationActivity() {
-        return classroomActivity;
-    }
-
     public void setSchoolListViewAdapter(Context context) {
         classroomListViewAdapter = new ClassroomListViewAdapter(context, getList());
     }
 
-    public void createClassroom(String classroomName, String classrooomCapacity, String classroomRows, String classroomCols) {
+    public void createClassroom(String classroomName, int classroomRows, int classroomCols) {
         School currentSchool = PresentationControlFactory.getSchoolsCrontroller().getCurrentSchool();
-        PresentationControlFactory.getViewLayerController().createClassroom(currentSchool, classroomName, classrooomCapacity, classroomRows, classroomCols);
+        PresentationControlFactory.getViewLayerController().createClassroom(currentSchool, classroomName, classroomRows, classroomCols);
+    }
+
+    public void updateClassroom(String classroomid, String classroomName, int numRows, int numCols) {
+        PresentationControlFactory.getViewLayerController().updateClassroom(classroomid, classroomName, numRows, numCols);
     }
 
     public ClassroomListViewAdapter getClassroomListViewSchoolAdapter() {
@@ -74,5 +74,7 @@ public class SchoolClassroomsCrontroller {
     }
 
 
-
+    public Classroom getClassroomByListPosition(int position) {
+        return classroomsList.size() > position ? classroomsList.get(position) : null;
+    }
 }

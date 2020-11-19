@@ -39,7 +39,7 @@ public class SchoolClassromListActivity extends AppCompatActivity {
 
         ListView list = findViewById(R.id.classrooms_list);
         SchoolClassroomsCrontroller controller = PresentationControlFactory.getClassroomsCrontroller();
-        controller.setSchoolListViewAdapter(list.getContext());
+        controller.setSchoolListViewAdapter(this);
         ClassroomListViewAdapter adapter = controller.getClassroomListViewSchoolAdapter();
         list.setAdapter(adapter);
 

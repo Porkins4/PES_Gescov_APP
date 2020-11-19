@@ -63,8 +63,8 @@ public class SchoolsCrontroller{
         getSchoolListViewAdapter().notifyDataSetChanged();
     }
 
-    public void createSchool(String schoolName, String schoolAddress, String schoolState, String schoolWebsite) {
-        PresentationControlFactory.getViewLayerController().createSchool(schoolName, schoolAddress, schoolState, schoolWebsite);
+    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
+        PresentationControlFactory.getViewLayerController().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite);
     }
 
     public void setCurrentSchool(String currentSchool) {

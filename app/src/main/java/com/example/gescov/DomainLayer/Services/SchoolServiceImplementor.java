@@ -30,14 +30,13 @@ import java.util.concurrent.ExecutionException;
 
 public class SchoolServiceImplementor implements ISchoolService {
     private Conection conection;
-    private final String GET_CLASSROOM_DIMENSIONS_URI = "https://gescov.herokuapp.com/api/classroom/distribution";
-    private final String GET_CLASSROOM_STUDENTS_URI = "https://gescov.herokuapp.com/api/assignment/classroom";
-    private final String POST_ASSIGNMENT_URI = "https://gescov.herokuapp.com/api/assignment";
-    private final String POST_CREATE_SCHOOL_URI = "https://gescov.herokuapp.com/api/school";
-    private final String POST_CREATE_CLASSROOM_URI = "https://gescov.herokuapp.com/api/classroom";
-    private final String GET_STUDENTS_IN_CLASS_SESSION = "https://gescov.herokuapp.com/api/assignment/classroom";
-    private final String GET_CHECK_LOGIN = "https://gescov.herokuapp.com/api/user/";
-    private final String GET_SCHOOL_CLASSROOMS_URI = "https://gescov.herokuapp.com/api/classroom/school";
+    private final String GET_CLASSROOM_DIMENSIONS_URI = "https://gescov.herokuapp.com/api/classrooms/distribution";
+    private final String GET_CLASSROOM_STUDENTS_URI = "https://gescov.herokuapp.com/api/assignments/classroom";
+    private final String POST_ASSIGNMENT_URI = "https://gescov.herokuapp.com/api/assignments";
+    private final String POST_CREATE_SCHOOL_URI = "https://gescov.herokuapp.com/api/schools";
+    private final String POST_CREATE_CLASSROOM_URI = "https://gescov.herokuapp.com/api/classrooms";
+    private final String GET_STUDENTS_IN_CLASS_SESSION = "https://gescov.herokuapp.com/api/assignments/classroom";
+    private final String GET_CHECK_LOGIN = "https://gescov.herokuapp.com/api/users/";
 
     public SchoolServiceImplementor() { }
 
@@ -164,19 +163,14 @@ public class SchoolServiceImplementor implements ISchoolService {
     }
 
     @Override
-    public void createSchoolRequest(String schoolName, String schoolAddress, String schoolState, String schoolWebsite, List<String> administratorsList, String creatorID) {
+    public void createSchoolRequest(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite, List<String> administratorsList, String creatorID) {
 
         try {
             JSONObject school = new JSONObject();
             school.put("address", schoolAddress);
             school.put("name", schoolName);
-            school.put("state", schoolState);
+            school.put("phone", schoolTelephone);
             school.put("website", schoolWebsite);
-            JSONArray administrators = new JSONArray();
-            for (String admin : administratorsList) {
-                administrators.put(admin);
-            }
-            school.put("administratorsID", administrators);
             school.put("creatorID", creatorID);
 
             RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
@@ -186,13 +180,16 @@ public class SchoolServiceImplementor implements ISchoolService {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-
+                            DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList();
                         }
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
                         System.out.println("something went wrong :(");
+                        for (String header : error.networkResponse.headers.values()) {
+                            System.out.println(header);
+                        }
                     }
                 }
             });
@@ -206,14 +203,14 @@ public class SchoolServiceImplementor implements ISchoolService {
     }
 
     @Override
-    public void createClassroomRequest(String schoolName, String schoolAdress, String schoolState, float schoolLatitude, float schoolLongitude, String schoolCreator, String classroomName, String classrooomCapacity, String classroomRows, String classroomCols) {
+    public void createClassroomRequest(String schoolID,  String classroomName, int classroomRows, int classroomCols) {
         JSONObject classroom = new JSONObject();
         try {
             classroom.put("name", classroomName);
-            classroom.put("capacity", classrooomCapacity);
+            classroom.put("capacity", classroomRows*classroomCols);
             classroom.put("numRows", classroomRows);
             classroom.put("numCols", classroomCols);
-            classroom.put("schoolID", DomainControlFactory.getSchoolsModelCrontroller().getCurrentSchool().getId());
+            classroom.put("schoolID", schoolID);
         } catch (JSONException e) {
             e.printStackTrace();
         }

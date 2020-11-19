@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
+import com.example.gescov.DomainLayer.Services.ResponseControllers.UpdateSchoolClassroomSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
@@ -59,8 +60,8 @@ public class UserController {
         loggedUser.sendReservationRequest(aula,row,col);
     }
 
-    public void createSchool(String schoolName, String schoolAddress, String schoolState, String schoolWebsite) {
-        loggedUser.createSchool(schoolName, schoolAddress, schoolState, schoolWebsite);
+    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
+        loggedUser.createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite);
     }
 
     public void deleteSchool(String schoolId) {
@@ -107,4 +108,8 @@ public class UserController {
         System.out.println(loggedUser.getIdContagion());
     }
 
+    public void updateClassroom(String classroomId, String classroomName, int numRows, int numCols) {
+        loggedUser.updateSchoolClassroom(classroomId, classroomName, numRows, numCols, numRows*numCols);
+
+    }
 }

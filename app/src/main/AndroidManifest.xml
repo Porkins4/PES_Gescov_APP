@@ -15,8 +15,8 @@
         <activity android:name=".ViewLayer.SignUpIn.LoginActivity" />
         <activity android:name=".ViewLayer.SignIn.SignInActivity" />
         <activity android:name=".ViewLayer.login.LoginActivity" />
-        <activity android:name=".ViewLayer.navigation.SettingsActivity" />
         <activity android:name=".ViewLayer.SchoolClassroomList.CreateClassroomFormActivity" />
+        <activity android:name=".ViewLayer.SchoolClassroomList.EditClassroomFormActivity" />
         <activity android:name=".ViewLayer.ClassroomDistribution.ClassroomDistributionActivity" />
         <activity android:name=".ViewLayer.MarkPositionInClassroom.MarkPositionInClassroom" />
         <activity android:name=".ViewLayer.home.CovidNotificationActivity" />

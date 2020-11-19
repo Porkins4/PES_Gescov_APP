@@ -49,8 +49,8 @@ public class ModelController {
         DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList();
     }
 
-    public void createSchool(String schoolName, String schoolAddress, String schoolState, String schoolWebsite) {
-        DomainControlFactory.getSchoolsModelCrontroller().createSchool(schoolName, schoolAddress, schoolState, schoolWebsite);
+    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
+        DomainControlFactory.getSchoolsModelCrontroller().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite);
     }
 
     public void notifyInfected(MutableLiveData<ContagionRequestResult> result) {
@@ -63,8 +63,12 @@ public class ModelController {
         userController.sendReservationRequest(aula,row,col);
     }
 
-    public void createClassroom(School currentSchool, String classroomName, String classrooomCapacity, String classroomRows, String classroomCols) {
-        currentSchool.createClassroom(classroomName, classrooomCapacity, classroomRows, classroomCols);
+    public void createClassroom(School currentSchool, String classroomName, int classroomRows, int classroomCols) {
+        currentSchool.createClassroom(classroomName, classroomRows, classroomCols);
+    }
+
+    public void updateClassroom(String classroomId, String classroomName, int numRows, int numCols) {
+        userController.updateClassroom(classroomId, classroomName, numRows, numCols);
     }
 
     public void deleteSchool(String schoolId) {
@@ -119,4 +123,5 @@ public class ModelController {
     public void setCurrentSchool(School currentSchool) {
         DomainControlFactory.getSchoolsModelCrontroller().setCurrentSchool(currentSchool);
     }
+
 }

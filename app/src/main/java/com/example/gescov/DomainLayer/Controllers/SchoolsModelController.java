@@ -44,8 +44,8 @@ public class SchoolsModelController {
         return getSchoolsList();
     }
 
-    public void createSchool(String schoolName, String schoolAddress, String schoolState, String schoolWebsite) {
-        DomainControlFactory.getUserController().createSchool(schoolName,schoolAddress, schoolState, schoolWebsite);
+    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
+        DomainControlFactory.getUserController().createSchool(schoolName,schoolAddress, schoolTelephone, schoolWebsite);
     }
 
     public List<School> getSchoolsList() {

@@ -1,6 +1,7 @@
 package com.example.gescov.DomainLayer.Classmodels;
 
 import com.example.gescov.DomainLayer.Services.ISchoolService;
+import com.example.gescov.DomainLayer.Services.ResponseControllers.UpdateSchoolClassroomSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 
 import java.util.List;
@@ -93,9 +94,9 @@ public class School {
         this.creatorID = creatorID;
     }
 
-    public void createClassroom(String classroomName, String classrooomCapacity, String classroomRows, String classroomCols) {
+    public void createClassroom( String classroomName, int classroomRows, int classroomCols) {
         ISchoolService schoolService = ServicesFactory.getSchoolService();
-        schoolService.createClassroomRequest(name, address, state, latitude, longitude, creatorID, classroomName, classrooomCapacity, classroomRows, classroomCols);
+        schoolService.createClassroomRequest(id, classroomName, classroomRows, classroomCols);
     }
 
 
@@ -110,4 +111,5 @@ public class School {
     public String getEmail() {
         return email;
     }
+
 }

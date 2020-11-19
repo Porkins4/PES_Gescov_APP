@@ -12,24 +12,31 @@ import com.example.gescov.ViewLayer.PresentationControlFactory;
 import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsCrontroller;
 
 public class CreateClassroomFormActivity extends AppCompatActivity {
+    protected EditText classroomName;
+    protected EditText classroomRows;
+    protected EditText classroomColumns;
+    protected Button createClassroomButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_classroom_form);
-        EditText classroomName = (EditText) findViewById(R.id.create_classroom_form_name_input);
-        EditText classroomCapacity = (EditText) findViewById(R.id.create_classroom_form_capacity_input);
-        EditText classroomRows = (EditText) findViewById(R.id.create_classroom_form_rows);
-        EditText classroomColumns = (EditText) findViewById(R.id.create_classroom_form_columns);
-        Button createClassroomButton = (Button) findViewById(R.id.create_classroom_form_create_button);
+        classroomName = (EditText) findViewById(R.id.create_classroom_form_name_input);
+        classroomRows = (EditText) findViewById(R.id.create_classroom_form_rows);
+        classroomColumns = (EditText) findViewById(R.id.create_classroom_form_columns);
+        createClassroomButton = (Button) findViewById(R.id.create_classroom_form_create_button);
 
         createClassroomButton.setOnClickListener(e -> {
-            SchoolClassroomsCrontroller classroomsCrontroller = PresentationControlFactory.getClassroomsCrontroller();
-            classroomsCrontroller.createClassroom(classroomName.getText().toString(), classroomCapacity.getText().toString(), classroomRows.getText().toString(), classroomColumns.getText().toString());
-
-            classroomsCrontroller.getClassroomListViewSchoolAdapter().notifyDataSetChanged();
-
-            finish();
+            setButtonActions();
         });
+    }
+
+    protected void setButtonActions () {
+        SchoolClassroomsCrontroller classroomsCrontroller = PresentationControlFactory.getClassroomsCrontroller();
+        classroomsCrontroller.createClassroom(classroomName.getText().toString(), Integer.valueOf(classroomRows.getText().toString()), Integer.valueOf(classroomColumns.getText().toString()));
+
+        classroomsCrontroller.getClassroomListViewSchoolAdapter().notifyDataSetChanged();
+
+        finish();
     }
 }

@@ -74,6 +74,7 @@
     <string name="create_classroom_form_button">Crear Aula</string>
 
 
+
     <!-- Llista de Contagis -->
     <string name="contagionlist">Llista de Contagis</string>
     <string name="contagion_list">"Llista de contagis "</string>
@@ -116,5 +117,10 @@
     <string name="notify_state">Notificar Estado</string>
     <string name="succesPositiveNotification">S\'ha notificat correctament el teu positiu</string>
     <string name="succesRecoveryNotification">S\'ha notificat la teva recuperació correctament</string>
+
+    <!-- default -->
+    <string name="edit">Editar</string>
+    <string name="update">Actualitza</string>
+
 
 </resources>

@@ -20,7 +20,7 @@ public interface ISchoolService {
 
     void createSchoolRequest(String schoolName, String schoolAddress, String schoolState, String schoolWebsite, List<String> administratorsList, String creatorID);
 
-    void createClassroomRequest(String schoolName, String schoolAddress, String schoolState, float schoolLatitude, float schoolLongitude, String schoolCreator, String classroomName, String classrooomCapacity, String classroomRows, String classroomCols);
+    void createClassroomRequest(String schoolName, String classroomName, int classroomRows, int classroomCols);
 
     void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult);
 

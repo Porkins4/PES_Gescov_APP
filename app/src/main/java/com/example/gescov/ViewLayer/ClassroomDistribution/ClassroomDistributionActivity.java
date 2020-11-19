@@ -27,7 +27,7 @@ public class ClassroomDistributionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classroom_ditribution);
-        classroomId = getIntent().getStringExtra("classroom_id");
+        classroomId = getIntent().getStringExtra("classroom_position");
         controller = new ClassroomDistributionController();
         showDistribution();
     }

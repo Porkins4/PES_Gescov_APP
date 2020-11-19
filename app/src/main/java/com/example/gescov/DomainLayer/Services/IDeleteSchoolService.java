@@ -8,6 +8,6 @@ import retrofit2.http.Query;
 
 public interface IDeleteSchoolService {
 
-    @DELETE ("api/school/{id}")
+    @DELETE ("api/schools/{id}")
     Call<ResponseBody> deleteSchoolById(@Path("id") String id, @Query("adminID") String userID);
 }
