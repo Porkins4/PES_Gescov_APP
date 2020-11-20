@@ -94,4 +94,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/school_details_webpage" />
+
+    <Button
+        android:id="@+id/join_school_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Unir'me a la escola"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/school_details_classroom_button"
+        app:layout_constraintStart_toStartOf="@+id/school_details_protocol_button"
+        app:layout_constraintTop_toBottomOf="@+id/school__details_email" />
 </androidx.constraintlayout.widget.ConstraintLayout>

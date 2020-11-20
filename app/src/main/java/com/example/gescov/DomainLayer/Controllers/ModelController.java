@@ -124,4 +124,12 @@ public class ModelController {
         DomainControlFactory.getSchoolsModelCrontroller().setCurrentSchool(currentSchool);
     }
 
+    public void getTypeProfile() {
+        DomainControlFactory.getUserController().getTypeProfile();
+    }
+
+    public void addStudentToCenter(String schoolName) {
+       String schoolId = DomainControlFactory.getSchoolsModelCrontroller().getSchoolIdByName(schoolName);
+       userController.addStudentToCenter(schoolId);
+    }
 }

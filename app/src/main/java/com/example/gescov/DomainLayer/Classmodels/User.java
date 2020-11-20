@@ -9,6 +9,9 @@ import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +22,8 @@ public class User {
     private String id;
     private String idContagion;
     private String ConfirmedInfected;
+    private Boolean risk;
+    private String profileType;
 
 
     public  User() {
@@ -128,5 +133,24 @@ public class User {
 
     public void updateSchoolClassroom(String classroomId, String classroomName, int numRows, int numCols, int capacity) {
         ServicesFactory.getUpdateSchoolClassroomController().updateSchoolClassroom(classroomId, classroomName, numRows, numCols, capacity);
+    }
+
+    public void getTypeProfile() {
+        ServicesFactory.getSchoolService().getTypeProfile(id);
+    }
+
+    public void setProfile(JSONObject response) {
+        try {
+            name = response.getString("name");
+            profileType = response.getString("profile");
+            risk = response.getBoolean("risk");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void addStudentToCenter(String schoolId) {
+        ServicesFactory.getSchoolService().addStudentToCenter(id,schoolId);
     }
 }

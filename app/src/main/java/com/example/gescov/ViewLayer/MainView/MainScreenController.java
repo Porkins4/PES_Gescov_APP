@@ -19,4 +19,8 @@ public class MainScreenController {
     public void updateUserName(String userName) {
         PresentationControlFactory.getViewLayerController().updateUserName(userName);
     }
+
+    public void getTypeProfile() {
+        PresentationControlFactory.getViewLayerController().getTypeProfile();
+    }
 }

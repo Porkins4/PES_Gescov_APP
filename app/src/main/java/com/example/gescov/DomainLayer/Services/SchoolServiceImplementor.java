@@ -1,10 +1,8 @@
 package com.example.gescov.DomainLayer.Services;
 
+import android.util.Pair;
+
 import androidx.lifecycle.MutableLiveData;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Retrofit;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -19,6 +17,7 @@ import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.Singletons.VolleyServices;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
+import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,6 +36,7 @@ public class SchoolServiceImplementor implements ISchoolService {
     private final String POST_CREATE_CLASSROOM_URI = "https://gescov.herokuapp.com/api/classrooms";
     private final String GET_STUDENTS_IN_CLASS_SESSION = "https://gescov.herokuapp.com/api/assignments/classroom";
     private final String GET_CHECK_LOGIN = "https://gescov.herokuapp.com/api/users/";
+    private  final String PUT_USER_TO_SCHOOL = "https://gescov.herokuapp.com/api/users/school/";
 
     public SchoolServiceImplementor() { }
 
@@ -296,4 +296,41 @@ public class SchoolServiceImplementor implements ISchoolService {
         requestQueue.add(stringRequest);
     }
 
+    @Override
+    public void getTypeProfile(String id) {
+        RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.POST, GET_CHECK_LOGIN+id, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        DomainControlFactory.getUserController().setUserProfile(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+
+        requestQueue.add(jsonObjectRequest);
+
+    }
+
+    @Override
+    public void addStudentToCenter(String id, String schoolId) {
+        RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.PUT, PUT_USER_TO_SCHOOL+id+"?schoolID="+schoolId, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    }
 }
