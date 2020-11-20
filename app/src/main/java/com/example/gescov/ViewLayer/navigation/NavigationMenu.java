@@ -6,10 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.gescov.ViewLayer.ContagionList.ContagionListFragment;
-import com.example.gescov.ViewLayer.PresentationControlFactory;
-import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsAdministrationFagment;
-import com.example.gescov.ViewLayer.SignUpIn.LoginActivity;
+import com.example.gescov.ViewLayer.Session.LoginActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -19,10 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;

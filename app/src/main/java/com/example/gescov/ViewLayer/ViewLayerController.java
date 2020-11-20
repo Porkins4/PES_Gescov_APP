@@ -2,11 +2,10 @@ package com.example.gescov.ViewLayer;
 
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
-import com.example.gescov.DomainLayer.Controllers.ModelController;
 import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
-import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
-import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.ViewLayer.Session.TokenVerificationResult;
+import com.example.gescov.ViewLayer.SchoolsAdministration.Classroom.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 
 import org.json.JSONException;

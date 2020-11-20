@@ -4,8 +4,6 @@ import com.example.gescov.DomainLayer.Controllers.ModelController;
 import com.example.gescov.DomainLayer.Controllers.SchoolClassroomsModelController;
 import com.example.gescov.DomainLayer.Controllers.SchoolsModelController;
 import com.example.gescov.DomainLayer.Controllers.UserController;
-import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolClassroomsCrontroller;
-import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsCrontroller;
 
 public class DomainControlFactory {
     private static SchoolsModelController schoolsModelController;

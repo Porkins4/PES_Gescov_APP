@@ -1,8 +1,8 @@
 
 package com.example.gescov.DomainLayer.Services;
 
-import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
-import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.ViewLayer.Session.TokenVerificationResult;
+import com.example.gescov.ViewLayer.SchoolsAdministration.Classroom.StudentsInClassSession.StudentsInClassSessionResult;
 
 import java.util.List;
 

@@ -26,7 +26,7 @@
 
 
         android:id="@+id/visualizar_aula"
-        android:name="com.example.gescov.ViewLayer.ClassroomDistribution.ClassroomDistributionFragment"
+        android:name="com.example.gescov.ViewLayer.SchoolsAdministration.Classroom.ClassroomDistribution.ClassroomDistributionFragment"
         android:label="@string/Catalan_classroom_name"
         tools:layout="@layout/fragment_show_distribution" />
     <fragment

@@ -1,10 +1,6 @@
 package com.example.gescov.DomainLayer.Services;
 
 import androidx.lifecycle.MutableLiveData;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Retrofit;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -17,8 +13,8 @@ import com.android.volley.toolbox.Volley;
 import com.example.gescov.DomainLayer.Conection;
 import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.Singletons.VolleyServices;
-import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
-import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
+import com.example.gescov.ViewLayer.SchoolsAdministration.Classroom.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.ViewLayer.Session.TokenVerificationResult;
 
 import org.json.JSONArray;
 import org.json.JSONException;

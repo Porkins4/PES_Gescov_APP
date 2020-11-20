@@ -4,10 +4,9 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
-import com.example.gescov.DomainLayer.Services.ResponseControllers.UpdateSchoolClassroomSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
-import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
-import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.ViewLayer.Session.TokenVerificationResult;
+import com.example.gescov.ViewLayer.SchoolsAdministration.Classroom.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 import java.util.List;
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/theback"
-    tools:context=".ViewLayer.MarkPositionInClassroom.MarkPositionInClassroom">
+    tools:context=".ViewLayer.SchoolsAdministration.Classroom.MarkPositionInClassroom.MarkPositionInClassroom">
 
     <Button
         android:id="@+id/mark_position_in_classroom_button"

@@ -1,12 +1,11 @@
 package com.example.gescov.ViewLayer;
 
 import com.example.gescov.ViewLayer.ContagionList.ContagionController;
-import com.example.gescov.ViewLayer.MainView.MainScreenController;
-import com.example.gescov.ViewLayer.MarkPositionInClassroom.MarkPositionInClassroom;
-import com.example.gescov.ViewLayer.MarkPositionInClassroom.MarkPositionInClassroomController;
-import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolClassroomsCrontroller;
+import com.example.gescov.ViewLayer.Session.MainScreenController;
+import com.example.gescov.ViewLayer.SchoolsAdministration.Classroom.MarkPositionInClassroom.MarkPositionInClassroomController;
+import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolClassroomList.SchoolClassroomsCrontroller;
 import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsCrontroller;
-import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionController;
+import com.example.gescov.ViewLayer.SchoolsAdministration.Classroom.StudentsInClassSession.StudentsInClassSessionController;
 import com.example.gescov.ViewLayer.home.NotifyContagionController;
 import com.example.gescov.ViewLayer.home.TracingTestController;
 

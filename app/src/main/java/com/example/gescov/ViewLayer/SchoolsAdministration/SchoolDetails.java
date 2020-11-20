@@ -11,9 +11,7 @@ import android.widget.TextView;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.R;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
-import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolClassromListActivity;
-import com.example.gescov.ViewLayer.ViewLayerController;
-import com.example.gescov.ViewLayer.navigation.NavigationMenu;
+import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolClassroomList.SchoolClassromListActivity;
 
 public class SchoolDetails extends AppCompatActivity {
     private SchoolsCrontroller controller;

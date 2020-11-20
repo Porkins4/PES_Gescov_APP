@@ -12,16 +12,16 @@
         android:theme="@style/Theme.Gescov">
         <activity android:name=".ViewLayer.SchoolsAdministration.SchoolDetails"></activity>
         <activity android:name=".ViewLayer.home.DailyTestActivity" />
-        <activity android:name=".ViewLayer.SignUpIn.LoginActivity" />
+        <activity android:name=".ViewLayer.Session.LoginActivity" />
         <activity android:name=".ViewLayer.SignIn.SignInActivity" />
         <activity android:name=".ViewLayer.login.LoginActivity" />
-        <activity android:name=".ViewLayer.SchoolClassroomList.CreateClassroomFormActivity" />
-        <activity android:name=".ViewLayer.SchoolClassroomList.EditClassroomFormActivity" />
-        <activity android:name=".ViewLayer.ClassroomDistribution.ClassroomDistributionActivity" />
-        <activity android:name=".ViewLayer.MarkPositionInClassroom.MarkPositionInClassroom" />
+        <activity android:name=".ViewLayer.SchoolsAdministration.SchoolClassroomList.CreateClassroomFormActivity" />
+        <activity android:name=".ViewLayer.SchoolsAdministration.SchoolClassroomList.EditClassroomFormActivity" />
+        <activity android:name=".ViewLayer.SchoolsAdministration.Classroom.ClassroomDistribution.ClassroomDistributionActivity" />
+        <activity android:name=".ViewLayer.SchoolsAdministration.Classroom.MarkPositionInClassroom.MarkPositionInClassroom" />
         <activity android:name=".ViewLayer.home.CovidNotificationActivity" />
         <activity
-            android:name=".ViewLayer.SchoolClassroomList.SchoolClassromListActivity"
+            android:name=".ViewLayer.SchoolsAdministration.SchoolClassroomList.SchoolClassromListActivity"
             android:label="@string/title_activity_school_classrom_list"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".ViewLayer.SchoolsAdministration.CreateSchoolFormActivity" />
@@ -30,7 +30,7 @@
             android:label="@string/title_activity_navigation_menu"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
-            android:name=".ViewLayer.MainView.MainScreenActivity"
+            android:name=".ViewLayer.Session.MainScreenActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Gescov.NoActionBar">
             <intent-filter>
