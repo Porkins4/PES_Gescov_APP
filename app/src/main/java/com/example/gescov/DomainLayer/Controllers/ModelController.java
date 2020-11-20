@@ -71,6 +71,10 @@ public class ModelController {
         userController.updateClassroom(classroomId, classroomName, numRows, numCols);
     }
 
+    public void daleteClassroom(String classroomId) {
+        userController.deleteClassroom(classroomId);
+    }
+
     public void deleteSchool(String schoolId) {
         userController.deleteSchool(schoolId);
     }

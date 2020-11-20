@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
-import com.example.gescov.DomainLayer.Services.ResponseControllers.UpdateSchoolClassroomSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
@@ -114,6 +113,10 @@ public class UserController {
     public void updateClassroom(String classroomId, String classroomName, int numRows, int numCols) {
         loggedUser.updateSchoolClassroom(classroomId, classroomName, numRows, numCols, numRows*numCols);
 
+    }
+
+    public void deleteClassroom(String classroomId) {
+        loggedUser.deleteSchoolClassroom(classroomId);
     }
 
     public void getTypeProfile() {

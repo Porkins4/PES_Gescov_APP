@@ -57,6 +57,11 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().updateClassroom(classroomid, classroomName, numRows, numCols);
     }
 
+
+    public void deleteClassroom(String classroomId) {
+        DomainControlFactory.getModelController().daleteClassroom(classroomId);
+    }
+
     public void deleteSchool(School school) {
         DomainControlFactory.getModelController().deleteSchool(school.getId());
     }
@@ -122,4 +127,5 @@ public class ViewLayerController {
     public void addStudentToCenter(String schoolName) {
         DomainControlFactory.getModelController().addStudentToCenter(schoolName);
     }
+
 }

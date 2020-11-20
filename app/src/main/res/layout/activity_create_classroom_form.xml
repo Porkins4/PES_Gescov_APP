@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ViewLayer.SchoolClassroomList.CreateClassroomFormActivity">
 
+    <Button
+        android:id="@+id/create_classroom_form_delete"
+        style="@style/Theme.Gescov_DeleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/delete_red"
+        android:text="@string/create_classroom_form_delete"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <EditText
         android:id="@+id/create_classroom_form_name_input"
         android:layout_width="wrap_content"

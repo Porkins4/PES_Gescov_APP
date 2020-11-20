@@ -57,6 +57,7 @@
     <string name="classroom_rows">Files</string>
     <string name="classroom_cols">Columnes</string>
     <string name="classroom_capacity">Places</string>
+    <string name="create_classroom_form_delete">Eliminar Aula</string>
 
 
     <!-- Classroom distribution -->

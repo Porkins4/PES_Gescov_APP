@@ -1,7 +1,6 @@
 package com.example.gescov.DomainLayer.Classmodels;
 
 import com.example.gescov.DomainLayer.Services.ISchoolService;
-import com.example.gescov.DomainLayer.Services.ResponseControllers.UpdateSchoolClassroomSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 
 import java.util.List;

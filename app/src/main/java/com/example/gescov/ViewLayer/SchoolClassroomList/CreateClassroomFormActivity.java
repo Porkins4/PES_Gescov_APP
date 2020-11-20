@@ -7,15 +7,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.gescov.R;
-import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
-import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsCrontroller;
 
 public class CreateClassroomFormActivity extends AppCompatActivity {
     protected EditText classroomName;
     protected EditText classroomRows;
     protected EditText classroomColumns;
     protected Button createClassroomButton;
+    protected Button deleteClassroomButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +24,14 @@ public class CreateClassroomFormActivity extends AppCompatActivity {
         classroomRows = (EditText) findViewById(R.id.create_classroom_form_rows);
         classroomColumns = (EditText) findViewById(R.id.create_classroom_form_columns);
         createClassroomButton = (Button) findViewById(R.id.create_classroom_form_create_button);
+        deleteClassroomButton = (Button) findViewById(R.id.create_classroom_form_delete);
 
         createClassroomButton.setOnClickListener(e -> {
-            setButtonActions();
+            setMainButtonActions();
         });
     }
 
-    protected void setButtonActions () {
+    protected void setMainButtonActions() {
         SchoolClassroomsCrontroller classroomsCrontroller = PresentationControlFactory.getClassroomsCrontroller();
         classroomsCrontroller.createClassroom(classroomName.getText().toString(), Integer.valueOf(classroomRows.getText().toString()), Integer.valueOf(classroomColumns.getText().toString()));
 

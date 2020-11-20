@@ -153,4 +153,8 @@ public class User {
     public void addStudentToCenter(String schoolId) {
         ServicesFactory.getSchoolService().addStudentToCenter(id,schoolId);
     }
+
+    public void deleteSchoolClassroom(String classroomId) {
+        ServicesFactory.getDeleteSchoolClassroomResponseController().deleteSchoolClassroomRequest(classroomId, id);
+    }
 }

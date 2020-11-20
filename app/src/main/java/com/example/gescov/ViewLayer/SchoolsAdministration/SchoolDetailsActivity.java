@@ -15,7 +15,7 @@ import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolClassromListActivi
 import com.example.gescov.ViewLayer.ViewLayerController;
 import com.example.gescov.ViewLayer.navigation.NavigationMenu;
 
-public class SchoolDetails extends AppCompatActivity {
+public class SchoolDetailsActivity extends AppCompatActivity {
     private SchoolsCrontroller controller;
     private School school;
     @Override

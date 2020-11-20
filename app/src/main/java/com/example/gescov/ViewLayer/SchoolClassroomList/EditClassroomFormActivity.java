@@ -1,9 +1,11 @@
 package com.example.gescov.ViewLayer.SchoolClassroomList;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
+import com.example.gescov.DomainLayer.Controllers.SchoolClassroomsModelController;
 import com.example.gescov.R;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
 
@@ -17,6 +19,12 @@ public class EditClassroomFormActivity extends CreateClassroomFormActivity {
         super.onCreate(savedInstanceState);
         int position = getIntent().getIntExtra("classroom_position", 0 );
         classroom = PresentationControlFactory.getClassroomsCrontroller().getClassroomByListPosition(position);
+        deleteClassroomButton.setVisibility(View.VISIBLE);
+        deleteClassroomButton.setOnClickListener(e -> {
+            SchoolClassroomsCrontroller classroomsCrontroller = PresentationControlFactory.getClassroomsCrontroller();
+            classroomsCrontroller.deleteClassroom(classroom.getId());
+            finish();
+        });
         fillFields();
 
     }
@@ -29,12 +37,9 @@ public class EditClassroomFormActivity extends CreateClassroomFormActivity {
     }
 
     @Override
-    protected void setButtonActions () {
+    protected void setMainButtonActions() {
         SchoolClassroomsCrontroller classroomsCrontroller = PresentationControlFactory.getClassroomsCrontroller();
         classroomsCrontroller.updateClassroom(classroom.getId(), classroomName.getText().toString(), Integer.valueOf(classroomRows.getText().toString()), Integer.valueOf(classroomColumns.getText().toString()));
-
-        classroomsCrontroller.getClassroomListViewSchoolAdapter().notifyDataSetChanged();
-
         finish();
     }
 }

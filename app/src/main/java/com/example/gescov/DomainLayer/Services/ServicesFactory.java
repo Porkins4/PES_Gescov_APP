@@ -1,9 +1,11 @@
 package com.example.gescov.DomainLayer.Services;
 
+import com.example.gescov.DomainLayer.Classmodels.User;
+import com.example.gescov.DomainLayer.Services.ResponseControllers.DeleteSchoolClassroomResponseController;
 import com.example.gescov.DomainLayer.Services.ResponseControllers.DeleteSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.ResponseControllers.RefreshSchoolClassroomsResponseController;
 import com.example.gescov.DomainLayer.Services.ResponseControllers.RefreshSchoolResponseController;
-import com.example.gescov.DomainLayer.Services.ResponseControllers.UpdateSchoolClassroomSchoolResponseController;
+import com.example.gescov.DomainLayer.Services.ResponseControllers.UpdateSchoolClassroomResponseController;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -18,7 +20,8 @@ public class ServicesFactory {
     private static DeleteSchoolResponseController deleteSchoolResponseController;
     private static RefreshSchoolResponseController refreshSchoolResponseController;
     private static RefreshSchoolClassroomsResponseController refreshSchoolClassroomsResponseController;
-    private static UpdateSchoolClassroomSchoolResponseController updateSchoolClassroomsResponseController;
+    private static UpdateSchoolClassroomResponseController updateSchoolClassroomsResponseController;
+    private static DeleteSchoolClassroomResponseController deleteSchoolClassroomsResponseController;
 
     private static Retrofit getRetrofit() {
         if (retrofit != null) return retrofit;
@@ -60,9 +63,15 @@ public class ServicesFactory {
         return refreshSchoolClassroomsResponseController;
     }
 
-    public static UpdateSchoolClassroomSchoolResponseController getUpdateSchoolClassroomController() {
+    public static UpdateSchoolClassroomResponseController getUpdateSchoolClassroomController() {
         if (updateSchoolClassroomsResponseController != null) return updateSchoolClassroomsResponseController;
-        updateSchoolClassroomsResponseController = new UpdateSchoolClassroomSchoolResponseController(getRetrofit());
+        updateSchoolClassroomsResponseController = new UpdateSchoolClassroomResponseController(getRetrofit());
         return updateSchoolClassroomsResponseController;
+    }
+
+    public static DeleteSchoolClassroomResponseController getDeleteSchoolClassroomResponseController() {
+        if (deleteSchoolClassroomsResponseController != null) return deleteSchoolClassroomsResponseController;
+        deleteSchoolClassroomsResponseController = new DeleteSchoolClassroomResponseController(getRetrofit());
+        return deleteSchoolClassroomsResponseController;
     }
 }

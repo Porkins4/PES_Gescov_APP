@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gescov">
-        <activity android:name=".ViewLayer.SchoolsAdministration.SchoolDetails"></activity>
+        <activity android:name=".ViewLayer.SchoolsAdministration.SchoolDetailsActivity"></activity>
         <activity android:name=".ViewLayer.home.DailyTestActivity" />
         <activity android:name=".ViewLayer.SignUpIn.LoginActivity" />
         <activity android:name=".ViewLayer.SignIn.SignInActivity" />

@@ -8,10 +8,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class UpdateSchoolClassroomSchoolResponseController implements Callback<String> {
+public class UpdateSchoolClassroomResponseController implements Callback<String> {
     private final Retrofit retrofit;
 
-    public UpdateSchoolClassroomSchoolResponseController(Retrofit retrofit) {
+    public UpdateSchoolClassroomResponseController(Retrofit retrofit) {
         this.retrofit = retrofit;
     }
 
