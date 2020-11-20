@@ -33,6 +33,8 @@ public class SchoolDetails extends AppCompatActivity {
         Button protocolsButton = (Button) findViewById(R.id.school_details_protocol_button);
         Button classroomsListButton = (Button) findViewById(R.id.school_details_classroom_button);
         Button deleteButton = (Button) findViewById(R.id.school_details_delete);
+        Button joinSchoolButton = (Button) findViewById(R.id.join_school_button);
+
 
         name.setText(school.getName());
 
@@ -50,6 +52,14 @@ public class SchoolDetails extends AppCompatActivity {
             Intent intent = new Intent(this, SchoolClassromListActivity.class);
             startActivity(intent);
         });
+
+        joinSchoolButton.setOnClickListener(e-> {
+            PresentationControlFactory.getSchoolsCrontroller().addStudentToCenter(name.getText().toString());
+
+
+        });
+
+
 
     }
 

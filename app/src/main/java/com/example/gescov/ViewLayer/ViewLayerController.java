@@ -114,4 +114,12 @@ public class ViewLayerController {
     public void setCurrentSchool(School currentSchool) {
         DomainControlFactory.getModelController().setCurrentSchool(currentSchool);
     }
+
+    public void getTypeProfile() {
+        DomainControlFactory.getModelController().getTypeProfile();
+    }
+
+    public void addStudentToCenter(String schoolName) {
+        DomainControlFactory.getModelController().addStudentToCenter(schoolName);
+    }
 }

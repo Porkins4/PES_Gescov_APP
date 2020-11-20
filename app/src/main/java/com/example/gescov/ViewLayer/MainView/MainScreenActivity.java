@@ -42,10 +42,15 @@ public class MainScreenActivity extends AppCompatActivity {
                 if (tokenVerificationResult.getSuccess()) {
                     updateUserId();
                     updateUserName();
+                    getTypeProfile();
                     showMenu();
                 }
             }
         });
+    }
+
+    private void getTypeProfile() {
+        PresentationControlFactory.getMainScreenController().getTypeProfile();
     }
 
     private void updateUserName() {

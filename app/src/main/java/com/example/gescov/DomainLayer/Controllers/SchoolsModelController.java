@@ -72,4 +72,17 @@ public class SchoolsModelController {
     public School getCurrentSchool() {
         return currentSchool;
     }
+
+    public String getSchoolIdByName(String name) {
+        Boolean found = false;
+        String id = null;
+        for ( int i = 0; i < schoolsList.size() && (!found) ; ++i) {
+            School schoolaux = schoolsList.get(i);
+            if (schoolaux.getName() == name ) {
+                id = schoolaux.getId();
+                found = true;
+            }
+        }
+        return id;
+    }
 }

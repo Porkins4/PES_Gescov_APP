@@ -26,4 +26,7 @@ public interface ISchoolService {
 
     void checkUserLogin(MutableLiveData<TokenVerificationResult> r);
 
+    void getTypeProfile(String id);
+
+    void addStudentToCenter(String id, String schoolId);
 }

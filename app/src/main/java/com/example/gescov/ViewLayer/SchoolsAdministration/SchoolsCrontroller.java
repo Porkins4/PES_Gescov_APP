@@ -86,4 +86,8 @@ public class SchoolsCrontroller{
             e.printStackTrace();
         }
     }
+
+    public void addStudentToCenter(String schoolName) {
+        PresentationControlFactory.getViewLayerController().addStudentToCenter(schoolName);
+    }
 }

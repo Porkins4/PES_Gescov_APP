@@ -9,6 +9,9 @@ import com.example.gescov.DomainLayer.Services.ServicesFactory;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
+
+import org.json.JSONObject;
+
 import java.util.List;
 
 public class UserController {
@@ -111,5 +114,17 @@ public class UserController {
     public void updateClassroom(String classroomId, String classroomName, int numRows, int numCols) {
         loggedUser.updateSchoolClassroom(classroomId, classroomName, numRows, numCols, numRows*numCols);
 
+    }
+
+    public void getTypeProfile() {
+        loggedUser.getTypeProfile();
+    }
+
+    public void setUserProfile(JSONObject response) {
+        loggedUser.setProfile(response);
+    }
+
+    public void addStudentToCenter(String schoolId) {
+        loggedUser.addStudentToCenter(schoolId);
     }
 }
