@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
-import com.example.gescov.ViewLayer.PresentationControlFactory;
+import com.example.gescov.ViewLayer.ViewLayerSingletons.PresentationControlFactory;
 import com.example.gescov.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

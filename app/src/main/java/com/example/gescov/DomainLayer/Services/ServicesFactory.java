@@ -1,11 +1,14 @@
 package com.example.gescov.DomainLayer.Services;
 
-import com.example.gescov.DomainLayer.Classmodels.User;
-import com.example.gescov.DomainLayer.Services.ResponseControllers.DeleteSchoolClassroomResponseController;
-import com.example.gescov.DomainLayer.Services.ResponseControllers.DeleteSchoolResponseController;
-import com.example.gescov.DomainLayer.Services.ResponseControllers.RefreshSchoolClassroomsResponseController;
-import com.example.gescov.DomainLayer.Services.ResponseControllers.RefreshSchoolResponseController;
-import com.example.gescov.DomainLayer.Services.ResponseControllers.UpdateSchoolClassroomResponseController;
+import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.DeleteSchoolClassroomResponseController;
+import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.DeleteSchoolResponseController;
+import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolClassroomsResponseController;
+import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolResponseController;
+import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateSchoolClassroomResponseController;
+import com.example.gescov.DomainLayer.Services.Volley.Implementors.ContagionServiceImplementor;
+import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IContagionService;
+import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
+import com.example.gescov.DomainLayer.Services.Volley.Implementors.SchoolServiceImplementor;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;

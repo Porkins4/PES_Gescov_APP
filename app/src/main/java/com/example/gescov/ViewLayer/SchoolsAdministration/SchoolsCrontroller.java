@@ -1,11 +1,10 @@
 package com.example.gescov.ViewLayer.SchoolsAdministration;
 
 import android.content.Context;
-import android.widget.Adapter;
 
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
-import com.example.gescov.ViewLayer.PresentationControlFactory;
+import com.example.gescov.ViewLayer.ViewLayerSingletons.PresentationControlFactory;
 
 import org.json.JSONException;
 

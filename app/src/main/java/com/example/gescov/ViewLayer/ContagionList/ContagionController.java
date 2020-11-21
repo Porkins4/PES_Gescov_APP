@@ -2,9 +2,7 @@ package com.example.gescov.ViewLayer.ContagionList;
 
 
 
-import com.example.gescov.ViewLayer.PresentationControlFactory;
-import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsAdministrationFagment;
-import com.example.gescov.ViewLayer.ViewLayerController;
+import com.example.gescov.ViewLayer.ViewLayerSingletons.PresentationControlFactory;
 
 import org.json.JSONException;
 

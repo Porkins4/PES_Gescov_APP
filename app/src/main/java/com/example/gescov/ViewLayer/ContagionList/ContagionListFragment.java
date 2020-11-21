@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.gescov.R;
-import com.example.gescov.ViewLayer.PresentationControlFactory;
+import com.example.gescov.ViewLayer.ViewLayerSingletons.PresentationControlFactory;
 
 import org.json.JSONArray;
 import org.json.JSONException;

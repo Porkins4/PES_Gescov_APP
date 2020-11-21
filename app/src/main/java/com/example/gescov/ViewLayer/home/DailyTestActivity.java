@@ -10,7 +10,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.gescov.R;
-import com.example.gescov.ViewLayer.PresentationControlFactory;
+import com.example.gescov.ViewLayer.ViewLayerSingletons.PresentationControlFactory;
 import java.util.ArrayList;
 import java.util.List;
 
