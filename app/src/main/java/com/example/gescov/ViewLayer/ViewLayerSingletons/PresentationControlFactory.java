@@ -6,6 +6,7 @@ import com.example.gescov.ViewLayer.MarkPositionInClassroom.MarkPositionInClassr
 import com.example.gescov.ViewLayer.ClassroomActivities.SchoolClassroomList.SchoolClassroomsCrontroller;
 import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsCrontroller;
 import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionController;
+import com.example.gescov.ViewLayer.UpdateUserProfile.UpdateUserProfileController;
 import com.example.gescov.ViewLayer.home.NotifyContagionController;
 import com.example.gescov.ViewLayer.home.TracingTestController;
 
@@ -19,6 +20,7 @@ public class PresentationControlFactory {
     private static StudentsInClassSessionController studentsInClassSessionController;
     private static TracingTestController tracingTestController;
     private static LoadingProfileController loadingProfileController;
+    private static UpdateUserProfileController updateUserProfileController;
 
     public static ViewLayerController getViewLayerController() {
         if (viewLayerController != null)
@@ -78,5 +80,12 @@ public class PresentationControlFactory {
             return loadingProfileController;
         loadingProfileController = new LoadingProfileController();
         return loadingProfileController;
+    }
+
+    public static UpdateUserProfileController getUpdateUserProfileController() {
+        if (updateUserProfileController != null)
+            return updateUserProfileController;
+        updateUserProfileController = new UpdateUserProfileController();
+        return updateUserProfileController;
     }
 }

@@ -136,4 +136,8 @@ public class ModelController {
        String schoolId = DomainControlFactory.getSchoolsModelCrontroller().getSchoolIdByName(schoolName);
        userController.addStudentToCenter(schoolId);
     }
+
+    public void changeUserProfile(String profile) {
+        userController.changeUserProfile(profile);
+    }
 }

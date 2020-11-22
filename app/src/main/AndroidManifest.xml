@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.gescov">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".ViewLayer.ViewLayerSingletons.GescovApplication"
         android:allowBackup="true"
@@ -10,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gescov">
-        <activity android:name=".ViewLayer.SchoolsAdministration.SchoolDetailsActivity"></activity>
+        <activity android:name=".ViewLayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity"></activity>
+        <activity android:name=".ViewLayer.UpdateUserProfile.UpdateUserProfileActivity" />
+        <activity android:name=".ViewLayer.SchoolsAdministration.SchoolDetailsActivity" />
         <activity android:name=".ViewLayer.home.DailyTestActivity" />
         <activity android:name=".ViewLayer.LoginAndRegister.LoginActivity" />
         <activity android:name=".ViewLayer.SignIn.SignInActivity" />
@@ -40,8 +45,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

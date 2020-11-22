@@ -130,4 +130,12 @@ public class UserController {
     public void addStudentToCenter(String schoolId) {
         loggedUser.addStudentToCenter(schoolId);
     }
+
+    public void changeUserProfile(String profile) {
+        loggedUser.changeUSerProfile(profile);
+    }
+
+    public void setUserType(String profile) {
+        loggedUser.setProfileType(profile);
+    }
 }

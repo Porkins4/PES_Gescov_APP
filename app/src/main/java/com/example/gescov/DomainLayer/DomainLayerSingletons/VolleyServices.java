@@ -33,8 +33,8 @@ public class VolleyServices {
         getRequestQueue().add(req);
     }
 
-    public static void add(JsonArrayRequest req) {
-
+    public <T> void addRequest(Request<T> req) {
+        requestQueue.add(req);
     }
 
     public static void setContext(Context context) {

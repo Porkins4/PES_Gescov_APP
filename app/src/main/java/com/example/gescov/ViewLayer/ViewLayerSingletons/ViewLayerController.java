@@ -127,4 +127,7 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().addStudentToCenter(schoolName);
     }
 
+    public void changeUserProfile(String profile) {
+        DomainControlFactory.getModelController().changeUserProfile(profile);
+    }
 }

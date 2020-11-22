@@ -6,9 +6,11 @@ import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.Refr
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateSchoolClassroomResponseController;
 import com.example.gescov.DomainLayer.Services.Volley.Implementors.ContagionServiceImplementor;
+import com.example.gescov.DomainLayer.Services.Volley.Implementors.UserServiceImplementor;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IContagionService;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.DomainLayer.Services.Volley.Implementors.SchoolServiceImplementor;
+import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IUserService;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -20,6 +22,7 @@ public class ServicesFactory {
 
     private static IContagionService contagionservice;
     private static ISchoolService schoolService;
+    private static IUserService userService;
     private static DeleteSchoolResponseController deleteSchoolResponseController;
     private static RefreshSchoolResponseController refreshSchoolResponseController;
     private static RefreshSchoolClassroomsResponseController refreshSchoolClassroomsResponseController;
@@ -76,5 +79,11 @@ public class ServicesFactory {
         if (deleteSchoolClassroomsResponseController != null) return deleteSchoolClassroomsResponseController;
         deleteSchoolClassroomsResponseController = new DeleteSchoolClassroomResponseController(getRetrofit());
         return deleteSchoolClassroomsResponseController;
+    }
+
+    public static IUserService getUserService() {
+        if (userService != null) return userService;
+        userService = new UserServiceImplementor();
+        return userService;
     }
 }
