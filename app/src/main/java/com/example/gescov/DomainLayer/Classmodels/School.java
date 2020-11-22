@@ -34,6 +34,9 @@ public class School {
         this.name = name;
     }
 
+
+    public School(){}
+
     public School(String id, String name, String address, String state, String creatorID, String email, String telephoneNumber, int longitude, int latitude, List<String> listAdministratorsID) {
         this.id = id;
         this.name = name;

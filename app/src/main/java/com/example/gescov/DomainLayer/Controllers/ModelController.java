@@ -134,8 +134,8 @@ public class ModelController {
     }
 
     public void addStudentToCenter(String schoolName, MutableLiveData<SchoolRequestResult> result) {
-       String schoolId = DomainControlFactory.getSchoolsModelCrontroller().getSchoolIdByName(schoolName);
-       userController.addStudentToCenter(schoolId,result);
+       School school = DomainControlFactory.getSchoolsModelCrontroller().getSchoolByName(schoolName);
+       userController.addStudentToCenter(school,result);
     }
 
 }

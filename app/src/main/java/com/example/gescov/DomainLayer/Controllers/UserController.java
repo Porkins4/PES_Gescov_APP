@@ -2,6 +2,7 @@ package com.example.gescov.DomainLayer.Controllers;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
@@ -128,7 +129,7 @@ public class UserController {
         loggedUser.setProfile(response);
     }
 
-    public void addStudentToCenter(String schoolId, MutableLiveData<SchoolRequestResult> result) {
-        loggedUser.addStudentToCenter(schoolId,result);
+    public void addStudentToCenter(School school, MutableLiveData<SchoolRequestResult> result) {
+        loggedUser.addStudentToCenter(school,result);
     }
 }
