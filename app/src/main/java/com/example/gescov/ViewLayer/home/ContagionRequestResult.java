@@ -24,4 +24,5 @@ public class ContagionRequestResult {
     public void setContagionId(String contagionId) {
         ContagionId = contagionId;
     }
+
 }

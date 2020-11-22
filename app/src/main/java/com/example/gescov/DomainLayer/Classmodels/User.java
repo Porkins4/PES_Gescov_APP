@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.gescov.DomainLayer.Services.IContagionService;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
+import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 
 import org.json.JSONException;
@@ -16,7 +17,7 @@ import java.util.List;
 public class User {
 
     private String name;
-    private School schools;
+    private List<String> schoolsID;
     private String id;
     private String idContagion;
     private String ConfirmedInfected;
@@ -37,15 +38,24 @@ public class User {
 
 
     public  User() {
-        //name = "El Bixo";
-        schools = new School("FIB");
-        schools.setId("5fa9d285e59d4c4c5d571519");
+        schools = new School();
     }
 
     public User(String Name, String userID) {
         this.name = Name;
         this.id = userID;
     }
+
+
+    public User (String name, List<String> schools, String id, boolean risk, String profileType) {
+        this.name = name;
+        this.schoolsID =  schools;
+        this.id = id;
+        this.risk = risk;
+        this.profileType = profileType;
+    }
+
+
 
     public User(String name) { this.name = name;}
 
@@ -57,12 +67,12 @@ public class User {
         this.name = name;
     }
 
-    public School getSchools() {
-        return schools;
+    public List<String> getSchoolsID() {
+        return schoolsID;
     }
 
-    public void setSchools(School schools) {
-        this.schools = schools;
+    public void setSchoolsID(List<String> schoolsID) {
+        this.schoolsID = schoolsID;
     }
 
     public String getId() {
@@ -81,19 +91,25 @@ public class User {
 
     public void setConfirmedInfected(String confirmedInfected) { ConfirmedInfected = confirmedInfected; }
 
+    public void setRisk (boolean risk) {
+        this.risk = risk;
+    }
+
     public String getCntagionsOfCenter() {
         // ahora es una lista de schools
-        String schoolId = schools.getId();
+        String schoolId = schoolsID.get(0);
         IContagionService icontragionService = ServicesFactory.getContagionService();
         return icontragionService.getContagionList(name,schoolId);
     }
 
     public String getClassroomDimensions(String schoolId, String classroomId) {
-        return schools.getClassroomDimensions(schoolId,classroomId);
+        School school = DomainControlFactory.getSchoolsModelCrontroller().getSchoolById(schoolId);
+        return school.getClassroomDimensions(schoolId,classroomId);
     }
 
     public String getStudentsInClassroom(String classroom) {
-        return schools.getStudentsInClassroom(classroom);
+        School school = DomainControlFactory.getSchoolsModelCrontroller().getSchoolById(schoolsID.get(0));
+        return school.getStudentsInClassroom(classroom);
     }
 
     public String getAllSchools() {
@@ -154,7 +170,7 @@ public class User {
         ServicesFactory.getSchoolService().getTypeProfile(id);
     }
 
-    public void setProfile(JSONObject response) {
+    public void refreshUserParams(JSONObject response) {
         try {
             name = response.getString("name");
             profileType = response.getString("profile");
@@ -165,8 +181,9 @@ public class User {
 
     }
 
-    public void addStudentToCenter(String schoolId) {
-        ServicesFactory.getSchoolService().addStudentToCenter(id,schoolId);
+    public void addStudentToCenter(School school, MutableLiveData<SchoolRequestResult> result) {
+        schools = school;
+        ServicesFactory.getSchoolService().addStudentToCenter(id,school.getId(),result);
     }
 
     public void deleteSchoolClassroom(String classroomId) {
@@ -175,5 +192,13 @@ public class User {
 
     public void changeUSerProfile(String profile) {
         ServicesFactory.getUserService().changeUserProfile(id,profile);
+    }
+
+    public boolean getRisk() {
+        return risk;
+    }
+
+    public void updateRisk() {
+        ServicesFactory.getUpdateUserRiskResponseController().updateRisk(id);
     }
 }

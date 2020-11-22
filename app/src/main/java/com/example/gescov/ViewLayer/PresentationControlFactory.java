@@ -7,8 +7,11 @@ import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolClassroomsCrontrol
 import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsCrontroller;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionController;
 import com.example.gescov.ViewLayer.UpdateUserProfile.UpdateUserProfileController;
+import com.example.gescov.ViewLayer.home.HomeViewModel;
 import com.example.gescov.ViewLayer.home.NotifyContagionController;
 import com.example.gescov.ViewLayer.home.TracingTestController;
+
+import androidx.lifecycle.ViewModelProvider;
 
 public class PresentationControlFactory {
     private static ViewLayerController viewLayerController;
@@ -21,6 +24,8 @@ public class PresentationControlFactory {
     private static TracingTestController tracingTestController;
     private static LoadingProfileController loadingProfileController;
     private static UpdateUserProfileController updateUserProfileController;
+    private static MainScreenController mainScreenController;
+    private static ViewModelProvider viewModelProvider;
 
     public static ViewLayerController getViewLayerController() {
         if (viewLayerController != null)
@@ -87,5 +92,13 @@ public class PresentationControlFactory {
             return updateUserProfileController;
         updateUserProfileController = new UpdateUserProfileController();
         return updateUserProfileController;
+    }
+
+    public static ViewModelProvider getViewModelProvider() {
+        return viewModelProvider;
+    }
+
+    public static void setViewModelProvider(ViewModelProvider provider) {
+        viewModelProvider = provider;
     }
 }

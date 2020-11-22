@@ -14,6 +14,7 @@ import com.example.gescov.DomainLayer.Conection;
 import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.Singletons.VolleyServices;
+import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 
@@ -316,19 +317,28 @@ public class SchoolServiceImplementor implements ISchoolService {
     }
 
     @Override
-    public void addStudentToCenter(String id, String schoolId) {
+    public void addStudentToCenter(String id, String schoolId, MutableLiveData<SchoolRequestResult> result) {
         RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.PUT, PUT_USER_TO_SCHOOL+id+"?schoolID="+schoolId, null,
-                new Response.Listener<JSONObject>() {
+        SchoolRequestResult aux = new SchoolRequestResult();
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.PUT, PUT_USER_TO_SCHOOL+id+"?schoolID="+schoolId,
+                new Response.Listener<String>() {
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(String response) {
+                        SchoolRequestResult aux = new SchoolRequestResult();
+                        aux.setError(false);
+                        System.out.println(aux.getError());
+                        result.setValue(aux);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                SchoolRequestResult aux = new SchoolRequestResult();
+                aux.setError(true);
+                System.out.println(aux.getError());
+                result.setValue(aux);
             }
         });
-        requestQueue.add(jsonObjectRequest);
+        requestQueue.add(stringRequest);
     }
 }

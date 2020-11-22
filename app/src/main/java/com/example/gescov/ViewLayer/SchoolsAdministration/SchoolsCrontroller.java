@@ -2,9 +2,12 @@ package com.example.gescov.ViewLayer.SchoolsAdministration;
 
 import android.content.Context;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
+import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolRequestResult;
 
 import org.json.JSONException;
 
@@ -86,7 +89,7 @@ public class SchoolsCrontroller{
         }
     }
 
-    public void addStudentToCenter(String schoolName) {
-        PresentationControlFactory.getViewLayerController().addStudentToCenter(schoolName);
+    public void addStudentToCenter(String schoolName, MutableLiveData<SchoolRequestResult> result) {
+        PresentationControlFactory.getViewLayerController().addStudentToCenter(schoolName,result);
     }
 }

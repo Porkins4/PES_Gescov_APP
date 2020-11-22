@@ -118,6 +118,10 @@
     <string name="succesPositiveNotification">S\'ha notificat correctament el teu positiu</string>
     <string name="succesRecoveryNotification">S\'ha notificat la teva recuperació correctament</string>
 
+    <!-- home -->
+    <string name="home_risk">Usuari de risc</string>
+    <string name="home_not_risk">Usuari sense risc</string>
+
     <!-- default -->
     <string name="edit">Editar</string>
     <string name="update">Actualitza</string>
@@ -127,6 +131,8 @@
     <string name="alummne_assegut_a">"Alumne assegut a la fila: "</string>
     <string name="alumne_assegut_a_columna">", columna: "</string>
     <string name="error_no_students_in_this_classroom">Encara no han passat alumnes per aquesta aula</string>
+
+
 
 
 </resources>
