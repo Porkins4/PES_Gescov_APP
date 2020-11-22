@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.gescov.R;
-import com.example.gescov.ViewLayer.MainView.MainScreenActivity;
+import com.example.gescov.ViewLayer.MainView.LoadingProfileActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login2);
+        setContentView(R.layout.activity_login);
         initGoogleClient();
         initGoogleButton();
     }
@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void succesfullLoginUI() {
-        Intent i = new Intent(this, MainScreenActivity.class);
+        Intent i = new Intent(this, LoadingProfileActivity.class);
         startActivity(i);
     }
 }

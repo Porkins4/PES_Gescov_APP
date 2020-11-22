@@ -5,7 +5,6 @@ import android.content.Context;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 public class VolleyServices {
@@ -34,8 +33,8 @@ public class VolleyServices {
         getRequestQueue().add(req);
     }
 
-    public static void add(JsonArrayRequest req) {
-
+    public <T> void addRequest(Request<T> req) {
+        requestQueue.add(req);
     }
 
     public static void setContext(Context context) {

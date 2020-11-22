@@ -1,7 +1,5 @@
 package com.example.gescov.ViewLayer.StudentsInClassSession;
 
-import androidx.annotation.Nullable;
-
 import java.util.List;
 
 public class StudentsInClassSessionResult {

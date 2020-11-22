@@ -1,7 +1,5 @@
 package com.example.gescov.DomainLayer.Services.ResponseControllers;
 
-import android.widget.Toast;
-
 import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.DomainLayer.Services.IDeleteSchoolService;
 

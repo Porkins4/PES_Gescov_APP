@@ -1,7 +1,6 @@
 package com.example.gescov;
 
 import android.app.Application;
-import android.content.Context;
 
 import com.example.gescov.Singletons.VolleyServices;
 

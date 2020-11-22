@@ -144,4 +144,16 @@ public class UserController {
     public void updateLoggedUserRisk() {
         loggedUser.updateRisk();
     }
+
+    public void changeUserProfile(String profile) {
+        loggedUser.changeUSerProfile(profile);
+    }
+
+    public void setUserType(String profile) {
+        loggedUser.setProfileType(profile);
+    }
+
+    public String getProfileType() {
+        return loggedUser.getProfileType();
+    }
 }

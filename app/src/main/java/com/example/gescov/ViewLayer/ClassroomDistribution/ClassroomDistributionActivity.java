@@ -1,11 +1,10 @@
 package com.example.gescov.ViewLayer.ClassroomDistribution;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.gridlayout.widget.GridLayout;import androidx.gridlayout.widget.GridLayout;
+import androidx.gridlayout.widget.GridLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import com.example.gescov.R;
 import com.example.gescov.ViewLayer.MarkPositionInClassroom.MarkPositionInClassroom;

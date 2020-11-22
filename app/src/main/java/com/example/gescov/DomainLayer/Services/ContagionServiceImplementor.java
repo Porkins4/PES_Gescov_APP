@@ -12,6 +12,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.gescov.DomainLayer.Conection;
+import com.example.gescov.DomainLayer.Services.IContagionService;
 import com.example.gescov.Singletons.VolleyServices;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 

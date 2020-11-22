@@ -1,12 +1,12 @@
 package com.example.gescov.ViewLayer;
 
 import com.example.gescov.ViewLayer.ContagionList.ContagionController;
-import com.example.gescov.ViewLayer.MainView.MainScreenController;
-import com.example.gescov.ViewLayer.MarkPositionInClassroom.MarkPositionInClassroom;
+import com.example.gescov.ViewLayer.MainView.LoadingProfileController;
 import com.example.gescov.ViewLayer.MarkPositionInClassroom.MarkPositionInClassroomController;
 import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolClassroomsCrontroller;
 import com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsCrontroller;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionController;
+import com.example.gescov.ViewLayer.UpdateUserProfile.UpdateUserProfileController;
 import com.example.gescov.ViewLayer.home.HomeViewModel;
 import com.example.gescov.ViewLayer.home.NotifyContagionController;
 import com.example.gescov.ViewLayer.home.TracingTestController;
@@ -22,6 +22,8 @@ public class PresentationControlFactory {
     private static MarkPositionInClassroomController markPositionInClassroomController;
     private static StudentsInClassSessionController studentsInClassSessionController;
     private static TracingTestController tracingTestController;
+    private static LoadingProfileController loadingProfileController;
+    private static UpdateUserProfileController updateUserProfileController;
     private static MainScreenController mainScreenController;
     private static ViewModelProvider viewModelProvider;
 
@@ -78,11 +80,18 @@ public class PresentationControlFactory {
         return tracingTestController;
     }
   
-    public static MainScreenController getMainScreenController() {
-        if (mainScreenController != null)
-            return mainScreenController;
-        mainScreenController = new MainScreenController();
-        return mainScreenController;
+    public static LoadingProfileController getLoadingProfileController() {
+        if (loadingProfileController != null)
+            return loadingProfileController;
+        loadingProfileController = new LoadingProfileController();
+        return loadingProfileController;
+    }
+
+    public static UpdateUserProfileController getUpdateUserProfileController() {
+        if (updateUserProfileController != null)
+            return updateUserProfileController;
+        updateUserProfileController = new UpdateUserProfileController();
+        return updateUserProfileController;
     }
 
     public static ViewModelProvider getViewModelProvider() {

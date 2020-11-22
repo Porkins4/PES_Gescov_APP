@@ -1,7 +1,11 @@
 package com.example.gescov.DomainLayer.Controllers;
 
+import android.util.Pair;
+
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
+import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.DomainControlFactory;
+import com.example.gescov.DomainLayer.Services.ServicesFactory;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,5 +37,27 @@ public class SchoolClassroomsModelController {
             e.printStackTrace();
         }
         DomainControlFactory.getModelController().refreshSchoolClassroomsListInView(classroomsList);
+    }
+
+    public void getStudentsInClassRecord(String classroomId, String date) {
+        ServicesFactory.getClassroomService().getStudentsInClassRecord(classroomId,date);
+    }
+
+    public void updateStudentsInClassRecordView(JSONArray response,boolean b) {
+        List<Pair<User, Pair<Integer,Integer>>> r = new ArrayList<>();
+        if (!b) {
+            for (int i = 0; i < response.length(); ++i) {
+                try {
+                    JSONObject x = response.getJSONObject(i);
+                    JSONObject classSessionInfo = new JSONObject(x.getString("first"));
+                    User u = new User(x.getString("second"), classSessionInfo.getString("id"));
+                    Pair<User, Pair<Integer,Integer>> studentInfo = new Pair<>(u, new Pair<Integer, Integer>(classSessionInfo.getInt("posRow"),classSessionInfo.getInt("posCol")));
+                    r.add(studentInfo);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        DomainControlFactory.getModelController().refreshStudentsInClassRecordView(r,b);
     }
 }

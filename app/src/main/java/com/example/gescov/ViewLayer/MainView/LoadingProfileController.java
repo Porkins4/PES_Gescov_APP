@@ -4,9 +4,9 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.ViewLayer.PresentationControlFactory;
 
-public class MainScreenController {
+public class LoadingProfileController {
 
-    public MainScreenController() {}
+    public LoadingProfileController() {}
 
     public void checkLoginUser(MutableLiveData<TokenVerificationResult> r) {
         PresentationControlFactory.getViewLayerController().checkLoginUser(r);

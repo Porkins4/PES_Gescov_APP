@@ -1,14 +1,12 @@
 package com.example.gescov.ViewLayer.MainView;
 
-import android.media.session.MediaSession;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.gescov.ViewLayer.PresentationControlFactory;
 
-public class MainScreenViewModel extends ViewModel {
+public class LoadingProfileViewModel extends ViewModel {
     private MutableLiveData<TokenVerificationResult> requestResult;
 
     public LiveData<TokenVerificationResult> getRequestResult() {
@@ -17,7 +15,7 @@ public class MainScreenViewModel extends ViewModel {
     }
 
     private void checkUserInCloud() {
-        PresentationControlFactory.getMainScreenController().checkLoginUser(requestResult);
+        PresentationControlFactory.getLoadingProfileController().checkLoginUser(requestResult);
     }
 
     public void setToken(String token) {

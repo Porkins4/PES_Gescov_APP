@@ -20,10 +20,10 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-public class MainScreenActivity extends AppCompatActivity {
+public class LoadingProfileActivity extends AppCompatActivity {
 
     private GoogleSignInClient googleSignInClient;
-    private MainScreenViewModel mainScreenViewModel;
+    private LoadingProfileViewModel loadingProfileViewModel;
 
     private GoogleSignInAccount account;
     @Override
@@ -34,9 +34,9 @@ public class MainScreenActivity extends AppCompatActivity {
     }
 
     private void setResponseListener(String token) {
-        mainScreenViewModel = new ViewModelProvider(this).get(MainScreenViewModel.class);
-        mainScreenViewModel.setToken(token);
-        mainScreenViewModel.getRequestResult().observe(this, new Observer<TokenVerificationResult>() {
+        loadingProfileViewModel = new ViewModelProvider(this).get(LoadingProfileViewModel.class);
+        loadingProfileViewModel.setToken(token);
+        loadingProfileViewModel.getRequestResult().observe(this, new Observer<TokenVerificationResult>() {
             @Override
             public void onChanged(TokenVerificationResult tokenVerificationResult) {
                 if (tokenVerificationResult.getSuccess()) {
@@ -50,16 +50,16 @@ public class MainScreenActivity extends AppCompatActivity {
     }
 
     private void getTypeProfile() {
-        PresentationControlFactory.getMainScreenController().getTypeProfile();
+        PresentationControlFactory.getLoadingProfileController().getTypeProfile();
     }
 
     private void updateUserName() {
-        PresentationControlFactory.getMainScreenController().updateUserName(LoggedInUser.getUserName());
+        PresentationControlFactory.getLoadingProfileController().updateUserName(LoggedInUser.getUserName());
     }
 
 
     private void updateUserId() {
-        PresentationControlFactory.getMainScreenController().updateUserId(mainScreenViewModel.getRequestResult().getValue().getUserId());
+        PresentationControlFactory.getLoadingProfileController().updateUserId(loadingProfileViewModel.getRequestResult().getValue().getUserId());
     }
 
     private void initGoogleClient() {

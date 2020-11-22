@@ -6,28 +6,13 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 
-import android.util.JsonReader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.android.volley.Cache;
-import com.android.volley.Network;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.BasicNetwork;
-import com.android.volley.toolbox.DiskBasedCache;
-import com.android.volley.toolbox.HurlStack;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.gescov.R;
 import com.example.gescov.ViewLayer.MarkPositionInClassroom.MarkPositionInClassroom;
-import com.example.gescov.ViewLayer.PresentationControlFactory;
-import com.example.gescov.ViewLayer.ViewLayerController;
 
 import androidx.gridlayout.widget.GridLayout;
 

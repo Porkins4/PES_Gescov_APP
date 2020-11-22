@@ -4,18 +4,10 @@ import android.content.Context;
 
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
-import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class SchoolClassroomsCrontroller {
 

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.R;
 import com.example.gescov.ViewLayer.ClassroomDistribution.ClassroomDistributionActivity;
+import com.example.gescov.ViewLayer.StudentsInClassRecord.StudentsInClassRecordActivity;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
 
 import java.util.ArrayList;
@@ -62,19 +63,30 @@ public class ClassroomListViewAdapter extends BaseAdapter {
         TextView columns = (TextView) v.findViewById(R.id.classroom_columns);
         Button editButton = v.findViewById(R.id.classroom_list_item_edit_button);
 
-
         editButton.setOnClickListener(e-> {
             SchoolClassroomsCrontroller controller = PresentationControlFactory.getClassroomsCrontroller();
             Intent intent = new Intent(context, EditClassroomFormActivity.class);
             intent.putExtra("classroom_position", position);
             context.startActivity(intent);
         });
+        //-----------------------------------------------------------------------
+        String k = PresentationControlFactory.getUpdateUserProfileController().getUserType();
+        if (PresentationControlFactory.getUpdateUserProfileController().getUserType().equals("teacher")) {//aquí en realidad deberia ser administrator
+            name.setOnClickListener(e-> {
+                Intent intent = new Intent(context, StudentsInClassRecordActivity.class);
+                intent.putExtra("classroom", classroomList.get(position).getId());
+                context.startActivity(intent);
+            });
+        } else {
+            name.setOnClickListener(e-> {
+                Intent intent = new Intent(context, ClassroomDistributionActivity.class);
+                intent.putExtra("classroom", classroomList.get(position).getId());
+                context.startActivity(intent);
+            });
+        }
+        //-----------------------------------------------------------------------
 
-        name.setOnClickListener(e-> {
-            Intent intent = new Intent(context, ClassroomDistributionActivity.class);
-            intent.putExtra("classroom", classroomList.get(position).getId());
-            context.startActivity(intent);
-        });
+
         name.setText(classroomList.get(position).getName());
         capacity.setText(String.valueOf(classroomList.get(position).getCapacity() + " " + v.getResources().getText(R.string.classroom_capacity)));
         rows.setText(String.valueOf(classroomList.get(position).getRows() + " " + v.getResources().getText(R.string.classroom_rows)));

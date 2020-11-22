@@ -1,7 +1,6 @@
 package com.example.gescov.ViewLayer.SchoolsAdministration;
 
 import android.content.Context;
-import android.widget.Adapter;
 
 import androidx.lifecycle.MutableLiveData;
 

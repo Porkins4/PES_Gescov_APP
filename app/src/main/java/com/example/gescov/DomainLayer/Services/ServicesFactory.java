@@ -1,6 +1,5 @@
 package com.example.gescov.DomainLayer.Services;
 
-import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.Services.ResponseControllers.DeleteSchoolClassroomResponseController;
 import com.example.gescov.DomainLayer.Services.ResponseControllers.DeleteSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.ResponseControllers.RefreshSchoolClassroomsResponseController;
@@ -18,6 +17,8 @@ public class ServicesFactory {
 
     private static IContagionService contagionservice;
     private static ISchoolService schoolService;
+    private static IUserService userService;
+    private static IClassroomService classroomService;
     private static DeleteSchoolResponseController deleteSchoolResponseController;
     private static RefreshSchoolResponseController refreshSchoolResponseController;
     private static RefreshSchoolClassroomsResponseController refreshSchoolClassroomsResponseController;
@@ -77,6 +78,17 @@ public class ServicesFactory {
         return deleteSchoolClassroomsResponseController;
     }
 
+    public static IUserService getUserService() {
+        if (userService != null) return userService;
+        userService = new UserServiceImplementor();
+        return userService;
+    }
+
+    public static IClassroomService getClassroomService() {
+        if (classroomService != null) return classroomService;
+        classroomService = new ClassroomServiceImplementor();
+        return classroomService;
+      
     public static UpdateUserRiskResponseController getUpdateUserRiskResponseController() {
         if (updateUserRiskResponseController != null) return updateUserRiskResponseController;
         updateUserRiskResponseController = new UpdateUserRiskResponseController(getRetrofit());

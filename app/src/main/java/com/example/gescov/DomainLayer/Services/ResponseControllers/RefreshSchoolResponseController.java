@@ -2,10 +2,8 @@ package com.example.gescov.DomainLayer.Services.ResponseControllers;
 
 
 import com.example.gescov.DomainLayer.DomainControlFactory;
-import com.example.gescov.DomainLayer.Services.IDeleteSchoolService;
 import com.example.gescov.DomainLayer.Services.IRefreshSchoolService;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

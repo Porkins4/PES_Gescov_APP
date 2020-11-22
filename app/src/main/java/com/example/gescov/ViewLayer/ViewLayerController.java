@@ -1,5 +1,7 @@
 package com.example.gescov.ViewLayer;
 
+import android.util.Pair;
+
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.User;
@@ -133,6 +135,21 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().addStudentToCenter(schoolName,result);
     }
 
+    public void changeUserProfile(String profile) {
+        DomainControlFactory.getModelController().changeUserProfile(profile);
+    }
+
+    public String getUserType() {
+        return DomainControlFactory.getModelController().getUserType();
+    }
+
+    public void getStudentsInClassRecord(String classroomId, String date) {
+        DomainControlFactory.getModelController().getStudentsInClassRecord(classroomId,date);
+    }
+
+    public void refreshStudentsInClassRecordView(List<Pair<User, Pair<Integer,Integer>>> r, boolean b) {
+        PresentationControlFactory.getStudentsInClassSessionController().refreshStudentsInClassRecordView(r,b);
+    }
 
     public User getLoggedUserInfo() {
         return DomainControlFactory.getModelController().getLoggedUser();

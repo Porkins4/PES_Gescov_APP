@@ -2,7 +2,6 @@ package com.example.gescov.DomainLayer.Classmodels;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.DomainLayer.Services.IContagionService;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
@@ -25,10 +24,28 @@ public class User {
     private Boolean risk;
     private String profileType;
 
+    public String getProfileType() {
+        return profileType;
+    }
+
+
+    public void setProfileType(String profileType) {
+        this.profileType = profileType;
+        System.out.println("ha ido bien! :), nuevo perfil = " + profileType);
+    }
+
+
+
 
     public  User() {
         schools = new School();
     }
+
+    public User(String Name, String userID) {
+        this.name = Name;
+        this.id = userID;
+    }
+
 
     public User (String name, List<String> schools, String id, boolean risk, String profileType) {
         this.name = name;
@@ -37,6 +54,7 @@ public class User {
         this.risk = risk;
         this.profileType = profileType;
     }
+
 
 
     public User(String name) { this.name = name;}
@@ -170,6 +188,10 @@ public class User {
 
     public void deleteSchoolClassroom(String classroomId) {
         ServicesFactory.getDeleteSchoolClassroomResponseController().deleteSchoolClassroomRequest(classroomId, id);
+    }
+
+    public void changeUSerProfile(String profile) {
+        ServicesFactory.getUserService().changeUserProfile(id,profile);
     }
 
     public boolean getRisk() {
