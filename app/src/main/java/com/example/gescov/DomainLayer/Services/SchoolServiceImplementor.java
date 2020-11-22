@@ -319,11 +319,11 @@ public class SchoolServiceImplementor implements ISchoolService {
     public void addStudentToCenter(String id, String schoolId, MutableLiveData<SchoolRequestResult> result) {
         RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
         SchoolRequestResult aux = new SchoolRequestResult();
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.PUT, PUT_USER_TO_SCHOOL+id+"?schoolID="+schoolId, null,
-                new Response.Listener<JSONObject>() {
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.PUT, PUT_USER_TO_SCHOOL+id+"?schoolID="+schoolId,
+                new Response.Listener<String>() {
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(String response) {
                         SchoolRequestResult aux = new SchoolRequestResult();
                         aux.setError(false);
                         System.out.println(aux.getError());
@@ -338,6 +338,6 @@ public class SchoolServiceImplementor implements ISchoolService {
                 result.setValue(aux);
             }
         });
-        requestQueue.add(jsonObjectRequest);
+        requestQueue.add(stringRequest);
     }
 }
