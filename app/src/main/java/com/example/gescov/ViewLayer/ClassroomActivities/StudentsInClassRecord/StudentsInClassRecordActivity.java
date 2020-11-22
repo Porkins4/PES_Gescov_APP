@@ -16,7 +16,7 @@ import com.example.gescov.ViewLayer.ViewLayerSingletons.PresentationControlFacto
 public class StudentsInClassRecordActivity extends AppCompatActivity {
 
     private ListView listView;
-    private LinearLayout loadingComponents;
+    private LinearLayout loadingComponents, errorComponents;
     private StudentsInClassRecordViewModel studentsInClassRecordViewModel;
     private StudentsInClassRecordAdapter adapter;
     private StudentsInClassRecordActivity instance;
@@ -31,6 +31,8 @@ public class StudentsInClassRecordActivity extends AppCompatActivity {
     private void initViewComponents() {
         listView = (ListView) findViewById(R.id.students_in_class_record_list_view);
         loadingComponents = (LinearLayout) findViewById(R.id.students_in_class_record_loading_components);
+        errorComponents = (LinearLayout) findViewById(R.id.students_in_class_record_error);
+        errorComponents.setVisibility(View.GONE);
         Toolbar toolbar = (Toolbar) findViewById(R.id.class_record_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.class_record_activity_title);
@@ -40,14 +42,18 @@ public class StudentsInClassRecordActivity extends AppCompatActivity {
 
     private void initResponseListener() {
         studentsInClassRecordViewModel = new ViewModelProvider(this).get(StudentsInClassRecordViewModel.class);
-        studentsInClassRecordViewModel.getStudents("5fa9d2d4e59d4c4c5d57151a", "03-02-2020").observe(this, new Observer<StudentsInClassRecordResult>() {
+        studentsInClassRecordViewModel.getStudents(getIntent().getStringExtra("classroom"), "03-02-2020").observe(this, new Observer<StudentsInClassRecordResult>() { //de momento fecha hardcoded
                     @Override
                     public void onChanged(StudentsInClassRecordResult studentsInClassRecordResult) {
+                        System.out.println("entro");
                         if (!studentsInClassRecordResult.getError()) {
                             System.out.println("solo falta enseñar información");
                             loadingComponents.setVisibility(View.GONE);
-                            adapter = new StudentsInClassRecordAdapter(instance, studentsInClassRecordResult.getStudentNamesAndPos());
+                            adapter = new StudentsInClassRecordAdapter(instance, studentsInClassRecordResult.getStudentNamesAndPos(),instance);
                             listView.setAdapter(adapter);
+                        } else if(studentsInClassRecordResult.getError()) {
+                            loadingComponents.setVisibility(View.GONE);
+                            errorComponents.setVisibility(View.VISIBLE);
                         }
                     }
                 }

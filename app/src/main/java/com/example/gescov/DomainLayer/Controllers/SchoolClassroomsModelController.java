@@ -3,6 +3,7 @@ package com.example.gescov.DomainLayer.Controllers;
 import android.util.Pair;
 
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
+import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.DomainLayerSingletons.DomainControlFactory;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 
@@ -43,12 +44,14 @@ public class SchoolClassroomsModelController {
     }
 
     public void updateStudentsInClassRecordView(JSONArray response,boolean b) {
-        List<Pair<String,String>> r = new ArrayList<>();
+        List<Pair<User, Pair<Integer,Integer>>> r = new ArrayList<>();
         if (!b) {
             for (int i = 0; i < response.length(); ++i) {
                 try {
                     JSONObject x = response.getJSONObject(i);
-                    Pair<String, String> studentInfo = new Pair<>(x.getString("studentID"), "alumne assegut a columna: " + x.getString("posCol") + ", fila: " + x.getString("posRow"));
+                    JSONObject classSessionInfo = new JSONObject(x.getString("first"));
+                    User u = new User(x.getString("second"), classSessionInfo.getString("id"));
+                    Pair<User, Pair<Integer,Integer>> studentInfo = new Pair<>(u, new Pair<Integer, Integer>(classSessionInfo.getInt("posRow"),classSessionInfo.getInt("posCol")));
                     r.add(studentInfo);
                 } catch (JSONException e) {
                     e.printStackTrace();

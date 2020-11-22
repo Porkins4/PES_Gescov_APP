@@ -42,6 +42,11 @@ public class User {
         schools.setId("5fa9d285e59d4c4c5d571519");
     }
 
+    public User(String Name, String userID) {
+        this.name = Name;
+        this.id = userID;
+    }
+
     public User(String name) { this.name = name;}
 
     public String getName() {

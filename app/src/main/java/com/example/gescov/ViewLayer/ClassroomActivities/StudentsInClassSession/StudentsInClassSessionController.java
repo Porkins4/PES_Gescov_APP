@@ -4,6 +4,7 @@ import android.util.Pair;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity;
 import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordViewModel;
 import com.example.gescov.ViewLayer.ViewLayerSingletons.PresentationControlFactory;
@@ -29,7 +30,7 @@ public class StudentsInClassSessionController {
         PresentationControlFactory.getViewLayerController().getStudentsInClassRecord(classroomId,date);
     }
 
-    public void refreshStudentsInClassRecordView(List<Pair<String, String>> r, boolean b) {
+    public void refreshStudentsInClassRecordView(List<Pair<User, Pair<Integer,Integer>>> r, boolean b) {
         studentsInClassRecordViewModel.setResponse(r,b);
     }
 }

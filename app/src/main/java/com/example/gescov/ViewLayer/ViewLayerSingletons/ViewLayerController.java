@@ -4,6 +4,7 @@ import android.util.Pair;
 
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
+import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.DomainLayerSingletons.DomainControlFactory;
 import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.ViewLayer.LoginAndRegister.TokenVerificationResult;
@@ -141,7 +142,7 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().getStudentsInClassRecord(classroomId,date);
     }
 
-    public void refreshStudentsInClassRecordView(List<Pair<String, String>> r, boolean b) {
+    public void refreshStudentsInClassRecordView(List<Pair<User, Pair<Integer,Integer>>> r, boolean b) {
         PresentationControlFactory.getStudentsInClassSessionController().refreshStudentsInClassRecordView(r,b);
     }
 }

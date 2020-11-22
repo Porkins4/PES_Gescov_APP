@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
+import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.DomainLayerSingletons.DomainControlFactory;
 import com.example.gescov.ViewLayer.ViewLayerSingletons.PresentationControlFactory;
 import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
@@ -151,7 +152,7 @@ public class ModelController {
         DomainControlFactory.getClassroomModelController().getStudentsInClassRecord(classroomId,date);
     }
 
-    public void refreshStudentsInClassRecordView(List<Pair<String, String>> r, boolean b) {
+    public void refreshStudentsInClassRecordView(List<Pair<User, Pair<Integer,Integer>>> r, boolean b) {
         viewLayerController.refreshStudentsInClassRecordView(r,b);
     }
 }

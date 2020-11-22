@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.android.volley.toolbox.StringRequest;
+import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.ViewLayerSingletons.PresentationControlFactory;
 
@@ -30,7 +31,7 @@ public class StudentsInClassRecordViewModel extends ViewModel {
         PresentationControlFactory.getStudentsInClassSessionController().getStudentsInClassRecord(classroomId,date);
     }
 
-    public void setResponse(List<Pair<String, String>> r, boolean b) {
+    public void setResponse(List<Pair<User, Pair<Integer,Integer>>> r, boolean b) {
         StudentsInClassRecordResult result = new StudentsInClassRecordResult(r,b);
         studentsResult.setValue(result);
     }

@@ -30,7 +30,7 @@ public class ClassroomServiceImplementor implements IClassroomService {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        System.out.println("something went wrong");
+                        DomainControlFactory.getClassroomModelController().updateStudentsInClassRecordView(null,true);
                     }
                 }
         );
