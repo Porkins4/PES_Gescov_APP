@@ -10,4 +10,8 @@ public class UpdateUserProfileController {
     public void changeUserProfile(String profile) {
         PresentationControlFactory.getViewLayerController().changeUserProfile(profile);
     }
+
+    public String getUserType() {
+        return PresentationControlFactory.getViewLayerController().getUserType();
+    }
 }

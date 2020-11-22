@@ -21,13 +21,19 @@ public class User {
     private String idContagion;
     private String ConfirmedInfected;
     private Boolean risk;
+    private String profileType;
+
+    public String getProfileType() {
+        return profileType;
+    }
+
 
     public void setProfileType(String profileType) {
         this.profileType = profileType;
         System.out.println("ha ido bien! :), nuevo perfil = " + profileType);
     }
 
-    private String profileType;
+
 
 
     public  User() {

@@ -18,8 +18,6 @@
         <activity android:name=".ViewLayer.SchoolsAdministration.SchoolDetailsActivity" />
         <activity android:name=".ViewLayer.home.DailyTestActivity" />
         <activity android:name=".ViewLayer.LoginAndRegister.LoginActivity" />
-        <activity android:name=".ViewLayer.SignIn.SignInActivity" />
-        <activity android:name=".ViewLayer.login.LoginActivity" />
         <activity android:name=".ViewLayer.ClassroomActivities.SchoolClassroomList.CreateClassroomFormActivity" />
         <activity android:name=".ViewLayer.ClassroomActivities.SchoolClassroomList.EditClassroomFormActivity" />
         <activity android:name=".ViewLayer.ClassroomActivities.ClassroomDistribution.ClassroomDistributionActivity" />

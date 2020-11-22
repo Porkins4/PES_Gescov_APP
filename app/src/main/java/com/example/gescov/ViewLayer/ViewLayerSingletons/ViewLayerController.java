@@ -1,5 +1,7 @@
 package com.example.gescov.ViewLayer.ViewLayerSingletons;
 
+import android.util.Pair;
+
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.DomainLayerSingletons.DomainControlFactory;
@@ -129,5 +131,17 @@ public class ViewLayerController {
 
     public void changeUserProfile(String profile) {
         DomainControlFactory.getModelController().changeUserProfile(profile);
+    }
+
+    public String getUserType() {
+        return DomainControlFactory.getModelController().getUserType();
+    }
+
+    public void getStudentsInClassRecord(String classroomId, String date) {
+        DomainControlFactory.getModelController().getStudentsInClassRecord(classroomId,date);
+    }
+
+    public void refreshStudentsInClassRecordView(List<Pair<String, String>> r, boolean b) {
+        PresentationControlFactory.getStudentsInClassSessionController().refreshStudentsInClassRecordView(r,b);
     }
 }

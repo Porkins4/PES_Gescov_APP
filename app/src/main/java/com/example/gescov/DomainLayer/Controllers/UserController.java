@@ -138,4 +138,8 @@ public class UserController {
     public void setUserType(String profile) {
         loggedUser.setProfileType(profile);
     }
+
+    public String getProfileType() {
+        return loggedUser.getProfileType();
+    }
 }

@@ -4,25 +4,27 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.example.gescov.DomainLayer.DomainLayerSingletons.DomainControlFactory;
 import com.example.gescov.DomainLayer.DomainLayerSingletons.VolleyServices;
-import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IUserService;
+import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IClassroomService;
 
-public class UserServiceImplementor implements IUserService {
+import org.json.JSONArray;
 
-    private static String GESCOV_USERS_URI = "https://gescov.herokuapp.com/api/users/";
+public class ClassroomServiceImplementor implements IClassroomService {
 
-    public UserServiceImplementor() {}
+    private static String GESCOV_ASSIGNMENTS_URI = "https://gescov.herokuapp.com/api/assignments/";
 
+    public ClassroomServiceImplementor(){}
     @Override
-    public void changeUserProfile(String userId, String profile) {
-        StringRequest request = new StringRequest(
-                Request.Method.PUT, GESCOV_USERS_URI + userId + "/{profile}?profile=" + profile,
-                new Response.Listener<String>() {
+    public void getStudentsInClassRecord(String classroomId, String date) {
+        JsonArrayRequest request = new JsonArrayRequest(
+                Request.Method.GET, GESCOV_ASSIGNMENTS_URI + "classroom/" + classroomId,null,
+                new Response.Listener<JSONArray>() {
                     @Override
-                    public void onResponse(String response) {
-                        DomainControlFactory.getUserController().setUserType(profile);
+                    public void onResponse(JSONArray response) {
+                        DomainControlFactory.getClassroomModelController().updateStudentsInClassRecordView(response,false);
                     }
                 },
                 new Response.ErrorListener() {

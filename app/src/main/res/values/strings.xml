@@ -122,5 +122,8 @@
     <string name="edit">Editar</string>
     <string name="update">Actualitza</string>
 
+    <!-- Strings students in classroom Record -->
+    <string name="class_record_activity_title">Historial d\'alumnes a l\'aula</string>
+
 
 </resources>

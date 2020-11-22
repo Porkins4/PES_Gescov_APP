@@ -5,8 +5,10 @@ import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.Dele
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolClassroomsResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateSchoolClassroomResponseController;
+import com.example.gescov.DomainLayer.Services.Volley.Implementors.ClassroomServiceImplementor;
 import com.example.gescov.DomainLayer.Services.Volley.Implementors.ContagionServiceImplementor;
 import com.example.gescov.DomainLayer.Services.Volley.Implementors.UserServiceImplementor;
+import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IClassroomService;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IContagionService;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.DomainLayer.Services.Volley.Implementors.SchoolServiceImplementor;
@@ -23,6 +25,7 @@ public class ServicesFactory {
     private static IContagionService contagionservice;
     private static ISchoolService schoolService;
     private static IUserService userService;
+    private static IClassroomService classroomService;
     private static DeleteSchoolResponseController deleteSchoolResponseController;
     private static RefreshSchoolResponseController refreshSchoolResponseController;
     private static RefreshSchoolClassroomsResponseController refreshSchoolClassroomsResponseController;
@@ -85,5 +88,11 @@ public class ServicesFactory {
         if (userService != null) return userService;
         userService = new UserServiceImplementor();
         return userService;
+    }
+
+    public static IClassroomService getClassroomService() {
+        if (classroomService != null) return classroomService;
+        classroomService = new ClassroomServiceImplementor();
+        return classroomService;
     }
 }

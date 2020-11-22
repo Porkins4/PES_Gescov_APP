@@ -1,5 +1,7 @@
 package com.example.gescov.DomainLayer.Controllers;
 
+import android.util.Pair;
+
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
@@ -139,5 +141,17 @@ public class ModelController {
 
     public void changeUserProfile(String profile) {
         userController.changeUserProfile(profile);
+    }
+
+    public String getUserType() {
+        return userController.getProfileType();
+    }
+
+    public void getStudentsInClassRecord(String classroomId, String date) {
+        DomainControlFactory.getClassroomModelController().getStudentsInClassRecord(classroomId,date);
+    }
+
+    public void refreshStudentsInClassRecordView(List<Pair<String, String>> r, boolean b) {
+        viewLayerController.refreshStudentsInClassRecordView(r,b);
     }
 }

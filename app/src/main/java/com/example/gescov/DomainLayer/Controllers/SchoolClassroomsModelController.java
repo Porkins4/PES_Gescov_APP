@@ -1,7 +1,10 @@
 package com.example.gescov.DomainLayer.Controllers;
 
+import android.util.Pair;
+
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.DomainLayerSingletons.DomainControlFactory;
+import com.example.gescov.DomainLayer.Services.ServicesFactory;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,5 +36,25 @@ public class SchoolClassroomsModelController {
             e.printStackTrace();
         }
         DomainControlFactory.getModelController().refreshSchoolClassroomsListInView(classroomsList);
+    }
+
+    public void getStudentsInClassRecord(String classroomId, String date) {
+        ServicesFactory.getClassroomService().getStudentsInClassRecord(classroomId,date);
+    }
+
+    public void updateStudentsInClassRecordView(JSONArray response,boolean b) {
+        List<Pair<String,String>> r = new ArrayList<>();
+        if (!b) {
+            for (int i = 0; i < response.length(); ++i) {
+                try {
+                    JSONObject x = response.getJSONObject(i);
+                    Pair<String, String> studentInfo = new Pair<>(x.getString("studentID"), "alumne assegut a columna: " + x.getString("posCol") + ", fila: " + x.getString("posRow"));
+                    r.add(studentInfo);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        DomainControlFactory.getModelController().refreshStudentsInClassRecordView(r,b);
     }
 }
