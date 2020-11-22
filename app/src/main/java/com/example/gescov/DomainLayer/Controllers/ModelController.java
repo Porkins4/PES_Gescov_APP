@@ -6,6 +6,7 @@ import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
+import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.ViewLayerController;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
@@ -132,8 +133,9 @@ public class ModelController {
         DomainControlFactory.getUserController().getTypeProfile();
     }
 
-    public void addStudentToCenter(String schoolName) {
+    public void addStudentToCenter(String schoolName, MutableLiveData<SchoolRequestResult> result) {
        String schoolId = DomainControlFactory.getSchoolsModelCrontroller().getSchoolIdByName(schoolName);
-       userController.addStudentToCenter(schoolId);
+       userController.addStudentToCenter(schoolId,result);
     }
+
 }

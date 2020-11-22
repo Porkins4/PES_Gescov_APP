@@ -6,6 +6,7 @@ import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
+import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 
@@ -127,7 +128,7 @@ public class UserController {
         loggedUser.setProfile(response);
     }
 
-    public void addStudentToCenter(String schoolId) {
-        loggedUser.addStudentToCenter(schoolId);
+    public void addStudentToCenter(String schoolId, MutableLiveData<SchoolRequestResult> result) {
+        loggedUser.addStudentToCenter(schoolId,result);
     }
 }

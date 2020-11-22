@@ -7,6 +7,7 @@ import com.example.gescov.DomainLayer.Services.IContagionService;
 import com.example.gescov.DomainLayer.Services.IRefreshSchoolClassroomsService;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
+import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 
 import org.json.JSONException;
@@ -150,8 +151,8 @@ public class User {
 
     }
 
-    public void addStudentToCenter(String schoolId) {
-        ServicesFactory.getSchoolService().addStudentToCenter(id,schoolId);
+    public void addStudentToCenter(String schoolId, MutableLiveData<SchoolRequestResult> result) {
+        ServicesFactory.getSchoolService().addStudentToCenter(id,schoolId,result);
     }
 
     public void deleteSchoolClassroom(String classroomId) {
