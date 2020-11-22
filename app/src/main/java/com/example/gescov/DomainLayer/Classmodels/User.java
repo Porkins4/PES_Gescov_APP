@@ -2,8 +2,8 @@ package com.example.gescov.DomainLayer.Classmodels;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IContagionService;
-import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
+import com.example.gescov.DomainLayer.Services.IContagionService;
+import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 

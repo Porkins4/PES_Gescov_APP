@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.gescov.ViewLayer.ViewLayerSingletons.PresentationControlFactory;
+import com.example.gescov.ViewLayer.PresentationControlFactory;
 import com.example.gescov.R;
 
 

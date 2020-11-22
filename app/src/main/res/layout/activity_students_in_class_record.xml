@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewLayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity">
+    tools:context=".ViewLayer.StudentsInClassRecord.StudentsInClassRecordActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/class_record_toolbar"

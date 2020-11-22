@@ -6,25 +6,25 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".ViewLayer.ViewLayerSingletons.GescovApplication"
+        android:name=".GescovApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gescov">
-        <activity android:name=".ViewLayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity"></activity>
+        <activity android:name=".ViewLayer.StudentsInClassRecord.StudentsInClassRecordActivity"></activity>
         <activity android:name=".ViewLayer.UpdateUserProfile.UpdateUserProfileActivity" />
         <activity android:name=".ViewLayer.SchoolsAdministration.SchoolDetailsActivity" />
         <activity android:name=".ViewLayer.home.DailyTestActivity" />
-        <activity android:name=".ViewLayer.LoginAndRegister.LoginActivity" />
-        <activity android:name=".ViewLayer.ClassroomActivities.SchoolClassroomList.CreateClassroomFormActivity" />
-        <activity android:name=".ViewLayer.ClassroomActivities.SchoolClassroomList.EditClassroomFormActivity" />
-        <activity android:name=".ViewLayer.ClassroomActivities.ClassroomDistribution.ClassroomDistributionActivity" />
+        <activity android:name=".ViewLayer.SignUpIn.LoginActivity" />
+        <activity android:name=".ViewLayer.SchoolClassroomList.CreateClassroomFormActivity" />
+        <activity android:name=".ViewLayer.SchoolClassroomList.EditClassroomFormActivity" />
+        <activity android:name=".ViewLayer.ClassroomDistribution.ClassroomDistributionActivity" />
         <activity android:name=".ViewLayer.MarkPositionInClassroom.MarkPositionInClassroom" />
         <activity android:name=".ViewLayer.home.CovidNotificationActivity" />
         <activity
-            android:name=".ViewLayer.ClassroomActivities.SchoolClassroomList.SchoolClassromListActivity"
+            android:name=".ViewLayer.SchoolClassroomList.SchoolClassromListActivity"
             android:label="@string/title_activity_school_classrom_list"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".ViewLayer.SchoolsAdministration.CreateSchoolFormActivity" />
@@ -33,7 +33,7 @@
             android:label="@string/title_activity_navigation_menu"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
-            android:name=".ViewLayer.LoginAndRegister.LoadingProfileActivity"
+            android:name=".ViewLayer.MainView.LoadingProfileActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Gescov.NoActionBar">
             <intent-filter>

@@ -2,7 +2,7 @@ package com.example.gescov.ViewLayer.home;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.gescov.ViewLayer.ViewLayerSingletons.PresentationControlFactory;
+import com.example.gescov.ViewLayer.PresentationControlFactory;
 
 public class NotifyContagionController {
     public void notifyInfected(MutableLiveData<ContagionRequestResult> result) {

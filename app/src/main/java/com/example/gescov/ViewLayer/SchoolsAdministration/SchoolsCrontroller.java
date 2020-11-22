@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
-import com.example.gescov.ViewLayer.ViewLayerSingletons.PresentationControlFactory;
+import com.example.gescov.ViewLayer.PresentationControlFactory;
 
 import org.json.JSONException;
 

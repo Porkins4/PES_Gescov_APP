@@ -1,7 +1,7 @@
 package com.example.gescov.DomainLayer.Controllers;
 
 import com.example.gescov.DomainLayer.Classmodels.School;
-import com.example.gescov.DomainLayer.DomainLayerSingletons.DomainControlFactory;
+import com.example.gescov.DomainLayer.DomainControlFactory;
 
 import org.json.JSONArray;
 import org.json.JSONException;

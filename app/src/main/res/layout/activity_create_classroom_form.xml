@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewLayer.ClassroomActivities.SchoolClassroomList.CreateClassroomFormActivity">
+    tools:context=".ViewLayer.SchoolClassroomList.CreateClassroomFormActivity">
 
     <Button
         android:id="@+id/create_classroom_form_delete"

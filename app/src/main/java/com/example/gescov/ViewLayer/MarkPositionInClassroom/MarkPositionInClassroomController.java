@@ -1,7 +1,7 @@
 package com.example.gescov.ViewLayer.MarkPositionInClassroom;
 
-import com.example.gescov.ViewLayer.ViewLayerSingletons.PresentationControlFactory;
-import com.example.gescov.ViewLayer.ViewLayerSingletons.ViewLayerController;
+import com.example.gescov.ViewLayer.PresentationControlFactory;
+import com.example.gescov.ViewLayer.ViewLayerController;
 
 public class MarkPositionInClassroomController {
 

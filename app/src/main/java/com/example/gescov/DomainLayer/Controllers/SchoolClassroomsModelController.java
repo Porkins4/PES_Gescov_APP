@@ -4,7 +4,7 @@ import android.util.Pair;
 
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.User;
-import com.example.gescov.DomainLayer.DomainLayerSingletons.DomainControlFactory;
+import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 
 import org.json.JSONArray;

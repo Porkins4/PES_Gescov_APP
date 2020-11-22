@@ -7,12 +7,12 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.User;
-import com.example.gescov.DomainLayer.DomainLayerSingletons.DomainControlFactory;
-import com.example.gescov.ViewLayer.ViewLayerSingletons.PresentationControlFactory;
-import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
-import com.example.gescov.ViewLayer.ViewLayerSingletons.ViewLayerController;
+import com.example.gescov.DomainLayer.DomainControlFactory;
+import com.example.gescov.ViewLayer.PresentationControlFactory;
+import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.ViewLayer.ViewLayerController;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
-import com.example.gescov.ViewLayer.LoginAndRegister.TokenVerificationResult;
+import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 import org.json.JSONException;
 
 import java.util.List;
