@@ -4,10 +4,13 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.User;
+import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
+
 import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolRequestResult;
+
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 
@@ -126,10 +129,19 @@ public class UserController {
     }
 
     public void setUserProfile(JSONObject response) {
-        loggedUser.setProfile(response);
+        loggedUser.refreshUserParams(response);
+        DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName(), loggedUser.getRisk());
     }
 
     public void addStudentToCenter(School school, MutableLiveData<SchoolRequestResult> result) {
         loggedUser.addStudentToCenter(school,result);
+    }
+
+    public User getLoggedUser() {
+        return loggedUser;
+    }
+
+    public void updateLoggedUserRisk() {
+        loggedUser.updateRisk();
     }
 }

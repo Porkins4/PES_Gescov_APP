@@ -6,14 +6,27 @@ import androidx.lifecycle.ViewModel;
 
 public class HomeViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    private MutableLiveData<Boolean> risk;
+    private MutableLiveData<String> name;
 
     public HomeViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        risk = new MutableLiveData<>();
+        risk.setValue(false);
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<Boolean> getRisk() {
+        return risk;
+    }
+
+    public void setRisk (boolean risk) {
+        this.risk.setValue(risk);
+    }
+
+    public MutableLiveData<String> getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name.setValue(name);
     }
 }

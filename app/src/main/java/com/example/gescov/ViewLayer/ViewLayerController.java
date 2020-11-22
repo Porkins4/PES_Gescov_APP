@@ -2,6 +2,7 @@ package com.example.gescov.ViewLayer;
 
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
+import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.Controllers.ModelController;
 import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
@@ -9,12 +10,15 @@ import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
 import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
+import com.example.gescov.ViewLayer.home.HomeViewModel;
 
 import org.json.JSONException;
 
 import java.util.List;
 
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 
 public class ViewLayerController {
@@ -127,5 +131,20 @@ public class ViewLayerController {
 
     public void addStudentToCenter(String schoolName, MutableLiveData<SchoolRequestResult> result) {
         DomainControlFactory.getModelController().addStudentToCenter(schoolName,result);
+    }
+
+
+    public User getLoggedUserInfo() {
+        return DomainControlFactory.getModelController().getLoggedUser();
+    }
+
+    public void updateLoggedUserRisk() {
+        DomainControlFactory.getModelController().updateLoggedUserRisk();
+    }
+
+    public void updateHomeViewModel(String name, boolean risk) {
+      HomeViewModel viewModel = PresentationControlFactory.getViewModelProvider().get(HomeViewModel.class);
+      viewModel.setName(name);
+      viewModel.setRisk(risk);
     }
 }
