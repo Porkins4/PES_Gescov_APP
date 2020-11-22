@@ -6,6 +6,7 @@ import com.example.gescov.DomainLayer.Services.ResponseControllers.DeleteSchoolR
 import com.example.gescov.DomainLayer.Services.ResponseControllers.RefreshSchoolClassroomsResponseController;
 import com.example.gescov.DomainLayer.Services.ResponseControllers.RefreshSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.ResponseControllers.UpdateSchoolClassroomResponseController;
+import com.example.gescov.DomainLayer.Services.ResponseControllers.UpdateUserRiskResponseController;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -22,6 +23,7 @@ public class ServicesFactory {
     private static RefreshSchoolClassroomsResponseController refreshSchoolClassroomsResponseController;
     private static UpdateSchoolClassroomResponseController updateSchoolClassroomsResponseController;
     private static DeleteSchoolClassroomResponseController deleteSchoolClassroomsResponseController;
+    private static UpdateUserRiskResponseController updateUserRiskResponseController;
 
     private static Retrofit getRetrofit() {
         if (retrofit != null) return retrofit;
@@ -73,5 +75,11 @@ public class ServicesFactory {
         if (deleteSchoolClassroomsResponseController != null) return deleteSchoolClassroomsResponseController;
         deleteSchoolClassroomsResponseController = new DeleteSchoolClassroomResponseController(getRetrofit());
         return deleteSchoolClassroomsResponseController;
+    }
+
+    public static UpdateUserRiskResponseController getUpdateUserRiskResponseController() {
+        if (updateUserRiskResponseController != null) return updateUserRiskResponseController;
+        updateUserRiskResponseController = new UpdateUserRiskResponseController(getRetrofit());
+        return updateUserRiskResponseController;
     }
 }

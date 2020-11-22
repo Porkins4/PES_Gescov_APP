@@ -3,9 +3,11 @@ package com.example.gescov.DomainLayer.Controllers;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.User;
+import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
+import com.example.gescov.ViewLayer.PresentationControlFactory;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 
@@ -124,10 +126,19 @@ public class UserController {
     }
 
     public void setUserProfile(JSONObject response) {
-        loggedUser.setProfile(response);
+        loggedUser.refreshUserParams(response);
+        DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName(), loggedUser.getRisk());
     }
 
     public void addStudentToCenter(String schoolId) {
         loggedUser.addStudentToCenter(schoolId);
+    }
+
+    public User getLoggedUser() {
+        return loggedUser;
+    }
+
+    public void updateLoggedUserRisk() {
+        loggedUser.updateRisk();
     }
 }

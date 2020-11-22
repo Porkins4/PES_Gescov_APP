@@ -85,4 +85,12 @@ public class SchoolsModelController {
         }
         return id;
     }
+
+    public School getSchoolById(String id) {
+        for (School school : schoolsList) {
+            if (school.getId().equals(id))
+                return school;
+        }
+        return null;
+    }
 }

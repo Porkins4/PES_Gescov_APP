@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
+import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.ViewLayer.PresentationControlFactory;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
@@ -135,5 +136,17 @@ public class ModelController {
     public void addStudentToCenter(String schoolName) {
        String schoolId = DomainControlFactory.getSchoolsModelCrontroller().getSchoolIdByName(schoolName);
        userController.addStudentToCenter(schoolId);
+    }
+
+    public User getLoggedUser() {
+       return DomainControlFactory.getUserController().getLoggedUser();
+    }
+
+    public void updateLoggedUserRisk() {
+        DomainControlFactory.getUserController().updateLoggedUserRisk();
+    }
+
+    public void updateHomeViewModel(String name, boolean risk) {
+        //PresentationControlFactory.getViewLayerController().updateHomeViewModel(name, risk);
     }
 }

@@ -301,7 +301,7 @@ public class SchoolServiceImplementor implements ISchoolService {
         RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.POST, GET_CHECK_LOGIN+id, null,
+                Request.Method.GET, GET_CHECK_LOGIN+id, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
