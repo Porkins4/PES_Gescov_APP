@@ -113,7 +113,7 @@ public class ContagionServiceImplementor implements IContagionService {
     @Override
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result,String id) {
         queue =  Volley.newRequestQueue(VolleyServices.getCtx());
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, ContagionLink+"?infectedID="+id,
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, ContagionLink+"/"+id,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

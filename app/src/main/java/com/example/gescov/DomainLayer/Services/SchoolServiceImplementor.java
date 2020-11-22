@@ -277,6 +277,7 @@ public class SchoolServiceImplementor implements ISchoolService {
     @Override
     public void checkUserLogin(MutableLiveData<TokenVerificationResult> r) {
         RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
+        System.out.println((r.getValue()).getUserToken());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_CHECK_LOGIN+(r.getValue()).getUserToken(),
                 new Response.Listener<String>() {
                     @Override

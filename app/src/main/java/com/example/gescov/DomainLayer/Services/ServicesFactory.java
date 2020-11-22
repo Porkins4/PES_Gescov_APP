@@ -88,7 +88,8 @@ public class ServicesFactory {
         if (classroomService != null) return classroomService;
         classroomService = new ClassroomServiceImplementor();
         return classroomService;
-      
+    }
+
     public static UpdateUserRiskResponseController getUpdateUserRiskResponseController() {
         if (updateUserRiskResponseController != null) return updateUserRiskResponseController;
         updateUserRiskResponseController = new UpdateUserRiskResponseController(getRetrofit());

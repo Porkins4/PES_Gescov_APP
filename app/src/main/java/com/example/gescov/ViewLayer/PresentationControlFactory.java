@@ -1,6 +1,7 @@
 package com.example.gescov.ViewLayer;
 
 import com.example.gescov.ViewLayer.ContagionList.ContagionController;
+import com.example.gescov.ViewLayer.MainView.LoadingProfileActivity;
 import com.example.gescov.ViewLayer.MainView.LoadingProfileController;
 import com.example.gescov.ViewLayer.MarkPositionInClassroom.MarkPositionInClassroomController;
 import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolClassroomsCrontroller;
@@ -24,7 +25,7 @@ public class PresentationControlFactory {
     private static TracingTestController tracingTestController;
     private static LoadingProfileController loadingProfileController;
     private static UpdateUserProfileController updateUserProfileController;
-    private static MainScreenController mainScreenController;
+    private static LoadingProfileActivity loadingProfileActivity;
     private static ViewModelProvider viewModelProvider;
 
     public static ViewLayerController getViewLayerController() {

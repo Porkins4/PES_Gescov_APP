@@ -2,12 +2,15 @@ package com.example.gescov.DomainLayer.Classmodels;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.DomainLayer.Services.IContagionService;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
 import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -38,7 +41,7 @@ public class User {
 
 
     public  User() {
-        schools = new School();
+        schoolsID = new ArrayList<>();
     }
 
     public User(String Name, String userID) {
@@ -175,6 +178,12 @@ public class User {
             name = response.getString("name");
             profileType = response.getString("profile");
             risk = response.getBoolean("risk");
+            JSONArray aux = response.getJSONArray("schoolsID");
+            schoolsID = new ArrayList<>();
+            for (int i = 0; i < aux.length(); ++i) {
+                schoolsID.add((String) aux.get(i));
+            }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -182,7 +191,7 @@ public class User {
     }
 
     public void addStudentToCenter(School school, MutableLiveData<SchoolRequestResult> result) {
-        schools = school;
+        schoolsID.add(0,school.getId());
         ServicesFactory.getSchoolService().addStudentToCenter(id,school.getId(),result);
     }
 
