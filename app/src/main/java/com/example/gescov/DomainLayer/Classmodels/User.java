@@ -6,6 +6,7 @@ import com.example.gescov.DomainLayer.DomainControlFactory;
 import com.example.gescov.DomainLayer.Services.IContagionService;
 import com.example.gescov.DomainLayer.Services.ISchoolService;
 import com.example.gescov.DomainLayer.Services.ServicesFactory;
+import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 
 import org.json.JSONException;
@@ -26,9 +27,7 @@ public class User {
 
 
     public  User() {
-        //name = "El Bixo";
-        schoolsID = new ArrayList<>();
-        schoolsID.add("5fa9d285e59d4c4c5d571519");
+        schools = new School();
     }
 
     public User (String name, List<String> schools, String id, boolean risk, String profileType) {
@@ -164,8 +163,9 @@ public class User {
 
     }
 
-    public void addStudentToCenter(String schoolId) {
-        ServicesFactory.getSchoolService().addStudentToCenter(id,schoolId);
+    public void addStudentToCenter(School school, MutableLiveData<SchoolRequestResult> result) {
+        schools = school;
+        ServicesFactory.getSchoolService().addStudentToCenter(id,school.getId(),result);
     }
 
     public void deleteSchoolClassroom(String classroomId) {

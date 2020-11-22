@@ -2,6 +2,7 @@
 package com.example.gescov.DomainLayer.Services;
 
 import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
+import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
 
 import java.util.List;
@@ -28,5 +29,5 @@ public interface ISchoolService {
 
     void getTypeProfile(String id);
 
-    void addStudentToCenter(String id, String schoolId);
+    void addStudentToCenter(String id, String schoolId, MutableLiveData<SchoolRequestResult> result);
 }

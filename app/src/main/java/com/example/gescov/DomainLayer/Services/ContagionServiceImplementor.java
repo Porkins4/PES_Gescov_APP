@@ -60,10 +60,9 @@ public class ContagionServiceImplementor implements IContagionService {
     @Override
     public String getContagionList(String userId, String schoolId) {
         conection = new Conection();
-        System.out.println(schoolId + "----------------------");
         String response = null;
         try {
-            response = conection.execute(ContagionLink+"/now?schoolID="+schoolId).get();
+            response = conection.execute(ContagionLink+"/now/"+schoolId).get();
         } catch (ExecutionException  | InterruptedException e ){
             e.printStackTrace();
         }
