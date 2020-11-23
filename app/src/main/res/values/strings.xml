@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Gescov</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -6,7 +6,7 @@
     <string name="action_sign_in">Sign in</string>
     <string name="action_register">Register</string>
     <string name="action_log_in">Log in</string>
-    <string name="welcome">"Welcome !"</string>
+    <string name="welcome">"Benvingut"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
@@ -30,18 +30,34 @@
 
     <!-- School Administration -->
     <string name="menu_home">Inici</string>
-    <string name="notify_state">Notificar Estado</string>
+
 
     <!-- School Administration -->
     <string name="create_school_form_school_name">School name</string>
     <string name="create_school_form_school_code">School codi</string>
     <string name="create_school_form_school_button">Create School</string>
+    <string name="create_school_form_school_phone">Número de Telèfon</string>
+    <string name="create_school_form_school_website">Pàgina WEB</string>
 
     <string name="Catalan_create_school_form_school_name">Nom Escola</string>
     <string name="Catalan_create_school_form_school_address">Adreça Escola</string>
     <string name="Catalan_create_school_form_school_state">Estat Escola</string>
     <string name="Catalan_create_school_form_school_code">Codi Escola</string>
     <string name="Catalan_create_school_form_school_button">Crea Escola</string>
+    <string name="create_school_validate_fields">Valida els camps, si us plau.</string>
+
+
+    <!-- School Details -->
+    <string name="school_details_delete_school">Elimina escola</string>
+    <string name="school_details_protocol_access">Protocols</string>
+    <string name="school_details_classrooms_list">Llista Aules</string>
+
+
+    <!-- Classrooms -->
+    <string name="classroom_rows">Files</string>
+    <string name="classroom_cols">Columnes</string>
+    <string name="classroom_capacity">Places</string>
+    <string name="create_classroom_form_delete">Eliminar Aula</string>
 
 
     <!-- Classroom distribution -->
@@ -71,6 +87,52 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- Sign in -->
+    <string name="welcome_hint">Benvingut</string>
+    <string name="name_hint">Nom i cognom</string>
+    <string name="introduce_email_hint">Correu electrònic</string>
+    <string name="Password_hint">Contrasenya</string>
+    <string name="sign_in_button_text">Registra\'t</string>
+
+    <!-- Log out-->
+    <string name="logout_text">Tancar sessió</string>
+    <string name="logout_successful">Sessió tancada correctament</string>
+    <string name="server_client_id">"673967911868-q9jgm7i3ijsjn0ft3bs6avvpot02a0nl.apps.googleusercontent.com"</string>
+
+
+    <!-- Strings used for daily test -->
+    <string name="dailyTest">Realitza el teu Test de seguiment</string>
+    <string name="firstQuestion">Tens tos seca i persistent?  </string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+    <string name="secondQuestion">Tens dolor muscular?  </string>
+    <string name="thirdQuestion">Has tingut una pèrdua d\'olfacte i gust de recent aparició?  </string>
+    <string name="fourthQuestion">Tens sensació de falta d\'aire?  </string>
+    <string name="fifthQuestion">Tens febre? (+37.7°C)  </string>
+    <string name="titleTests">Quins símptomes tens? </string>
+    <string name="sendAnswers">Finalitzar Test </string>
+
+    <!-- Strings notifying the state -->
+    <string name="notify_state">Notificar Estado</string>
+    <string name="succesPositiveNotification">S\'ha notificat correctament el teu positiu</string>
+    <string name="succesRecoveryNotification">S\'ha notificat la teva recuperació correctament</string>
+    <string name="succesPossiblePositiveNotification">S\'ha notificat el teu possible contagi</string>
+
+    <!-- home -->
+    <string name="home_risk">Usuari de risc</string>
+    <string name="home_not_risk">Usuari sense risc</string>
+
+    <!-- default -->
+    <string name="edit">Editar</string>
+    <string name="update">Actualitza</string>
+
+    <!-- Strings students in classroom Record -->
+    <string name="class_record_activity_title">Historial d\'alumnes a l\'aula</string>
+    <string name="alummne_assegut_a">"Alumne assegut a la fila: "</string>
+    <string name="alumne_assegut_a_columna">", columna: "</string>
+    <string name="error_no_students_in_this_classroom">Encara no han passat alumnes per aquesta aula</string>
+    <string name="title_activity_classroom_distribution">Distribució de la classe</string>
 
 
 </resources>

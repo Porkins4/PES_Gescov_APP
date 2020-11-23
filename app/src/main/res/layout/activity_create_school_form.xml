@@ -4,24 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewLayer.SchoolsAdministration.CreateSchoolFormActivity">
+    tools:context=".ViewLayer.SchoolsActivities.SchoolsAdministration.CreateSchoolFormActivity">
 
-    <TextView
-        android:id="@+id/create_clasroom_form_capacity_text"
+    <EditText
+        android:id="@+id/create_school_form_web_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_school_web" />
+
+    <TextView
+        android:id="@+id/create_school_web"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/create_school_form_school_website"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_school_form_phone_input" />
+
+    <TextView
+        android:id="@+id/create_school_form_address_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="@string/Catalan_create_school_form_school_address"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_school_form_name_input" />
 
-    <EditText
-        android:id="@+id/create_school_form_code_input"
+    <TextView
+        android:id="@+id/create_school_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/create_school_form_school_phone"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_school_form_address_input" />
+
+    <EditText
+        android:id="@+id/create_school_form_phone_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_school_phone" />
+
+    <EditText
+        android:id="@+id/create_school_form_address_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/Catalan_create_school_form_school_address"
@@ -29,13 +76,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_clasroom_form_capacity_text" />
+        app:layout_constraintTop_toBottomOf="@+id/create_school_form_address_text" />
 
     <TextView
         android:id="@+id/create_classroom_form_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="196dp"
+        android:layout_marginTop="20dp"
         android:text="@string/Catalan_create_school_form_school_name"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +93,7 @@
         android:id="@+id/create_school_form_name_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/Catalan_create_school_form_school_name"
@@ -56,32 +103,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_classroom_form_name_text" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="60dp"
-        app:layout_constraintEnd_toEndOf="@+id/create_school_form_code_input"
-        app:layout_constraintTop_toBottomOf="@+id/create_school_form_name_input"
-        app:srcCompat="@drawable/logo2_2" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toBottomOf="@+id/create_school_form_code_input"
-        app:layout_constraintStart_toStartOf="@+id/create_school_form_name_input"
-        app:srcCompat="@drawable/logo2_2" />
-
     <Button
         android:id="@+id/create_school_form_create_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:text="@string/create_school_form_school_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_school_form_code_input" />
+        app:layout_constraintTop_toBottomOf="@+id/create_school_form_web_input" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewLayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/class_record_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/white" />
+
+    <ListView
+        android:id="@+id/students_in_class_record_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="676dp"
+        android:paddingTop="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/class_record_toolbar"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:id="@+id/students_in_class_record_loading_components"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:id="@+id/progressBar3"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:foregroundGravity="center_horizontal"
+            android:text="Carregant..." />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/students_in_class_record_error"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/students_in_class_record_list_view"
+        app:layout_constraintStart_toStartOf="@+id/students_in_class_record_list_view"
+        app:layout_constraintTop_toBottomOf="@+id/class_record_toolbar"
+        tools:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="349dp"
+            android:layout_height="93dp"
+            app:srcCompat="?android:attr/alertDialogIcon" />
+
+        <TextView
+            android:id="@+id/activity_students_in_class_record_error"
+            android:layout_width="318dp"
+            android:layout_height="53dp"
+            android:text="@string/error_no_students_in_this_classroom"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

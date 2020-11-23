@@ -1,9 +1,23 @@
 package com.example.gescov.ViewLayer.home;
 
-import com.example.gescov.ViewLayer.PresentationControlFactory;
+import androidx.lifecycle.MutableLiveData;
+
+import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
 
 public class NotifyContagionController {
-    public Boolean notifyInfected() {
-       return PresentationControlFactory.getViewLayerController().notifyInfected();
+    public void notifyInfected(MutableLiveData<ContagionRequestResult> result) {
+        PresentationControlFactory.getViewLayerController().notifyInfected(result);
+    }
+
+    public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
+        PresentationControlFactory.getViewLayerController().notifyRecovery(result);
+    }
+
+    public void setContagionId(String contagionId) {
+        PresentationControlFactory.getViewLayerController().setContagionId(contagionId);
+    }
+
+    public void notifyPossibleContagion(MutableLiveData<ContagionRequestResult> result) {
+        PresentationControlFactory.getViewLayerController().notifyPossibleContagion(result);
     }
 }

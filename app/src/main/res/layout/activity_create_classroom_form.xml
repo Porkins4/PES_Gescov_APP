@@ -4,7 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewLayer.SchoolClassroomList.CreateClassroomFormActivity">
+    tools:context=".ViewLayer.SchoolsActivities.SchoolClassroomList.CreateClassroomFormActivity">
+
+    <Button
+        android:id="@+id/create_classroom_form_delete"
+        style="@style/Theme.Gescov_DeleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/delete_red"
+        android:text="@string/create_classroom_form_delete"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/create_classroom_form_name_input"
@@ -20,31 +33,6 @@
         app:layout_constraintTop_toBottomOf="@+id/create_classroom_form_name_text" />
 
     <TextView
-        android:id="@+id/create_classroom_form_capacity_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="@string/create_classroom_form_capacity"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_classroom_form_name_input" />
-
-    <EditText
-        android:id="@+id/create_classroom_form_capacity_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/create_classroom_form_capacity"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_classroom_form_capacity_text" />
-
-    <TextView
         android:id="@+id/create_classroom_form_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/create_school_form_create_button"
+        android:id="@+id/create_classroom_form_create_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -70,11 +58,11 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="@string/create_classroom_form_rows"
         app:layout_constraintEnd_toEndOf="@+id/create_classroom_form_rows"
         app:layout_constraintStart_toStartOf="@+id/create_classroom_form_rows"
-        app:layout_constraintTop_toBottomOf="@+id/create_classroom_form_capacity_input" />
+        app:layout_constraintTop_toBottomOf="@+id/create_classroom_form_name_input" />
 
     <TextView
         android:id="@+id/textView12"

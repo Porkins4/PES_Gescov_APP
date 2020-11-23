@@ -1,7 +1,9 @@
 package com.example.gescov.DomainLayer.Classmodels;
 
-import com.example.gescov.DomainLayer.Services.ISchoolService;
-import com.example.gescov.DomainLayer.Services.ServicesFactory;
+import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
+import com.example.gescov.DomainLayer.Singletons.ServicesFactory;
+
+import java.util.List;
 
 public class School {
 
@@ -9,21 +11,43 @@ public class School {
     private String name;
     private String address;
     private String state;
-    private String creator;
+    private String creatorID;
     private float latitude;
     private float longitude;
+    private String telephoneNumber;
+    private String webpage;
+    private List<String> listAdministratorsID;
+    private String email;
 
-    public School(String id, String name, String address, String state, String creator) {
+    public School(String id, String name, String address, String state, String creatorID, String email, List<String> listAdministratorsID) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.state = state;
-        this.creator = creator;
+        this.email = email;
+        this.creatorID = creatorID;
+        this.listAdministratorsID = listAdministratorsID;
         longitude = latitude = 0;
     }
 
     public School(String name) {
         this.name = name;
+    }
+
+
+    public School(){}
+
+    public School(String id, String name, String address, String state, String creatorID, String email, String telephoneNumber, int longitude, int latitude, List<String> listAdministratorsID) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.state = state;
+        this.email = email;
+        this.telephoneNumber = telephoneNumber;
+        this.creatorID = creatorID;
+        this.listAdministratorsID = listAdministratorsID;
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 
     public String getId() {
@@ -40,6 +64,14 @@ public class School {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getState() {
+        return state;
     }
 
     public String getClassroomDimensions(String schoolId, String classroomId) {
@@ -60,12 +92,26 @@ public class School {
         this.state = state;
     }
 
-    public void setCreator(String creator) {
-        this.creator = creator;
+    public void setCreatorID(String creatorID) {
+        this.creatorID = creatorID;
     }
 
-    public void createClassroom(String classroomName, String classrooomCapacity, String classroomRows, String classroomCols) {
+    public void createClassroom( String classroomName, int classroomRows, int classroomCols) {
         ISchoolService schoolService = ServicesFactory.getSchoolService();
-        schoolService.createClassroomRequest(name, address, state, latitude, longitude, creator, classroomName, classrooomCapacity, classroomRows, classroomCols);
+        schoolService.createClassroomRequest(id, classroomName, classroomRows, classroomCols);
     }
+
+
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public String getWebpage() {
+        return webpage;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
 }
