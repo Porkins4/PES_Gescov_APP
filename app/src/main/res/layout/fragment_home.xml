@@ -57,10 +57,12 @@
 
     <ImageView
         android:id="@+id/user_image_home"
-        android:layout_width="256dp"
-        android:layout_height="307dp"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/isaac"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
