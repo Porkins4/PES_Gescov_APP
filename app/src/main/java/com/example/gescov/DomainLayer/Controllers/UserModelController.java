@@ -164,4 +164,8 @@ public class UserModelController {
     public void notifyPossibleContagion(MutableLiveData<ContagionRequestResult> result) {
         loggedUser.notifyPossibleContagion(result);
     }
+
+    public void updateContagionId() {
+        loggedUser.updateContagionId();
+    }
 }

@@ -216,4 +216,8 @@ public class User {
     public void notifyPossibleContagion(MutableLiveData<ContagionRequestResult> result) {
         ServicesFactory.getContagionService().notifyPossibleContagion(id,result);
     }
+
+    public void updateContagionId() {
+        ServicesFactory.getContagionService().updateContagionId(id);
+    }
 }

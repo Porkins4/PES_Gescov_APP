@@ -272,7 +272,6 @@ public class SchoolServiceImplementor implements ISchoolService {
     @Override
     public void addStudentToCenter(String id, String schoolId, MutableLiveData<SchoolRequestResult> result) {
         RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
-        SchoolRequestResult aux = new SchoolRequestResult();
         StringRequest stringRequest = new StringRequest(
                 Request.Method.PUT, PUT_USER_TO_SCHOOL+id+"?schoolID="+schoolId,
                 new Response.Listener<String>() {

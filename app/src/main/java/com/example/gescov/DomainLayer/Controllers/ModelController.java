@@ -189,4 +189,8 @@ public class ModelController {
     public void refreshClassroomDistributionClassInfo(Classroom c, boolean b) {
         PresentationControlFactory.getViewLayerController().refreshClassroomDistributionClassInfo(c,b);
     }
+
+    public void updateContagionId() {
+        DomainControlFactory.getUserModelController().updateContagionId();
+    }
 }

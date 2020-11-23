@@ -14,6 +14,8 @@ import com.android.volley.toolbox.Volley;
 import com.example.gescov.DomainLayer.Services.Conection;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IContagionService;
 import com.example.gescov.DomainLayer.Services.Volley.VolleyServices;
+import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
+import com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 
 import org.json.JSONArray;
@@ -96,6 +98,27 @@ public class ContagionServiceImplementor implements IContagionService {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void updateContagionId(String id) {
+        //GET /api/contagions/student/{id}
+        queue =  Volley.newRequestQueue(VolleyServices.getCtx());
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.GET, ContagionLink + "/student/"+id,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        DomainControlFactory.getUserModelController().setContagionId(response);
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+        queue.add(stringRequest);
+    }
+
 
     @Override
     public String getContagionList(String userId, String schoolId) {
