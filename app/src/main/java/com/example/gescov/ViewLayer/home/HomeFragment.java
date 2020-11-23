@@ -22,6 +22,7 @@ import com.example.gescov.R;
 import com.example.gescov.ViewLayer.Singletons.LoggedInUser;
 import com.example.gescov.ViewLayer.UpdateUserProfile.UpdateUserProfileActivity;
 import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,14 +35,18 @@ public class HomeFragment extends Fragment {
     private Button riskButton;
     private TextView nameText;
     private User user;
-   
-    
+    private ImageView userImage;
+
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         PresentationControlFactory.setViewModelProvider(new ViewModelProvider(this));
         homeViewModel = PresentationControlFactory.getViewModelProvider().get(HomeViewModel.class);
         root = inflater.inflate(R.layout.fragment_home, container, false);
-        Button takeTest = (Button) root.findViewById(R.id.takeTest);
-        Button report = (Button) root.findViewById(R.id.report);
+        Button takeTest = root.findViewById(R.id.takeTest);
+        String url = LoggedInUser.getPhotoURL();
+        userImage = root.findViewById(R.id.user_image_home);
+        loadImageFromUrl(url);
+        Button report = root.findViewById(R.id.report);
 
         nameText = root.findViewById(R.id.home_user_name);
         nameText.setText("");
@@ -74,9 +79,7 @@ public class HomeFragment extends Fragment {
 
         initUpdateUserProfileButton();
         initViewComponents();
-        LoadImage loadImage = new LoadImage((ImageView) root.findViewById(R.id.user_image_home));
 
-        loadImage.execute(LoggedInUser.getPhotoURL());
         return root;
     }
 
@@ -104,29 +107,15 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private class LoadImage extends AsyncTask<String,Void, Bitmap> {
-
-        ImageView imageView;
-        public LoadImage(ImageView iv) {
-            this.imageView = iv;
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... strings) {
-            String url = strings[0];
-            Bitmap b = null;
-            try {
-                InputStream is = new java.net.URL(url).openStream();
-                b = BitmapFactory.decodeStream(is);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return b;
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            super.onPostExecute(bitmap);
-        }
+    public void loadImageFromUrl(String url ) {
+        System.out.println(url);
+       Picasso.with(this.getContext()).load(url).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(userImage, new com.squareup.picasso.Callback() {
+           @Override
+           public void onSuccess() {
+           }
+           @Override
+           public void onError() {
+           }
+       });
     }
 }
