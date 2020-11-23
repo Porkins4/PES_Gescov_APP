@@ -1,24 +1,30 @@
 package com.example.gescov.ViewLayer.home;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.R;
+import com.example.gescov.ViewLayer.Singletons.LoggedInUser;
 import com.example.gescov.ViewLayer.UpdateUserProfile.UpdateUserProfileActivity;
-import com.example.gescov.ViewLayer.PresentationControlFactory;
+import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class HomeFragment extends Fragment {
 
@@ -67,7 +73,16 @@ public class HomeFragment extends Fragment {
         });
 
         initUpdateUserProfileButton();
+        initViewComponents();
+        LoadImage loadImage = new LoadImage((ImageView) root.findViewById(R.id.user_image_home));
+
+        loadImage.execute(LoggedInUser.getPhotoURL());
         return root;
+    }
+
+    private void initViewComponents() {
+        TextView userName = (TextView) root.findViewById(R.id.home_user_name);
+        userName.setText(user.getName());
     }
 
     private void initUpdateUserProfileButton() {
@@ -87,5 +102,31 @@ public class HomeFragment extends Fragment {
         riskButton.setText(getResources().getText(homeViewModel.getRisk().getValue() ? R.string.home_risk : R.string.home_not_risk));
         nameText.setText(user.getName());
 
+    }
+
+    private class LoadImage extends AsyncTask<String,Void, Bitmap> {
+
+        ImageView imageView;
+        public LoadImage(ImageView iv) {
+            this.imageView = iv;
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... strings) {
+            String url = strings[0];
+            Bitmap b = null;
+            try {
+                InputStream is = new java.net.URL(url).openStream();
+                b = BitmapFactory.decodeStream(is);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return b;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            super.onPostExecute(bitmap);
+        }
     }
 }

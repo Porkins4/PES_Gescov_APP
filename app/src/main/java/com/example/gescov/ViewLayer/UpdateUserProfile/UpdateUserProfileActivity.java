@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.gescov.R;
-import com.example.gescov.ViewLayer.PresentationControlFactory;
+import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
 
 public class UpdateUserProfileActivity extends AppCompatActivity {
 

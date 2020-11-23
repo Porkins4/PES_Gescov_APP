@@ -5,12 +5,12 @@ import android.util.Pair;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.User;
-import com.example.gescov.DomainLayer.Controllers.ModelController;
-import com.example.gescov.DomainLayer.DomainControlFactory;
+import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
-import com.example.gescov.ViewLayer.MainView.TokenVerificationResult;
-import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolRequestResult;
-import com.example.gescov.ViewLayer.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.ViewLayer.SignUpAndLogin.TokenVerificationResult;
+import com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
+import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 import com.example.gescov.ViewLayer.home.HomeViewModel;
 
@@ -19,8 +19,6 @@ import org.json.JSONException;
 import java.util.List;
 
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
 
 
 public class ViewLayerController {

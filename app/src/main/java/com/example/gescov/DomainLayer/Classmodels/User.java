@@ -2,12 +2,11 @@ package com.example.gescov.DomainLayer.Classmodels;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.gescov.DomainLayer.DomainControlFactory;
-import com.example.gescov.DomainLayer.Services.IContagionService;
-import com.example.gescov.DomainLayer.Services.ISchoolService;
-import com.example.gescov.DomainLayer.Services.ServicesFactory;
-import com.example.gescov.ViewLayer.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
+import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IContagionService;
+import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
+import com.example.gescov.DomainLayer.Singletons.ServicesFactory;
+import com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 
 import org.json.JSONArray;
@@ -34,7 +33,6 @@ public class User {
 
     public void setProfileType(String profileType) {
         this.profileType = profileType;
-        System.out.println("ha ido bien! :), nuevo perfil = " + profileType);
     }
 
 

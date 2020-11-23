@@ -12,31 +12,13 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.gescov.ViewLayer.navigation.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.gescov.ViewLayer.navigation.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-    <fragment
-
-
-        android:id="@+id/visualizar_aula"
-        android:name="com.example.gescov.ViewLayer.ClassroomDistribution.ClassroomDistributionFragment"
-        android:label="@string/Catalan_classroom_name"
-        tools:layout="@layout/fragment_show_distribution" />
-    <fragment
         android:id="@+id/ContagionList"
         android:name="com.example.gescov.ViewLayer.ContagionList.ContagionListFragment"
         android:label="@string/contagionlist"
         tools:layout="@layout/contagionlist" />
     <fragment
         android:id="@+id/schoolAdministration"
-        android:name="com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsAdministrationFagment"
+        android:name="com.example.gescov.ViewLayer.SchoolsActivities.SchoolsAdministration.SchoolsAdministrationFagment"
         android:label="@string/menu_schools_administration"
         tools:layout="@layout/fragment_school_administration" />
 

@@ -1,6 +1,6 @@
 package com.example.gescov.ViewLayer.UpdateUserProfile;
 
-import com.example.gescov.ViewLayer.PresentationControlFactory;
+import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
 
 public class UpdateUserProfileController {
 
