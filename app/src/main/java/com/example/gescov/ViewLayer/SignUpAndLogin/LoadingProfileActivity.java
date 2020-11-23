@@ -41,11 +41,16 @@ public class LoadingProfileActivity extends AppCompatActivity {
                 if (tokenVerificationResult.getSuccess()) {
                     updateUserId();
                     updateUserName();
+                    updateContagionId();
                     getTypeProfile();
                     showMenu();
                 }
             }
         });
+    }
+
+    private void updateContagionId() {
+        PresentationControlFactory.getLoadingProfileController().updateContagionId();
     }
 
     private void getTypeProfile() {

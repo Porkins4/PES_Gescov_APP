@@ -23,4 +23,8 @@ public class LoadingProfileController {
     public void getTypeProfile() {
         PresentationControlFactory.getViewLayerController().getTypeProfile();
     }
+
+    public void updateContagionId() {
+        PresentationControlFactory.getViewLayerController().updateContagionId();
+    }
 }
