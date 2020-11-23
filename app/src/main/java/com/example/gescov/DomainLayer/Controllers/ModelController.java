@@ -169,4 +169,7 @@ public class ModelController {
         //PresentationControlFactory.getViewLayerController().updateHomeViewModel(name, risk);
     }
 
+    public void notifyPossibleContagion(MutableLiveData<ContagionRequestResult> result) {
+        DomainControlFactory.getUserController().notifyPossibleContagion(result);
+    }
 }

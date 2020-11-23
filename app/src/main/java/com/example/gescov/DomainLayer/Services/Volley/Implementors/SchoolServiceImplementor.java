@@ -325,15 +325,14 @@ public class SchoolServiceImplementor implements ISchoolService {
                     public void onResponse(String response) {
                         SchoolRequestResult aux = new SchoolRequestResult();
                         aux.setError(false);
-                        System.out.println(aux.getError());
                         result.setValue(aux);
+                        DomainControlFactory.getUserController().setNewSchoolID(schoolId);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 SchoolRequestResult aux = new SchoolRequestResult();
                 aux.setError(true);
-                System.out.println(aux.getError());
                 result.setValue(aux);
             }
         });

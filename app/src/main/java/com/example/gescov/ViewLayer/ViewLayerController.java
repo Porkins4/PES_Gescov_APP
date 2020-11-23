@@ -162,4 +162,8 @@ public class ViewLayerController {
       viewModel.setName(name);
       viewModel.setRisk(risk);
     }
+
+    public void notifyPossibleContagion(MutableLiveData<ContagionRequestResult> result) {
+        DomainControlFactory.getModelController().notifyPossibleContagion(result);
+    }
 }

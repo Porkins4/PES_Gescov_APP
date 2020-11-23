@@ -16,4 +16,8 @@ public class NotifyContagionController {
     public void setContagionId(String contagionId) {
         PresentationControlFactory.getViewLayerController().setContagionId(contagionId);
     }
+
+    public void notifyPossibleContagion(MutableLiveData<ContagionRequestResult> result) {
+        PresentationControlFactory.getViewLayerController().notifyPossibleContagion(result);
+    }
 }

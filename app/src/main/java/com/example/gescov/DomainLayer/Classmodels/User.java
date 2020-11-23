@@ -189,7 +189,7 @@ public class User {
     }
 
     public void addStudentToCenter(School school, MutableLiveData<SchoolRequestResult> result) {
-        schoolsID.add(0,school.getId());
+        //schoolsID.add(0,school.getId());
         ServicesFactory.getSchoolService().addStudentToCenter(id,school.getId(),result);
     }
 
@@ -207,5 +207,13 @@ public class User {
 
     public void updateRisk() {
         ServicesFactory.getUpdateUserRiskResponseController().updateRisk(id);
+    }
+
+    public void setNewSchoolID(String schoolId) {
+        schoolsID.add(0,schoolId);
+    }
+
+    public void notifyPossibleContagion(MutableLiveData<ContagionRequestResult> result) {
+        ServicesFactory.getContagionService().notifyPossibleContagion(id,result);
     }
 }

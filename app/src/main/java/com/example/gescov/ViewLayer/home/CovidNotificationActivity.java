@@ -42,8 +42,15 @@ public class CovidNotificationActivity extends AppCompatActivity {
                         OpenPopup("notifyRecovery");
                     }
                     else {
-                        System.out.println("wazzuuuup");
                         succesfulRecovery();
+                    }
+                }
+                else if (response.first == "notifyPossiblePositive") {
+                    if ( response.second ) {
+                        OpenPopup("notifyPossiblePositive");
+                    }
+                    else {
+                        sucessfulPossibleContagionRequest(contagionRequestResult);
                     }
                 }
             }
@@ -51,18 +58,23 @@ public class CovidNotificationActivity extends AppCompatActivity {
         notifyContagionState =  PresentationControlFactory.getNotifyContagionController();
     }
 
+    private void sucessfulPossibleContagionRequest(ContagionRequestResult contagionRequestResult) {
+        Toast.makeText(this,R.string.succesPossiblePositiveNotification,Toast.LENGTH_SHORT).show();
+        PresentationControlFactory.getNotifyContagionController().setContagionId(contagionRequestResult.getContagionId());
+    }
+
     private void succesfulRecovery() {
-        Toast.makeText(this,R.string.succesRecoveryNotification,Toast.LENGTH_LONG).show();
+        Toast.makeText(this,R.string.succesRecoveryNotification,Toast.LENGTH_SHORT).show();
         PresentationControlFactory.getNotifyContagionController().setContagionId(null);
     }
 
     private void succesfulContagionRequest(ContagionRequestResult contagionRequestResult) {
-        Toast.makeText(this,R.string.succesPositiveNotification,Toast.LENGTH_LONG).show();
+        Toast.makeText(this,R.string.succesPositiveNotification,Toast.LENGTH_SHORT).show();
         PresentationControlFactory.getNotifyContagionController().setContagionId(contagionRequestResult.getContagionId());
     }
 
     private void initButtonNotifyPositive() {
-        Button notifyPositive = (Button) findViewById(R.id.notifypositive);
+        Button notifyPositive = findViewById(R.id.notifypositive);
         notifyPositive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,10 +86,21 @@ public class CovidNotificationActivity extends AppCompatActivity {
     private void init() {
         initRecoverButton();
         initButtonNotifyPositive();
+        initPossiblePositive();
+    }
+
+    private void initPossiblePositive() {
+        Button notifypossible = findViewById(R.id.notifypossible);
+        notifypossible.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                covidNotificationViewModel.notifyPossibleContagion();
+            }
+        });
     }
 
     private void initRecoverButton() {
-        Button notifyRecover = (Button) findViewById(R.id.notifyrecover);
+        Button notifyRecover = findViewById(R.id.notifyrecover);
         notifyRecover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +110,7 @@ public class CovidNotificationActivity extends AppCompatActivity {
     }
 
     private void OpenPopup(String notification) {
-        if (notification == "notifyPositive"){
+        if (notification == "notifyPositive" || notification == "notifyPossiblePositive" ){
             PopErrorNotifyPositive error = new PopErrorNotifyPositive();
             error.show(getSupportFragmentManager(),"Tag");
         }

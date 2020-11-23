@@ -23,4 +23,9 @@ public class CovidNotificationViewModel extends ViewModel {
     public void notifyRecoveryResult() {
         PresentationControlFactory.getNotifyContagionController().notifyRecovery(result);
     }
+
+    public void notifyPossibleContagion() {
+        PresentationControlFactory.getNotifyContagionController().notifyPossibleContagion(result);
+
+    }
 }

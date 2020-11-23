@@ -156,4 +156,12 @@ public class UserController {
     public String getProfileType() {
         return loggedUser.getProfileType();
     }
+
+    public void setNewSchoolID(String schoolId) {
+        loggedUser.setNewSchoolID(schoolId);
+    }
+
+    public void notifyPossibleContagion(MutableLiveData<ContagionRequestResult> result) {
+        loggedUser.notifyPossibleContagion(result);
+    }
 }

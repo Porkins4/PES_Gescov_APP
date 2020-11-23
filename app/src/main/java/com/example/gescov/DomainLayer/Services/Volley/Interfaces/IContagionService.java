@@ -10,4 +10,6 @@ public interface IContagionService {
     void notifyContagion(MutableLiveData<ContagionRequestResult> result,String ConfirmedInfected, String id);
     void notifyRecovery(MutableLiveData<ContagionRequestResult> result , String id);
     void sendAnswers(List<Boolean> answers,String idContagion);
+
+    void notifyPossibleContagion(String id, MutableLiveData<ContagionRequestResult> result);
 }

@@ -117,6 +117,7 @@
     <string name="notify_state">Notificar Estado</string>
     <string name="succesPositiveNotification">S\'ha notificat correctament el teu positiu</string>
     <string name="succesRecoveryNotification">S\'ha notificat la teva recuperació correctament</string>
+    <string name="succesPossiblePositiveNotification">S\'ha notificat el teu possible contagi</string>
 
     <!-- home -->
     <string name="home_risk">Usuari de risc</string>
@@ -131,7 +132,6 @@
     <string name="alummne_assegut_a">"Alumne assegut a la fila: "</string>
     <string name="alumne_assegut_a_columna">", columna: "</string>
     <string name="error_no_students_in_this_classroom">Encara no han passat alumnes per aquesta aula</string>
-
 
 
 

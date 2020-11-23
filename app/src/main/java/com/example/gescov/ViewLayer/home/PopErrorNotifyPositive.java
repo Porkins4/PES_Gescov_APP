@@ -15,7 +15,7 @@ public class PopErrorNotifyPositive extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Error!")
-                .setMessage("Ja ets registrat com contagiat")
+                .setMessage("Ja ets registrat com contagiat o com possible contagiat")
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
