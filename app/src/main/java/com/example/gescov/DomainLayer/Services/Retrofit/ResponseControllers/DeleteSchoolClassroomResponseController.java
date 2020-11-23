@@ -19,7 +19,7 @@ public class DeleteSchoolClassroomResponseController implements Callback<Respons
 
     @Override
     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-        DomainControlFactory.getUserController().refreshSchoolClassrooms(DomainControlFactory.getSchoolsModelCrontroller().getCurrentSchool().getName());
+        DomainControlFactory.getUserModelController().refreshSchoolClassrooms(DomainControlFactory.getSchoolsModelCrontroller().getCurrentSchool().getName());
     }
 
     @Override

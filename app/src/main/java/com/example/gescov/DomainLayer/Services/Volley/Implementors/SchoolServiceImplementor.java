@@ -82,59 +82,14 @@ public class SchoolServiceImplementor implements ISchoolService {
     }
 
     @Override
-    public void sendReservationRequest(String name, String aula, int row, int col) {
+    public void sendReservationRequest(String studentID, String classSessionID, int row, int col) {
         try {
-            JSONObject postData = new JSONObject(
-                    "{\n" +
-                            "    \"posCol\":"+ col + ",\n" +
-                            "    \"posRow\":" + row + ",\n" +
-                            "    \"student\":{\n" +
-                            "    \"name\": \"" + name + "\",\n" +
-                            "    \"schools\": [\n" +
-                            "        {\n" +
-                            "            \"address\": \"Carrer de Pau Gargallo, 14\",\n" +
-                            "            \"name\": \"FME\",\n" +
-                            "            \"state\": \"open\",\n" +
-                            "            \"creator\": \"Xicu Torres\"\n" +
-                            "        } \n" +
-                            "    ]\n" +
-                            "},\n" +
-                            "    \"classSession\":{\n" +
-                            "    \"classroom\":{\n" +
-                            "        \"name\": \"A5S201\",\n" +
-                            "        \"capacity\": \"25\",\n" +
-                            "        \"numRows\":\"5\",\n" +
-                            "        \"numCols\":\"10\",\n" +
-                            "        \"school\":{\n" +
-                            "            \"address\": \"Carrer de Pau Gargallo, 14\",\n" +
-                            "            \"name\": \"FME\",\n" +
-                            "            \"state\": \"open\",\n" +
-                            "            \"creator\": \"Xicu Torres\"\n" +
-                            "        }\n" +
-                            "    },\n" +
-                            "    \"subject\":{\n" +
-                            "        \"name\": \"AC\",\n" +
-                            "        \"school\":{\n" +
-                            "            \"address\": \"Carrer de Pau Gargallo, 14\",\n" +
-                            "            \"name\": \"FME\",\n" +
-                            "             \"state\": \"open\",\n" +
-                            "             \"creator\": \"Xicu Torres\"\n" +
-                            "        }\n" +
-                            "    },\n" +
-                            "    \"teacher\":{\n" +
-                            "             \"name\": \"Ponç Partido Perdido\",\n" +
-                            "             \"schools\": [{\n" +
-                            "                     \"address\": \"Carrer de Pau Gargallo, 14\",\n" +
-                            "                     \"name\": \"FME\",\n" +
-                            "                     \"state\": \"open\",\n" +
-                            "                     \"creator\": \"Xicu Torres\"\n" +
-                            "               }]\n" +
-                            "    },\n" +
-                            "    \"hour\": \"12:00:00\",\n" +
-                            "    \"date\": \"03-02-2020\"\n" +
-                            "}\n" +
-                            "}"
-            );
+            JSONObject postData = new JSONObject();
+            postData.put("classSessionID",classSessionID);
+            postData.put("id","");
+            postData.put("posCol",col);
+            postData.put("posRow",row);
+            postData.put("studentID",studentID);
 
             RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
 
@@ -221,7 +176,7 @@ public class SchoolServiceImplementor implements ISchoolService {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        DomainControlFactory.getUserController().refreshSchoolClassrooms(DomainControlFactory.getSchoolsModelCrontroller().getCurrentSchool().getName());
+                        DomainControlFactory.getUserModelController().refreshSchoolClassrooms(DomainControlFactory.getSchoolsModelCrontroller().getCurrentSchool().getName());
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -302,7 +257,7 @@ public class SchoolServiceImplementor implements ISchoolService {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        DomainControlFactory.getUserController().setUserProfile(response);
+                        DomainControlFactory.getUserModelController().setUserProfile(response);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -326,7 +281,7 @@ public class SchoolServiceImplementor implements ISchoolService {
                         SchoolRequestResult aux = new SchoolRequestResult();
                         aux.setError(false);
                         result.setValue(aux);
-                        DomainControlFactory.getUserController().setNewSchoolID(schoolId);
+                        DomainControlFactory.getUserModelController().setNewSchoolID(schoolId);
                     }
                 }, new Response.ErrorListener() {
             @Override

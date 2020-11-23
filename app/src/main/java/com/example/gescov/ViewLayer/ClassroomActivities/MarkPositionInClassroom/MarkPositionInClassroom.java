@@ -26,7 +26,7 @@ public class MarkPositionInClassroom extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         MarkPositionInClassroomController controller = PresentationControlFactory.getMarkPositionInClassroomController();
-                        controller.sendReservationRequest("aula",getIntent().getExtras().getInt("row"),getIntent().getExtras().getInt("col"));
+                        controller.sendReservationRequest(getIntent().getExtras().getString("classSessionID"),getIntent().getExtras().getInt("row")+1,getIntent().getExtras().getInt("col")+1);
                         finish();
                     }
                 }

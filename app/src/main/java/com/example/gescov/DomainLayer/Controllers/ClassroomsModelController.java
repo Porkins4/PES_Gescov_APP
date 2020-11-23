@@ -14,7 +14,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SchoolClassroomsModelController {
+public class ClassroomsModelController {
 
 
 
@@ -59,5 +59,27 @@ public class SchoolClassroomsModelController {
             }
         }
         DomainControlFactory.getModelController().refreshStudentsInClassRecordView(r,b);
+    }
+
+    public void getClassroomInfo(String classroomID) {
+        ServicesFactory.getClassroomService().getClassroomInfo(classroomID);
+    }
+
+    public void updateClassroomDistributionClassInfo(JSONObject response, boolean b) {
+        Classroom c = new Classroom();
+        if (!b) {
+            String classID = null;
+            try {
+                classID = response.getString("id");
+                String name = response.getString("name");
+                int rows = response.getInt("numRows");
+                int cols = response.getInt("numCols");
+                int capacity = response.getInt("capacity");
+                c = new Classroom(classID,name,rows,cols,capacity);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        DomainControlFactory.getModelController().refreshClassroomDistributionClassInfo(c,b);
     }
 }

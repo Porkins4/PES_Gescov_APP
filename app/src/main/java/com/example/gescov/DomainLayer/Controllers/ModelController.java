@@ -4,6 +4,7 @@ import android.util.Pair;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.gescov.DomainLayer.Classmodels.Assignment;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.User;
@@ -20,33 +21,33 @@ import java.util.List;
 
 public class ModelController {
 
-    private UserController userController;
+    private UserModelController userModelController;
     private ViewLayerController viewLayerController;
 
     public ModelController() {
-        userController = DomainControlFactory.getUserController();
+        userModelController = DomainControlFactory.getUserModelController();
         viewLayerController = PresentationControlFactory.getViewLayerController();
 
     }
 
     public String getAllContagions() {
-       return userController.getContagionsOfMyCenter();
+       return userModelController.getContagionsOfMyCenter();
     }
 
     public void CreateUser(String nameuser) {
-        userController = new UserController();
-        userController.initUser();// remember to modify this when u have an user
+        userModelController = new UserModelController();
+        userModelController.initUser();// remember to modify this when u have an user
     }
 
 
     //-1 means that user is not linked to the specified school
     public String getClassroomDimensions(String schoolId, String classroomId) {
-        if (userController.containsSchool(schoolId)) return userController.getClassroomDimensions(schoolId, classroomId);
+        if (userModelController.containsSchool(schoolId)) return userModelController.getClassroomDimensions(schoolId, classroomId);
         return "-1";
     }
 
     public String getStudentsInClassroom(String classroom) {
-        return userController.getStudentsInClassroom(classroom);
+        return userModelController.getStudentsInClassroom(classroom);
     }
 
     public void getAllSchools() throws JSONException {
@@ -59,12 +60,12 @@ public class ModelController {
 
     public void notifyInfected(MutableLiveData<ContagionRequestResult> result) {
         // para obtener la School
-        userController.notifyInfected(result);
+        userModelController.notifyInfected(result);
 
     }
 
     public void sendReservationRequest(String aula, int row, int col) {
-        userController.sendReservationRequest(aula,row,col);
+        userModelController.sendReservationRequest(aula,row,col);
     }
 
     public void createClassroom(School currentSchool, String classroomName, int classroomRows, int classroomCols) {
@@ -72,52 +73,52 @@ public class ModelController {
     }
 
     public void updateClassroom(String classroomId, String classroomName, int numRows, int numCols) {
-        userController.updateClassroom(classroomId, classroomName, numRows, numCols);
+        userModelController.updateClassroom(classroomId, classroomName, numRows, numCols);
     }
 
     public void daleteClassroom(String classroomId) {
-        userController.deleteClassroom(classroomId);
+        userModelController.deleteClassroom(classroomId);
     }
 
     public void deleteSchool(String schoolId) {
-        userController.deleteSchool(schoolId);
+        userModelController.deleteSchool(schoolId);
     }
 
     public void getSchoolClassrooms(String schoolName) {
-        userController.refreshSchoolClassrooms(schoolName);
+        userModelController.refreshSchoolClassrooms(schoolName);
     }
 
 
     public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
-        userController.getStudentsInClassSession(studentsResult);
+        userModelController.getStudentsInClassSession(studentsResult);
     }
   
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
-        userController.notifyRecovery(result);
+        userModelController.notifyRecovery(result);
     }
   
     public void sendAnswers(List<Boolean> answers) {
-        userController.sendAnswers(answers);
+        userModelController.sendAnswers(answers);
     }
 
     public void checkLoginUser(MutableLiveData<TokenVerificationResult> r) {
-        userController.checkLoginUser(r);
+        userModelController.checkLoginUser(r);
     }
 
     public void updateUserId(String userId) {
-        userController.updateUserId(userId);
+        userModelController.updateUserId(userId);
     }
 
     public String getUserId() {
-        return userController.getUserId();
+        return userModelController.getUserId();
     }
 
     public void updateUserName(String userName) {
-        userController.updateUserName(userName);
+        userModelController.updateUserName(userName);
     }
 
     public void setContagionId(String contagionId) {
-        userController.setContagionId(contagionId);
+        userModelController.setContagionId(contagionId);
     }
 
     public void refreshSchoolListInView(List<School> schoolsList) {
@@ -133,20 +134,20 @@ public class ModelController {
     }
 
     public void getTypeProfile() {
-        DomainControlFactory.getUserController().getTypeProfile();
+        DomainControlFactory.getUserModelController().getTypeProfile();
     }
 
     public void addStudentToCenter(String schoolName, MutableLiveData<SchoolRequestResult> result) {
        School school = DomainControlFactory.getSchoolsModelCrontroller().getSchoolByName(schoolName);
-       userController.addStudentToCenter(school,result);
+       userModelController.addStudentToCenter(school,result);
     }
 
     public void changeUserProfile(String profile) {
-        userController.changeUserProfile(profile);
+        userModelController.changeUserProfile(profile);
     }
 
     public String getUserType() {
-        return userController.getProfileType();
+        return userModelController.getProfileType();
     }
 
     public void getStudentsInClassRecord(String classroomId, String date) {
@@ -158,11 +159,11 @@ public class ModelController {
     }
 
     public User getLoggedUser() {
-       return DomainControlFactory.getUserController().getLoggedUser();
+       return DomainControlFactory.getUserModelController().getLoggedUser();
     }
 
     public void updateLoggedUserRisk() {
-        DomainControlFactory.getUserController().updateLoggedUserRisk();
+        DomainControlFactory.getUserModelController().updateLoggedUserRisk();
     }
 
     public void updateHomeViewModel(String name, boolean risk) {
@@ -170,6 +171,22 @@ public class ModelController {
     }
 
     public void notifyPossibleContagion(MutableLiveData<ContagionRequestResult> result) {
-        DomainControlFactory.getUserController().notifyPossibleContagion(result);
+        DomainControlFactory.getUserModelController().notifyPossibleContagion(result);
+    }
+
+    public void getAssignmentsForClassSession(String classroomID, String date, String hour) {
+        DomainControlFactory.getAssignmentModelController().getAssignmentsForClassSession(classroomID,date,hour);
+    }
+
+    public void refreshClassroomDistributionAssignments(List<Assignment> r, boolean b) {
+        PresentationControlFactory.getViewLayerController().refreshClassroomDistributionAssignments(r,b);
+    }
+
+    public void getClassroomInfo(String classroomID) {
+        DomainControlFactory.getClassroomModelController().getClassroomInfo(classroomID);
+    }
+
+    public void refreshClassroomDistributionClassInfo(Classroom c, boolean b) {
+        PresentationControlFactory.getViewLayerController().refreshClassroomDistributionClassInfo(c,b);
     }
 }

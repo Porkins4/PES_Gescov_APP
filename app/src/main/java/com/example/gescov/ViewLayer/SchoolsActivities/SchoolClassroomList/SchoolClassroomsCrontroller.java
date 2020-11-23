@@ -2,6 +2,7 @@ package com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList;
 
 import android.content.Context;
 
+import com.example.gescov.DomainLayer.Classmodels.Assignment;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
@@ -66,5 +67,9 @@ public class SchoolClassroomsCrontroller {
         return classroomsList.size() > position ? classroomsList.get(position) : null;
     }
 
+
+    public void getAssignmentsForClassSession(String classroomID, String date, String hour) {
+        PresentationControlFactory.getViewLayerController().getAssignmentsForClassSession(classroomID,date,hour);
+    }
 
 }

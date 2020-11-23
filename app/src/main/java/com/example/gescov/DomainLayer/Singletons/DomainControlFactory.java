@@ -1,15 +1,17 @@
 package com.example.gescov.DomainLayer.Singletons;
 
+import com.example.gescov.DomainLayer.Controllers.AssignmentsModelController;
 import com.example.gescov.DomainLayer.Controllers.ModelController;
-import com.example.gescov.DomainLayer.Controllers.SchoolClassroomsModelController;
+import com.example.gescov.DomainLayer.Controllers.ClassroomsModelController;
 import com.example.gescov.DomainLayer.Controllers.SchoolsModelController;
-import com.example.gescov.DomainLayer.Controllers.UserController;
+import com.example.gescov.DomainLayer.Controllers.UserModelController;
 
 public class DomainControlFactory {
     private static SchoolsModelController schoolsModelController;
-    private static SchoolClassroomsModelController classroomsController;
-    private static UserController userController;
+    private static ClassroomsModelController classroomsController;
+    private static UserModelController userModelController;
     private static ModelController modelController;
+    private static AssignmentsModelController assignmentsModelController;
 
     public static SchoolsModelController getSchoolsModelCrontroller() {
         if (schoolsModelController != null)
@@ -18,17 +20,17 @@ public class DomainControlFactory {
         return schoolsModelController;
     }
 
-    public static UserController getUserController() {
-        if (userController != null)
-            return userController;
-        userController = new UserController();
-        return userController;
+    public static UserModelController getUserModelController() {
+        if (userModelController != null)
+            return userModelController;
+        userModelController = new UserModelController();
+        return userModelController;
     }
 
-    public static SchoolClassroomsModelController getClassroomModelController() {
+    public static ClassroomsModelController getClassroomModelController() {
         if (classroomsController != null)
             return classroomsController;
-        classroomsController = new SchoolClassroomsModelController();
+        classroomsController = new ClassroomsModelController();
         return classroomsController;
     }
 
@@ -37,5 +39,12 @@ public class DomainControlFactory {
             return modelController;
         modelController = new ModelController();
         return modelController;
+    }
+
+    public static AssignmentsModelController getAssignmentModelController() {
+        if (assignmentsModelController != null)
+            return assignmentsModelController;
+        assignmentsModelController = new AssignmentsModelController();
+        return assignmentsModelController;
     }
 }

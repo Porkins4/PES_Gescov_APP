@@ -39,8 +39,8 @@ public class StudentsInClassSessionView extends AppCompatActivity {
         setResponseListener();
         initUpdateButton();
 
-        loadingTextView.setVisibility(View.VISIBLE);
-        progressBar.setVisibility(View.VISIBLE);
+        //loadingTextView.setVisibility(View.VISIBLE);
+        //progressBar.setVisibility(View.VISIBLE);
     }
 
     private void initPrivateAttribs() {

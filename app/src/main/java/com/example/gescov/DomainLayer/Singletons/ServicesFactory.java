@@ -6,10 +6,12 @@ import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.Refr
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateSchoolClassroomResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateUserRiskResponseController;
+import com.example.gescov.DomainLayer.Services.Volley.Implementors.AssignmentServiceImplementor;
 import com.example.gescov.DomainLayer.Services.Volley.Implementors.ClassroomServiceImplementor;
 import com.example.gescov.DomainLayer.Services.Volley.Implementors.ContagionServiceImplementor;
 import com.example.gescov.DomainLayer.Services.Volley.Implementors.SchoolServiceImplementor;
 import com.example.gescov.DomainLayer.Services.Volley.Implementors.UserServiceImplementor;
+import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IAssignmentService;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IClassroomService;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IContagionService;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
@@ -23,10 +25,14 @@ public class ServicesFactory {
     private static String GESCOV_BASE_URL = "https://gescov.herokuapp.com/";
     private static Retrofit retrofit;
 
+    //volley
     private static IContagionService contagionservice;
     private static ISchoolService schoolService;
     private static IUserService userService;
     private static IClassroomService classroomService;
+    private static IAssignmentService assignmentService;
+
+    //retrofit
     private static DeleteSchoolResponseController deleteSchoolResponseController;
     private static RefreshSchoolResponseController refreshSchoolResponseController;
     private static RefreshSchoolClassroomsResponseController refreshSchoolClassroomsResponseController;
@@ -102,5 +108,11 @@ public class ServicesFactory {
         if (updateUserRiskResponseController != null) return updateUserRiskResponseController;
         updateUserRiskResponseController = new UpdateUserRiskResponseController(getRetrofit());
         return updateUserRiskResponseController;
+    }
+
+    public static IAssignmentService getAssignmentService() {
+        if (assignmentService != null) return assignmentService;
+        assignmentService = new AssignmentServiceImplementor();
+        return assignmentService;
     }
 }

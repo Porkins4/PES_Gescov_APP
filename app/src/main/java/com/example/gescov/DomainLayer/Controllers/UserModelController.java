@@ -18,10 +18,10 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-public class UserController {
+public class UserModelController {
     private User loggedUser;
 
-    public UserController() {
+    public UserModelController() {
         loggedUser = new User();
     }
 
