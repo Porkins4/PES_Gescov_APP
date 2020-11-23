@@ -11,7 +11,7 @@ import com.example.gescov.DomainLayer.Services.Volley.VolleyServices;
 
 public class UserServiceImplementor implements IUserService {
 
-    private static String GESCOV_USERS_URI = "https://gescov.herokuapp.com/api/users/";
+    private static final String GESCOV_USERS_URI = "https://gescov.herokuapp.com/api/users/";
 
     public UserServiceImplementor() {}
 
@@ -22,7 +22,7 @@ public class UserServiceImplementor implements IUserService {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        DomainControlFactory.getUserController().setUserType(profile);
+                        DomainControlFactory.getUserModelController().setUserType(profile);
                     }
                 },
                 new Response.ErrorListener() {

@@ -39,13 +39,13 @@ public class SchoolsModelController {
     }
 
     public List<School> getAllSchools() throws JSONException {
-        String schoolsString = DomainControlFactory.getUserController().getAllSchools();
+        String schoolsString = DomainControlFactory.getUserModelController().getAllSchools();
         setSchoolsList(schoolsString);
         return getSchoolsList();
     }
 
     public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
-        DomainControlFactory.getUserController().createSchool(schoolName,schoolAddress, schoolTelephone, schoolWebsite);
+        DomainControlFactory.getUserModelController().createSchool(schoolName,schoolAddress, schoolTelephone, schoolWebsite);
     }
 
     public List<School> getSchoolsList() {
@@ -53,7 +53,7 @@ public class SchoolsModelController {
     }
 
     public void refreshSchoolList() {
-        DomainControlFactory.getUserController().refreshSchoolList();
+        DomainControlFactory.getUserModelController().refreshSchoolList();
     }
 
     public void refreshSchoolList(String schoolsResponse) {

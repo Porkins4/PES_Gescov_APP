@@ -76,7 +76,7 @@ public class ClassroomDistributionTableWidget {
         );
     }
 
-    public void setFragment(ClassroomDistributionActivity classroomDistributionFragment) {
+    public void setParent(ClassroomDistributionActivity classroomDistributionFragment) {
         parentActivity = classroomDistributionFragment;
     }
 }

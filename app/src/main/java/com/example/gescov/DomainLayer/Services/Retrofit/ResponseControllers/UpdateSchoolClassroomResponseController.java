@@ -17,7 +17,7 @@ public class UpdateSchoolClassroomResponseController implements Callback<String>
 
     @Override
     public void onResponse(Call<String> call, Response<String> response) {
-        DomainControlFactory.getUserController().refreshSchoolClassrooms(DomainControlFactory.getSchoolsModelCrontroller().getCurrentSchool().getName());
+        DomainControlFactory.getUserModelController().refreshSchoolClassrooms(DomainControlFactory.getSchoolsModelCrontroller().getCurrentSchool().getName());
     }
 
     @Override

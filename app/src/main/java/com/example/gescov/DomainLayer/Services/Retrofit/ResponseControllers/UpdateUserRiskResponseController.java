@@ -17,7 +17,7 @@ public class UpdateUserRiskResponseController implements Callback<String> {
 
     @Override
     public void onResponse(Call<String> call, Response<String> response) {
-        DomainControlFactory.getUserController().getTypeProfile();
+        DomainControlFactory.getUserModelController().getTypeProfile();
     }
 
     @Override

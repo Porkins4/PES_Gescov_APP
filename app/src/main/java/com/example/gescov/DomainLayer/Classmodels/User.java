@@ -131,7 +131,7 @@ public class User {
 
     public void sendReservationRequest(String aula, int row, int col) {
         ISchoolService schoolService = ServicesFactory.getSchoolService();
-        schoolService.sendReservationRequest(name,aula,row,col);
+        schoolService.sendReservationRequest(id,aula,row,col);
     }
 
     public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {

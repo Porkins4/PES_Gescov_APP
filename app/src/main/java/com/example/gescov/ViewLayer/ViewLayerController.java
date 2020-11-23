@@ -2,6 +2,7 @@ package com.example.gescov.ViewLayer;
 
 import android.util.Pair;
 
+import com.example.gescov.DomainLayer.Classmodels.Assignment;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.User;
@@ -165,5 +166,21 @@ public class ViewLayerController {
 
     public void notifyPossibleContagion(MutableLiveData<ContagionRequestResult> result) {
         DomainControlFactory.getModelController().notifyPossibleContagion(result);
+    }
+
+    public void getAssignmentsForClassSession(String classroomID, String date, String hour) {
+        DomainControlFactory.getModelController().getAssignmentsForClassSession(classroomID,date,hour);
+    }
+
+    public void refreshClassroomDistributionAssignments(List<Assignment> r, boolean b) {
+        PresentationControlFactory.getStudentsInClassSessionController().refreshClassroomDistributionAssignments(r,b);
+    }
+
+    public void getClassroomInfo(String classroomID) {
+        DomainControlFactory.getModelController().getClassroomInfo(classroomID);
+    }
+
+    public void refreshClassroomDistributionClassInfo(Classroom c, boolean b) {
+        PresentationControlFactory.getStudentsInClassSessionController().refreshClassroomDistributionClassInfo(c,b);
     }
 }

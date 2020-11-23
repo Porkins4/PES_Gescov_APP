@@ -7,6 +7,7 @@ public class Classroom {
     int columns;
     int capacity;
 
+    public Classroom() {}
 
     public Classroom(String id, String name, int rows, int columns, int capacity) {
         this.id = id;
