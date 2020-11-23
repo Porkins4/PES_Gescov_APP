@@ -44,9 +44,10 @@ public class HomeFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_home, container, false);
         Button takeTest = root.findViewById(R.id.takeTest);
         String url = LoggedInUser.getPhotoURL();
+        userImage = root.findViewById(R.id.user_image_home);
         loadImageFromUrl(url);
         Button report = root.findViewById(R.id.report);
-        userImage = root.findViewById(R.id.user_image_home);
+
         nameText = root.findViewById(R.id.home_user_name);
         nameText.setText("");
         riskButton = root.findViewById(R.id.home_risk_button);
@@ -107,6 +108,7 @@ public class HomeFragment extends Fragment {
     }
 
     public void loadImageFromUrl(String url ) {
+        System.out.println(url);
        Picasso.with(this.getContext()).load(url).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(userImage, new com.squareup.picasso.Callback() {
            @Override
            public void onSuccess() {
