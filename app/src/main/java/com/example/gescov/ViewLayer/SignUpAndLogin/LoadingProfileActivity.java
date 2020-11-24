@@ -1,23 +1,16 @@
 package com.example.gescov.ViewLayer.SignUpAndLogin;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
-import com.example.gescov.ViewLayer.Singletons.LoggedInUser;
+
 import com.example.gescov.R;
-import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
 import com.example.gescov.ViewLayer.navigation.NavigationMenu;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 
 public class LoadingProfileActivity extends AppCompatActivity {
 
@@ -29,26 +22,70 @@ public class LoadingProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_view);
-        initGoogleClient();
-    }
-
-    private void setResponseListener(String token) {
         loadingProfileViewModel = new ViewModelProvider(this).get(LoadingProfileViewModel.class);
-        loadingProfileViewModel.setToken(token);
-        loadingProfileViewModel.getRequestResult().observe(this, new Observer<TokenVerificationResult>() {
-            @Override
-            public void onChanged(TokenVerificationResult tokenVerificationResult) {
-                if (tokenVerificationResult.getSuccess()) {
-                    updateUserId();
-                    updateUserName();
-                    updateContagionId();
-                    getTypeProfile();
-                    showMenu();
-                }
-            }
-        });
+        setVerificationListener();
+        //initGoogleClient();
+
     }
 
+    private void setVerificationListener() {
+        loadingProfileViewModel.getLoginResult(getString(R.string.server_client_id)).observe(this,
+                new Observer<Boolean>() {
+                    @Override
+                    public void onChanged(Boolean error) {
+                        if (error) {//error while logging in
+                            startLoginActivity();
+                        } else {//User logged in
+                            setIdentifierListener();
+                        }
+                    }
+                }
+        );
+    }
+
+    private void setIdentifierListener() {
+        loadingProfileViewModel.getUserID().observe(this,
+                new Observer<Boolean>() {
+                    @Override
+                    public void onChanged(Boolean error) {
+                        if (!error) {
+                            retrieveUserInformation();
+                        } else System.out.println("error with token verification");
+                    }
+                }
+        );
+    }
+
+    private void retrieveUserInformation() {
+        loadingProfileViewModel.getUserInformation().observe(this,
+                new Observer<Boolean>() {
+                    @Override
+                    public void onChanged(Boolean error) {
+                        if (!error) {
+                            succesfulLogin();
+                        } else System.out.println("error while gettin user info");
+                    }
+                }
+        );
+    }
+
+    public void succesfulLogin() {
+        String welcome = getString(R.string.welcome) + " " + loadingProfileViewModel.getLoggedInUser().getName();
+        Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this, NavigationMenu.class);
+        startActivity(i);
+    }
+
+    private void startLoginActivity() {
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+    }
+
+    protected void onResume() {
+        super.onResume();
+        setVerificationListener();
+    }
+    /*
     private void updateContagionId() {
         PresentationControlFactory.getLoadingProfileController().updateContagionId();
     }
@@ -94,10 +131,6 @@ public class LoadingProfileActivity extends AppCompatActivity {
         }
     }
 
-    private void startLoginActivity() {
-        Intent i = new Intent(this, LoginActivity.class);
-        startActivity(i);
-    }
 
     private void checkUserLoggedIn() {
         account = GoogleSignIn.getLastSignedInAccount(this);
@@ -120,11 +153,6 @@ public class LoadingProfileActivity extends AppCompatActivity {
                 });
     }
 
-    private void succesfullLoginUI() {
-        LoggedInUser.setCurrentLoggedUser(account);
-        setResponseListener(account.getIdToken());
-    }
-
     private void showMenu() {
         String welcome = getString(R.string.welcome) + " " + LoggedInUser.getUserName();
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_SHORT).show();
@@ -133,8 +161,6 @@ public class LoadingProfileActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        initGoogleClient();
-    }
+
+    */
 }

@@ -47,6 +47,8 @@ public class User {
         this.id = userID;
     }
 
+    //----------------------------------
+    public void setIdContagion(String idContagion) { this.idContagion = idContagion; }
 
     public User (String name, List<String> schools, String id, boolean risk, String profileType) {
         this.name = name;
@@ -55,7 +57,7 @@ public class User {
         this.risk = risk;
         this.profileType = profileType;
     }
-
+    //----------------------------------
 
 
     public User(String name) { this.name = name;}
@@ -86,7 +88,7 @@ public class User {
 
     public String getIdContagion() { return idContagion; }
 
-    public void setIdContagion(String idContagion) { this.idContagion = idContagion; }
+
 
     public String getConfirmedInfected() { return ConfirmedInfected; }
 
@@ -123,9 +125,8 @@ public class User {
     }
 
     public void notifiyContagion(MutableLiveData<ContagionRequestResult> result) {
-        ConfirmedInfected = "true";
         IContagionService contagionService = ServicesFactory.getContagionService();
-        contagionService.notifyContagion(result,ConfirmedInfected,id);
+        contagionService.notifyContagion(result,"true",id);
     }
 
 
@@ -217,7 +218,11 @@ public class User {
         ServicesFactory.getContagionService().notifyPossibleContagion(id,result);
     }
 
-    public void updateContagionId() {
-        ServicesFactory.getContagionService().updateContagionId(id);
+    public void print() {
+        System.out.println(name);
+        System.out.println(id);
+        System.out.println(risk);
+        System.out.println(profileType);
+        for (String k: schoolsID) System.out.println(k);
     }
 }
