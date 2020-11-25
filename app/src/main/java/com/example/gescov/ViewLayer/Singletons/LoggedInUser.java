@@ -17,4 +17,8 @@ public class LoggedInUser {
     public static String getPhotoURL() {
         return account.getPhotoUrl().toString();
     }
+
+    public static String getToken() {
+        return account.getIdToken();
+    }
 }

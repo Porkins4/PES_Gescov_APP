@@ -71,7 +71,7 @@ public class ClassroomListViewAdapter extends BaseAdapter {
         });
         //-----------------------------------------------------------------------
         String k = PresentationControlFactory.getUpdateUserProfileController().getUserType();
-        if (PresentationControlFactory.getUpdateUserProfileController().getUserType().equals("teacher")) {//aquí en realidad deberia ser administrator
+        if (PresentationControlFactory.getUpdateUserProfileController().getUserType().equals("Teacher")) {//aquí en realidad deberia ser administrator
             name.setOnClickListener(e-> {
                 Intent intent = new Intent(context, StudentsInClassRecordActivity.class);
                 intent.putExtra("classroom", classroomList.get(position).getId());

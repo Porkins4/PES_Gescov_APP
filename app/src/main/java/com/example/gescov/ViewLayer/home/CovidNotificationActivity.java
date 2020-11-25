@@ -60,17 +60,14 @@ public class CovidNotificationActivity extends AppCompatActivity {
 
     private void sucessfulPossibleContagionRequest(ContagionRequestResult contagionRequestResult) {
         Toast.makeText(this,R.string.succesPossiblePositiveNotification,Toast.LENGTH_SHORT).show();
-        PresentationControlFactory.getNotifyContagionController().setContagionId(contagionRequestResult.getContagionId());
     }
 
     private void succesfulRecovery() {
         Toast.makeText(this,R.string.succesRecoveryNotification,Toast.LENGTH_SHORT).show();
-        PresentationControlFactory.getNotifyContagionController().setContagionId(null);
     }
 
     private void succesfulContagionRequest(ContagionRequestResult contagionRequestResult) {
         Toast.makeText(this,R.string.succesPositiveNotification,Toast.LENGTH_SHORT).show();
-        PresentationControlFactory.getNotifyContagionController().setContagionId(contagionRequestResult.getContagionId());
     }
 
     private void initButtonNotifyPositive() {

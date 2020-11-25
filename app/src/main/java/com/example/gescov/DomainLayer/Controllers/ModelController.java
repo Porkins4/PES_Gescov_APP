@@ -15,7 +15,10 @@ import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.S
 import com.example.gescov.ViewLayer.ViewLayerController;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 import com.example.gescov.ViewLayer.SignUpAndLogin.TokenVerificationResult;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -117,9 +120,7 @@ public class ModelController {
         userModelController.updateUserName(userName);
     }
 
-    public void setContagionId(String contagionId) {
-        userModelController.setContagionId(contagionId);
-    }
+
 
     public void refreshSchoolListInView(List<School> schoolsList) {
         viewLayerController.refreshSchoolList(schoolsList);
@@ -190,7 +191,38 @@ public class ModelController {
         PresentationControlFactory.getViewLayerController().refreshClassroomDistributionClassInfo(c,b);
     }
 
-    public void updateContagionId() {
-        DomainControlFactory.getUserModelController().updateContagionId();
+    //-----------------------------------------------
+    //login access
+
+    public void setUserLoggedIn(String serverClientID) {
+        DomainControlFactory.getUserModelController().setUserLoggedIn(serverClientID);
+    }
+
+    public void setLoginResul(boolean result) {
+        PresentationControlFactory.getViewLayerController().setLoginResult(result);
+    }
+
+    public void getUserID() {
+        DomainControlFactory.getUserModelController().getUserID();
+    }
+
+    public void setUserIDVerificationResult(boolean error) {
+        PresentationControlFactory.getViewLayerController().setUserIDVerificationResult(error);
+    }
+
+    public void retrieveUserInformation() {
+        DomainControlFactory.getUserModelController().retrieveUserInformation();
+    }
+
+    public void setUserRetrieveResult(Boolean error) {
+        PresentationControlFactory.getViewLayerController().setUserRetrieveResult(error);
+    }
+
+    public User getLoggedInUser() {
+        return DomainControlFactory.getUserModelController().getLoggedInUser();
+    }
+
+    public GoogleSignInClient getGoogleSignInClient(String serverClientID) {
+        return DomainControlFactory.getUserModelController().getGoogleSignInClient(serverClientID);
     }
 }

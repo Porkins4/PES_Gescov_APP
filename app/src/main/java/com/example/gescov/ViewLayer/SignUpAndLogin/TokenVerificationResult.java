@@ -1,12 +1,12 @@
 package com.example.gescov.ViewLayer.SignUpAndLogin;
 
 public class TokenVerificationResult {
-    private boolean success;
+    private boolean error;
     private String userId;
     private String token;
 
     public TokenVerificationResult(boolean result, String userId) {
-        success = result;
+        error = result;
         this.userId = userId;
     }
 
@@ -14,8 +14,8 @@ public class TokenVerificationResult {
         token = t;
     }
 
-    public Boolean getSuccess() {
-        return success;
+    public Boolean isError() {
+        return error;
     }
 
     public String getUserId() {

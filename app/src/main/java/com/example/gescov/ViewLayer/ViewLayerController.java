@@ -14,6 +14,7 @@ import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
 import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 import com.example.gescov.ViewLayer.home.HomeViewModel;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 import org.json.JSONException;
 
@@ -104,10 +105,6 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().updateUserName(userName);
     }
 
-    public void setContagionId(String contagionId) {
-        DomainControlFactory.getModelController().setContagionId(contagionId);
-    }
-
     public void refreshSchoolList(List<School> schoolsList) {
         try {
             PresentationControlFactory.getSchoolsCrontroller().refreshSchoolsList(schoolsList);
@@ -184,7 +181,37 @@ public class ViewLayerController {
         PresentationControlFactory.getStudentsInClassSessionController().refreshClassroomDistributionClassInfo(c,b);
     }
 
-    public void updateContagionId() {
-        DomainControlFactory.getModelController().updateContagionId();
+    //------------------------------------------------
+    //login
+    public void setLoginResult(boolean result) {
+        PresentationControlFactory.getLoadingProfileController().setLoginResult(result);
+    }
+
+    public void getUserID() {
+        DomainControlFactory.getModelController().getUserID();
+    }
+
+    public void setUserIDVerificationResult(boolean error) {
+        PresentationControlFactory.getLoadingProfileController().setUserIDVerificationResult(error);
+    }
+
+    public void setUserLoggedIn(String serverClientID) {
+        DomainControlFactory.getModelController().setUserLoggedIn(serverClientID);
+    }
+
+    public void retrieveUserInformation() {
+        DomainControlFactory.getModelController().retrieveUserInformation();
+    }
+
+    public void setUserRetrieveResult(boolean error) {
+        PresentationControlFactory.getLoadingProfileController().setUserRetrieveResult(error);
+    }
+
+    public User getUserLoggedIn() {
+        return DomainControlFactory.getModelController().getLoggedInUser();
+    }
+
+    public GoogleSignInClient getGoogleSignInClient(String serverClientID) {
+        return DomainControlFactory.getModelController().getGoogleSignInClient(serverClientID);
     }
 }

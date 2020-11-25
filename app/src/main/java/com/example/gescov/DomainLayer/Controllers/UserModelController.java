@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.User;
+import com.example.gescov.DomainLayer.Services.LoginRespository;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.DomainLayer.Singletons.ServicesFactory;
@@ -12,10 +13,16 @@ import com.example.gescov.ViewLayer.SignUpAndLogin.TokenVerificationResult;
 import com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 
 import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.ViewLayer.Singletons.LoggedInUser;
+import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserModelController {
@@ -110,11 +117,6 @@ public class UserModelController {
         loggedUser.setName(userName);
     }
 
-    public void setContagionId(String contagionId) {
-        loggedUser.setIdContagion(contagionId);
-        System.out.println(loggedUser.getIdContagion());
-    }
-
     public void updateClassroom(String classroomId, String classroomName, int numRows, int numCols) {
         loggedUser.updateSchoolClassroom(classroomId, classroomName, numRows, numCols, numRows*numCols);
 
@@ -165,7 +167,61 @@ public class UserModelController {
         loggedUser.notifyPossibleContagion(result);
     }
 
+
+    //-----------------------------------------------
+    //login operations
+    public void setUserLoggedIn(String serverClientID) {
+        LoginRespository.checkuserAlreadyLoggedInOnthisDevice(serverClientID);
+    }
+
+    public void getUserID() {
+        ServicesFactory.getUserService().getUserID(LoggedInUser.getToken());
+    }
+
+    public void setUserID(Boolean error, String userID) {
+        if (!error) {
+            loggedUser.setId(userID);
+        }
+        DomainControlFactory.getModelController().setUserIDVerificationResult(error);
+    }
+
+    public void retrieveUserInformation() {
+        ServicesFactory.getUserService().getUserInfo(loggedUser.getId());
+    }
+
+    public void setLoggedInUser(Boolean error, JSONObject response) {
+        if (!error){
+            try {
+                JSONArray schoolsRaw = response.getJSONArray("schoolsID");
+                List<String> ls = new ArrayList<>();
+                for (int i = 0; i < schoolsRaw.length(); ++i) {
+                    ls.add(schoolsRaw.getString(i));
+                }
+                loggedUser = new User(response.getString("name"),ls,response.getString("id"),response.getBoolean("risk"), response.getString("profile"));
+                updateContagionId();
+            } catch (JSONException e) {
+            }
+        }
+    }
+
+    public User getLoggedInUser() {
+        return loggedUser;
+    }
+
     public void updateContagionId() {
-        loggedUser.updateContagionId();
+        ServicesFactory.getContagionService().getContagionID(loggedUser.getId());
+    }
+
+    public void setContagionId(String contagionId, Boolean error) {
+        loggedUser.setIdContagion(contagionId);
+        DomainControlFactory.getModelController().setUserRetrieveResult(error);
+    }
+
+    public void updateContagionID(String contagionId) {
+        loggedUser.setIdContagion(contagionId);
+    }
+
+    public GoogleSignInClient getGoogleSignInClient(String serverClientID) {
+        return LoginRespository.getGoogleSignInClient(serverClientID);
     }
 }
