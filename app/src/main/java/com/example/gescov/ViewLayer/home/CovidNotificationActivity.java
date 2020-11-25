@@ -107,7 +107,7 @@ public class CovidNotificationActivity extends AppCompatActivity {
     }
 
     private void OpenPopup(String notification) {
-        if (notification == "notifyPositive" || notification == "notifyPossiblePositive" ){
+        if (notification == "notifyPositive"){
             PopErrorNotifyPositive error = new PopErrorNotifyPositive();
             error.show(getSupportFragmentManager(),"Tag");
         }

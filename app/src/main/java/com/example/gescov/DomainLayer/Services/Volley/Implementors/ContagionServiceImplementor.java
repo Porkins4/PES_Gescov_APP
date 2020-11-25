@@ -61,45 +61,6 @@ public class ContagionServiceImplementor implements IContagionService {
     }
 
     @Override
-    public void notifyPossibleContagion(String id, MutableLiveData<ContagionRequestResult> result) {
-        queue =  Volley.newRequestQueue(VolleyServices.getCtx());
-        JSONObject contagion;
-        try {
-            contagion = new JSONObject();
-            contagion.put("infectedID",id);
-            contagion.put("inCon",false);
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                    (Request.Method.POST, ContagionLink, contagion, new Response.Listener<JSONObject>() {
-
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
-                                String idContagion = response.getString("id");
-                                ContagionRequestResult aux = new ContagionRequestResult();
-                                aux.setError(new Pair<String,Boolean>("notifyPossiblePositive",false));
-                                DomainControlFactory.getUserModelController().updateContagionID(idContagion);
-                                result.setValue(aux);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            // TODO: Handle error
-                            ContagionRequestResult aux = new ContagionRequestResult();
-                            aux.setError(new Pair<String,Boolean> ("notifyPossiblePositive",true));
-                            if(error.networkResponse == null ) aux.setError(new Pair<String,Boolean> ("notifyPositive",false));
-                            result.setValue(aux);
-                        }
-                    });
-            queue.add(jsonObjectRequest);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
     public String getContagionList(String userId, String schoolId) {
         conection = new Conection();
         String response = null;

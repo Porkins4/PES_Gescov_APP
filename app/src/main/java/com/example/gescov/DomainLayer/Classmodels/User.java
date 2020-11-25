@@ -124,9 +124,9 @@ public class User {
         ServicesFactory.getRefreshSchoolResponseController().refreshSchoolList(this.id);
     }
 
-    public void notifiyContagion(MutableLiveData<ContagionRequestResult> result) {
+    public void notifiyContagion(MutableLiveData<ContagionRequestResult> result,String confirmedInfected) {
         IContagionService contagionService = ServicesFactory.getContagionService();
-        contagionService.notifyContagion(result,"true",id);
+        contagionService.notifyContagion(result,confirmedInfected,id);
     }
 
 
@@ -212,10 +212,6 @@ public class User {
 
     public void setNewSchoolID(String schoolId) {
         schoolsID.add(0,schoolId);
-    }
-
-    public void notifyPossibleContagion(MutableLiveData<ContagionRequestResult> result) {
-        ServicesFactory.getContagionService().notifyPossibleContagion(id,result);
     }
 
     public void print() {

@@ -66,7 +66,7 @@ public class UserModelController {
 
     public void notifyInfected(MutableLiveData<ContagionRequestResult> result) {
         // el comportamineto seria obtener la escuela de nuestro usuario y pasarsela
-        loggedUser.notifiyContagion(result);
+        loggedUser.notifiyContagion(result,"true");
 
     }
 
@@ -164,7 +164,7 @@ public class UserModelController {
     }
 
     public void notifyPossibleContagion(MutableLiveData<ContagionRequestResult> result) {
-        loggedUser.notifyPossibleContagion(result);
+        loggedUser.notifiyContagion(result,"false");
     }
 
 
