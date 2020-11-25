@@ -1,5 +1,7 @@
 package com.example.gescov.DomainLayer.Services;
 
+import android.content.Intent;
+
 import androidx.annotation.NonNull;
 
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
@@ -21,10 +23,10 @@ public class LoginRespository {
 
     public LoginRespository() {}
 
-    public void startLogin() {
-
+    public static GoogleSignInClient getGoogleSignInClient(String serverClientID) {
+        initClientAndGso(serverClientID);
+        return client;
     }
-
 
     public static void checkuserAlreadyLoggedInOnthisDevice(String serverClientID) {
         initClientAndGso(serverClientID);

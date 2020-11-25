@@ -15,6 +15,8 @@ import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.S
 import com.example.gescov.ViewLayer.ViewLayerController;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 import com.example.gescov.ViewLayer.SignUpAndLogin.TokenVerificationResult;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -218,5 +220,9 @@ public class ModelController {
 
     public User getLoggedInUser() {
         return DomainControlFactory.getUserModelController().getLoggedInUser();
+    }
+
+    public GoogleSignInClient getGoogleSignInClient(String serverClientID) {
+        return DomainControlFactory.getUserModelController().getGoogleSignInClient(serverClientID);
     }
 }

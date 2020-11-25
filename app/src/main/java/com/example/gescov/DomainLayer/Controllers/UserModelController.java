@@ -16,6 +16,7 @@ import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.S
 import com.example.gescov.ViewLayer.Singletons.LoggedInUser;
 import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -218,5 +219,9 @@ public class UserModelController {
 
     public void updateContagionID(String contagionId) {
         loggedUser.setIdContagion(contagionId);
+    }
+
+    public GoogleSignInClient getGoogleSignInClient(String serverClientID) {
+        return LoginRespository.getGoogleSignInClient(serverClientID);
     }
 }

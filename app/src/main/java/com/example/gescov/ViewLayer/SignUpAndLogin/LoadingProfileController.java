@@ -4,12 +4,14 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 public class LoadingProfileController {
 
     private LoadingProfileViewModel loadingProfileViewModel;
 
     public LoadingProfileController() {}
+
 
     public void setLoadingProfileViewModel(LoadingProfileViewModel loadingProfileViewModel) {
         this.loadingProfileViewModel = loadingProfileViewModel;
@@ -44,5 +46,9 @@ public class LoadingProfileController {
 
     public User getLoggedInUser() {
         return PresentationControlFactory.getViewLayerController().getUserLoggedIn();
+    }
+
+    public static GoogleSignInClient getGoogleSignInClient(String serverClientID) {
+        return PresentationControlFactory.getViewLayerController().getGoogleSignInClient(serverClientID);
     }
 }

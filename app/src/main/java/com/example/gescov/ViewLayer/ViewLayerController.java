@@ -14,6 +14,7 @@ import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
 import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 import com.example.gescov.ViewLayer.home.HomeViewModel;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 import org.json.JSONException;
 
@@ -208,5 +209,9 @@ public class ViewLayerController {
 
     public User getUserLoggedIn() {
         return DomainControlFactory.getModelController().getLoggedInUser();
+    }
+
+    public GoogleSignInClient getGoogleSignInClient(String serverClientID) {
+        return DomainControlFactory.getModelController().getGoogleSignInClient(serverClientID);
     }
 }
