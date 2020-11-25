@@ -4,37 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/theback"
     tools:context=".ViewLayer.ClassroomActivities.ClassroomDistribution.ClassroomDistributionActivity">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/distribution_activity_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/dark_green"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:titleTextColor="#FFFFFF"
-        tools:visibility="visible" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="676dp"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/distribution_activity_toolbar" >
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/distribution_activity_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/dark_green"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:titleTextColor="#FFFFFF"
+            tools:visibility="visible" />
 
         <ScrollView
             android:id="@+id/scrollView3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="630dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp">
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -43,11 +41,26 @@
                 <androidx.gridlayout.widget.GridLayout
                     android:id="@+id/show_distribution_grid"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/distribution_activity_toolbar"
+                    app:layout_constraintVertical_bias="0.0">
 
                 </androidx.gridlayout.widget.GridLayout>
             </HorizontalScrollView>
         </ScrollView>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Si desitjes reservar lloc, fes click a una taula lliure"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
