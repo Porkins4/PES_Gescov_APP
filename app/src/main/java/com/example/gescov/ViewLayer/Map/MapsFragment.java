@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import com.android.volley.toolbox.Volley;
 import com.example.gescov.DomainLayer.Services.Volley.VolleyServices;
 import com.example.gescov.R;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -38,11 +39,8 @@ import java.util.List;
 public class MapsFragment extends Fragment {
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
-    private LatLng plazacataluna = new LatLng(41.3870154, 2.1700471);
     private GoogleMap mMap;
   //  private List<ClusterMarker> markers;
-    private ClusterManager mClusterManager;
-    private MyClusterManagerRenderer mClusterManagerRenderer;
 
 
 
@@ -59,112 +57,36 @@ public class MapsFragment extends Fragment {
         public void onMapReady(GoogleMap googleMap) {
             mMap = googleMap;
             try {
-
-
                 boolean success = mMap.setMapStyle(
                         MapStyleOptions.loadRawResourceStyle(
                                 getContext(), R.raw.mapstyle));
-
                 if (!success) {
                     Log.e("MapFragment", "Style parsing failed.");
                 }
             } catch (Resources.NotFoundException e) {
                 Log.e("MapFragment", "Can't find style. Error: ", e);
             }
-            LatLng fibMarker = new LatLng(41.38967, 2.11339);
-            mMap.addCircle(new CircleOptions().center(fibMarker).radius(1000).strokeColor(Color.RED).fillColor(Color.BLUE));
-
-            //getMarker();
-            //mMap.addMarker(new MarkerOptions().position(plazacataluna).title("Marker"));
-           // mMap.moveCamera(CameraUpdateFactory.newLatLng(plazacataluna));
+            getMarker();
         }
 
 
         private void getMarker() {
-            // aqui hago la llamada al backend para obtener las coordenadas de los centros que tenemos en la base de datos(Utiliza List markers)
-            /*LatLng fibMarker = new LatLng(41.38967, 2.11339);
-            LatLng eetacMarker = new LatLng(41.27571169603351, 1.987292999720925);
-            LatLng eetsabMarker = new LatLng(41.38450532434546, 2.113934772737321);
-            mMap.addMarker(new MarkerOptions().position(fibMarker).title("Marker"));
-            mMap.addMarker(new MarkerOptions().position(eetacMarker).title(""));
-            mMap.addMarker(new MarkerOptions().position(eetsabMarker).title(""));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(fibMarker));*/
-
-            /*if(mMap != null) {
-
-                if (mClusterManager == null) {
-                    mClusterManager = new ClusterManager<ClusterMarker>(getActivity().getApplicationContext(), mMap);
-                    //markers = new List<ClusterMarker>();
-
-                }
-                if (mClusterManagerRenderer == null) {
-                    mClusterManagerRenderer = new MyClusterManagerRenderer(
-                            getActivity(),
-                            mMap,
-                            mClusterManager
-                    );
-                    mClusterManager.setRenderer(mClusterManagerRenderer);
-                }
-                int image = R.drawable.red;
-                ClusterMarker newClusterMarker = new ClusterMarker(new LatLng(41.38967, 2.11339),"FIB","",image);
-                mClusterManager.addItem(newClusterMarker);
-              //  markers.add(newClusterMarker);
-                mClusterManager.cluster();
-            }*/
-
-
-
-
-
-            System.out.println("noooo peeta");
+            LatLng fibMarker = new LatLng(41.38967, 2.11339);
+            LatLng eetacMarker = new LatLng(41.2762922640011, 1.987153526989175);
+            LatLng etsabMarker = new LatLng(41.38515737060989, 2.1138167576710107);
+            mMap.addCircle(new CircleOptions().center(eetacMarker).radius(25.0).strokeColor(Color.RED).fillColor(Color.RED));
+            mMap.addCircle(new CircleOptions().center(etsabMarker).radius(25.0).strokeColor(Color.RED).fillColor(Color.RED));
+            mMap.addCircle(new CircleOptions().center(fibMarker).radius(50.0).strokeColor(Color.RED).fillColor(Color.RED));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(fibMarker,13),2000,null);
+            mMap.setMaxZoomPreference(17);
         }
-
-
     };
 
 
 
-    private String fineLocation = Manifest.permission.ACCESS_FINE_LOCATION;
-    private String courseLocation = Manifest.permission.ACCESS_COARSE_LOCATION;
-    private final int locationPermissionRequestCode = 1234;
-    private boolean mLoactionPermissionsGranted;
-
-    private void getLocationPermission() {
-        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION};
-
-        if (ContextCompat.checkSelfPermission(getContext(),fineLocation) == PackageManager.PERMISSION_GRANTED) {
-            if ( ContextCompat.checkSelfPermission(getContext(),courseLocation) == PackageManager.PERMISSION_GRANTED ) {
-                mLoactionPermissionsGranted = true;
-            } else {
-                ActivityCompat.requestPermissions(getActivity(),permissions,locationPermissionRequestCode);
-            }
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        mLoactionPermissionsGranted = false;
-        switch ( requestCode) {
-            case locationPermissionRequestCode :{
-                if ( grantResults.length > 0 ) {
-                    for ( int i = 0; i < grantResults.length; i++) {
-                        if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
-                            mLoactionPermissionsGranted = false;
-                            return;
-                        }
-                    }
-                    mLoactionPermissionsGranted = true;
-                    //initialize our map
-                }
-
-            }
-        }
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        getLocationPermission();
         return inflater.inflate(R.layout.fragment_maps, container, false);
     }
 
