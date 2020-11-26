@@ -2,6 +2,7 @@ package com.example.gescov.ViewLayer.Map;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -27,10 +28,10 @@ public class MyClusterManagerRenderer extends DefaultClusterRenderer<ClusterMark
         markerWidth = (int) context.getResources().getDimension(R.dimen.custom_marker_image);
         markerHeight = (int) context.getResources().getDimension(R.dimen.custom_marker_image);
         imageView.setLayoutParams( new ViewGroup.LayoutParams(markerWidth,markerHeight));
+        imageView.setBackgroundColor(Color.parseColor("#EE0000"));
         int padding = (int) context.getResources().getDimension(R.dimen.custom_marker_padding);
         imageView.setPadding(padding,padding,padding,padding);
         iconGenerator.setContentView(imageView);
-
     }
 
     @Override
