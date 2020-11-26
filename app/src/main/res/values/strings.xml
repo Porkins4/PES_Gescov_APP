@@ -94,6 +94,8 @@
     <string name="introduce_email_hint">Correu electrònic</string>
     <string name="Password_hint">Contrasenya</string>
     <string name="sign_in_button_text">Registra\'t</string>
+    <string name="sign_in_text">Inicia sessió amb el teu compte de Google</string>
+
 
     <!-- Log out-->
     <string name="logout_text">Tancar sessió</string>
@@ -134,5 +136,7 @@
     <string name="error_no_students_in_this_classroom">Encara no han passat alumnes per aquesta aula</string>
     <string name="title_activity_classroom_distribution">Distribució de la classe</string>
 
-
+    <!-- Chat Fragment -->
+    <string name="chat_fragment_menu_text">Xats</string>
+    <string name="your_chats_text">Els teus xats personals</string>
 </resources>
