@@ -135,4 +135,8 @@
     <string name="title_activity_classroom_distribution">Distribució de la classe</string>
 
 
+    <!-- Strings for the Map -->
+    <string name="mapa_text">Mapa</string>
+
+
 </resources>

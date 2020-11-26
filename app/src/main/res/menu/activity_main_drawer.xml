@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
@@ -19,9 +20,18 @@
             android:title="@string/menu_schools_administration" />
 
         <item
+            android:id="@+id/map_id"
+            android:icon="@drawable/marcador_de_posicion"
+            android:title="@string/mapa_text" />
+
+        <item
             android:id="@+id/logout"
             android:icon="@drawable/logout"
             android:title="@string/logout_text" />
+
+
+
     </group>
+    <group />
 
 </menu>

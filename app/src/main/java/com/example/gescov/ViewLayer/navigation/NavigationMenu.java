@@ -25,7 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import com.example.gescov.R;
 
-public class NavigationMenu extends AppCompatActivity {
+public class                                                                                                                                   NavigationMenu extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout drawer;
@@ -43,7 +43,7 @@ public class NavigationMenu extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.ContagionList, R.id.schoolAdministration,R.id.logout)
+                R.id.nav_home, R.id.ContagionList, R.id.schoolAdministration,R.id.logout,R.id.map_id)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
