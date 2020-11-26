@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.telecom.Call;
 import android.util.Log;
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
@@ -55,9 +57,10 @@ public class MapsFragment extends Fragment {
          */
         @Override
         public void onMapReady(GoogleMap googleMap) {
+            mMap = googleMap;
             try {
 
-                mMap = googleMap;
+
                 boolean success = mMap.setMapStyle(
                         MapStyleOptions.loadRawResourceStyle(
                                 getContext(), R.raw.mapstyle));
@@ -68,12 +71,12 @@ public class MapsFragment extends Fragment {
             } catch (Resources.NotFoundException e) {
                 Log.e("MapFragment", "Can't find style. Error: ", e);
             }
+            LatLng fibMarker = new LatLng(41.38967, 2.11339);
+            mMap.addCircle(new CircleOptions().center(fibMarker).radius(1000).strokeColor(Color.RED).fillColor(Color.BLUE));
 
-            getMarker();
+            //getMarker();
             //mMap.addMarker(new MarkerOptions().position(plazacataluna).title("Marker"));
            // mMap.moveCamera(CameraUpdateFactory.newLatLng(plazacataluna));
-
-
         }
 
 
@@ -87,10 +90,9 @@ public class MapsFragment extends Fragment {
             mMap.addMarker(new MarkerOptions().position(eetsabMarker).title(""));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(fibMarker));*/
 
-            if(mMap != null) {
+            /*if(mMap != null) {
 
                 if (mClusterManager == null) {
-                    System.out.println("iniiiiiiiii");
                     mClusterManager = new ClusterManager<ClusterMarker>(getActivity().getApplicationContext(), mMap);
                     //markers = new List<ClusterMarker>();
 
@@ -108,10 +110,16 @@ public class MapsFragment extends Fragment {
                 mClusterManager.addItem(newClusterMarker);
               //  markers.add(newClusterMarker);
                 mClusterManager.cluster();
-            }
+            }*/
 
 
+
+
+
+            System.out.println("noooo peeta");
         }
+
+
     };
 
 
@@ -126,13 +134,11 @@ public class MapsFragment extends Fragment {
 
         if (ContextCompat.checkSelfPermission(getContext(),fineLocation) == PackageManager.PERMISSION_GRANTED) {
             if ( ContextCompat.checkSelfPermission(getContext(),courseLocation) == PackageManager.PERMISSION_GRANTED ) {
-                System.out.println("we have permission");
                 mLoactionPermissionsGranted = true;
             } else {
                 ActivityCompat.requestPermissions(getActivity(),permissions,locationPermissionRequestCode);
             }
         }
-        System.out.println("fuuuuuuuuuuuu");
     }
 
     @Override
