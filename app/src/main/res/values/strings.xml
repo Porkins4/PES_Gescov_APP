@@ -139,4 +139,5 @@
     <!-- Chat Fragment -->
     <string name="chat_fragment_menu_text">Xats</string>
     <string name="your_chats_text">Els teus xats personals</string>
+    <string name="chat_options">Opcions</string>
 </resources>
