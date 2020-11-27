@@ -21,5 +21,10 @@
         android:name="com.example.gescov.ViewLayer.SchoolsActivities.SchoolsAdministration.SchoolsAdministrationFagment"
         android:label="@string/menu_schools_administration"
         tools:layout="@layout/fragment_school_administration" />
+    <fragment
+        android:id="@+id/chat_list"
+        android:name="com.example.gescov.ViewLayer.chatlist.ChatListFragment"
+        android:label="@string/your_chats_text"
+        tools:layout="@layout/chat_list_fragment" />
 
 </navigation>

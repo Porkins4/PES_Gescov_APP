@@ -9,6 +9,7 @@ import com.example.gescov.ViewLayer.SchoolsActivities.SchoolsAdministration.Scho
 import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionController;
 import com.example.gescov.ViewLayer.UpdateUserProfile.UpdateUserProfileController;
 import com.example.gescov.ViewLayer.ViewLayerController;
+import com.example.gescov.ViewLayer.chatlist.ChatListController;
 import com.example.gescov.ViewLayer.home.NotifyContagionController;
 import com.example.gescov.ViewLayer.home.TracingTestController;
 
@@ -27,6 +28,7 @@ public class PresentationControlFactory {
     private static UpdateUserProfileController updateUserProfileController;
     private static LoadingProfileActivity loadingProfileActivity;
     private static ViewModelProvider viewModelProvider;
+    private static ChatListController chatListController;
 
     public static ViewLayerController getViewLayerController() {
         if (viewLayerController != null)
@@ -101,5 +103,11 @@ public class PresentationControlFactory {
 
     public static void setViewModelProvider(ViewModelProvider provider) {
         viewModelProvider = provider;
+    }
+
+    public static ChatListController getChatListController() {
+        if (chatListController != null) return chatListController;
+        chatListController = new ChatListController();
+        return chatListController;
     }
 }
