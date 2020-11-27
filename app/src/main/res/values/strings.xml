@@ -106,8 +106,8 @@
     <!-- Strings used for daily test -->
     <string name="dailyTest">Realitza el teu Test de seguiment</string>
     <string name="firstQuestion">Tens tos seca i persistent?  </string>
-    <string name="yes">Si</string>
-    <string name="no">No</string>
+    <string name="yes">Si</string> <!-- also used on chatlist fragment -->
+    <string name="no">No</string> <!-- also used on chatlist fragment -->
     <string name="secondQuestion">Tens dolor muscular?  </string>
     <string name="thirdQuestion">Has tingut una pèrdua d\'olfacte i gust de recent aparició?  </string>
     <string name="fourthQuestion">Tens sensació de falta d\'aire?  </string>
@@ -140,4 +140,7 @@
     <string name="chat_fragment_menu_text">Xats</string>
     <string name="your_chats_text">Els teus xats personals</string>
     <string name="chat_options">Opcions</string>
+    <string name="confirm_delete_chat_message">Segur de que vols eliminar aquest xat?</string>
+    <string name="yes_delete_chat">Elimina</string>
+    <string name="no_delete_chat">Cancela</string>
 </resources>

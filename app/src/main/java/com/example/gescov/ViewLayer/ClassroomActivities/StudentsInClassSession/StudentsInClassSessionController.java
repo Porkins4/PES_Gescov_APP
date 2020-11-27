@@ -26,7 +26,7 @@ public class StudentsInClassSessionController {
         this.classroomDsitributionViewModel = classroomDsitributionViewModel;
     }
 
-    public StudentsInClassSessionController() {
+    public StudentsInClassSessionController() {//constructor without colateral actions
     }
 
     public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
