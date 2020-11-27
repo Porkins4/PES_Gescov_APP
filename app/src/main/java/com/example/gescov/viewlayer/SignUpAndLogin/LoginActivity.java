@@ -1,4 +1,4 @@
-package com.example.gescov.ViewLayer.SignUpAndLogin;
+package com.example.gescov.viewlayer.SignUpAndLogin;
 
 import androidx.appcompat.app.AppCompatActivity;
 

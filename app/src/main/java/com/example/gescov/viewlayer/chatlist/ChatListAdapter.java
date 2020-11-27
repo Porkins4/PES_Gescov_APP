@@ -1,4 +1,4 @@
-package com.example.gescov.ViewLayer.chatlist;
+package com.example.gescov.viewlayer.chatlist;
 
 import android.content.Context;
 import android.view.LayoutInflater;

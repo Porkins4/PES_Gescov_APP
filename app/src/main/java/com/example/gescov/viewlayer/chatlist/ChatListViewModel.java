@@ -1,4 +1,4 @@
-package com.example.gescov.ViewLayer.chatlist;
+package com.example.gescov.viewlayer.chatlist;
 
 import android.content.Context;
 
@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.gescov.DomainLayer.Classmodels.ChatViewerModel;
-import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 import java.util.ArrayList;
 import java.util.List;
