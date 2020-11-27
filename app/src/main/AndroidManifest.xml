@@ -13,16 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gescov">
-        <activity android:name=".ViewLayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity"></activity>
+        <activity android:name=".ViewLayer.Chat.CreateChatActivity"></activity>
+        <activity android:name=".ViewLayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity" />
         <activity android:name=".ViewLayer.UpdateUserProfile.UpdateUserProfileActivity" />
         <activity android:name=".ViewLayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity" />
         <activity android:name=".ViewLayer.home.DailyTestActivity" />
         <activity android:name=".ViewLayer.SignUpAndLogin.LoginActivity" />
         <activity android:name=".ViewLayer.SchoolsActivities.SchoolClassroomList.CreateClassroomFormActivity" />
         <activity android:name=".ViewLayer.SchoolsActivities.SchoolClassroomList.EditClassroomFormActivity" />
-        <activity android:name=".ViewLayer.ClassroomActivities.ClassroomDistribution.ClassroomDistributionActivity"
-            android:label="@string/title_activity_classroom_distribution"
-            />
+        <activity
+            android:name=".ViewLayer.ClassroomActivities.ClassroomDistribution.ClassroomDistributionActivity"
+            android:label="@string/title_activity_classroom_distribution" />
         <activity android:name=".ViewLayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroom" />
         <activity android:name=".ViewLayer.home.CovidNotificationActivity" />
         <activity

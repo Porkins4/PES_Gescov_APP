@@ -40,7 +40,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        PresentationControlFactory.getUpdateUserProfileController().changeUserProfile("teacher"); //Aquí podríamos utilizar un enum
+                        PresentationControlFactory.getUpdateUserProfileController().changeUserProfile("Teacher"); //Aquí podríamos utilizar un enum
                     }
                 }
         );
