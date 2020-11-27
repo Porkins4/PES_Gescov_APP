@@ -33,12 +33,12 @@ public class ClassroomDistributionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_classroom_ditribution);
         controller = new ClassroomDistributionController();
         initViewComponents();
-        //showDistribution();
     }
 
     private void initViewComponents() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.distribution_activity_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.title_activity_classroom_distribution);
         gridLayout = (GridLayout) findViewById(R.id.show_distribution_grid);
         initResponseListener();
 

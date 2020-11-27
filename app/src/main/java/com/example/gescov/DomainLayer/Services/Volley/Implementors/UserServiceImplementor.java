@@ -22,6 +22,7 @@ public class UserServiceImplementor implements IUserService {
 
     @Override
     public void changeUserProfile(String userId, String profile) {
+        System.out.println(GESCOV_USERS_URI + userId + "/" + profile);
         StringRequest request = new StringRequest(
                 Request.Method.PUT, GESCOV_USERS_URI + userId + "/" + profile,
                 new Response.Listener<String>() {

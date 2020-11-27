@@ -32,7 +32,7 @@ public class StudentsInClassRecordActivity extends AppCompatActivity {
         loadingComponents = (LinearLayout) findViewById(R.id.students_in_class_record_loading_components);
         errorComponents = (LinearLayout) findViewById(R.id.students_in_class_record_error);
         errorComponents.setVisibility(View.GONE);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.class_record_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.class_record_activity_title);
         instance = this;
