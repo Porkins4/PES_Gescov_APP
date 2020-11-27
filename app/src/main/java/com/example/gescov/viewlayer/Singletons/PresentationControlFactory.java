@@ -12,6 +12,7 @@ import com.example.gescov.viewlayer.UpdateUserProfile.UpdateUserProfileControlle
 import com.example.gescov.viewlayer.ViewLayerController;
 import com.example.gescov.viewlayer.home.NotifyContagionController;
 import com.example.gescov.viewlayer.home.TracingTestController;
+import com.example.gescov.viewlayer.chatlist.ChatListController;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -29,6 +30,7 @@ public class PresentationControlFactory {
     private static LoadingProfileActivity loadingProfileActivity;
     private static ViewModelProvider viewModelProvider;
     private static SchoolRequestsController schoolRequestsController;
+    private static ChatListController chatListController;
 
     public static ViewLayerController getViewLayerController() {
         if (viewLayerController != null)
@@ -103,6 +105,12 @@ public class PresentationControlFactory {
 
     public static void setViewModelProvider(ViewModelProvider provider) {
         viewModelProvider = provider;
+    }
+
+    public static ChatListController getChatListController() {
+        if (chatListController != null) return chatListController;
+        chatListController = new ChatListController();
+        return chatListController;
     }
 
     public static SchoolRequestsController getSchoolRequestsController() {
