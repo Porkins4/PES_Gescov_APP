@@ -1,0 +1,8 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ó“àÜ
+m
+java:S1128"WRemove this unused import 'com.example.gescov.DomainLayer.Controllers.ModelController'.(…è£•
+œ
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¨”Òµøÿÿÿÿ
+[
+java:S2147n"ECombine this catch with the one at line 108, which has the same body.(Ò”­›

@@ -1,0 +1,7 @@
+
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ï‚ýd
+œ
+java:S1186
+"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Å¶—¯úÿÿÿÿ
+k	java:S116"VRename this field "ContagionId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾œÈÐ
+V	java:S125"<This block of commented-out lines of code should be removed.(¾”ÿÎùÿÿÿÿ

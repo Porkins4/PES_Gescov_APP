@@ -1,0 +1,17 @@
+
+p
+java:S1450"ZRemove the "profileType" field and declare it as a local variable in the relevant methods.(‰³Í‹
+i
+java:S1450"SRemove the "risk" field and declare it as a local variable in the relevant methods.(àÇÖð
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ñªÿ¿ûÿÿÿÿ
+k
+java:S1128"PRemove this unused import 'com.example.gescov.DomainLayer.DomainControlFactory'.(êã„½ÿÿÿÿÿ
+Q	java:S125s"<This block of commented-out lines of code should be removed.(ºåŸÈ
+v	java:S116"\Rename this field "ConfirmedInfected" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ²²éüÿÿÿÿ
+z
+java:S1128"dRemove this unused import 'com.example.gescov.DomainLayer.Services.IRefreshSchoolClassroomsService'.(•ß±
+V	java:S125"<This block of commented-out lines of code should be removed.(‚ôô£ýÿÿÿÿ
+>
+java:S1068"(Remove this unused "risk" private field.(àÇÖð
+E
+java:S1068"/Remove this unused "profileType" private field.(‰³Í‹
