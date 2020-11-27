@@ -14,9 +14,9 @@ import com.example.gescov.DomainLayer.Services.Conection;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.DomainLayer.Services.Volley.VolleyServices;
-import com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
-import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
-import com.example.gescov.ViewLayer.SignUpAndLogin.TokenVerificationResult;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -250,14 +250,14 @@ public class SchoolServiceImplementor implements ISchoolService {
     }
 
     @Override
-    public void getTypeProfile(String id) {
+    public void refreshUser(String id) {
         RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET, GET_CHECK_LOGIN+id, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        DomainControlFactory.getUserModelController().setUserProfile(response);
+                        DomainControlFactory.getUserModelController().refreshLoggedUser(response);
                     }
                 }, new Response.ErrorListener() {
             @Override

@@ -1,7 +1,7 @@
 package com.example.gescov.DomainLayer.Services.Volley.Interfaces;
 
 import androidx.lifecycle.MutableLiveData;
-import com.example.gescov.ViewLayer.home.ContagionRequestResult;
+import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import java.util.List;
 
 

@@ -1,12 +1,10 @@
 package com.example.gescov.DomainLayer.Services;
 
-import android.content.Intent;
-
 import androidx.annotation.NonNull;
 
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
-import com.example.gescov.ViewLayer.Singletons.GescovApplication;
-import com.example.gescov.ViewLayer.Singletons.LoggedInUser;
+import com.example.gescov.viewlayer.Singletons.GescovApplication;
+import com.example.gescov.viewlayer.Singletons.LoggedInUser;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;

@@ -7,18 +7,18 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.gescov.ViewLayer.home.HomeFragment"
+        android:name="com.example.gescov.viewlayer.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/ContagionList"
-        android:name="com.example.gescov.ViewLayer.ContagionList.ContagionListFragment"
+        android:name="com.example.gescov.viewlayer.ContagionList.ContagionListFragment"
         android:label="@string/contagionlist"
         tools:layout="@layout/contagionlist" />
     <fragment
         android:id="@+id/schoolAdministration"
-        android:name="com.example.gescov.ViewLayer.SchoolsActivities.SchoolsAdministration.SchoolsAdministrationFagment"
+        android:name="com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolsAdministrationFagment"
         android:label="@string/menu_schools_administration"
         tools:layout="@layout/fragment_school_administration" />
 

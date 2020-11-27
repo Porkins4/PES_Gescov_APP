@@ -17,12 +17,11 @@ public class UpdateUserRiskResponseController implements Callback<String> {
 
     @Override
     public void onResponse(Call<String> call, Response<String> response) {
-        DomainControlFactory.getUserModelController().getTypeProfile();
+        DomainControlFactory.getUserModelController().refreshLoggedUser();
     }
 
     @Override
     public void onFailure(Call<String> call, Throwable t) {
-int i = 3;
     }
 
     public void updateRisk(String userId) {

@@ -114,4 +114,7 @@ public class School {
         return email;
     }
 
+    public List<String> getAdministratorsList() {
+        return listAdministratorsID;
+    }
 }

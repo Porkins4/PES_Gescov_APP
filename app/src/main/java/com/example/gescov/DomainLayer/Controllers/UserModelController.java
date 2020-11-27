@@ -8,14 +8,13 @@ import com.example.gescov.DomainLayer.Services.LoginRespository;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.DomainLayer.Singletons.ServicesFactory;
-import com.example.gescov.ViewLayer.SignUpAndLogin.TokenVerificationResult;
+import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
 
-import com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 
-import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
-import com.example.gescov.ViewLayer.Singletons.LoggedInUser;
-import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
-import com.example.gescov.ViewLayer.home.ContagionRequestResult;
+import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.viewlayer.Singletons.LoggedInUser;
+import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 import org.json.JSONArray;
@@ -23,13 +22,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class UserModelController {
     private User loggedUser;
+    private HashMap<String, User> userHash;
 
     public UserModelController() {
         loggedUser = new User();
+        userHash = new HashMap<>();
     }
 
     public String getStudentsInClassroom(String classroom) {
@@ -126,11 +128,34 @@ public class UserModelController {
         loggedUser.deleteSchoolClassroom(classroomId);
     }
 
-    public void getTypeProfile() {
-        loggedUser.getTypeProfile();
+    public void refreshLoggedUser() {
+        loggedUser.refresh();
     }
 
-    public void setUserProfile(JSONObject response) {
+    public void refreshLoggedUser(JSONObject response) {
+        loggedUser.refreshUserParams(response);
+        DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName(), loggedUser.getRisk());
+    }
+
+    public User getLoggedUser() {
+        return loggedUser;
+    }
+
+    public void refreshUser(String id) {
+        User user = getUserById(id);
+        user.refresh();
+    }
+
+    public User getUserById(String id) {
+        User user = userHash.get(id);
+        if (user == null) {
+            user = new User();
+        }
+        userHash.put(id, user);
+        return user;
+    }
+
+    public void refreshUser(String id, JSONObject response) {
         loggedUser.refreshUserParams(response);
         DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName(), loggedUser.getRisk());
     }
@@ -139,9 +164,6 @@ public class UserModelController {
         loggedUser.addStudentToCenter(school,result);
     }
 
-    public User getLoggedUser() {
-        return loggedUser;
-    }
 
     public void updateLoggedUserRisk() {
         loggedUser.updateRisk();
@@ -155,7 +177,7 @@ public class UserModelController {
         loggedUser.setProfileType(profile);
     }
 
-    public String getProfileType() {
+    public User.UserProfileType getProfileType() {
         return loggedUser.getProfileType();
     }
 

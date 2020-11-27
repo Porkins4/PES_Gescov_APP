@@ -1,9 +1,9 @@
 
 package com.example.gescov.DomainLayer.Services.Volley.Interfaces;
 
-import com.example.gescov.ViewLayer.SignUpAndLogin.TokenVerificationResult;
-import com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
-import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public interface ISchoolService {
 
     void checkUserLogin(MutableLiveData<TokenVerificationResult> r);
 
-    void getTypeProfile(String id);
+    void refreshUser(String id);
 
     void addStudentToCenter(String id, String schoolId, MutableLiveData<SchoolRequestResult> result);
 }

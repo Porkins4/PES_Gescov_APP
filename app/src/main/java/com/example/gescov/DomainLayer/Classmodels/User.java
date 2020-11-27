@@ -6,8 +6,8 @@ import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IContagionService;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.DomainLayer.Singletons.ServicesFactory;
-import com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
-import com.example.gescov.ViewLayer.home.ContagionRequestResult;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.viewlayer.home.ContagionRequestResult;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,25 +18,42 @@ import java.util.List;
 
 public class User {
 
+    public enum UserProfileType {
+        STUDDENT ("studdent"),
+        TEACHER ("teacher");
+
+        private final String value;
+        UserProfileType(String value) {
+            this.value = value;
+        }
+
+        public static UserProfileType getUserProfileFromString(String value) {
+            for (UserProfileType upf : values()) {
+                if (upf.value.equals(value))
+                    return upf;
+            }
+            return null;
+        }
+
+    }
+
     private String name;
     private List<String> schoolsID;
+    private School schools;
     private String id;
     private String idContagion;
     private String ConfirmedInfected;
     private Boolean risk;
-    private String profileType;
+    private UserProfileType profileType;
 
-    public String getProfileType() {
+    public UserProfileType getProfileType() {
         return profileType;
     }
 
 
     public void setProfileType(String profileType) {
-        this.profileType = profileType;
+        this.profileType = UserProfileType.getUserProfileFromString(profileType);
     }
-
-
-
 
     public  User() {
         schoolsID = new ArrayList<>();
@@ -55,7 +72,7 @@ public class User {
         this.schoolsID =  schools;
         this.id = id;
         this.risk = risk;
-        this.profileType = profileType;
+        this.profileType = UserProfileType.getUserProfileFromString(profileType);
     }
     //----------------------------------
 
@@ -168,14 +185,15 @@ public class User {
         ServicesFactory.getUpdateSchoolClassroomController().updateSchoolClassroom(classroomId, classroomName, numRows, numCols, capacity);
     }
 
-    public void getTypeProfile() {
-        ServicesFactory.getSchoolService().getTypeProfile(id);
+    public void refresh() {
+        ServicesFactory.getSchoolService().refreshUser(id);
     }
 
     public void refreshUserParams(JSONObject response) {
         try {
+            id = response.getString("id");
             name = response.getString("name");
-            profileType = response.getString("profile");
+            profileType = UserProfileType.getUserProfileFromString(response.getString("profile"));
             risk = response.getBoolean("risk");
             JSONArray aux = response.getJSONArray("schoolsID");
             schoolsID = new ArrayList<>();

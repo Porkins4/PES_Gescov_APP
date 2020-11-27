@@ -7,18 +7,18 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.gescov.DomainLayer.Classmodels.Assignment;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
+import com.example.gescov.DomainLayer.Classmodels.SchoolRequest;
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
-import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
-import com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
-import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
-import com.example.gescov.ViewLayer.ViewLayerController;
-import com.example.gescov.ViewLayer.home.ContagionRequestResult;
-import com.example.gescov.ViewLayer.SignUpAndLogin.TokenVerificationResult;
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.viewlayer.ViewLayerController;
+import com.example.gescov.viewlayer.home.ContagionRequestResult;
+import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.List;
 
@@ -135,7 +135,7 @@ public class ModelController {
     }
 
     public void getTypeProfile() {
-        DomainControlFactory.getUserModelController().getTypeProfile();
+        DomainControlFactory.getUserModelController().refreshLoggedUser();
     }
 
     public void addStudentToCenter(String schoolName, MutableLiveData<SchoolRequestResult> result) {
@@ -147,7 +147,7 @@ public class ModelController {
         userModelController.changeUserProfile(profile);
     }
 
-    public String getUserType() {
+    public User.UserProfileType getUserType() {
         return userModelController.getProfileType();
     }
 
@@ -168,7 +168,7 @@ public class ModelController {
     }
 
     public void updateHomeViewModel(String name, boolean risk) {
-        //PresentationControlFactory.getViewLayerController().updateHomeViewModel(name, risk);
+        PresentationControlFactory.getViewLayerController().updateHomeViewModel(name, risk);
     }
 
     public void notifyPossibleContagion(MutableLiveData<ContagionRequestResult> result) {
@@ -224,5 +224,9 @@ public class ModelController {
 
     public GoogleSignInClient getGoogleSignInClient(String serverClientID) {
         return DomainControlFactory.getUserModelController().getGoogleSignInClient(serverClientID);
+    }
+
+    public void refreshSchoolRequestsInView(List<SchoolRequest> schoolRequestsList) {
+        viewLayerController.refreshSchoolRequests(schoolRequestsList);
     }
 }

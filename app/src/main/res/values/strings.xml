@@ -51,6 +51,13 @@
     <string name="school_details_delete_school">Elimina escola</string>
     <string name="school_details_protocol_access">Protocols</string>
     <string name="school_details_classrooms_list">Llista Aules</string>
+    <string name="school_details_request_list">Solicituds</string>
+
+    <!-- School Requests -->
+    <string name="school_requests_title">Solicituds de l´escola</string>
+    <!-- School Requests list item -->
+    <string name="school_requests_list_item_accept">Acceptar</string>
+    <string name="school_requests_list_item_reject">Rebutjar</string>
 
 
     <!-- Classrooms -->

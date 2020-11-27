@@ -3,6 +3,7 @@ package com.example.gescov.DomainLayer.Singletons;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.DeleteSchoolClassroomResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.DeleteSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolClassroomsResponseController;
+import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolRequestsBySchoolIdResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateSchoolClassroomResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateUserRiskResponseController;
@@ -39,6 +40,7 @@ public class ServicesFactory {
     private static UpdateSchoolClassroomResponseController updateSchoolClassroomsResponseController;
     private static DeleteSchoolClassroomResponseController deleteSchoolClassroomsResponseController;
     private static UpdateUserRiskResponseController updateUserRiskResponseController;
+    private static RefreshSchoolRequestsBySchoolIdResponseController refreshSchoolRequestsBySchoolIdResponseController;
 
     private static Retrofit getRetrofit() {
         if (retrofit != null) return retrofit;
@@ -114,5 +116,11 @@ public class ServicesFactory {
         if (assignmentService != null) return assignmentService;
         assignmentService = new AssignmentServiceImplementor();
         return assignmentService;
+    }
+
+    public static RefreshSchoolRequestsBySchoolIdResponseController getRefreshSchoolRequestsBySchoolIdResponseController() {
+        if (refreshSchoolRequestsBySchoolIdResponseController != null) return refreshSchoolRequestsBySchoolIdResponseController;
+        refreshSchoolRequestsBySchoolIdResponseController = new RefreshSchoolRequestsBySchoolIdResponseController(getRetrofit());
+        return refreshSchoolRequestsBySchoolIdResponseController;
     }
 }
