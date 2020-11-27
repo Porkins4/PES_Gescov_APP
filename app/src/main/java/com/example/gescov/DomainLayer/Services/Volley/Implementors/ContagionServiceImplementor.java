@@ -77,7 +77,7 @@ public class ContagionServiceImplementor implements IContagionService {
                                 String idContagion = response.getString("id");
                                 ContagionRequestResult aux = new ContagionRequestResult();
                                 aux.setError(new Pair<String,Boolean>("notifyPossiblePositive",false));
-                                aux.setContagionId(idContagion);
+                                DomainControlFactory.getUserModelController().updateContagionID(idContagion);
                                 result.setValue(aux);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -98,27 +98,6 @@ public class ContagionServiceImplementor implements IContagionService {
             e.printStackTrace();
         }
     }
-
-    @Override
-    public void updateContagionId(String id) {
-        //GET /api/contagions/student/{id}
-        queue =  Volley.newRequestQueue(VolleyServices.getCtx());
-        StringRequest stringRequest = new StringRequest(
-                Request.Method.GET, ContagionLink + "/student/"+id,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        DomainControlFactory.getUserModelController().setContagionId(response);
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        });
-        queue.add(stringRequest);
-    }
-
 
     @Override
     public String getContagionList(String userId, String schoolId) {
@@ -150,7 +129,7 @@ public class ContagionServiceImplementor implements IContagionService {
                                 String idContagion = response.getString("id");
                                 ContagionRequestResult aux = new ContagionRequestResult();
                                 aux.setError(new Pair<String,Boolean>("notifyPositive",false));
-                                aux.setContagionId(idContagion);
+                                DomainControlFactory.getUserModelController().updateContagionID(idContagion);
                                 result.setValue(aux);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -181,6 +160,7 @@ public class ContagionServiceImplementor implements IContagionService {
                     public void onResponse(String response) {
                         ContagionRequestResult aux = new ContagionRequestResult();
                         aux.setError(new Pair<String,Boolean> ("notifyRecovery",false));
+                        DomainControlFactory.getUserModelController().updateContagionID(null);
                         result.setValue(aux);
                     }
                 }, new Response.ErrorListener() {
@@ -192,5 +172,25 @@ public class ContagionServiceImplementor implements IContagionService {
             }
         });
         queue.add(stringRequest);
+    }
+
+    //-------------------------------------------------------------
+    //limpio
+    @Override
+    public void getContagionID(String id) {
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.GET, ContagionLink + "/student/"+id,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String contagionID) {
+                        DomainControlFactory.getUserModelController().setContagionId(contagionID, false);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                DomainControlFactory.getUserModelController().setContagionId(null, false);
+            }
+        });
+        VolleyServices.getRequestQueue().add(stringRequest);
     }
 }

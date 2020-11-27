@@ -5,7 +5,6 @@ import android.util.Pair;
 public class ContagionRequestResult {
     //private Boolean error;
     private Pair<String,Boolean> error;
-    private String ContagionId;
 
     public ContagionRequestResult (){}
 
@@ -15,14 +14,6 @@ public class ContagionRequestResult {
 
     public void setError(Pair<String,Boolean> error) {
         this.error = error;
-    }
-
-    public String getContagionId() {
-        return ContagionId;
-    }
-
-    public void setContagionId(String contagionId) {
-        ContagionId = contagionId;
     }
 
 }
