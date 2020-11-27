@@ -19,8 +19,8 @@ import java.util.List;
 public class User {
 
     public enum UserProfileType {
-        STUDDENT ("studdent"),
-        TEACHER ("teacher");
+        STUDDENT ("Studdent"),
+        TEACHER ("Teacher");
 
         private final String value;
         UserProfileType(String value) {
