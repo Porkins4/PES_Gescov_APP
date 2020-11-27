@@ -99,7 +99,7 @@
         android:id="@+id/join_school_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Unir'me a la escola"
+        android:text="@string/school_details_join"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/school_details_classroom_button"
         app:layout_constraintStart_toStartOf="@+id/school_details_protocol_button"

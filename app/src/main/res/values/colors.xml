@@ -10,10 +10,14 @@
     <color name="dark_green">#FF07575b</color>
     <color name="white_green">#c4dfe6</color>
     <color name="light_green">#06575b</color>
+    <color name="accepted_green">#D8F5D4</color>
 
     <color name="delete_red">#7e0609</color>
+    <color name="rejected_red">#F5988D</color>
 
     <color name="occuped_site">#06575b</color>
     <color name="free_site">#83FF6D</color>
     <color name="unabled_site">#2D2F31</color>
+
+
 </resources>

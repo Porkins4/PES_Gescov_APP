@@ -1,11 +1,13 @@
 package com.example.gescov.DomainLayer.Singletons;
 
+import com.example.gescov.DomainLayer.Controllers.SchoolRequestModelController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.DeleteSchoolClassroomResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.DeleteSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolClassroomsResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolRequestsBySchoolIdResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateSchoolClassroomResponseController;
+import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateSchoolRequestStatusResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateUserRiskResponseController;
 import com.example.gescov.DomainLayer.Services.Volley.Implementors.AssignmentServiceImplementor;
 import com.example.gescov.DomainLayer.Services.Volley.Implementors.ClassroomServiceImplementor;
@@ -41,6 +43,7 @@ public class ServicesFactory {
     private static DeleteSchoolClassroomResponseController deleteSchoolClassroomsResponseController;
     private static UpdateUserRiskResponseController updateUserRiskResponseController;
     private static RefreshSchoolRequestsBySchoolIdResponseController refreshSchoolRequestsBySchoolIdResponseController;
+    private static UpdateSchoolRequestStatusResponseController updateSchoolRequestStatusResponseController;
 
     private static Retrofit getRetrofit() {
         if (retrofit != null) return retrofit;
@@ -122,5 +125,11 @@ public class ServicesFactory {
         if (refreshSchoolRequestsBySchoolIdResponseController != null) return refreshSchoolRequestsBySchoolIdResponseController;
         refreshSchoolRequestsBySchoolIdResponseController = new RefreshSchoolRequestsBySchoolIdResponseController(getRetrofit());
         return refreshSchoolRequestsBySchoolIdResponseController;
+    }
+
+    public static UpdateSchoolRequestStatusResponseController getUpdateSchoolRequestStatusResponseController() {
+        if (updateSchoolRequestStatusResponseController != null) return updateSchoolRequestStatusResponseController;
+        updateSchoolRequestStatusResponseController = new UpdateSchoolRequestStatusResponseController(getRetrofit());
+        return updateSchoolRequestStatusResponseController;
     }
 }

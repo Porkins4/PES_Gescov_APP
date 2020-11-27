@@ -24,4 +24,8 @@ public class SchoolRequestsController extends GescovModelListedController {
     public void refreshList() {
         DomainControlFactory.getSchoolRequestModelController().getSchoolRequestsBySchoolId(PresentationControlFactory.getSchoolsCrontroller().getCurrentSchool().getId());
     }
+
+    public void updateSchoolRequestStatus(String status, String schoolRequestId) {
+        DomainControlFactory.getSchoolRequestModelController().updateSchoolRequestStatus(status, schoolRequestId);
+    }
 }

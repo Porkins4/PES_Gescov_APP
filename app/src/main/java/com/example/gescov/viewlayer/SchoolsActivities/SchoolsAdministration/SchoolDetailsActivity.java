@@ -66,6 +66,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         });
 
         if (loggedUser.getProfileType() == User.UserProfileType.STUDDENT && !loggedUser.getSchoolsID().contains(school.getId())) {
+            joinSchoolButton.setText(getResources().getText(R.string.school_details_join));
             joinSchoolButton.setOnClickListener(e-> {
                 schoolDetailsViewModel.getAddStudentToCenterResult(name.getText().toString());
             });
@@ -90,9 +91,6 @@ public class SchoolDetailsActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 
     private void successAddingStudentToCenter() {
