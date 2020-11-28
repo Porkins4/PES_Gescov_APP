@@ -11,11 +11,11 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.gescov.DomainLayer.Services.Conection;
-import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.DomainLayer.Services.Volley.VolleyServices;
-import com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.ViewLayer.SignUpAndLogin.TokenVerificationResult;
 
 import org.json.JSONArray;
@@ -35,7 +35,8 @@ public class SchoolServiceImplementor implements ISchoolService {
     private final String POST_CREATE_CLASSROOM_URI = "https://gescov.herokuapp.com/api/classrooms";
     private final String GET_STUDENTS_IN_CLASS_SESSION = "https://gescov.herokuapp.com/api/assignments/classroom";
     private final String GET_CHECK_LOGIN = "https://gescov.herokuapp.com/api/users/";
-    private  final String PUT_USER_TO_SCHOOL = "https://gescov.herokuapp.com/api/users/school/";
+    private final String PUT_USER_TO_SCHOOL = "https://gescov.herokuapp.com/api/users/school/";
+    private final String  SCHOOL_PUNTUATIONS = "https://gescov.herokuapp.com/api/schools/punctuation";
 
     public SchoolServiceImplementor() { }
 
@@ -291,5 +292,29 @@ public class SchoolServiceImplementor implements ISchoolService {
             }
         });
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void getNumContagionPerSchool() {
+        RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
+        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
+                Request.Method.GET,SCHOOL_PUNTUATIONS , null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            DomainControlFactory.getSchoolsModelCrontroller().sendResponseOfNumContagionPerSchool(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
     }
 }

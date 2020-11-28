@@ -1,23 +1,20 @@
 package com.example.gescov.ViewLayer.SignUpAndLogin;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.gescov.R;
 import com.example.gescov.ViewLayer.navigation.NavigationMenu;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 public class LoadingProfileActivity extends AppCompatActivity {
 
-    private GoogleSignInClient googleSignInClient;
     private LoadingProfileViewModel loadingProfileViewModel;
 
-    private GoogleSignInAccount account;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

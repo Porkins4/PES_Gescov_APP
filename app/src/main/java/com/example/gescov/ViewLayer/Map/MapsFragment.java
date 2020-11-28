@@ -1,28 +1,22 @@
 package com.example.gescov.ViewLayer.Map;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-
-import android.Manifest;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.telecom.Call;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.volley.toolbox.Volley;
-import com.example.gescov.DomainLayer.Services.Volley.VolleyServices;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.R;
-import com.google.android.gms.maps.CameraUpdate;
+import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -30,17 +24,16 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.maps.android.clustering.ClusterManager;
+
+import org.json.JSONException;
 
 import java.util.List;
+
 
 public class MapsFragment extends Fragment {
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
     private GoogleMap mMap;
-  //  private List<ClusterMarker> markers;
 
 
 
@@ -63,24 +56,45 @@ public class MapsFragment extends Fragment {
                 if (!success) {
                     Log.e("MapFragment", "Style parsing failed.");
                 }
-            } catch (Resources.NotFoundException e) {
+            } catch (Resources.NotFoundException e ) {
                 Log.e("MapFragment", "Can't find style. Error: ", e);
             }
-            getMarker();
+            getSchools();
         }
 
+        private void getSchools() {
+            mapVIewModel = new ViewModelProvider(getActivity()).get(MapVIewModel .class);
+            mapVIewModel.getSchools().observe(getActivity(),
+                    schools -> setMarkers(schools)
+            );
 
-        private void getMarker() {
-            LatLng fibMarker = new LatLng(41.38967, 2.11339);
-            LatLng eetacMarker = new LatLng(41.2762922640011, 1.987153526989175);
-            LatLng etsabMarker = new LatLng(41.38515737060989, 2.1138167576710107);
-            mMap.addCircle(new CircleOptions().center(eetacMarker).radius(25.0).strokeColor(Color.RED).fillColor(Color.RED));
-            mMap.addCircle(new CircleOptions().center(etsabMarker).radius(25.0).strokeColor(Color.RED).fillColor(Color.RED));
-            mMap.addCircle(new CircleOptions().center(fibMarker).radius(50.0).strokeColor(Color.RED).fillColor(Color.RED));
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(fibMarker,13),2000,null);
+
+        }
+
+        private void setMarkers(List<Pair<School, Integer>> schools) {
+            for (int i = 0; i < schools.size(); ++i) {
+                Integer numContagion = schools.get(i).second;
+                double longitude = schools.get(i).first.getLongitude();
+                double latitude = schools.get(i).first.getLatitude();
+                if ( numContagion >= 7 ) {
+
+                    mMap.addCircle(new CircleOptions().center(new LatLng(latitude,longitude)).radius(40.0).strokeColor(Color.RED).fillColor(Color.RED));
+                }else if (numContagion == 0 ) {
+                    mMap.addCircle(new CircleOptions().center(new LatLng(latitude,longitude)).radius(40.0).strokeColor(Color.GREEN).fillColor(Color.GREEN));
+                }
+                else {
+                    mMap.addCircle(new CircleOptions().center(new LatLng(latitude,longitude)).radius(40.0).strokeColor(Color.YELLOW).fillColor(Color.YELLOW));
+                }
+            }
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(41.38967, 2.11339),13),2000,null);
             mMap.setMaxZoomPreference(17);
         }
     };
+
+    private MapVIewModel mapVIewModel;
+
+
+
 
 
 

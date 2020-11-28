@@ -1,16 +1,13 @@
 package com.example.gescov.DomainLayer.Services.Volley.Implementors;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IUserService;
 import com.example.gescov.DomainLayer.Services.Volley.VolleyServices;
-import com.example.gescov.ViewLayer.SignUpAndLogin.TokenVerificationResult;
+import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 
 import org.json.JSONObject;
 

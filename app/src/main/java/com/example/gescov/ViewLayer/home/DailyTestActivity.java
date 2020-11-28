@@ -1,7 +1,5 @@
 package com.example.gescov.ViewLayer.home;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,8 +7,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.gescov.R;
 import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 

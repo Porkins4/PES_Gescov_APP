@@ -1,7 +1,5 @@
 package com.example.gescov.ViewLayer.SignUpAndLogin;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;

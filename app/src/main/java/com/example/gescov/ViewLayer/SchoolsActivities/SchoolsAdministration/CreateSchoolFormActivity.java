@@ -1,15 +1,15 @@
 package com.example.gescov.ViewLayer.SchoolsActivities.SchoolsAdministration;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.text.Editable;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.gescov.R;
+import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
 
 
 public class CreateSchoolFormActivity extends AppCompatActivity {

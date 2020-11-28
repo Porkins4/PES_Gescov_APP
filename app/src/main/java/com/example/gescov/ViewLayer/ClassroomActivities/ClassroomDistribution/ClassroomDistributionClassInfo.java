@@ -1,9 +1,6 @@
 package com.example.gescov.ViewLayer.ClassroomActivities.ClassroomDistribution;
 
-import com.example.gescov.DomainLayer.Classmodels.Assignment;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
-
-import java.util.List;
 
 public class ClassroomDistributionClassInfo {
     private boolean error;

@@ -1,7 +1,5 @@
 package com.example.gescov.DomainLayer.Services;
 
-import android.content.Intent;
-
 import androidx.annotation.NonNull;
 
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;

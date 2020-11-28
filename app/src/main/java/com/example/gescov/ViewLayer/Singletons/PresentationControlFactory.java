@@ -1,18 +1,19 @@
 package com.example.gescov.ViewLayer.Singletons;
 
-import com.example.gescov.ViewLayer.ContagionList.ContagionController;
-import com.example.gescov.ViewLayer.SignUpAndLogin.LoadingProfileActivity;
-import com.example.gescov.ViewLayer.SignUpAndLogin.LoadingProfileController;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.gescov.ViewLayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroomController;
+import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionController;
+import com.example.gescov.ViewLayer.ContagionList.ContagionController;
+import com.example.gescov.ViewLayer.Map.MapController;
 import com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolClassroomsCrontroller;
 import com.example.gescov.ViewLayer.SchoolsActivities.SchoolsAdministration.SchoolsCrontroller;
-import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionController;
+import com.example.gescov.ViewLayer.SignUpAndLogin.LoadingProfileActivity;
+import com.example.gescov.ViewLayer.SignUpAndLogin.LoadingProfileController;
 import com.example.gescov.ViewLayer.UpdateUserProfile.UpdateUserProfileController;
 import com.example.gescov.ViewLayer.ViewLayerController;
 import com.example.gescov.ViewLayer.home.NotifyContagionController;
 import com.example.gescov.ViewLayer.home.TracingTestController;
-
-import androidx.lifecycle.ViewModelProvider;
 
 public class PresentationControlFactory {
     private static ViewLayerController viewLayerController;
@@ -27,6 +28,7 @@ public class PresentationControlFactory {
     private static UpdateUserProfileController updateUserProfileController;
     private static LoadingProfileActivity loadingProfileActivity;
     private static ViewModelProvider viewModelProvider;
+    private static MapController mapController;
 
     public static ViewLayerController getViewLayerController() {
         if (viewLayerController != null)
@@ -101,5 +103,12 @@ public class PresentationControlFactory {
 
     public static void setViewModelProvider(ViewModelProvider provider) {
         viewModelProvider = provider;
+    }
+
+    public static MapController getMapController() {
+        if ( mapController != null )
+            return mapController;
+        mapController = new MapController();
+        return mapController;
     }
 }

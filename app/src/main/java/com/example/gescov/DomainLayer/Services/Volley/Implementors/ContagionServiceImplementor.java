@@ -15,12 +15,12 @@ import com.example.gescov.DomainLayer.Services.Conection;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IContagionService;
 import com.example.gescov.DomainLayer.Services.Volley.VolleyServices;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
-import com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.ViewLayer.home.ContagionRequestResult;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 

@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
-import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
 import com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
 
 import org.json.JSONException;
 
@@ -24,6 +24,7 @@ public class SchoolsCrontroller{
     private HashMap<String, School> schoolHash;
     private School currentSchool;
 
+
     public void setSchoolsAdministrationFragment(SchoolsAdministrationFagment fragment) {
         this.fragment = fragment;
     }
@@ -37,9 +38,6 @@ public class SchoolsCrontroller{
     }
 
     public SchoolListViewAdapter getSchoolListViewAdapter() throws AdapterNotSetException {
-        if (schoolListViewAdapter == null) {
-            throw new AdapterNotSetException();
-        }
         return schoolListViewAdapter;
     }
 
@@ -55,15 +53,21 @@ public class SchoolsCrontroller{
         PresentationControlFactory.getViewLayerController().getAllSchools();
     }
 
-    public void refreshSchoolsList(List<School> schoolsList) throws JSONException, AdapterNotSetException {
+    public void refreshSchoolsList(List<School> schoolsList) throws AdapterNotSetException {
         this.schoolHash = new HashMap<>();
         this.schoolsList = schoolsList;
         for (School school : schoolsList) {
             schoolHash.put(school.getName(), school);
         }
-        getSchoolListViewAdapter().setSchoolList(schoolsList);
-        getSchoolListViewAdapter().notifyDataSetChanged();
+        if (getSchoolListViewAdapter() != null) {
+            getSchoolListViewAdapter().setSchoolList(schoolsList);
+            getSchoolListViewAdapter().notifyDataSetChanged();
+        }
     }
+
+
+
+
 
     public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
         PresentationControlFactory.getViewLayerController().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite);
@@ -92,4 +96,5 @@ public class SchoolsCrontroller{
     public void addStudentToCenter(String schoolName, MutableLiveData<SchoolRequestResult> result) {
         PresentationControlFactory.getViewLayerController().addStudentToCenter(schoolName,result);
     }
+
 }

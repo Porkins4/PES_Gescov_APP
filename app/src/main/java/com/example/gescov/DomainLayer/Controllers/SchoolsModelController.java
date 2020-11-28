@@ -1,7 +1,10 @@
 package com.example.gescov.DomainLayer.Controllers;
 
+import android.util.Pair;
+
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
+import com.example.gescov.DomainLayer.Singletons.ServicesFactory;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -91,5 +94,22 @@ public class SchoolsModelController {
                 return school;
         }
         return null;
+    }
+
+    public void getNumContagionPerSchool() {
+        ServicesFactory.getSchoolService().getNumContagionPerSchool();
+    }
+
+    public void sendResponseOfNumContagionPerSchool(JSONArray response) throws JSONException {
+        List<Pair<School, Integer>> schools = new ArrayList<>();
+        for ( int i = 0; i < response.length(); ++i) {
+            JSONObject aux = response.getJSONObject(i);
+            JSONObject school = aux.getJSONObject("first");
+            School schoolAux = new School(school.getString("name"),school.getDouble("longitude"),school.getDouble("latitude"));
+            Integer numCont = aux.getInt("second");
+            Pair<School,Integer> schoolAndCont = new Pair<>(schoolAux,numCont);
+            schools.add(schoolAndCont);
+        }
+        DomainControlFactory.getModelController().sendResponseOfNumContagionPerSchool(schools);
     }
 }

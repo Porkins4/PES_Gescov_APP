@@ -1,8 +1,8 @@
 package com.example.gescov.DomainLayer.Singletons;
 
 import com.example.gescov.DomainLayer.Controllers.AssignmentsModelController;
-import com.example.gescov.DomainLayer.Controllers.ModelController;
 import com.example.gescov.DomainLayer.Controllers.ClassroomsModelController;
+import com.example.gescov.DomainLayer.Controllers.ModelController;
 import com.example.gescov.DomainLayer.Controllers.SchoolsModelController;
 import com.example.gescov.DomainLayer.Controllers.UserModelController;
 
