@@ -1,11 +1,11 @@
 
-J
-java:S3740"/Provide the parametrized type for this generic.(¶şœıÿÿÿÿ
+g
+java:S1192 "JDefine a constant instead of duplicating this literal "longitude" 3 times.(Ûî›Ô8÷éçàà.
 Q	java:S125"<This block of commented-out lines of code should be removed.(ê’ğë
 T
 java:S4973T"9Use the "equals" method if value comparison was intended.(–ëÏäıÿÿÿÿ
+J
+java:S3740"/Provide the parametrized type for this generic.(¶şœıÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ı®èğ
 7
 java:S1116&"Remove this empty statement.(ôŸìúÿÿÿÿ
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ı®èğ
-g
-java:S1192 "JDefine a constant instead of duplicating this literal "longitude" 3 times.(Ûî›Ô8÷éçàà.

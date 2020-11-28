@@ -1,11 +1,11 @@
 
 ‚
 java:S4165"fRemove this useless assignment; "latitude" already holds the assigned value along all execution paths.(ŒÈá8»“áàà.
-‰
-java:S4165"gRemove this useless assignment; "longitude" already holds the assigned value along all execution paths.(àõ’üÿÿÿÿ8»“áàà.
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ñªÿ¿ûÿÿÿÿ
+W	java:S107-"BConstructor has 10 parameters, which is greater than 7 authorized.(¨Š±­
 S
 java:S1068"8Remove this unused "listAdministratorsID" private field.(ÏĞ´ûÿÿÿÿ
-W	java:S107-"BConstructor has 10 parameters, which is greater than 7 authorized.(¨Š±­
 H
 java:S1068"-Remove this unused "creatorID" private field.(Ÿ²Ôúÿÿÿÿ
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ñªÿ¿ûÿÿÿÿ
+‰
+java:S4165"gRemove this useless assignment; "longitude" already holds the assigned value along all execution paths.(àõ’üÿÿÿÿ8»“áàà.

@@ -8,15 +8,12 @@ import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.R;
-import com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -24,9 +21,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
-
-import org.json.JSONException;
-
 import java.util.List;
 
 
@@ -34,6 +28,7 @@ public class MapsFragment extends Fragment {
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
     private GoogleMap mMap;
+    private MapVIewModel mapVIewModel;
 
 
 
@@ -67,9 +62,8 @@ public class MapsFragment extends Fragment {
             mapVIewModel.getSchools().observe(getActivity(),
                     schools -> setMarkers(schools)
             );
-
-
         }
+
 
         private void setMarkers(List<Pair<School, Integer>> schools) {
             for (int i = 0; i < schools.size(); ++i) {
@@ -91,7 +85,7 @@ public class MapsFragment extends Fragment {
         }
     };
 
-    private MapVIewModel mapVIewModel;
+
 
     
     @Nullable

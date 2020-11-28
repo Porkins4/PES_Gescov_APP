@@ -38,7 +38,9 @@ public class SchoolServiceImplementor implements ISchoolService {
     private final String PUT_USER_TO_SCHOOL = "https://gescov.herokuapp.com/api/users/school/";
     private final String  SCHOOL_PUNTUATIONS = "https://gescov.herokuapp.com/api/schools/punctuation";
 
-    public SchoolServiceImplementor() { }
+    public SchoolServiceImplementor() {
+        //Empty constructor
+    }
 
     @Override
     public String getDimensions(String schoolId, String classroomId) {
@@ -59,9 +61,7 @@ public class SchoolServiceImplementor implements ISchoolService {
         String response = null;
         try {
             response = conection.execute(GET_CLASSROOM_STUDENTS_URI+"?nameCen=A5S101").get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (ExecutionException  | InterruptedException e ) {
             e.printStackTrace();
         }
         if (response == null) return "Failure at getting students in the specified classroom";
@@ -78,7 +78,7 @@ public class SchoolServiceImplementor implements ISchoolService {
         } catch (ExecutionException | InterruptedException e ){
             e.printStackTrace();
         }
-        if (response == null) return "Hay fallo";//TODO
+        if (response == null) return "Something went wrong";//TODO
         return response;
     }
 
@@ -96,19 +96,13 @@ public class SchoolServiceImplementor implements ISchoolService {
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.POST, POST_ASSIGNMENT_URI, postData,
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
+                    response -> {
 
+                    }, error -> {
+                        if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
+                            System.out.println("something went wrong :(");
                         }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
-                        System.out.println("something went wrong :(");
-                    }
-                }
-            });
+                    });
 
             requestQueue.add(jsonObjectRequest);
 
@@ -132,22 +126,14 @@ public class SchoolServiceImplementor implements ISchoolService {
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.POST, POST_CREATE_SCHOOL_URI, school,
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList();
+                    response -> DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList(), error -> {
+                        if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
+                            System.out.println("something went wrong :(");
+                            for (String header : error.networkResponse.headers.values()) {
+                                System.out.println(header);
+                            }
                         }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
-                        System.out.println("something went wrong :(");
-                        for (String header : error.networkResponse.headers.values()) {
-                            System.out.println(header);
-                        }
-                    }
-                }
-            });
+                    });
 
             requestQueue.add(jsonObjectRequest);
 
@@ -174,19 +160,11 @@ public class SchoolServiceImplementor implements ISchoolService {
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST, POST_CREATE_CLASSROOM_URI, classroom,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        DomainControlFactory.getUserModelController().refreshSchoolClassrooms(DomainControlFactory.getSchoolsModelCrontroller().getCurrentSchool().getName());
+                response -> DomainControlFactory.getUserModelController().refreshSchoolClassrooms(DomainControlFactory.getSchoolsModelCrontroller().getCurrentSchool().getName()), error -> {
+                    if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
+                        System.out.println("something went wrong :(");
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
-                    System.out.println("something went wrong :(");
-                }
-            }
-        });
+                });
 
         requestQueue.add(jsonObjectRequest);
 
@@ -194,36 +172,30 @@ public class SchoolServiceImplementor implements ISchoolService {
 
     @Override
     public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
-        Response.Listener<JSONArray> listener = new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                StudentsInClassSessionResult result = new StudentsInClassSessionResult();
-                try {
-                    List<String> studentsList = new ArrayList<>();
-                    for (int i = 0; i < response.length(); ++i) {
-                        JSONObject assignment = response.getJSONObject(i);
-                        JSONObject student = new JSONObject(assignment.getString("student"));
-                        studentsList.add(student.getString("name"));
-                    }
-                    result.setStudentNames(studentsList);
-                    result.setError(false);
-                    studentsResult.setValue(result);
-                } catch (JSONException e) {
-                        result.setError(true);
-                        studentsResult.setValue(result);
-                        System.out.println("error while trying to transform JSON results");
+        Response.Listener<JSONArray> listener = response -> {
+            StudentsInClassSessionResult result = new StudentsInClassSessionResult();
+            try {
+                List<String> studentsList = new ArrayList<>();
+                for (int i = 0; i < response.length(); ++i) {
+                    JSONObject assignment = response.getJSONObject(i);
+                    JSONObject student = new JSONObject(assignment.getString("student"));
+                    studentsList.add(student.getString("name"));
                 }
+                result.setStudentNames(studentsList);
+                result.setError(false);
+                studentsResult.setValue(result);
+            } catch (JSONException e) {
+                    result.setError(true);
+                    studentsResult.setValue(result);
+                    System.out.println("error while trying to transform JSON results");
             }
         };
 
-        Response.ErrorListener errorListener = new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                StudentsInClassSessionResult result = new StudentsInClassSessionResult();
-                result.setError(true);
-                studentsResult.setValue(result);
-                System.out.println("something went wrong");
-            }
+        Response.ErrorListener errorListener = error -> {
+            StudentsInClassSessionResult result = new StudentsInClassSessionResult();
+            result.setError(true);
+            studentsResult.setValue(result);
+            System.out.println("something went wrong");
         };
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET,GET_STUDENTS_IN_CLASS_SESSION + "?name=A5S201",null,listener,errorListener);
         VolleyServices.addJSONArrayRequest(request);
@@ -234,19 +206,13 @@ public class SchoolServiceImplementor implements ISchoolService {
     public void checkUserLogin(MutableLiveData<TokenVerificationResult> r) {
         RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_CHECK_LOGIN+(r.getValue()).getUserToken(),
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        TokenVerificationResult result = new TokenVerificationResult(true, response);
-                        r.setValue(result);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                TokenVerificationResult result = new TokenVerificationResult(false, null);
-                r.setValue(result);
-            }
-        });
+                response -> {
+                    TokenVerificationResult result = new TokenVerificationResult(true, response);
+                    r.setValue(result);
+                }, error -> {
+                    TokenVerificationResult result = new TokenVerificationResult(false, null);
+                    r.setValue(result);
+                });
         requestQueue.add(stringRequest);
     }
 
@@ -255,16 +221,8 @@ public class SchoolServiceImplementor implements ISchoolService {
         RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET, GET_CHECK_LOGIN+id, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        DomainControlFactory.getUserModelController().setUserProfile(response);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        });
+                response -> DomainControlFactory.getUserModelController().setUserProfile(response), error -> {
+                });
 
         requestQueue.add(jsonObjectRequest);
 
@@ -275,22 +233,16 @@ public class SchoolServiceImplementor implements ISchoolService {
         RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
         StringRequest stringRequest = new StringRequest(
                 Request.Method.PUT, PUT_USER_TO_SCHOOL+id+"?schoolID="+schoolId,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        SchoolRequestResult aux = new SchoolRequestResult();
-                        aux.setError(false);
-                        result.setValue(aux);
-                        DomainControlFactory.getUserModelController().setNewSchoolID(schoolId);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                SchoolRequestResult aux = new SchoolRequestResult();
-                aux.setError(true);
-                result.setValue(aux);
-            }
-        });
+                response -> {
+                    SchoolRequestResult aux = new SchoolRequestResult();
+                    aux.setError(false);
+                    result.setValue(aux);
+                    DomainControlFactory.getUserModelController().setNewSchoolID(schoolId);
+                }, error -> {
+                    SchoolRequestResult aux = new SchoolRequestResult();
+                    aux.setError(true);
+                    result.setValue(aux);
+                });
         requestQueue.add(stringRequest);
     }
 
@@ -299,22 +251,16 @@ public class SchoolServiceImplementor implements ISchoolService {
         RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
                 Request.Method.GET,SCHOOL_PUNTUATIONS , null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        try {
-                            DomainControlFactory.getSchoolsModelCrontroller().sendResponseOfNumContagionPerSchool(response);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
+                response -> {
+                    try {
+                        DomainControlFactory.getSchoolsModelCrontroller().sendResponseOfNumContagionPerSchool(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
 
-            }
-        });
+                }, error -> {
+
+                });
         requestQueue.add(jsonObjectRequest);
     }
 }

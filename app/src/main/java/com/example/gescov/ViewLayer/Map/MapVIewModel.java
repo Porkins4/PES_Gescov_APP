@@ -16,6 +16,7 @@ public class MapVIewModel extends ViewModel {
 
 
     public MapVIewModel () {
+        //Empty Constructor
     }
 
 

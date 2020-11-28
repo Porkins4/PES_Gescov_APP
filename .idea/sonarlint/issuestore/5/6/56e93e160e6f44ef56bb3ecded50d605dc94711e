@@ -1,6 +1,8 @@
 
+N
+java:S1612D",Replace this lambda with a method reference.(Êı¤•ıÿÿÿÿ8Î­ùà.
 }
 java:S1128"[Remove this unused import 'com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException'.(‘ü‡Ïúÿÿÿÿ8Øˆ»äà.
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ËıÖ¯úÿÿÿÿ
 U
 java:S1128"3Remove this unused import 'org.json.JSONException'.(¹Ó·úÿÿÿÿ8Øˆ»äà.
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ËıÖ¯úÿÿÿÿ

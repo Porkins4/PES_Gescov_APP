@@ -10,10 +10,6 @@ import java.util.List;
 public class MapController {
     private MapVIewModel mapVIewModel;
 
-    public void getSchools(MapVIewModel mapVIewModel) {
-
-    }
-
     public void getNumContagionPerSchool() {
 
         PresentationControlFactory.getViewLayerController().getNumContagionPerSchool();
