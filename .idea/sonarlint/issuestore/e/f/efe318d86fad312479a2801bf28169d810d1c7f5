@@ -1,0 +1,7 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(á¹Ô¢üÿÿÿÿ
+W
+java:S2259"AA "NullPointerException" could be thrown; "url" is nullable here.(‰—ÇÈ
+z
+java:S1149!"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(£•°Åþÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(ÍÇõà

@@ -78,12 +78,12 @@ public class MapsFragment extends Fragment {
                 double latitude = schools.get(i).first.getLatitude();
                 if ( numContagion >= 7 ) {
 
-                    mMap.addCircle(new CircleOptions().center(new LatLng(latitude,longitude)).radius(40.0).strokeColor(Color.RED).fillColor(Color.RED));
+                    mMap.addCircle(new CircleOptions().center(new LatLng(latitude,longitude)).radius(40.0).strokeColor(Color.argb(130,150,50,50)).fillColor(Color.argb(130,150,50,50)));
                 }else if (numContagion == 0 ) {
-                    mMap.addCircle(new CircleOptions().center(new LatLng(latitude,longitude)).radius(40.0).strokeColor(Color.GREEN).fillColor(Color.GREEN));
+                    mMap.addCircle(new CircleOptions().center(new LatLng(latitude,longitude)).radius(40.0).strokeColor(Color.argb(130,50,150,50)).fillColor(Color.argb(130,50,150,50)));
                 }
                 else {
-                    mMap.addCircle(new CircleOptions().center(new LatLng(latitude,longitude)).radius(40.0).strokeColor(Color.YELLOW).fillColor(Color.YELLOW));
+                    mMap.addCircle(new CircleOptions().center(new LatLng(latitude,longitude)).radius(40.0).strokeColor(Color.argb(130,150,150,50)).fillColor(Color.argb(130,150,150,50)));
                 }
             }
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(41.38967, 2.11339),13),2000,null);
@@ -93,11 +93,7 @@ public class MapsFragment extends Fragment {
 
     private MapVIewModel mapVIewModel;
 
-
-
-
-
-
+    
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

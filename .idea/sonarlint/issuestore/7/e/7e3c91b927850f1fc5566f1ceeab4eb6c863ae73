@@ -1,0 +1,10 @@
+
+w
+java:S1450"\Remove the "contagionList" field and declare it as a local variable in the relevant methods.(ÊÏÖÏüÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¡·¿èÿÿÿÿÿ
+t
+java:S1450"YRemove the "controller" field and declare it as a local variable in the relevant methods.(é“‹ßýÿÿÿÿ
+E
+java:S1185'"(Remove this method to simply inherit it.(ßìê¯8ï¸ÕÏà.
+r
+java:S1450"WRemove the "thisView" field and declare it as a local variable in the relevant methods.(Ð¢É ÿÿÿÿÿ

@@ -1,0 +1,89 @@
+
+T	java:S106á"9Replace this use of System.out or System.err by a logger.(¢—½šùÿÿÿÿ
+T	java:S106º"9Replace this use of System.out or System.err by a logger.(‡½øåıÿÿÿÿ
+?
+java:S1604‡"(Make this anonymous inner class a lambda(ÑÂğ
+>
+java:S1170'"!Make this final field static too.(•Şıš8ùøÇßà.
+N	java:S106’"9Replace this use of System.out or System.err by a logger.(ì«”x
+<
+java:S1170&"!Make this final field static too.(³ÁÛŒøÿÿÿÿ
+?
+java:S1604‚"(Make this anonymous inner class a lambda(ÑÂğ
+D
+java:S1604Å"(Make this anonymous inner class a lambda(š¡ßªıÿÿÿÿ
+H
+java:S1135Q"2Complete the task associated to this TODO comment.(‚è÷€
+D
+java:S1604‡"(Make this anonymous inner class a lambda(´¸©”üÿÿÿÿ
+>
+java:S1604c"(Make this anonymous inner class a lambda(ÑÂğ
+D
+java:S1604"(Make this anonymous inner class a lambda(´¸©”üÿÿÿÿ
+S	java:S106l"9Replace this use of System.out or System.err by a logger.(‡½øåıÿÿÿÿ
+o	java:S116%"ZRename this field "GET_CHECK_LOGIN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èùòÕ
+s
+java:S1192l"XDefine a constant instead of duplicating this literal "something went wrong :(" 3 times.(‡½øåıÿÿÿÿ
+?
+java:S1604Û"(Make this anonymous inner class a lambda(´ø¹Š
+O	java:S106Ö"9Replace this use of System.out or System.err by a logger.(¦Æ×†
+x	java:S116!"^Rename this field "POST_ASSIGNMENT_URI" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µº„‘ÿÿÿÿÿ
+œ
+java:S1186e"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ù­¢²úÿÿÿÿ
+<
+java:S1170!"!Make this final field static too.(µº„‘ÿÿÿÿÿ
+<
+java:S1170""!Make this final field static too.(ğÎ…¥ùÿÿÿÿ
+œ
+java:S1186)"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ã›Âˆúÿÿÿÿ
+{	java:S116""aRename this field "POST_CREATE_SCHOOL_URI" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÎ…¥ùÿÿÿÿ
+D
+java:S1604í"(Make this anonymous inner class a lambda(±æÿÚıÿÿÿÿ
+z	java:S116 "eRename this field "GET_CLASSROOM_STUDENTS_URI" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(í½üê
+‚	java:S116$"hRename this field "GET_STUDENTS_IN_CLASS_SESSION" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»—‡çşÿÿÿÿ
+y	java:S116#"dRename this field "POST_CREATE_CLASSROOM_URI" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ìô€Î
+	java:S116"gRename this field "GET_CLASSROOM_DIMENSIONS_URI" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼šÍÖúÿÿÿÿ
+7
+java:S1170#"!Make this final field static too.(Ìô€Î
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(€Ôš³
+O	java:S106›"9Replace this use of System.out or System.err by a logger.(û°Å¾
+w	java:S116&"]Rename this field "PUT_USER_TO_SCHOOL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³ÁÛŒøÿÿÿÿ
+7
+java:S1170 "!Make this final field static too.(í½üê
+D
+java:S1604ó"(Make this anonymous inner class a lambda(´¸©”üÿÿÿÿ
+
+java:S1186‰"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(£µ¢›ÿÿÿÿÿ
+¤
+java:S1186º"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(£µ¢›ÿÿÿÿÿ8ÎŸÈßà.
+<
+java:S1170"!Make this final field static too.(¼šÍÖúÿÿÿÿ
+D
+java:S1604¶"(Make this anonymous inner class a lambda(´¸©”üÿÿÿÿ
+K
+java:S1604¸"(Make this anonymous inner class a lambda(´¸©”üÿÿÿÿ8ÎŸÈßà.
+7
+java:S1170%"!Make this final field static too.(èùòÕ
+\
+java:S21421"FEither re-interrupt this method or rethrow the "InterruptedException".(åÅç“
+?
+java:S1604±"(Make this anonymous inner class a lambda(ÑÂğ
+C
+java:S1604h"(Make this anonymous inner class a lambda(´¸©”üÿÿÿÿ
+D
+java:S1604Œ"(Make this anonymous inner class a lambda(´¸©”üÿÿÿÿ
+F
+java:S1604®"(Make this anonymous inner class a lambda(âêÜ8ÎŸÈßà.
+y	java:S116'"]Rename this field "SCHOOL_PUNTUATIONS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•Şıš8ùøÇßà.
+\
+java:S2142@"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
+T	java:S106"9Replace this use of System.out or System.err by a logger.(‡½øåıÿÿÿÿ
+D
+java:S1604–"(Make this anonymous inner class a lambda(±æÿÚıÿÿÿÿ
+Z
+java:S2147@"DCombine this catch with the one at line 62, which has the same body.(ä ¹€
+<
+java:S1170$"!Make this final field static too.(»—‡çşÿÿÿÿ
+\
+java:S2142N"FEither re-interrupt this method or rethrow the "InterruptedException".(åÅç“
+N	java:S106t"9Replace this use of System.out or System.err by a logger.(û°Å¾

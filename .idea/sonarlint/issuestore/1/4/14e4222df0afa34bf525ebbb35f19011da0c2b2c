@@ -1,0 +1,11 @@
+
+J
+java:S3740"/Provide the parametrized type for this generic.(¶þŽœýÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(ê’ðë
+T
+java:S4973T"9Use the "equals" method if value comparison was intended.(–ëÏäýÿÿÿÿ
+7
+java:S1116&"Remove this empty statement.(ôŸŽìúÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ý®èð
+g
+java:S1192 "JDefine a constant instead of duplicating this literal "longitude" 3 times.(Ûî›Ô8÷éçàà.

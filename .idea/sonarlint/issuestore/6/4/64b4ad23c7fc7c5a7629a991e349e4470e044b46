@@ -1,0 +1,11 @@
+
+v	java:S116"\Rename this field "ConfirmedInfected" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ²²éüÿÿÿÿ
+T	java:S106à"9Replace this use of System.out or System.err by a logger.(—ÄÀöÿÿÿÿÿ
+T	java:S106â"9Replace this use of System.out or System.err by a logger.(§¼‰øøÿÿÿÿ
+O	java:S106á"9Replace this use of System.out or System.err by a logger.(“¢µ‰
+O	java:S106ß"9Replace this use of System.out or System.err by a logger.(ö¡¹ê
+W	java:S125Á"<This block of commented-out lines of code should be removed.(å†çÄýÿÿÿÿ
+R	java:S125”"<This block of commented-out lines of code should be removed.(ºåŸÈ
+O	java:S106Þ"9Replace this use of System.out or System.err by a logger.(«‹Îõ
+k	java:S117-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š’Þýùÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ñªÿ¿ûÿÿÿÿ

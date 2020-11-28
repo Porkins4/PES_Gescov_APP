@@ -1,0 +1,17 @@
+
+A
+java:S5411³"*Use the primitive boolean expression here.(—´Œõ
+J
+java:S1172/"/Remove this unused method parameter "schoolId".(ÁÂ­—üÿÿÿÿ
+ƒ
+java:S1845®"lRename method "getUserID" to prevent any misunderstanding/clash with method "getUserId" defined on line 112.(À…µŠ
+D	java:S108Ç")Either remove or fill this block of code.(÷¿­¹ÿÿÿÿÿ
+t
+java:S4144Ì"^Update this method so that its implementation is not identical to "getLoggedUser" on line 142.(ûáÇj
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ý®èð
+˜
+java:S1845Ù"|Rename method "updateContagionID" to prevent any misunderstanding/clash with method "updateContagionId" defined on line 211.(É¢ðþúÿÿÿÿ
+A
+java:S5411¾"*Use the primitive boolean expression here.(—´Œõ
+u
+java:S1128"_Remove this unused import 'com.example.gescov.ViewLayer.Singletons.PresentationControlFactory'.(Úê’à

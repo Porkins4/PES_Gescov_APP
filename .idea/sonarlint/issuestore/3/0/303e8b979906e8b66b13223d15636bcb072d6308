@@ -1,0 +1,11 @@
+
+µ
+java:S1130("óRemove the declaration of thrown exception 'com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException', as it cannot be thrown from method's body.(Å«Êê8å„Æ÷‡.
+g
+java:S1128	"JRemove this unused import 'com.example.gescov.ViewLayer.Map.MapVIewModel'.(‹ì∫ø8≥∂…ﬁ‡.
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÂÏ±Ó
+a
+java:S2147["DCombine this catch with the one at line 90, which has the same body.(“î≠õ8°á˝÷‡.
+≥
+java:S11304"óRemove the declaration of thrown exception 'com.example.gescov.ViewLayer.Exceptions.AdapterNotSetException', as it cannot be thrown from method's body.(”Ôí√˘ˇˇˇˇ
+V	java:S125/"<This block of commented-out lines of code should be removed.(Ø…¥¯˘ˇˇˇˇ

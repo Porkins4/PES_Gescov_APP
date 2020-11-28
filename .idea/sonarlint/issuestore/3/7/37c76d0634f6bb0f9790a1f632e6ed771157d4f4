@@ -1,0 +1,8 @@
+
+G
+java:S1128"1Remove this unused import 'retrofit2.http.Query'.(ÔÑîì
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ªø‚ã
+D
+java:S1128"0Remove this unused import 'retrofit2.http.Path'.(íøŠ¡
+G
+java:S1128"1Remove this unused import 'okhttp3.ResponseBody'.(ŽÕ«ø

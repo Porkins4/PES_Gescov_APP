@@ -1,0 +1,63 @@
+
+7
+java:S1170"!Make this final field static too.(úé¬ˆ
+s
+java:S1450"XRemove the "conection" field and declare it as a local variable in the relevant methods.(Î–åıÿÿÿÿ
+7
+java:S1170 "!Make this final field static too.(Èëå
+t
+java:S2293["YReplace the type specification in this constructor call with the diamond operator ("<>").(¼©ŞÄüÿÿÿÿ
+C
+java:S1604V"(Make this anonymous inner class a lambda(´¸©”üÿÿÿÿ
+H
+java:S1135Y"2Complete the task associated to this TODO comment.(Æûß
+t
+java:S2293\"YReplace the type specification in this constructor call with the diamond operator ("<>").(¡óáëúÿÿÿÿ
+u
+java:S2293¢"YReplace the type specification in this constructor call with the diamond operator ("<>").(½¤‹Ãûÿÿÿÿ
+C
+java:S1604|"(Make this anonymous inner class a lambda(³şàüÿÿÿÿ
+o
+java:S2293O"YReplace the type specification in this constructor call with the diamond operator ("<>").(–É»ß
+p
+java:S2293ª"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÂŞÅÚ
+j
+java:S1192\"ODefine a constant instead of duplicating this literal "notifyPositive" 4 times.(¡óáëúÿÿÿÿ
+m	java:S116"XRename this field "ContagionLink" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úé¬ˆ
+œ
+java:S11860"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ù­¢²úÿÿÿÿ
+C
+java:S16042"(Make this anonymous inner class a lambda(´¸©”üÿÿÿÿ
+C
+java:S1604H"(Make this anonymous inner class a lambda(³şàüÿÿÿÿ
+D
+java:S1604Š"(Make this anonymous inner class a lambda(´¸©”üÿÿÿÿ
+o	java:S116 "ZRename this field "TracingTestLink" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èëå
+k	java:S117t"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ¥Œçıÿÿÿÿ
+M
+java:S1135o"2Complete the task associated to this TODO comment.(›¡Ñÿÿÿÿÿ
+o
+java:S2293ƒ"YReplace the type specification in this constructor call with the diamond operator ("<>").(òí©F
+D
+java:S1604¦"(Make this anonymous inner class a lambda(´¸©”üÿÿÿÿ
+\
+java:S2142l"FEither re-interrupt this method or rethrow the "InterruptedException".(åÅç“
+u
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(êµµ”øÿÿÿÿ
+œ
+java:S11864"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(£µ¢›ÿÿÿÿÿ
+D
+java:S1604"(Make this anonymous inner class a lambda(±æÿÚıÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(€Ôš³
+D
+java:S1604·"(Make this anonymous inner class a lambda(±æÿÚıÿÿÿÿ
+–
+java:S1186""€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÅÖ§/
+u
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¡óáëúÿÿÿÿ
+D
+java:S1604¼"(Make this anonymous inner class a lambda(´¸©”üÿÿÿÿ
+I
+java:S1135"2Complete the task associated to this TODO comment.(Æûß
+>
+java:S1604-"(Make this anonymous inner class a lambda(üåûİ
