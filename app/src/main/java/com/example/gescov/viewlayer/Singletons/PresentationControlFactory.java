@@ -12,7 +12,7 @@ import com.example.gescov.viewlayer.UpdateUserProfile.UpdateUserProfileControlle
 import com.example.gescov.viewlayer.ViewLayerController;
 import com.example.gescov.viewlayer.home.NotifyContagionController;
 import com.example.gescov.viewlayer.home.TracingTestController;
-import com.example.gescov.viewlayer.chatlist.ChatListController;
+import com.example.gescov.viewlayer.chat.chatlist.ChatListController;
 
 import androidx.lifecycle.ViewModelProvider;
 

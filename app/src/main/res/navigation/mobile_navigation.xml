@@ -23,7 +23,7 @@
         tools:layout="@layout/fragment_school_administration" />
     <fragment
         android:id="@+id/chat_list"
-        android:name="com.example.gescov.viewlayer.chatlist.ChatListFragment"
+        android:name="com.example.gescov.viewlayer.chat.chatlist.ChatListFragment"
         android:label="@string/your_chats_text"
         tools:layout="@layout/chat_list_fragment" />
     <fragment
