@@ -31,7 +31,7 @@
             android:id="@+id/notifypositive"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Notifica EL TEU positIU"
+            android:text="@string/notify_positive"
             android:textSize="14sp" />
 
         <Button
@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="NOTIFICAR COM POSSIBLE POSITIU"
+            android:text="@string/notify_possible"
             android:textSize="14sp" />
 
         <Button
@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="NOTIFICA RECUPERACIÓ"
+            android:text="@string/notify_recovery"
             android:textSize="14sp" />
     </LinearLayout>
 
