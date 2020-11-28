@@ -39,3 +39,5 @@ yapp/src/main/java/com/example/gescov/ViewLayer/ClassroomActivities/StudentsInCl
 app/src/main/java/com/example/gescov/ViewLayer/ClassroomActivities/StudentsInClassSession/StudentsInClassSessionController.java,f\8\f86663e1f06cf406c450023a0003a49d5e87ded1
 ¬
 |app/src/main/java/com/example/gescov/ViewLayer/ClassroomActivities/StudentsInClassSession/StudentsInClassSessionAdapter.java,c\3\c3b82de5521a84504b9a601044178d93f44b8173
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
