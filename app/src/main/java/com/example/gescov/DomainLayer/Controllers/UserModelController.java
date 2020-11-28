@@ -246,4 +246,10 @@ public class UserModelController {
     public GoogleSignInClient getGoogleSignInClient(String serverClientID) {
         return LoginRespository.getGoogleSignInClient(serverClientID);
     }
+
+    //-----------------------------------------------------------------
+    //update user schools
+    public void updateSchools() {
+        DomainControlFactory.getSchoolsModelCrontroller().updateSchools(loggedUser.getSchoolsID());
+    }
 }

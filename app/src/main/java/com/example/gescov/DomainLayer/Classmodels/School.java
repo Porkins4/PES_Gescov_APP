@@ -3,6 +3,11 @@ package com.example.gescov.DomainLayer.Classmodels;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.DomainLayer.Singletons.ServicesFactory;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class School {
@@ -48,6 +53,30 @@ public class School {
         this.listAdministratorsID = listAdministratorsID;
         this.longitude = longitude;
         this.latitude = latitude;
+    }
+
+    public static School fromJsonToSchool(JSONObject response) {
+        School res = new School();
+        try {
+            String idSchool = response.getString("id");
+            String nameSchool = response.getString("name");
+            String stateSchool = response.getString("state");
+            String addressSchool = response.getString("address");
+            String emailSchool = null;//aux.getString("email");
+            String phone = response.getString("phone");
+            int longitude = response.getInt("longitude");
+            int latitude = response.getInt("longitude");
+            List<String> listAdminsID = new ArrayList<>();
+            JSONArray adminsArray = response.getJSONArray("administratorsID");
+            for (int admin = 0; admin < adminsArray.length(); admin++) {
+                listAdminsID.add(adminsArray.getString(admin));
+            };
+            String creatorSchoolID = response.getString("creatorID");
+            res = new School(idSchool, nameSchool, addressSchool, stateSchool, creatorSchoolID, emailSchool, phone, longitude, latitude, listAdminsID);
+        } catch (JSONException e) {
+            res.setId("null"); //not received correctly
+        }
+        return res;
     }
 
     public String getId() {
@@ -116,5 +145,12 @@ public class School {
 
     public List<String> getAdministratorsList() {
         return listAdministratorsID;
+    }
+
+    public void print() {
+        System.out.println(id);
+        System.out.println(name);
+        System.out.println(creatorID);
+        System.out.println(telephoneNumber);
     }
 }

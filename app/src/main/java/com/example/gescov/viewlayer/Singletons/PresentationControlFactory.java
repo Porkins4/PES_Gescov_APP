@@ -1,6 +1,7 @@
 package com.example.gescov.viewlayer.Singletons;
 
 import com.example.gescov.viewlayer.ContagionList.ContagionController;
+import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
 import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
 import com.example.gescov.viewlayer.SignUpAndLogin.LoadingProfileActivity;
 import com.example.gescov.viewlayer.SignUpAndLogin.LoadingProfileController;
@@ -31,6 +32,7 @@ public class PresentationControlFactory {
     private static ViewModelProvider viewModelProvider;
     private static SchoolRequestsController schoolRequestsController;
     private static ChatListController chatListController;
+    private static CreateChatController createChatController;
 
     public static ViewLayerController getViewLayerController() {
         if (viewLayerController != null)
@@ -118,5 +120,11 @@ public class PresentationControlFactory {
             return schoolRequestsController;
         schoolRequestsController = new SchoolRequestsController();
         return schoolRequestsController;
+    }
+
+    public static CreateChatController getCreateChatController() {
+        if (createChatController != null) return createChatController;
+        createChatController = new CreateChatController();
+        return createChatController;
     }
 }

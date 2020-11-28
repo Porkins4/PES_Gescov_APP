@@ -2,6 +2,7 @@ package com.example.gescov.DomainLayer.Controllers;
 
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
+import com.example.gescov.DomainLayer.Singletons.ServicesFactory;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,6 +14,12 @@ import java.util.List;
 public class SchoolsModelController {
     private List<School> schoolsList;
     private School currentSchool;
+
+    //-----------------------------------------------------------------
+    //school from user
+    private List<School> userSchools;
+    private int num_schools;
+    private int num_received_schools;
 
     public void setSchoolsList(String schoolsString) throws JSONException {
         JSONArray response = new JSONArray(schoolsString);
@@ -91,5 +98,25 @@ public class SchoolsModelController {
                 return school;
         }
         return null;
+    }
+
+    //-----------------------------------------------------------------
+    // to update the schools from the user
+    public void updateSchools(List<String> schoolsID) {
+        userSchools = new ArrayList<>();
+        num_schools = schoolsID.size();
+        num_received_schools = 0;
+        for (String school: schoolsID) ServicesFactory.getSchoolService().getSchool(school);
+    }
+
+
+    public void updateIthUserSchool(JSONObject response) {
+        School aux = School.fromJsonToSchool(response);
+        userSchools.add(aux);
+        if (++num_received_schools == num_schools) DomainControlFactory.getModelController().notifySchoolsReceivedToCreateChatActivity();
+    }
+
+    public List<School> getUserSchools() {
+        return userSchools;
     }
 }

@@ -220,4 +220,18 @@ public class ViewLayerController {
     public void refreshSchoolRequests(List<SchoolRequest> schoolRequestsList) {
         PresentationControlFactory.getSchoolRequestsController().refreshList(schoolRequestsList);
     }
+
+    //---------------------------------
+    //update user schools
+    public void updateSchools() {
+        DomainControlFactory.getModelController().updateSchools();
+    }
+
+    public void notifySchoolsReceivedToCreateChatActivity() {
+        PresentationControlFactory.getCreateChatController().notifySchoolsReceivedToCreateChatActivity();
+    }
+
+    public List<School> getUserSchools() {
+        return DomainControlFactory.getModelController().getUserSchools();
+    }
 }

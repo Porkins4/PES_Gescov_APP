@@ -37,6 +37,8 @@ public class SchoolServiceImplementor implements ISchoolService {
     private final String GET_CHECK_LOGIN = "https://gescov.herokuapp.com/api/users/";
     private  final String PUT_USER_TO_SCHOOL = "https://gescov.herokuapp.com/api/users/school/";
 
+    private final String GESCOV_SCHOOLS_URI = "https://gescov.herokuapp.com/api/schools/";
+
     public SchoolServiceImplementor() { }
 
     @Override
@@ -266,7 +268,6 @@ public class SchoolServiceImplementor implements ISchoolService {
         });
 
         requestQueue.add(jsonObjectRequest);
-
     }
 
     @Override
@@ -291,5 +292,20 @@ public class SchoolServiceImplementor implements ISchoolService {
             }
         });
         requestQueue.add(stringRequest);
+    }
+
+    //-----------------------------------------------------------------
+    // used to update the information of all the schools belonging to the current user
+    @Override
+    public void getSchool(String schoolID) {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET, GESCOV_SCHOOLS_URI+"id/" + schoolID, null,
+                response -> DomainControlFactory.getSchoolsModelCrontroller().updateIthUserSchool(response), new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+
+        VolleyServices.getRequestQueue().add(jsonObjectRequest);
     }
 }

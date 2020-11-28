@@ -151,4 +151,5 @@
     <string name="confirm_delete_chat_message">Segur de que vols eliminar aquest xat?</string>
     <string name="yes_delete_chat">Elimina</string>
     <string name="no_delete_chat">Cancela</string>
+    <string name="title_activity_create_chat">Contactes del centre</string>
 </resources>

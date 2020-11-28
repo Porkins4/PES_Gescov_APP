@@ -21,14 +21,6 @@ P
 Yapp/src/main/java/com/example/gescov/ViewLayer/Singletons/PresentationControlFactory.java,b\9\b9d4389260630b3d1d18ddc5f1a8f73d47241ab3
 Å
 Qapp/src/main/java/com/example/gescov/DomainLayer/Classmodels/ChatViewerModel.java,3\2\325cc2c2e778483d9bc81b0cbbee11eee34d2bea
-}
-Mapp/src/main/java/com/example/gescov/ViewLayer/chatlist/ChatListFragment.java,4\3\43f6e67046f4df26b1f13e878e21b95c5ef563c0
-|
-Lapp/src/main/java/com/example/gescov/ViewLayer/chatlist/ChatListAdapter.java,f\8\f8610e1e928eb7a5d3617f5598f8a196e07ae9bd
-
-Oapp/src/main/java/com/example/gescov/ViewLayer/chatlist/ChatListController.java,e\1\e107a3fc95451d796099da96183d8628c88731a8
-~
-Napp/src/main/java/com/example/gescov/ViewLayer/chatlist/ChatListViewModel.java,0\3\0389fef2d5a725c33254301743df22001ebc00b8
 ©
 yapp/src/main/java/com/example/gescov/ViewLayer/ClassroomActivities/StudentsInClassSession/StudentsInClassSessionView.java,e\1\e1f5af9dd3c3b0466bd49cee737c9600ed6534dc
 Æ
@@ -41,3 +33,11 @@ yapp/src/main/java/com/example/gescov/ViewLayer/ClassroomActivities/StudentsInCl
 |app/src/main/java/com/example/gescov/ViewLayer/ClassroomActivities/StudentsInClassSession/StudentsInClassSessionAdapter.java,c\3\c3b82de5521a84504b9a601044178d93f44b8173
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+§
+tapp/src/main/java/com/example/gescov/viewlayer/SchoolsActivities/SchoolsAdministration/CreateSchoolFormActivity.java,0\c\0c537ecc5f9935c19962f64d5ff51ce544055dff
+Ü
+Vapp/src/main/java/com/example/gescov/viewlayer/chat/createchat/CreateChatActivity.java,8\d\8d66a709598420f8361dae56da49de4575be52a5
+´
+{app/src/main/java/com/example/gescov/viewlayer/ClassroomActivities/ClassroomDistribution/ClassroomDistributionActivity.java,7\3\7300ad63425043cbe24ac2e899d3c3c678c81b23
+Ç
+Rapp/src/main/java/com/example/gescov/viewlayer/chat/chatlist/ChatListFragment.java,9\d\9d6b18e32899aa77e2f75d3527b77236020edafa

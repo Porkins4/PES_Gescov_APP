@@ -225,8 +225,22 @@ public class ModelController {
     public GoogleSignInClient getGoogleSignInClient(String serverClientID) {
         return DomainControlFactory.getUserModelController().getGoogleSignInClient(serverClientID);
     }
-
+    //-----------------------------------------------------------------
     public void refreshSchoolRequestsInView(List<SchoolRequest> schoolRequestsList) {
         viewLayerController.refreshSchoolRequests(schoolRequestsList);
+    }
+
+    //-----------------------------------------------------------------
+    //Update Schools from a user
+    public void updateSchools() {
+        DomainControlFactory.getUserModelController().updateSchools();
+    }
+
+    public void notifySchoolsReceivedToCreateChatActivity() {
+        PresentationControlFactory.getViewLayerController().notifySchoolsReceivedToCreateChatActivity();
+    }
+
+    public List<School> getUserSchools() {
+        return DomainControlFactory.getSchoolsModelCrontroller().getUserSchools();
     }
 }

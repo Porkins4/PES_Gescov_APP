@@ -30,4 +30,6 @@ public interface ISchoolService {
     void refreshUser(String id);
 
     void addStudentToCenter(String id, String schoolId, MutableLiveData<SchoolRequestResult> result);
+
+    void getSchool(String school);
 }
