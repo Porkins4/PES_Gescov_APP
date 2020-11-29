@@ -152,4 +152,6 @@
     <string name="yes_delete_chat">Elimina</string>
     <string name="no_delete_chat">Cancela</string>
     <string name="title_activity_create_chat">Contactes del centre</string>
+    <string name="loading_user_schools_text">Carregant informació de les teves escoles</string>
+    <string name="loading_afiliates_from_selected_center">Carregant contactes del centre: </string>
 </resources>

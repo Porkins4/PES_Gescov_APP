@@ -28,6 +28,7 @@ import java.util.List;
 public class UserModelController {
     private User loggedUser;
     private HashMap<String, User> userHash;
+    private List<User> contactsFromSelectedCenter;
 
     public UserModelController() {
         loggedUser = new User();
@@ -251,5 +252,23 @@ public class UserModelController {
     //update user schools
     public void updateSchools() {
         DomainControlFactory.getSchoolsModelCrontroller().updateSchools(loggedUser.getSchoolsID());
+    }
+
+    public void setContactsFromSelectedCenter(JSONArray response) {
+        contactsFromSelectedCenter = new ArrayList<>();
+        for (int i = 0; i < response.length(); ++i) {
+            try {
+                User u = User.fromJSONtoUser(response.getJSONObject(i)); //reusar esta operación
+                if (loggedUser.getProfileType() == User.UserProfileType.TEACHER && u.getProfileType() == User.UserProfileType.STUDDENT) contactsFromSelectedCenter.add(u);
+                else if (loggedUser.getProfileType() == User.UserProfileType.STUDDENT && u.getProfileType() == User.UserProfileType.TEACHER) contactsFromSelectedCenter.add(u);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        DomainControlFactory.getModelController().updateContactsFromCreateChat();
+    }
+
+    public List<User> getContacts() {
+        return contactsFromSelectedCenter;
     }
 }

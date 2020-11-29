@@ -17,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.gescov.R;
-import com.example.gescov.viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroom;
 import com.example.gescov.viewlayer.chat.createchat.CreateChatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -50,10 +49,7 @@ public class ChatListFragment extends Fragment {
 
     private void initAddCreateChatButton() {
         floatingActionButton.setOnClickListener(
-                v -> {
-                    System.out.println("stub: Creando nuevo chat...");
-                    startCreateChatActivity();
-                }
+                v -> startCreateChatActivity()
         );
     }
 

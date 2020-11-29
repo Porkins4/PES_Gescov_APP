@@ -1,9 +1,11 @@
 
 J
-java:S3740"/Provide the parametrized type for this generic.(¶þŽœýÿÿÿÿ
+java:S3740"/Provide the parametrized type for this generic.(¶þŽœýÿÿÿÿ
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ý®èð
 T
-java:S4973Q"9Use the "equals" method if value comparison was intended.(–ëÏäýÿÿÿÿ
-Q	java:S125"<This block of commented-out lines of code should be removed.(ê’ðë
+java:S4973X"9Use the "equals" method if value comparison was intended.(–ëÏäýÿÿÿÿ
+{	java:S116"_Rename this field "num_received_schools" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒÅóð8ÎÖÏùà.
 7
-java:S1116#"Remove this empty statement.(ôŸŽìúÿÿÿÿ
+java:S1116*"Remove this empty statement.(ôŸŽìúÿÿÿÿ
+r	java:S116"VRename this field "num_schools" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸÉÌ»8ÎÖÏùà.
+Q	java:S125""<This block of commented-out lines of code should be removed.(ê’ðë

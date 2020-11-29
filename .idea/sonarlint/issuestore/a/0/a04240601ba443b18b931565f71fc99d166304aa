@@ -1,0 +1,7 @@
+
+ƒ
+java:S1845¿"lRename method "getUserID" to prevent any misunderstanding/clash with method "getUserId" defined on line 101.(À…µŠ
+[
+java:S2147r"ECombine this catch with the one at line 112, which has the same body.(Ò”­›
+œ
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¨”Òµøÿÿÿÿ

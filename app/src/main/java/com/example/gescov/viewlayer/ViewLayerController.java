@@ -234,4 +234,17 @@ public class ViewLayerController {
     public List<School> getUserSchools() {
         return DomainControlFactory.getModelController().getUserSchools();
     }
+
+    public void getContactsFromCenter(String schoolID) {
+        DomainControlFactory.getModelController().getContactsFromCenter(schoolID);
+    }
+
+    public void updateContactsFromCreateChat() {
+        PresentationControlFactory.getCreateChatController().updateContactsFromCreateChat();
+    }
+
+    public List<User> getContacts() {
+        return DomainControlFactory.getModelController().getContacts();
+
+    }
 }

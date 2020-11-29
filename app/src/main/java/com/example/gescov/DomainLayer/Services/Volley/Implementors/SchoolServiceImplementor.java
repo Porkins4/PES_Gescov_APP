@@ -300,12 +300,29 @@ public class SchoolServiceImplementor implements ISchoolService {
     public void getSchool(String schoolID) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET, GESCOV_SCHOOLS_URI+"id/" + schoolID, null,
-                response -> DomainControlFactory.getSchoolsModelCrontroller().updateIthUserSchool(response), new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        });
+                response -> DomainControlFactory.getSchoolsModelCrontroller().updateIthUserSchool(response),
+                error -> { });
 
         VolleyServices.getRequestQueue().add(jsonObjectRequest);
+    }
+
+    @Override
+    public void getContactsFromCenter(String schoolID) {
+        JsonArrayRequest request = new JsonArrayRequest(
+                Request.Method.GET, GET_CHECK_LOGIN + "/school?schoolID=" + schoolID,null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        DomainControlFactory.getUserModelController().setContactsFromSelectedCenter(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        );
+        VolleyServices.getRequestQueue().add(request);
     }
 }

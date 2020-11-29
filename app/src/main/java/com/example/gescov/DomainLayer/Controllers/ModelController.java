@@ -243,4 +243,16 @@ public class ModelController {
     public List<School> getUserSchools() {
         return DomainControlFactory.getSchoolsModelCrontroller().getUserSchools();
     }
+
+    public void getContactsFromCenter(String schoolID) {
+        DomainControlFactory.getSchoolsModelCrontroller().getContactsFromCenter(schoolID);
+    }
+
+    public void updateContactsFromCreateChat() {
+        PresentationControlFactory.getViewLayerController().updateContactsFromCreateChat();
+    }
+
+    public List<User> getContacts() {
+        return DomainControlFactory.getUserModelController().getContacts();
+    }
 }

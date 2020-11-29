@@ -119,4 +119,8 @@ public class SchoolsModelController {
     public List<School> getUserSchools() {
         return userSchools;
     }
+
+    public void getContactsFromCenter(String schoolID) {
+        ServicesFactory.getSchoolService().getContactsFromCenter(schoolID);
+    }
 }
