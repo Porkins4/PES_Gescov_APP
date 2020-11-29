@@ -29,4 +29,18 @@
             android:title="@string/logout_text" />
     </group>
 
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/blankFragment"
+            android:icon="@android:drawable/btn_dialog"
+            android:title="@string/logout_text" />
+
+        <item
+            android:id="@+id/blankFragment2"
+            android:icon="@android:drawable/btn_dialog"
+            android:title="@string/logout_text" />
+    </group>
+
 </menu>
