@@ -22,7 +22,7 @@
         android:id="@+id/create_school_web"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="24dp"
         android:text="@string/create_school_form_school_website"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,25 +53,13 @@
         app:layout_constraintTop_toBottomOf="@+id/create_school_form_address_input" />
 
     <EditText
-        android:id="@+id/create_school_form_phone_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_school_phone" />
-
-    <EditText
         android:id="@+id/create_school_form_address_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="303dp"
+        android:layout_height="43dp"
         android:layout_marginTop="15dp"
         android:ems="10"
+        android:hint="@string/create_school_form_school_address_example"
         android:inputType="textPersonName"
-        android:text="@string/Catalan_create_school_form_school_address"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -96,10 +84,9 @@
         android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/Catalan_create_school_form_school_name"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_classroom_form_name_text" />
 
@@ -113,4 +100,17 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_school_form_web_input" />
+
+    <EditText
+        android:id="@+id/create_school_form_phone_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_school_phone" />
 </androidx.constraintlayout.widget.ConstraintLayout>
