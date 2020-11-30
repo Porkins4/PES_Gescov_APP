@@ -1,23 +1,0 @@
-
-M
-java:S11359"2Complete the task associated to this TODO comment.(ßíŠÿÿÿÿÿ
-t
-java:S1450"YRemove the "controller" field and declare it as a local variable in the relevant methods.(é“‹ßıÿÿÿÿ
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¡·¿èÿÿÿÿÿ
-V	java:S125h"<This block of commented-out lines of code should be removed.(ç÷êÀûÿÿÿÿ
-r
-java:S1450"WRemove the "thisView" field and declare it as a local variable in the relevant methods.(Ğ¢É ÿÿÿÿÿ
-w
-java:S1450"\Remove the "contagionList" field and declare it as a local variable in the relevant methods.(ÊÏÖÏüÿÿÿÿ
-s
-java:S1450*"VRemove the "mParam1" field and declare it as a local variable in the relevant methods.(•Íï‘8¤Òê¼Ş.
-s
-java:S1450+"VRemove the "mParam2" field and declare it as a local variable in the relevant methods.(¡ˆ€ 8¤Òê¼Ş.
-T
-java:S1135$"2Complete the task associated to this TODO comment.(ÜûŠ—øÿÿÿÿ8¤Òê¼Ş.
-T
-java:S1135)"2Complete the task associated to this TODO comment.(ğï¢öúÿÿÿÿ8¤Òê¼Ş.
-H
-java:S1068*"+Remove this unused "mParam1" private field.(•Íï‘8¤Òê¼Ş.
-H
-java:S1068+"+Remove this unused "mParam2" private field.(¡ˆ€ 8¤Òê¼Ş.

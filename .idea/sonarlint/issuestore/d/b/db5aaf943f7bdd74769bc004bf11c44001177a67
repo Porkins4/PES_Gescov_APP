@@ -1,6 +1,0 @@
-
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¡·¿èÿÿÿÿÿ
-‡
-java:S1128"lRemove this unused import 'com.example.gescov.ViewLayer.SchoolsAdministration.SchoolsAdministrationFagment'.(ãË¦³ùÿÿÿÿ
-h
-java:S1128"MRemove this unused import 'com.example.gescov.ViewLayer.ViewLayerController'.(ðßµÑþÿÿÿÿ

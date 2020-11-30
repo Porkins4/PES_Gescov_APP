@@ -112,5 +112,4 @@ public class SchoolsCrontroller{
     public void addStudentToCenter(String schoolName, MutableLiveData<SchoolRequestResult> result) {
         PresentationControlFactory.getViewLayerController().addStudentToCenter(schoolName,result);
     }
-
 }

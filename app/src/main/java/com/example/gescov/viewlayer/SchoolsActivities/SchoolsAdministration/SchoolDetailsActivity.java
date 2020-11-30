@@ -13,22 +13,25 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.R;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassromListActivity;
 import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsListActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.PopErrorAddStudentToCenter;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassromListActivity;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolDetailsViewModel;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 
 public class SchoolDetailsActivity extends AppCompatActivity {
-    private SchoolsCrontroller schoolsCrontroller;
+    private  SchoolsCrontroller schoolsCrontroller;
     private School school;
-    private User loggedUser;
     private SchoolDetailsViewModel schoolDetailsViewModel;
-
+    private User loggedUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,19 +59,18 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         setVisibilityAndValue(email, school.getEmail());
 
 
-
         deleteButton.setOnClickListener(e -> {
             confirmDeleteSchoolPrompt();
         });
 
-        classroomsListButton.setOnClickListener(e-> {
+        classroomsListButton.setOnClickListener(e -> {
             Intent intent = new Intent(this, SchoolClassromListActivity.class);
             startActivity(intent);
         });
 
         if (loggedUser.getProfileType() == User.UserProfileType.STUDDENT && !loggedUser.getSchoolsID().contains(school.getId())) {
             joinSchoolButton.setText(getResources().getText(R.string.school_details_join));
-            joinSchoolButton.setOnClickListener(e-> {
+            joinSchoolButton.setOnClickListener(e -> {
                 schoolDetailsViewModel.getAddStudentToCenterResult(name.getText().toString());
             });
         } else if (school.getAdministratorsList().contains(loggedUser.getId())) {
@@ -81,7 +83,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
             joinSchoolButton.setVisibility(View.INVISIBLE);
         }
 
-        if (school.getCreator()!=loggedUser.getId()) {
+        if (school.getCreator() != loggedUser.getId()) {
             deleteButton.setVisibility(View.INVISIBLE);
         }
 
@@ -91,7 +93,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
             @Override
             public void onChanged(SchoolRequestResult schoolRequestResult) {
                 Boolean response = schoolRequestResult.getError();
-                if ( response ) openPopup();
+                if (response) openPopup();
                 else successAddingStudentToCenter();
 
             }

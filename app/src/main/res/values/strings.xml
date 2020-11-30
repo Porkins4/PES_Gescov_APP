@@ -137,6 +137,9 @@
     <string name="succesPositiveNotification">S\'ha notificat correctament el teu positiu</string>
     <string name="succesRecoveryNotification">S\'ha notificat la teva recuperació correctament</string>
     <string name="succesPossiblePositiveNotification">S\'ha notificat el teu possible contagi</string>
+    <string name="notify_positive">notifica el teu positiu</string>
+    <string name="notify_possible">notificar com possible positiu</string>
+    <string name="notify_recovery">notifica la teva recuperació</string>
 
     <!-- home -->
     <string name="home_risk">Usuari de risc</string>
@@ -162,4 +165,9 @@
     <string name="confirm_delete_chat_message">Segur de que vols eliminar aquest xat?</string>
     <string name="yes_delete_chat">Elimina</string>
     <string name="no_delete_chat">Cancela</string>
+
+    <!-- Strings for the Map -->
+    <string name="mapa_text">Mapa</string>
+
+
 </resources>

@@ -12,8 +12,8 @@ public class School {
     private String address;
     private String state;
     private String creatorID;
-    private float latitude;
-    private float longitude;
+    private double latitude;
+    private double longitude;
     private String telephoneNumber;
     private String webpage;
     private List<String> listAdministratorsID;
@@ -27,14 +27,19 @@ public class School {
         this.email = email;
         this.creatorID = creatorID;
         this.listAdministratorsID = listAdministratorsID;
-        longitude = latitude = 0;
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 
     public School(String name) {
         this.name = name;
     }
 
-
+    public School (String name, double longitude, double latitude) {
+        this.name = name;
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
     public School(){}
 
     public School(String id, String name, String address, String state, String creatorID, String email, String telephoneNumber, int longitude, int latitude, List<String> listAdministratorsID) {
@@ -114,6 +119,13 @@ public class School {
         return email;
     }
 
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
     public List<String> getAdministratorsList() {
         return listAdministratorsID;
     }

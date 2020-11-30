@@ -20,6 +20,7 @@ import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -41,16 +42,9 @@ public class ContagionServiceImplementor implements IContagionService {
             userAnswers.put("answers",jsonUserAnswers);
             userAnswers.put("contID",idContagion);
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                    (Request.Method.POST,TracingTestLink, userAnswers, new Response.Listener<JSONObject>() {
+                    (Request.Method.POST,TracingTestLink, userAnswers, response -> {
+                    }, error -> {
 
-                        @Override
-                        public void onResponse(JSONObject response) {
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-
-                        }
                     });
             queue.add(jsonObjectRequest);
         } catch (JSONException e) {
@@ -68,29 +62,22 @@ public class ContagionServiceImplementor implements IContagionService {
             contagion.put("infectedID",id);
             contagion.put("inCon",false);
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                    (Request.Method.POST, ContagionLink, contagion, new Response.Listener<JSONObject>() {
-
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
-                                String idContagion = response.getString("id");
-                                ContagionRequestResult aux = new ContagionRequestResult();
-                                aux.setError(new Pair<String,Boolean>("notifyPossiblePositive",false));
-                                DomainControlFactory.getUserModelController().updateContagionID(idContagion);
-                                result.setValue(aux);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            // TODO: Handle error
+                    (Request.Method.POST, ContagionLink, contagion, response -> {
+                        try {
+                            String idContagion = response.getString("id");
                             ContagionRequestResult aux = new ContagionRequestResult();
-                            aux.setError(new Pair<String,Boolean> ("notifyPossiblePositive",true));
-                            if(error.networkResponse == null ) aux.setError(new Pair<String,Boolean> ("notifyPositive",false));
+                            aux.setError(new Pair<String,Boolean>("notifyPossiblePositive",false));
+                            DomainControlFactory.getUserModelController().updateContagionID(idContagion);
                             result.setValue(aux);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
+                    }, error -> {
+                        // TODO: Handle error
+                        ContagionRequestResult aux = new ContagionRequestResult();
+                        aux.setError(new Pair<String,Boolean> ("notifyPossiblePositive",true));
+                        if(error.networkResponse == null ) aux.setError(new Pair<String,Boolean> ("notifyPositive",false));
+                        result.setValue(aux);
                     });
             queue.add(jsonObjectRequest);
         } catch (JSONException e) {
@@ -120,19 +107,15 @@ public class ContagionServiceImplementor implements IContagionService {
             contagion.put("infectedID",id);
             contagion.put("inCon",ConfirmedInfected);
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                    (Request.Method.POST, ContagionLink, contagion, new Response.Listener<JSONObject>() {
-
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
-                                String idContagion = response.getString("id");
-                                ContagionRequestResult aux = new ContagionRequestResult();
-                                aux.setError(new Pair<String,Boolean>("notifyPositive",false));
-                                DomainControlFactory.getUserModelController().updateContagionID(idContagion);
-                                result.setValue(aux);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
+                    (Request.Method.POST, ContagionLink, contagion, response -> {
+                        try {
+                            String idContagion = response.getString("id");
+                            ContagionRequestResult aux = new ContagionRequestResult();
+                            aux.setError(new Pair<String,Boolean>("notifyPositive",false));
+                            DomainControlFactory.getUserModelController().updateContagionID(idContagion);
+                            result.setValue(aux);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
                     }, new Response.ErrorListener() {
                         @Override

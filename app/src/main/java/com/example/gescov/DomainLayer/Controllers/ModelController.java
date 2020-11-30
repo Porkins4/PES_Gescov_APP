@@ -19,6 +19,7 @@ import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -229,6 +230,15 @@ public class ModelController {
 
     public GoogleSignInClient getGoogleSignInClient(String serverClientID) {
         return DomainControlFactory.getUserModelController().getGoogleSignInClient(serverClientID);
+    }
+
+    public void getNumContagionPerSchool() {
+        DomainControlFactory.getSchoolsModelCrontroller().getNumContagionPerSchool();
+    }
+
+    public void sendResponseOfNumContagionPerSchool(List<Pair<School, Integer>> schools) {
+        viewLayerController.sendResponseOfNumContagionPerSchool(schools);
+
     }
 
     public void refreshSchoolRequestsInView(List<SchoolRequest> schoolRequestsList) {

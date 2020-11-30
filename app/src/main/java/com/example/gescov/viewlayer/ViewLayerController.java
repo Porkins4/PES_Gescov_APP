@@ -2,6 +2,8 @@ package com.example.gescov.viewlayer;
 
 import android.util.Pair;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.DomainLayer.Classmodels.Assignment;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
@@ -16,6 +18,7 @@ import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.S
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import com.example.gescov.viewlayer.home.HomeViewModel;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+
 
 import org.json.JSONException;
 
@@ -218,6 +221,14 @@ public class ViewLayerController {
 
     public GoogleSignInClient getGoogleSignInClient(String serverClientID) {
         return DomainControlFactory.getModelController().getGoogleSignInClient(serverClientID);
+    }
+
+    public void getNumContagionPerSchool() {
+        DomainControlFactory.getModelController().getNumContagionPerSchool();
+    }
+
+    public void sendResponseOfNumContagionPerSchool(List<Pair<School, Integer>> schools) {
+        PresentationControlFactory.getMapController().sendResponseOfNumContagionPerSchool(schools);
     }
 
 

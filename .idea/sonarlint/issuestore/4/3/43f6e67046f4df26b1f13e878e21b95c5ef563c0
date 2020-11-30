@@ -1,5 +1,0 @@
-
-Z	java:S1062"9Replace this use of System.out or System.err by a logger.(”ιχ‚ϊÿÿÿÿ8ίξ‹Ϊΰ.
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‡”δ«
-L
-java:S5411T"*Use the primitive boolean expression here.(Ϊέρόÿÿÿÿ8σΪυΩΰ.

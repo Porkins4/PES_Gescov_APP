@@ -1,6 +1,5 @@
 package com.example.gescov.DomainLayer.Controllers;
 
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.gescov.DomainLayer.Classmodels.Assignment;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 import com.example.gescov.DomainLayer.Singletons.ServicesFactory;

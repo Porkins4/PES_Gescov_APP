@@ -1,7 +1,11 @@
 package com.example.gescov.viewlayer.home;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +25,9 @@ import com.example.gescov.viewlayer.UpdateUserProfile.UpdateUserProfileActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
@@ -31,14 +38,14 @@ public class HomeFragment extends Fragment {
     private User user;
     private ImageView userImage;
 
-
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         PresentationControlFactory.setViewModelProvider(new ViewModelProvider(this));
         homeViewModel = PresentationControlFactory.getViewModelProvider().get(HomeViewModel.class);
         root = inflater.inflate(R.layout.fragment_home, container, false);
         Button takeTest = root.findViewById(R.id.takeTest);
         String url = LoggedInUser.getPhotoURL();
-        userImage = root.findViewById(R.id.user_image_home);
+        userImage = root.findViewById(R.id.profile_image);
         loadImageFromUrl(url);
         Button report = root.findViewById(R.id.report);
 
@@ -47,28 +54,22 @@ public class HomeFragment extends Fragment {
         riskButton = root.findViewById(R.id.home_risk_button);
         user = PresentationControlFactory.getViewLayerController().getLoggedUserInfo();
 
-        homeViewModel.getRisk().observe((LifecycleOwner) getContext(), e -> {
-            refreshActivity();
+        homeViewModel.getRisk().observe((LifecycleOwner) getContext(), e ->
+            refreshActivity()
+        );
+
+        riskButton.setOnClickListener(e ->
+            PresentationControlFactory.getViewLayerController().updateLoggedUserRisk()
+        );
+
+        report.setOnClickListener(v -> {
+            intent = new Intent(getActivity(),CovidNotificationActivity.class);
+            startActivity(intent);
         });
 
-        riskButton.setOnClickListener(e -> {
-            PresentationControlFactory.getViewLayerController().updateLoggedUserRisk();
-        });
-
-        report.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(getActivity(),CovidNotificationActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        takeTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(getActivity(),DailyTestActivity.class);
-                startActivity(intent);
-            }
+        takeTest.setOnClickListener(v -> {
+            intent = new Intent(getActivity(),DailyTestActivity.class);
+            startActivity(intent);
         });
 
         initUpdateUserProfileButton();
@@ -85,12 +86,9 @@ public class HomeFragment extends Fragment {
     private void initUpdateUserProfileButton() {
         Button updateProfileButton = (Button) root.findViewById(R.id.update_profile_button);
         updateProfileButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i = new Intent(getActivity(), UpdateUserProfileActivity.class);
-                        startActivity(i);
-                    }
+                v -> {
+                    Intent i = new Intent(getActivity(), UpdateUserProfileActivity.class);
+                    startActivity(i);
                 }
         );
     }
@@ -102,13 +100,13 @@ public class HomeFragment extends Fragment {
     }
 
     public void loadImageFromUrl(String url ) {
-        System.out.println(url);
-       Picasso.with(this.getContext()).load(url).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(userImage, new com.squareup.picasso.Callback() {
-           @Override
+       Picasso.with(this.getContext()).load(url).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).noFade().into(userImage, new com.squareup.picasso.Callback() {
            public void onSuccess() {
+               //it returns nothing
            }
            @Override
            public void onError() {
+               Log.i("loadingImage","error on loading imagge");
            }
        });
     }

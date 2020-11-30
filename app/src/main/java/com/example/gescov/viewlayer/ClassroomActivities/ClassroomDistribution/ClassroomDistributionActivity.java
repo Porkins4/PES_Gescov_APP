@@ -14,6 +14,10 @@ import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroom;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
 public class ClassroomDistributionActivity extends AppCompatActivity {
@@ -29,6 +33,7 @@ public class ClassroomDistributionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_classroom_ditribution);
         controller = new ClassroomDistributionController();
         initViewComponents();
+        //showDistribution();
     }
 
     private void initViewComponents() {
