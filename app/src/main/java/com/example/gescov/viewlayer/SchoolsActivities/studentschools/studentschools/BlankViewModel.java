@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer.freefragment1;
+package com.example.gescov.viewlayer.SchoolsActivities.studentschools.studentschools;
 
 import androidx.lifecycle.ViewModel;
 

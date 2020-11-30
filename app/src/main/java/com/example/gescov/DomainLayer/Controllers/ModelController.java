@@ -53,8 +53,13 @@ public class ModelController {
         return userModelController.getStudentsInClassroom(classroom);
     }
 
-    public void getAllSchools() throws JSONException {
+    public void refreshAllSchools() throws JSONException {
         DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList();
+    }
+
+    public void refreshStudentSchools() {
+        String userId = getUserId();
+        DomainControlFactory.getSchoolsModelCrontroller().refreshStudentSchools(userId);
     }
 
     public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {

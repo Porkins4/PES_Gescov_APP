@@ -27,13 +27,13 @@
         android:label="@string/your_chats_text"
         tools:layout="@layout/chat_list_fragment" />
     <fragment
-        android:id="@+id/blankFragment"
-        android:name="com.example.gescov.viewlayer.freefragment1.BlankFragment"
+        android:id="@+id/user_all_schools"
+        android:name="com.example.gescov.viewlayer.SchoolsActivities.studentschools.allSchools.AllSchoolsListFragment"
         android:label="blank_fragment"
         tools:layout="@layout/blank_fragment" />
     <fragment
         android:id="@+id/blankFragment2"
-        android:name="com.example.gescov.viewlayer.freefragment2.BlankFragment"
+        android:name="com.example.gescov.viewlayer.SchoolsActivities.studentschools.studentschools.StudentSchoolsListFragment"
         android:label="blank_fragment2"
         tools:layout="@layout/blank_fragment2" />
 

@@ -33,9 +33,9 @@
         android:id="@+id/group2"
         android:checkableBehavior="none">
         <item
-            android:id="@+id/blankFragment"
+            android:id="@+id/user_all_schools"
             android:icon="@android:drawable/btn_dialog"
-            android:title="@string/logout_text" />
+            android:title="@string/user_all_schools_title" />
 
         <item
             android:id="@+id/blankFragment2"

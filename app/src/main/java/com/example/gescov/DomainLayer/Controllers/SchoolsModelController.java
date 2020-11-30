@@ -2,6 +2,7 @@ package com.example.gescov.DomainLayer.Controllers;
 
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
+import com.example.gescov.DomainLayer.Singletons.ServicesFactory;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,6 +57,10 @@ public class SchoolsModelController {
         DomainControlFactory.getUserModelController().refreshSchoolList();
     }
 
+    public void refreshStudentSchools(String userId) {
+        ServicesFactory.getRefreshStudentSchoolsResponseController().refreshSchools(userId);
+    }
+
     public void refreshSchoolList(String schoolsResponse) {
         try {
             setSchoolsList(schoolsResponse);
@@ -92,4 +97,5 @@ public class SchoolsModelController {
         }
         return null;
     }
+
 }

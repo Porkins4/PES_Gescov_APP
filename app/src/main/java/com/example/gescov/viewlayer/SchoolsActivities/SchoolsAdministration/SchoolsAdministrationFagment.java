@@ -1,5 +1,6 @@
 package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
+import com.example.gescov.viewlayer.SchoolsActivities.studentschools.allSchools.SchoolListViewAdapter;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -25,6 +27,8 @@ import org.json.JSONException;
 public class SchoolsAdministrationFagment extends Fragment {
 
     SchoolsCrontroller controller;
+    FloatingActionButton createSchoolButton;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -73,26 +77,42 @@ public class SchoolsAdministrationFagment extends Fragment {
                              Bundle savedInstanceState) {
 
         View thisView = inflater.inflate(R.layout.fragment_school_administration, container, false);
-        FloatingActionButton fab = thisView.findViewById(R.id.add_school_button);
+        createSchoolButton = thisView.findViewById(R.id.add_school_button);
         ListView list = (ListView) thisView.findViewById(R.id.schools_list);
-        controller.createSchoolListViewAdapter(list.getContext());
-        SchoolListViewAdapter adapter = null;
-        try {
-            adapter = controller.getSchoolListViewAdapter();
-        } catch (AdapterNotSetException e) {
-            e.printStackTrace();
-        }
-        list.setAdapter(adapter);
-        try {
-            controller.refreshSchoolsList();
-        } catch (JSONException | AdapterNotSetException e) {
-            e.printStackTrace();
-        }
+        createSchoolListViewAdapter(list.getContext());
+        SchoolListViewAdapter adapter = getAdapter();
 
-        fab.setOnClickListener(e -> {
+        list.setAdapter(adapter);
+        refreshSchoolsList();
+
+        createSchoolButton.setOnClickListener(e -> {
             Intent intent = new Intent(getActivity(), CreateSchoolFormActivity.class);
             startActivity(intent);
         });
         return thisView;
+    }
+
+    protected void createSchoolListViewAdapter(Context context) {
+        controller.createAdminSchoolListViewAdapter(context);
+    }
+
+    protected SchoolListViewAdapter getAdapter() {
+        return controller.getAdminSchoolListViewAdapter();
+    }
+
+    protected void refreshSchoolsList() {
+        try {
+            controller.refreshAllSchoolsList();
+        } catch (JSONException | AdapterNotSetException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void enableCreateSchoolButton(boolean b) {
+        createSchoolButton.setVisibility(b ? View.VISIBLE : View.INVISIBLE);
+    }
+
+    protected SchoolsCrontroller getController() {
+        return controller;
     }
 }

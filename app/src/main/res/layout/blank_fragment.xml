@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".viewlayer.freefragment1.BlankFragment">
+    tools:context=".viewlayer.SchoolsActivities.studentschools.allSchools.AllSchoolsListFragment">
 
     <TextView
         android:layout_width="match_parent"

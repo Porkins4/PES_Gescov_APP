@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
+import com.example.gescov.viewlayer.SchoolsActivities.studentschools.allSchools.SchoolListViewAdapter;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 
@@ -18,6 +19,7 @@ import java.util.List;
 public class SchoolsCrontroller{
 
     private SchoolListViewAdapter schoolListViewAdapter;
+    private SchoolListViewAdapter adminSchoolListViewAdapter;
     private List<School> schoolsList;
 
     private SchoolsAdministrationFagment fragment;
@@ -36,11 +38,16 @@ public class SchoolsCrontroller{
         schoolListViewAdapter = new SchoolListViewAdapter(context, getSchoolsList());
     }
 
-    public SchoolListViewAdapter getSchoolListViewAdapter() throws AdapterNotSetException {
-        if (schoolListViewAdapter == null) {
-            throw new AdapterNotSetException();
-        }
+    public SchoolListViewAdapter getSchoolListViewAdapter() {
         return schoolListViewAdapter;
+    }
+
+    public void createAdminSchoolListViewAdapter (Context context) {
+        adminSchoolListViewAdapter = new AdminSchoolListViewAdapter(context, getSchoolsList());
+    }
+
+    public SchoolListViewAdapter getAdminSchoolListViewAdapter() {
+        return adminSchoolListViewAdapter;
     }
 
     public List<School> getSchoolsList() {
@@ -51,9 +58,13 @@ public class SchoolsCrontroller{
         return schoolsList;
     }
 
-    public void refreshSchoolsList() throws JSONException, AdapterNotSetException {
-        PresentationControlFactory.getViewLayerController().getAllSchools();
+    public void refreshAllSchoolsList() throws JSONException, AdapterNotSetException {
+        PresentationControlFactory.getViewLayerController().refreshAllSchools();
     }
+    public void refreshStudentSchoolsList() {
+        PresentationControlFactory.getViewLayerController().refreshStudentSchools();
+    }
+
 
     public void refreshSchoolsList(List<School> schoolsList) throws JSONException, AdapterNotSetException {
         this.schoolHash = new HashMap<>();
@@ -61,8 +72,17 @@ public class SchoolsCrontroller{
         for (School school : schoolsList) {
             schoolHash.put(school.getName(), school);
         }
-        getSchoolListViewAdapter().setSchoolList(schoolsList);
-        getSchoolListViewAdapter().notifyDataSetChanged();
+        SchoolListViewAdapter allSchoolsAdapter = getSchoolListViewAdapter();
+        if (allSchoolsAdapter != null) {
+            getSchoolListViewAdapter().setSchoolList(schoolsList);
+            getSchoolListViewAdapter().notifyDataSetChanged();
+        }
+
+        SchoolListViewAdapter adminSchoolsAdapter = getAdminSchoolListViewAdapter();
+        if (adminSchoolsAdapter != null) {
+            getAdminSchoolListViewAdapter().setSchoolList(schoolsList);
+            getAdminSchoolListViewAdapter().notifyDataSetChanged();
+        }
     }
 
     public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
@@ -81,7 +101,7 @@ public class SchoolsCrontroller{
     public void deleteSchool(School school) {
         PresentationControlFactory.getViewLayerController().deleteSchool(school);
         try {
-            refreshSchoolsList();
+            refreshAllSchoolsList();
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (AdapterNotSetException e) {
@@ -92,4 +112,5 @@ public class SchoolsCrontroller{
     public void addStudentToCenter(String schoolName, MutableLiveData<SchoolRequestResult> result) {
         PresentationControlFactory.getViewLayerController().addStudentToCenter(schoolName,result);
     }
+
 }

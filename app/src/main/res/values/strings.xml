@@ -41,6 +41,10 @@
     <string name="create_school_form_school_address_example">Municipi, C/Nom carrer nº</string>
 
 
+    <!-- User all schools -->
+    <string name="user_all_schools_title">Totes les escoles</string>
+
+
     <string name="Catalan_create_school_form_school_name">Nom Escola</string>
     <string name="Catalan_create_school_form_school_address">Adreça Escola</string>
     <string name="Catalan_create_school_form_school_state">Estat Escola</string>
@@ -55,6 +59,8 @@
     <string name="school_details_classrooms_list">Llista Aules</string>
     <string name="school_details_request_list">Solicituds</string>
     <string name="school_details_join">Solicitar accés</string>
+    <string name="school_details_confirm_delete_message">Segur de que vols eliminar aquesta escola?</string>
+
 
     <!-- School Requests -->
     <string name="school_requests_title">Solicituds de l´escola</string>
@@ -68,6 +74,7 @@
     <string name="classroom_cols">Columnes</string>
     <string name="classroom_capacity">Places</string>
     <string name="create_classroom_form_delete">Eliminar Aula</string>
+    <string name="classroom_confirm_delete_message">Segur de que vols eliminar aquesta aula?</string>
 
 
     <!-- Classroom distribution -->
@@ -138,6 +145,8 @@
     <!-- default -->
     <string name="edit">Editar</string>
     <string name="update">Actualitza</string>
+    <string name="delete">Elimina</string>
+    <string name="cancel">Cancela</string>
 
     <!-- Strings students in classroom Record -->
     <string name="class_record_activity_title">Historial d\'alumnes a l\'aula</string>

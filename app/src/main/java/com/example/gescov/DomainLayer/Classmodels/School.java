@@ -117,4 +117,8 @@ public class School {
     public List<String> getAdministratorsList() {
         return listAdministratorsID;
     }
+
+    public String getCreator() {
+        return creatorID;
+    }
 }

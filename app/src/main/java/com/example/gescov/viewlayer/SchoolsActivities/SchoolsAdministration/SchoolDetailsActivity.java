@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -56,8 +58,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
 
 
         deleteButton.setOnClickListener(e -> {
-            schoolsCrontroller.deleteSchool(school);
-            finish();
+            confirmDeleteSchoolPrompt();
         });
 
         classroomsListButton.setOnClickListener(e-> {
@@ -80,6 +81,10 @@ public class SchoolDetailsActivity extends AppCompatActivity {
             joinSchoolButton.setVisibility(View.INVISIBLE);
         }
 
+        if (school.getCreator()!=loggedUser.getId()) {
+            deleteButton.setVisibility(View.INVISIBLE);
+        }
+
 
         schoolDetailsViewModel = new ViewModelProvider(this).get(SchoolDetailsViewModel.class);
         schoolDetailsViewModel.getPutResult().observe(this, new Observer<SchoolRequestResult>() {
@@ -91,6 +96,21 @@ public class SchoolDetailsActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void confirmDeleteSchoolPrompt() {
+        DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
+            if (which == DialogInterface.BUTTON_POSITIVE) {
+                schoolsCrontroller.deleteSchool(school);
+                finish();
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.school_details_confirm_delete_message)).setPositiveButton(getString(R.string.delete), dialogClickListener)
+                .setNegativeButton(getString(R.string.cancel), dialogClickListener);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void successAddingStudentToCenter() {

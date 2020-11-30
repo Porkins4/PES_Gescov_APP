@@ -37,8 +37,12 @@ public class ViewLayerController {
         return DomainControlFactory.getModelController().getAllContagions();
     }
 
-    public void getAllSchools() throws JSONException {
-        DomainControlFactory.getModelController().getAllSchools();
+    public void refreshAllSchools() throws JSONException {
+        DomainControlFactory.getModelController().refreshAllSchools();
+    }
+
+    public void refreshStudentSchools() {
+        DomainControlFactory.getModelController().refreshStudentSchools();
     }
 
     public void notifyInfected(MutableLiveData<ContagionRequestResult> result) {

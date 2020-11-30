@@ -81,8 +81,8 @@
 
     <Button
         android:id="@+id/school_details_classroom_button"
-        android:layout_width="170"
-        android:layout_height="50"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
         android:text="@string/school_details_classrooms_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
