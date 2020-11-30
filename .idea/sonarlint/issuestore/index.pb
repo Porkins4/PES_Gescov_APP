@@ -67,3 +67,5 @@ kapp/src/main/java/com/example/gescov/DomainLayer/Services/Volley/Implementors/S
 Qapp/src/main/java/com/example/gescov/DomainLayer/Controllers/ModelController.java,1\1\115dd8204a043b2957c819f4d09804d5894a9317
 t
 Dapp/src/main/java/com/example/gescov/ViewLayer/Map/MapsFragment.java,5\6\56e93e160e6f44ef56bb3ecded50d605dc94711e
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

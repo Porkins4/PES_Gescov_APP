@@ -9,12 +9,12 @@ import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
-import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
-import com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
-import com.example.gescov.ViewLayer.SignUpAndLogin.TokenVerificationResult;
-import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
-import com.example.gescov.ViewLayer.ViewLayerController;
-import com.example.gescov.ViewLayer.home.ContagionRequestResult;
+import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+import com.example.gescov.viewlayer.ViewLayerController;
+import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 import org.json.JSONException;

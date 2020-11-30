@@ -3,9 +3,9 @@ package com.example.gescov.DomainLayer.Services.Volley.Interfaces;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.gescov.ViewLayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
-import com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
-import com.example.gescov.ViewLayer.SignUpAndLogin.TokenVerificationResult;
+import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
 
 import java.util.List;
 

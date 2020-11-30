@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/theback"
-    tools:context=".ViewLayer.home.HomeFragment">
+    tools:context=".viewlayer.home.HomeFragment">
 
 
     <LinearLayout

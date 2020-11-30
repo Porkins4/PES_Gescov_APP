@@ -1,6 +1,6 @@
-package com.example.gescov.ViewLayer.home;
+package com.example.gescov.viewlayer.home;
 
-import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 import java.util.List;
 

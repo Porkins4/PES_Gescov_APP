@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
-        android:name=".ViewLayer.Singletons.GescovApplication"
+        android:name=".viewlayer.Singletons.GescovApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -32,29 +32,29 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".ViewLayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity" />
-        <activity android:name=".ViewLayer.UpdateUserProfile.UpdateUserProfileActivity" />
-        <activity android:name=".ViewLayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity" />
-        <activity android:name=".ViewLayer.home.DailyTestActivity" />
-        <activity android:name=".ViewLayer.SignUpAndLogin.LoginActivity" />
-        <activity android:name=".ViewLayer.SchoolsActivities.SchoolClassroomList.CreateClassroomFormActivity" />
-        <activity android:name=".ViewLayer.SchoolsActivities.SchoolClassroomList.EditClassroomFormActivity" />
+        <activity android:name=".viewlayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity" />
+        <activity android:name=".viewlayer.UpdateUserProfile.UpdateUserProfileActivity" />
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity" />
+        <activity android:name=".viewlayer.home.DailyTestActivity" />
+        <activity android:name=".viewlayer.SignUpAndLogin.LoginActivity" />
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.CreateClassroomFormActivity" />
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.EditClassroomFormActivity" />
         <activity
-            android:name=".ViewLayer.ClassroomActivities.ClassroomDistribution.ClassroomDistributionActivity"
+            android:name=".viewlayer.ClassroomActivities.ClassroomDistribution.ClassroomDistributionActivity"
             android:label="@string/title_activity_classroom_distribution" />
-        <activity android:name=".ViewLayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroom" />
-        <activity android:name=".ViewLayer.home.CovidNotificationActivity" />
+        <activity android:name=".viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroom" />
+        <activity android:name=".viewlayer.home.CovidNotificationActivity" />
         <activity
-            android:name=".ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolClassromListActivity"
+            android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassromListActivity"
             android:label="@string/title_activity_school_classrom_list"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-        <activity android:name=".ViewLayer.SchoolsActivities.SchoolsAdministration.CreateSchoolFormActivity" />
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.CreateSchoolFormActivity" />
         <activity
-            android:name=".ViewLayer.navigation.NavigationMenu"
+            android:name=".viewlayer.navigation.NavigationMenu"
             android:label="@string/title_activity_navigation_menu"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
-            android:name=".ViewLayer.SignUpAndLogin.LoadingProfileActivity"
+            android:name=".viewlayer.SignUpAndLogin.LoadingProfileActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Gescov.NoActionBar">
             <intent-filter>

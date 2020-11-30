@@ -6,8 +6,8 @@ import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IContagionServi
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 import com.example.gescov.DomainLayer.Singletons.ServicesFactory;
-import com.example.gescov.ViewLayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
-import com.example.gescov.ViewLayer.home.ContagionRequestResult;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.viewlayer.home.ContagionRequestResult;
 
 import org.json.JSONArray;
 import org.json.JSONException;
