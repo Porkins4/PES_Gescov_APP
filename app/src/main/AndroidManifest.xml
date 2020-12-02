@@ -36,6 +36,7 @@
             android:label="@string/title_activity_school_classrom_list"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.CreateSchoolFormActivity" />
+        <activity android:name=".viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity" />
         <activity
             android:name=".viewlayer.navigation.NavigationMenu"
             android:label="@string/title_activity_navigation_menu"

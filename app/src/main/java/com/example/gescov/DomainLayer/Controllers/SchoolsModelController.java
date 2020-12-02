@@ -116,4 +116,8 @@ public class SchoolsModelController {
         }
         DomainControlFactory.getModelController().sendResponseOfNumContagionPerSchool(schools);
     }
+
+    public void refreshUsersListBySchoolId() {
+        ServicesFactory.getRefreshUsersBySchoolIdResponseController().refreshUsersBySchoolId(getCurrentSchool().getId());
+    }
 }

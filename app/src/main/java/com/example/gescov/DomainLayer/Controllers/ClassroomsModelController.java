@@ -30,7 +30,7 @@ public class ClassroomsModelController {
                 String name = aux.getString("name");
                 int rows = aux.getInt("numRows");
                 int columns = aux.getInt("numCols");
-                int capacity = aux.getInt("capacity");
+                int capacity = rows * columns;
                 classroomsList.add(new Classroom(id, name, rows, columns, capacity));
             }
         } catch (JSONException e) {

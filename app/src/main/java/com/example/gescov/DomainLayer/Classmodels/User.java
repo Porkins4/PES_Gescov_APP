@@ -1,7 +1,5 @@
 package com.example.gescov.DomainLayer.Classmodels;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IContagionService;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
@@ -16,10 +14,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.lifecycle.MutableLiveData;
+
 public class User {
 
     public enum UserProfileType {
-        STUDDENT ("Studdent"),
+        STUDDENT ("Student"),
         TEACHER ("Teacher");
 
         private final String value;
@@ -35,6 +35,10 @@ public class User {
             return null;
         }
 
+        public String getValue() {
+            return value;
+        }
+
     }
 
     private String name;
@@ -45,6 +49,8 @@ public class User {
     private String ConfirmedInfected;
     private Boolean risk;
     private UserProfileType profileType;
+    private String tokenId;
+    private String email;
 
     public UserProfileType getProfileType() {
         return profileType;
@@ -67,12 +73,14 @@ public class User {
     //----------------------------------
     public void setIdContagion(String idContagion) { this.idContagion = idContagion; }
 
-    public User (String name, List<String> schools, String id, boolean risk, String profileType) {
+    public User (String name, String id, List<String> schools, boolean risk, String profileType, String email, String tokenId) {
         this.name = name;
         this.schoolsID =  schools;
         this.id = id;
         this.risk = risk;
         this.profileType = UserProfileType.getUserProfileFromString(profileType);
+        this.tokenId = tokenId;
+        this.email = email;
     }
     //----------------------------------
 
@@ -181,8 +189,8 @@ public class User {
         }
     }
 
-    public void updateSchoolClassroom(String classroomId, String classroomName, int numRows, int numCols, int capacity) {
-        ServicesFactory.getUpdateSchoolClassroomController().updateSchoolClassroom(classroomId, classroomName, numRows, numCols, capacity);
+    public void updateSchoolClassroom(String classroomId, String classroomName, int numRows, int numCols) {
+        ServicesFactory.getUpdateSchoolClassroomController().updateSchoolClassroom(classroomId, classroomName, numRows, numCols);
     }
 
     public void refresh() {

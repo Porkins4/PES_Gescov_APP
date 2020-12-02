@@ -7,6 +7,7 @@ import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.Refr
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolRequestsBySchoolIdResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshStudentSchoolsResponseController;
+import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshUsersBySchoolIdResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateSchoolClassroomResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateSchoolRequestStatusResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateUserRiskResponseController;
@@ -46,6 +47,7 @@ public class ServicesFactory {
     private static RefreshSchoolRequestsBySchoolIdResponseController refreshSchoolRequestsBySchoolIdResponseController;
     private static UpdateSchoolRequestStatusResponseController updateSchoolRequestStatusResponseController;
     private static RefreshStudentSchoolsResponseController refreshStudentSchoolsResponseController;
+    private static RefreshUsersBySchoolIdResponseController refreshUsersBySchoolIdResponseController;
 
     private static Retrofit getRetrofit() {
         if (retrofit != null) return retrofit;
@@ -139,5 +141,11 @@ public class ServicesFactory {
         if (refreshStudentSchoolsResponseController != null) return refreshStudentSchoolsResponseController;
         refreshStudentSchoolsResponseController = new RefreshStudentSchoolsResponseController(getRetrofit());
         return refreshStudentSchoolsResponseController;
+    }
+
+    public static RefreshUsersBySchoolIdResponseController getRefreshUsersBySchoolIdResponseController() {
+        if (refreshUsersBySchoolIdResponseController != null) return refreshUsersBySchoolIdResponseController;
+        refreshUsersBySchoolIdResponseController = new RefreshUsersBySchoolIdResponseController(getRetrofit());
+        return refreshUsersBySchoolIdResponseController;
     }
 }

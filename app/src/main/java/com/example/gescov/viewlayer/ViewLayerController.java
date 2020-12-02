@@ -2,23 +2,20 @@ package com.example.gescov.viewlayer;
 
 import android.util.Pair;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.example.gescov.DomainLayer.Classmodels.Assignment;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.SchoolRequest;
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
-import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
-import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
-import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import com.example.gescov.viewlayer.home.HomeViewModel;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-
 
 import org.json.JSONException;
 
@@ -234,5 +231,13 @@ public class ViewLayerController {
 
     public void refreshSchoolRequests(List<SchoolRequest> schoolRequestsList) {
         PresentationControlFactory.getSchoolRequestsController().refreshList(schoolRequestsList);
+    }
+
+    public void refreshUsersListBySchoolId() {
+        DomainControlFactory.getSchoolsModelCrontroller().refreshUsersListBySchoolId();
+    }
+
+    public void refreshSchoolUsersList(List<User> usersList) {
+        PresentationControlFactory.getSchoolUsersController().refreshList(usersList);
     }
 }

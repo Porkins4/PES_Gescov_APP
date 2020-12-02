@@ -1,18 +1,14 @@
 package com.example.gescov.DomainLayer.Controllers;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.Services.LoginRespository;
-import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
+import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 import com.example.gescov.DomainLayer.Singletons.ServicesFactory;
-import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
-
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
-
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
 import com.example.gescov.viewlayer.Singletons.LoggedInUser;
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -24,6 +20,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import androidx.lifecycle.MutableLiveData;
 
 public class UserModelController {
     private User loggedUser;
@@ -120,7 +118,7 @@ public class UserModelController {
     }
 
     public void updateClassroom(String classroomId, String classroomName, int numRows, int numCols) {
-        loggedUser.updateSchoolClassroom(classroomId, classroomName, numRows, numCols, numRows*numCols);
+        loggedUser.updateSchoolClassroom(classroomId, classroomName, numRows, numCols);
 
     }
 
@@ -213,17 +211,32 @@ public class UserModelController {
 
     public void setLoggedInUser(Boolean error, JSONObject response) {
         if (!error){
-            try {
-                JSONArray schoolsRaw = response.getJSONArray("schoolsID");
-                List<String> ls = new ArrayList<>();
-                for (int i = 0; i < schoolsRaw.length(); ++i) {
-                    ls.add(schoolsRaw.getString(i));
-                }
-                loggedUser = new User(response.getString("name"),ls,response.getString("id"),response.getBoolean("risk"), response.getString("profile"));
-                updateContagionId();
-            } catch (JSONException e) {
-            }
+            loggedUser = getUserFromJSONObject(response);
+            updateContagionId();
         }
+    }
+
+    public User getUserFromJSONObject(JSONObject response) {
+        User user = new User();
+        JSONArray userArray = null;
+        try {
+            userArray = response.getJSONArray("schoolsID");
+            List<String> schoolsList = new ArrayList<>();
+            for (int i = 0; i < userArray.length(); ++i) {
+                schoolsList.add(userArray.getString(i));
+            }
+            String id = response.getString("id");
+            String name = response.getString("name");
+            String email = response.getString("email");
+            String profile = response.getString("profile");
+            boolean risk = response.getBoolean("risk");
+            String tokenId = response.getString("id");
+            user = new User(name, id, schoolsList, risk, profile, email, tokenId);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return user;
     }
 
     public User getLoggedInUser() {
@@ -245,5 +258,21 @@ public class UserModelController {
 
     public GoogleSignInClient getGoogleSignInClient(String serverClientID) {
         return LoginRespository.getGoogleSignInClient(serverClientID);
+    }
+
+    public void setUsersList(String usersListResponse) {
+        JSONArray response = null;
+        try {
+            response = new JSONArray(usersListResponse);
+            for (int i = 0; i < response.length(); ++i) {
+
+                JSONObject aux = response.getJSONObject(i);
+                User user = getUserFromJSONObject(aux);
+                userHash.put(user.getId(), user);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        DomainControlFactory.getModelController().refreshSchoolUsersListInView(new ArrayList <User> (userHash.values()));
     }
 }

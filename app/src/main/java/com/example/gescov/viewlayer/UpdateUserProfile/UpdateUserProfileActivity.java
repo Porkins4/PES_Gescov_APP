@@ -1,13 +1,14 @@
 package com.example.gescov.viewlayer.UpdateUserProfile;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class UpdateUserProfileActivity extends AppCompatActivity {
 
@@ -31,7 +32,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        PresentationControlFactory.getUpdateUserProfileController().changeUserProfile("student"); //Aquí podríamos utilizar un enum
+                        PresentationControlFactory.getUpdateUserProfileController().changeUserProfile(User.UserProfileType.STUDDENT.getValue()); //Aquí podríamos utilizar un enum
                     }
                 }
         );
@@ -40,7 +41,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        PresentationControlFactory.getUpdateUserProfileController().changeUserProfile("Teacher"); //Aquí podríamos utilizar un enum
+                        PresentationControlFactory.getUpdateUserProfileController().changeUserProfile(User.UserProfileType.TEACHER.getValue()); //Aquí podríamos utilizar un enum
                     }
                 }
         );

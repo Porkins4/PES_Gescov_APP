@@ -1,9 +1,5 @@
 package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,19 +9,20 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.R;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassromListActivity;
-import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsListActivity;
-import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.PopErrorAddStudentToCenter;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassromListActivity;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolDetailsViewModel;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity;
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsListActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 public class SchoolDetailsActivity extends AppCompatActivity {
     private  SchoolsCrontroller schoolsCrontroller;
@@ -45,7 +42,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         TextView telf = (TextView) findViewById(R.id.school_details_telf);
         TextView webpage = (TextView) findViewById(R.id.school_details_webpage);
         TextView email = (TextView) findViewById(R.id.school__details_email);
-        Button protocolsButton = (Button) findViewById(R.id.school_details_protocol_button);
+        Button usersListButton = (Button) findViewById(R.id.school_details_student_list_button);
         Button classroomsListButton = (Button) findViewById(R.id.school_details_classroom_button);
         Button deleteButton = (Button) findViewById(R.id.school_details_delete);
         Button joinSchoolButton = (Button) findViewById(R.id.join_school_button);
@@ -68,23 +65,33 @@ public class SchoolDetailsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        usersListButton.setOnClickListener(e -> {
+            Intent intent = new Intent(this, SchoolUsersListActivity.class);
+            startActivity(intent);
+        });
+
         if (loggedUser.getProfileType() == User.UserProfileType.STUDDENT && !loggedUser.getSchoolsID().contains(school.getId())) {
             joinSchoolButton.setText(getResources().getText(R.string.school_details_join));
             joinSchoolButton.setOnClickListener(e -> {
                 schoolDetailsViewModel.getAddStudentToCenterResult(name.getText().toString());
             });
+
         } else if (school.getAdministratorsList().contains(loggedUser.getId())) {
             joinSchoolButton.setText(getResources().getText(R.string.school_details_request_list));
             joinSchoolButton.setOnClickListener(e -> {
                 Intent intent = new Intent(this, SchoolRequestsListActivity.class);
                 startActivity(intent);
             });
+            usersListButton.setVisibility(View.VISIBLE);
         } else {
             joinSchoolButton.setVisibility(View.INVISIBLE);
+            usersListButton.setVisibility(View.INVISIBLE);
         }
 
-        if (school.getCreator() != loggedUser.getId()) {
+        if (!school.getCreator().equals(loggedUser.getId())) {
             deleteButton.setVisibility(View.INVISIBLE);
+        } else {
+            deleteButton.setVisibility(View.VISIBLE);
         }
 
 

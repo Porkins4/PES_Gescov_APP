@@ -56,6 +56,7 @@
     <!-- School Details -->
     <string name="school_details_delete_school">Elimina escola</string>
     <string name="school_details_protocol_access">Protocols</string>
+    <string name="school_details_users_list">Llista d´usuaris</string>
     <string name="school_details_classrooms_list">Llista Aules</string>
     <string name="school_details_request_list">Solicituds</string>
     <string name="school_details_join">Solicitar accés</string>

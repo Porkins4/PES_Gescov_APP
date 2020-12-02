@@ -25,9 +25,9 @@ public class UpdateSchoolClassroomResponseController implements Callback<String>
 
     }
 
-    public void updateSchoolClassroom(String id, String name, int rows, int cols, int capacity) {
+    public void updateSchoolClassroom(String id, String name, int rows, int cols) {
         IUpdateSchoolClassroomService service = retrofit.create(IUpdateSchoolClassroomService.class);
-        Call<String> call = service.updateSchoolClassroom(id, name, capacity, rows, cols);
+        Call<String> call = service.updateSchoolClassroom(id, name, rows, cols);
         call.enqueue(this);
     }
 }

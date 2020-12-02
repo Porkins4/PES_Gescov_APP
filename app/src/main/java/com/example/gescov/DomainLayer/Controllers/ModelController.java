@@ -2,26 +2,25 @@ package com.example.gescov.DomainLayer.Controllers;
 
 import android.util.Pair;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.example.gescov.DomainLayer.Classmodels.Assignment;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.SchoolRequest;
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
-import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.ViewLayerController;
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
-import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.List;
+
+import androidx.lifecycle.MutableLiveData;
 
 public class ModelController {
 
@@ -243,5 +242,9 @@ public class ModelController {
 
     public void refreshSchoolRequestsInView(List<SchoolRequest> schoolRequestsList) {
         viewLayerController.refreshSchoolRequests(schoolRequestsList);
+    }
+
+    public void refreshSchoolUsersListInView(List<User> usersList) {
+        viewLayerController.refreshSchoolUsersList(usersList);
     }
 }

@@ -8,7 +8,6 @@ public interface IUpdateSchoolClassroomService {
     @PUT("api/classrooms/")
     Call<String> updateSchoolClassroom(@Query("id") String id,
                                        @Query("name") String name,
-                                       @Query("capacity") int capacity,
                                        @Query("numRows") int numRows,
                                        @Query("numCols") int numCols);
 }
