@@ -233,12 +233,12 @@ public class ModelController {
     }
     //-----------------------------------------------------------------
 
-    public void getNumContagionPerSchool() {
-        DomainControlFactory.getSchoolsModelCrontroller().getNumContagionPerSchool();
+    public void getNumContagionPerSchool(int from) {
+        DomainControlFactory.getSchoolsModelCrontroller().getNumContagionPerSchool(from);
     }
 
-    public void sendResponseOfNumContagionPerSchool(List<Pair<School, Integer>> schools) {
-        viewLayerController.sendResponseOfNumContagionPerSchool(schools);
+    public void sendResponseOfNumContagionPerSchool(List<Pair<School, Integer>> schools, int from) {
+        viewLayerController.sendResponseOfNumContagionPerSchool(schools,from);
 
     }
 

@@ -12,7 +12,7 @@ public class MapController {
 
     public void getNumContagionPerSchool() {
 
-        PresentationControlFactory.getViewLayerController().getNumContagionPerSchool();
+        PresentationControlFactory.getViewLayerController().getNumContagionPerSchool(1);
     }
 
     public void sendResponseOfNumContagionPerSchool(List<Pair<School, Integer>> schools) {

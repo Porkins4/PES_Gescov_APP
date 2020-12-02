@@ -41,5 +41,10 @@
         android:name="com.example.gescov.viewlayer.SchoolsActivities.studentschools.studentschools.StudentSchoolsListFragment"
         android:label="blank_fragment2"
         tools:layout="@layout/blank_fragment2" />
+    <fragment
+        android:id="@+id/ranking_fragment"
+        android:name="com.example.gescov.viewlayer.ranking.RankingFragment"
+        android:label="fragment_ranking"
+        tools:layout="@layout/fragment_ranking" />
 
 </navigation>

@@ -26,9 +26,20 @@
             android:title="@string/mapa_text" />
 
         <item
+
             android:id="@+id/user_schools"
             android:icon="@drawable/universidad"
             android:title="@string/my_schools_title" />
+
+            android:id="@+id/ranking_fragment"
+            android:title="@string/ranking_name" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/logout"
+            android:title="@string/logout_text" />
+
+
+
 
         <item
             android:id="@+id/user_all_schools"

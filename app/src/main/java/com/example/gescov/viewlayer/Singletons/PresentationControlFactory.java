@@ -3,8 +3,13 @@ package com.example.gescov.viewlayer.Singletons;
 import com.example.gescov.viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroomController;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionController;
 import com.example.gescov.viewlayer.ContagionList.ContagionController;
+
 import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUsersController;
 import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
+
+import com.example.gescov.viewlayer.Map.MapController;
+import com.example.gescov.viewlayer.ranking.RankingController;
+
 import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
 import com.example.gescov.viewlayer.SignUpAndLogin.LoadingProfileActivity;
 import com.example.gescov.viewlayer.SignUpAndLogin.LoadingProfileController;
@@ -33,7 +38,7 @@ public class PresentationControlFactory {
     private static TracingTestController tracingTestController;
     private static LoadingProfileController loadingProfileController;
     private static UpdateUserProfileController updateUserProfileController;
-
+    private static RankingController rankingController;
     private static ViewModelProvider viewModelProvider;
     private static MapController mapController;
     private static SchoolRequestsController schoolRequestsController;
@@ -149,5 +154,12 @@ public class PresentationControlFactory {
         if (createChatController != null) return createChatController;
         createChatController = new CreateChatController();
         return createChatController;
+
+    public static RankingController getRankingController() {
+        if (rankingController != null)
+            return rankingController;
+        rankingController = new RankingController();
+        return rankingController;
+
     }
 }
