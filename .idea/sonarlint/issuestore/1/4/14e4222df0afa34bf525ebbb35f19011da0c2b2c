@@ -1,11 +1,0 @@
-
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ý®èð
-Q
-java:S3740"/Provide the parametrized type for this generic.(¶þŽœýÿÿÿÿ8ºÕÿ§â.
-[
-java:S4973_"9Use the "equals" method if value comparison was intended.(–ëÏäýÿÿÿÿ8ºÕÿ§â.
-r	java:S116"VRename this field "num_schools" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸÉÌ»8ºÕÿ§â.
-{	java:S116"_Rename this field "num_received_schools" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒÅóð8ºÕÿ§â.
-X	java:S125$"<This block of commented-out lines of code should be removed.(ê’ðë8ºÕÿ§â.
->
-java:S1116-"Remove this empty statement.(Åñ­õþÿÿÿÿ8ºÕÿ§â.

@@ -1,7 +1,0 @@
-
-€
-java:S4165"gRemove this useless assignment; "longitude" already holds the assigned value along all execution paths.(àõž’üÿÿÿÿ
-y
-java:S4165"fRemove this useless assignment; "latitude" already holds the assigned value along all execution paths.(ŒÈá
-U	java:S107"BConstructor has 10 parameters, which is greater than 7 authorized.(¨Š±­
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ñªÿ¿ûÿÿÿÿ

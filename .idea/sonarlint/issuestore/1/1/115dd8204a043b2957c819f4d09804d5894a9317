@@ -1,9 +1,0 @@
-
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ı®èğ
-h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛÈüı8“÷“ â.
-
-java:S1130"oRemove the declaration of thrown exception 'org.json.JSONException', as it cannot be thrown from method's body.(“ÒæŸûÿÿÿÿ8“÷“ â.
-J
-java:S1172"/Remove this unused method parameter "nameuser".(ÛÈüı8“÷“ â.
-‡
-java:S1845"lRename method "getUserID" to prevent any misunderstanding/clash with method "getUserId" defined on line 120.(À…µŠ8“÷“ â.
