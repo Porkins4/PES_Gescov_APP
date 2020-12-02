@@ -39,8 +39,7 @@ public class SchoolServiceImplementor implements ISchoolService {
     private final String  SCHOOL_PUNTUATIONS = "https://gescov.herokuapp.com/api/schools/punctuation";
 
     private final String GESCOV_SCHOOLS_URI = "https://gescov.herokuapp.com/api/schools/";
-
-    public SchoolServiceImplementor() { }
+    
     public SchoolServiceImplementor() {
         //Empty constructor
     }

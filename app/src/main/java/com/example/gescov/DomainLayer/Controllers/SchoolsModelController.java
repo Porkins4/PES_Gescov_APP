@@ -115,7 +115,7 @@ public class SchoolsModelController {
         for ( int i = 0; i < response.length(); ++i) {
             JSONObject aux = response.getJSONObject(i);
             JSONObject school = aux.getJSONObject("first");
-            School schoolAux = new School(school.getString("name"),school.getDouble("longitude"),school.getDouble("latitude"));
+            School schoolAux = School.fromJsonToSchool(school);
             Integer numCont = aux.getInt("second");
             Pair<School,Integer> schoolAndCont = new Pair<>(schoolAux,numCont);
             schools.add(schoolAndCont);

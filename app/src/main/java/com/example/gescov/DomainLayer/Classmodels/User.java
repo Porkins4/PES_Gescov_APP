@@ -50,7 +50,6 @@ public class User {
     private Boolean risk;
     private UserProfileType profileType;
     private String tokenId;
-    private String email;
 
     public UserProfileType getProfileType() {
         return profileType;

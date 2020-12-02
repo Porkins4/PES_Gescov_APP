@@ -54,7 +54,7 @@ public class ModelController {
         return userModelController.getStudentsInClassroom(classroom);
     }
 
-    public void getAllSchools() throws JSONException {
+    public void refreshAllSchools() throws JSONException {
         DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList();
     }
 
