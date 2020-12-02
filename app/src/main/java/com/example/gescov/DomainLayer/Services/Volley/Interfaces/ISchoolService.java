@@ -31,5 +31,5 @@ public interface ISchoolService {
 
     void addStudentToCenter(String id, String schoolId, MutableLiveData<SchoolRequestResult> result);
 
-    void getNumContagionPerSchool();
+    void getNumContagionPerSchool(int from);
 }

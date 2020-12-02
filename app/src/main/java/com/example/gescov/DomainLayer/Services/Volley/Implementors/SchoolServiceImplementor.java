@@ -255,13 +255,13 @@ public class SchoolServiceImplementor implements ISchoolService {
     }
 
     @Override
-    public void getNumContagionPerSchool() {
+    public void getNumContagionPerSchool(int from) {
         RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
                 Request.Method.GET,SCHOOL_PUNTUATIONS , null,
                 response -> {
                     try {
-                        DomainControlFactory.getSchoolsModelCrontroller().sendResponseOfNumContagionPerSchool(response);
+                        DomainControlFactory.getSchoolsModelCrontroller().sendResponseOfNumContagionPerSchool(response,from);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

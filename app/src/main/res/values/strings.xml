@@ -170,4 +170,8 @@
     <string name="mapa_text">Mapa</string>
 
 
+    <!-- Strings for the Ranking -->
+    <string name="ranking_name">Ranking de centres</string>
+
+
 </resources>

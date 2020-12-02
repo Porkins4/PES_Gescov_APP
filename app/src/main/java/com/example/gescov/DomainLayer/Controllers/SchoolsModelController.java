@@ -100,11 +100,11 @@ public class SchoolsModelController {
         return null;
     }
 
-    public void getNumContagionPerSchool() {
-        ServicesFactory.getSchoolService().getNumContagionPerSchool();
+    public void getNumContagionPerSchool(int from ) {
+        ServicesFactory.getSchoolService().getNumContagionPerSchool(from);
     }
 
-    public void sendResponseOfNumContagionPerSchool(JSONArray response) throws JSONException {
+    public void sendResponseOfNumContagionPerSchool(JSONArray response, int from) throws JSONException {
         List<Pair<School, Integer>> schools = new ArrayList<>();
         for ( int i = 0; i < response.length(); ++i) {
             JSONObject aux = response.getJSONObject(i);
@@ -114,6 +114,6 @@ public class SchoolsModelController {
             Pair<School,Integer> schoolAndCont = new Pair<>(schoolAux,numCont);
             schools.add(schoolAndCont);
         }
-        DomainControlFactory.getModelController().sendResponseOfNumContagionPerSchool(schools);
+        DomainControlFactory.getModelController().sendResponseOfNumContagionPerSchool(schools,from);
     }
 }

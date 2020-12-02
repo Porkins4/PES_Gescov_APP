@@ -30,6 +30,9 @@
             android:title="@string/mapa_text" />
 
         <item
+            android:id="@+id/ranking_fragment"
+            android:title="@string/ranking_name" />
+        <item
             android:id="@+id/logout"
             android:icon="@drawable/logout"
             android:title="@string/logout_text" />

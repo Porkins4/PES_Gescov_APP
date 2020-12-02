@@ -2,6 +2,7 @@ package com.example.gescov.viewlayer.Singletons;
 
 import com.example.gescov.viewlayer.ContagionList.ContagionController;
 import com.example.gescov.viewlayer.Map.MapController;
+import com.example.gescov.viewlayer.ranking.RankingController;
 import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
 
 import com.example.gescov.viewlayer.SignUpAndLogin.LoadingProfileController;
@@ -28,7 +29,7 @@ public class PresentationControlFactory {
     private static TracingTestController tracingTestController;
     private static LoadingProfileController loadingProfileController;
     private static UpdateUserProfileController updateUserProfileController;
-
+    private static RankingController rankingController;
     private static ViewModelProvider viewModelProvider;
     private static MapController mapController;
     private static SchoolRequestsController schoolRequestsController;
@@ -127,5 +128,12 @@ public class PresentationControlFactory {
             return schoolRequestsController;
         schoolRequestsController = new SchoolRequestsController();
         return schoolRequestsController;
+    }
+
+    public static RankingController getRankingController() {
+        if (rankingController != null)
+            return rankingController;
+        rankingController = new RankingController();
+        return rankingController;
     }
 }

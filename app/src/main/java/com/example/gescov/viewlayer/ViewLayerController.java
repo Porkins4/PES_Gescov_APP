@@ -223,12 +223,16 @@ public class ViewLayerController {
         return DomainControlFactory.getModelController().getGoogleSignInClient(serverClientID);
     }
 
-    public void getNumContagionPerSchool() {
-        DomainControlFactory.getModelController().getNumContagionPerSchool();
+    public void getNumContagionPerSchool(int from  ) {
+        DomainControlFactory.getModelController().getNumContagionPerSchool(from);
     }
 
-    public void sendResponseOfNumContagionPerSchool(List<Pair<School, Integer>> schools) {
-        PresentationControlFactory.getMapController().sendResponseOfNumContagionPerSchool(schools);
+    public void sendResponseOfNumContagionPerSchool(List<Pair<School, Integer>> schools, int from) {
+        if (from == 1) {
+            PresentationControlFactory.getMapController().sendResponseOfNumContagionPerSchool(schools);
+        }
+        else PresentationControlFactory.getRankingController().sendResponseOfNumContagionPerSchool(schools);
+
     }
 
 
