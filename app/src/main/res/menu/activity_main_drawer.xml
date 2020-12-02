@@ -34,9 +34,9 @@
             android:id="@+id/ranking_fragment"
             android:title="@string/ranking_name" />
         <item
-            android:id="@+id/logout"
+            android:id="@+id/ranking_fragment"
             android:icon="@drawable/logout"
-            android:title="@string/logout_text" />
+            android:title="@string/ranking_name" />
 
 
 

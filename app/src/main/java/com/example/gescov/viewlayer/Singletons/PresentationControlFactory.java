@@ -155,6 +155,8 @@ public class PresentationControlFactory {
         createChatController = new CreateChatController();
         return createChatController;
 
+    }
+
     public static RankingController getRankingController() {
         if (rankingController != null)
             return rankingController;

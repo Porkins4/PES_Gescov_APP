@@ -259,7 +259,7 @@ public class User {
         for (String k: schoolsID) System.out.println(k);
     }
 
-    public static User fromJSONtoUser(JSONObject jsonObject) {
+    public static User fromJSONtoUser(JSONObject jsonObject) {//mover el codigo aquí?
         User response = new User();
         response.setId("null");
         try {

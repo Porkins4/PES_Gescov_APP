@@ -271,7 +271,8 @@ public class UserModelController {
         contactsFromSelectedCenter = new ArrayList<>();
         for (int i = 0; i < response.length(); ++i) {
             try {
-                User u = User.fromJSONtoUser(response.getJSONObject(i)); //reusar esta operación
+                User u = getUserFromJSONObject(response.getJSONObject(i)); //reusar esta operación
+                System.out.println(u.getProfileType());
                 if (loggedUser.getProfileType() == User.UserProfileType.TEACHER && u.getProfileType() == User.UserProfileType.STUDDENT) contactsFromSelectedCenter.add(u);
                 else if (loggedUser.getProfileType() == User.UserProfileType.STUDDENT && u.getProfileType() == User.UserProfileType.TEACHER) contactsFromSelectedCenter.add(u);
             } catch (JSONException e) {
