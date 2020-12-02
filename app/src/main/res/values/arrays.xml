@@ -3,4 +3,12 @@
     <string-array name="chat_options_menu_items">
         <item>Eliminar xat</item>
     </string-array>
+    <string-array name="user_option_menu_items">
+        <item>Fer administrador</item>
+    </string-array>
+
+    <string-array name="admin_option_menu_items">
+        <item>Desfer administrador</item>
+    </string-array>
+
 </resources>

@@ -168,8 +168,8 @@ public class UserModelController {
         loggedUser.updateRisk();
     }
 
-    public void changeUserProfile(String profile) {
-        loggedUser.changeUSerProfile(profile);
+    public void changeUserProfile(boolean isStudent) {
+        loggedUser.changeUserProfile(isStudent);
     }
 
     public void setUserType(String profile) {
@@ -229,10 +229,10 @@ public class UserModelController {
             String id = response.getString("id");
             String name = response.getString("name");
             String email = response.getString("email");
-            String profile = response.getString("profile");
+            boolean isStudent = response.getBoolean("student");
             boolean risk = response.getBoolean("risk");
             String tokenId = response.getString("id");
-            user = new User(name, id, schoolsList, risk, profile, email, tokenId);
+            user = new User(name, id, schoolsList, risk, isStudent, email, tokenId);
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -71,6 +71,11 @@
     <string name="school_requests_list_item_accept">Acceptar</string>
     <string name="school_requests_list_item_reject">Rebutjar</string>
 
+    <!-- User School list item -->
+    <string name="user_school_make_admin_message_1">Vols fer a </string>
+    <string name="user_school_make_admin_message_2"> administrador d´aquest centre?</string>
+
+
 
     <!-- Classrooms -->
     <string name="classroom_rows">Files</string>
@@ -151,6 +156,7 @@
     <!-- default -->
     <string name="edit">Editar</string>
     <string name="update">Actualitza</string>
+    <string name="apply">Accepta</string>
     <string name="delete">Elimina</string>
     <string name="cancel">Cancela</string>
 
@@ -164,7 +170,7 @@
     <!-- Chat Fragment -->
     <string name="chat_fragment_menu_text">Xats</string>
     <string name="your_chats_text">Els teus xats personals</string>
-    <string name="chat_options">Opcions</string>
+    <string name="options">Opcions</string>
     <string name="confirm_delete_chat_message">Segur de que vols eliminar aquest xat?</string>
     <string name="yes_delete_chat">Elimina</string>
     <string name="no_delete_chat">Cancela</string>

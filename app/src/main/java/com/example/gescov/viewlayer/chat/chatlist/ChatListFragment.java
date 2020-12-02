@@ -62,7 +62,7 @@ public class ChatListFragment extends Fragment {
         listView.setOnItemLongClickListener(
                 (parent, view, position, id) -> {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                    builder.setTitle(getString(R.string.chat_options))
+                    builder.setTitle(getString(R.string.options))
                             .setItems(R.array.chat_options_menu_items, (dialog, which) -> {
                                 if (which == 0) confirmDeleteChatPrompt(position);
                             });

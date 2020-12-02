@@ -151,4 +151,10 @@ public class SchoolsModelController {
     public void getContactsFromCenter(String schoolID) {
         ServicesFactory.getSchoolService().getContactsFromCenter(schoolID);
     }
+
+    public void addNewAdminToSchool(String newAdminID) {
+        String currentUserId = DomainControlFactory.getUserModelController().getLoggedInUser().getId();
+        String currentSchoolId = getCurrentSchool().getId();
+        ServicesFactory.getUpdateSchoolAdminResponseController().addNewAdmin(currentSchoolId, currentUserId, newAdminID);
+    }
 }

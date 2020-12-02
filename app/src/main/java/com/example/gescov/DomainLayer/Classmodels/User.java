@@ -35,7 +35,11 @@ public class User {
             return null;
         }
 
-        public String getValue() {
+        public static UserProfileType getUserProfileFromBoolean(boolean isStudent) {
+            return isStudent ? STUDDENT : TEACHER;
+        }
+
+        public String getText() {
             return value;
         }
 
@@ -60,6 +64,10 @@ public class User {
         this.profileType = UserProfileType.getUserProfileFromString(profileType);
     }
 
+    public void setProfileType(boolean isStudent) {
+        this.profileType = UserProfileType.getUserProfileFromBoolean(isStudent);
+    }
+
     public  User() {
         schoolsID = new ArrayList<>();
     }
@@ -72,12 +80,12 @@ public class User {
     //----------------------------------
     public void setIdContagion(String idContagion) { this.idContagion = idContagion; }
 
-    public User (String name, String id, List<String> schools, boolean risk, String profileType, String email, String tokenId) {
+    public User (String name, String id, List<String> schools, boolean risk, boolean isStudent, String email, String tokenId) {
         this.name = name;
         this.schoolsID =  schools;
         this.id = id;
         this.risk = risk;
-        this.profileType = UserProfileType.getUserProfileFromString(profileType);
+        this.profileType = UserProfileType.getUserProfileFromBoolean(isStudent);
         this.tokenId = tokenId;
         this.email = email;
     }
@@ -223,8 +231,8 @@ public class User {
         ServicesFactory.getDeleteSchoolClassroomResponseController().deleteSchoolClassroomRequest(classroomId, id);
     }
 
-    public void changeUSerProfile(String profile) {
-        ServicesFactory.getUserService().changeUserProfile(id,profile);
+    public void changeUserProfile(boolean isStudent) {
+        ServicesFactory.getUserService().changeUserProfile(id, isStudent);
     }
 
     public boolean getRisk() {

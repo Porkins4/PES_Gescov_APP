@@ -149,8 +149,8 @@ public class ModelController {
        userModelController.addStudentToCenter(school,result);
     }
 
-    public void changeUserProfile(String profile) {
-        userModelController.changeUserProfile(profile);
+    public void changeUserProfile(boolean isStudent) {
+        userModelController.changeUserProfile(isStudent);
     }
 
     public User.UserProfileType getUserType() {

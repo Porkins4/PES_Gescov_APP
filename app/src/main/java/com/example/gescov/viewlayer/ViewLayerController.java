@@ -13,7 +13,6 @@ import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
-import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import com.example.gescov.viewlayer.home.HomeViewModel;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -137,8 +136,8 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().addStudentToCenter(schoolName,result);
     }
 
-    public void changeUserProfile(String profile) {
-        DomainControlFactory.getModelController().changeUserProfile(profile);
+    public void changeUserProfile(boolean isStudent) {
+        DomainControlFactory.getModelController().changeUserProfile(isStudent);
     }
 
     public User.UserProfileType getUserType() {
@@ -267,5 +266,9 @@ public class ViewLayerController {
 
     public void refreshSchoolUsersList(List<User> usersList) {
         PresentationControlFactory.getSchoolUsersController().refreshList(usersList);
+    }
+
+    public void addNewAdminToSchool(String newAdminID) {
+        DomainControlFactory.getSchoolsModelCrontroller().addNewAdminToSchool(newAdminID);
     }
 }

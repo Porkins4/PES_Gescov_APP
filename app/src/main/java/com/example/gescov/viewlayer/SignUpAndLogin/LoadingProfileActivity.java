@@ -1,14 +1,14 @@
 package com.example.gescov.viewlayer.SignUpAndLogin;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.navigation.NavigationMenu;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 
 public class LoadingProfileActivity extends AppCompatActivity {
