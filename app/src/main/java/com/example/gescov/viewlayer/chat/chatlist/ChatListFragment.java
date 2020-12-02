@@ -1,9 +1,10 @@
-package com.example.gescov.viewlayer.chatlist;
+package com.example.gescov.viewlayer.chat.chatlist;
 
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.gescov.R;
+import com.example.gescov.viewlayer.chat.createchat.CreateChatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
@@ -47,8 +49,13 @@ public class ChatListFragment extends Fragment {
 
     private void initAddCreateChatButton() {
         floatingActionButton.setOnClickListener(
-                v -> System.out.println("stub: Creando nuevo chat...")
+                v -> startCreateChatActivity()
         );
+    }
+
+    private void startCreateChatActivity() {
+        Intent i = new Intent(getActivity(), CreateChatActivity.class);
+        startActivity(i);
     }
 
     private void setListViewItemsListener() {

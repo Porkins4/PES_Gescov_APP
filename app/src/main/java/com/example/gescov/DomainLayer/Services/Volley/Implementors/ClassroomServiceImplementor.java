@@ -37,8 +37,7 @@ public class ClassroomServiceImplementor implements IClassroomService {
                     }
                 }
         );
-        RequestQueue q = VolleyServices.getRequestQueue();
-        q.add(request);
+        VolleyServices.getRequestQueue().add(request);
     }
 
     @Override

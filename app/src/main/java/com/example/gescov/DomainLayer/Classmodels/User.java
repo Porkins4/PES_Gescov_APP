@@ -43,8 +43,8 @@ public class User {
 
     private String name;
     private List<String> schoolsID;
-    private School schools;
     private String id;
+    private String email;
     private String idContagion;
     private String ConfirmedInfected;
     private Boolean risk;
@@ -250,5 +250,35 @@ public class User {
         System.out.println(risk);
         System.out.println(profileType);
         for (String k: schoolsID) System.out.println(k);
+    }
+
+    public static User fromJSONtoUser(JSONObject jsonObject) {
+        User response = new User();
+        response.setId("null");
+        try {
+            String name = jsonObject.getString("name");
+            String id = jsonObject.getString("id");
+            String profileType = jsonObject.getString("profile");
+            String email = jsonObject.getString("email");
+            Boolean risk = jsonObject.getBoolean("risk");
+            List<String> schools = new ArrayList<>();
+            JSONArray a = jsonObject.getJSONArray("schoolsID");
+            for (int i = 0; i < a.length(); i++) {
+                schools.add(a.getString(i));
+            }
+            response.setId(id);
+            response.setName(name);
+            response.setProfileType(profileType);
+            response.setSchoolsID(schools);
+            response.setEmail(email);
+            response.setRisk(risk);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    private void setEmail(String email) {
+        this.email = email;
     }
 }

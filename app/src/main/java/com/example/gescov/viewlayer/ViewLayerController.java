@@ -13,6 +13,7 @@ import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import com.example.gescov.viewlayer.home.HomeViewModel;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -231,6 +232,33 @@ public class ViewLayerController {
 
     public void refreshSchoolRequests(List<SchoolRequest> schoolRequestsList) {
         PresentationControlFactory.getSchoolRequestsController().refreshList(schoolRequestsList);
+    }
+
+    //---------------------------------
+    //update user schools
+    public void updateSchools() {
+        DomainControlFactory.getModelController().updateSchools();
+    }
+
+    public void notifySchoolsReceivedToCreateChatActivity() {
+        PresentationControlFactory.getCreateChatController().notifySchoolsReceivedToCreateChatActivity();
+    }
+
+    public List<School> getUserSchools() {
+        return DomainControlFactory.getModelController().getUserSchools();
+    }
+
+    public void getContactsFromCenter(String schoolID) {
+        DomainControlFactory.getModelController().getContactsFromCenter(schoolID);
+    }
+
+    public void updateContactsFromCreateChat() {
+        PresentationControlFactory.getCreateChatController().updateContactsFromCreateChat();
+    }
+
+    public List<User> getContacts() {
+        return DomainControlFactory.getModelController().getContacts();
+
     }
 
     public void refreshUsersListBySchoolId() {

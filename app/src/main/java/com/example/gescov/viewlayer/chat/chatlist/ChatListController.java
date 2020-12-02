@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer.chatlist;
+package com.example.gescov.viewlayer.chat.chatlist;
 
 public class ChatListController {
 

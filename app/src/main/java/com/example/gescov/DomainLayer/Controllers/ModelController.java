@@ -2,6 +2,7 @@ package com.example.gescov.DomainLayer.Controllers;
 
 import android.util.Pair;
 
+
 import com.example.gescov.DomainLayer.Classmodels.Assignment;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
@@ -53,7 +54,7 @@ public class ModelController {
         return userModelController.getStudentsInClassroom(classroom);
     }
 
-    public void refreshAllSchools() throws JSONException {
+    public void getAllSchools() throws JSONException {
         DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList();
     }
 
@@ -230,6 +231,7 @@ public class ModelController {
     public GoogleSignInClient getGoogleSignInClient(String serverClientID) {
         return DomainControlFactory.getUserModelController().getGoogleSignInClient(serverClientID);
     }
+    //-----------------------------------------------------------------
 
     public void getNumContagionPerSchool() {
         DomainControlFactory.getSchoolsModelCrontroller().getNumContagionPerSchool();
@@ -242,6 +244,32 @@ public class ModelController {
 
     public void refreshSchoolRequestsInView(List<SchoolRequest> schoolRequestsList) {
         viewLayerController.refreshSchoolRequests(schoolRequestsList);
+    }
+
+    //-----------------------------------------------------------------
+    //Update Schools from a user
+    public void updateSchools() {
+        DomainControlFactory.getUserModelController().updateSchools();
+    }
+
+    public void notifySchoolsReceivedToCreateChatActivity() {
+        PresentationControlFactory.getViewLayerController().notifySchoolsReceivedToCreateChatActivity();
+    }
+
+    public List<School> getUserSchools() {
+        return DomainControlFactory.getSchoolsModelCrontroller().getUserSchools();
+    }
+
+    public void getContactsFromCenter(String schoolID) {
+        DomainControlFactory.getSchoolsModelCrontroller().getContactsFromCenter(schoolID);
+    }
+
+    public void updateContactsFromCreateChat() {
+        PresentationControlFactory.getViewLayerController().updateContactsFromCreateChat();
+    }
+
+    public List<User> getContacts() {
+        return DomainControlFactory.getUserModelController().getContacts();
     }
 
     public void refreshSchoolUsersListInView(List<User> usersList) {

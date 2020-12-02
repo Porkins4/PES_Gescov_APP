@@ -1,0 +1,12 @@
+
+X	java:S125A"<This block of commented-out lines of code should be removed.(ê’ğë8¶Ùùùà.
+V	java:S106˜"9Replace this use of System.out or System.err by a logger.(«‹Îõ8ã”Éúà.
+C
+java:S1068"-Remove this unused "longitude" private field.(ú²Ç˜
+V	java:S106—"9Replace this use of System.out or System.err by a logger.(ö¡¹ê8£ÁÇúà.
+W	java:S107-"BConstructor has 10 parameters, which is greater than 7 authorized.(¨Š±­
+U	java:S106™"9Replace this use of System.out or System.err by a logger.(”ÕÌk8ã”Éúà.
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ñªÿ¿ûÿÿÿÿ
+>
+java:S1116I"Remove this empty statement.(ôŸìúÿÿÿÿ8¶Ùùùà.
+V	java:S106š"9Replace this use of System.out or System.err by a logger.(¢øìÄ8îªÊúà.

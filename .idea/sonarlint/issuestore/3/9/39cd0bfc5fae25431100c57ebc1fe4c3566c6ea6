@@ -1,0 +1,17 @@
+
+J
+java:S11724"/Remove this unused method parameter "schoolId".(ÁÂ­—üÿÿÿÿ
+A
+java:S5411×"*Use the primitive boolean expression here.(—´Œõ
+t
+java:S4144å"^Update this method so that its implementation is not identical to "getLoggedUser" on line 140.(ûáÇj
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ý®èð
+A
+java:S5411Ì"*Use the primitive boolean expression here.(—´Œõ
+ƒ
+java:S1845Ç"lRename method "getUserID" to prevent any misunderstanding/clash with method "getUserId" defined on line 114.(À…µŠ
+˜
+java:S1845ò"|Rename method "updateContagionID" to prevent any misunderstanding/clash with method "updateContagionId" defined on line 233.(É¢ðþúÿÿÿÿ
+@
+java:S1172ž")Remove this unused method parameter "id".(« ÂÄ
+D	java:S108à")Either remove or fill this block of code.(÷¿­¹ÿÿÿÿÿ
