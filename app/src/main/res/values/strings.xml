@@ -168,6 +168,7 @@
 
     <!-- Strings for the Map -->
     <string name="mapa_text">Mapa</string>
+    <string name="write_message_hint">Escriu el teu missatge</string>
 
 
 </resources>
