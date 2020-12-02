@@ -1,6 +1,4 @@
 
+T
+java:S1118":Add a private constructor to hide the implicit public one.(Æ8·•Œ’â.
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(”ª…æ
-U
-java:S1068":Remove this unused "loadingProfileActivity" private field.(åÉºĞûÿÿÿÿ
-O
-java:S1118":Add a private constructor to hide the implicit public one.(Æ

@@ -44,6 +44,8 @@
     <!-- User all schools -->
     <string name="user_all_schools_title">Totes les escoles</string>
 
+    <!-- User my schools -->
+    <string name="my_schools_title">Les meves escoles</string>
 
     <string name="Catalan_create_school_form_school_name">Nom Escola</string>
     <string name="Catalan_create_school_form_school_address">Adreça Escola</string>
@@ -58,13 +60,13 @@
     <string name="school_details_protocol_access">Protocols</string>
     <string name="school_details_users_list">Llista d´usuaris</string>
     <string name="school_details_classrooms_list">Llista Aules</string>
-    <string name="school_details_request_list">Solicituds</string>
-    <string name="school_details_join">Solicitar accés</string>
+    <string name="school_details_request_list">Sol·licituds</string>
+    <string name="school_details_join">Sol·licitar accés</string>
     <string name="school_details_confirm_delete_message">Segur de que vols eliminar aquesta escola?</string>
 
 
     <!-- School Requests -->
-    <string name="school_requests_title">Solicituds de l´escola</string>
+    <string name="school_requests_title">Sol·licituds de l´escola</string>
     <!-- School Requests list item -->
     <string name="school_requests_list_item_accept">Acceptar</string>
     <string name="school_requests_list_item_reject">Rebutjar</string>

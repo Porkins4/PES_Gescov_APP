@@ -76,6 +76,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
                 schoolDetailsViewModel.getAddStudentToCenterResult(name.getText().toString());
             });
 
+            usersListButton.setVisibility(View.INVISIBLE);
         } else if (school.getAdministratorsList().contains(loggedUser.getId())) {
             joinSchoolButton.setText(getResources().getText(R.string.school_details_request_list));
             joinSchoolButton.setOnClickListener(e -> {

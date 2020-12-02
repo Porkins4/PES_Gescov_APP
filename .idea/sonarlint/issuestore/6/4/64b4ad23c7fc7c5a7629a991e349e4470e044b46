@@ -1,13 +1,17 @@
 
-R	java:S125¥"<This block of commented-out lines of code should be removed.(ºåŸÈ
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š’Þýùÿÿÿÿ
+K
+java:S1068"+Remove this unused "tokenId" private field.(Ú­®Õûÿÿÿÿ8£½Ä‘â.
+?
+java:S1068"+Remove this unused "schools" private field.(®¼Ðó
+L	java:S106"9Replace this use of System.out or System.err by a logger.(“¢µ‰
+t	java:S116"\Rename this field "ConfirmedInfected" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ²²éüÿÿÿÿ
+T	java:S125"<This block of commented-out lines of code should be removed.(å†çÄýÿÿÿÿ
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ñªÿ¿ûÿÿÿÿ
-r	java:S117>"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š’Þýùÿÿÿÿ8·‡½ùà.
-[	java:S106ò"9Replace this use of System.out or System.err by a logger.(—ÄÀöÿÿÿÿÿ8·‡½ùà.
-V	java:S106ñ"9Replace this use of System.out or System.err by a logger.(ö¡¹ê8·‡½ùà.
-V	java:S106ó"9Replace this use of System.out or System.err by a logger.(“¢µ‰8·‡½ùà.
-[	java:S106ô"9Replace this use of System.out or System.err by a logger.(§¼‰øøÿÿÿÿ8·‡½ùà.
-V	java:S106ð"9Replace this use of System.out or System.err by a logger.(«‹Îõ8·‡½ùà.
-v	java:S116-"\Rename this field "ConfirmedInfected" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ²²éüÿÿÿÿ
-^	java:S125Ó"<This block of commented-out lines of code should be removed.(å†çÄýÿÿÿÿ8·‡½ùà.
-H
-java:S1068*"+Remove this unused "schools" private field.(®¼Ðó8ôÑÂùà.
+L	java:S106"9Replace this use of System.out or System.err by a logger.(«‹Îõ
+O	java:S125"<This block of commented-out lines of code should be removed.(ºåŸÈ
+L	java:S106"9Replace this use of System.out or System.err by a logger.(ö¡¹ê
+Q	java:S106"9Replace this use of System.out or System.err by a logger.(§¼‰øøÿÿÿÿ
+I
+java:S1068")Remove this unused "email" private field.(ª«Õìùÿÿÿÿ8¢¦Ì‘â.
+Q	java:S106"9Replace this use of System.out or System.err by a logger.(—ÄÀöÿÿÿÿÿ

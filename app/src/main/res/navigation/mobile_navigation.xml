@@ -37,7 +37,7 @@
         android:label="blank_fragment"
         tools:layout="@layout/blank_fragment" />
     <fragment
-        android:id="@+id/blankFragment2"
+        android:id="@+id/user_schools"
         android:name="com.example.gescov.viewlayer.SchoolsActivities.studentschools.studentschools.StudentSchoolsListFragment"
         android:label="blank_fragment2"
         tools:layout="@layout/blank_fragment2" />

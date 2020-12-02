@@ -19,10 +19,6 @@
             android:id="@+id/ContagionList"
             android:icon="@drawable/medical_mask"
             android:title="@string/contagion_list" />
-        <item
-            android:id="@+id/schoolAdministration"
-            android:icon="@drawable/universidad"
-            android:title="@string/menu_schools_administration" />
 
         <item
             android:id="@+id/map_id"
@@ -30,27 +26,28 @@
             android:title="@string/mapa_text" />
 
         <item
-            android:id="@+id/logout"
-            android:icon="@drawable/logout"
-            android:title="@string/logout_text" />
+            android:id="@+id/user_schools"
+            android:icon="@drawable/universidad"
+            android:title="@string/my_schools_title" />
 
-
-
+        <item
+            android:id="@+id/user_all_schools"
+            android:icon="@drawable/universidad"
+            android:title="@string/user_all_schools_title" />
     </group>
     <group />
-
     <group
         android:id="@+id/group2"
         android:checkableBehavior="none">
         <item
-            android:id="@+id/user_all_schools"
-            android:icon="@android:drawable/btn_dialog"
-            android:title="@string/user_all_schools_title" />
-
+            android:id="@+id/schoolAdministration"
+            android:icon="@drawable/universidad"
+            android:title="@string/menu_schools_administration" />
         <item
-            android:id="@+id/blankFragment2"
-            android:icon="@android:drawable/btn_dialog"
+            android:id="@+id/logout"
+            android:icon="@drawable/logout"
             android:title="@string/logout_text" />
+
     </group>
 
 </menu>

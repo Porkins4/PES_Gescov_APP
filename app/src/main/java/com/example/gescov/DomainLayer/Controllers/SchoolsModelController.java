@@ -41,7 +41,8 @@ public class SchoolsModelController {
             JSONArray adminsArray = aux.getJSONArray("administratorsID");
             for (int admin = 0; admin < adminsArray.length(); admin++) {
                 listAdminsID.add(adminsArray.getString(admin));
-            };
+            }
+            ;
             String creatorSchoolID = aux.getString("creatorID");
             schoolsList.add(new School(idSchool, nameSchool, addressSchool, stateSchool, creatorSchoolID, emailSchool, phone, longitude, latitude, listAdminsID));
         }
