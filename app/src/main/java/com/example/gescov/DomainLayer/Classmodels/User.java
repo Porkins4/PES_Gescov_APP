@@ -54,6 +54,7 @@ public class User {
     private Boolean risk;
     private UserProfileType profileType;
     private String tokenId;
+    private String pic;
 
     public UserProfileType getProfileType() {
         return profileType;
@@ -80,7 +81,7 @@ public class User {
     //----------------------------------
     public void setIdContagion(String idContagion) { this.idContagion = idContagion; }
 
-    public User (String name, String id, List<String> schools, boolean risk, boolean isStudent, String email, String tokenId) {
+    public User (String name, String id, List<String> schools, boolean risk, boolean isStudent, String email, String tokenId, String pic) {
         this.name = name;
         this.schoolsID =  schools;
         this.id = id;
@@ -88,6 +89,7 @@ public class User {
         this.profileType = UserProfileType.getUserProfileFromBoolean(isStudent);
         this.tokenId = tokenId;
         this.email = email;
+        this.pic = pic;
     }
     //----------------------------------
 
@@ -120,7 +122,9 @@ public class User {
 
     public String getIdContagion() { return idContagion; }
 
-
+    public String getPic() {
+        return pic;
+    }
 
     public String getConfirmedInfected() { return ConfirmedInfected; }
 
@@ -256,6 +260,7 @@ public class User {
         System.out.println(id);
         System.out.println(risk);
         System.out.println(profileType);
+        System.out.println(pic);
         for (String k: schoolsID) System.out.println(k);
     }
 

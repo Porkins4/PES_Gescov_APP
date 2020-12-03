@@ -59,6 +59,9 @@ public class CreateChatViewModel extends ViewModel {
 
     public CreateChatAdapter getContactsAdapter(Context c) {
         contacts = PresentationControlFactory.getCreateChatController().getContacts();
+        for (User x: contacts) {
+            x.print();
+        }
         return new CreateChatAdapter(c,contacts);
     }
 
