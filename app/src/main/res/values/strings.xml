@@ -187,6 +187,7 @@
     <!-- Strings for the Ranking -->
     <string name="ranking_name">Ranking de centres</string>
     <string name="error_while_creating_chat">S\'ha produit un error mentre es creava el xat</string>
+    <string name="no_messages_yet_text">Encara no s\'ha enviat cap missatge</string>
 
 
 </resources>

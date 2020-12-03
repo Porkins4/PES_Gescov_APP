@@ -6,26 +6,20 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.gescov.DomainLayer.Classmodels.ChatViewerModel;
+import com.example.gescov.DomainLayer.Classmodels.ChatPreviewModel;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ChatListViewModel extends ViewModel {
     private MutableLiveData<Boolean> updateChatPreviews;
+    private List<ChatPreviewModel> chatPreviewModels;
 
     private MutableLiveData<Boolean> deleteChatResponse;
     private ChatListAdapter adapter;
 
     public ChatListAdapter getAdapter(Context c) {
-        List<ChatViewerModel> l = new ArrayList<>();
-        l.add(new ChatViewerModel("ajhfaklsjfhjks0","algunID","Anas Infad","parece que sigue petando la app...","01:27"));
-        l.add(new ChatViewerModel("ddhaslkjdhklja1", "algunID","Victor Murillo","Venga Isaac, que nos sacamos el chat!","04:00"));
-        l.add(new ChatViewerModel("ddhaslkjdhklja2", "algunID","Pablo Cebollada","Me gustan las pipas :)","13:00"));
-        l.add(new ChatViewerModel("ddhaslkjdhklja3", "algunID","Ponç Parramon","Como Scrum Master voy a daros latigazos...","20:15"));
-        l.add(new ChatViewerModel("ddhaslkjdhklja4", "algunID","Albert Maldonado","Arregla ya la G de google >:(","01.30"));
-        adapter = new ChatListAdapter(l,c);
+        adapter = new ChatListAdapter(chatPreviewModels,c);
         return adapter;
     }
 
@@ -45,12 +39,23 @@ public class ChatListViewModel extends ViewModel {
         deleteChatResponse.setValue(error);
     }
 
-    public LiveData<Boolean> getChatPreviews() {
+    public LiveData<Boolean> getChatPreviewModels() {
         if (updateChatPreviews == null) {
             updateChatPreviews = new MutableLiveData<>();
-            PresentationControlFactory.getChatListController().setChatListViewModel(this);
-            PresentationControlFactory.getChatListController().updateChatPreview();
+            updateList();
         }
         return updateChatPreviews;
+    }
+
+    public void setUpdateResult(List<ChatPreviewModel> chatPreviewModels, boolean error) {
+        if (!error) {
+            this.chatPreviewModels = chatPreviewModels;
+        }
+        updateChatPreviews.setValue(error);
+    }
+
+    public void updateList() {
+        PresentationControlFactory.getChatListController().setChatListViewModel(this);
+        PresentationControlFactory.getChatListController().updateChatPreview();
     }
 }

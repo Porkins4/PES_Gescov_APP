@@ -1,7 +1,10 @@
 package com.example.gescov.viewlayer.chat.chatlist;
 
 
+import com.example.gescov.DomainLayer.Classmodels.ChatPreviewModel;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+
+import java.util.List;
 
 public class ChatListController {
 
@@ -24,5 +27,9 @@ public class ChatListController {
 
     public void updateChatPreview() {
         PresentationControlFactory.getViewLayerController().updateChatPreview();
+    }
+
+    public void chatPreviewsUpdated(List<ChatPreviewModel> chatPreviewModels, boolean error) {
+        chatListViewModel.setUpdateResult(chatPreviewModels,error);
     }
 }

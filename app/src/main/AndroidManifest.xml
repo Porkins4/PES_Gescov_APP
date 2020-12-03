@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gescov">
-        <activity android:name=".viewlayer.chat.createchat.CreatingChatActivity"></activity>
+        <activity android:name=".viewlayer.chat.createchat.CreatingChatActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.chatview.ChatViewActivity" />
 
         <meta-data

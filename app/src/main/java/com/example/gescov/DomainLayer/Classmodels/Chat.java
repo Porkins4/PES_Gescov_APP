@@ -8,6 +8,7 @@ public class Chat {
     private String partA;
     private String partB;
 
+
     public Chat(String id, String partA, String partB) {
         this.id = id;
         this.partA = partA;

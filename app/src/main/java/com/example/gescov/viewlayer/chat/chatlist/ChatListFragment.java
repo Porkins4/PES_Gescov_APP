@@ -1,6 +1,5 @@
 package com.example.gescov.viewlayer.chat.chatlist;
 
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.AlertDialog;
@@ -43,21 +42,19 @@ public class ChatListFragment extends Fragment {
     private void initViewComponents() {
         listView = (ListView) root.findViewById(R.id.chat_fragment_list_view);
         floatingActionButton = (FloatingActionButton) root.findViewById(R.id.create_new_chat_button);
-        //initStub();
         setGetChatsListener();
         initAddCreateChatButton();
         setListViewItemsListener();//ojo que a lo mejor peta por hacerlo al principio del todo
     }
 
     private void setGetChatsListener() {
-        mViewModel.getChatPreviews().observe(getActivity(), error -> {
+        mViewModel.getChatPreviewModels().observe(getActivity(), error -> {
             if (!error) initListView();
         });
     }
 
     private void initListView() {
         listView.setAdapter(mViewModel.getAdapter(this.getContext()));
-
     }
 
     private void initAddCreateChatButton() {

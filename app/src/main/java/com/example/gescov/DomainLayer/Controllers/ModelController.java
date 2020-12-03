@@ -1,12 +1,12 @@
 package com.example.gescov.DomainLayer.Controllers;
 
 import android.util.Pair;
-import android.view.View;
 
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.Assignment;
 import com.example.gescov.DomainLayer.Classmodels.Chat;
+import com.example.gescov.DomainLayer.Classmodels.ChatPreviewModel;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.SchoolRequest;
@@ -21,11 +21,8 @@ import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
 
 public class ModelController {
 
@@ -291,6 +288,10 @@ public class ModelController {
     }
   
     public void updateChatPreview() {
-        //usar el controlador de chat aquí
+        DomainControlFactory.getChatModelController().updateChatPreview();
+    }
+
+    public void chatPreviewsUpdated(List<ChatPreviewModel> chatPreviewModels, boolean error) {
+        PresentationControlFactory.getViewLayerController().chatPreviewsUpdated(chatPreviewModels, error);
     }
 }

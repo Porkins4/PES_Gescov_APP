@@ -4,6 +4,7 @@ import android.util.Pair;
 
 import com.example.gescov.DomainLayer.Classmodels.Assignment;
 import com.example.gescov.DomainLayer.Classmodels.Chat;
+import com.example.gescov.DomainLayer.Classmodels.ChatPreviewModel;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.SchoolRequest;
@@ -289,5 +290,9 @@ public class ViewLayerController {
   
     public void updateChatPreview() {
         DomainControlFactory.getModelController().updateChatPreview();
+    }
+
+    public void chatPreviewsUpdated(List<ChatPreviewModel> chatPreviewModels, boolean error) {
+        PresentationControlFactory.getChatListController().chatPreviewsUpdated(chatPreviewModels, error);
     }
 }

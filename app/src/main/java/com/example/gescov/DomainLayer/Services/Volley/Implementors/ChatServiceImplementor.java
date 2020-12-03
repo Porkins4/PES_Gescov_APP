@@ -2,12 +2,16 @@ package com.example.gescov.DomainLayer.Services.Volley.Implementors;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IChatService;
 import com.example.gescov.DomainLayer.Services.Volley.VolleyServices;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,5 +39,26 @@ public class ChatServiceImplementor implements IChatService {
 
         } catch (JSONException e) {
         }
+    }
+
+    @Override
+    public void updateChatPreview(String userid) {
+        JsonArrayRequest request = new JsonArrayRequest(
+                Request.Method.GET, GESCOV_CHAT_URI + "/previews?userID=" + userid,null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        DomainControlFactory.getChatModelController().updateChatPreviewCallBack(response,false);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        DomainControlFactory.getChatModelController().updateChatPreviewCallBack(null,true);
+                    }
+                }
+        );
+        RequestQueue q = VolleyServices.getRequestQueue();
+        q.add(request);
     }
 }
