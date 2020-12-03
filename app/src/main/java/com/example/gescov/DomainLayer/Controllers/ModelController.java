@@ -227,5 +227,6 @@ public class ModelController {
     }
 
     public void updateChatPreview() {
+        //usar el controlador de chat aquí
     }
 }
