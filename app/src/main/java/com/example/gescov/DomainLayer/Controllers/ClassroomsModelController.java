@@ -30,8 +30,7 @@ public class ClassroomsModelController {
                 String name = aux.getString("name");
                 int rows = aux.getInt("numRows");
                 int columns = aux.getInt("numCols");
-                int capacity = aux.getInt("capacity");
-                classroomsList.add(new Classroom(id, name, rows, columns, capacity));
+                classroomsList.add(new Classroom(id, name, rows, columns));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -74,8 +73,7 @@ public class ClassroomsModelController {
                 String name = response.getString("name");
                 int rows = response.getInt("numRows");
                 int cols = response.getInt("numCols");
-                int capacity = response.getInt("capacity");
-                c = new Classroom(classID,name,rows,cols,capacity);
+                c = new Classroom(classID,name,rows,cols);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

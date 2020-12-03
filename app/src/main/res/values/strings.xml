@@ -44,6 +44,8 @@
     <!-- User all schools -->
     <string name="user_all_schools_title">Totes les escoles</string>
 
+    <!-- User my schools -->
+    <string name="my_schools_title">Les meves escoles</string>
 
     <string name="Catalan_create_school_form_school_name">Nom Escola</string>
     <string name="Catalan_create_school_form_school_address">Adreça Escola</string>
@@ -56,17 +58,23 @@
     <!-- School Details -->
     <string name="school_details_delete_school">Elimina escola</string>
     <string name="school_details_protocol_access">Protocols</string>
+    <string name="school_details_users_list">Llista d´usuaris</string>
     <string name="school_details_classrooms_list">Llista Aules</string>
-    <string name="school_details_request_list">Solicituds</string>
-    <string name="school_details_join">Solicitar accés</string>
+    <string name="school_details_request_list">Sol·licituds</string>
+    <string name="school_details_join">Sol·licitar accés</string>
     <string name="school_details_confirm_delete_message">Segur de que vols eliminar aquesta escola?</string>
 
 
     <!-- School Requests -->
-    <string name="school_requests_title">Solicituds de l´escola</string>
+    <string name="school_requests_title">Sol·licituds de l´escola</string>
     <!-- School Requests list item -->
     <string name="school_requests_list_item_accept">Acceptar</string>
     <string name="school_requests_list_item_reject">Rebutjar</string>
+
+    <!-- User School list item -->
+    <string name="user_school_make_admin_message_1">Vols fer a </string>
+    <string name="user_school_make_admin_message_2"> administrador d´aquest centre?</string>
+
 
 
     <!-- Classrooms -->
@@ -148,6 +156,7 @@
     <!-- default -->
     <string name="edit">Editar</string>
     <string name="update">Actualitza</string>
+    <string name="apply">Accepta</string>
     <string name="delete">Elimina</string>
     <string name="cancel">Cancela</string>
 
@@ -161,7 +170,7 @@
     <!-- Chat Fragment -->
     <string name="chat_fragment_menu_text">Xats</string>
     <string name="your_chats_text">Els teus xats personals</string>
-    <string name="chat_options">Opcions</string>
+    <string name="options">Opcions</string>
     <string name="confirm_delete_chat_message">Segur de que vols eliminar aquest xat?</string>
     <string name="yes_delete_chat">Elimina</string>
     <string name="no_delete_chat">Cancela</string>
@@ -169,6 +178,16 @@
     <!-- Strings for the Map -->
     <string name="mapa_text">Mapa</string>
     <string name="write_message_hint">Escriu el teu missatge</string>
+
+
+
+    <string name="title_activity_create_chat">Contactes del centre</string>
+    <string name="loading_user_schools_text">Carregant informació de les teves escoles</string>
+    <string name="loading_afiliates_from_selected_center">Carregant contactes del centre: </string>
+
+    <!-- Strings for the Ranking -->
+    <string name="ranking_name">Ranking de centres</string>
+
 
 
 </resources>

@@ -18,14 +18,15 @@ public class UserServiceImplementor implements IUserService {
     public UserServiceImplementor() {}
 
     @Override
-    public void changeUserProfile(String userId, String profile) {
-        System.out.println(GESCOV_USERS_URI + userId + "/" + profile);
+    public void changeUserProfile(String userId, boolean isStudent) {
+        Boolean metaIsStudent = isStudent;
+        System.out.println(GESCOV_USERS_URI + userId + "/" + metaIsStudent.toString());
         StringRequest request = new StringRequest(
-                Request.Method.PUT, GESCOV_USERS_URI + userId + "/" + profile,
+                Request.Method.PUT, GESCOV_USERS_URI + userId + "/" + metaIsStudent.toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        DomainControlFactory.getUserModelController().setUserType(profile);
+                        DomainControlFactory.getUserModelController().setUserType(metaIsStudent.toString());
                     }
                 },
                 new Response.ErrorListener() {

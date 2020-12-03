@@ -33,7 +33,6 @@ public class ClassroomDistributionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_classroom_ditribution);
         controller = new ClassroomDistributionController();
         initViewComponents();
-        //showDistribution();
     }
 
     private void initViewComponents() {
@@ -112,7 +111,7 @@ public class ClassroomDistributionActivity extends AppCompatActivity {
         Intent i = new Intent(this, MarkPositionInClassroom.class);
         i.putExtra("row",rowPos);
         i.putExtra("col",colPos);
-        i.putExtra("classSessionID","5fbbc7b717c2475bc4de4f48");
+        i.putExtra("classSessionID","5fc825d2c93e4419dd64fafb");
         startActivity(i);
     }
 }

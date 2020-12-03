@@ -28,7 +28,7 @@
         tools:layout="@layout/fragment_maps" />
     <fragment
         android:id="@+id/chat_list"
-        android:name="com.example.gescov.viewlayer.chatlist.ChatListFragment"
+        android:name="com.example.gescov.viewlayer.chat.chatlist.ChatListFragment"
         android:label="@string/your_chats_text"
         tools:layout="@layout/chat_list_fragment" />
     <fragment
@@ -37,9 +37,14 @@
         android:label="blank_fragment"
         tools:layout="@layout/blank_fragment" />
     <fragment
-        android:id="@+id/blankFragment2"
+        android:id="@+id/user_schools"
         android:name="com.example.gescov.viewlayer.SchoolsActivities.studentschools.studentschools.StudentSchoolsListFragment"
         android:label="blank_fragment2"
         tools:layout="@layout/blank_fragment2" />
+    <fragment
+        android:id="@+id/ranking_fragment"
+        android:name="com.example.gescov.viewlayer.ranking.RankingFragment"
+        android:label="fragment_ranking"
+        tools:layout="@layout/fragment_ranking" />
 
 </navigation>

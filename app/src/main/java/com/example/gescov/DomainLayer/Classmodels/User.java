@@ -1,7 +1,5 @@
 package com.example.gescov.DomainLayer.Classmodels;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IContagionService;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
@@ -16,10 +14,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.lifecycle.MutableLiveData;
+
 public class User {
 
     public enum UserProfileType {
-        STUDDENT ("Studdent"),
+        STUDDENT ("Student"),
         TEACHER ("Teacher");
 
         private final String value;
@@ -35,16 +35,26 @@ public class User {
             return null;
         }
 
+        public static UserProfileType getUserProfileFromBoolean(boolean isStudent) {
+            return isStudent ? STUDDENT : TEACHER;
+        }
+
+        public String getText() {
+            return value;
+        }
+
     }
 
     private String name;
     private List<String> schoolsID;
-    private School schools;
     private String id;
+    private String email;
     private String idContagion;
     private String ConfirmedInfected;
     private Boolean risk;
     private UserProfileType profileType;
+    private String tokenId;
+    private String pic;
 
     public UserProfileType getProfileType() {
         return profileType;
@@ -53,6 +63,10 @@ public class User {
 
     public void setProfileType(String profileType) {
         this.profileType = UserProfileType.getUserProfileFromString(profileType);
+    }
+
+    public void setProfileType(boolean isStudent) {
+        this.profileType = UserProfileType.getUserProfileFromBoolean(isStudent);
     }
 
     public  User() {
@@ -67,12 +81,15 @@ public class User {
     //----------------------------------
     public void setIdContagion(String idContagion) { this.idContagion = idContagion; }
 
-    public User (String name, List<String> schools, String id, boolean risk, String profileType) {
+    public User (String name, String id, List<String> schools, boolean risk, boolean isStudent, String email, String tokenId, String pic) {
         this.name = name;
         this.schoolsID =  schools;
         this.id = id;
         this.risk = risk;
-        this.profileType = UserProfileType.getUserProfileFromString(profileType);
+        this.profileType = UserProfileType.getUserProfileFromBoolean(isStudent);
+        this.tokenId = tokenId;
+        this.email = email;
+        this.pic = pic;
     }
     //----------------------------------
 
@@ -105,7 +122,9 @@ public class User {
 
     public String getIdContagion() { return idContagion; }
 
-
+    public String getPic() {
+        return pic;
+    }
 
     public String getConfirmedInfected() { return ConfirmedInfected; }
 
@@ -181,8 +200,8 @@ public class User {
         }
     }
 
-    public void updateSchoolClassroom(String classroomId, String classroomName, int numRows, int numCols, int capacity) {
-        ServicesFactory.getUpdateSchoolClassroomController().updateSchoolClassroom(classroomId, classroomName, numRows, numCols, capacity);
+    public void updateSchoolClassroom(String classroomId, String classroomName, int numRows, int numCols) {
+        ServicesFactory.getUpdateSchoolClassroomController().updateSchoolClassroom(classroomId, classroomName, numRows, numCols);
     }
 
     public void refresh() {
@@ -216,8 +235,8 @@ public class User {
         ServicesFactory.getDeleteSchoolClassroomResponseController().deleteSchoolClassroomRequest(classroomId, id);
     }
 
-    public void changeUSerProfile(String profile) {
-        ServicesFactory.getUserService().changeUserProfile(id,profile);
+    public void changeUserProfile(boolean isStudent) {
+        ServicesFactory.getUserService().changeUserProfile(id, isStudent);
     }
 
     public boolean getRisk() {
@@ -241,6 +260,37 @@ public class User {
         System.out.println(id);
         System.out.println(risk);
         System.out.println(profileType);
+        System.out.println(pic);
         for (String k: schoolsID) System.out.println(k);
+    }
+
+    public static User fromJSONtoUser(JSONObject jsonObject) {//mover el codigo aquí?
+        User response = new User();
+        response.setId("null");
+        try {
+            String name = jsonObject.getString("name");
+            String id = jsonObject.getString("id");
+            String profileType = jsonObject.getString("profile");
+            String email = jsonObject.getString("email");
+            Boolean risk = jsonObject.getBoolean("risk");
+            List<String> schools = new ArrayList<>();
+            JSONArray a = jsonObject.getJSONArray("schoolsID");
+            for (int i = 0; i < a.length(); i++) {
+                schools.add(a.getString(i));
+            }
+            response.setId(id);
+            response.setName(name);
+            response.setProfileType(profileType);
+            response.setSchoolsID(schools);
+            response.setEmail(email);
+            response.setRisk(risk);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    private void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -8,8 +8,8 @@ public class UpdateUserProfileController {
     public UpdateUserProfileController() {}
 
 
-    public void changeUserProfile(String profile) {
-        PresentationControlFactory.getViewLayerController().changeUserProfile(profile);
+    public void changeUserProfile(boolean isStudent) {
+        PresentationControlFactory.getViewLayerController().changeUserProfile(isStudent);
     }
 
     public User.UserProfileType getUserType() {

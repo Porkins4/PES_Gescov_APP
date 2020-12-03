@@ -2,23 +2,20 @@ package com.example.gescov.viewlayer;
 
 import android.util.Pair;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.example.gescov.DomainLayer.Classmodels.Assignment;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.SchoolRequest;
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
-import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
-import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
-import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import com.example.gescov.viewlayer.home.HomeViewModel;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-
 
 import org.json.JSONException;
 
@@ -139,8 +136,8 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().addStudentToCenter(schoolName,result);
     }
 
-    public void changeUserProfile(String profile) {
-        DomainControlFactory.getModelController().changeUserProfile(profile);
+    public void changeUserProfile(boolean isStudent) {
+        DomainControlFactory.getModelController().changeUserProfile(isStudent);
     }
 
     public User.UserProfileType getUserType() {
@@ -223,16 +220,59 @@ public class ViewLayerController {
         return DomainControlFactory.getModelController().getGoogleSignInClient(serverClientID);
     }
 
-    public void getNumContagionPerSchool() {
-        DomainControlFactory.getModelController().getNumContagionPerSchool();
+    public void getNumContagionPerSchool(int from  ) {
+        DomainControlFactory.getModelController().getNumContagionPerSchool(from);
     }
 
-    public void sendResponseOfNumContagionPerSchool(List<Pair<School, Integer>> schools) {
-        PresentationControlFactory.getMapController().sendResponseOfNumContagionPerSchool(schools);
+    public void sendResponseOfNumContagionPerSchool(List<Pair<School, Integer>> schools, int from) {
+        if (from == 1) {
+            PresentationControlFactory.getMapController().sendResponseOfNumContagionPerSchool(schools);
+        }
+        else PresentationControlFactory.getRankingController().sendResponseOfNumContagionPerSchool(schools);
+
     }
 
 
     public void refreshSchoolRequests(List<SchoolRequest> schoolRequestsList) {
         PresentationControlFactory.getSchoolRequestsController().refreshList(schoolRequestsList);
+    }
+
+    //---------------------------------
+    //update user schools
+    public void updateSchools() {
+        DomainControlFactory.getModelController().updateSchools();
+    }
+
+    public void notifySchoolsReceivedToCreateChatActivity() {
+        PresentationControlFactory.getCreateChatController().notifySchoolsReceivedToCreateChatActivity();
+    }
+
+    public List<School> getUserSchools() {
+        return DomainControlFactory.getModelController().getUserSchools();
+    }
+
+    public void getContactsFromCenter(String schoolID) {
+        DomainControlFactory.getModelController().getContactsFromCenter(schoolID);
+    }
+
+    public void updateContactsFromCreateChat() {
+        PresentationControlFactory.getCreateChatController().updateContactsFromCreateChat();
+    }
+
+    public List<User> getContacts() {
+        return DomainControlFactory.getModelController().getContacts();
+
+    }
+
+    public void refreshUsersListBySchoolId() {
+        DomainControlFactory.getSchoolsModelCrontroller().refreshUsersListBySchoolId();
+    }
+
+    public void refreshSchoolUsersList(List<User> usersList) {
+        PresentationControlFactory.getSchoolUsersController().refreshList(usersList);
+    }
+
+    public void addNewAdminToSchool(String newAdminID) {
+        DomainControlFactory.getSchoolsModelCrontroller().addNewAdminToSchool(newAdminID);
     }
 }

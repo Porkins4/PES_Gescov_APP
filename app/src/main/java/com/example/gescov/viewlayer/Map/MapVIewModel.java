@@ -29,6 +29,7 @@ public class MapVIewModel extends ViewModel {
         return schools;
     }
 
+
     public void setResponse( List<Pair<School, Integer>> schools ) {
         this.schools.setValue(schools);
 

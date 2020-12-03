@@ -38,6 +38,8 @@ public class SchoolServiceImplementor implements ISchoolService {
     private final String PUT_USER_TO_SCHOOL = "https://gescov.herokuapp.com/api/users/school/";
     private final String  SCHOOL_PUNTUATIONS = "https://gescov.herokuapp.com/api/schools/punctuation";
 
+    private final String GESCOV_SCHOOLS_URI = "https://gescov.herokuapp.com/api/schools/";
+    
     public SchoolServiceImplementor() {
         //Empty constructor
     }
@@ -233,7 +235,6 @@ public class SchoolServiceImplementor implements ISchoolService {
         });
 
         requestQueue.add(jsonObjectRequest);
-
     }
 
     @Override
@@ -255,13 +256,13 @@ public class SchoolServiceImplementor implements ISchoolService {
     }
 
     @Override
-    public void getNumContagionPerSchool() {
+    public void getNumContagionPerSchool(int from) {
         RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
                 Request.Method.GET,SCHOOL_PUNTUATIONS , null,
                 response -> {
                     try {
-                        DomainControlFactory.getSchoolsModelCrontroller().sendResponseOfNumContagionPerSchool(response);
+                        DomainControlFactory.getSchoolsModelCrontroller().sendResponseOfNumContagionPerSchool(response,from);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -270,5 +271,37 @@ public class SchoolServiceImplementor implements ISchoolService {
 
                 });
         requestQueue.add(jsonObjectRequest);
+    }
+
+    //-----------------------------------------------------------------
+    // used to update the information of all the schools belonging to the current user
+    @Override
+    public void getSchool(String schoolID) {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET, GESCOV_SCHOOLS_URI+"id/" + schoolID, null,
+                response -> DomainControlFactory.getSchoolsModelCrontroller().updateIthUserSchool(response),
+                error -> { });
+
+        VolleyServices.getRequestQueue().add(jsonObjectRequest);
+    }
+
+    @Override
+    public void getContactsFromCenter(String schoolID) {
+        JsonArrayRequest request = new JsonArrayRequest(
+                Request.Method.GET, GET_CHECK_LOGIN + "/school?schoolID=" + schoolID,null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        DomainControlFactory.getUserModelController().setContactsFromSelectedCenter(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        );
+        VolleyServices.getRequestQueue().add(request);
     }
 }

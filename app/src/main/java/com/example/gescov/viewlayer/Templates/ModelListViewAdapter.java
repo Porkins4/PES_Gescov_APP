@@ -17,7 +17,6 @@ public abstract  class ModelListViewAdapter extends BaseAdapter {
         inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-
     @Override
     public int getCount() {
         return modelList.size();
@@ -35,6 +34,5 @@ public abstract  class ModelListViewAdapter extends BaseAdapter {
 
     public void setList(List list) {
         this.modelList = list;
-        notifyDataSetChanged();
     }
 }

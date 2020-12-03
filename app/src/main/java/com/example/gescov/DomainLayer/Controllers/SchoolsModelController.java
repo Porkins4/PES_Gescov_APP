@@ -17,6 +17,12 @@ public class SchoolsModelController {
     private List<School> schoolsList;
     private School currentSchool;
 
+    //-----------------------------------------------------------------
+    //school from user
+    private List<School> userSchools;
+    private int num_schools;
+    private int num_received_schools;
+
     public void setSchoolsList(String schoolsString) throws JSONException {
         JSONArray response = new JSONArray(schoolsString);
         schoolsList = new ArrayList();
@@ -35,7 +41,8 @@ public class SchoolsModelController {
             JSONArray adminsArray = aux.getJSONArray("administratorsID");
             for (int admin = 0; admin < adminsArray.length(); admin++) {
                 listAdminsID.add(adminsArray.getString(admin));
-            };
+            }
+            ;
             String creatorSchoolID = aux.getString("creatorID");
             schoolsList.add(new School(idSchool, nameSchool, addressSchool, stateSchool, creatorSchoolID, emailSchool, phone, longitude, latitude, listAdminsID));
         }
@@ -100,20 +107,54 @@ public class SchoolsModelController {
         return null;
     }
 
-    public void getNumContagionPerSchool() {
-        ServicesFactory.getSchoolService().getNumContagionPerSchool();
+    public void getNumContagionPerSchool(int from ) {
+        ServicesFactory.getSchoolService().getNumContagionPerSchool(from);
     }
 
-    public void sendResponseOfNumContagionPerSchool(JSONArray response) throws JSONException {
+    public void sendResponseOfNumContagionPerSchool(JSONArray response, int from) throws JSONException {
         List<Pair<School, Integer>> schools = new ArrayList<>();
         for ( int i = 0; i < response.length(); ++i) {
             JSONObject aux = response.getJSONObject(i);
             JSONObject school = aux.getJSONObject("first");
-            School schoolAux = new School(school.getString("name"),school.getDouble("longitude"),school.getDouble("latitude"));
+            School schoolAux = School.fromJsonToSchool(school);
             Integer numCont = aux.getInt("second");
             Pair<School,Integer> schoolAndCont = new Pair<>(schoolAux,numCont);
             schools.add(schoolAndCont);
         }
-        DomainControlFactory.getModelController().sendResponseOfNumContagionPerSchool(schools);
+        DomainControlFactory.getModelController().sendResponseOfNumContagionPerSchool(schools,from);
+    }
+
+    public void refreshUsersListBySchoolId() {
+        ServicesFactory.getRefreshUsersBySchoolIdResponseController().refreshUsersBySchoolId(getCurrentSchool().getId());
+    }
+
+    //-----------------------------------------------------------------
+    // to update the schools from the user
+    public void updateSchools(List<String> schoolsID) {
+        userSchools = new ArrayList<>();
+        num_schools = schoolsID.size();
+        num_received_schools = 0;
+        for (String school: schoolsID) ServicesFactory.getSchoolService().getSchool(school);
+    }
+
+
+    public void updateIthUserSchool(JSONObject response) {
+        School aux = School.fromJsonToSchool(response);
+        userSchools.add(aux);
+        if (++num_received_schools == num_schools) DomainControlFactory.getModelController().notifySchoolsReceivedToCreateChatActivity();
+    }
+
+    public List<School> getUserSchools() {
+        return userSchools;
+    }
+
+    public void getContactsFromCenter(String schoolID) {
+        ServicesFactory.getSchoolService().getContactsFromCenter(schoolID);
+    }
+
+    public void addNewAdminToSchool(String newAdminID) {
+        String currentUserId = DomainControlFactory.getUserModelController().getLoggedInUser().getId();
+        String currentSchoolId = getCurrentSchool().getId();
+        ServicesFactory.getUpdateSchoolAdminResponseController().addNewAdmin(currentSchoolId, currentUserId, newAdminID);
     }
 }

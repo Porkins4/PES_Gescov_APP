@@ -2,7 +2,6 @@ package com.example.gescov.DomainLayer.Controllers;
 
 import android.util.Pair;
 
-import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.Assignment;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
@@ -10,18 +9,19 @@ import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.SchoolRequest;
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
-import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.ViewLayerController;
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
-import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.List;
+
+import androidx.lifecycle.MutableLiveData;
 
 public class ModelController {
 
@@ -149,8 +149,8 @@ public class ModelController {
        userModelController.addStudentToCenter(school,result);
     }
 
-    public void changeUserProfile(String profile) {
-        userModelController.changeUserProfile(profile);
+    public void changeUserProfile(boolean isStudent) {
+        userModelController.changeUserProfile(isStudent);
     }
 
     public User.UserProfileType getUserType() {
@@ -231,17 +231,48 @@ public class ModelController {
     public GoogleSignInClient getGoogleSignInClient(String serverClientID) {
         return DomainControlFactory.getUserModelController().getGoogleSignInClient(serverClientID);
     }
+    //-----------------------------------------------------------------
 
-    public void getNumContagionPerSchool() {
-        DomainControlFactory.getSchoolsModelCrontroller().getNumContagionPerSchool();
+    public void getNumContagionPerSchool(int from) {
+        DomainControlFactory.getSchoolsModelCrontroller().getNumContagionPerSchool(from);
     }
 
-    public void sendResponseOfNumContagionPerSchool(List<Pair<School, Integer>> schools) {
-        viewLayerController.sendResponseOfNumContagionPerSchool(schools);
+    public void sendResponseOfNumContagionPerSchool(List<Pair<School, Integer>> schools, int from) {
+        viewLayerController.sendResponseOfNumContagionPerSchool(schools,from);
 
     }
 
     public void refreshSchoolRequestsInView(List<SchoolRequest> schoolRequestsList) {
         viewLayerController.refreshSchoolRequests(schoolRequestsList);
+    }
+
+    //-----------------------------------------------------------------
+    //Update Schools from a user
+    public void updateSchools() {
+        DomainControlFactory.getUserModelController().updateSchools();
+    }
+
+    public void notifySchoolsReceivedToCreateChatActivity() {
+        PresentationControlFactory.getViewLayerController().notifySchoolsReceivedToCreateChatActivity();
+    }
+
+    public List<School> getUserSchools() {
+        return DomainControlFactory.getSchoolsModelCrontroller().getUserSchools();
+    }
+
+    public void getContactsFromCenter(String schoolID) {
+        DomainControlFactory.getSchoolsModelCrontroller().getContactsFromCenter(schoolID);
+    }
+
+    public void updateContactsFromCreateChat() {
+        PresentationControlFactory.getViewLayerController().updateContactsFromCreateChat();
+    }
+
+    public List<User> getContacts() {
+        return DomainControlFactory.getUserModelController().getContacts();
+    }
+
+    public void refreshSchoolUsersListInView(List<User> usersList) {
+        viewLayerController.refreshSchoolUsersList(usersList);
     }
 }
