@@ -1,6 +1,7 @@
 package com.example.gescov.viewlayer.chat.chatlist;
 
 import com.example.gescov.DomainLayer.Classmodels.Chat;
+import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
 
 public class ChatListController {
 
@@ -19,5 +20,9 @@ public class ChatListController {
 
     public void setChatListViewModel(ChatListViewModel chatListViewModel) {
         this.chatListViewModel = chatListViewModel;
+    }
+
+    public void updateChatPreview() {
+        PresentationControlFactory.getViewLayerController().updateChatPreview();
     }
 }

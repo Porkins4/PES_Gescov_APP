@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer;
+package com.example.gescov.ViewLayer;
 
 import android.util.Pair;
 
@@ -277,7 +277,6 @@ public class ViewLayerController {
         DomainControlFactory.getSchoolsModelCrontroller().addNewAdminToSchool(newAdminID);
     }
 
-
     //----------------------------------
     //Chats
     public void createChat(String targetID) {
@@ -286,5 +285,9 @@ public class ViewLayerController {
 
     public void chatCreatedInBack(Chat chat, boolean error) {
         PresentationControlFactory.getCreateChatController().chatCreatedInBack(chat, error);
+    }
+  
+    public void updateChatPreview() {
+        DomainControlFactory.getModelController().updateChatPreview();
     }
 }
