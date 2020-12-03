@@ -3,6 +3,7 @@ package com.example.gescov.ViewLayer;
 import android.util.Pair;
 
 import com.example.gescov.DomainLayer.Classmodels.Assignment;
+import com.example.gescov.DomainLayer.Classmodels.Chat;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.SchoolRequest;
@@ -276,6 +277,16 @@ public class ViewLayerController {
         DomainControlFactory.getSchoolsModelCrontroller().addNewAdminToSchool(newAdminID);
     }
 
+    //----------------------------------
+    //Chats
+    public void createChat(String targetID) {
+        DomainControlFactory.getModelController().createChat(targetID);
+    }
+
+    public void chatCreatedInBack(Chat chat, boolean error) {
+        PresentationControlFactory.getCreateChatController().chatCreatedInBack(chat, error);
+    }
+  
     public void updateChatPreview() {
         DomainControlFactory.getModelController().updateChatPreview();
     }

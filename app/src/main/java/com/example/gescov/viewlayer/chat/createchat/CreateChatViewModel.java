@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.gescov.DomainLayer.Classmodels.Chat;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
@@ -20,6 +21,10 @@ public class CreateChatViewModel extends ViewModel {
     private List<School> userschools;
     private List<User> contacts;
 
+    private String targetName;
+    private String targetID;
+    private MutableLiveData<Boolean> created;
+    private Chat chatCreated;
 
     public LiveData<Boolean> getSchoolsRequest() {
         if (getSchoolsRequest == null) {
@@ -59,9 +64,6 @@ public class CreateChatViewModel extends ViewModel {
 
     public CreateChatAdapter getContactsAdapter(Context c) {
         contacts = PresentationControlFactory.getCreateChatController().getContacts();
-        for (User x: contacts) {
-            x.print();
-        }
         return new CreateChatAdapter(c,contacts);
     }
 
@@ -75,5 +77,32 @@ public class CreateChatViewModel extends ViewModel {
 
     public String getUserName(int position) {
         return contacts.get(position).getName();
+    }
+
+    public String getUserID(int position) {
+        return contacts.get(position).getId();
+    }
+
+    public void setTarget(String targetName, String targetID) {
+        this.targetName = targetName;
+        this.targetID = targetID;
+    }
+
+    public LiveData<Boolean> sendChatRequest() {
+        if (created == null) {
+            created = new MutableLiveData<>();
+            PresentationControlFactory.getCreateChatController().setCreateChatViewModel(this);
+            PresentationControlFactory.getCreateChatController().createChat(targetID);
+        }
+        return created;
+    }
+
+    public void setCreatedChat(Chat chat, boolean error) {
+        if (!error) this.chatCreated = chat;
+        created.setValue(error);
+    }
+
+    public String getChatID() {
+        return chatCreated.getID();
     }
 }
