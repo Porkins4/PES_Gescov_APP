@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".viewlayer.Singletons.GescovApplication"
@@ -22,7 +23,6 @@
         <activity android:name=".viewlayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity" />
         <activity android:name=".viewlayer.chat.createchat.CreateChatActivity" />
         <activity android:name=".viewlayer.schoolrequests.SchoolRequestsListActivity" />
-        <activity android:name=".viewlayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity" />
         <activity android:name=".viewlayer.UpdateUserProfile.UpdateUserProfileActivity" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity" />
         <activity android:name=".viewlayer.home.DailyTestActivity" />
@@ -40,7 +40,6 @@
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.CreateSchoolFormActivity" />
         <activity android:name=".viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity" />
-        <activity android:name=".viewlayer.schoolrequests.SchoolRequestsListActivity" />
         <activity
             android:name=".viewlayer.navigation.NavigationMenu"
             android:label="@string/title_activity_navigation_menu"
