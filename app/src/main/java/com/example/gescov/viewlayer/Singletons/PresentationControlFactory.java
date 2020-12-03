@@ -19,7 +19,7 @@ import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.School
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolsCrontroller;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionController;
 import com.example.gescov.viewlayer.UpdateUserProfile.UpdateUserProfileController;
-import com.example.gescov.viewlayer.ViewLayerController;
+import com.example.gescov.ViewLayer.ViewLayerController;
 import com.example.gescov.viewlayer.home.NotifyContagionController;
 import com.example.gescov.viewlayer.home.TracingTestController;
 import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
@@ -46,10 +46,10 @@ public class PresentationControlFactory {
     private static SchoolUsersController schoolUsersController;
     private static CreateChatController createChatController;
 
-    public static ViewLayerController getViewLayerController() {
+    public static com.example.gescov.ViewLayer.ViewLayerController getViewLayerController() {
         if (viewLayerController != null)
             return viewLayerController;
-        viewLayerController = new ViewLayerController();
+        viewLayerController = new com.example.gescov.ViewLayer.ViewLayerController();
         return viewLayerController;
     }
     public static SchoolsCrontroller getSchoolsCrontroller() {

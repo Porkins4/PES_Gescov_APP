@@ -1,6 +1,7 @@
 package com.example.gescov.DomainLayer.Controllers;
 
 import android.util.Pair;
+import android.view.View;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -15,7 +16,7 @@ import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.S
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
-import com.example.gescov.viewlayer.ViewLayerController;
+import com.example.gescov.ViewLayer.ViewLayerController;
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
