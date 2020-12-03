@@ -17,10 +17,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".viewlayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity"></activity>
+        <activity android:name=".viewlayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar"/>
         <activity android:name=".viewlayer.chat.createchat.CreateChatActivity"></activity>
         <activity android:name=".viewlayer.schoolrequests.SchoolRequestsListActivity" />
-        <activity android:name=".viewlayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity" />
         <activity android:name=".viewlayer.UpdateUserProfile.UpdateUserProfileActivity" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity" />
         <activity android:name=".viewlayer.home.DailyTestActivity" />
@@ -29,7 +29,7 @@
         <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.EditClassroomFormActivity" />
         <activity
             android:name=".viewlayer.ClassroomActivities.ClassroomDistribution.ClassroomDistributionActivity"
-            android:label="@string/title_activity_classroom_distribution" />
+            android:theme="@style/Theme.Gescov.NoActionBar"/>
         <activity android:name=".viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroom" />
         <activity android:name=".viewlayer.home.CovidNotificationActivity" />
         <activity
@@ -38,7 +38,6 @@
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.CreateSchoolFormActivity" />
         <activity android:name=".viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity" />
-        <activity android:name=".viewlayer.schoolrequests.SchoolRequestsListActivity" />
         <activity
             android:name=".viewlayer.navigation.NavigationMenu"
             android:label="@string/title_activity_navigation_menu"
