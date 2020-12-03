@@ -214,4 +214,8 @@ public class ViewLayerController {
     public GoogleSignInClient getGoogleSignInClient(String serverClientID) {
         return DomainControlFactory.getModelController().getGoogleSignInClient(serverClientID);
     }
+
+    public void updateChatPreview() {
+        DomainControlFactory.getModelController().updateChatPreview();
+    }
 }

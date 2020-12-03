@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatListViewModel extends ViewModel {
+    private MutableLiveData<Boolean> updateChatPreviews;
+
     private MutableLiveData<Boolean> deleteChatResponse;
     private ChatListAdapter adapter;
 
@@ -41,5 +43,14 @@ public class ChatListViewModel extends ViewModel {
 
     public void setDeleteResult(boolean error) {
         deleteChatResponse.setValue(error);
+    }
+
+    public LiveData<Boolean> getChatPreviews() {
+        if (updateChatPreviews == null) {
+            updateChatPreviews = new MutableLiveData<>();
+            PresentationControlFactory.getChatListController().setChatListViewModel(this);
+            PresentationControlFactory.getChatListController().updateChatPreview();
+        }
+        return updateChatPreviews;
     }
 }

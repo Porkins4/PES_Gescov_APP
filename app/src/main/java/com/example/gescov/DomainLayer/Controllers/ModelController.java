@@ -225,4 +225,7 @@ public class ModelController {
     public GoogleSignInClient getGoogleSignInClient(String serverClientID) {
         return DomainControlFactory.getUserModelController().getGoogleSignInClient(serverClientID);
     }
+
+    public void updateChatPreview() {
+    }
 }
