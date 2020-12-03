@@ -35,5 +35,8 @@ public class RankingViewModel extends ViewModel {
         this.schools = schools;
         received.setValue(true);
     }
+    public List<Pair<School,Integer>> getContagionperSchools () {
+        return schools;
+    }
 
 }

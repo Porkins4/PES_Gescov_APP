@@ -76,7 +76,6 @@
     <string name="user_school_make_admin_message_2"> administrador d´aquest centre?</string>
 
 
-
     <!-- Classrooms -->
     <string name="classroom_rows">Files</string>
     <string name="classroom_cols">Columnes</string>
@@ -179,14 +178,12 @@
     <string name="mapa_text">Mapa</string>
 
 
-
     <string name="title_activity_create_chat">Contactes del centre</string>
     <string name="loading_user_schools_text">Carregant informació de les teves escoles</string>
     <string name="loading_afiliates_from_selected_center">Carregant contactes del centre: </string>
 
     <!-- Strings for the Ranking -->
     <string name="ranking_name">Ranking de centres</string>
-
 
 
 </resources>

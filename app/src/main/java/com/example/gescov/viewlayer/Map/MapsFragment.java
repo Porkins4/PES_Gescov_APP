@@ -70,6 +70,7 @@ public class MapsFragment extends Fragment {
                 Integer numContagion = schools.get(i).second;
                 double longitude = schools.get(i).first.getLongitude();
                 double latitude = schools.get(i).first.getLatitude();
+                System.out.println(latitude +','+longitude);
                 if ( numContagion >= 7 ) {
 
                     mMap.addCircle(new CircleOptions().center(new LatLng(latitude,longitude)).radius(40.0).strokeColor(Color.argb(130,150,50,50)).fillColor(Color.argb(130,150,50,50)));

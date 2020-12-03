@@ -1,40 +1,23 @@
 package com.example.gescov.viewlayer.ranking;
 
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-
+import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.R;
-import com.example.gescov.viewlayer.Map.MapVIewModel;
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.IAxisValueFormatter;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class RankingFragment extends Fragment {
     private View thisView;
-    private BarChart barChart;
     private RankingViewModel rankingViewModel;
     private ListView listView;
-
+    private List<Pair<School,Integer>> schools;
 
     public RankingFragment() {
         // Required empty public constructor
@@ -51,13 +34,25 @@ public class RankingFragment extends Fragment {
         thisView = inflater.inflate(R.layout.fragment_ranking, container, false);
         listView = thisView.findViewById(R.id.ranking_list);
         rankingViewModel = new  ViewModelProvider(getActivity()).get(RankingViewModel.class);
-        rankingViewModel.getRanking().observe(getActivity(), recieved -> {
-            if ( recieved ) {
+        rankingViewModel.getRanking().observe(getActivity(), received -> {
+            if ( received ) {
                 listView.setAdapter(rankingViewModel.getAdapter(getActivity()));
+                schools = rankingViewModel.getContagionperSchools();
+                setListViewListener();
             }
         });
-        RankingAdapter rankingAdapter = rankingViewModel.getAdapter(getActivity());
+
         return thisView;
+    }
+
+    private void setListViewListener() {
+        // en esta función habra que hacer otro observer para obtener lo infectados por mes
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Intent intent = new Intent(getContext(),SchoolGraphActivity.class);
+            intent.putExtra("name",schools.get(position).first.getName());
+            intent.putExtra("numContagion",schools.get(position).second);
+            startActivity(intent);
+        });
     }
 
 
