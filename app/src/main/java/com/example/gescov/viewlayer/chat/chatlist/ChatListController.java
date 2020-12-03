@@ -1,5 +1,7 @@
 package com.example.gescov.viewlayer.chat.chatlist;
 
+import com.example.gescov.DomainLayer.Classmodels.Chat;
+
 public class ChatListController {
 
     private ChatListViewModel chatListViewModel;

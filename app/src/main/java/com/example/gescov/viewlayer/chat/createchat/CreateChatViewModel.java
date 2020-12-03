@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.gescov.DomainLayer.Classmodels.Chat;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
@@ -23,6 +24,7 @@ public class CreateChatViewModel extends ViewModel {
     private String targetName;
     private String targetID;
     private MutableLiveData<Boolean> created;
+    private Chat chatCreated;
 
     public LiveData<Boolean> getSchoolsRequest() {
         if (getSchoolsRequest == null) {
@@ -89,8 +91,18 @@ public class CreateChatViewModel extends ViewModel {
     public LiveData<Boolean> sendChatRequest() {
         if (created == null) {
             created = new MutableLiveData<>();
+            PresentationControlFactory.getCreateChatController().setCreateChatViewModel(this);
             PresentationControlFactory.getCreateChatController().createChat(targetID);
         }
         return created;
+    }
+
+    public void setCreatedChat(Chat chat, boolean error) {
+        if (!error) this.chatCreated = chat;
+        created.setValue(error);
+    }
+
+    public String getChatID() {
+        return chatCreated.getID();
     }
 }

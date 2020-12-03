@@ -1,5 +1,6 @@
 package com.example.gescov.viewlayer.chat.createchat;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
@@ -13,12 +14,14 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.chatview.ChatViewActivity;
 
 public class CreateChatActivity extends AppCompatActivity {
 
+    private static final int CREATE_CHAT_REQUEST_CODE = 1;
     private CreateChatViewModel createChatViewModel;
     private Spinner spinner;
     private LinearLayout selectSchoolBar;
@@ -90,9 +93,20 @@ public class CreateChatActivity extends AppCompatActivity {
                     Intent i = new Intent(this, CreatingChatActivity.class);
                     i.putExtra("targetID", createChatViewModel.getUserID(position));
                     i.putExtra("targetName", createChatViewModel.getUserName(position));
-                    startActivity(i);
+                    startActivityForResult(i,CREATE_CHAT_REQUEST_CODE);
                 }
         );
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CREATE_CHAT_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                String result = data.getStringExtra("chatID");
+                System.out.println("creat correctament: " + result);
+            } else Toast.makeText(getApplicationContext(), getString(R.string.error_while_creating_chat), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void initViewComponents() {

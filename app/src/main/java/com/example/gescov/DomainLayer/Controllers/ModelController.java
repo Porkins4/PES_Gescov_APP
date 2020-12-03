@@ -4,6 +4,7 @@ import android.util.Pair;
 
 
 import com.example.gescov.DomainLayer.Classmodels.Assignment;
+import com.example.gescov.DomainLayer.Classmodels.Chat;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.SchoolRequest;
@@ -276,7 +277,13 @@ public class ModelController {
         viewLayerController.refreshSchoolUsersList(usersList);
     }
 
+    //------------------------------------
+    //Create Chat
     public void createChat(String targetID) {
         DomainControlFactory.getChatModelController().createChat(targetID);
+    }
+
+    public void chatCreatedInBack(Chat chat, boolean error) {
+        PresentationControlFactory.getViewLayerController().chatCreatedInBack(chat, error);
     }
 }
