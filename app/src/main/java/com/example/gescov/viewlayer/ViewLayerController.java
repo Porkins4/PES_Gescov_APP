@@ -275,4 +275,11 @@ public class ViewLayerController {
     public void addNewAdminToSchool(String newAdminID) {
         DomainControlFactory.getSchoolsModelCrontroller().addNewAdminToSchool(newAdminID);
     }
+
+
+    //----------------------------------
+    //Chats
+    public void createChat(String targetID) {
+        DomainControlFactory.getModelController().createChat(targetID);
+    }
 }

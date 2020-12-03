@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,9 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.gescov.R;
+import com.example.gescov.viewlayer.chatview.ChatViewActivity;
 
 public class CreateChatActivity extends AppCompatActivity {
 
@@ -86,7 +87,10 @@ public class CreateChatActivity extends AppCompatActivity {
     private void setListViewListener() {
         listView.setOnItemClickListener(
                 (parent, view, position, id) -> {//startChatWithTheUser
-                    Toast.makeText(getApplicationContext(), "¿iniciar chat con " + createChatViewModel.getUserName(position) + "?", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(this, CreatingChatActivity.class);
+                    i.putExtra("targetID", createChatViewModel.getUserID(position));
+                    i.putExtra("targetName", createChatViewModel.getUserName(position));
+                    startActivity(i);
                 }
         );
     }

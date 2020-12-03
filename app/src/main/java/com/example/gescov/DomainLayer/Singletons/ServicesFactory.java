@@ -12,11 +12,13 @@ import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.Upda
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateSchoolRequestStatusResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateUserRiskResponseController;
 import com.example.gescov.DomainLayer.Services.Volley.Implementors.AssignmentServiceImplementor;
+import com.example.gescov.DomainLayer.Services.Volley.Implementors.ChatServiceImplementor;
 import com.example.gescov.DomainLayer.Services.Volley.Implementors.ClassroomServiceImplementor;
 import com.example.gescov.DomainLayer.Services.Volley.Implementors.ContagionServiceImplementor;
 import com.example.gescov.DomainLayer.Services.Volley.Implementors.SchoolServiceImplementor;
 import com.example.gescov.DomainLayer.Services.Volley.Implementors.UserServiceImplementor;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IAssignmentService;
+import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IChatService;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IClassroomService;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IContagionService;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
@@ -36,6 +38,7 @@ public class ServicesFactory {
     private static IUserService userService;
     private static IClassroomService classroomService;
     private static IAssignmentService assignmentService;
+    private static IChatService chatService;
 
     //retrofit
     private static DeleteSchoolResponseController deleteSchoolResponseController;
@@ -154,5 +157,11 @@ public class ServicesFactory {
         if (updateSchoolAdminResponseController != null) return updateSchoolAdminResponseController;
         updateSchoolAdminResponseController = new UpdateSchoolAdminResponseController(getRetrofit());
         return updateSchoolAdminResponseController;
+    }
+
+    public static IChatService getChatService() {
+        if (chatService != null) return chatService;
+        chatService = new ChatServiceImplementor();
+        return chatService;
     }
 }

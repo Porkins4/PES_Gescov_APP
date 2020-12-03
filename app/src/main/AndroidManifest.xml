@@ -16,16 +16,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gescov">
-        <activity android:name=".viewlayer.chatview.ChatView"></activity>
+        <activity android:name=".viewlayer.chat.createchat.CreatingChatActivity"></activity>
+        <activity android:name=".viewlayer.chatview.ChatViewActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".viewlayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity"
-            android:theme="@style/Theme.Gescov.NoActionBar"/>
-        <activity android:name=".viewlayer.chat.createchat.CreateChatActivity"
-            android:theme="@style/Theme.Gescov.NoActionBar"/>
+        <activity
+            android:name=".viewlayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
+        <activity
+            android:name=".viewlayer.chat.createchat.CreateChatActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.schoolrequests.SchoolRequestsListActivity" />
         <activity android:name=".viewlayer.UpdateUserProfile.UpdateUserProfileActivity" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity" />

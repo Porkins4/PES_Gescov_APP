@@ -275,4 +275,8 @@ public class ModelController {
     public void refreshSchoolUsersListInView(List<User> usersList) {
         viewLayerController.refreshSchoolUsersList(usersList);
     }
+
+    public void createChat(String targetID) {
+        DomainControlFactory.getChatModelController().createChat(targetID);
+    }
 }

@@ -37,4 +37,8 @@ public class CreateChatController {
     public List<User> getContacts() {
         return PresentationControlFactory.getViewLayerController().getContacts();
     }
+
+    public void createChat(String targetID) {
+        PresentationControlFactory.getViewLayerController().createChat(targetID);
+    }
 }
