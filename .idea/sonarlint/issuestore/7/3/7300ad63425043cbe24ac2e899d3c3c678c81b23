@@ -1,0 +1,21 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ýðäøýÿÿÿÿ
+]	java:S110"<This class has 9 parents which is greater than 5 authorized.(õ›³£ÿÿÿÿÿ8ëÝé±â.
+J
+java:S16044"(Make this anonymous inner class a lambda(Û¹ïàÿÿÿÿÿ8ëÝé±â.
+J
+java:S1604D"(Make this anonymous inner class a lambda(ï³‰×üÿÿÿÿ8ëÝé±â.
+U
+java:S1128"3Remove this unused import 'org.json.JSONException'.(¹Ó·úÿÿÿÿ8ëÝé±â.
+R
+java:S1128"0Remove this unused import 'org.json.JSONObject'.(œÖ´üþÿÿÿÿ8ëÝé±â.
+Q
+java:S1128"/Remove this unused import 'org.json.JSONArray'.(¬¸Ê’üÿÿÿÿ8ëÝé±â.
+{
+java:S1450"YRemove the "controller" field and declare it as a local variable in the relevant methods.(”¶§®üÿÿÿÿ8ëÝé±â.
+U	java:S1068"9Replace this use of System.out or System.err by a logger.(¿ÅÌ½8ëÝé±â.
+Z	java:S106G"9Replace this use of System.out or System.err by a logger.(¬ë€Õýÿÿÿÿ8ëÝé±â.
+M
+java:S1172n"0Remove this unused method parameter "studentId".(¶æ‚Â8ëÝé±â.
+P
+java:S1068".Remove this unused "controller" private field.(”¶§®üÿÿÿÿ8ëÝé±â.

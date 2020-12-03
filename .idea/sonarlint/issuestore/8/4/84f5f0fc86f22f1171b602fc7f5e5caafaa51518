@@ -1,0 +1,11 @@
+
+[
+java:S1128">Remove this unused import 'com.android.volley.toolbox.Volley'.(¢â“∂8äùå¥‚.
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ä‘ö≥
+Y
+java:S1128"<Remove this unused import 'com.android.volley.RequestQueue'.(π˛Ã◊8äùå¥‚.
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(áΩ¯Â˝ˇˇˇˇ8ò∞Ö¥‚.
+U	java:S106"9Replace this use of System.out or System.err by a logger.(•≥≠ƒ8ÛÜõ¥‚.
+I
+java:S1602",Remove useless curly braces around statement(ö◊–‘8ÛÜõ¥‚.
+J	java:S108#")Either remove or fill this block of code.(˜ø≠πˇˇˇˇˇ8µä´¥‚.

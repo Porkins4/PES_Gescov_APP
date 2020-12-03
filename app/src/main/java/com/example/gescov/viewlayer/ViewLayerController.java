@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer;
+package com.example.gescov.ViewLayer;
 
 import android.util.Pair;
 
@@ -274,5 +274,9 @@ public class ViewLayerController {
 
     public void addNewAdminToSchool(String newAdminID) {
         DomainControlFactory.getSchoolsModelCrontroller().addNewAdminToSchool(newAdminID);
+    }
+
+    public void updateChatPreview() {
+        DomainControlFactory.getModelController().updateChatPreview();
     }
 }

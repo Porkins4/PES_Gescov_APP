@@ -2,6 +2,7 @@ package com.example.gescov.DomainLayer.Controllers;
 
 import android.util.Pair;
 
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.gescov.DomainLayer.Classmodels.Assignment;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
@@ -18,6 +19,7 @@ import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -174,7 +176,7 @@ public class ModelController {
     }
 
     public void updateHomeViewModel(String name, boolean risk) {
-        PresentationControlFactory.getViewLayerController().updateHomeViewModel(name, risk);
+        //PresentationControlFactory.getViewLayerController().updateHomeViewModel(name, risk);
     }
 
     public void notifyPossibleContagion(MutableLiveData<ContagionRequestResult> result) {
@@ -274,5 +276,9 @@ public class ModelController {
 
     public void refreshSchoolUsersListInView(List<User> usersList) {
         viewLayerController.refreshSchoolUsersList(usersList);
+    }
+
+    public void updateChatPreview() {
+        //usar el controlador de chat aquí
     }
 }
