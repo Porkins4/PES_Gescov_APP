@@ -229,10 +229,11 @@ public class UserModelController {
             String id = response.getString("id");
             String name = response.getString("name");
             String email = response.getString("email");
+            String pic = response.getString("pic");
             boolean isStudent = response.getBoolean("student");
             boolean risk = response.getBoolean("risk");
             String tokenId = response.getString("id");
-            user = new User(name, id, schoolsList, risk, isStudent, email, tokenId);
+            user = new User(name, id, schoolsList, risk, isStudent, email, tokenId, pic);
         } catch (JSONException e) {
             e.printStackTrace();
         }
