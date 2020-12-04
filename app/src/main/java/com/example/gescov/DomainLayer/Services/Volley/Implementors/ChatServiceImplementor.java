@@ -61,4 +61,15 @@ public class ChatServiceImplementor implements IChatService {
         RequestQueue q = VolleyServices.getRequestQueue();
         q.add(request);
     }
+
+    @Override
+    public void getMessages(String chatID) {
+        JsonArrayRequest request = new JsonArrayRequest(
+                Request.Method.GET, GESCOV_CHAT_URI + "/" + chatID + "/messages/",null,
+                response -> DomainControlFactory.getChatModelController().updateChatMessages(response, chatID, false),
+                error -> DomainControlFactory.getChatModelController().updateChatMessages(null,chatID,true)
+        );
+
+        VolleyServices.getRequestQueue().add(request);
+    }
 }

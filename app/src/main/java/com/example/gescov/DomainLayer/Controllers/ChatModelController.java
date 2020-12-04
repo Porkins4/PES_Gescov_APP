@@ -2,6 +2,7 @@ package com.example.gescov.DomainLayer.Controllers;
 
 import com.example.gescov.DomainLayer.Classmodels.Chat;
 import com.example.gescov.DomainLayer.Classmodels.ChatPreviewModel;
+import com.example.gescov.DomainLayer.Classmodels.MessageModel;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 import com.example.gescov.DomainLayer.Singletons.ServicesFactory;
 
@@ -53,5 +54,33 @@ public class ChatModelController {
             }
             DomainControlFactory.getModelController().chatPreviewsUpdated(chatPreviewModels,error);
         } else DomainControlFactory.getModelController().chatPreviewsUpdated(chatPreviewModels,error);
+    }
+    public void getMessages(String chatID) {
+        ServicesFactory.getChatService().getMessages(chatID);
+    }
+
+    public void updateChatMessages(JSONArray response, String chatID, boolean error) {
+        if (!error) {
+            List<MessageModel> messages = new ArrayList<>();
+            for (int i = 0;  i < response.length(); ++i) {
+                try {
+                    messages.add(MessageModel.fromJSONtoMessage(response.getJSONObject(i)));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            searchAndReplaceMessages(messages,chatID);
+            DomainControlFactory.getModelController().notifyChatMessagesResponse(messages, error);
+        } else DomainControlFactory.getModelController().notifyChatMessagesResponse(null, error);
+    }
+
+    private void searchAndReplaceMessages(List<MessageModel> messages, String chatID) {
+        boolean found = false;
+        for (int i = 0; i < chats.size() && !found; ++i) {
+            if (chats.get(i).getID().equals(chatID)) {
+                chats.get(i).setMessages(messages);
+                found = true;
+            }
+        }
     }
 }

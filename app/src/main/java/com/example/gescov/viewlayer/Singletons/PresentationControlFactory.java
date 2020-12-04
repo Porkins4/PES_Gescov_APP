@@ -8,6 +8,7 @@ import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUser
 import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
 
 import com.example.gescov.viewlayer.Map.MapController;
+import com.example.gescov.viewlayer.chatview.ChatViewController;
 import com.example.gescov.viewlayer.ranking.RankingController;
 
 import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
@@ -45,6 +46,7 @@ public class PresentationControlFactory {
     private static ChatListController chatListController;
     private static SchoolUsersController schoolUsersController;
     private static CreateChatController createChatController;
+    private static ChatViewController chatViewController;
 
     public static com.example.gescov.ViewLayer.ViewLayerController getViewLayerController() {
         if (viewLayerController != null)
@@ -163,5 +165,12 @@ public class PresentationControlFactory {
         rankingController = new RankingController();
         return rankingController;
 
+    }
+
+    public static ChatViewController getChatViewController() {
+        if (chatViewController != null)
+            return chatViewController;
+        chatViewController = new ChatViewController();
+        return chatViewController;
     }
 }

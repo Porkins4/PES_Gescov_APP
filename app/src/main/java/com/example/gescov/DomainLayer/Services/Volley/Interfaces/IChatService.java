@@ -4,4 +4,7 @@ public interface IChatService {
     void createChat(String userid, String targetID);
 
     void updateChatPreview(String userid);
+
+    void getMessages(String chatID);
+
 }
