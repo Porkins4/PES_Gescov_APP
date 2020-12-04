@@ -31,7 +31,7 @@
         <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.EditClassroomFormActivity" />
         <activity
             android:name=".viewlayer.ClassroomActivities.ClassroomDistribution.ClassroomDistributionActivity"
-            android:label="@string/title_activity_classroom_distribution" />
+            android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroom" />
         <activity android:name=".viewlayer.home.CovidNotificationActivity" />
         <activity
