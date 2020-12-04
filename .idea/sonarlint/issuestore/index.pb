@@ -63,3 +63,13 @@ Wapp/src/main/java/com/example/gescov/viewlayer/chat/createchat/CreateChatViewMo
 Vapp/src/main/java/com/example/gescov/viewlayer/chat/createchat/CreateChatActivity.java,8\d\8d66a709598420f8361dae56da49de4575be52a5
 à
 Xapp/src/main/java/com/example/gescov/viewlayer/chat/createchat/CreatingChatActivity.java,2\2\22a6bc79285cbbcb7001fddf66357e56f24f04e0
+≤
+Åapp/src/main/java/com/example/gescov/viewlayer/ClassroomActivities/MarkPositionInClassroom/MarkPositionInClassroomController.java,6\6\66cc9f2b38ba6afd4c9ba975d964ca8336375797
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+≠
+}app/src/main/java/com/example/gescov/viewlayer/ClassroomActivities/ClassroomDistribution/ClassroomDistributionController.java,3\9\394bd6a90cc0708a54a7200bbbf363fdcee0b7f9
+ü
+oapp/src/main/java/com/example/gescov/DomainLayer/Services/Volley/Implementors/AssignmentServiceImplementor.java,c\d\cd8d7f19d8a953577908e4914e14c733db3a9d8a
+Ä
+Papp/src/main/java/com/example/gescov/viewlayer/Singletons/GescovApplication.java,c\4\c44881984eb4c60f235166a80a77a4ef0b111501

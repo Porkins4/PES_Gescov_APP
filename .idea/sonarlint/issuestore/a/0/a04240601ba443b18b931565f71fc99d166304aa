@@ -1,7 +1,10 @@
 
-Š
-java:S1845Ã"lRename method "getUserID" to prevent any misunderstanding/clash with method "getUserId" defined on line 105.(À…µŠ8á›á³â.
-£
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¨”Òµøÿÿÿÿ8á›á³â.
-b
-java:S2147v"ECombine this catch with the one at line 116, which has the same body.(Ò”­›8á›á³â.
+`
+java:S2147"ECombine this catch with the one at line 118, which has the same body.(Ò”­›8á›á³â.
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ó“àÜ8Œ·°Ôâ.
+¡
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¨”Òµøÿÿÿÿ8á›á³â.
+‡
+java:S1845"lRename method "getUserID" to prevent any misunderstanding/clash with method "getUserId" defined on line 107.(À…µŠ8á›á³â.
+Ú
+java:S1598"¼This file "ViewLayerController.java" should be located in "com\example\gescov\ViewLayer" directory, not in "C:\Users\isaac\Desktop\Sprint 3\app\src\main\java\com\example\gescov\viewlayer".(Ó“àÜ8Œ·°Ôâ.

@@ -1,14 +1,14 @@
 
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(”ª…æ
->
-java:S1128"Remove this duplicated import.(±€Ô„ÿÿÿÿÿ8¡ƒ×®â.
-9
-java:S1128"Remove this duplicated import.(ô¤”8¡ƒ×®â.
-9
-java:S1128"Remove this duplicated import.(±Ü•Î8¡ƒ×®â.
-z
-java:S1128"_Remove this unused import 'com.example.gescov.viewlayer.SignUpAndLogin.LoadingProfileActivity'.(ˆ–‚Í8¡ƒ×®â.
->
-java:S1128"Remove this duplicated import.(§˜’£ûÿÿÿÿ8¡ƒ×®â.
-T
-java:S1118":Add a private constructor to hide the implicit public one.(Æ8¡ƒ×®â.
+;
+java:S1128"Remove this duplicated import.(ô¤”8¯Â’Øâ.
+@
+java:S1128"Remove this duplicated import.(±€Ô„ÿÿÿÿÿ8¯Â’Øâ.
+@
+java:S1128"Remove this duplicated import.(§˜’£ûÿÿÿÿ8¯Â’Øâ.
+;
+java:S1128"Remove this duplicated import.(±Ü•Î8¯Â’Øâ.
+|
+java:S1128"_Remove this unused import 'com.example.gescov.viewlayer.SignUpAndLogin.LoadingProfileActivity'.(ˆ–‚Í8¯Â’Øâ.
+V
+java:S1118":Add a private constructor to hide the implicit public one.(Æ8¯Â’Øâ.
