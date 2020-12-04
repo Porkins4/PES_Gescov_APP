@@ -63,3 +63,11 @@ Wapp/src/main/java/com/example/gescov/viewlayer/chat/createchat/CreateChatViewMo
 Vapp/src/main/java/com/example/gescov/viewlayer/chat/createchat/CreateChatActivity.java,8\d\8d66a709598420f8361dae56da49de4575be52a5
 ˆ
 Xapp/src/main/java/com/example/gescov/viewlayer/chat/createchat/CreatingChatActivity.java,2\2\22a6bc79285cbbcb7001fddf66357e56f24f04e0
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+~
+Napp/src/main/java/com/example/gescov/DomainLayer/Classmodels/MessageModel.java,0\0\00c47111feeb05eed68b31121c6380b880bc84d9
+{
+Kapp/src/main/java/com/example/gescov/viewlayer/chatview/MessageAdapter.java,1\8\18db7b81b4efad90b2aa139b35db44ea350019e8
