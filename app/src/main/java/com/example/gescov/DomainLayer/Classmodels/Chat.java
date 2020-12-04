@@ -3,10 +3,17 @@ package com.example.gescov.DomainLayer.Classmodels;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 public class Chat {
     private String id;
     private String partA;
     private String partB;
+    private List<MessageModel> messages;
+
+    public void setMessages(List<MessageModel> messages) {
+        this.messages = messages;
+    }
 
     public Chat(String id, String partA, String partB) {
         this.id = id;

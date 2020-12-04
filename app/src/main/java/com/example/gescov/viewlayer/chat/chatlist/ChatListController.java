@@ -1,7 +1,7 @@
 package com.example.gescov.viewlayer.chat.chatlist;
 
-import com.example.gescov.DomainLayer.Classmodels.Chat;
-import com.example.gescov.ViewLayer.Singletons.PresentationControlFactory;
+
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 public class ChatListController {
 

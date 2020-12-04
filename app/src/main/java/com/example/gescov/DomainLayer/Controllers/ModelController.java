@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.gescov.DomainLayer.Classmodels.Assignment;
 import com.example.gescov.DomainLayer.Classmodels.Chat;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
+import com.example.gescov.DomainLayer.Classmodels.MessageModel;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.SchoolRequest;
 import com.example.gescov.DomainLayer.Classmodels.User;
@@ -15,7 +16,7 @@ import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.S
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
-import com.example.gescov.viewlayer.ViewLayerController;
+import com.example.gescov.ViewLayer.ViewLayerController;
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
@@ -291,5 +292,13 @@ public class ModelController {
   
     public void updateChatPreview() {
         //usar el controlador de chat aquí
+    }
+
+    public void getChatMessages(String chatID) {
+        DomainControlFactory.getChatModelController().getMessages(chatID);
+    }
+
+    public void notifyChatMessagesResponse(List<MessageModel> messages, boolean error) {
+        PresentationControlFactory.getViewLayerController().notifyChatMessagesResponse(messages,error);
     }
 }

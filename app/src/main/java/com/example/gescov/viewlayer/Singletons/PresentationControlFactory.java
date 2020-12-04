@@ -8,6 +8,7 @@ import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUser
 import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
 
 import com.example.gescov.viewlayer.Map.MapController;
+import com.example.gescov.viewlayer.chatview.ChatViewController;
 import com.example.gescov.viewlayer.ranking.RankingController;
 
 import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
@@ -19,7 +20,7 @@ import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.School
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolsCrontroller;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionController;
 import com.example.gescov.viewlayer.UpdateUserProfile.UpdateUserProfileController;
-import com.example.gescov.viewlayer.ViewLayerController;
+import com.example.gescov.ViewLayer.ViewLayerController;
 import com.example.gescov.viewlayer.home.NotifyContagionController;
 import com.example.gescov.viewlayer.home.TracingTestController;
 import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
@@ -45,11 +46,12 @@ public class PresentationControlFactory {
     private static ChatListController chatListController;
     private static SchoolUsersController schoolUsersController;
     private static CreateChatController createChatController;
+    private static ChatViewController chatViewController;
 
-    public static ViewLayerController getViewLayerController() {
+    public static com.example.gescov.ViewLayer.ViewLayerController getViewLayerController() {
         if (viewLayerController != null)
             return viewLayerController;
-        viewLayerController = new ViewLayerController();
+        viewLayerController = new com.example.gescov.ViewLayer.ViewLayerController();
         return viewLayerController;
     }
     public static SchoolsCrontroller getSchoolsCrontroller() {
@@ -163,5 +165,12 @@ public class PresentationControlFactory {
         rankingController = new RankingController();
         return rankingController;
 
+    }
+
+    public static ChatViewController getChatViewController() {
+        if (chatViewController != null)
+            return chatViewController;
+        chatViewController = new ChatViewController();
+        return chatViewController;
     }
 }
