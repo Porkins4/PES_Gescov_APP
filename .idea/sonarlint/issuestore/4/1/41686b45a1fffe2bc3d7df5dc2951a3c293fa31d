@@ -1,10 +1,0 @@
-
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ñªÿ¿ûÿÿÿÿ
-V	java:S125"<This block of commented-out lines of code should be removed.(ê’ðë8¶Ùùùà.
-<
-java:S1116"Remove this empty statement.(ôŸŽìúÿÿÿÿ8¶Ùùùà.
-U	java:S107"BConstructor has 10 parameters, which is greater than 7 authorized.(¨Š±­
-S	java:S106"9Replace this use of System.out or System.err by a logger.(ö¡¹ê8ß¤•®â.
-S	java:S106"9Replace this use of System.out or System.err by a logger.(«‹Îõ8ß¤•®â.
-R	java:S106"9Replace this use of System.out or System.err by a logger.(”ÕÌk8ß¤•®â.
-S	java:S106"9Replace this use of System.out or System.err by a logger.(¢øìÄ8ß¤•®â.

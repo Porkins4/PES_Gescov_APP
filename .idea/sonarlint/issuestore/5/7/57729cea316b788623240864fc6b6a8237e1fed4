@@ -1,10 +1,0 @@
-
-p
-java:S3008 "ZRename this field "GESCOV_BASE_URL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë¤¯š
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(—¶¾Á
-I
-java:S1068 "3Remove this unused "GESCOV_BASE_URL" private field.(Ë¤¯š
-{
-java:S1488:"`Immediately return this expression instead of assigning it to the temporary variable "retrofit".(ûÉõíüÿÿÿÿ
-U
-java:S1118":Add a private constructor to hide the implicit public one.(ŒÜØ¡øÿÿÿÿ

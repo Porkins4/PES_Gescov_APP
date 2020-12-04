@@ -1,11 +1,0 @@
-
-V	java:S110"<This class has 9 parents which is greater than 5 authorized.(£âÄ±úÿÿÿÿ
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(èŒĞ
-=
-java:S1604"(Make this anonymous inner class a lambda(®àÕx
-k
-java:S1450"URemove the "button" field and declare it as a local variable in the relevant methods.(ÈòÉ¹
-k
-java:S1450"VRemove the "context" field and declare it as a local variable in the relevant methods.(êİç
-@
-java:S1068"+Remove this unused "context" private field.(êİç

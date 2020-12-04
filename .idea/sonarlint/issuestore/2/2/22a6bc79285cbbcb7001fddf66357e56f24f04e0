@@ -1,9 +1,0 @@
-
-X	java:S110"<This class has 9 parents which is greater than 5 authorized.(¹Æ±“8Óğ•³â.
-G
-java:S5411"*Use the primitive boolean expression here.(óœä»8È™¢´â.
-
-java:S1450"bRemove the "createChatViewModel" field and declare it as a local variable in the relevant methods.(ñö€é8µ°È³â.
-U	java:S106"9Replace this use of System.out or System.err by a logger.(óœä»8È™¢´â.
-E
-java:S1604"(Make this anonymous inner class a lambda(È˜¢8‡×Ÿ´â.

@@ -1,9 +1,0 @@
-
-T	java:S110"<This class has 9 parents which is greater than 5 authorized.(‘’Ïñúÿÿÿÿ
-b	java:S100K"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘Ì–
-M
-java:S1874/"7Remove this use of "setDrawerLayout"; it is deprecated.(¼ëÇ›
->
-java:S1604O"(Make this anonymous inner class a lambda(Äëæ¸
-i
-java:S1450"URemove the "drawer" field and declare it as a local variable in the relevant methods.(ö¬ïå

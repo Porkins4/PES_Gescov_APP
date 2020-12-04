@@ -1,7 +1,0 @@
-
-V	java:S110"<This class has 9 parents which is greater than 5 authorized.(ÖçÀûÿÿÿÿ
-}
-java:S1450"`Remove the "chatViewViewModel" field and declare it as a local variable in the relevant methods.(²ÉõÙ8¸…³â.
-
-java:S1128
-"]Remove this unused import 'com.example.gescov.viewlayer.chat.createchat.CreateChatViewModel'.(ñÛæÇùÿÿÿÿ8ñı²â.

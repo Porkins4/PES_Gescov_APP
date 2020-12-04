@@ -1,13 +1,0 @@
-
-@
-java:S5411a"*Use the primitive boolean expression here.(å©„Å
-G
-java:S1128"1Remove this unused import 'android.os.AsyncTask'.(À»¥—
-V
-java:S1128";Remove this unused import 'android.graphics.BitmapFactory'.(âàºÍûÿÿÿÿ
-K
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ
-I
-java:S1128"4Remove this unused import 'android.graphics.Bitmap'.(¾ì
-F
-java:S1128"0Remove this unused import 'java.io.InputStream'.(¹»º
