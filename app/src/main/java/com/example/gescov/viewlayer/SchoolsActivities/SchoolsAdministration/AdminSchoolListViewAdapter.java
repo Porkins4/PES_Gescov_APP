@@ -16,7 +16,7 @@ public class AdminSchoolListViewAdapter extends SchoolListViewAdapter {
     }
 
     @Override
-    public void setSchoolList(List<School> schoolList) {
+    public void setList(List<School> schoolList) {
         User loggedUser = PresentationControlFactory.getViewLayerController().getLoggedUserInfo();
         List<School> adminSchoolList = new ArrayList<>();
         for (School school : schoolList) {
@@ -24,6 +24,6 @@ public class AdminSchoolListViewAdapter extends SchoolListViewAdapter {
                 adminSchoolList.add(school);
             }
         }
-        super.setSchoolList(adminSchoolList);
+        super.setList(adminSchoolList);
     }
 }

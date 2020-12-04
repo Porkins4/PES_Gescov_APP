@@ -74,13 +74,13 @@ public class SchoolsCrontroller{
         }
         SchoolListViewAdapter allSchoolsAdapter = getSchoolListViewAdapter();
         if (allSchoolsAdapter != null) {
-            getSchoolListViewAdapter().setSchoolList(schoolsList);
+            getSchoolListViewAdapter().setList(schoolsList);
             getSchoolListViewAdapter().notifyDataSetChanged();
         }
 
         SchoolListViewAdapter adminSchoolsAdapter = getAdminSchoolListViewAdapter();
         if (adminSchoolsAdapter != null) {
-            getAdminSchoolListViewAdapter().setSchoolList(schoolsList);
+            getAdminSchoolListViewAdapter().setList(schoolsList);
             getAdminSchoolListViewAdapter().notifyDataSetChanged();
         }
     }

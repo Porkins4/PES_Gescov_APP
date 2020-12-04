@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
@@ -27,20 +28,25 @@ public class SchoolUsersListViewAdapter extends ModelListViewAdapter {
         TextView userName = v.findViewById(R.id.user_list_item_name);
         TextView userProfile = v.findViewById(R.id.user_list_item_profile);
         User user = (User) modelList.get(position);
-        boolean isUserAdmin = PresentationControlFactory.getSchoolsCrontroller().getCurrentSchool().getAdministratorsList().contains(user.getId());
+        School currentSchool = PresentationControlFactory.getSchoolsCrontroller().getCurrentSchool();
+        boolean isUserAdmin = currentSchool.getAdministratorsList().contains(user.getId());
+        boolean isLoggedUserCreator = currentSchool.getCreator().equals(PresentationControlFactory.getViewLayerController().getLoggedUserInfo().getId());
         userName.setText(user.getName());
         userProfile.setText(user.getProfileType() != null ? user.getProfileType().getText() : "");
-        v.setOnLongClickListener( e -> {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(e.getContext());
-                    builder.setTitle(e.getResources().getString(R.string.options))
-                            .setItems(isUserAdmin ? R.array.admin_option_menu_items : R.array.user_option_menu_items, (dialog, which) -> {
-                                if (which == 0) confirmSetAdministratorPrompt(e, user, isUserAdmin);
-                            });
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                    return false;
-                }
-        );
+
+        if (isLoggedUserCreator && user.getProfileType().equals(User.UserProfileType.TEACHER)) {
+            v.setOnLongClickListener(e -> {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(e.getContext());
+                        builder.setTitle(e.getResources().getString(R.string.options))
+                                .setItems(isUserAdmin ? R.array.admin_option_menu_items : R.array.user_option_menu_items, (dialog, which) -> {
+                                    if (which == 0) confirmSetAdministratorPrompt(e, user, isUserAdmin);
+                                });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                        return false;
+                    }
+            );
+        }
         return v;
     }
 
