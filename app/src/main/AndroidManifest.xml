@@ -18,7 +18,8 @@
         android:theme="@style/Theme.Gescov">
         <activity android:name=".viewlayer.chat.createchat.CreatingChatActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-        <activity android:name=".viewlayer.chatview.ChatViewActivity" />
+        <activity android:name=".viewlayer.chatview.ChatViewActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

@@ -73,3 +73,17 @@ Xapp/src/main/java/com/example/gescov/viewlayer/chat/createchat/CreatingChatActi
 oapp/src/main/java/com/example/gescov/DomainLayer/Services/Volley/Implementors/AssignmentServiceImplementor.java,c\d\cd8d7f19d8a953577908e4914e14c733db3a9d8a
 €
 Papp/src/main/java/com/example/gescov/viewlayer/Singletons/GescovApplication.java,c\4\c44881984eb4c60f235166a80a77a4ef0b111501
+v
+Fapp/src/main/java/com/example/gescov/DomainLayer/Classmodels/Chat.java,6\9\69c961544f9c5d4de1352c0f1d875a139b8814dc
+„
+Tapp/src/main/java/com/example/gescov/viewlayer/chat/chatlist/ChatListController.java,4\c\4c6ec78a49447952e5d27ab71d99bb497b969b94
+~
+Napp/src/main/java/com/example/gescov/DomainLayer/Classmodels/MessageModel.java,0\0\00c47111feeb05eed68b31121c6380b880bc84d9
+‚
+Rapp/src/main/java/com/example/gescov/DomainLayer/Classmodels/ChatPreviewModel.java,8\4\84d45d3bfac8b7700cc798be84a6ae2d457b1090
+…
+Uapp/src/main/java/com/example/gescov/viewlayer/chat/createchat/CreateChatAdapter.java,f\6\f6cf11e12efa4966bdbf997453090d800a4b518a
+ƒ
+Sapp/src/main/java/com/example/gescov/viewlayer/chat/chatlist/ChatListViewModel.java,d\5\d5fc171d2d5a1ff865b49009dd45197772cbee18
+{
+Kapp/src/main/java/com/example/gescov/viewlayer/chatview/MessageAdapter.java,1\8\18db7b81b4efad90b2aa139b35db44ea350019e8

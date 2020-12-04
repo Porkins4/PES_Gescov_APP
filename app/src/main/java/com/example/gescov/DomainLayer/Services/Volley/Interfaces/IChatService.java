@@ -7,4 +7,5 @@ public interface IChatService {
 
     void getMessages(String chatID);
 
+    void sendMessage(String chatID, String message, String id);
 }

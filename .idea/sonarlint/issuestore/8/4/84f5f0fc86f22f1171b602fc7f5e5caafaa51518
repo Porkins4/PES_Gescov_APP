@@ -1,11 +1,12 @@
 
-[
-java:S1128">Remove this unused import 'com.android.volley.toolbox.Volley'.(¢‰Ò¶8ŠŒ´â.
+D
+java:S16046"(Make this anonymous inner class a lambda(–§º8äÒ‘øâ.
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(€Ôš³
-Y
-java:S1128"<Remove this unused import 'com.android.volley.RequestQueue'.(¹şÌ×8ŠŒ´â.
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(‡½øåıÿÿÿÿ8˜°…´â.
-U	java:S106"9Replace this use of System.out or System.err by a logger.(¥³­Ä8ó†›´â.
+E
+java:S16040"(Make this anonymous inner class a lambda(âêÜ8äÒ‘øâ.
+[
+java:S1128	">Remove this unused import 'com.android.volley.toolbox.Volley'.(¢‰Ò¶8äÒ‘øâ.
 I
-java:S1602",Remove useless curly braces around statement(š×ĞÔ8ó†›´â.
-J	java:S108#")Either remove or fill this block of code.(÷¿­¹ÿÿÿÿÿ8µŠ«´â.
+java:S1602",Remove useless curly braces around statement(š×ĞÔ8äÒ‘øâ.
+J	java:S108(")Either remove or fill this block of code.(÷¿­¹ÿÿÿÿÿ8äÒ‘øâ.
+Z	java:S106C"9Replace this use of System.out or System.err by a logger.(ì“Üüÿÿÿÿ8µİ’øâ.

@@ -58,4 +58,16 @@ public class ChatListViewModel extends ViewModel {
         PresentationControlFactory.getChatListController().setChatListViewModel(this);
         PresentationControlFactory.getChatListController().updateChatPreview();
     }
+
+    public String getChatID(int position) {
+        return chatPreviewModels.get(position).getChatID();
+    }
+
+    public String getTargetName(int position) {
+        return chatPreviewModels.get(position).getTarget();
+    }
+
+    public String getTargetPic(int position) {
+        return chatPreviewModels.get(position).getTargetPic();
+    }
 }

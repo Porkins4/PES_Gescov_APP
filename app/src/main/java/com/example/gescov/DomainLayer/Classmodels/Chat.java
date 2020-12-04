@@ -44,4 +44,9 @@ public class Chat {
         System.out.println(partA);
         System.out.println(partB);
     }
+
+    public void addMessage(MessageModel message) {
+        messages.add(message);
+        System.out.println(messages.size() + " oki");
+    }
 }

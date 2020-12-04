@@ -15,8 +15,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class ChatServiceImplementor implements IChatService {
     private static final String GESCOV_CHAT_URI = "https://gescov.herokuapp.com/api/chats";
+    private static final String DATE_FORMAT = "dd-MM-yyyy";
 
     @Override
     public void createChat(String userid, String targetID) {
@@ -64,6 +70,7 @@ public class ChatServiceImplementor implements IChatService {
 
     @Override
     public void getMessages(String chatID) {
+        System.out.println("este es el chat: " + chatID);
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET, GESCOV_CHAT_URI + "/" + chatID + "/messages/",null,
                 response -> DomainControlFactory.getChatModelController().updateChatMessages(response, chatID, false),
@@ -71,5 +78,36 @@ public class ChatServiceImplementor implements IChatService {
         );
 
         VolleyServices.getRequestQueue().add(request);
+    }
+
+    @Override
+    public void sendMessage(String chatID, String message, String id) {
+        try {
+            JSONObject postData = new JSONObject();
+            postData.put("creator",id);
+            postData.put("chat",chatID);
+            postData.put("text",message);
+
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            postData.put("date",dtf.format(LocalDate.now()));
+
+            dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+            postData.put("hour",dtf.format(LocalDateTime.now()));
+
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                    Request.Method.POST, GESCOV_CHAT_URI+"/new", postData,
+                    response -> {
+                        DomainControlFactory.getChatModelController().addMessageToChat(response);
+                    }, error -> {
+                if (error.networkResponse != null) {
+
+                }
+            });
+
+            VolleyServices.getRequestQueue().add(jsonObjectRequest);
+
+        } catch (JSONException e) {
+        }
     }
 }

@@ -25,4 +25,12 @@ public class ChatViewController {
     public User getLoggedUser() {
         return PresentationControlFactory.getViewLayerController().getUserLoggedIn();
     }
+
+    public void sendMessage(String chatID, String message) {
+        PresentationControlFactory.getViewLayerController().sendMessage(chatID,message);
+    }
+
+    public void notifyChatUpdated() {
+        chatViewViewModel.notifyChatUpdated();
+    }
 }

@@ -1,7 +1,15 @@
 
-V	java:S110"<This class has 9 parents which is greater than 5 authorized.(ÖçÀûÿÿÿÿ
-}
-java:S1450"`Remove the "chatViewViewModel" field and declare it as a local variable in the relevant methods.(²ÉõÙ8¸…³â.
+D
+java:S1604@"(Make this anonymous inner class a lambda(®àÕx8ÇòÌúâ.
+J
+java:S1604&"(Make this anonymous inner class a lambda(Ñ›èøÿÿÿÿ8ğÄúâ.
 
+java:S1128"]Remove this unused import 'com.example.gescov.viewlayer.chat.createchat.CreateChatViewModel'.(ñÛæÇùÿÿÿÿ8Ë®Ğ÷â.
+q
+java:S1128"TRemove this unused import 'com.google.android.material.textfield.TextInputEditText'.(°Ò8ğÄúâ.
+Q
 java:S1128
-"]Remove this unused import 'com.example.gescov.viewlayer.chat.createchat.CreateChatViewModel'.(ñÛæÇùÿÿÿÿ8ñı²â.
+"4Remove this unused import 'android.content.Context'.(©Ê‰è8Ë®Ğ÷â.
+]	java:S110"<This class has 9 parents which is greater than 5 authorized.(ÖçÀûÿÿÿÿ8Ë®Ğ÷â.
+G
+java:S5411)"*Use the primitive boolean expression here.(—´Œõ8ğÄúâ.

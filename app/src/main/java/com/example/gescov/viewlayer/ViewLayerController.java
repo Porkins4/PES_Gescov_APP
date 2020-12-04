@@ -304,4 +304,12 @@ public class ViewLayerController {
     public void notifyChatMessagesResponse(List<MessageModel> messages, boolean error) {
         PresentationControlFactory.getChatViewController().notifyChatMessagesResponse(messages, error);
     }
+
+    public void sendMessage(String chatID, String message) {
+        DomainControlFactory.getModelController().sendMessage(chatID,message);
+    }
+
+    public void notifyChatUpdated() {
+        PresentationControlFactory.getChatViewController().notifyChatUpdated();
+    }
 }

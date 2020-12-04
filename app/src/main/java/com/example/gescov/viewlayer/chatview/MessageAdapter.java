@@ -27,11 +27,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     private Context context;
     private String loggedUserID;
     private List<MessageModel> messages;
+    private String pic;
 
-    public MessageAdapter(Context context, List<MessageModel> messages, String loggedUserID) {
+    public MessageAdapter(Context context, List<MessageModel> messages, String loggedUserID, String targetPic) {
         this.messages = messages;
         this.context = context;
         this.loggedUserID = loggedUserID;
+        this.pic = targetPic;
     }
 
     @NonNull
@@ -51,7 +53,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
         MessageModel message = messages.get(position);
         holder.message_text.setText(message.getText());
-        //falta cargar la imagen
+        if (holder.profile_image != null) loadImageFromUrl(holder.profile_image,pic);
     }
 
     @Override
@@ -71,13 +73,24 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         });
     }
 
+    public int size() {
+        return messages.size();
+    }
+
+    public MessageModel getIth(int i) {
+        return messages.get(i);
+    }
+
+    public boolean empty() {
+        return messages.size() == 0;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView message_text;
         public ImageView profile_image;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             message_text = itemView.findViewById(R.id.message_text);
             profile_image = itemView.findViewById(R.id.profile_image);
         }
