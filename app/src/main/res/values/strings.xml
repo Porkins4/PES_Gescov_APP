@@ -174,17 +174,33 @@
     <string name="yes_delete_chat">Elimina</string>
     <string name="no_delete_chat">Cancela</string>
 
+
     <!-- Strings for the Map -->
     <string name="mapa_text">Mapa</string>
 
 
+
+    <!-- Create chat -->
+
     <string name="title_activity_create_chat">Contactes del centre</string>
     <string name="loading_user_schools_text">Carregant informació de les teves escoles</string>
     <string name="loading_afiliates_from_selected_center">Carregant contactes del centre: </string>
+    <string name="creating_chat_text">Creant xat...</string>
+
+    <!-- Strings for the Map -->
+    <string name="mapa_text">Mapa</string>
+    <string name="write_message_hint">Escriu el teu missatge</string>
 
     <!-- Strings for the Ranking -->
     <string name="ranking_name">Ranking de centres</string>
+    <string name="error_while_creating_chat">S\'ha produit un error mentre es creava el xat</string>
+    <string name="no_messages_yet_text">Encara no s\'ha enviat cap missatge</string>
 
+
+    <!-- Access school by code activity -->
+    <string name="access_school_by_code_entry">escriu el teu codi aquí</string>
+    <string name="access_school_by_code_title">Codi d´escola</string>
+    <string name="access_school_by_code_button">Solicita accés</string>
 
     <!-- Strings for the Ranking -->
     <string name="view_graph">visualitzar gràfic</string>

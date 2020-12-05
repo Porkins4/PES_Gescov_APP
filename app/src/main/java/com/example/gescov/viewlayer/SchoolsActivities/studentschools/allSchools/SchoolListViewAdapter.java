@@ -20,14 +20,14 @@ import java.util.List;
 public class SchoolListViewAdapter extends BaseAdapter {
 
     private List<School> schoolList;
-    private LayoutInflater mInflater;
+    private LayoutInflater inflater;
 
     public SchoolListViewAdapter(Context c, List<School> l) {
         schoolList = l;
-        mInflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public void setSchoolList (List<School> schoolList) {
+    public void setList (List<School> schoolList) {
         this.schoolList = schoolList;
     }
 
@@ -48,7 +48,7 @@ public class SchoolListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View v = mInflater.inflate(R.layout.school_list_item, null);
+        View v = inflater.inflate(R.layout.school_list_item, null);
         TextView name = (TextView) v.findViewById(R.id.school_name);
         TextView address = (TextView) v.findViewById(R.id.school_address);
         TextView state = (TextView) v.findViewById(R.id.school_state);

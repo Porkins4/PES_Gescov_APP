@@ -38,7 +38,6 @@ public class SchoolClassroomsCrontroller {
     public List<Classroom> getList() {
         if (classroomsList != null)
             return classroomsList;
-        //hardcodedSchoolList();
         classroomsList = new ArrayList<>();
         return classroomsList;
     }
@@ -51,14 +50,6 @@ public class SchoolClassroomsCrontroller {
         this.classroomsList = classroomsList;
         getListViewAdapter().setList(classroomsList);
         getListViewAdapter().notifyDataSetChanged();
-    }
-
-
-    private void hardcodedSchoolList () {
-        classroomsList = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
-            classroomsList.add(new Classroom("id", "Aula" + i, 6, 6, 30));
-        }
     }
 
 

@@ -160,6 +160,7 @@ public class SchoolsModelController {
         ServicesFactory.getUpdateSchoolAdminResponseController().addNewAdmin(currentSchoolId, currentUserId, newAdminID);
     }
 
+
     public void setGraph(String schoolId) {
         ServicesFactory.getSchoolService().setGraph(schoolId);
     }
@@ -172,5 +173,9 @@ public class SchoolsModelController {
             contagionPerMonth.add(aux);
         }
         DomainControlFactory.getModelController().sendResponseOfGraph(contagionPerMonth);
+    }
+    public void requestAcessSchoolByCode(String userId, String schoolId, String schoolCode) {
+        ServicesFactory.getRequestAccessSchoolByCodeResponseController().requestAccess(schoolId, userId, schoolCode);
+
     }
 }

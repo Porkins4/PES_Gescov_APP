@@ -231,10 +231,11 @@ public class UserModelController {
             String id = response.getString("id");
             String name = response.getString("name");
             String email = response.getString("email");
+            String pic = response.getString("pic");
             boolean isStudent = response.getBoolean("student");
             boolean risk = response.getBoolean("risk");
             String tokenId = response.getString("id");
-            user = new User(name, id, schoolsList, risk, isStudent, email, tokenId);
+            user = new User(name, id, schoolsList, risk, isStudent, email, tokenId, pic);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -273,7 +274,8 @@ public class UserModelController {
         contactsFromSelectedCenter = new ArrayList<>();
         for (int i = 0; i < response.length(); ++i) {
             try {
-                User u = User.fromJSONtoUser(response.getJSONObject(i)); //reusar esta operación
+                User u = getUserFromJSONObject(response.getJSONObject(i)); //reusar esta operación
+                System.out.println(u.getProfileType());
                 if (loggedUser.getProfileType() == User.UserProfileType.TEACHER && u.getProfileType() == User.UserProfileType.STUDDENT) contactsFromSelectedCenter.add(u);
                 else if (loggedUser.getProfileType() == User.UserProfileType.STUDDENT && u.getProfileType() == User.UserProfileType.TEACHER) contactsFromSelectedCenter.add(u);
             } catch (JSONException e) {

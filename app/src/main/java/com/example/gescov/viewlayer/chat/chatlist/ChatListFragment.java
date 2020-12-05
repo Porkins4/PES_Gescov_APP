@@ -14,10 +14,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.chat.createchat.CreateChatActivity;
+import com.example.gescov.viewlayer.chatview.ChatViewActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
@@ -42,9 +44,19 @@ public class ChatListFragment extends Fragment {
     private void initViewComponents() {
         listView = (ListView) root.findViewById(R.id.chat_fragment_list_view);
         floatingActionButton = (FloatingActionButton) root.findViewById(R.id.create_new_chat_button);
-        initStub();
+        setGetChatsListener();
         initAddCreateChatButton();
-        setListViewItemsListener();
+        setListViewItemsListener();//ojo que a lo mejor peta por hacerlo al principio del todo
+    }
+
+    private void setGetChatsListener() {
+        mViewModel.getChatPreviewModels().observe(getActivity(), error -> {
+            if (!error) initListView();
+        });
+    }
+
+    private void initListView() {
+        listView.setAdapter(mViewModel.getAdapter(this.getContext()));
     }
 
     private void initAddCreateChatButton() {
@@ -71,6 +83,19 @@ public class ChatListFragment extends Fragment {
                     return false;
                 }
         );
+
+        listView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent i = new Intent(getActivity(), ChatViewActivity.class);
+                        i.putExtra("chatID",mViewModel.getChatID(position));
+                        i.putExtra("targetName",mViewModel.getTargetName(position));
+                        i.putExtra("targetPic",mViewModel.getTargetPic(position));
+                        startActivity(i);
+                    }
+                }
+        );
     }
 
     private void confirmDeleteChatPrompt(int position) {
@@ -92,9 +117,7 @@ public class ChatListFragment extends Fragment {
                 });
     }
 
-    private void initStub() {
-        listView.setAdapter(mViewModel.getAdapter(this.getContext()));
-    }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

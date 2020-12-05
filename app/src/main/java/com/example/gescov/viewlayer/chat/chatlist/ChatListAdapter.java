@@ -1,22 +1,27 @@
 package com.example.gescov.viewlayer.chat.chatlist;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.gescov.DomainLayer.Classmodels.ChatViewerModel;
+import com.example.gescov.DomainLayer.Classmodels.ChatPreviewModel;
+import com.example.gescov.DomainLayer.Services.Volley.VolleyServices;
 import com.example.gescov.R;
+import com.example.gescov.viewlayer.Singletons.GescovApplication;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class ChatListAdapter extends BaseAdapter {
-    private List<ChatViewerModel> chatViewers;
+    private List<ChatPreviewModel> chatViewers;
     private LayoutInflater layoutInflater;
 
-    public ChatListAdapter(List<ChatViewerModel> chatViewerModels, Context c) {
+    public ChatListAdapter(List<ChatPreviewModel> chatViewerModels, Context c) {
         this.chatViewers = chatViewerModels;
         layoutInflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -27,7 +32,7 @@ public class ChatListAdapter extends BaseAdapter {
     }
 
     @Override
-    public ChatViewerModel getItem(int position) {
+    public ChatPreviewModel getItem(int position) {
         return chatViewers.get(position);
     }
 
@@ -45,11 +50,22 @@ public class ChatListAdapter extends BaseAdapter {
 
     private void initViewComponents(int position, View v) {
         TextView name = (TextView) v.findViewById(R.id.user_name);
-        name.setText(chatViewers.get(position).getDestiny());
+        name.setText(chatViewers.get(position).getTarget());
+
         TextView lastMessage = (TextView) v.findViewById(R.id.last_message);
-        lastMessage.setText(chatViewers.get(position).getLastMessage());
+        String msg = chatViewers.get(position).getLastMessage();
+        if (msg.equals("null")) lastMessage.setText(GescovApplication.getContext().getString(R.string.no_messages_yet_text));
+        else lastMessage.setText(msg);
+
+
         TextView lastMessageHour = (TextView) v.findViewById(R.id.last_message_time);
-        lastMessageHour.setText(chatViewers.get(position).getLastHourMessage());
+        String hour = chatViewers.get(position).getLmHour();
+        if (hour.equals("null")) lastMessageHour.setText("--:--");
+        else lastMessageHour.setText(hour.substring(0,5));
+
+        ImageView profilePic = (ImageView) v.findViewById(R.id.profile_image);
+        loadImageFromUrl(profilePic,chatViewers.get(position).getTargetPic());
+
     }
 
     public String chatID(int position) {
@@ -58,5 +74,17 @@ public class ChatListAdapter extends BaseAdapter {
 
     public void delete(int position) {
         chatViewers.remove(position);
+    }
+
+    public void loadImageFromUrl(ImageView profilePic, String url) {
+        Picasso.with(VolleyServices.getCtx()).load(url).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).noFade().into(profilePic, new com.squareup.picasso.Callback() {
+            public void onSuccess() {
+                //it returns nothing
+            }
+            @Override
+            public void onError() {
+                Log.i("loadingImage","error on loading imagge");
+            }
+        });
     }
 }

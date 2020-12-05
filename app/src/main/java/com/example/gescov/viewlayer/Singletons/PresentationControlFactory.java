@@ -1,8 +1,10 @@
 package com.example.gescov.viewlayer.Singletons;
 
+
 import com.example.gescov.viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroomController;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionController;
 import com.example.gescov.viewlayer.ContagionList.ContagionController;
+
 
 import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUsersController;
 import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
@@ -15,11 +17,26 @@ import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
 import com.example.gescov.viewlayer.SignUpAndLogin.LoadingProfileController;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassroomsCrontroller;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolsCrontroller;
+
+import com.example.gescov.viewlayer.Map.MapController;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassroomsCrontroller;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolsCrontroller;
+import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUsersController;
+import com.example.gescov.viewlayer.SignUpAndLogin.LoadingProfileController;
+
 import com.example.gescov.viewlayer.UpdateUserProfile.UpdateUserProfileController;
 import com.example.gescov.viewlayer.ViewLayerController;
+import com.example.gescov.viewlayer.chat.chatlist.ChatListController;
+import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
+import com.example.gescov.viewlayer.chatview.ChatViewController;
 import com.example.gescov.viewlayer.home.NotifyContagionController;
 import com.example.gescov.viewlayer.home.TracingTestController;
+
 import com.example.gescov.viewlayer.chat.chatlist.ChatListController;
+
+import com.example.gescov.viewlayer.ranking.RankingController;
+import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
+
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -41,7 +58,11 @@ public class PresentationControlFactory {
     private static ChatListController chatListController;
     private static SchoolUsersController schoolUsersController;
     private static CreateChatController createChatController;
+
     private static HomeController homeController;
+
+    private static ChatViewController chatViewController;
+
 
     public static ViewLayerController getViewLayerController() {
         if (viewLayerController != null)
@@ -153,6 +174,8 @@ public class PresentationControlFactory {
         return createChatController;
     }
 
+    }
+
     public static RankingController getRankingController() {
         if (rankingController != null)
             return rankingController;
@@ -161,10 +184,19 @@ public class PresentationControlFactory {
 
     }
 
+
     public static HomeController getHomeController() {
         if (homeController != null)
             return homeController;
         homeController = new HomeController();
         return homeController;
+     }
+
+    public static ChatViewController getChatViewController() {
+        if (chatViewController != null)
+            return chatViewController;
+        chatViewController = new ChatViewController();
+        return chatViewController;
+
     }
 }

@@ -1,5 +1,6 @@
 package com.example.gescov.viewlayer.chat.createchat;
 
+import com.example.gescov.DomainLayer.Classmodels.Chat;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
@@ -36,5 +37,13 @@ public class CreateChatController {
 
     public List<User> getContacts() {
         return PresentationControlFactory.getViewLayerController().getContacts();
+    }
+
+    public void createChat(String targetID) {
+        PresentationControlFactory.getViewLayerController().createChat(targetID);
+    }
+
+    public void chatCreatedInBack(Chat chat, boolean error) {
+        createChatViewModel.setCreatedChat(chat, error);
     }
 }

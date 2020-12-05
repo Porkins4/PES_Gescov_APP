@@ -35,4 +35,5 @@ public abstract  class ModelListViewAdapter extends BaseAdapter {
     public void setList(List list) {
         this.modelList = list;
     }
+
 }

@@ -77,13 +77,13 @@ public class SchoolsCrontroller{
         }
         SchoolListViewAdapter allSchoolsAdapter = getSchoolListViewAdapter();
         if (allSchoolsAdapter != null) {
-            getSchoolListViewAdapter().setSchoolList(schoolsList);
+            getSchoolListViewAdapter().setList(schoolsList);
             getSchoolListViewAdapter().notifyDataSetChanged();
         }
 
         SchoolListViewAdapter adminSchoolsAdapter = getAdminSchoolListViewAdapter();
         if (adminSchoolsAdapter != null) {
-            getAdminSchoolListViewAdapter().setSchoolList(schoolsList);
+            getAdminSchoolListViewAdapter().setList(schoolsList);
             getAdminSchoolListViewAdapter().notifyDataSetChanged();
         }
     }
@@ -120,6 +120,7 @@ public class SchoolsCrontroller{
         PresentationControlFactory.getViewLayerController().addNewAdminToSchool(newAdminID);
     }
 
+
     public void setGraph(String schoolId) {
         PresentationControlFactory.getViewLayerController().setGraph(schoolId);
     }
@@ -130,5 +131,9 @@ public class SchoolsCrontroller{
 
     public void setSchoolGraphModel(SchoolGraphViewModel schoolGraphViewModel) {
         this.schoolGraphViewModel = schoolGraphViewModel;
+    }
+
+    public void requestAcessSchoolByCode(String userId, String schoolId,  String schoolCode) {
+        PresentationControlFactory.getViewLayerController().requestAcessSchoolByCode(userId, schoolId, schoolCode);
     }
 }

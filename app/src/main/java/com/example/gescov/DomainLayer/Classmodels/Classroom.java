@@ -9,12 +9,11 @@ public class Classroom {
 
     public Classroom() {}
 
-    public Classroom(String id, String name, int rows, int columns, int capacity) {
+    public Classroom(String id, String name, int rows, int columns) {
         this.id = id;
         this.name = name;
         this.rows = rows;
         this.columns = columns;
-        this.capacity = capacity;
     }
 
     public String getId() {

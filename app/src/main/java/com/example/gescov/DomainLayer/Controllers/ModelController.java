@@ -2,9 +2,11 @@ package com.example.gescov.DomainLayer.Controllers;
 
 import android.util.Pair;
 
-
 import com.example.gescov.DomainLayer.Classmodels.Assignment;
+import com.example.gescov.DomainLayer.Classmodels.Chat;
+import com.example.gescov.DomainLayer.Classmodels.ChatPreviewModel;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
+import com.example.gescov.DomainLayer.Classmodels.MessageModel;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.SchoolRequest;
 import com.example.gescov.DomainLayer.Classmodels.User;
@@ -174,7 +176,7 @@ public class ModelController {
     }
 
     public void updateHomeViewModel(String name, boolean risk) {
-        PresentationControlFactory.getViewLayerController().updateHomeViewModel(name, risk);
+        //PresentationControlFactory.getViewLayerController().updateHomeViewModel(name, risk);
     }
 
     public void notifyPossibleContagion(MutableLiveData<ContagionRequestResult> result) {
@@ -276,11 +278,46 @@ public class ModelController {
         viewLayerController.refreshSchoolUsersList(usersList);
     }
 
+
     public void setGraph(String schoolId) {
         DomainControlFactory.getSchoolsModelCrontroller().setGraph(schoolId);
     }
 
     public void sendResponseOfGraph(List<Pair<String, Integer>> contagionPerMonth) {
         viewLayerController.sendResponseOfGraph(contagionPerMonth);
+    }
+
+    //------------------------------------
+    //Create Chat
+    public void createChat(String targetID) {
+        DomainControlFactory.getChatModelController().createChat(targetID);
+    }
+
+    public void chatCreatedInBack(Chat chat, boolean error) {
+        PresentationControlFactory.getViewLayerController().chatCreatedInBack(chat, error);
+    }
+  
+    public void updateChatPreview() {
+        DomainControlFactory.getChatModelController().updateChatPreview();
+    }
+
+    public void chatPreviewsUpdated(List<ChatPreviewModel> chatPreviewModels, boolean error) {
+        PresentationControlFactory.getViewLayerController().chatPreviewsUpdated(chatPreviewModels, error);
+    }
+
+    public void getChatMessages(String chatID) {
+        DomainControlFactory.getChatModelController().getMessages(chatID);
+    }
+
+    public void notifyChatMessagesResponse(List<MessageModel> messages, boolean error) {
+        PresentationControlFactory.getViewLayerController().notifyChatMessagesResponse(messages,error);
+    }
+
+    public void sendMessage(String chatID, String message) {
+        DomainControlFactory.getChatModelController().sendMessage(chatID,message);
+    }
+
+    public void notifyChatUpdated() {
+        PresentationControlFactory.getViewLayerController().notifyChatUpdated();
     }
 }

@@ -15,13 +15,11 @@ import com.example.gescov.R;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.PopErrorAddStudentToCenter;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassromListActivity;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolDetailsViewModel;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsListActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 public class SchoolDetailsActivity extends AppCompatActivity {
@@ -71,10 +69,21 @@ public class SchoolDetailsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        if (loggedUser.getProfileType() == User.UserProfileType.STUDDENT && !loggedUser.getSchoolsID().contains(school.getId())) {
+        if (!loggedUser.getSchoolsID().contains(school.getId())) {
             joinSchoolButton.setText(getResources().getText(R.string.school_details_join));
             joinSchoolButton.setOnClickListener(e -> {
-                schoolDetailsViewModel.getAddStudentToCenterResult(name.getText().toString());
+                AlertDialog.Builder builder = new AlertDialog.Builder(e.getContext());
+                builder.setTitle(e.getResources().getString(R.string.options))
+                        .setItems(R.array.join_school_menu_items, (dialog, which) -> {
+                            if (which == 0)
+                                schoolDetailsViewModel.getAddStudentToCenterResult(name.getText().toString());
+                            else if (which == 1) {
+                                Intent intent = new Intent(this, AccessSchoolByCodeActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             });
 
             usersListButton.setVisibility(View.INVISIBLE);
@@ -98,14 +107,11 @@ public class SchoolDetailsActivity extends AppCompatActivity {
 
 
         schoolDetailsViewModel = new ViewModelProvider(this).get(SchoolDetailsViewModel.class);
-        schoolDetailsViewModel.getPutResult().observe(this, new Observer<SchoolRequestResult>() {
-            @Override
-            public void onChanged(SchoolRequestResult schoolRequestResult) {
-                Boolean response = schoolRequestResult.getError();
-                if (response) openPopup();
-                else successAddingStudentToCenter();
+        schoolDetailsViewModel.getPutResult().observe(this, schoolRequestResult -> {
+            Boolean response = schoolRequestResult.getError();
+            if (response) openPopup();
+            else successAddingStudentToCenter();
 
-            }
         });
         setGraphListener();
     }
