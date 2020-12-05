@@ -174,7 +174,7 @@ public class PresentationControlFactory {
         return createChatController;
     }
 
-    }
+
 
     public static RankingController getRankingController() {
         if (rankingController != null)

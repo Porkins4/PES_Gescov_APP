@@ -42,6 +42,7 @@
         <activity android:name=".viewlayer.SignUpAndLogin.LoginActivity" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.CreateClassroomFormActivity" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.EditClassroomFormActivity" />
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolGraphActivity" />
         <activity
             android:name=".viewlayer.ClassroomActivities.ClassroomDistribution.ClassroomDistributionActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
