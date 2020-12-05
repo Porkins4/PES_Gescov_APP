@@ -1,9 +1,11 @@
 package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration;
 
 import android.content.Context;
+import android.util.Pair;
 
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolDetailsViewModel;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.SchoolsActivities.studentschools.allSchools.SchoolListViewAdapter;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
@@ -25,6 +27,7 @@ public class SchoolsCrontroller{
     private SchoolsAdministrationFagment fragment;
     private HashMap<String, School> schoolHash;
     private School currentSchool;
+    private SchoolGraphViewModel schoolGraphViewModel;
 
     public void setSchoolsAdministrationFragment(SchoolsAdministrationFagment fragment) {
         this.fragment = fragment;
@@ -115,5 +118,17 @@ public class SchoolsCrontroller{
 
     public void addNewAdminToSchool(String newAdminID) {
         PresentationControlFactory.getViewLayerController().addNewAdminToSchool(newAdminID);
+    }
+
+    public void setGraph(String schoolId) {
+        PresentationControlFactory.getViewLayerController().setGraph(schoolId);
+    }
+
+    public void sendResponseOfGraph(List<Pair<String, Integer>> contagionPerMonth) {
+        schoolGraphViewModel.setResponseOfGraph(contagionPerMonth);
+    }
+
+    public void setSchoolGraphModel(SchoolGraphViewModel schoolGraphViewModel) {
+        this.schoolGraphViewModel = schoolGraphViewModel;
     }
 }

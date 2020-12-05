@@ -38,4 +38,5 @@ public interface ISchoolService {
 
     void getNumContagionPerSchool(int from);
 
+    void setGraph(String schoolId);
 }

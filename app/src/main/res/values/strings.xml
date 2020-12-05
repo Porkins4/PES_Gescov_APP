@@ -186,4 +186,23 @@
     <string name="ranking_name">Ranking de centres</string>
 
 
+    <!-- Strings for the Ranking -->
+    <string name="view_graph">visualitzar gràfic</string>
+    <string name="first_month">Gener</string>
+    <string name="second_month">Febrer</string>
+    <string name="third_month">Març</string>
+    <string name="fourth_month">Abril</string>
+    <string name="fifth_month">Maig</string>
+    <string name="sixth_month">Juny</string>
+    <string name="seventh_month">Juliol</string>
+    <string name="eighth_month">Agost</string>
+    <string name="nineth_month">Setembre</string>
+    <string name="tenth_month">Octubre</string>
+    <string name="elventh_month">Novembre</string>
+    <string name="twelvth_month">Desembre</string>
+    <string name="evolution">"Evolució dels contagis en "</string>
+    <string name="months">Mesos</string>
+    <string name="axeYContagions">Contagis</string>
+
+
 </resources>

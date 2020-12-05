@@ -284,4 +284,12 @@ public class ViewLayerController {
     public Location getLocation() {
         return DomainControlFactory.getUserModelController().getLocation();
     }
+
+    public void setGraph(String schoolId) {
+        DomainControlFactory.getModelController().setGraph(schoolId);
+    }
+
+    public void sendResponseOfGraph(List<Pair<String, Integer>> contagionPerMonth) {
+        PresentationControlFactory.getSchoolsCrontroller().sendResponseOfGraph(contagionPerMonth);
+    }
 }

@@ -10,7 +10,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SchoolsModelController {
@@ -156,5 +158,19 @@ public class SchoolsModelController {
         String currentUserId = DomainControlFactory.getUserModelController().getLoggedInUser().getId();
         String currentSchoolId = getCurrentSchool().getId();
         ServicesFactory.getUpdateSchoolAdminResponseController().addNewAdmin(currentSchoolId, currentUserId, newAdminID);
+    }
+
+    public void setGraph(String schoolId) {
+        ServicesFactory.getSchoolService().setGraph(schoolId);
+    }
+
+    public void sendResponseOfGraph(JSONArray response) throws JSONException {
+        List<Pair<String,Integer>> contagionPerMonth = new ArrayList<>();
+        for ( int i = 0; i < response.length(); ++i) {
+            JSONObject infoMonth = response.getJSONObject(i);
+            Pair<String,Integer> aux = new Pair<>(infoMonth.getString("first"),infoMonth.getInt("second"));
+            contagionPerMonth.add(aux);
+        }
+        DomainControlFactory.getModelController().sendResponseOfGraph(contagionPerMonth);
     }
 }

@@ -275,4 +275,12 @@ public class ModelController {
     public void refreshSchoolUsersListInView(List<User> usersList) {
         viewLayerController.refreshSchoolUsersList(usersList);
     }
+
+    public void setGraph(String schoolId) {
+        DomainControlFactory.getSchoolsModelCrontroller().setGraph(schoolId);
+    }
+
+    public void sendResponseOfGraph(List<Pair<String, Integer>> contagionPerMonth) {
+        viewLayerController.sendResponseOfGraph(contagionPerMonth);
+    }
 }
