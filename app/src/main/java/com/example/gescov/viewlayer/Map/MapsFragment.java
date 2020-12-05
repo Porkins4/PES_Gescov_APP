@@ -1,7 +1,9 @@
 package com.example.gescov.viewlayer.Map;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.location.Location;
@@ -11,10 +13,13 @@ import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
@@ -37,7 +42,6 @@ public class MapsFragment extends Fragment {
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
 
-        @SuppressLint("MissingPermission")
         @Override
         public void onMapReady(GoogleMap googleMap) {
             mMap = googleMap;
@@ -51,10 +55,13 @@ public class MapsFragment extends Fragment {
             } catch (Resources.NotFoundException e) {
                 Log.e("MapFragment", "Can't find style. Error: ", e);
             }
-            userLocation =  PresentationControlFactory.getMapController().getLocation();
+            userLocation = PresentationControlFactory.getMapController().getLocation();
             LatLng locUser = new LatLng(userLocation.getLatitude(), userLocation.getLongitude());
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(locUser, 13), 2700, null);
             mMap.setMaxZoomPreference(17);
+            if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
             mMap.setMyLocationEnabled(true);
             getSchools();
         }
