@@ -68,7 +68,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        if (loggedUser.getProfileType() == User.UserProfileType.STUDDENT && !loggedUser.getSchoolsID().contains(school.getId())) {
+        if (!loggedUser.getSchoolsID().contains(school.getId())) {
             joinSchoolButton.setText(getResources().getText(R.string.school_details_join));
             joinSchoolButton.setOnClickListener(e -> {
                 AlertDialog.Builder builder = new AlertDialog.Builder(e.getContext());
