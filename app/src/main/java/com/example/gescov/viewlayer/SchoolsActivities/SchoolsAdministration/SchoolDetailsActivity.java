@@ -77,7 +77,8 @@ public class SchoolDetailsActivity extends AppCompatActivity {
                             if (which == 0)
                                 schoolDetailsViewModel.getAddStudentToCenterResult(name.getText().toString());
                             else if (which == 1) {
-
+                                Intent intent = new Intent(this, AccessSchoolByCodeActivity.class);
+                                startActivity(intent);
                             }
                         });
                 AlertDialog dialog = builder.create();
