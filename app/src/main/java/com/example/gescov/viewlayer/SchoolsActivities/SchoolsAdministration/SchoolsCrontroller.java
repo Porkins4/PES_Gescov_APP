@@ -116,4 +116,8 @@ public class SchoolsCrontroller{
     public void addNewAdminToSchool(String newAdminID) {
         PresentationControlFactory.getViewLayerController().addNewAdminToSchool(newAdminID);
     }
+
+    public void requestAcessSchoolByCode(String userId, String schoolId,  String schoolCode) {
+        PresentationControlFactory.getViewLayerController().requestAcessSchoolByCode(userId, schoolId, schoolCode);
+    }
 }

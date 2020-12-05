@@ -7,6 +7,7 @@ import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.Refr
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshStudentSchoolsResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshUsersBySchoolIdResponseController;
+import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RequestAccessSchoolByCodeResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateSchoolAdminResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateSchoolClassroomResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.UpdateSchoolRequestStatusResponseController;
@@ -52,6 +53,7 @@ public class ServicesFactory {
     private static RefreshStudentSchoolsResponseController refreshStudentSchoolsResponseController;
     private static RefreshUsersBySchoolIdResponseController refreshUsersBySchoolIdResponseController;
     private static UpdateSchoolAdminResponseController updateSchoolAdminResponseController;
+    private static RequestAccessSchoolByCodeResponseController requestAccessSchoolByCodeResponseController;
 
     private static Retrofit getRetrofit() {
         if (retrofit != null) return retrofit;
@@ -163,5 +165,11 @@ public class ServicesFactory {
         if (chatService != null) return chatService;
         chatService = new ChatServiceImplementor();
         return chatService;
+    }
+
+    public static RequestAccessSchoolByCodeResponseController getRequestAccessSchoolByCodeResponseController() {
+        if (requestAccessSchoolByCodeResponseController != null) return requestAccessSchoolByCodeResponseController;
+        requestAccessSchoolByCodeResponseController = new RequestAccessSchoolByCodeResponseController(getRetrofit());
+        return requestAccessSchoolByCodeResponseController;
     }
 }

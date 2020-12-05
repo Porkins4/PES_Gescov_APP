@@ -190,4 +190,10 @@
     <string name="no_messages_yet_text">Encara no s\'ha enviat cap missatge</string>
 
 
+    <!-- Access school by code activity -->
+    <string name="access_school_by_code_entry">escriu el teu codi aquí</string>
+    <string name="access_school_by_code_title">Codi d´escola</string>
+    <string name="access_school_by_code_button">Solicita accés</string>
+
+
 </resources>

@@ -11,4 +11,9 @@
         <item>Desfer administrador</item>
     </string-array>
 
+    <string-array name="join_school_menu_items">
+        <item>Generar solicitud</item>
+        <item>Accés per codi</item>
+    </string-array>
+
 </resources>

@@ -1,4 +1,4 @@
-package com.example.gescov.ViewLayer;
+package com.example.gescov.viewlayer;
 
 import android.util.Pair;
 
@@ -294,5 +294,9 @@ public class ViewLayerController {
 
     public void chatPreviewsUpdated(List<ChatPreviewModel> chatPreviewModels, boolean error) {
         PresentationControlFactory.getChatListController().chatPreviewsUpdated(chatPreviewModels, error);
+    }
+
+    public void requestAcessSchoolByCode(String userId, String schoolId, String schoolCode) {
+       DomainControlFactory.getSchoolsModelCrontroller().requestAcessSchoolByCode(userId, schoolId, schoolCode);
     }
 }

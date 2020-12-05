@@ -157,4 +157,8 @@ public class SchoolsModelController {
         String currentSchoolId = getCurrentSchool().getId();
         ServicesFactory.getUpdateSchoolAdminResponseController().addNewAdmin(currentSchoolId, currentUserId, newAdminID);
     }
+
+    public void requestAcessSchoolByCode(String userId, String schoolId, String schoolCode) {
+        ServicesFactory.getRequestAccessSchoolByCodeResponseController().requestAccess(schoolId, userId, schoolCode);
+    }
 }
