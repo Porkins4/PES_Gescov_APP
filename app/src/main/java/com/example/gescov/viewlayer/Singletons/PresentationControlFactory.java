@@ -4,17 +4,6 @@ package com.example.gescov.viewlayer.Singletons;
 import com.example.gescov.viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroomController;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionController;
 import com.example.gescov.viewlayer.ContagionList.ContagionController;
-
-import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUsersController;
-import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
-
-import com.example.gescov.viewlayer.Map.MapController;
-import com.example.gescov.viewlayer.ranking.RankingController;
-
-import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
-import com.example.gescov.viewlayer.SignUpAndLogin.LoadingProfileActivity;
-import com.example.gescov.viewlayer.SignUpAndLogin.LoadingProfileController;
-import com.example.gescov.viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroomController;
 import com.example.gescov.viewlayer.Map.MapController;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassroomsCrontroller;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolsCrontroller;
@@ -24,10 +13,11 @@ import com.example.gescov.viewlayer.UpdateUserProfile.UpdateUserProfileControlle
 import com.example.gescov.viewlayer.ViewLayerController;
 import com.example.gescov.viewlayer.chat.chatlist.ChatListController;
 import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
+import com.example.gescov.viewlayer.chatview.ChatViewController;
 import com.example.gescov.viewlayer.home.NotifyContagionController;
 import com.example.gescov.viewlayer.home.TracingTestController;
+import com.example.gescov.viewlayer.ranking.RankingController;
 import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
-import com.example.gescov.viewlayer.chat.chatlist.ChatListController;
 
 import androidx.lifecycle.ViewModelProvider;
 

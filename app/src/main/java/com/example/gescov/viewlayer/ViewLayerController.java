@@ -1,4 +1,4 @@
-package com.example.gescov.ViewLayer;
+package com.example.gescov.viewlayer;
 
 import android.util.Pair;
 
