@@ -46,6 +46,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         Button joinSchoolButton = (Button) findViewById(R.id.join_school_button);
 
 
+
         name.setText(school.getName());
 
         setVisibilityAndValue(address, school.getAddress());
@@ -111,6 +112,17 @@ public class SchoolDetailsActivity extends AppCompatActivity {
             if (response) openPopup();
             else successAddingStudentToCenter();
 
+        });
+        setGraphListener();
+    }
+
+    private void setGraphListener() {
+        Button graphButton = findViewById(R.id.graf_school);
+        graphButton.setOnClickListener(v -> {
+            Intent graphIntent = new Intent(this, SchoolGraphActivity.class);
+            graphIntent.putExtra("schoolId",school.getId());
+            graphIntent.putExtra("nameSchool",school.getName());
+            startActivity(graphIntent);
         });
     }
 

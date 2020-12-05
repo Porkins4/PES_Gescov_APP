@@ -1,5 +1,7 @@
 package com.example.gescov.DomainLayer.Controllers;
 
+import android.location.Location;
+
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.User;
 import com.example.gescov.DomainLayer.Services.LoginRespository;
@@ -301,5 +303,13 @@ public class UserModelController {
             e.printStackTrace();
         }
         DomainControlFactory.getModelController().refreshSchoolUsersListInView(new ArrayList <User> (userHash.values()));
+    }
+
+    public void setLocation(Location location) {
+        loggedUser.setLocation(location);
+    }
+
+    public Location getLocation() {
+       return  loggedUser.getLocation();
     }
 }

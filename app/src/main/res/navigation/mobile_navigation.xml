@@ -44,7 +44,7 @@
     <fragment
         android:id="@+id/ranking_fragment"
         android:name="com.example.gescov.viewlayer.ranking.RankingFragment"
-        android:label="fragment_ranking"
+        android:label="@string/ranking_name"
         tools:layout="@layout/fragment_ranking" />
 
 

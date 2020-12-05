@@ -1,5 +1,6 @@
 package com.example.gescov.viewlayer.Map;
 
+import android.location.Location;
 import android.util.Pair;
 
 import com.example.gescov.DomainLayer.Classmodels.School;
@@ -23,5 +24,9 @@ public class MapController {
 
     public void setViewModelControler(MapVIewModel mapVIewModel) {
         this.mapVIewModel = mapVIewModel;
+    }
+
+    public Location getLocation() {
+        return PresentationControlFactory.getViewLayerController().getLocation();
     }
 }

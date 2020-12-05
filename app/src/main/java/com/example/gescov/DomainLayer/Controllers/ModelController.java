@@ -278,6 +278,15 @@ public class ModelController {
         viewLayerController.refreshSchoolUsersList(usersList);
     }
 
+
+    public void setGraph(String schoolId) {
+        DomainControlFactory.getSchoolsModelCrontroller().setGraph(schoolId);
+    }
+
+    public void sendResponseOfGraph(List<Pair<String, Integer>> contagionPerMonth) {
+        viewLayerController.sendResponseOfGraph(contagionPerMonth);
+    }
+
     //------------------------------------
     //Create Chat
     public void createChat(String targetID) {

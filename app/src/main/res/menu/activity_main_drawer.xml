@@ -35,7 +35,7 @@
             android:title="@string/ranking_name" />
         <item
             android:id="@+id/ranking_fragment"
-            android:icon="@drawable/logout"
+            android:icon="@drawable/trofeo"
             android:title="@string/ranking_name" />
 
 
