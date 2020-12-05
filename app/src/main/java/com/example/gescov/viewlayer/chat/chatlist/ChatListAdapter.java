@@ -61,7 +61,7 @@ public class ChatListAdapter extends BaseAdapter {
         TextView lastMessageHour = (TextView) v.findViewById(R.id.last_message_time);
         String hour = chatViewers.get(position).getLmHour();
         if (hour.equals("null")) lastMessageHour.setText("--:--");
-        else lastMessageHour.setText(hour);
+        else lastMessageHour.setText(hour.substring(0,5));
 
         ImageView profilePic = (ImageView) v.findViewById(R.id.profile_image);
         loadImageFromUrl(profilePic,chatViewers.get(position).getTargetPic());

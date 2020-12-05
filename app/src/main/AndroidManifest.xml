@@ -14,7 +14,8 @@
         <activity
             android:name=".viewlayer.chat.createchat.CreatingChatActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-        <activity android:name=".viewlayer.chatview.ChatViewActivity" />
+        <activity android:name=".viewlayer.chatview.ChatViewActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
 
         <activity
             android:name=".viewlayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity"

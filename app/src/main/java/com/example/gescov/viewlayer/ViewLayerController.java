@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer;
+package com.example.gescov.ViewLayer;
 
 import android.util.Pair;
 
@@ -6,6 +6,7 @@ import com.example.gescov.DomainLayer.Classmodels.Assignment;
 import com.example.gescov.DomainLayer.Classmodels.Chat;
 import com.example.gescov.DomainLayer.Classmodels.ChatPreviewModel;
 import com.example.gescov.DomainLayer.Classmodels.Classroom;
+import com.example.gescov.DomainLayer.Classmodels.MessageModel;
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.DomainLayer.Classmodels.SchoolRequest;
 import com.example.gescov.DomainLayer.Classmodels.User;
@@ -298,5 +299,21 @@ public class ViewLayerController {
 
     public void requestAcessSchoolByCode(String userId, String schoolId, String schoolCode) {
        DomainControlFactory.getSchoolsModelCrontroller().requestAcessSchoolByCode(userId, schoolId, schoolCode);
+    }
+
+    public void getChatMessages(String chatID) {
+        DomainControlFactory.getModelController().getChatMessages(chatID);
+    }
+
+    public void notifyChatMessagesResponse(List<MessageModel> messages, boolean error) {
+        PresentationControlFactory.getChatViewController().notifyChatMessagesResponse(messages, error);
+    }
+
+    public void sendMessage(String chatID, String message) {
+        DomainControlFactory.getModelController().sendMessage(chatID,message);
+    }
+
+    public void notifyChatUpdated() {
+        PresentationControlFactory.getChatViewController().notifyChatUpdated();
     }
 }

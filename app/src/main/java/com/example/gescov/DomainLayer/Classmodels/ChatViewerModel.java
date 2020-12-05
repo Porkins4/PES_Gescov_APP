@@ -1,5 +1,7 @@
 package com.example.gescov.DomainLayer.Classmodels;
 
+import java.util.List;
+
 public class ChatViewerModel {
     private String chatID;
     private String destinyID;

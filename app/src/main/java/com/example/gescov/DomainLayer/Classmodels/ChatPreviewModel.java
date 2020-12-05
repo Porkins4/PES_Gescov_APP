@@ -5,6 +5,8 @@ import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 public class ChatPreviewModel {
 
     private String chatID;
@@ -13,6 +15,7 @@ public class ChatPreviewModel {
     private String lmHour;
     private String target;
     private String targetPic;
+    private List<MessageModel> messages;
 
     public String getChatID() {
         return chatID;
@@ -80,5 +83,13 @@ public class ChatPreviewModel {
         System.out.println(lmHour);
         System.out.println(target);
         System.out.println(targetPic);
+    }
+
+    public void setMessages(List<MessageModel> messages) {
+        this.messages = messages;
+    }
+
+    public void addMessage(MessageModel message) {
+        messages.add(message);
     }
 }

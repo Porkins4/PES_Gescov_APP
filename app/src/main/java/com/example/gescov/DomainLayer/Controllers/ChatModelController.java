@@ -2,8 +2,10 @@ package com.example.gescov.DomainLayer.Controllers;
 
 import com.example.gescov.DomainLayer.Classmodels.Chat;
 import com.example.gescov.DomainLayer.Classmodels.ChatPreviewModel;
+import com.example.gescov.DomainLayer.Classmodels.MessageModel;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 import com.example.gescov.DomainLayer.Singletons.ServicesFactory;
+import com.example.gescov.viewlayer.chatview.MessageAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,5 +55,48 @@ public class ChatModelController {
             }
             DomainControlFactory.getModelController().chatPreviewsUpdated(chatPreviewModels,error);
         } else DomainControlFactory.getModelController().chatPreviewsUpdated(chatPreviewModels,error);
+    }
+    public void getMessages(String chatID) {
+        ServicesFactory.getChatService().getMessages(chatID);
+    }
+
+    public void updateChatMessages(JSONArray response, String chatID, boolean error) {
+        if (!error) {
+            List<MessageModel> messages = new ArrayList<>();
+            for (int i = 0;  i < response.length(); ++i) {
+                try {
+                    messages.add(MessageModel.fromJSONtoMessage(response.getJSONObject(i)));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            //messages.get(messages.size()-1).print();
+            searchAndReplaceMessages(messages,chatID);
+            DomainControlFactory.getModelController().notifyChatMessagesResponse(messages, error);
+        } else DomainControlFactory.getModelController().notifyChatMessagesResponse(null, error);
+    }
+
+    private void searchAndReplaceMessages(List<MessageModel> messages, String chatID) {
+        boolean found = false;
+        for (int i = 0; i < chatPreviewModels.size() && !found; ++i) {
+            if (chatPreviewModels.get(i).getChatID().equals(chatID)) {
+                chatPreviewModels.get(i).setMessages(messages);
+                found = true;
+            }
+        }
+    }
+
+    public void sendMessage(String chatID, String message) {
+        ServicesFactory.getChatService().sendMessage(chatID,message,DomainControlFactory.getUserModelController().getLoggedUser().getId());
+    }
+
+    public void addMessageToChat(JSONObject response) {
+        MessageModel message = MessageModel.fromJSONtoMessage(response);
+        for (int i = 0; i < chatPreviewModels.size(); ++i) {
+            if (chatPreviewModels.get(i).getChatID().equals(message.getChatID())) {
+                chatPreviewModels.get(i).addMessage(message);
+            }
+        }
+        DomainControlFactory.getModelController().notifyChatUpdated();
     }
 }
