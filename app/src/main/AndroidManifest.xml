@@ -24,10 +24,13 @@
         <activity
             android:name=".viewlayer.chat.createchat.CreateChatActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-        <activity android:name=".viewlayer.schoolrequests.SchoolRequestsListActivity" />
+        <activity android:name=".viewlayer.schoolrequests.SchoolRequestsListActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.UpdateUserProfile.UpdateUserProfileActivity" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity" />
-        <activity android:name=".viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity" />
+        <activity android:name=".viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity"
+                android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity android:name=".viewlayer.home.DailyTestActivity" />
         <activity android:name=".viewlayer.SignUpAndLogin.LoginActivity" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.CreateClassroomFormActivity" />
