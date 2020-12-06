@@ -29,17 +29,15 @@ public class SchoolUsersListViewAdapter extends ModelListViewAdapter {
         TextView userProfile = v.findViewById(R.id.user_list_item_profile);
         User user = (User) modelList.get(position);
         School currentSchool = PresentationControlFactory.getSchoolsCrontroller().getCurrentSchool();
-        boolean isUserAdmin = currentSchool.getAdministratorsList().contains(user.getId());
-        boolean isLoggedUserCreator = currentSchool.getCreator().equals(PresentationControlFactory.getViewLayerController().getLoggedUserInfo().getId());
         userName.setText(user.getName());
         userProfile.setText(user.getProfileType() != null ? user.getProfileType().getText() : "");
 
-        if (isLoggedUserCreator && user.getProfileType().equals(User.UserProfileType.TEACHER) && !user.getId().equals(currentSchool.getCreator())) {
+        if (isLoggedUserCreator(currentSchool) && user.getProfileType().equals(User.UserProfileType.TEACHER) && !user.getId().equals(currentSchool.getCreator())) {
             v.setOnLongClickListener(e -> {
                         AlertDialog.Builder builder = new AlertDialog.Builder(e.getContext());
                         builder.setTitle(e.getResources().getString(R.string.options))
-                                .setItems(isUserAdmin ? R.array.admin_option_menu_items : R.array.user_option_menu_items, (dialog, which) -> {
-                                    if (which == 0) confirmSetAdministratorPrompt(e, user, isUserAdmin);
+                                .setItems(isUserAdmin(currentSchool, user) ? R.array.admin_option_menu_items : R.array.user_option_menu_items, (dialog, which) -> {
+                                    if (which == 0) confirmSetAdministratorPrompt(e, user, isUserAdmin(currentSchool, user));
                                 });
                         AlertDialog dialog = builder.create();
                         dialog.show();
@@ -48,6 +46,14 @@ public class SchoolUsersListViewAdapter extends ModelListViewAdapter {
             );
         }
         return v;
+    }
+
+    private boolean isUserAdmin(School school, User user) {
+        return school.getAdministratorsList().contains(user.getId());
+    }
+
+    private boolean isLoggedUserCreator(School school) {
+        return school.getCreator().equals(PresentationControlFactory.getViewLayerController().getLoggedUserInfo().getId());
     }
 
     private void confirmSetAdministratorPrompt(View v, User user, boolean isUserAdmin) {
@@ -63,7 +69,7 @@ public class SchoolUsersListViewAdapter extends ModelListViewAdapter {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
         String question;
-        if (isUserAdmin)
+        if (!isUserAdmin)
             question = v.getResources().getString(R.string.user_school_make_admin_message_1) +" " + user.getName() + " " +  v.getResources().getString(R.string.user_school_make_admin_message_2);
         else
             question = v.getResources().getString(R.string.user_school_unmake_admin_message_1) +" " + user.getName() + " " +  v.getResources().getString(R.string.user_school_unmake_admin_message_2);
