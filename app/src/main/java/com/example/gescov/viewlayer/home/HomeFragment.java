@@ -33,6 +33,7 @@ import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.squareup.picasso.Picasso;
@@ -97,11 +98,21 @@ public class HomeFragment extends Fragment {
 
     private void checkPermision() {
         if (getActivity().getApplicationContext().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)  {
-            fusedLocationProviderClient.getLastLocation().addOnSuccessListener(location -> {
+            Task<Location> locationResult = fusedLocationProviderClient.getLastLocation();
+            locationResult.addOnCompleteListener(getActivity(), new OnCompleteListener<Location>() {
+                @Override
+                public void onComplete(@NonNull Task<Location> task) {
+                    if ( task.isSuccessful()) {
+                        Location userLoc = task.getResult();
+                        PresentationControlFactory.getHomeController().setLocation(userLoc);
+                    }
+                }
+            });
+            /*fusedLocationProviderClient.getLastLocation().addOnSuccessListener(location -> {
                 if ( location != null ) {
                     PresentationControlFactory.getHomeController().setLocation(location);
                 }
-            });
+            });*/
 
         }else {
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
