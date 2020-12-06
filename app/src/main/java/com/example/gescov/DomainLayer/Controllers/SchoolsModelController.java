@@ -10,9 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class SchoolsModelController {
@@ -180,7 +178,8 @@ public class SchoolsModelController {
         }
         DomainControlFactory.getModelController().sendResponseOfGraph(contagionPerMonth);
     }
-    public void requestAcessSchoolByCode(String userId, String schoolId, String schoolCode) {
+    public void requestAccessSchoolByCode(String userId, String schoolId, String schoolCode) {
         ServicesFactory.getRequestAccessSchoolByCodeResponseController().requestAccess(schoolId, userId, schoolCode);
     }
+
 }
