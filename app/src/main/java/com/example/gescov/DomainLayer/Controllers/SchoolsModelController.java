@@ -182,4 +182,18 @@ public class SchoolsModelController {
         ServicesFactory.getRequestAccessSchoolByCodeResponseController().requestAccess(schoolId, userId, schoolCode);
     }
 
+    public void refreshCurrentSchool() {
+        ServicesFactory.getRefreshCurrentSchoolResponseController().refreshSchool(currentSchool.getId());
+    }
+
+    public void refreshCurrentSchool(String schoolString) {
+        JSONObject schoolJSON;
+        try {
+            schoolJSON = new JSONObject(schoolString);
+            currentSchool = School.fromJsonToSchool(schoolJSON);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
