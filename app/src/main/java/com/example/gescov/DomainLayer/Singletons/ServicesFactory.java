@@ -1,7 +1,9 @@
 package com.example.gescov.DomainLayer.Singletons;
 
+import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.DeleteSchoolAdminResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.DeleteSchoolClassroomResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.DeleteSchoolResponseController;
+import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshCurrentSchoolResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolClassroomsResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolRequestsBySchoolIdResponseController;
 import com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers.RefreshSchoolResponseController;
@@ -53,7 +55,9 @@ public class ServicesFactory {
     private static RefreshStudentSchoolsResponseController refreshStudentSchoolsResponseController;
     private static RefreshUsersBySchoolIdResponseController refreshUsersBySchoolIdResponseController;
     private static UpdateSchoolAdminResponseController updateSchoolAdminResponseController;
+    private static DeleteSchoolAdminResponseController deleteSchoolAdminResponseController;
     private static RequestAccessSchoolByCodeResponseController requestAccessSchoolByCodeResponseController;
+    private static RefreshCurrentSchoolResponseController refreshCurrentSchoolResponseController;
 
     private static Retrofit getRetrofit() {
         if (retrofit != null) return retrofit;
@@ -161,6 +165,12 @@ public class ServicesFactory {
         return updateSchoolAdminResponseController;
     }
 
+    public static DeleteSchoolAdminResponseController getDeleteSchoolAdminResponseController() {
+        if (deleteSchoolAdminResponseController != null) return deleteSchoolAdminResponseController;
+        deleteSchoolAdminResponseController = new DeleteSchoolAdminResponseController(getRetrofit());
+        return deleteSchoolAdminResponseController;
+    }
+
     public static IChatService getChatService() {
         if (chatService != null) return chatService;
         chatService = new ChatServiceImplementor();
@@ -171,5 +181,11 @@ public class ServicesFactory {
         if (requestAccessSchoolByCodeResponseController != null) return requestAccessSchoolByCodeResponseController;
         requestAccessSchoolByCodeResponseController = new RequestAccessSchoolByCodeResponseController(getRetrofit());
         return requestAccessSchoolByCodeResponseController;
+    }
+
+    public static RefreshCurrentSchoolResponseController getRefreshCurrentSchoolResponseController() {
+        if (refreshCurrentSchoolResponseController != null) return refreshCurrentSchoolResponseController;
+        refreshCurrentSchoolResponseController = new RefreshCurrentSchoolResponseController(getRetrofit());
+        return refreshCurrentSchoolResponseController;
     }
 }

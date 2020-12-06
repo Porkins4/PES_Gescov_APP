@@ -158,7 +158,30 @@ public class SchoolsModelController {
         ServicesFactory.getUpdateSchoolAdminResponseController().addNewAdmin(currentSchoolId, currentUserId, newAdminID);
     }
 
-    public void requestAcessSchoolByCode(String userId, String schoolId, String schoolCode) {
+
+    public void deleteSchoolAdmin(String adminID) {
+        String currentUserId = DomainControlFactory.getUserModelController().getLoggedInUser().getId();
+        String currentSchoolId = getCurrentSchool().getId();
+        ServicesFactory.getDeleteSchoolAdminResponseController().deleteSchoolAdmin(currentSchoolId, currentUserId, adminID);
+    }
+
+    public void requestAccessSchoolByCode(String userId, String schoolId, String schoolCode) {
         ServicesFactory.getRequestAccessSchoolByCodeResponseController().requestAccess(schoolId, userId, schoolCode);
+    }
+
+    public void refreshCurrentSchool() {
+        String schoolId = DomainControlFactory.getSchoolsModelCrontroller().getCurrentSchool().getId();
+        ServicesFactory.getRefreshCurrentSchoolResponseController().refreshSchool(schoolId);
+    }
+
+    public void refreshCurrentSchool(String currentSchoolResponse) {
+        JSONObject response;
+        try {
+            response = new JSONObject(currentSchoolResponse);
+            currentSchool = School.fromJsonToSchool(response);
+            DomainControlFactory.getModelController().currentSchoolRefreshed();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

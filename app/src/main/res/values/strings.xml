@@ -74,6 +74,8 @@
     <!-- User School list item -->
     <string name="user_school_make_admin_message_1">Vols fer a </string>
     <string name="user_school_make_admin_message_2"> administrador d´aquest centre?</string>
+    <string name="user_school_unmake_admin_message_1">Vols treure a </string>
+    <string name="user_school_unmake_admin_message_2"> els privilegis d´administrador d´aquest centre?</string>
 
 
     <!-- Classrooms -->

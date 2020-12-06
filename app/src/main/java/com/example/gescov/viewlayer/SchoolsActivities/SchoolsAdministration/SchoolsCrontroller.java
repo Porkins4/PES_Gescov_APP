@@ -117,6 +117,10 @@ public class SchoolsCrontroller{
         PresentationControlFactory.getViewLayerController().addNewAdminToSchool(newAdminID);
     }
 
+    public void deleteSchoolAdmin(String adminID) {
+        PresentationControlFactory.getViewLayerController().deleteSchoolAdmin(adminID);
+    }
+
     public void requestAcessSchoolByCode(String userId, String schoolId,  String schoolCode) {
         PresentationControlFactory.getViewLayerController().requestAcessSchoolByCode(userId, schoolId, schoolCode);
     }

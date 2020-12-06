@@ -1,7 +1,7 @@
 package com.example.gescov.DomainLayer.Services.Retrofit.ResponseControllers;
 
 
-import com.example.gescov.DomainLayer.Services.Retrofit.Interfaces.IUpdateSchoolAdminService;
+import com.example.gescov.DomainLayer.Services.Retrofit.Interfaces.IDeleteSchoolAdminService;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
 
 import retrofit2.Call;
@@ -9,11 +9,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class UpdateSchoolAdminResponseController implements Callback<String> {
+public class DeleteSchoolAdminResponseController implements Callback<String> {
 
     private final Retrofit retrofit;
 
-    public UpdateSchoolAdminResponseController(Retrofit retrofit) {
+    public DeleteSchoolAdminResponseController(Retrofit retrofit) {
         this.retrofit = retrofit;
     }
 
@@ -27,10 +27,10 @@ public class UpdateSchoolAdminResponseController implements Callback<String> {
 
     }
 
-    public void addNewAdmin(String currentSchoolId, String currentUserId, String newAdminID) {
-        IUpdateSchoolAdminService service = retrofit.create(IUpdateSchoolAdminService.class);
+    public void deleteSchoolAdmin(String currentSchoolId, String currentUserId, String adminId) {
+        IDeleteSchoolAdminService service = retrofit.create(IDeleteSchoolAdminService.class);
 
-        Call<String> call = service.addNewAdminToSchool(currentSchoolId, currentUserId, newAdminID);
+        Call<String> call = service.deleteAdmin(currentSchoolId, currentUserId, adminId);
         call.enqueue(this);
     }
 }

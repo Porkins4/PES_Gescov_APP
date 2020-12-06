@@ -298,7 +298,7 @@ public class ViewLayerController {
     }
 
     public void requestAcessSchoolByCode(String userId, String schoolId, String schoolCode) {
-       DomainControlFactory.getSchoolsModelCrontroller().requestAcessSchoolByCode(userId, schoolId, schoolCode);
+       DomainControlFactory.getSchoolsModelCrontroller().requestAccessSchoolByCode(userId, schoolId, schoolCode);
     }
 
     public void getChatMessages(String chatID) {
@@ -315,5 +315,13 @@ public class ViewLayerController {
 
     public void notifyChatUpdated() {
         PresentationControlFactory.getChatViewController().notifyChatUpdated();
+    }
+
+    public void deleteSchoolAdmin(String adminID) {
+        DomainControlFactory.getModelController().deleteSchoolAdmin(adminID);
+    }
+
+    public void currentSchoolRefreshed() {
+        PresentationControlFactory.getSchoolUsersController().currentSchoolRefreshed();
     }
 }

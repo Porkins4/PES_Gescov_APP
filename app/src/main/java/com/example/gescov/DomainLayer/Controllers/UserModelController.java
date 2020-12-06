@@ -289,6 +289,8 @@ public class UserModelController {
 
     public void setUsersList(String usersListResponse) {
         JSONArray response = null;
+
+        userHash = new HashMap<>();
         try {
             response = new JSONArray(usersListResponse);
             for (int i = 0; i < response.length(); ++i) {

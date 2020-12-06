@@ -14,6 +14,7 @@ public class Classroom {
         this.name = name;
         this.rows = rows;
         this.columns = columns;
+        this.capacity = rows*columns;
     }
 
     public String getId() {

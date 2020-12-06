@@ -34,7 +34,7 @@ public class SchoolUsersListViewAdapter extends ModelListViewAdapter {
         userName.setText(user.getName());
         userProfile.setText(user.getProfileType() != null ? user.getProfileType().getText() : "");
 
-        if (isLoggedUserCreator && user.getProfileType().equals(User.UserProfileType.TEACHER)) {
+        if (isLoggedUserCreator && user.getProfileType().equals(User.UserProfileType.TEACHER) && !user.getId().equals(currentSchool.getCreator())) {
             v.setOnLongClickListener(e -> {
                         AlertDialog.Builder builder = new AlertDialog.Builder(e.getContext());
                         builder.setTitle(e.getResources().getString(R.string.options))
@@ -55,12 +55,18 @@ public class SchoolUsersListViewAdapter extends ModelListViewAdapter {
             if (which == DialogInterface.BUTTON_POSITIVE) {
                 if (!isUserAdmin) {
                     PresentationControlFactory.getSchoolsCrontroller().addNewAdminToSchool(user.getId());
+                } else {
+                    PresentationControlFactory.getSchoolsCrontroller().deleteSchoolAdmin(user.getId());
                 }
             }
         };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-        String question = v.getResources().getString(R.string.user_school_make_admin_message_1) + user.getName() +  v.getResources().getString(R.string.user_school_make_admin_message_2);
+        String question;
+        if (isUserAdmin)
+            question = v.getResources().getString(R.string.user_school_make_admin_message_1) +" " + user.getName() + " " +  v.getResources().getString(R.string.user_school_make_admin_message_2);
+        else
+            question = v.getResources().getString(R.string.user_school_unmake_admin_message_1) +" " + user.getName() + " " +  v.getResources().getString(R.string.user_school_unmake_admin_message_2);
         builder.setMessage(question)
                 .setPositiveButton(v.getResources().getString(R.string.apply), dialogClickListener)
                 .setNegativeButton(v.getResources().getString(R.string.cancel), dialogClickListener);

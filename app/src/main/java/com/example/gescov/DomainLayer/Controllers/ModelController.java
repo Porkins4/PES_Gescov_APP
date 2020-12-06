@@ -311,4 +311,12 @@ public class ModelController {
     public void notifyChatUpdated() {
         PresentationControlFactory.getViewLayerController().notifyChatUpdated();
     }
+
+    public void deleteSchoolAdmin(String adminID) {
+        DomainControlFactory.getSchoolsModelCrontroller().deleteSchoolAdmin(adminID);
+    }
+
+    public void currentSchoolRefreshed() {
+        PresentationControlFactory.getViewLayerController().currentSchoolRefreshed();
+    }
 }
