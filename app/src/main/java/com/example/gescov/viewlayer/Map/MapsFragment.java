@@ -55,7 +55,6 @@ public class MapsFragment extends Fragment {
             } catch (Resources.NotFoundException e) {
                 Log.e("MapFragment", "Can't find style. Error: ", e);
             }
-            userLocation = PresentationControlFactory.getMapController().getLocation();
             LatLng locUser = new LatLng(userLocation.getLatitude(), userLocation.getLongitude());
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(locUser, 13), 2700, null);
             mMap.setMaxZoomPreference(17);
@@ -100,6 +99,7 @@ public class MapsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        userLocation = PresentationControlFactory.getMapController().getLocation();
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_frag_id);
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
