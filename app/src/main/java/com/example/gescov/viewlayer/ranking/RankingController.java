@@ -2,7 +2,7 @@ package com.example.gescov.viewlayer.ranking;
 
 import android.util.Pair;
 
-import com.example.gescov.DomainLayer.Classmodels.School;
+import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 import java.util.List;

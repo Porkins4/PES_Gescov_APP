@@ -3,7 +3,7 @@ package com.example.gescov.viewlayer.Map;
 import android.location.Location;
 import android.util.Pair;
 
-import com.example.gescov.DomainLayer.Classmodels.School;
+import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 import java.util.List;

@@ -9,14 +9,10 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.gescov.DomainLayer.Classmodels.Assignment;
-import com.example.gescov.DomainLayer.Classmodels.Classroom;
+import com.example.gescov.domainlayer.Classmodels.Assignment;
+import com.example.gescov.domainlayer.Classmodels.Classroom;
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroom;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.List;
 

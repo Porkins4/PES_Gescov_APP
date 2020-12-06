@@ -1,7 +1,7 @@
 package com.example.gescov.viewlayer.chat.chatlist;
 
 
-import com.example.gescov.DomainLayer.Classmodels.ChatPreviewModel;
+import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 import java.util.List;

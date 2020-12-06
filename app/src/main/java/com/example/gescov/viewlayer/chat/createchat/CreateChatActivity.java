@@ -17,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gescov.R;
-import com.example.gescov.viewlayer.chatview.ChatViewActivity;
 
 public class CreateChatActivity extends AppCompatActivity {
 

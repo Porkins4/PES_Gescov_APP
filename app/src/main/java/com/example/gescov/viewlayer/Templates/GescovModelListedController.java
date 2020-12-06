@@ -2,8 +2,6 @@ package com.example.gescov.viewlayer.Templates;
 
 import android.content.Context;
 
-import com.example.gescov.DomainLayer.Classmodels.Classroom;
-
 import java.util.ArrayList;
 import java.util.List;
 
