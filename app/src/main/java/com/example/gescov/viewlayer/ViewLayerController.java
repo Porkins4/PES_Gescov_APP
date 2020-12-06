@@ -1,5 +1,6 @@
 package com.example.gescov.viewlayer;
 
+import android.location.Location;
 import android.util.Pair;
 
 import com.example.gescov.DomainLayer.Classmodels.Assignment;
@@ -277,6 +278,23 @@ public class ViewLayerController {
 
     public void addNewAdminToSchool(String newAdminID) {
         DomainControlFactory.getSchoolsModelCrontroller().addNewAdminToSchool(newAdminID);
+    }
+
+
+    public void setLocation(Location location) {
+        DomainControlFactory.getUserModelController().setLocation(location);
+    }
+
+    public Location getLocation() {
+        return DomainControlFactory.getUserModelController().getLocation();
+    }
+
+    public void setGraph(String schoolId) {
+        DomainControlFactory.getModelController().setGraph(schoolId);
+    }
+
+    public void sendResponseOfGraph(List<Pair<String, Integer>> contagionPerMonth) {
+        PresentationControlFactory.getSchoolsCrontroller().sendResponseOfGraph(contagionPerMonth);
     }
 
     //----------------------------------

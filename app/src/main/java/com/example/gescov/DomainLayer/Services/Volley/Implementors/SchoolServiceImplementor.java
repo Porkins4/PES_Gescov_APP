@@ -36,7 +36,7 @@ public class SchoolServiceImplementor implements ISchoolService {
     private final String GET_STUDENTS_IN_CLASS_SESSION = "https://gescov.herokuapp.com/api/assignments/classroom";
     private final String GET_CHECK_LOGIN = "https://gescov.herokuapp.com/api/users/";
     private final String PUT_USER_TO_SCHOOL = "https://gescov.herokuapp.com/api/users/school/";
-    private final String  SCHOOL_PUNTUATIONS = "https://gescov.herokuapp.com/api/schools/punctuation";
+    private final String  SCHOOL_PUNTUATIONS = "https://gescov.herokuapp.com/api/schools/scores";
 
     private final String GESCOV_SCHOOLS_URI = "https://gescov.herokuapp.com/api/schools/";
     
@@ -273,6 +273,22 @@ public class SchoolServiceImplementor implements ISchoolService {
         requestQueue.add(jsonObjectRequest);
     }
 
+    @Override
+    public void setGraph(String schoolId) {
+        JsonArrayRequest request = new JsonArrayRequest(
+                Request.Method.GET, GESCOV_SCHOOLS_URI+schoolId+"/tracking",null,
+                response -> {
+                    try {
+                        DomainControlFactory.getSchoolsModelCrontroller().sendResponseOfGraph(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                },
+                error -> {
+                }
+        );
+        VolleyServices.getRequestQueue().add(request);
+    }
     //-----------------------------------------------------------------
     // used to update the information of all the schools belonging to the current user
     @Override

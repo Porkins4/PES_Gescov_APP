@@ -10,7 +10,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SchoolsModelController {
@@ -165,23 +167,20 @@ public class SchoolsModelController {
         ServicesFactory.getDeleteSchoolAdminResponseController().deleteSchoolAdmin(currentSchoolId, currentUserId, adminID);
     }
 
-    public void requestAccessSchoolByCode(String userId, String schoolId, String schoolCode) {
-        ServicesFactory.getRequestAccessSchoolByCodeResponseController().requestAccess(schoolId, userId, schoolCode);
+    public void setGraph(String schoolId) {
+        ServicesFactory.getSchoolService().setGraph(schoolId);
     }
 
-    public void refreshCurrentSchool() {
-        String schoolId = DomainControlFactory.getSchoolsModelCrontroller().getCurrentSchool().getId();
-        ServicesFactory.getRefreshCurrentSchoolResponseController().refreshSchool(schoolId);
-    }
-
-    public void refreshCurrentSchool(String currentSchoolResponse) {
-        JSONObject response;
-        try {
-            response = new JSONObject(currentSchoolResponse);
-            currentSchool = School.fromJsonToSchool(response);
-            DomainControlFactory.getModelController().currentSchoolRefreshed();
-        } catch (JSONException e) {
-            e.printStackTrace();
+    public void sendResponseOfGraph(JSONArray response) throws JSONException {
+        List<Pair<String,Integer>> contagionPerMonth = new ArrayList<>();
+        for ( int i = 0; i < response.length(); ++i) {
+            JSONObject infoMonth = response.getJSONObject(i);
+            Pair<String,Integer> aux = new Pair<>(infoMonth.getString("first"),infoMonth.getInt("second"));
+            contagionPerMonth.add(aux);
         }
+        DomainControlFactory.getModelController().sendResponseOfGraph(contagionPerMonth);
+    }
+    public void requestAcessSchoolByCode(String userId, String schoolId, String schoolCode) {
+        ServicesFactory.getRequestAccessSchoolByCodeResponseController().requestAccess(schoolId, userId, schoolCode);
     }
 }

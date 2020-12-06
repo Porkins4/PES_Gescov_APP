@@ -17,8 +17,8 @@ public class School {
     private String address;
     private String state;
     private String creatorID;
-    private float latitude;
-    private float longitude;
+    private double latitude;
+    private double longitude;
     private String telephoneNumber;
     private String webpage;
     private List<String> listAdministratorsID;
@@ -42,7 +42,7 @@ public class School {
 
     public School(){}
 
-    public School(String id, String name, String address, String state, String creatorID, String email, String telephoneNumber, int longitude, int latitude, List<String> listAdministratorsID) {
+    public School(String id, String name, String address, String state, String creatorID, String email, String telephoneNumber, double longitude, double latitude, List<String> listAdministratorsID) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -64,8 +64,8 @@ public class School {
             String addressSchool = response.getString("address");
             String emailSchool = null;//aux.getString("email");
             String phone = response.getString("phone");
-            int longitude = response.getInt("longitude");
-            int latitude = response.getInt("longitude");
+            double longitude = response.getDouble("longitude");
+            double latitude = response.getDouble("latitude");
             List<String> listAdminsID = new ArrayList<>();
             JSONArray adminsArray = response.getJSONArray("administratorsID");
             for (int admin = 0; admin < adminsArray.length(); admin++) {

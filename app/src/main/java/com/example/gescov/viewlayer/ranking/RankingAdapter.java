@@ -21,11 +21,12 @@ public class RankingAdapter extends ModelListViewAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = inflater.inflate(R.layout.ranking_list_item,null);
-        TextView name = (TextView) v.findViewById(R.id.school);
-        TextView positionRank = (TextView) v.findViewById(R.id.position_school);
+        TextView name = v.findViewById(R.id.school);
+        TextView positionRank = v.findViewById(R.id.position_school);
         Pair <School,Integer> aux =  (Pair<School,Integer>) getItem(position);
         name.setText(aux.first.getName());
-        positionRank.setText(position);
+        Integer pos = position +1;
+        positionRank.setText("posició numero " + (pos).toString());
         return v;
     }
 }

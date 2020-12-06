@@ -1,5 +1,7 @@
 package com.example.gescov.DomainLayer.Classmodels;
 
+import android.location.Location;
+
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.IContagionService;
 import com.example.gescov.DomainLayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
@@ -17,6 +19,8 @@ import java.util.List;
 import androidx.lifecycle.MutableLiveData;
 
 public class User {
+
+
 
     public enum UserProfileType {
         STUDDENT ("Student"),
@@ -54,7 +58,11 @@ public class User {
     private Boolean risk;
     private UserProfileType profileType;
     private String tokenId;
+
+    private Location location;
+
     private String pic;
+
 
     public UserProfileType getProfileType() {
         return profileType;
@@ -76,6 +84,15 @@ public class User {
     public User(String Name, String userID) {
         this.name = Name;
         this.id = userID;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+
+
+    }
+    public Location getLocation() {
+        return this.location;
     }
 
     //----------------------------------

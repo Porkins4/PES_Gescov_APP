@@ -1,8 +1,12 @@
 package com.example.gescov.viewlayer.home;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,16 +18,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.DomainLayer.Classmodels.User;
+import com.example.gescov.DomainLayer.Services.Volley.VolleyServices;
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.Singletons.LoggedInUser;
 import com.example.gescov.viewlayer.UpdateUserProfile.UpdateUserProfileActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.ls.LSOutput;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,12 +51,16 @@ public class HomeFragment extends Fragment {
     private TextView nameText;
     private User user;
     private ImageView userImage;
+    private FusedLocationProviderClient fusedLocationProviderClient;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
+        checkPermision();
         PresentationControlFactory.setViewModelProvider(new ViewModelProvider(this));
         homeViewModel = PresentationControlFactory.getViewModelProvider().get(HomeViewModel.class);
         root = inflater.inflate(R.layout.fragment_home, container, false);
+
         Button takeTest = root.findViewById(R.id.takeTest);
         String url = LoggedInUser.getPhotoURL();
         userImage = root.findViewById(R.id.profile_image);
@@ -55,28 +73,41 @@ public class HomeFragment extends Fragment {
         user = PresentationControlFactory.getViewLayerController().getLoggedUserInfo();
 
         homeViewModel.getRisk().observe((LifecycleOwner) getContext(), e ->
-            refreshActivity()
+                refreshActivity()
         );
 
         riskButton.setOnClickListener(e ->
-            PresentationControlFactory.getViewLayerController().updateLoggedUserRisk()
+                PresentationControlFactory.getViewLayerController().updateLoggedUserRisk()
         );
 
         report.setOnClickListener(v -> {
-            intent = new Intent(getActivity(),CovidNotificationActivity.class);
+            intent = new Intent(getActivity(), CovidNotificationActivity.class);
             startActivity(intent);
         });
 
         takeTest.setOnClickListener(v -> {
-            intent = new Intent(getActivity(),DailyTestActivity.class);
+            intent = new Intent(getActivity(), DailyTestActivity.class);
             startActivity(intent);
         });
 
         initUpdateUserProfileButton();
         initViewComponents();
-
         return root;
     }
+
+    private void checkPermision() {
+        if (getActivity().getApplicationContext().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)  {
+            fusedLocationProviderClient.getLastLocation().addOnSuccessListener(location -> {
+                if ( location != null ) {
+                    PresentationControlFactory.getHomeController().setLocation(location);
+                }
+            });
+
+        }else {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
+        }
+    }
+
 
     private void initViewComponents() {
         TextView userName = (TextView) root.findViewById(R.id.home_user_name);
@@ -106,8 +137,20 @@ public class HomeFragment extends Fragment {
            }
            @Override
            public void onError() {
-               Log.i("loadingImage","error on loading imagge");
+               Log.i("loadingImage","error on loading image");
            }
        });
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if ( requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission is granted. Continue the action or workflow
+                // in your app.
+                checkPermision();
+            }
+        }
     }
 }
