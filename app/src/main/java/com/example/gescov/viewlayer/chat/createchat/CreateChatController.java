@@ -1,8 +1,8 @@
 package com.example.gescov.viewlayer.chat.createchat;
 
-import com.example.gescov.DomainLayer.Classmodels.Chat;
-import com.example.gescov.DomainLayer.Classmodels.School;
-import com.example.gescov.DomainLayer.Classmodels.User;
+import com.example.gescov.domainlayer.Classmodels.Chat;
+import com.example.gescov.domainlayer.Classmodels.School;
+import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 import java.util.List;

@@ -2,7 +2,7 @@ package com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassRecord;
 
 import android.util.Pair;
 
-import com.example.gescov.DomainLayer.Classmodels.User;
+import com.example.gescov.domainlayer.Classmodels.User;
 
 import java.util.List;
 

@@ -2,8 +2,8 @@ package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration;
 
 import android.content.Context;
 
-import com.example.gescov.DomainLayer.Classmodels.School;
-import com.example.gescov.DomainLayer.Classmodels.User;
+import com.example.gescov.domainlayer.Classmodels.School;
+import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.SchoolsActivities.studentschools.allSchools.SchoolListViewAdapter;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 

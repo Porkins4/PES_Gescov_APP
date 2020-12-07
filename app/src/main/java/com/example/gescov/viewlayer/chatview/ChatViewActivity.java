@@ -7,16 +7,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.example.gescov.DomainLayer.Classmodels.MessageModel;
 import com.example.gescov.R;
-import com.example.gescov.viewlayer.chat.createchat.CreateChatViewModel;
-import com.google.android.material.textfield.TextInputEditText;
 
 public class ChatViewActivity extends AppCompatActivity {
 

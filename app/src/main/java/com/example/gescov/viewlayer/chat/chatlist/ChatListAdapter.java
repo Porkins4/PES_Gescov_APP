@@ -9,8 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.gescov.DomainLayer.Classmodels.ChatPreviewModel;
-import com.example.gescov.DomainLayer.Services.Volley.VolleyServices;
+import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
+import com.example.gescov.domainlayer.Services.Volley.VolleyServices;
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.Singletons.GescovApplication;
 import com.squareup.picasso.Picasso;

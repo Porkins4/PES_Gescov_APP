@@ -7,9 +7,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.gescov.DomainLayer.Classmodels.Chat;
-import com.example.gescov.DomainLayer.Classmodels.School;
-import com.example.gescov.DomainLayer.Classmodels.User;
+import com.example.gescov.domainlayer.Classmodels.Chat;
+import com.example.gescov.domainlayer.Classmodels.School;
+import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 import java.util.ArrayList;

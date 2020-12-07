@@ -2,9 +2,7 @@ package com.example.gescov.viewlayer.schoolrequests;
 
 import android.content.Context;
 
-import com.example.gescov.DomainLayer.Classmodels.SchoolRequest;
-import com.example.gescov.DomainLayer.Controllers.SchoolRequestModelController;
-import com.example.gescov.DomainLayer.Singletons.DomainControlFactory;
+import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.Templates.GescovModelListedController;
 import com.example.gescov.viewlayer.Templates.ModelListViewAdapter;

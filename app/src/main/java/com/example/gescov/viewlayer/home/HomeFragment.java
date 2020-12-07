@@ -1,13 +1,9 @@
 package com.example.gescov.viewlayer.home;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.location.Location;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,30 +14,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.gescov.DomainLayer.Classmodels.User;
-import com.example.gescov.DomainLayer.Services.Volley.VolleyServices;
+import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.Singletons.LoggedInUser;
 import com.example.gescov.viewlayer.UpdateUserProfile.UpdateUserProfileActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.ls.LSOutput;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 public class HomeFragment extends Fragment {
 

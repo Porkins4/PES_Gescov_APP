@@ -1,6 +1,6 @@
 package com.example.gescov.viewlayer.ClassroomActivities.ClassroomDistribution;
 
-import com.example.gescov.DomainLayer.Classmodels.Assignment;
+import com.example.gescov.domainlayer.Classmodels.Assignment;
 
 import java.util.List;
 
