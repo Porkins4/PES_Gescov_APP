@@ -4,9 +4,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.gescov.domainlayer.Classmodels.School;
-import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.R;
+import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,11 +18,11 @@ public class AccessSchoolByCodeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_access_school_by_code);
         EditText codeEntry = findViewById(R.id.access_school_by_code_entry);
         Button requestButton = findViewById(R.id.access_school_by_code_button);
+        String schoolId = getIntent().getExtras().getString("schoolId");
 
         requestButton.setOnClickListener( e-> {
             User user = PresentationControlFactory.getViewLayerController().getLoggedUserInfo();
-            School school = PresentationControlFactory.getSchoolsCrontroller().getCurrentSchool();
-            PresentationControlFactory.getSchoolsCrontroller().requestAcessSchoolByCode(user.getId(), school.getId(), codeEntry.getText().toString());
+            PresentationControlFactory.getSchoolsCrontroller().requestAcessSchoolByCode(user.getId(), schoolId, codeEntry.getText().toString());
             finish();
         });
     }

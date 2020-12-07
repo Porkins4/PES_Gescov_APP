@@ -183,7 +183,7 @@ public class SchoolsModelController {
     }
 
     public void refreshCurrentSchool() {
-        ServicesFactory.getRefreshCurrentSchoolResponseController().refreshSchool(currentSchool.getId());
+        if (currentSchool != null) ServicesFactory.getRefreshCurrentSchoolResponseController().refreshSchool(currentSchool.getId());
     }
 
     public void refreshCurrentSchool(String schoolString) {

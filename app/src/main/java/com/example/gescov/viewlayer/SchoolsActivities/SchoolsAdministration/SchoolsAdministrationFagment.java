@@ -3,21 +3,20 @@ package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.example.gescov.R;
 import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.viewlayer.SchoolsActivities.studentschools.allSchools.SchoolListViewAdapter;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
-import com.example.gescov.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -86,10 +85,14 @@ public class SchoolsAdministrationFagment extends Fragment {
         refreshSchoolsList();
 
         createSchoolButton.setOnClickListener(e -> {
-            Intent intent = new Intent(getActivity(), CreateSchoolFormActivity.class);
-            startActivity(intent);
+            setCreateButtonActions();
         });
         return thisView;
+    }
+
+    protected void setCreateButtonActions() {
+        Intent intent = new Intent(getActivity(), CreateSchoolFormActivity.class);
+        startActivity(intent);
     }
 
     protected void createSchoolListViewAdapter(Context context) {

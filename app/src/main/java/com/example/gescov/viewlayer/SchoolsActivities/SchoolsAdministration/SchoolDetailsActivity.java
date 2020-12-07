@@ -79,6 +79,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
                                 schoolDetailsViewModel.getAddStudentToCenterResult(name.getText().toString());
                             else if (which == 1) {
                                 Intent intent = new Intent(this, AccessSchoolByCodeActivity.class);
+                                intent.putExtra("schoolId", school.getId());
                                 startActivity(intent);
                                 finish();
                             }
