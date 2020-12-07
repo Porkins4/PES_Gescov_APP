@@ -17,4 +17,8 @@ public class ContagionController {
     public void setContagionListFragment(ContagionListActivity activity) {
         this.contagionListActivity = activity;
     }
+
+    public String getIdContagion() {
+        return PresentationControlFactory.getViewLayerController().getIdContagion();
+    }
 }

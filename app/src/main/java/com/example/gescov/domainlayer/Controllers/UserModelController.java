@@ -314,4 +314,8 @@ public class UserModelController {
     public Location getLocation() {
        return  loggedUser.getLocation();
     }
+
+    public String getIdContagion() {
+        return loggedUser.getIdContagion();
+    }
 }

@@ -342,4 +342,8 @@ public class ViewLayerController {
     public void currentSchoolRefreshed() {
         PresentationControlFactory.getSchoolUsersController().currentSchoolRefreshed();
     }
+
+    public String getIdContagion() {
+        return DomainControlFactory.getModelController().getIdContagion();
+    }
 }

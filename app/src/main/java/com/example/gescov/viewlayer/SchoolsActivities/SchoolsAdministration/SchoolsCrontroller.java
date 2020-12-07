@@ -91,8 +91,8 @@ public class SchoolsCrontroller{
         PresentationControlFactory.getViewLayerController().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite);
     }
 
-    public void setCurrentSchool(String currentSchool) {
-        this.currentSchool = schoolHash.get(currentSchool);
+    public void setCurrentSchool(School currentSchool) {
+        this.currentSchool = currentSchool;
         PresentationControlFactory.getViewLayerController().setCurrentSchool(this.currentSchool);
     }
 
