@@ -1,6 +1,7 @@
 package com.example.gescov.viewlayer.ranking;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.Pair;
@@ -10,6 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.R;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolsAdministrationFagment;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolsCrontroller;
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.Templates.ModelListViewAdapter;
 
 import java.util.List;
@@ -29,11 +34,11 @@ public class RankingAdapter extends ModelListViewAdapter {
         TextView numContagions = v.findViewById(R.id.num_of_contagion);
         TextView positionRank = v.findViewById(R.id.position_school);
         TextView address = v.findViewById(R.id.schoo_address_Rank);
-        Pair <School,Integer> aux =  (Pair<School,Integer>) getItem(position);
-        name.setText(aux.first.getName());
+        Pair <School,Integer> school =  (Pair<School,Integer>) getItem(position);
+        name.setText(school.first.getName());
         Integer pos = position + 1;
         positionRank.setText((pos).toString() +". ");
-        address.setText(aux.first.getAddress());
+        address.setText(school.first.getAddress());
 
         if (pos == 1 ) {
             image.setImageResource(R.drawable.medical_mask_gold);
@@ -42,8 +47,15 @@ public class RankingAdapter extends ModelListViewAdapter {
         } else if ( pos == 3 ) {
             image.setImageResource(R.drawable.medical_mask_bronze);
         }
-        if ( aux.second == 1 ) numContagions.setText(aux.second.toString()+ " contagi");
-        else numContagions.setText(' '+ aux.second.toString()+ " contagis");
+        if ( school.second == 1 ) numContagions.setText(school.second.toString()+ " contagi");
+        else numContagions.setText(' '+ school.second.toString()+ " contagis");
+
+        v.setOnClickListener(e-> {
+            SchoolsCrontroller controller = PresentationControlFactory.getSchoolsCrontroller();
+            controller.setCurrentSchool(school.first);
+            Intent intent = new Intent(v.getContext(), SchoolDetailsActivity.class);
+            v.getContext().startActivity(intent);
+        });
         return v;
     }
 }

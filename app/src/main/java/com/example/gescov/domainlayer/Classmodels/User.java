@@ -77,6 +77,7 @@ public class User {
         this.profileType = UserProfileType.getUserProfileFromBoolean(isStudent);
     }
 
+
     public  User() {
         schoolsID = new ArrayList<>();
     }

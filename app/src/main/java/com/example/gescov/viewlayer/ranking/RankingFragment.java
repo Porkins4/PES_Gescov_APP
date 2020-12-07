@@ -1,11 +1,13 @@
 package com.example.gescov.viewlayer.ranking;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import com.example.gescov.R;
 
@@ -34,6 +36,7 @@ public class RankingFragment extends Fragment {
                 listView.setAdapter(rankingViewModel.getAdapter(getActivity()));
             }
         });
+
         return thisView;
     }
 }
