@@ -23,17 +23,9 @@ public class SchoolsCrontroller{
     private SchoolListViewAdapter adminSchoolListViewAdapter;
     private List<School> schoolsList;
 
-    private SchoolsAdministrationFagment fragment;
     private HashMap<String, School> schoolHash;
     private SchoolGraphViewModel schoolGraphViewModel;
 
-    public void setSchoolsAdministrationFragment(SchoolsAdministrationFagment fragment) {
-        this.fragment = fragment;
-    }
-
-    public SchoolsAdministrationFagment getSchoolsAdministrationFragment() {
-        return fragment;
-    }
 
     public void createSchoolListViewAdapter(Context context) {
         schoolListViewAdapter = new SchoolListViewAdapter(context, getSchoolsList());

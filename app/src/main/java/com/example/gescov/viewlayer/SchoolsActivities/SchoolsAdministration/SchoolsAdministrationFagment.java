@@ -63,7 +63,6 @@ public class SchoolsAdministrationFagment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         controller = PresentationControlFactory.getSchoolsCrontroller();
-        controller.setSchoolsAdministrationFragment(this);
 
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);

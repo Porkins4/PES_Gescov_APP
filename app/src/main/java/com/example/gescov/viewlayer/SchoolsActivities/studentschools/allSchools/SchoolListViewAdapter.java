@@ -8,10 +8,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.R;
+import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolsAdministrationFagment;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolsCrontroller;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
@@ -60,9 +59,8 @@ public class SchoolListViewAdapter extends BaseAdapter {
         v.setOnClickListener(e-> {
             SchoolsCrontroller controller = PresentationControlFactory.getSchoolsCrontroller();
             controller.setCurrentSchool(schoolList.get(position));
-            SchoolsAdministrationFagment fragment = controller.getSchoolsAdministrationFragment();
-            Intent intent = new Intent(fragment.getContext(), SchoolDetailsActivity.class);
-            fragment.startActivity(intent);
+            Intent intent = new Intent(v.getContext(), SchoolDetailsActivity.class);
+            v.getContext().startActivity(intent);
         });
         return v;
     }
