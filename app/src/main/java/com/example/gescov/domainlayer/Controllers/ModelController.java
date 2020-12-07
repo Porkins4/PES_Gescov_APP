@@ -36,8 +36,8 @@ public class ModelController {
 
     }
 
-    public String getAllContagions() {
-       return userModelController.getContagionsOfMyCenter();
+    public String getAllContagions(String schoolID) {
+       return userModelController.getContagionsOfMyCenter(schoolID);
     }
 
     public void CreateUser(String nameuser) {

@@ -151,11 +151,9 @@ public class User {
         this.risk = risk;
     }
 
-    public String getCntagionsOfCenter() {
-        // ahora es una lista de schools
-        String schoolId = schoolsID.get(0);
+    public String getCntagionsOfCenter(String schoolID) {
         IContagionService icontragionService = ServicesFactory.getContagionService();
-        return icontragionService.getContagionList(name,schoolId);
+        return icontragionService.getContagionList(schoolID);
     }
 
     public String getClassroomDimensions(String schoolId, String classroomId) {
