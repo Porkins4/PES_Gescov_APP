@@ -3,7 +3,9 @@ package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +21,14 @@ import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Cont
 import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsListActivity;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -34,6 +44,8 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_school_details);
         schoolsCrontroller = PresentationControlFactory.getSchoolsCrontroller();
         school = schoolsCrontroller.getCurrentSchool();
+        setMap(savedInstanceState);
+
         loggedUser = PresentationControlFactory.getViewLayerController().getLoggedUserInfo();
 
         TextView name = (TextView) findViewById(R.id.school_details_name);
@@ -118,6 +130,29 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         });
         setGraphListener();
         setContagionListListener(contagionListButton);
+    }
+
+    private void setMap(Bundle savedInstanceState) {
+        MapView mapView = findViewById(R.id.mapView);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(googleMap -> {
+            GoogleMap mMap = googleMap;
+            try {
+                boolean success = mMap.setMapStyle(
+                        MapStyleOptions.loadRawResourceStyle(
+                                getApplicationContext(), R.raw.mapstyle));
+                if (!success) {
+                    Log.e("MapFragment", "Style parsing failed.");
+                }
+            } catch (Resources.NotFoundException e) {
+                Log.e("MapFragment", "Can't find style. Error: ", e);
+            }
+            // habra que poner la latitude y longitude de la school
+            LatLng locSchool = new LatLng(41.38453674316406, 2.1137747764587402);
+            mMap.addMarker(new MarkerOptions().position(locSchool));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(locSchool, 13), 2700, null);
+            mMap.setMaxZoomPreference(17);
+        });
     }
 
     private void setContagionListListener(Button contagionListButton) {

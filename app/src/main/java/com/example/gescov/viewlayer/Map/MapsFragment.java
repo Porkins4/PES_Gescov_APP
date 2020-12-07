@@ -44,6 +44,7 @@ public class MapsFragment extends Fragment {
         @Override
         public void onMapReady(GoogleMap googleMap) {
             mMap = googleMap;
+
             try {
                 boolean success = mMap.setMapStyle(
                         MapStyleOptions.loadRawResourceStyle(
@@ -54,14 +55,16 @@ public class MapsFragment extends Fragment {
             } catch (Resources.NotFoundException e) {
                 Log.e("MapFragment", "Can't find style. Error: ", e);
             }
-            LatLng locUser = new LatLng(userLocation.getLatitude(), userLocation.getLongitude());
+            getSchools();
+            LatLng locUser;
+            locUser = new LatLng(userLocation.getLatitude(), userLocation.getLongitude());
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(locUser, 13), 2700, null);
             mMap.setMaxZoomPreference(17);
             if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
             mMap.setMyLocationEnabled(true);
-            getSchools();
+
         }
 
         private void getSchools() {
@@ -77,11 +80,13 @@ public class MapsFragment extends Fragment {
                 Integer numContagion = schools.get(i).second;
                 double longitude = schools.get(i).first.getLongitude();
                 double latitude = schools.get(i).first.getLatitude();
+                System.out.println(longitude + ',' + latitude);
                 if (numContagion >= 7) {
                     mMap.addCircle(new CircleOptions().center(new LatLng(latitude, longitude)).radius(60.0).strokeColor(Color.argb(130, 150, 50, 50)).fillColor(Color.argb(130, 150, 50, 50)));
                 } else if (numContagion == 0) {
                     mMap.addCircle(new CircleOptions().center(new LatLng(latitude, longitude)).radius(50.0).strokeColor(Color.argb(130, 50, 150, 50)).fillColor(Color.argb(130, 50, 150, 50)));
                 } else {
+                    System.out.println("putillllllaaa");
                     mMap.addCircle(new CircleOptions().center(new LatLng(latitude, longitude)).radius(40.0).strokeColor(Color.argb(130, 150, 150, 50)).fillColor(Color.argb(130, 150, 150, 50)));
                 }
             }
@@ -99,6 +104,11 @@ public class MapsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         userLocation = PresentationControlFactory.getMapController().getLocation();
+        if ( userLocation == null) {
+            userLocation = new Location("default");
+            userLocation.setLatitude(41.38453674316406);
+            userLocation.setLongitude(2.1137747764587402);
+        }
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_frag_id);
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
