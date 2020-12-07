@@ -3,7 +3,7 @@ package com.example.gescov.viewlayer.Singletons;
 
 import com.example.gescov.viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroomController;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionController;
-import com.example.gescov.viewlayer.ContagionList.ContagionController;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionController;
 
 
 import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUsersController;

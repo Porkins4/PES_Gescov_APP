@@ -15,6 +15,7 @@ import com.example.gescov.R;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.PopErrorAddStudentToCenter;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassromListActivity;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolDetailsViewModel;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionListActivity;
 import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsListActivity;
@@ -44,6 +45,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         Button classroomsListButton = (Button) findViewById(R.id.school_details_classroom_button);
         Button deleteButton = (Button) findViewById(R.id.school_details_delete);
         Button joinSchoolButton = (Button) findViewById(R.id.join_school_button);
+        Button contagionListButton = findViewById(R.id.contagion_list_button);
 
 
 
@@ -97,6 +99,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         } else {
             joinSchoolButton.setVisibility(View.INVISIBLE);
             usersListButton.setVisibility(View.INVISIBLE);
+            contagionListButton.setVisibility(View.INVISIBLE);
         }
 
         if (!school.getCreator().equals(loggedUser.getId())) {
@@ -114,6 +117,16 @@ public class SchoolDetailsActivity extends AppCompatActivity {
 
         });
         setGraphListener();
+        setContagionListListener(contagionListButton);
+    }
+
+    private void setContagionListListener(Button contagionListButton) {
+            contagionListButton.setOnClickListener(v -> {
+            Intent contagionListIntent = new Intent(this, ContagionListActivity.class);
+            contagionListIntent.putExtra("schoolID",school.getId());
+            contagionListIntent.putExtra("schoolName",school.getName());
+            startActivity(contagionListIntent);
+        });
     }
 
     private void setGraphListener() {

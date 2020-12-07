@@ -44,8 +44,8 @@ public class UserModelController {
     }
 
 
-    public String getContagionsOfMyCenter() {
-        return loggedUser.getCntagionsOfCenter();
+    public String getContagionsOfMyCenter(String schoolID) {
+        return loggedUser.getCntagionsOfCenter(schoolID);
     }
 
 

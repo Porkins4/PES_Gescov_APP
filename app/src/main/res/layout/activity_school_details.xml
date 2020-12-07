@@ -11,8 +11,8 @@
         style="@style/Theme.Gescov_DeleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="112dp"
         android:backgroundTint="@color/delete_red"
         android:text="@string/school_details_delete_school"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,6 +87,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/school_details_student_list_button" />
+
+    <Button
+        android:id="@+id/contagion_list_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contagion_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/graf_school" />
 
     <TextView
         android:id="@+id/school__details_email"
