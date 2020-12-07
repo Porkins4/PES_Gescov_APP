@@ -23,8 +23,8 @@ public class User {
 
 
     public enum UserProfileType {
-        STUDDENT ("Student"),
-        TEACHER ("Teacher");
+        STUDENT ("STUDENT"),
+        TEACHER ("TEACHER");
 
         private final String value;
         UserProfileType(String value) {
@@ -40,7 +40,7 @@ public class User {
         }
 
         public static UserProfileType getUserProfileFromBoolean(boolean isStudent) {
-            return isStudent ? STUDDENT : TEACHER;
+            return isStudent ? STUDENT : TEACHER;
         }
 
         public String getText() {
@@ -279,32 +279,6 @@ public class User {
         System.out.println(profileType);
         System.out.println(pic);
         for (String k: schoolsID) System.out.println(k);
-    }
-
-    public static User fromJSONtoUser(JSONObject jsonObject) {//mover el codigo aquí?
-        User response = new User();
-        response.setId("null");
-        try {
-            String name = jsonObject.getString("name");
-            String id = jsonObject.getString("id");
-            String profileType = jsonObject.getString("profile");
-            String email = jsonObject.getString("email");
-            Boolean risk = jsonObject.getBoolean("risk");
-            List<String> schools = new ArrayList<>();
-            JSONArray a = jsonObject.getJSONArray("schoolsID");
-            for (int i = 0; i < a.length(); i++) {
-                schools.add(a.getString(i));
-            }
-            response.setId(id);
-            response.setName(name);
-            response.setProfileType(profileType);
-            response.setSchoolsID(schools);
-            response.setEmail(email);
-            response.setRisk(risk);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return response;
     }
 
     private void setEmail(String email) {

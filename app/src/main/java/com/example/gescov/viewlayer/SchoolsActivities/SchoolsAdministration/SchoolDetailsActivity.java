@@ -80,6 +80,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
                             else if (which == 1) {
                                 Intent intent = new Intent(this, AccessSchoolByCodeActivity.class);
                                 startActivity(intent);
+                                finish();
                             }
                         });
                 AlertDialog dialog = builder.create();

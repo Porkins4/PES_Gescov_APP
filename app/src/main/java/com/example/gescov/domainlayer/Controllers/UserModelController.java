@@ -134,7 +134,7 @@ public class UserModelController {
     }
 
     public void refreshLoggedUser(JSONObject response) {
-        loggedUser.refreshUserParams(response);
+        loggedUser = getUserFromJSONObject(response);
         DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName(), loggedUser.getRisk());
     }
 
@@ -157,7 +157,11 @@ public class UserModelController {
     }
 
     public void refreshUser(String id, JSONObject response) {
-        loggedUser.refreshUserParams(response);
+        if (userHash.containsKey(id)){
+            userHash.remove(id);
+        }
+        User user = getUserFromJSONObject(response);
+        userHash.put(user.getId(), user);
         DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName(), loggedUser.getRisk());
     }
 
@@ -276,8 +280,8 @@ public class UserModelController {
             try {
                 User u = getUserFromJSONObject(response.getJSONObject(i)); //reusar esta operación
                 System.out.println(u.getProfileType());
-                if (loggedUser.getProfileType() == User.UserProfileType.TEACHER && u.getProfileType() == User.UserProfileType.STUDDENT) contactsFromSelectedCenter.add(u);
-                else if (loggedUser.getProfileType() == User.UserProfileType.STUDDENT && u.getProfileType() == User.UserProfileType.TEACHER) contactsFromSelectedCenter.add(u);
+                if (loggedUser.getProfileType() == User.UserProfileType.TEACHER && u.getProfileType() == User.UserProfileType.STUDENT) contactsFromSelectedCenter.add(u);
+                else if (loggedUser.getProfileType() == User.UserProfileType.STUDENT && u.getProfileType() == User.UserProfileType.TEACHER) contactsFromSelectedCenter.add(u);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
