@@ -32,12 +32,12 @@ public class SchoolUsersListViewAdapter extends ModelListViewAdapter {
         userName.setText(user.getName());
         userProfile.setText(user.getProfileType() != null ? user.getProfileType().getText() : "");
 
-        if (isLoggedUserCreator(currentSchool) && user.getProfileType().equals(User.UserProfileType.TEACHER) && !user.getId().equals(currentSchool.getCreator())) {
+        if (isLoggedUserCreator() && user.getProfileType().equals(User.UserProfileType.TEACHER) && !user.getId().equals(currentSchool.getCreator())) {
             v.setOnLongClickListener(e -> {
                         AlertDialog.Builder builder = new AlertDialog.Builder(e.getContext());
                         builder.setTitle(e.getResources().getString(R.string.options))
-                                .setItems(isUserAdmin(currentSchool, user) ? R.array.admin_option_menu_items : R.array.user_option_menu_items, (dialog, which) -> {
-                                    if (which == 0) confirmSetAdministratorPrompt(e, user, isUserAdmin(currentSchool, user));
+                                .setItems(isUserAdmin(user) ? R.array.admin_option_menu_items : R.array.user_option_menu_items, (dialog, which) -> {
+                                    if (which == 0) confirmSetAdministratorPrompt(e, user, isUserAdmin(user));
                                 });
                         AlertDialog dialog = builder.create();
                         dialog.show();
@@ -48,11 +48,13 @@ public class SchoolUsersListViewAdapter extends ModelListViewAdapter {
         return v;
     }
 
-    private boolean isUserAdmin(School school, User user) {
+    private boolean isUserAdmin(User user) {
+        School school = PresentationControlFactory.getSchoolsCrontroller().getCurrentSchool();
         return school.getAdministratorsList().contains(user.getId());
     }
 
-    private boolean isLoggedUserCreator(School school) {
+    private boolean isLoggedUserCreator() {
+        School school = PresentationControlFactory.getSchoolsCrontroller().getCurrentSchool();
         return school.getCreator().equals(PresentationControlFactory.getViewLayerController().getLoggedUserInfo().getId());
     }
 

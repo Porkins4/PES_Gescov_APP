@@ -5,7 +5,6 @@ import android.util.Pair;
 
 import com.example.gescov.DomainLayer.Classmodels.School;
 import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolDetailsViewModel;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.SchoolsActivities.studentschools.allSchools.SchoolListViewAdapter;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
@@ -26,7 +25,6 @@ public class SchoolsCrontroller{
 
     private SchoolsAdministrationFagment fragment;
     private HashMap<String, School> schoolHash;
-    private School currentSchool;
     private SchoolGraphViewModel schoolGraphViewModel;
 
     public void setSchoolsAdministrationFragment(SchoolsAdministrationFagment fragment) {
@@ -92,13 +90,8 @@ public class SchoolsCrontroller{
         PresentationControlFactory.getViewLayerController().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite);
     }
 
-    public void setCurrentSchool(String currentSchool) {
-        this.currentSchool = schoolHash.get(currentSchool);
-        PresentationControlFactory.getViewLayerController().setCurrentSchool(this.currentSchool);
-    }
-
     public School getCurrentSchool() {
-        return currentSchool;
+        return PresentationControlFactory.getViewLayerController().getCurrentSchool();
     }
 
     public void deleteSchool(School school) {
@@ -139,5 +132,9 @@ public class SchoolsCrontroller{
 
     public void requestAcessSchoolByCode(String userId, String schoolId,  String schoolCode) {
         PresentationControlFactory.getViewLayerController().requestAcessSchoolByCode(userId, schoolId, schoolCode);
+    }
+
+    public void setCurrentSchool(School school) {
+        PresentationControlFactory.getViewLayerController().setCurrentSchool(school);
     }
 }
