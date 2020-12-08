@@ -65,8 +65,8 @@ public class ModelController {
         DomainControlFactory.getSchoolsModelCrontroller().refreshStudentSchools(userId);
     }
 
-    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
-        DomainControlFactory.getSchoolsModelCrontroller().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite);
+    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite, String latitude, String longitude) {
+        DomainControlFactory.getSchoolsModelCrontroller().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite, latitude, longitude);
     }
 
     public void notifyInfected(MutableLiveData<ContagionRequestResult> result) {
@@ -335,5 +335,9 @@ public class ModelController {
 
     public String getIdContagion() {
         return DomainControlFactory.getUserModelController().getIdContagion();
+    }
+
+    public void updateCoordinatesSchoolCreationForm(String latitude, String longitude) {
+        PresentationControlFactory.getViewLayerController().updateCoordinatesSchoolCreationForm(latitude, longitude);
     }
 }

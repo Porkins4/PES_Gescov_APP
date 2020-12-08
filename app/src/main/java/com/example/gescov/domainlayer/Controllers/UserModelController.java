@@ -77,8 +77,12 @@ public class UserModelController {
         loggedUser.sendReservationRequest(aula,row,col);
     }
 
-    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
-        loggedUser.createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite);
+    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite, String latitude, String longitude) {
+
+        ISchoolService schoolService = ServicesFactory.getSchoolService();
+        List<String> administratorsList = new ArrayList<>();
+        administratorsList.add(loggedUser.getId());
+        schoolService.createSchoolRequest(schoolName, schoolAddress, schoolTelephone, schoolWebsite, latitude, longitude, administratorsList, loggedUser.getId());
     }
 
     public void deleteSchool(String schoolId) {

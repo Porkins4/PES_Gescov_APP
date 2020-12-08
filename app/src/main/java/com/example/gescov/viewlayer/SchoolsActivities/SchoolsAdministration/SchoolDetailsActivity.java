@@ -11,9 +11,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.User;
-import com.example.gescov.R;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.PopErrorAddStudentToCenter;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassromListActivity;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolDetailsViewModel;
@@ -24,8 +24,6 @@ import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsListActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -150,7 +148,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
                 Log.e("MapFragment", "Can't find style. Error: ", e);
             }
             // habra que poner la latitude y longitude de la school
-            LatLng locSchool = new LatLng(41.38453674316406, 2.1137747764587402);
+            LatLng locSchool = new LatLng(school.getLatitude(), school.getLongitude());
             mMap.addMarker(new MarkerOptions().position(locSchool));
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(locSchool, 13), 2700, null);
             mMap.setMaxZoomPreference(17);

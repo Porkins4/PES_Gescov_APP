@@ -19,7 +19,7 @@ public interface ISchoolService {
 
     void sendReservationRequest(String name, String classroom, int row, int col);
 
-    void createSchoolRequest(String schoolName, String schoolAddress, String schoolState, String schoolWebsite, List<String> administratorsList, String creatorID);
+    void createSchoolRequest(String schoolName, String schoolAddress, String schoolState, String schoolWebsite, String latitude, String longitude, List<String> administratorsList, String creatorID);
 
     void createClassroomRequest(String schoolName, String classroomName, int classroomRows, int classroomCols);
 

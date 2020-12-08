@@ -187,12 +187,6 @@ public class User {
         schoolService.sendReservationRequest(id,aula,row,col);
     }
 
-    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
-        ISchoolService schoolService = ServicesFactory.getSchoolService();
-        List<String> administratorsList = new ArrayList<>();
-        administratorsList.add(id);
-        schoolService.createSchoolRequest(schoolName, schoolAddress, schoolTelephone, schoolWebsite, administratorsList, id);
-    }
 
     public void deleteSchool(String schoolId) {
         ServicesFactory.getDeleteSchoolResponseController().deleteSchoolRequest(schoolId, this.id);

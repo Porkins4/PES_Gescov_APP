@@ -61,8 +61,8 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().sendReservationRequest(aula,row,col);
     }
 
-    public void createSchool( String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
-        DomainControlFactory.getModelController().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite);
+    public void createSchool( String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite, String latitude, String longitude) {
+        DomainControlFactory.getModelController().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite, latitude, longitude);
     }
 
     public void createClassroom(School currentSchool, String classroomName, int classroomRows, int classroomCols) {
@@ -349,5 +349,9 @@ public class ViewLayerController {
 
     public String getIdContagion() {
         return DomainControlFactory.getModelController().getIdContagion();
+    }
+
+    public void updateCoordinatesSchoolCreationForm(String latitude, String longitude) {
+        PresentationControlFactory.getSchoolsCrontroller().updateCoordinatesSchoolCreationForm(latitude, longitude);
     }
 }

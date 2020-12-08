@@ -24,7 +24,9 @@ public class SchoolsCrontroller{
     private List<School> schoolsList;
 
     private HashMap<String, School> schoolHash;
+
     private SchoolGraphViewModel schoolGraphViewModel;
+    private SchoolCreateFormViewModel schoolCreateFormViewModel;
 
 
     public void createSchoolListViewAdapter(Context context) {
@@ -78,8 +80,8 @@ public class SchoolsCrontroller{
         }
     }
 
-    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
-        PresentationControlFactory.getViewLayerController().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite);
+    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite, String latitude, String longitude) {
+        PresentationControlFactory.getViewLayerController().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite, latitude, longitude);
     }
 
     public School getCurrentSchool() {
@@ -118,6 +120,12 @@ public class SchoolsCrontroller{
         this.schoolGraphViewModel = schoolGraphViewModel;
     }
 
+    public SchoolCreateFormViewModel getSchoolCreateFormViewModel() {
+        if (schoolCreateFormViewModel == null)
+            schoolCreateFormViewModel = new SchoolCreateFormViewModel();
+        return schoolCreateFormViewModel;
+    }
+
     public void deleteSchoolAdmin(String adminID) {
         PresentationControlFactory.getViewLayerController().deleteSchoolAdmin(adminID);
     }
@@ -128,5 +136,9 @@ public class SchoolsCrontroller{
 
     public void setCurrentSchool(School school) {
         PresentationControlFactory.getViewLayerController().setCurrentSchool(school);
+    }
+
+    public void updateCoordinatesSchoolCreationForm(String latitude, String longitude) {
+        schoolCreateFormViewModel.updateCoordinates(latitude, longitude);
     }
 }
