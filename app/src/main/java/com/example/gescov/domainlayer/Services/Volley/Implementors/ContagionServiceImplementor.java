@@ -86,7 +86,7 @@ public class ContagionServiceImplementor implements IContagionService {
     }
 
     @Override
-    public String getContagionList(String userId, String schoolId) {
+    public String getContagionList(String schoolId) {
         conection = new Conection();
         String response = null;
         try {

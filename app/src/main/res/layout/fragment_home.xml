@@ -20,7 +20,7 @@
 
         <Button
             android:id="@+id/takeTest"
-            android:layout_width="wrap_content"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="84dp"
@@ -28,7 +28,7 @@
 
         <Button
             android:id="@+id/report"
-            android:layout_width="wrap_content"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
@@ -36,7 +36,7 @@
 
         <Button
             android:id="@+id/update_profile_button"
-            android:layout_width="250dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="update profile" />
@@ -47,6 +47,7 @@
         android:id="@+id/home_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="84dp"
         android:text="martillo"
         android:textColor="#000000"

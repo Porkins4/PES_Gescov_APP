@@ -11,12 +11,13 @@
         style="@style/Theme.Gescov_DeleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="33dp"
         android:backgroundTint="@color/delete_red"
         android:text="@string/school_details_delete_school"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_school_button" />
+        app:layout_constraintTop_toBottomOf="@+id/contagion_list_button" />
 
     <TextView
         android:id="@+id/school_details_name"
@@ -30,13 +31,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.gms.maps.MapView
+        xmlns:map="http://schemas.android.com/apk/res-auto"
         android:id="@+id/mapView"
         android:layout_width="340dp"
         android:layout_height="178dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/school_details_name" />
+        app:layout_constraintTop_toBottomOf="@+id/school_details_name"
+        map:cameraZoom="13"
+        map:mapType="normal"
+        map:liteMode="true"/>
 
     <TextView
         android:id="@+id/school_details_address"
@@ -87,6 +92,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/school_details_student_list_button" />
+
+    <Button
+        android:id="@+id/contagion_list_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contagion_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/graf_school" />
 
     <TextView
         android:id="@+id/school__details_email"

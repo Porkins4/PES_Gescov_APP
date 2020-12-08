@@ -37,8 +37,8 @@ public class ViewLayerController {
         return DomainControlFactory.getModelController().getStudentsInClassroom(classroom);
     }
 
-    public String getAllContagions() {
-        return DomainControlFactory.getModelController().getAllContagions();
+    public String getAllContagions(String schoolID) {
+        return DomainControlFactory.getModelController().getAllContagions(schoolID);
     }
 
     public void refreshAllSchools() throws JSONException {
@@ -345,5 +345,9 @@ public class ViewLayerController {
 
     public School getCurrentSchool() {
         return DomainControlFactory.getModelController().getCurrentSchool();
+    }
+
+    public String getIdContagion() {
+        return DomainControlFactory.getModelController().getIdContagion();
     }
 }

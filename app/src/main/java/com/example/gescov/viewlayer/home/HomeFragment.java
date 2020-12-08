@@ -57,6 +57,10 @@ public class HomeFragment extends Fragment {
         nameText = root.findViewById(R.id.home_user_name);
         nameText.setText("");
         riskButton = root.findViewById(R.id.home_risk_button);
+
+        String ContagionID = PresentationControlFactory.getContagionController().getIdContagion();
+        if ( ContagionID == null ) takeTest.setEnabled(false);
+        else takeTest.setEnabled(true);
         user = PresentationControlFactory.getViewLayerController().getLoggedUserInfo();
 
         homeViewModel.getRisk().observe((LifecycleOwner) getContext(), e ->
@@ -79,6 +83,8 @@ public class HomeFragment extends Fragment {
 
         initUpdateUserProfileButton();
         initViewComponents();
+
+
         return root;
     }
 
