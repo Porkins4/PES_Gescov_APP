@@ -54,13 +54,13 @@ public class ChatListAdapter extends BaseAdapter {
 
         TextView lastMessage = (TextView) v.findViewById(R.id.last_message);
         String msg = chatViewers.get(position).getLastMessage();
-        if (msg.equals("null")) lastMessage.setText(GescovApplication.getContext().getString(R.string.no_messages_yet_text));
+        if (msg == null) lastMessage.setText(GescovApplication.getContext().getString(R.string.no_messages_yet_text));
         else lastMessage.setText(msg);
 
 
         TextView lastMessageHour = (TextView) v.findViewById(R.id.last_message_time);
-        String hour = chatViewers.get(position).getLmHour();
-        if (hour.equals("null")) lastMessageHour.setText("--:--");
+        String hour = chatViewers.get(position).getHour();
+        if (hour == null) lastMessageHour.setText("--:--");
         else lastMessageHour.setText(hour.substring(0,5));
 
         ImageView profilePic = (ImageView) v.findViewById(R.id.profile_image);

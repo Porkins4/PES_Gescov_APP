@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer.chatview;
+package com.example.gescov.viewlayer.chat.chatview;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;

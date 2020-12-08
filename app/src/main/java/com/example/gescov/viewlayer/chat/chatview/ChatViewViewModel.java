@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer.chatview;
+package com.example.gescov.viewlayer.chat.chatview;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -63,7 +63,5 @@ public class ChatViewViewModel extends ViewModel {
 
     public void notifyChatUpdated() {
         adapter.notifyDataSetChanged();
-        adapter.getIth(adapter.size()-1).print();
-        System.out.println("sdaslkdhñalskhdalshd");
     }
 }

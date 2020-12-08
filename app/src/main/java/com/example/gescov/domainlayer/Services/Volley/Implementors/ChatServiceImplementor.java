@@ -18,9 +18,15 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import okhttp3.OkHttpClient;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
+
 public class ChatServiceImplementor implements IChatService {
     private static final String GESCOV_CHAT_URI = "https://gescov.herokuapp.com/api/chats";
+    private static final String GESCOV_WS_URI = "https://gescov.herokuapp.com/websocket";
     private static final String DATE_FORMAT = "dd-MM-yyyy";
+    private WebSocket webSocketChat;
 
     @Override
     public void createChat(String userid, String targetID) {
@@ -47,6 +53,7 @@ public class ChatServiceImplementor implements IChatService {
 
     @Override
     public void updateChatPreview(String userid) {
+        initWebSocket();
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET, GESCOV_CHAT_URI + "/previews?userID=" + userid,null,
                 new Response.Listener<JSONArray>() {
@@ -68,7 +75,6 @@ public class ChatServiceImplementor implements IChatService {
 
     @Override
     public void getMessages(String chatID) {
-        System.out.println("este es el chat: " + chatID);
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET, GESCOV_CHAT_URI + "/" + chatID + "/messages/",null,
                 response -> DomainControlFactory.getChatModelController().updateChatMessages(response, chatID, false),
@@ -96,6 +102,7 @@ public class ChatServiceImplementor implements IChatService {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.POST, GESCOV_CHAT_URI+"/new", postData,
                     response -> {
+                        webSocketChat.send(chatID);
                         DomainControlFactory.getChatModelController().addMessageToChat(response);
                     }, error -> {
                 if (error.networkResponse != null) {
@@ -106,6 +113,27 @@ public class ChatServiceImplementor implements IChatService {
             VolleyServices.getRequestQueue().add(jsonObjectRequest);
 
         } catch (JSONException e) {
+        }
+    }
+
+    private void initWebSocket() {
+        OkHttpClient client = new OkHttpClient();
+        okhttp3.Request request = new okhttp3.Request.Builder().url(GESCOV_WS_URI).build();
+        webSocketChat = client.newWebSocket(request, new SocketListener());
+
+    }
+
+    private class SocketListener extends WebSocketListener {
+        @Override
+        public void onOpen(WebSocket webSocket, okhttp3.Response response) {
+            super.onOpen(webSocket, response);
+            System.out.println("Connected! :)");
+        }
+
+        @Override
+        public void onMessage(WebSocket webSocket, String text) {
+            super.onMessage(webSocket, text);
+            //System.out.println(text + "\n soy el websocket :D");
         }
     }
 }

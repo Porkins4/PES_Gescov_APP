@@ -21,7 +21,7 @@ import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Scho
 import com.example.gescov.viewlayer.UpdateUserProfile.UpdateUserProfileController;
 import com.example.gescov.viewlayer.ViewLayerController;
 import com.example.gescov.viewlayer.chat.chatlist.ChatListController;
-import com.example.gescov.viewlayer.chatview.ChatViewController;
+import com.example.gescov.viewlayer.chat.chatview.ChatViewController;
 import com.example.gescov.viewlayer.home.NotifyContagionController;
 import com.example.gescov.viewlayer.home.TracingTestController;
 
