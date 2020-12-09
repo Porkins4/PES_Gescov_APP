@@ -3,6 +3,11 @@
     <string-array name="chat_options_menu_items">
         <item>Eliminar xat</item>
     </string-array>
+
+    <string-array name="school_administration_menu_items">
+    <item>Eliminar escola</item>
+    </string-array>
+
     <string-array name="user_option_menu_items">
         <item>Fer administrador</item>
     </string-array>

@@ -18,7 +18,7 @@ import java.util.List;
 
 public class SchoolListViewAdapter extends BaseAdapter {
 
-    private List<School> schoolList;
+    protected List<School> schoolList;
     private LayoutInflater inflater;
 
     public SchoolListViewAdapter(Context c, List<School> l) {

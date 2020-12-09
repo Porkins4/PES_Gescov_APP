@@ -1,7 +1,6 @@
 package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -53,7 +52,6 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         TextView email = (TextView) findViewById(R.id.school__details_email);
         Button usersListButton = (Button) findViewById(R.id.school_details_student_list_button);
         Button classroomsListButton = (Button) findViewById(R.id.school_details_classroom_button);
-        Button deleteButton = (Button) findViewById(R.id.school_details_delete);
         Button joinSchoolButton = (Button) findViewById(R.id.join_school_button);
         Button contagionListButton = findViewById(R.id.contagion_list_button);
 
@@ -65,11 +63,6 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         setVisibilityAndValue(telf, school.getTelephoneNumber());
         setVisibilityAndValue(webpage, school.getWebpage());
         setVisibilityAndValue(email, school.getEmail());
-
-
-        deleteButton.setOnClickListener(e -> {
-            confirmDeleteSchoolPrompt();
-        });
 
         classroomsListButton.setOnClickListener(e -> {
             Intent intent = new Intent(this, SchoolClassromListActivity.class);
@@ -112,12 +105,6 @@ public class SchoolDetailsActivity extends AppCompatActivity {
             joinSchoolButton.setVisibility(View.INVISIBLE);
             usersListButton.setVisibility(View.INVISIBLE);
             contagionListButton.setVisibility(View.INVISIBLE);
-        }
-
-        if (!school.getCreator().equals(loggedUser.getId())) {
-            deleteButton.setVisibility(View.INVISIBLE);
-        } else {
-            deleteButton.setVisibility(View.VISIBLE);
         }
 
 
@@ -174,20 +161,6 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         });
     }
 
-    private void confirmDeleteSchoolPrompt() {
-        DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
-            if (which == DialogInterface.BUTTON_POSITIVE) {
-                schoolsCrontroller.deleteSchool(school);
-                finish();
-            }
-        };
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(getString(R.string.school_details_confirm_delete_message)).setPositiveButton(getString(R.string.delete), dialogClickListener)
-                .setNegativeButton(getString(R.string.cancel), dialogClickListener);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
 
     private void successAddingStudentToCenter() {
         Toast.makeText(this,"Afegit amb èxit",Toast.LENGTH_LONG).show();
