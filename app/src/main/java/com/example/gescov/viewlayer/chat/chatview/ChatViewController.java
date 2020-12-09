@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer.chatview;
+package com.example.gescov.viewlayer.chat.chatview;
 
 import com.example.gescov.domainlayer.Classmodels.MessageModel;
 import com.example.gescov.domainlayer.Classmodels.User;
@@ -32,5 +32,16 @@ public class ChatViewController {
 
     public void notifyChatUpdated() {
         chatViewViewModel.notifyChatUpdated();
+    }
+
+    public void startGettingChat(String chatID) {
+        PresentationControlFactory.getViewLayerController().startGettingChat(chatID);
+    }
+
+    public void setChatObserver() {
+    }
+
+    public void deactivatePolling() {
+        PresentationControlFactory.getViewLayerController().deactivatePolling();
     }
 }

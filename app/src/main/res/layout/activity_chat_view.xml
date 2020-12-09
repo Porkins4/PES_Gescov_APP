@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#EDEDED"
     android:orientation="vertical"
-    tools:context=".viewlayer.chatview.ChatViewActivity">
+    tools:context=".viewlayer.chat.chatview.ChatViewActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

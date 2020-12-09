@@ -18,9 +18,16 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import okhttp3.OkHttpClient;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
+
 public class ChatServiceImplementor implements IChatService {
     private static final String GESCOV_CHAT_URI = "https://gescov.herokuapp.com/api/chats";
+    private boolean polling;
+
     private static final String DATE_FORMAT = "dd-MM-yyyy";
+
 
     @Override
     public void createChat(String userid, String targetID) {
@@ -68,7 +75,6 @@ public class ChatServiceImplementor implements IChatService {
 
     @Override
     public void getMessages(String chatID) {
-        System.out.println("este es el chat: " + chatID);
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET, GESCOV_CHAT_URI + "/" + chatID + "/messages/",null,
                 response -> DomainControlFactory.getChatModelController().updateChatMessages(response, chatID, false),
@@ -108,4 +114,28 @@ public class ChatServiceImplementor implements IChatService {
         } catch (JSONException e) {
         }
     }
+
+    @Override
+    public void setPolling(boolean b) {
+        this.polling = b;
+    }
+
+    @Override
+    public void startPollingChat(String chatID) {
+        if (polling) {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                    Request.Method.GET, GESCOV_CHAT_URI+"/preview?chatID=" + chatID,null,
+                    response -> {
+                        DomainControlFactory.getChatModelController().checkForNewMessages(response,chatID);
+                    }, error -> {
+                if (error.networkResponse != null) {
+
+                }
+            });
+
+            VolleyServices.getRequestQueue().add(jsonObjectRequest);
+        }
+    }
+
+
 }
