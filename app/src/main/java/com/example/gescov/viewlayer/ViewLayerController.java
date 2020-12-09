@@ -354,4 +354,12 @@ public class ViewLayerController {
     public void updateCoordinatesSchoolCreationForm(String latitude, String longitude) {
         PresentationControlFactory.getSchoolsCrontroller().updateCoordinatesSchoolCreationForm(latitude, longitude);
     }
+
+    public void startGettingChat(String chatID) {
+        DomainControlFactory.getModelController().startGettingChat(chatID);
+    }
+
+    public void deactivatePolling() {
+        DomainControlFactory.getModelController().deactivatePolling();
+    }
 }

@@ -340,4 +340,12 @@ public class ModelController {
     public void updateCoordinatesSchoolCreationForm(String latitude, String longitude) {
         PresentationControlFactory.getViewLayerController().updateCoordinatesSchoolCreationForm(latitude, longitude);
     }
+
+    public void startGettingChat(String chatID) {
+        DomainControlFactory.getChatModelController().startGettingChat(chatID);
+    }
+
+    public void deactivatePolling() {
+        DomainControlFactory.getChatModelController().deactivatePolling();
+    }
 }

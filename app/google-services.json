@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "673967911868",
+    "project_id": "gescov-1605119703529",
+    "storage_bucket": "gescov-1605119703529.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673967911868:android:3266633ef04c93572271b9",
+        "android_client_info": {
+          "package_name": "com.example.gescov"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673967911868-i84tj00hpq4r75pe6gv6k8qfg4fem7aa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gescov",
+            "certificate_hash": "d55f2a14516cd06e43bd25f49b1e433569b3ed06"
+          }
+        },
+        {
+          "client_id": "673967911868-04bqj9s6nvp9rc7g458p9t75eem5kpjj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh_d-WKGRiQXnUvKng5HOtSrPfNcg8BDQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673967911868-04bqj9s6nvp9rc7g458p9t75eem5kpjj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

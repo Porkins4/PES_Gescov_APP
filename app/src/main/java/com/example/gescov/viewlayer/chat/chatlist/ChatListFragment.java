@@ -19,7 +19,7 @@ import android.widget.ListView;
 
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.chat.createchat.CreateChatActivity;
-import com.example.gescov.viewlayer.chatview.ChatViewActivity;
+import com.example.gescov.viewlayer.chat.chatview.ChatViewActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
