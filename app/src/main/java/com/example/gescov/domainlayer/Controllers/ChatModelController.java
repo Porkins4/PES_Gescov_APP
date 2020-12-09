@@ -109,7 +109,11 @@ public class ChatModelController {
     public void checkForNewMessages(JSONObject response, String chatID) {
         ChatPreviewModel temp = ChatPreviewModel.FromJSONtoChatPreview(response);
         ChatPreviewModel current = getChatPreviewBychatID(chatID);
-        if (!current.getHour().equals(temp.getHour()) ||  !current.getDate().equals(temp.getDate())) {
+        String tempData = temp.getDate() == null ? "n/a" : temp.getDate();
+        String tempHour = temp.getHour() == null ? "n/a" : temp.getHour();
+        String currentData = current.getDate() == null ? "n/a" : current.getDate();
+        String currentHour = current.getHour() == null ? "n/a" : current.getHour();
+        if (!currentHour.equals(tempHour) ||  !currentData.equals(currentData)) {
             current.setHour(temp.getHour());
             current.setDate(temp.getDate());
             getMessages(chatID);
