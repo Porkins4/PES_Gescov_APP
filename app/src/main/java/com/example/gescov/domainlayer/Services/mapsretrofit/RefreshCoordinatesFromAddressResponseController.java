@@ -26,7 +26,6 @@ public class RefreshCoordinatesFromAddressResponseController implements Callback
         try {
             JSONObject resp = new JSONObject(response.body());
             JSONArray data = resp.getJSONArray("data");
-            JSONArray array = new JSONArray();
             if (data.length() > 0) {
                 JSONObject firstEntry = new JSONObject(data.get(0).toString());
                 String latitude = firstEntry.getString("latitude");

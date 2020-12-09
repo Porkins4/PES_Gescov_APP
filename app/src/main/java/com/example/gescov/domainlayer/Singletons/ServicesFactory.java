@@ -1,5 +1,6 @@
 package com.example.gescov.domainlayer.Singletons;
 
+import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.CreateRequestToSchoolResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.DeleteSchoolAdminResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.DeleteSchoolClassroomResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.DeleteSchoolResponseController;
@@ -63,6 +64,7 @@ public class ServicesFactory {
 
     //retrofit maps
     private static RefreshCoordinatesFromAddressResponseController refreshCoordinatesFromAddressResponseController;
+    private static CreateRequestToSchoolResponseController createRequestToSchoolResponseController;
 
     private static Retrofit getRetrofit() {
         if (retrofit != null) return retrofit;
@@ -209,4 +211,9 @@ public class ServicesFactory {
         return refreshCoordinatesFromAddressResponseController;
     }
 
+    public static CreateRequestToSchoolResponseController getCreateRequestToSchoolResponseController () {
+        if (createRequestToSchoolResponseController != null) return createRequestToSchoolResponseController;
+        createRequestToSchoolResponseController = new CreateRequestToSchoolResponseController(getRetrofit());
+        return createRequestToSchoolResponseController;
+    }
 }

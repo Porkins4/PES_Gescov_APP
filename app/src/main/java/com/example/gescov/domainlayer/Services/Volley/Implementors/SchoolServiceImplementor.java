@@ -130,7 +130,11 @@ public class SchoolServiceImplementor implements ISchoolService {
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.POST, POST_CREATE_SCHOOL_URI, school,
-                    response -> DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList(), error -> {
+                    response -> {
+                        DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList();
+                        DomainControlFactory.getUserModelController().refreshLoggedUser();
+                    },
+                    error -> {
                         if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
                             System.out.println("something went wrong :(");
                             for (String header : error.networkResponse.headers.values()) {

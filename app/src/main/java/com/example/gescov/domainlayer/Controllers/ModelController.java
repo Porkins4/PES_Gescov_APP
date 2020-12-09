@@ -146,9 +146,8 @@ public class ModelController {
         DomainControlFactory.getUserModelController().refreshLoggedUser();
     }
 
-    public void addStudentToCenter(String schoolName, MutableLiveData<SchoolRequestResult> result) {
-       School school = DomainControlFactory.getSchoolsModelCrontroller().getSchoolByName(schoolName);
-       userModelController.addStudentToCenter(school,result);
+    public void addStudentToCenter(String schoolId, MutableLiveData<SchoolRequestResult> result) {
+       userModelController.addStudentToCenter(schoolId,result);
     }
 
     public void changeUserProfile(boolean isStudent) {

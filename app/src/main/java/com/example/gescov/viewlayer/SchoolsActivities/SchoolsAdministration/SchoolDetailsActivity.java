@@ -81,7 +81,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
                 builder.setTitle(e.getResources().getString(R.string.options))
                         .setItems(R.array.join_school_menu_items, (dialog, which) -> {
                             if (which == 0)
-                                schoolDetailsViewModel.getAddStudentToCenterResult(name.getText().toString());
+                                schoolDetailsViewModel.getAddStudentToCenterResult(school.getId());
                             else if (which == 1) {
                                 Intent intent = new Intent(this, AccessSchoolByCodeActivity.class);
                                 intent.putExtra("schoolId", school.getId());

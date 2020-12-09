@@ -2,7 +2,6 @@ package com.example.gescov.domainlayer.Controllers;
 
 import android.location.Location;
 
-import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.domainlayer.Services.LoginRespository;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
@@ -169,8 +168,8 @@ public class UserModelController {
         DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName(), loggedUser.getRisk());
     }
 
-    public void addStudentToCenter(School school, MutableLiveData<SchoolRequestResult> result) {
-        loggedUser.addStudentToCenter(school,result);
+    public void addStudentToCenter(String schoolId, MutableLiveData<SchoolRequestResult> result) {
+        ServicesFactory.getCreateRequestToSchoolResponseController().createRequestToSchool(loggedUser.getId(), schoolId);
     }
 
 

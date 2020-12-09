@@ -136,8 +136,8 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().getTypeProfile();
     }
 
-    public void addStudentToCenter(String schoolName, MutableLiveData<SchoolRequestResult> result) {
-        DomainControlFactory.getModelController().addStudentToCenter(schoolName,result);
+    public void addStudentToCenter(String schoolId, MutableLiveData<SchoolRequestResult> result) {
+        DomainControlFactory.getModelController().addStudentToCenter(schoolId,result);
     }
 
     public void changeUserProfile(boolean isStudent) {

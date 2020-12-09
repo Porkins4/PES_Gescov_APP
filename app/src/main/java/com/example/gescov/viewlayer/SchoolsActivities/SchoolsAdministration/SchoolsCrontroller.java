@@ -99,8 +99,8 @@ public class SchoolsCrontroller{
         }
     }
 
-    public void addStudentToCenter(String schoolName, MutableLiveData<SchoolRequestResult> result) {
-        PresentationControlFactory.getViewLayerController().addStudentToCenter(schoolName,result);
+    public void addStudentToCenter(String schoolId, MutableLiveData<SchoolRequestResult> result) {
+        PresentationControlFactory.getViewLayerController().addStudentToCenter(schoolId,result);
     }
 
     public void addNewAdminToSchool(String newAdminID) {

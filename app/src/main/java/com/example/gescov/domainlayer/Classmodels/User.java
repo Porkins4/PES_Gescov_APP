@@ -6,7 +6,6 @@ import com.example.gescov.domainlayer.Services.Volley.Interfaces.IContagionServi
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 import com.example.gescov.domainlayer.Singletons.ServicesFactory;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
 
 import org.json.JSONArray;
@@ -234,11 +233,6 @@ public class User {
             e.printStackTrace();
         }
 
-    }
-
-    public void addStudentToCenter(School school, MutableLiveData<SchoolRequestResult> result) {
-        //schoolsID.add(0,school.getId());
-        ServicesFactory.getSchoolService().addStudentToCenter(id,school.getId(),result);
     }
 
     public void deleteSchoolClassroom(String classroomId) {
