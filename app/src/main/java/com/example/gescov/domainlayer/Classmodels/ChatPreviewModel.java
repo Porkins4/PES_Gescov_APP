@@ -5,6 +5,7 @@ import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChatPreviewModel {
@@ -42,6 +43,8 @@ public class ChatPreviewModel {
         return targetPic;
     }
 
+    public String getDate() { return date;}
+
     public ChatPreviewModel(String chatID, String previewID, String lastMessage, String date, String hour, String target, String targetPic) {
         this.chatID = chatID;
         this.previewID = previewID;
@@ -50,6 +53,7 @@ public class ChatPreviewModel {
         this.hour = hour;
         this.target = target;
         this.targetPic = targetPic;
+        messages = new ArrayList<>();
     }
 
     public ChatPreviewModel() {
@@ -101,5 +105,18 @@ public class ChatPreviewModel {
 
     public void addMessage(MessageModel message) {
         messages.add(message);
+    }
+
+
+    public List<MessageModel> getMessages() {
+        return messages;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setHour(String hour) {
+        this.hour = hour;
     }
 }

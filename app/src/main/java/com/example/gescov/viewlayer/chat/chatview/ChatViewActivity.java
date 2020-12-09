@@ -25,8 +25,6 @@ public class ChatViewActivity extends AppCompatActivity {
     private ChatViewActivity instance;
     private EditText editText;
     private ImageButton sendButton;
-    private static final String GESCOV_WS_URI = "wss://echo.websocket.org";
-    private WebSocket webSocketChat;
 
 
     @Override
@@ -34,8 +32,18 @@ public class ChatViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_view);
         initViewComponents();
-        updateMessagesFromChat();
-        initWebSocket();
+        setChatListener();
+        //updateMessagesFromChat();
+    }
+
+    private void setChatListener() {
+        chatViewViewModel.getMessages().observe(this,
+                messageReceived -> {
+                    if (messageReceived) chatViewViewModel.updateMessages();
+                    MessageAdapter messageAdapter = chatViewViewModel.getAdapter(instance);
+                    recyclerView.setAdapter(messageAdapter);
+                    //if (!messageAdapter.empty()) recyclerView.smoothScrollToPosition(chatViewViewModel.getLastElemPos());
+                });
     }
 
     private void updateMessagesFromChat() {
@@ -74,7 +82,6 @@ public class ChatViewActivity extends AppCompatActivity {
                         String message = editText.getText().toString();
                         if (!message.equals("")) {
                             chatViewViewModel.sendMessage(message);
-                            webSocketChat.send("1");
                             editText.getText().clear();
                         }
                     }
@@ -102,25 +109,9 @@ public class ChatViewActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(chatViewViewModel.getUserName());
     }
 
-    private void initWebSocket() {
-        OkHttpClient client = new OkHttpClient();
-        okhttp3.Request request = new okhttp3.Request.Builder().url(GESCOV_WS_URI).build();
-        webSocketChat = client.newWebSocket(request, new SocketListener());
-
-    }
-
-    private class SocketListener extends WebSocketListener {
-        @Override
-        public void onOpen(WebSocket webSocket, okhttp3.Response response) {
-            super.onOpen(webSocket, response);
-            runOnUiThread(()-> System.out.println("Connected! :)"));
-
-        }
-
-        @Override
-        public void onMessage(WebSocket webSocket, String text) {
-            super.onMessage(webSocket, text);
-            runOnUiThread(()-> System.out.println(text + "\n soy el websocket :D"));
-        }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        chatViewViewModel.deactivatePolling();
     }
 }

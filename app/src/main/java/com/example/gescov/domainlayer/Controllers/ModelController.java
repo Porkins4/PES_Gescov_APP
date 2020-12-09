@@ -332,4 +332,12 @@ public class ModelController {
     public String getIdContagion() {
         return DomainControlFactory.getUserModelController().getIdContagion();
     }
+
+    public void startGettingChat(String chatID) {
+        DomainControlFactory.getChatModelController().startGettingChat(chatID);
+    }
+
+    public void deactivatePolling() {
+        DomainControlFactory.getChatModelController().deactivatePolling();
+    }
 }

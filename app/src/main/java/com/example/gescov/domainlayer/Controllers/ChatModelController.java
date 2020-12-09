@@ -98,4 +98,35 @@ public class ChatModelController {
         }
         DomainControlFactory.getModelController().notifyChatUpdated();
     }
+
+    public void startGettingChat(String chatID) {
+        ServicesFactory.getChatService().setPolling(true);
+        ServicesFactory.getChatService().startPollingChat(chatID);
+        getMessages(chatID);
+        DomainControlFactory.getModelController().notifyChatMessagesResponse(getChatPreviewBychatID(chatID).getMessages(),false);
+    }
+
+    public void checkForNewMessages(JSONObject response, String chatID) {
+        ChatPreviewModel temp = ChatPreviewModel.FromJSONtoChatPreview(response);
+        ChatPreviewModel current = getChatPreviewBychatID(chatID);
+        if (!current.getHour().equals(temp.getHour()) ||  !current.getDate().equals(temp.getDate())) {
+            current.setHour(temp.getHour());
+            current.setDate(temp.getDate());
+            getMessages(chatID);
+            System.out.println("new message bro :)");
+        }
+        ServicesFactory.getChatService().startPollingChat(chatID);
+    }
+
+    private ChatPreviewModel getChatPreviewBychatID(String chatID) {
+        for (int i = 0; i < chatPreviewModels.size(); ++i) {
+            ChatPreviewModel aux = chatPreviewModels.get(i);
+            if (aux.getChatID().equals(chatID)) return aux;
+        }
+        return null;
+    }
+
+    public void deactivatePolling() {
+        ServicesFactory.getChatService().setPolling(false);
+    }
 }

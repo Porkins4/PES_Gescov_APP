@@ -346,4 +346,12 @@ public class ViewLayerController {
     public String getIdContagion() {
         return DomainControlFactory.getModelController().getIdContagion();
     }
+
+    public void startGettingChat(String chatID) {
+        DomainControlFactory.getModelController().startGettingChat(chatID);
+    }
+
+    public void deactivatePolling() {
+        DomainControlFactory.getModelController().deactivatePolling();
+    }
 }

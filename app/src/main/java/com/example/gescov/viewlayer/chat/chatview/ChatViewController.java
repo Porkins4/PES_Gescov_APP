@@ -33,4 +33,15 @@ public class ChatViewController {
     public void notifyChatUpdated() {
         chatViewViewModel.notifyChatUpdated();
     }
+
+    public void startGettingChat(String chatID) {
+        PresentationControlFactory.getViewLayerController().startGettingChat(chatID);
+    }
+
+    public void setChatObserver() {
+    }
+
+    public void deactivatePolling() {
+        PresentationControlFactory.getViewLayerController().deactivatePolling();
+    }
 }

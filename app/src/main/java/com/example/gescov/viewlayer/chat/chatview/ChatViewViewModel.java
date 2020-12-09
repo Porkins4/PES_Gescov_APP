@@ -18,6 +18,10 @@ public class ChatViewViewModel extends ViewModel {
     private String chatID;
     private MessageAdapter adapter;
 
+    //polling method
+    private MutableLiveData<Boolean> messageReceived;
+
+
     public void setUserInfo(String targetName, String targetPic) {
         this.userName = targetName;
         this.targetPic = targetPic;
@@ -40,7 +44,8 @@ public class ChatViewViewModel extends ViewModel {
         if (!error) {
             this.messages = messages;
         }
-        updated.setValue(error);
+        //updated.setValue(error);
+        messageReceived.setValue(error);
     }
 
     public MessageAdapter getAdapter(ChatViewActivity instance) {
@@ -63,5 +68,22 @@ public class ChatViewViewModel extends ViewModel {
 
     public void notifyChatUpdated() {
         adapter.notifyDataSetChanged();
+    }
+
+    public LiveData<Boolean> getMessages() {
+        if (messageReceived == null) {
+            messageReceived = new MutableLiveData<>();
+            PresentationControlFactory.getChatViewController().setChatViewViewModel(this);
+            PresentationControlFactory.getChatViewController().startGettingChat(chatID);
+        }
+        return messageReceived;
+    }
+
+    public void updateMessages() {
+        PresentationControlFactory.getChatViewController().setChatObserver();
+    }
+
+    public void deactivatePolling() {
+        PresentationControlFactory.getChatViewController().deactivatePolling();
     }
 }
