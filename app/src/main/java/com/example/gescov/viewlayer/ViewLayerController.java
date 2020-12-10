@@ -208,8 +208,8 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().setUserLoggedIn(serverClientID);
     }
 
-    public void retrieveUserInformation() {
-        DomainControlFactory.getModelController().retrieveUserInformation();
+    public void refreshLoggedUser() {
+        DomainControlFactory.getModelController().refreshLoggedUser();
     }
 
     public void setUserRetrieveResult(boolean error) {

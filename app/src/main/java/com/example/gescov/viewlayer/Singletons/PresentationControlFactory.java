@@ -84,6 +84,7 @@ public class PresentationControlFactory {
         notifyContagionController = new NotifyContagionController();
         return notifyContagionController;
     }
+
     public static MarkPositionInClassroomController getMarkPositionInClassroomController () {
         if (markPositionInClassroomController != null)
             return markPositionInClassroomController;
@@ -162,8 +163,6 @@ public class PresentationControlFactory {
         return createChatController;
     }
 
-
-
     public static RankingController getRankingController() {
         if (rankingController != null)
             return rankingController;
@@ -171,7 +170,6 @@ public class PresentationControlFactory {
         return rankingController;
 
     }
-
 
     public static HomeController getHomeController() {
         if (homeController != null)

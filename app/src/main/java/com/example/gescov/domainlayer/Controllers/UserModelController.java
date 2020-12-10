@@ -132,10 +132,6 @@ public class UserModelController {
         loggedUser.deleteSchoolClassroom(classroomId);
     }
 
-    public void refreshLoggedUser() {
-        loggedUser.refresh();
-    }
-
     public void refreshLoggedUser(JSONObject response) {
         loggedUser = getUserFromJSONObject(response);
         DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName(), loggedUser.getRisk());
@@ -215,7 +211,7 @@ public class UserModelController {
         DomainControlFactory.getModelController().setUserIDVerificationResult(error);
     }
 
-    public void retrieveUserInformation() {
+    public void refreshLoggedUser() {
         ServicesFactory.getUserService().getUserInfo(loggedUser.getId());
     }
 

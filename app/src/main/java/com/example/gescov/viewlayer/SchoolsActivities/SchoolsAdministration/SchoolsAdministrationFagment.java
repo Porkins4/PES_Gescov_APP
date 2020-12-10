@@ -82,6 +82,7 @@ public class SchoolsAdministrationFagment extends Fragment {
 
         list.setAdapter(adapter);
         refreshSchoolsList();
+        PresentationControlFactory.getLoadingProfileController().refreshLoggedUser();
 
         createSchoolButton.setOnClickListener(e -> {
             setCreateButtonActions();

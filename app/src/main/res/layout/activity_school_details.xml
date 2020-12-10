@@ -69,7 +69,7 @@
         android:text="@string/school_details_users_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/school__details_email" />
+        app:layout_constraintTop_toBottomOf="@+id/school_details_email" />
 
     <Button
         android:id="@+id/school_details_classroom_button"
@@ -90,7 +90,7 @@
         app:layout_constraintTop_toBottomOf="@+id/graf_school" />
 
     <TextView
-        android:id="@+id/school__details_email"
+        android:id="@+id/school_details_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"

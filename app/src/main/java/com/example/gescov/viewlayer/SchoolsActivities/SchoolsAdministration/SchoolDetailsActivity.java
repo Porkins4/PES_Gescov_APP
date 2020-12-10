@@ -39,6 +39,8 @@ public class SchoolDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_details);
+
+        PresentationControlFactory.getLoadingProfileController().refreshLoggedUser();
         schoolsCrontroller = PresentationControlFactory.getSchoolsCrontroller();
         school = schoolsCrontroller.getCurrentSchool();
         setMap(savedInstanceState);
@@ -49,7 +51,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         TextView address = (TextView) findViewById(R.id.school_details_address);
         TextView telf = (TextView) findViewById(R.id.school_details_telf);
         TextView webpage = (TextView) findViewById(R.id.school_details_webpage);
-        TextView email = (TextView) findViewById(R.id.school__details_email);
+        TextView email = (TextView) findViewById(R.id.school_details_email);
         Button usersListButton = (Button) findViewById(R.id.school_details_student_list_button);
         Button classroomsListButton = (Button) findViewById(R.id.school_details_classroom_button);
         Button joinSchoolButton = (Button) findViewById(R.id.join_school_button);

@@ -217,8 +217,8 @@ public class ModelController {
         PresentationControlFactory.getViewLayerController().setUserIDVerificationResult(error);
     }
 
-    public void retrieveUserInformation() {
-        DomainControlFactory.getUserModelController().retrieveUserInformation();
+    public void refreshLoggedUser() {
+        DomainControlFactory.getUserModelController().refreshLoggedUser();
     }
 
     public void setUserRetrieveResult(Boolean error) {
