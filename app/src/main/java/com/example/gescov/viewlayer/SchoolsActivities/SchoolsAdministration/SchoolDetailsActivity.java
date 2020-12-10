@@ -32,10 +32,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 public class SchoolDetailsActivity extends AppCompatActivity {
-    private  SchoolsCrontroller schoolsCrontroller;
+    private SchoolsCrontroller schoolsCrontroller;
     private School school;
     private SchoolDetailsViewModel schoolDetailsViewModel;
     private User loggedUser;
+
+    private Button graphButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +60,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         Button classroomsListButton = (Button) findViewById(R.id.school_details_classroom_button);
         Button joinSchoolButton = (Button) findViewById(R.id.join_school_button);
         Button contagionListButton = findViewById(R.id.contagion_list_button);
-
+        graphButton = findViewById(R.id.graf_school);
 
 
         name.setText(school.getName());
@@ -95,21 +98,22 @@ public class SchoolDetailsActivity extends AppCompatActivity {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             });
-        } else if (loggedUser.getProfileType().equals(User.UserProfileType.STUDENT)){
-            joinSchoolButton.setVisibility(View.INVISIBLE);
-            usersListButton.setVisibility(View.INVISIBLE);
-            contagionListButton.setVisibility(View.INVISIBLE);
-        }
 
-        if (GescovUtils.isUserSchoolAdmin(loggedUser, school)) {
-            joinSchoolButton.setText(getResources().getText(R.string.school_details_request_list));
-            joinSchoolButton.setOnClickListener(e -> {
-                Intent intent = new Intent(this, SchoolRequestsListActivity.class);
-                startActivity(intent);
-            });
-            usersListButton.setVisibility(View.VISIBLE);
+        } else {
+            if (GescovUtils.isUserSchoolAdmin(loggedUser, school)) {
+                //admins of the school
+                joinSchoolButton.setText(getResources().getText(R.string.school_details_request_list));
+                joinSchoolButton.setOnClickListener(e -> {
+                    Intent intent = new Intent(this, SchoolRequestsListActivity.class);
+                    startActivity(intent);
+                });
+            }
         }
-
+        
+        classroomsListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) ? View.VISIBLE : View.INVISIBLE);
+        joinSchoolButton.setVisibility(!GescovUtils.isUserInSchool(loggedUser, school) || GescovUtils.isUserSchoolAdmin(loggedUser, school) ? View.VISIBLE : View.INVISIBLE);
+        usersListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) && loggedUser.getProfileType().equals(User.UserProfileType.TEACHER) ? View.VISIBLE : View.INVISIBLE);
+        contagionListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) && loggedUser.getProfileType().equals(User.UserProfileType.TEACHER) ? View.VISIBLE : View.INVISIBLE);
 
         schoolDetailsViewModel = new ViewModelProvider(this).get(SchoolDetailsViewModel.class);
         schoolDetailsViewModel.getPutResult().observe(this, schoolRequestResult -> {
@@ -155,8 +159,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
     }
 
     private void setGraphListener() {
-        Button graphButton = findViewById(R.id.graf_school);
-        graphButton.setOnClickListener(v -> {
+            graphButton.setOnClickListener(v -> {
             Intent graphIntent = new Intent(this, SchoolGraphActivity.class);
             graphIntent.putExtra("schoolId",school.getId());
             graphIntent.putExtra("nameSchool",school.getName());
