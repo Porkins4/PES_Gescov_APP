@@ -1,5 +1,7 @@
 package com.example.gescov.viewlayer.navigation;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -53,7 +55,7 @@ public class NavigationMenu extends AppCompatActivity {
         MenuItem logoutButton = navigationView.getMenu().findItem(R.id.logout);
 
         logoutButton.setOnMenuItemClickListener(e -> {
-            logout_func();
+            logoutPrompt();
             return true;
         });
     }
@@ -73,7 +75,7 @@ public class NavigationMenu extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    private void logout_func() {
+    private void logoutFunc() {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(this,gso);
         googleSignInClient.signOut()
@@ -85,6 +87,19 @@ public class NavigationMenu extends AppCompatActivity {
                     }
                 });
     }
+
+    private void logoutPrompt() {
+        DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
+            if (which == DialogInterface.BUTTON_POSITIVE) logoutFunc();
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.confirm_logout)).setPositiveButton(getString(R.string.confirm), dialogClickListener)
+                .setNegativeButton(getString(R.string.cancel), dialogClickListener);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 
     private void showLoginView() {
         String logout = getString(R.string.logout_successful);
