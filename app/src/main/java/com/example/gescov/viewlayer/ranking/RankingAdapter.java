@@ -32,8 +32,9 @@ public class RankingAdapter extends ModelListViewAdapter {
         TextView positionRank = v.findViewById(R.id.position_school);
         TextView address = v.findViewById(R.id.school_address_Rank);
         Pair <School,Integer> school =  (Pair<School,Integer>) getItem(position);
-        name.setText(school.first.getName());
         Integer pos = position + 1;
+
+        name.setText(school.first.getName());
         positionRank.setText((pos).toString() +". ");
         address.setText(school.first.getAddress());
 

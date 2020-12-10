@@ -21,11 +21,9 @@ public class MapVIewModel extends ViewModel {
 
 
     public LiveData<List<Pair<School,Integer>>> getSchools () {
-        if (schools == null) {
-            schools = new MutableLiveData<>();
-            PresentationControlFactory.getMapController().setViewModelControler(this);
-            PresentationControlFactory.getMapController().getNumContagionPerSchool();
-        }
+        schools = new MutableLiveData<>();
+        PresentationControlFactory.getMapController().setViewModelControler(this);
+        PresentationControlFactory.getMapController().getNumContagionPerSchool();
         return schools;
     }
 

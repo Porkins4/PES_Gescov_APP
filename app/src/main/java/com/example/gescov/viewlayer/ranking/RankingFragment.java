@@ -36,7 +36,6 @@ public class RankingFragment extends Fragment {
                 listView.setAdapter(rankingViewModel.getAdapter(getActivity()));
             }
         });
-
         return thisView;
     }
 }

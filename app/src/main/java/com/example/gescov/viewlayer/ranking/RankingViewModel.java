@@ -23,11 +23,9 @@ public class RankingViewModel extends ViewModel {
     }
 
     public LiveData<Boolean> getRanking() {
-        if (received == null) {
-            received = new MutableLiveData<>();
-            PresentationControlFactory.getRankingController().setViewModel(this);
-            PresentationControlFactory.getRankingController().getRanking();
-        }
+        received = new MutableLiveData<>();
+        PresentationControlFactory.getRankingController().setViewModel(this);
+        PresentationControlFactory.getRankingController().getRanking();
         return received;
     }
 

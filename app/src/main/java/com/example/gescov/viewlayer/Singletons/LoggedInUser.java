@@ -21,4 +21,7 @@ public class LoggedInUser {
     public static String getToken() {
         return account.getIdToken();
     }
+
+    public static String getEmail() {return account.getEmail();}
+
 }
