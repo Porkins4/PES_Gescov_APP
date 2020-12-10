@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gescov.R;
+import com.example.gescov.GescovUtils;
 import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.PopErrorAddStudentToCenter;
@@ -76,7 +77,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        if (!loggedUser.getSchoolsID().contains(school.getId())) {
+        if (!GescovUtils.isUserInSchool(loggedUser, school)) {
             joinSchoolButton.setText(getResources().getText(R.string.school_details_join));
             joinSchoolButton.setOnClickListener(e -> {
                 AlertDialog.Builder builder = new AlertDialog.Builder(e.getContext());
@@ -94,19 +95,19 @@ public class SchoolDetailsActivity extends AppCompatActivity {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             });
-
+        } else if (loggedUser.getProfileType().equals(User.UserProfileType.STUDENT)){
+            joinSchoolButton.setVisibility(View.INVISIBLE);
             usersListButton.setVisibility(View.INVISIBLE);
-        } else if (school.getAdministratorsList().contains(loggedUser.getId())) {
+            contagionListButton.setVisibility(View.INVISIBLE);
+        }
+
+        if (GescovUtils.isUserSchoolAdmin(loggedUser, school)) {
             joinSchoolButton.setText(getResources().getText(R.string.school_details_request_list));
             joinSchoolButton.setOnClickListener(e -> {
                 Intent intent = new Intent(this, SchoolRequestsListActivity.class);
                 startActivity(intent);
             });
             usersListButton.setVisibility(View.VISIBLE);
-        } else {
-            joinSchoolButton.setVisibility(View.INVISIBLE);
-            usersListButton.setVisibility(View.INVISIBLE);
-            contagionListButton.setVisibility(View.INVISIBLE);
         }
 
 
