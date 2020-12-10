@@ -162,7 +162,8 @@
     <string name="update">Actualitza</string>
     <string name="apply">Accepta</string>
     <string name="delete">Elimina</string>
-    <string name="cancel">Cancela</string>
+    <string name="cancel">Cancelar</string>
+    <string name="confirm">Confirmar</string>
 
     <!-- Strings students in classroom Record -->
     <string name="class_record_activity_title">Historial d\'alumnes a l\'aula</string>
@@ -219,6 +220,7 @@
     <string name="evolution">"Evolució dels contagis en "</string>
     <string name="months">Mesos</string>
     <string name="axeYContagions">Contagis</string>
+    <string name="confirm_logout">Segur que vols tancar la sessió?</string>
 
 
 </resources>

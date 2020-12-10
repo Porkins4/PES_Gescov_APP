@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.Gescov" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/dark_green</item>
+        <item name="colorPrimaryVariant">@color/dark_green</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -14,10 +14,12 @@
         <!-- Customize your theme here. -->
     </style>
 
+
+
     <style name="Theme">GescovNoActionBar
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/dark_green</item>
+        <item name="colorPrimaryVariant">@color/dark_green</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -31,4 +33,17 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="Theme.Gescov.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Chat colors -->
+    <color name="chatItemColor">@color/chatItemColorDark</color>
+    <color name="sendMessageEdit">@color/sendMessageEditColor</color>
+    <color name="sendMessageButton">@color/teal_200</color>
+
+    <!-- General colors -->
+    <color name="normalText">@color/white</color>
 </resources>
