@@ -1,7 +1,5 @@
 package com.example.gescov.domainlayer.Services.Volley.Implementors;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -11,11 +9,11 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.gescov.domainlayer.Services.Conection;
-import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.domainlayer.Services.Volley.VolleyServices;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
 
 import org.json.JSONArray;
@@ -25,6 +23,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+
+import androidx.lifecycle.MutableLiveData;
 
 public class SchoolServiceImplementor implements ISchoolService {
     private Conection conection;
@@ -114,7 +114,7 @@ public class SchoolServiceImplementor implements ISchoolService {
     }
 
     @Override
-    public void createSchoolRequest(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite, List<String> administratorsList, String creatorID) {
+    public void createSchoolRequest(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite, String latitude, String longitude, List<String> administratorsList, String creatorID) {
 
         try {
             JSONObject school = new JSONObject();
@@ -123,12 +123,18 @@ public class SchoolServiceImplementor implements ISchoolService {
             school.put("phone", schoolTelephone);
             school.put("website", schoolWebsite);
             school.put("creatorID", creatorID);
+            school.put("latitude", Double.valueOf(latitude));
+            school.put("longitude", Double.valueOf(longitude));
 
             RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.POST, POST_CREATE_SCHOOL_URI, school,
-                    response -> DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList(), error -> {
+                    response -> {
+                        DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList();
+                        DomainControlFactory.getUserModelController().refreshLoggedUser();
+                    },
+                    error -> {
                         if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
                             System.out.println("something went wrong :(");
                             for (String header : error.networkResponse.headers.values()) {

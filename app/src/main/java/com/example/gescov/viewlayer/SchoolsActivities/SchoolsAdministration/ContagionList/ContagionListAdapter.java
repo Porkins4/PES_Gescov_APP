@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer.ContagionList;
+package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList;
 
 import android.content.Context;
 import android.view.LayoutInflater;

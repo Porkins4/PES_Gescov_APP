@@ -34,8 +34,8 @@ public class LoadingProfileController {
         loadingProfileViewModel.setUserIDVerificationResult(error);
     }
 
-    public void retrieveUserInformation() {
-        PresentationControlFactory.getViewLayerController().retrieveUserInformation();
+    public void refreshLoggedUser() {
+        PresentationControlFactory.getViewLayerController().refreshLoggedUser();
     }
 
     public void setUserRetrieveResult(boolean error) {

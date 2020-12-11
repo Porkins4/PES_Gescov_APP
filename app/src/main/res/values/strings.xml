@@ -1,5 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Gescov</string>
+    <string name="app_name_menu">Gescov S.L. </string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -16,13 +17,13 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_subtitle">gescov19@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Configuració</string>
 
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_schools_administration">Schools Administration</string>
+    <string name="menu_schools_administration">Administració d´escoles</string>
     <string name="Catalan_visualizar_aula">Visualitzar Aula</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -33,12 +34,14 @@
 
 
     <!-- School Administration -->
-    <string name="create_school_form_school_name">School name</string>
-    <string name="create_school_form_school_code">School codi</string>
-    <string name="create_school_form_school_button">Create School</string>
+    <string name="create_school_form_school_name">Nom d´escola</string>
+    <string name="create_school_form_school_code">Nom de codi</string>
+    <string name="create_school_form_school_button">Crear escola</string>
     <string name="create_school_form_school_phone">Número de Telèfon</string>
     <string name="create_school_form_school_website">Pàgina WEB</string>
-    <string name="create_school_form_school_address_example">Municipi, C/Nom carrer nº</string>
+    <string name="create_school_form_school_address_example">nº Nom Carrer, Municipi</string>
+    <string name="create_school_form_latitude">Latitud</string>
+    <string name="create_school_form_longitude">Longitud</string>
 
 
     <!-- User all schools -->
@@ -142,7 +145,7 @@
     <string name="sendAnswers">Finalitzar Test </string>
 
     <!-- Strings notifying the state -->
-    <string name="notify_state">Notificar Estado</string>
+    <string name="notify_state">Notificar Estat</string>
     <string name="succesPositiveNotification">S\'ha notificat correctament el teu positiu</string>
     <string name="succesRecoveryNotification">S\'ha notificat la teva recuperació correctament</string>
     <string name="succesPossiblePositiveNotification">S\'ha notificat el teu possible contagi</string>
@@ -159,7 +162,8 @@
     <string name="update">Actualitza</string>
     <string name="apply">Accepta</string>
     <string name="delete">Elimina</string>
-    <string name="cancel">Cancela</string>
+    <string name="cancel">Cancelar</string>
+    <string name="confirm">Confirmar</string>
 
     <!-- Strings students in classroom Record -->
     <string name="class_record_activity_title">Historial d\'alumnes a l\'aula</string>
@@ -175,8 +179,6 @@
     <string name="confirm_delete_chat_message">Segur de que vols eliminar aquest xat?</string>
     <string name="yes_delete_chat">Elimina</string>
     <string name="no_delete_chat">Cancela</string>
-
-
 
 
     <!-- Create chat -->
@@ -218,6 +220,7 @@
     <string name="evolution">"Evolució dels contagis en "</string>
     <string name="months">Mesos</string>
     <string name="axeYContagions">Contagis</string>
+    <string name="confirm_logout">Segur que vols tancar la sessió?</string>
 
 
 </resources>

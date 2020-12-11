@@ -6,7 +6,7 @@ import java.util.List;
 
 
 public interface IContagionService {
-    String getContagionList(String userId, String schoolId);
+    String getContagionList(String schoolId);
 
     void notifyContagion(MutableLiveData<ContagionRequestResult> result,String ConfirmedInfected, String id);
 

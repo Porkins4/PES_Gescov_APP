@@ -37,8 +37,8 @@ public class ViewLayerController {
         return DomainControlFactory.getModelController().getStudentsInClassroom(classroom);
     }
 
-    public String getAllContagions() {
-        return DomainControlFactory.getModelController().getAllContagions();
+    public String getAllContagions(String schoolID) {
+        return DomainControlFactory.getModelController().getAllContagions(schoolID);
     }
 
     public void refreshAllSchools() throws JSONException {
@@ -61,8 +61,8 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().sendReservationRequest(aula,row,col);
     }
 
-    public void createSchool( String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
-        DomainControlFactory.getModelController().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite);
+    public void createSchool( String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite, String latitude, String longitude) {
+        DomainControlFactory.getModelController().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite, latitude, longitude);
     }
 
     public void createClassroom(School currentSchool, String classroomName, int classroomRows, int classroomCols) {
@@ -136,8 +136,8 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().getTypeProfile();
     }
 
-    public void addStudentToCenter(String schoolName, MutableLiveData<SchoolRequestResult> result) {
-        DomainControlFactory.getModelController().addStudentToCenter(schoolName,result);
+    public void addStudentToCenter(String schoolId, MutableLiveData<SchoolRequestResult> result) {
+        DomainControlFactory.getModelController().addStudentToCenter(schoolId,result);
     }
 
     public void changeUserProfile(boolean isStudent) {
@@ -208,8 +208,8 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().setUserLoggedIn(serverClientID);
     }
 
-    public void retrieveUserInformation() {
-        DomainControlFactory.getModelController().retrieveUserInformation();
+    public void refreshLoggedUser() {
+        DomainControlFactory.getModelController().refreshLoggedUser();
     }
 
     public void setUserRetrieveResult(boolean error) {
@@ -341,5 +341,25 @@ public class ViewLayerController {
 
     public void currentSchoolRefreshed() {
         PresentationControlFactory.getSchoolUsersController().currentSchoolRefreshed();
+    }
+
+    public School getCurrentSchool() {
+        return DomainControlFactory.getModelController().getCurrentSchool();
+    }
+
+    public String getIdContagion() {
+        return DomainControlFactory.getModelController().getIdContagion();
+    }
+
+    public void updateCoordinatesSchoolCreationForm(String latitude, String longitude) {
+        PresentationControlFactory.getSchoolsCrontroller().updateCoordinatesSchoolCreationForm(latitude, longitude);
+    }
+
+    public void startGettingChat(String chatID) {
+        DomainControlFactory.getModelController().startGettingChat(chatID);
+    }
+
+    public void deactivatePolling() {
+        DomainControlFactory.getModelController().deactivatePolling();
     }
 }

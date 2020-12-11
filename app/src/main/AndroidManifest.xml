@@ -2,9 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.gescov">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
@@ -14,32 +18,33 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Gescov">
-
-        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.AccessSchoolByCodeActivity"></activity>
+        android:theme="@style/Theme.Gescov"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionListActivity"></activity>
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.AccessSchoolByCodeActivity" />
         <activity
             android:name=".viewlayer.chat.createchat.CreatingChatActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-        <activity android:name=".viewlayer.chatview.ChatViewActivity"
+        <activity
+            android:name=".viewlayer.chat.chatview.ChatViewActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-
         <activity
             android:name=".viewlayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-
         <activity
             android:name=".viewlayer.chat.createchat.CreateChatActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-        <activity android:name=".viewlayer.schoolrequests.SchoolRequestsListActivity"
+        <activity
+            android:name=".viewlayer.schoolrequests.SchoolRequestsListActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-
         <activity android:name=".viewlayer.UpdateUserProfile.UpdateUserProfileActivity" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity" />
-        <activity android:name=".viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity"
-                android:theme="@style/Theme.Gescov.NoActionBar" />
-
+        <activity
+            android:name=".viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.home.DailyTestActivity" />
-        <activity android:name=".viewlayer.SignUpAndLogin.LoginActivity" />
+        <activity android:name=".viewlayer.SignUpAndLogin.LoginActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.CreateClassroomFormActivity" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.EditClassroomFormActivity" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolGraphActivity" />
@@ -67,15 +72,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCh_d-WKGRiQXnUvKng5HOtSrPfNcg8BDQ"/>
+            android:value="AIzaSyCh_d-WKGRiQXnUvKng5HOtSrPfNcg8BDQ" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>

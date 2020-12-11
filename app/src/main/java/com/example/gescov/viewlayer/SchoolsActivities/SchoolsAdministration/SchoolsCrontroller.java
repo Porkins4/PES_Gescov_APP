@@ -23,18 +23,11 @@ public class SchoolsCrontroller{
     private SchoolListViewAdapter adminSchoolListViewAdapter;
     private List<School> schoolsList;
 
-    private SchoolsAdministrationFagment fragment;
     private HashMap<String, School> schoolHash;
-    private School currentSchool;
+
     private SchoolGraphViewModel schoolGraphViewModel;
+    private SchoolCreateFormViewModel schoolCreateFormViewModel;
 
-    public void setSchoolsAdministrationFragment(SchoolsAdministrationFagment fragment) {
-        this.fragment = fragment;
-    }
-
-    public SchoolsAdministrationFagment getSchoolsAdministrationFragment() {
-        return fragment;
-    }
 
     public void createSchoolListViewAdapter(Context context) {
         schoolListViewAdapter = new SchoolListViewAdapter(context, getSchoolsList());
@@ -87,17 +80,12 @@ public class SchoolsCrontroller{
         }
     }
 
-    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
-        PresentationControlFactory.getViewLayerController().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite);
-    }
-
-    public void setCurrentSchool(String currentSchool) {
-        this.currentSchool = schoolHash.get(currentSchool);
-        PresentationControlFactory.getViewLayerController().setCurrentSchool(this.currentSchool);
+    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite, String latitude, String longitude) {
+        PresentationControlFactory.getViewLayerController().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite, latitude, longitude);
     }
 
     public School getCurrentSchool() {
-        return currentSchool;
+        return PresentationControlFactory.getViewLayerController().getCurrentSchool();
     }
 
     public void deleteSchool(School school) {
@@ -111,8 +99,8 @@ public class SchoolsCrontroller{
         }
     }
 
-    public void addStudentToCenter(String schoolName, MutableLiveData<SchoolRequestResult> result) {
-        PresentationControlFactory.getViewLayerController().addStudentToCenter(schoolName,result);
+    public void addStudentToCenter(String schoolId, MutableLiveData<SchoolRequestResult> result) {
+        PresentationControlFactory.getViewLayerController().addStudentToCenter(schoolId,result);
     }
 
     public void addNewAdminToSchool(String newAdminID) {
@@ -132,11 +120,25 @@ public class SchoolsCrontroller{
         this.schoolGraphViewModel = schoolGraphViewModel;
     }
 
+    public SchoolCreateFormViewModel getSchoolCreateFormViewModel() {
+        if (schoolCreateFormViewModel == null)
+            schoolCreateFormViewModel = new SchoolCreateFormViewModel();
+        return schoolCreateFormViewModel;
+    }
+
     public void deleteSchoolAdmin(String adminID) {
         PresentationControlFactory.getViewLayerController().deleteSchoolAdmin(adminID);
     }
 
     public void requestAcessSchoolByCode(String userId, String schoolId,  String schoolCode) {
         PresentationControlFactory.getViewLayerController().requestAcessSchoolByCode(userId, schoolId, schoolCode);
+    }
+
+    public void setCurrentSchool(School school) {
+        PresentationControlFactory.getViewLayerController().setCurrentSchool(school);
+    }
+
+    public void updateCoordinatesSchoolCreationForm(String latitude, String longitude) {
+        schoolCreateFormViewModel.updateCoordinates(latitude, longitude);
     }
 }

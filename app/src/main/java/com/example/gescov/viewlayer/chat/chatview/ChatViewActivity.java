@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer.chatview;
+package com.example.gescov.viewlayer.chat.chatview;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -14,6 +14,10 @@ import android.widget.ImageButton;
 
 import com.example.gescov.R;
 
+import okhttp3.OkHttpClient;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
+
 public class ChatViewActivity extends AppCompatActivity {
 
     private ChatViewViewModel chatViewViewModel;
@@ -22,12 +26,24 @@ public class ChatViewActivity extends AppCompatActivity {
     private EditText editText;
     private ImageButton sendButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_view);
         initViewComponents();
-        updateMessagesFromChat();
+        setChatListener();
+        //updateMessagesFromChat();
+    }
+
+    private void setChatListener() {
+        chatViewViewModel.getMessages().observe(this,
+                messageReceived -> {
+                    if (messageReceived) chatViewViewModel.updateMessages();
+                    MessageAdapter messageAdapter = chatViewViewModel.getAdapter(instance);
+                    recyclerView.setAdapter(messageAdapter);
+                    //if (!messageAdapter.empty()) recyclerView.smoothScrollToPosition(chatViewViewModel.getLastElemPos());
+                });
     }
 
     private void updateMessagesFromChat() {
@@ -91,5 +107,11 @@ public class ChatViewActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(chatViewViewModel.getUserName());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        chatViewViewModel.deactivatePolling();
     }
 }

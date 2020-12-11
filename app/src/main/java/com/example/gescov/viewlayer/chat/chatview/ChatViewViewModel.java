@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer.chatview;
+package com.example.gescov.viewlayer.chat.chatview;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -17,6 +17,10 @@ public class ChatViewViewModel extends ViewModel {
     private List<MessageModel> messages;
     private String chatID;
     private MessageAdapter adapter;
+
+    //polling method
+    private MutableLiveData<Boolean> messageReceived;
+
 
     public void setUserInfo(String targetName, String targetPic) {
         this.userName = targetName;
@@ -40,7 +44,8 @@ public class ChatViewViewModel extends ViewModel {
         if (!error) {
             this.messages = messages;
         }
-        updated.setValue(error);
+        //updated.setValue(error);
+        messageReceived.setValue(error);
     }
 
     public MessageAdapter getAdapter(ChatViewActivity instance) {
@@ -63,7 +68,22 @@ public class ChatViewViewModel extends ViewModel {
 
     public void notifyChatUpdated() {
         adapter.notifyDataSetChanged();
-        adapter.getIth(adapter.size()-1).print();
-        System.out.println("sdaslkdhñalskhdalshd");
+    }
+
+    public LiveData<Boolean> getMessages() {
+        if (messageReceived == null) {
+            messageReceived = new MutableLiveData<>();
+            PresentationControlFactory.getChatViewController().setChatViewViewModel(this);
+            PresentationControlFactory.getChatViewController().startGettingChat(chatID);
+        }
+        return messageReceived;
+    }
+
+    public void updateMessages() {
+        PresentationControlFactory.getChatViewController().setChatObserver();
+    }
+
+    public void deactivatePolling() {
+        PresentationControlFactory.getChatViewController().deactivatePolling();
     }
 }

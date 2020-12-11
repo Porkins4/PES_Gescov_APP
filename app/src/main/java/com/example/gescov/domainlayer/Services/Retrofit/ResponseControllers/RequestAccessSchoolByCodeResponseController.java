@@ -19,7 +19,9 @@ public class RequestAccessSchoolByCodeResponseController implements Callback<Res
 
     @Override
     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-        DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList();
+        DomainControlFactory.getSchoolsModelCrontroller().refreshCurrentSchool();
+        DomainControlFactory.getUserModelController().refreshLoggedUser();
+        DomainControlFactory.getUserModelController().refreshSchoolList();
     }
 
     @Override

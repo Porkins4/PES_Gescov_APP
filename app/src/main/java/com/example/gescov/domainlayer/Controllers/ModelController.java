@@ -36,8 +36,8 @@ public class ModelController {
 
     }
 
-    public String getAllContagions() {
-       return userModelController.getContagionsOfMyCenter();
+    public String getAllContagions(String schoolID) {
+       return userModelController.getContagionsOfMyCenter(schoolID);
     }
 
     public void CreateUser(String nameuser) {
@@ -65,8 +65,8 @@ public class ModelController {
         DomainControlFactory.getSchoolsModelCrontroller().refreshStudentSchools(userId);
     }
 
-    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
-        DomainControlFactory.getSchoolsModelCrontroller().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite);
+    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite, String latitude, String longitude) {
+        DomainControlFactory.getSchoolsModelCrontroller().createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite, latitude, longitude);
     }
 
     public void notifyInfected(MutableLiveData<ContagionRequestResult> result) {
@@ -146,9 +146,8 @@ public class ModelController {
         DomainControlFactory.getUserModelController().refreshLoggedUser();
     }
 
-    public void addStudentToCenter(String schoolName, MutableLiveData<SchoolRequestResult> result) {
-       School school = DomainControlFactory.getSchoolsModelCrontroller().getSchoolByName(schoolName);
-       userModelController.addStudentToCenter(school,result);
+    public void addStudentToCenter(String schoolId, MutableLiveData<SchoolRequestResult> result) {
+       userModelController.addStudentToCenter(schoolId,result);
     }
 
     public void changeUserProfile(boolean isStudent) {
@@ -218,8 +217,8 @@ public class ModelController {
         PresentationControlFactory.getViewLayerController().setUserIDVerificationResult(error);
     }
 
-    public void retrieveUserInformation() {
-        DomainControlFactory.getUserModelController().retrieveUserInformation();
+    public void refreshLoggedUser() {
+        DomainControlFactory.getUserModelController().refreshLoggedUser();
     }
 
     public void setUserRetrieveResult(Boolean error) {
@@ -327,5 +326,25 @@ public class ModelController {
 
     public void currentSchoolRefreshed() {
         PresentationControlFactory.getViewLayerController().currentSchoolRefreshed();
+    }
+
+    public School getCurrentSchool() {
+       return DomainControlFactory.getSchoolsModelCrontroller().getCurrentSchool();
+    }
+
+    public String getIdContagion() {
+        return DomainControlFactory.getUserModelController().getIdContagion();
+    }
+
+    public void updateCoordinatesSchoolCreationForm(String latitude, String longitude) {
+        PresentationControlFactory.getViewLayerController().updateCoordinatesSchoolCreationForm(latitude, longitude);
+    }
+
+    public void startGettingChat(String chatID) {
+        DomainControlFactory.getChatModelController().startGettingChat(chatID);
+    }
+
+    public void deactivatePolling() {
+        DomainControlFactory.getChatModelController().deactivatePolling();
     }
 }

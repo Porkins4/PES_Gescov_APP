@@ -8,10 +8,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.R;
+import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolsAdministrationFagment;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolsCrontroller;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
@@ -19,7 +18,7 @@ import java.util.List;
 
 public class SchoolListViewAdapter extends BaseAdapter {
 
-    private List<School> schoolList;
+    protected List<School> schoolList;
     private LayoutInflater inflater;
 
     public SchoolListViewAdapter(Context c, List<School> l) {
@@ -59,10 +58,9 @@ public class SchoolListViewAdapter extends BaseAdapter {
 
         v.setOnClickListener(e-> {
             SchoolsCrontroller controller = PresentationControlFactory.getSchoolsCrontroller();
-            controller.setCurrentSchool(((TextView) e.findViewById(R.id.school_name)).getText().toString());
-            SchoolsAdministrationFagment fragment = controller.getSchoolsAdministrationFragment();
-            Intent intent = new Intent(fragment.getContext(), SchoolDetailsActivity.class);
-            fragment.startActivity(intent);
+            controller.setCurrentSchool(schoolList.get(position));
+            Intent intent = new Intent(v.getContext(), SchoolDetailsActivity.class);
+            v.getContext().startActivity(intent);
         });
         return v;
     }

@@ -10,16 +10,54 @@
         android:id="@+id/school"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/normalText"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/position_school"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/position_school"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:text="TextView"
+        android:layout_marginStart="5dp"
+        android:text="1"
+        android:textColor="@color/normalText"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/school"
+        app:layout_constraintStart_toEndOf="@+id/trophy"
+        app:layout_constraintTop_toTopOf="@+id/school" />
+
+    <TextView
+        android:id="@+id/school_address_Rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="address"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/num_of_contagion"
+        app:layout_constraintTop_toBottomOf="@+id/num_of_contagion" />
+
+    <ImageView
+        android:id="@+id/trophy"
+        android:layout_width="32dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="2dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/position_school"
+        app:srcCompat="@drawable/medical_mask" />
+
+    <TextView
+        android:id="@+id/num_of_contagion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="TextView"
+        android:textColor="@color/dark_green"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/position_school"
         app:layout_constraintTop_toBottomOf="@+id/school" />
 </androidx.constraintlayout.widget.ConstraintLayout>

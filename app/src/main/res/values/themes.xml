@@ -41,4 +41,12 @@
 
     <style name="Theme">GescovNoActionBar</style>
 
+
+    <!-- Chat colors -->
+    <color name="chatItemColor">@color/accepted_green</color>
+    <color name="sendMessageEdit">#E8E8E8</color>
+    <color name="sendMessageButton">@color/teal_200</color>
+
+    <!-- General colors -->
+    <color name="normalText">@color/black</color>
 </resources>

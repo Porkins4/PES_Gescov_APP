@@ -1,12 +1,9 @@
-package com.example.gescov.viewlayer.ContagionList;
+package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ListView;
-
-import androidx.fragment.app.Fragment;
 
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
@@ -18,48 +15,36 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+public class ContagionListActivity extends AppCompatActivity {
 
-public class ContagionListFragment extends Fragment {
     private ListView contagionList;
-    private ContagionController controller;
-    private View thisView;
     private List<String> names;
     private List<String> contagionDate;
-    private  ContagionListAdapter adapter;
-
-
-
-
-    public ContagionListFragment() {
-        // Required empty public constructor
-    }
-
+    private ContagionListAdapter adapter;
+    private String schoolName;
+    private String schoolID;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        controller = PresentationControlFactory.getContagionController();
-        controller.setContagionListFragment(this);
-
-        thisView = inflater.inflate(R.layout.contagionlist, container, false);
+        setContentView(R.layout.activity_contagion_list);
         names = new ArrayList<>();
         contagionDate = new ArrayList<>();
-        contagionList = thisView.findViewById(R.id.contagion_list);
+        PresentationControlFactory.getContagionController().setContagionListFragment(this);
+        contagionList = findViewById(R.id.contagion_list);
         adapter = new ContagionListAdapter(contagionList.getContext(), names, contagionDate);
-
         contagionList.setAdapter(adapter);
+        schoolName = getIntent().getStringExtra("schoolName");
+        schoolID = getIntent().getStringExtra("schoolID");
+        getContagionsOfCenter();
+    }
+
+    private void getContagionsOfCenter() {
         try {
-            controller.refresh();
+            PresentationControlFactory.getContagionController().refresh(schoolID);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return thisView;
     }
 
     public void updateData(String info) throws JSONException {
@@ -69,7 +54,7 @@ public class ContagionListFragment extends Fragment {
             String nameInfected = aux.getString("first");
             String date = aux.getString("second");
             names.add(nameInfected);
-            contagionDate.add("FIB-Positiu des de " + date);
+            contagionDate.add(schoolName+"-Positiu des de " + date);
         }
         adapter.notifyDataSetChanged();
     }

@@ -1,5 +1,6 @@
 package com.example.gescov.domainlayer.Singletons;
 
+import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.CreateRequestToSchoolResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.DeleteSchoolAdminResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.DeleteSchoolClassroomResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.DeleteSchoolResponseController;
@@ -26,6 +27,7 @@ import com.example.gescov.domainlayer.Services.Volley.Interfaces.IClassroomServi
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IContagionService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IUserService;
+import com.example.gescov.domainlayer.Services.mapsretrofit.RefreshCoordinatesFromAddressResponseController;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -34,6 +36,7 @@ public class ServicesFactory {
 
     private static String GESCOV_BASE_URL = "https://gescov.herokuapp.com/";
     private static Retrofit retrofit;
+    private static Retrofit mapsRetrofit;
 
     //volley
     private static IContagionService contagionservice;
@@ -59,13 +62,26 @@ public class ServicesFactory {
     private static RequestAccessSchoolByCodeResponseController requestAccessSchoolByCodeResponseController;
     private static RefreshCurrentSchoolResponseController refreshCurrentSchoolResponseController;
 
+    //retrofit maps
+    private static RefreshCoordinatesFromAddressResponseController refreshCoordinatesFromAddressResponseController;
+    private static CreateRequestToSchoolResponseController createRequestToSchoolResponseController;
+
     private static Retrofit getRetrofit() {
         if (retrofit != null) return retrofit;
-        Retrofit retrofit = new Retrofit.Builder()
+        retrofit = new Retrofit.Builder()
                 .baseUrl("https://gescov.herokuapp.com/")
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
         return retrofit;
+    }
+
+    private static Retrofit getMapsRetrofit() {
+        if (mapsRetrofit != null) return mapsRetrofit;
+        mapsRetrofit = new Retrofit.Builder()
+                .baseUrl("http://api.positionstack.com/v1/")
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .build();
+        return mapsRetrofit;
     }
 
     public static IContagionService getContagionService() {
@@ -187,5 +203,17 @@ public class ServicesFactory {
         if (refreshCurrentSchoolResponseController != null) return refreshCurrentSchoolResponseController;
         refreshCurrentSchoolResponseController = new RefreshCurrentSchoolResponseController(getRetrofit());
         return refreshCurrentSchoolResponseController;
+    }
+
+    public static RefreshCoordinatesFromAddressResponseController getRefreshCoordinatesFromAddressResponseController() {
+        if (refreshCoordinatesFromAddressResponseController != null) return refreshCoordinatesFromAddressResponseController;
+        refreshCoordinatesFromAddressResponseController = new RefreshCoordinatesFromAddressResponseController(getMapsRetrofit());
+        return refreshCoordinatesFromAddressResponseController;
+    }
+
+    public static CreateRequestToSchoolResponseController getCreateRequestToSchoolResponseController () {
+        if (createRequestToSchoolResponseController != null) return createRequestToSchoolResponseController;
+        createRequestToSchoolResponseController = new CreateRequestToSchoolResponseController(getRetrofit());
+        return createRequestToSchoolResponseController;
     }
 }

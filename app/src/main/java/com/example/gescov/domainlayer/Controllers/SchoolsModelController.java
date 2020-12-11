@@ -35,8 +35,8 @@ public class SchoolsModelController {
             String addressSchool = aux.getString("address");
             String emailSchool = null;//aux.getString("email");
             String phone = aux.getString("phone");
-            int longitude = aux.getInt("longitude");
-            int latitude = aux.getInt("longitude");
+            double longitude = aux.getDouble("longitude");
+            double latitude = aux.getDouble("latitude");
             List<String> listAdminsID = new ArrayList<>();
             JSONArray adminsArray = aux.getJSONArray("administratorsID");
             for (int admin = 0; admin < adminsArray.length(); admin++) {
@@ -54,8 +54,8 @@ public class SchoolsModelController {
         return getSchoolsList();
     }
 
-    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
-        DomainControlFactory.getUserModelController().createSchool(schoolName,schoolAddress, schoolTelephone, schoolWebsite);
+    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite, String latitude, String longitude) {
+        DomainControlFactory.getUserModelController().createSchool(schoolName,schoolAddress, schoolTelephone, schoolWebsite, latitude, longitude);
     }
 
     public List<School> getSchoolsList() {
@@ -183,7 +183,7 @@ public class SchoolsModelController {
     }
 
     public void refreshCurrentSchool() {
-        ServicesFactory.getRefreshCurrentSchoolResponseController().refreshSchool(currentSchool.getId());
+        if (currentSchool != null) ServicesFactory.getRefreshCurrentSchoolResponseController().refreshSchool(currentSchool.getId());
     }
 
     public void refreshCurrentSchool(String schoolString) {
@@ -195,5 +195,9 @@ public class SchoolsModelController {
             e.printStackTrace();
         }
 
+    }
+
+    public void updateCoordinatesSchoolCreationForm(String latitude, String longitude) {
+        DomainControlFactory.getModelController().updateCoordinatesSchoolCreationForm(latitude, longitude);
     }
 }

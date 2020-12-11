@@ -6,7 +6,6 @@ import com.example.gescov.domainlayer.Services.Volley.Interfaces.IContagionServi
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 import com.example.gescov.domainlayer.Singletons.ServicesFactory;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
 
 import org.json.JSONArray;
@@ -23,8 +22,8 @@ public class User {
 
 
     public enum UserProfileType {
-        STUDDENT ("Student"),
-        TEACHER ("Teacher");
+        STUDENT ("STUDENT"),
+        TEACHER ("TEACHER");
 
         private final String value;
         UserProfileType(String value) {
@@ -40,7 +39,7 @@ public class User {
         }
 
         public static UserProfileType getUserProfileFromBoolean(boolean isStudent) {
-            return isStudent ? STUDDENT : TEACHER;
+            return isStudent ? STUDENT : TEACHER;
         }
 
         public String getText() {
@@ -76,6 +75,7 @@ public class User {
     public void setProfileType(boolean isStudent) {
         this.profileType = UserProfileType.getUserProfileFromBoolean(isStudent);
     }
+
 
     public  User() {
         schoolsID = new ArrayList<>();
@@ -151,11 +151,9 @@ public class User {
         this.risk = risk;
     }
 
-    public String getCntagionsOfCenter() {
-        // ahora es una lista de schools
-        String schoolId = schoolsID.get(0);
+    public String getCntagionsOfCenter(String schoolID) {
         IContagionService icontragionService = ServicesFactory.getContagionService();
-        return icontragionService.getContagionList(name,schoolId);
+        return icontragionService.getContagionList(schoolID);
     }
 
     public String getClassroomDimensions(String schoolId, String classroomId) {
@@ -188,12 +186,6 @@ public class User {
         schoolService.sendReservationRequest(id,aula,row,col);
     }
 
-    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
-        ISchoolService schoolService = ServicesFactory.getSchoolService();
-        List<String> administratorsList = new ArrayList<>();
-        administratorsList.add(id);
-        schoolService.createSchoolRequest(schoolName, schoolAddress, schoolTelephone, schoolWebsite, administratorsList, id);
-    }
 
     public void deleteSchool(String schoolId) {
         ServicesFactory.getDeleteSchoolResponseController().deleteSchoolRequest(schoolId, this.id);
@@ -243,11 +235,6 @@ public class User {
 
     }
 
-    public void addStudentToCenter(School school, MutableLiveData<SchoolRequestResult> result) {
-        //schoolsID.add(0,school.getId());
-        ServicesFactory.getSchoolService().addStudentToCenter(id,school.getId(),result);
-    }
-
     public void deleteSchoolClassroom(String classroomId) {
         ServicesFactory.getDeleteSchoolClassroomResponseController().deleteSchoolClassroomRequest(classroomId, id);
     }
@@ -279,32 +266,6 @@ public class User {
         System.out.println(profileType);
         System.out.println(pic);
         for (String k: schoolsID) System.out.println(k);
-    }
-
-    public static User fromJSONtoUser(JSONObject jsonObject) {//mover el codigo aquí?
-        User response = new User();
-        response.setId("null");
-        try {
-            String name = jsonObject.getString("name");
-            String id = jsonObject.getString("id");
-            String profileType = jsonObject.getString("profile");
-            String email = jsonObject.getString("email");
-            Boolean risk = jsonObject.getBoolean("risk");
-            List<String> schools = new ArrayList<>();
-            JSONArray a = jsonObject.getJSONArray("schoolsID");
-            for (int i = 0; i < a.length(); i++) {
-                schools.add(a.getString(i));
-            }
-            response.setId(id);
-            response.setName(name);
-            response.setProfileType(profileType);
-            response.setSchoolsID(schools);
-            response.setEmail(email);
-            response.setRisk(risk);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return response;
     }
 
     private void setEmail(String email) {

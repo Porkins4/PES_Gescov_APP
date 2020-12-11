@@ -19,5 +19,9 @@
     <color name="free_site">#83FF6D</color>
     <color name="unabled_site">#2D2F31</color>
 
+    <!-- Chat colors -->
+    <color name="chatItemColorDark">#4C4C4C</color>
+    <color name="sendMessageEditColor">#6E6E6E</color>
+
 
 </resources>

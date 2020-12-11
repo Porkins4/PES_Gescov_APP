@@ -1,12 +1,16 @@
 package com.example.gescov.viewlayer.navigation;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gescov.viewlayer.SignUpAndLogin.LoginActivity;
+import com.example.gescov.viewlayer.Singletons.LoggedInUser;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -43,7 +47,7 @@ public class NavigationMenu extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.ContagionList, R.id.schoolAdministration,R.id.chat_list,R.id.user_all_schools,R.id.user_schools,R.id.map_id,R.id.ranking_fragment)
+                R.id.nav_home, R.id.schoolAdministration,R.id.chat_list,R.id.user_all_schools,R.id.user_schools,R.id.map_id,R.id.ranking_fragment)
 
                 .setDrawerLayout(drawer)
                 .build();
@@ -53,7 +57,7 @@ public class NavigationMenu extends AppCompatActivity {
         MenuItem logoutButton = navigationView.getMenu().findItem(R.id.logout);
 
         logoutButton.setOnMenuItemClickListener(e -> {
-            logout_func();
+            logoutPrompt();
             return true;
         });
     }
@@ -73,7 +77,7 @@ public class NavigationMenu extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    private void logout_func() {
+    private void logoutFunc() {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(this,gso);
         googleSignInClient.signOut()
@@ -85,6 +89,19 @@ public class NavigationMenu extends AppCompatActivity {
                     }
                 });
     }
+
+    private void logoutPrompt() {
+        DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
+            if (which == DialogInterface.BUTTON_POSITIVE) logoutFunc();
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.confirm_logout)).setPositiveButton(getString(R.string.confirm), dialogClickListener)
+                .setNegativeButton(getString(R.string.cancel), dialogClickListener);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 
     private void showLoginView() {
         String logout = getString(R.string.logout_successful);

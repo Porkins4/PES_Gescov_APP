@@ -19,7 +19,8 @@ public class UpdateSchoolAdminResponseController implements Callback<String> {
 
     @Override
     public void onResponse(Call<String> call, Response<String> response) {
-        DomainControlFactory.getSchoolsModelCrontroller().refreshCurrentSchool();
+         if (response.code() == 200)
+            DomainControlFactory.getSchoolsModelCrontroller().refreshCurrentSchool();
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.example.gescov.domainlayer.Controllers;
 
 import android.location.Location;
 
-import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.domainlayer.Services.LoginRespository;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
@@ -44,8 +43,8 @@ public class UserModelController {
     }
 
 
-    public String getContagionsOfMyCenter() {
-        return loggedUser.getCntagionsOfCenter();
+    public String getContagionsOfMyCenter(String schoolID) {
+        return loggedUser.getCntagionsOfCenter(schoolID);
     }
 
 
@@ -77,8 +76,12 @@ public class UserModelController {
         loggedUser.sendReservationRequest(aula,row,col);
     }
 
-    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite) {
-        loggedUser.createSchool(schoolName, schoolAddress, schoolTelephone, schoolWebsite);
+    public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite, String latitude, String longitude) {
+
+        ISchoolService schoolService = ServicesFactory.getSchoolService();
+        List<String> administratorsList = new ArrayList<>();
+        administratorsList.add(loggedUser.getId());
+        schoolService.createSchoolRequest(schoolName, schoolAddress, schoolTelephone, schoolWebsite, latitude, longitude, administratorsList, loggedUser.getId());
     }
 
     public void deleteSchool(String schoolId) {
@@ -129,12 +132,8 @@ public class UserModelController {
         loggedUser.deleteSchoolClassroom(classroomId);
     }
 
-    public void refreshLoggedUser() {
-        loggedUser.refresh();
-    }
-
     public void refreshLoggedUser(JSONObject response) {
-        loggedUser.refreshUserParams(response);
+        loggedUser = getUserFromJSONObject(response);
         DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName(), loggedUser.getRisk());
     }
 
@@ -157,12 +156,16 @@ public class UserModelController {
     }
 
     public void refreshUser(String id, JSONObject response) {
-        loggedUser.refreshUserParams(response);
+        if (userHash.containsKey(id)){
+            userHash.remove(id);
+        }
+        User user = getUserFromJSONObject(response);
+        userHash.put(user.getId(), user);
         DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName(), loggedUser.getRisk());
     }
 
-    public void addStudentToCenter(School school, MutableLiveData<SchoolRequestResult> result) {
-        loggedUser.addStudentToCenter(school,result);
+    public void addStudentToCenter(String schoolId, MutableLiveData<SchoolRequestResult> result) {
+        ServicesFactory.getCreateRequestToSchoolResponseController().createRequestToSchool(loggedUser.getId(), schoolId);
     }
 
 
@@ -208,7 +211,7 @@ public class UserModelController {
         DomainControlFactory.getModelController().setUserIDVerificationResult(error);
     }
 
-    public void retrieveUserInformation() {
+    public void refreshLoggedUser() {
         ServicesFactory.getUserService().getUserInfo(loggedUser.getId());
     }
 
@@ -276,8 +279,8 @@ public class UserModelController {
             try {
                 User u = getUserFromJSONObject(response.getJSONObject(i)); //reusar esta operación
                 System.out.println(u.getProfileType());
-                if (loggedUser.getProfileType() == User.UserProfileType.TEACHER && u.getProfileType() == User.UserProfileType.STUDDENT) contactsFromSelectedCenter.add(u);
-                else if (loggedUser.getProfileType() == User.UserProfileType.STUDDENT && u.getProfileType() == User.UserProfileType.TEACHER) contactsFromSelectedCenter.add(u);
+                if (loggedUser.getProfileType() == User.UserProfileType.TEACHER && u.getProfileType() == User.UserProfileType.STUDENT) contactsFromSelectedCenter.add(u);
+                else if (loggedUser.getProfileType() == User.UserProfileType.STUDENT && u.getProfileType() == User.UserProfileType.TEACHER) contactsFromSelectedCenter.add(u);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -313,5 +316,9 @@ public class UserModelController {
 
     public Location getLocation() {
        return  loggedUser.getLocation();
+    }
+
+    public String getIdContagion() {
+        return loggedUser.getIdContagion();
     }
 }
