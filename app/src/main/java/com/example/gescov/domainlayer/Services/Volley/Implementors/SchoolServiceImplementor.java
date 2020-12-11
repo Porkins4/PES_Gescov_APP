@@ -272,7 +272,6 @@ public class SchoolServiceImplementor implements ISchoolService {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
                 }, error -> {
 
                 });

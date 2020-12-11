@@ -1,21 +1,15 @@
 package com.example.gescov.viewlayer.ranking;
-
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import com.example.gescov.R;
 
 
 public class RankingFragment extends Fragment {
-    private View thisView;
-    private RankingViewModel rankingViewModel;
-    private ListView listView;
     public RankingFragment() {
         // Required empty public constructor
     }
@@ -28,11 +22,14 @@ public class RankingFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View thisView;
+        ListView listView;
         thisView = inflater.inflate(R.layout.fragment_ranking, container, false);
         listView = thisView.findViewById(R.id.ranking_list);
+        RankingViewModel rankingViewModel;
         rankingViewModel = new  ViewModelProvider(getActivity()).get(RankingViewModel.class);
         rankingViewModel.getRanking().observe(getActivity(), received -> {
-            if ( received ) {
+            if ( Boolean.TRUE.equals(received) ) {
                 listView.setAdapter(rankingViewModel.getAdapter(getActivity()));
             }
         });
