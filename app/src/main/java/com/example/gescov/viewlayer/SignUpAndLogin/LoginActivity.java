@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import com.example.gescov.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -21,12 +22,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initGoogleButton() {
-        SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button_login_activity);
+        Button signInButton = (Button) findViewById(R.id.sign_in_button_login_activity);
         signInButton.setOnClickListener(v -> {
             Intent signInIntent = LoadingProfileController.getGoogleSignInClient(getString(R.string.server_client_id)).getSignInIntent();
             startActivityForResult(signInIntent, SUCCESSDUL_SIGN_IN);
         });
-        signInButton.setSize(SignInButton.SIZE_WIDE);
     }
 
     @Override
@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SUCCESSDUL_SIGN_IN && (GoogleSignIn.getLastSignedInAccount(this)) != null) {
             Intent i = new Intent(this, LoadingProfileActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
         }
     }

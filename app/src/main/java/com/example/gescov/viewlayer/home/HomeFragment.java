@@ -81,7 +81,6 @@ public class HomeFragment extends Fragment {
             startActivity(intent);
         });
 
-        initUpdateUserProfileButton();
         initViewComponents();
 
 
@@ -115,16 +114,6 @@ public class HomeFragment extends Fragment {
     private void initViewComponents() {
         TextView userName = (TextView) root.findViewById(R.id.home_user_name);
         userName.setText(user.getName());
-    }
-
-    private void initUpdateUserProfileButton() {
-        Button updateProfileButton = (Button) root.findViewById(R.id.update_profile_button);
-        updateProfileButton.setOnClickListener(
-                v -> {
-                    Intent i = new Intent(getActivity(), UpdateUserProfileActivity.class);
-                    startActivity(i);
-                }
-        );
     }
   
     public void refreshActivity() {

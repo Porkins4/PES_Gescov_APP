@@ -60,11 +60,13 @@ public class LoadingProfileActivity extends AppCompatActivity {
         String welcome = getString(R.string.welcome) + " " + loadingProfileViewModel.getLoggedInUser().getName();
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_SHORT).show();
         Intent i = new Intent(this, NavigationMenu.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
     }
 
     private void startLoginActivity() {
         Intent i = new Intent(this, LoginActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
     }
 

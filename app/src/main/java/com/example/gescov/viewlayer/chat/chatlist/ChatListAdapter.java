@@ -50,12 +50,18 @@ public class ChatListAdapter extends BaseAdapter {
 
     private void initViewComponents(int position, View v) {
         TextView name = (TextView) v.findViewById(R.id.user_name);
-        name.setText(chatViewers.get(position).getTarget());
+        String[] compoundName = chatViewers.get(position).getTarget().split("\\s+");
+        if (compoundName.length > 1) name.setText(compoundName[0] + " " + compoundName[1]);
+        else name.setText(compoundName[0]);
+
 
         TextView lastMessage = (TextView) v.findViewById(R.id.last_message);
         String msg = chatViewers.get(position).getLastMessage();
         if (msg == null) lastMessage.setText(GescovApplication.getContext().getString(R.string.no_messages_yet_text));
-        else lastMessage.setText(msg);
+        else {
+            if (msg.length() > 25) lastMessage.setText(msg.substring(0,25) + "...");
+            else lastMessage.setText(msg);
+        }
 
 
         TextView lastMessageHour = (TextView) v.findViewById(R.id.last_message_time);

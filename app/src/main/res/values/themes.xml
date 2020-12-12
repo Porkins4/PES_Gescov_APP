@@ -49,4 +49,7 @@
 
     <!-- General colors -->
     <color name="normalText">@color/black</color>
+
+    <!-- Login Button Color -->
+    <color name="loginButtonColor">#F3F3F3</color>
 </resources>

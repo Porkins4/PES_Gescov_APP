@@ -110,10 +110,10 @@ public class SchoolDetailsActivity extends AppCompatActivity {
             }
         }
         
-        classroomsListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) ? View.VISIBLE : View.INVISIBLE);
-        joinSchoolButton.setVisibility(!GescovUtils.isUserInSchool(loggedUser, school) || GescovUtils.isUserSchoolAdmin(loggedUser, school) ? View.VISIBLE : View.INVISIBLE);
-        usersListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) && loggedUser.getProfileType().equals(User.UserProfileType.TEACHER) ? View.VISIBLE : View.INVISIBLE);
-        contagionListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) && loggedUser.getProfileType().equals(User.UserProfileType.TEACHER) ? View.VISIBLE : View.INVISIBLE);
+        classroomsListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) ? View.VISIBLE : View.GONE);
+        joinSchoolButton.setVisibility(!GescovUtils.isUserInSchool(loggedUser, school) || GescovUtils.isUserSchoolAdmin(loggedUser, school) ? View.VISIBLE : View.GONE);
+        usersListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) && loggedUser.getProfileType().equals(User.UserProfileType.TEACHER) ? View.VISIBLE : View.GONE);
+        contagionListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) && loggedUser.getProfileType().equals(User.UserProfileType.TEACHER) ? View.VISIBLE : View.GONE);
 
         schoolDetailsViewModel = new ViewModelProvider(this).get(SchoolDetailsViewModel.class);
         schoolDetailsViewModel.getPutResult().observe(this, schoolRequestResult -> {
@@ -179,7 +179,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
 
     private void setVisibilityAndValue(TextView view, String value) {
         if (value == null) {
-            view.setVisibility(View.INVISIBLE);
+            view.setVisibility(View.GONE);
         } else {
             view.setVisibility(View.VISIBLE);
             view.setText(value);

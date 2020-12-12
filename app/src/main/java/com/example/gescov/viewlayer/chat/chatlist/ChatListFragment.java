@@ -125,4 +125,10 @@ public class ChatListFragment extends Fragment {
         mViewModel = new ViewModelProvider(this).get(ChatListViewModel.class);
         initViewComponents();
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
 }

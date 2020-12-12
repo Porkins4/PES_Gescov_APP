@@ -123,7 +123,7 @@
     <string name="introduce_email_hint">Correu electrònic</string>
     <string name="Password_hint">Contrasenya</string>
     <string name="sign_in_button_text">Registra\'t</string>
-    <string name="sign_in_text">Inicia sessió amb el teu compte de Google</string>
+    <string name="sign_in_text">Iniciar sessió</string>
 
 
     <!-- Log out-->
@@ -195,7 +195,7 @@
     <!-- Strings for the Ranking -->
     <string name="ranking_name">Ranking de centres</string>
     <string name="error_while_creating_chat">S\'ha produit un error mentre es creava el xat</string>
-    <string name="no_messages_yet_text">Encara no s\'ha enviat cap missatge</string>
+    <string name="no_messages_yet_text">Cap missatge enviat</string>
 
 
     <!-- Access school by code activity -->

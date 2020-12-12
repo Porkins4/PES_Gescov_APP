@@ -107,6 +107,8 @@ public class NavigationMenu extends AppCompatActivity {
         String logout = getString(R.string.logout_successful);
         Toast.makeText(getApplicationContext(), logout, Toast.LENGTH_SHORT).show();
         Intent i = new Intent(this, LoginActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
     }
+
 }

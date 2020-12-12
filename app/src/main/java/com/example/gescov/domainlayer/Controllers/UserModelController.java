@@ -3,7 +3,7 @@ package com.example.gescov.domainlayer.Controllers;
 import android.location.Location;
 
 import com.example.gescov.domainlayer.Classmodels.User;
-import com.example.gescov.domainlayer.Services.LoginRespository;
+import com.example.gescov.domainlayer.Singletons.LoginRespository;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 import com.example.gescov.domainlayer.Singletons.ServicesFactory;
@@ -201,7 +201,7 @@ public class UserModelController {
     }
 
     public void getUserID() {
-        ServicesFactory.getUserService().getUserID(LoggedInUser.getToken());
+        ServicesFactory.getUserService().getUserID(LoginRespository.getToken());
     }
 
     public void setUserID(Boolean error, String userID) {
@@ -279,8 +279,8 @@ public class UserModelController {
             try {
                 User u = getUserFromJSONObject(response.getJSONObject(i)); //reusar esta operación
                 System.out.println(u.getProfileType());
-                if (loggedUser.getProfileType() == User.UserProfileType.TEACHER && u.getProfileType() == User.UserProfileType.STUDENT) contactsFromSelectedCenter.add(u);
-                else if (loggedUser.getProfileType() == User.UserProfileType.STUDENT && u.getProfileType() == User.UserProfileType.TEACHER) contactsFromSelectedCenter.add(u);
+                if (loggedUser.getProfileType() == User.UserProfileType.STUDENT && u.getProfileType() == User.UserProfileType.TEACHER) contactsFromSelectedCenter.add(u);
+                else if (loggedUser.getProfileType() == User.UserProfileType.TEACHER) contactsFromSelectedCenter.add(u);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

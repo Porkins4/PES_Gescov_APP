@@ -38,7 +38,8 @@
             android:name=".viewlayer.schoolrequests.SchoolRequestsListActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.UpdateUserProfile.UpdateUserProfileActivity" />
-        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity" />
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
@@ -52,7 +53,8 @@
             android:name=".viewlayer.ClassroomActivities.ClassroomDistribution.ClassroomDistributionActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroom" />
-        <activity android:name=".viewlayer.home.CovidNotificationActivity" />
+        <activity android:name=".viewlayer.home.CovidNotificationActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassromListActivity"
             android:label="@string/title_activity_school_classrom_list"

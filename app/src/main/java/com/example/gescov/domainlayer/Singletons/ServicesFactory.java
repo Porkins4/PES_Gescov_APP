@@ -1,20 +1,20 @@
 package com.example.gescov.domainlayer.Singletons;
 
-import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.CreateRequestToSchoolResponseController;
-import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.DeleteSchoolAdminResponseController;
-import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.DeleteSchoolClassroomResponseController;
-import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.DeleteSchoolResponseController;
-import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.RefreshCurrentSchoolResponseController;
-import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.RefreshSchoolClassroomsResponseController;
-import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.RefreshSchoolRequestsBySchoolIdResponseController;
-import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.RefreshSchoolResponseController;
-import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.RefreshStudentSchoolsResponseController;
-import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.RefreshUsersBySchoolIdResponseController;
-import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.RequestAccessSchoolByCodeResponseController;
-import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.UpdateSchoolAdminResponseController;
-import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.UpdateSchoolClassroomResponseController;
-import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.UpdateSchoolRequestStatusResponseController;
-import com.example.gescov.domainlayer.Services.Retrofit.ResponseControllers.UpdateUserRiskResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.CreateRequestToSchoolResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteSchoolAdminResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteSchoolClassroomResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteSchoolResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshCurrentSchoolResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshSchoolClassroomsResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshSchoolRequestsBySchoolIdResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshSchoolResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshStudentSchoolsResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshUsersBySchoolIdResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RequestAccessSchoolByCodeResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpdateSchoolAdminResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpdateSchoolClassroomResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpdateSchoolRequestStatusResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpdateUserRiskResponseController;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.AssignmentServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.ChatServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.ClassroomServiceImplementor;
@@ -27,7 +27,7 @@ import com.example.gescov.domainlayer.Services.Volley.Interfaces.IClassroomServi
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IContagionService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IUserService;
-import com.example.gescov.domainlayer.Services.mapsretrofit.RefreshCoordinatesFromAddressResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.mapsretrofit.RefreshCoordinatesFromAddressResponseController;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
