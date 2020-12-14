@@ -66,6 +66,7 @@
     <string name="school_details_request_list">Sol·licituds</string>
     <string name="school_details_join">Sol·licitar accés</string>
     <string name="school_details_confirm_delete_message">Segur de que vols eliminar aquesta escola?</string>
+    <string name="title_school_details">Detalls de l\'escola</string>
 
 
     <!-- School Requests -->
@@ -113,6 +114,7 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="title_activity_contagion_list">Llista de contagis</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
@@ -124,12 +126,13 @@
     <string name="Password_hint">Contrasenya</string>
     <string name="sign_in_button_text">Registra\'t</string>
     <string name="sign_in_text">Iniciar sessió</string>
+    <string name="server_client_id">"673967911868-q9jgm7i3ijsjn0ft3bs6avvpot02a0nl.apps.googleusercontent.com"</string>
 
 
     <!-- Log out-->
     <string name="logout_text">Tancar sessió</string>
     <string name="logout_successful">Sessió tancada correctament</string>
-    <string name="server_client_id">"673967911868-q9jgm7i3ijsjn0ft3bs6avvpot02a0nl.apps.googleusercontent.com"</string>
+    <string name="confirm_logout">Segur que vols tancar la sessió?</string>
 
 
     <!-- Strings used for daily test -->
@@ -152,6 +155,7 @@
     <string name="notify_positive">notifica el teu positiu</string>
     <string name="notify_possible">notificar com possible positiu</string>
     <string name="notify_recovery">notifica la teva recuperació</string>
+    <string name="covid_notification_title">Notificació de COVID</string>
 
     <!-- home -->
     <string name="home_risk">Usuari de risc</string>
@@ -220,7 +224,6 @@
     <string name="evolution">"Evolució dels contagis en "</string>
     <string name="months">Mesos</string>
     <string name="axeYContagions">Contagis</string>
-    <string name="confirm_logout">Segur que vols tancar la sessió?</string>
 
 
 </resources>

@@ -16,7 +16,6 @@ import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.PopErrorAddStudentToCenter;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassromListActivity;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolDetailsViewModel;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionListActivity;
 import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
@@ -29,6 +28,7 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 public class SchoolDetailsActivity extends AppCompatActivity {
@@ -44,6 +44,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_details);
 
+        initToolbar();
         PresentationControlFactory.getLoadingProfileController().refreshLoggedUser();
         schoolsCrontroller = PresentationControlFactory.getSchoolsCrontroller();
         school = schoolsCrontroller.getCurrentSchool();
@@ -124,6 +125,12 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         });
         setGraphListener();
         setContagionListListener(contagionListButton);
+    }
+
+    private void initToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.title_school_details);
     }
 
     private void setMap(Bundle savedInstanceState) {

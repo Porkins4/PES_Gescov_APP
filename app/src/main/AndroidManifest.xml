@@ -4,12 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
 
     <application
         android:name=".viewlayer.Singletons.GescovApplication"
@@ -20,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gescov"
         android:usesCleartextTraffic="true">
-        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionListActivity"></activity>
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionListActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.AccessSchoolByCodeActivity" />
         <activity
             android:name=".viewlayer.chat.createchat.CreatingChatActivity"

@@ -1,6 +1,7 @@
 package com.example.gescov.viewlayer.home;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -84,6 +85,10 @@ public class CovidNotificationActivity extends AppCompatActivity {
         initRecoverButton();
         initButtonNotifyPositive();
         initPossiblePositive();
+        //toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.covid_notification_title);
     }
 
     private void initPossiblePositive() {

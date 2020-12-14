@@ -1,5 +1,6 @@
-package com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList;
+package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration;
 
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 import androidx.lifecycle.LiveData;
