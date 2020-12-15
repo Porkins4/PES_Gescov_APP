@@ -61,4 +61,8 @@ public class LoginRespository {
     public static String getToken() {
         return googleSignInAccount.getIdToken();
     }
+
+    public static String getUserEmail() {
+        return googleSignInAccount.getEmail();
+    }
 }

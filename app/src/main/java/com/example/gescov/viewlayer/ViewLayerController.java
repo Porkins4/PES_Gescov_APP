@@ -362,4 +362,8 @@ public class ViewLayerController {
     public void deactivatePolling() {
         DomainControlFactory.getModelController().deactivatePolling();
     }
+
+    public String getUserEmail() {
+        return DomainControlFactory.getModelController().getUserEmail();
+    }
 }

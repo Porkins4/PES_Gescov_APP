@@ -80,7 +80,7 @@ public class ChatListFragment extends Fragment {
                             });
                     AlertDialog dialog = builder.create();
                     dialog.show();
-                    return false;
+                    return true;
                 }
         );
 
@@ -129,6 +129,5 @@ public class ChatListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
     }
 }

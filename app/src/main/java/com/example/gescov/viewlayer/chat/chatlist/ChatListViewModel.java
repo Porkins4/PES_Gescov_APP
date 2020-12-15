@@ -42,14 +42,15 @@ public class ChatListViewModel extends ViewModel {
     public LiveData<Boolean> getChatPreviewModels() {
         if (updateChatPreviews == null) {
             updateChatPreviews = new MutableLiveData<>();
-            updateList();
         }
+        updateList();
         return updateChatPreviews;
     }
 
     public void setUpdateResult(List<ChatPreviewModel> chatPreviewModels, boolean error) {
         if (!error) {
             this.chatPreviewModels = chatPreviewModels;
+            for (ChatPreviewModel x: chatPreviewModels) x.print();
         }
         updateChatPreviews.setValue(error);
     }

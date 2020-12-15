@@ -4,13 +4,18 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.SignUpAndLogin.LoginActivity;
+import com.example.gescov.viewlayer.Singletons.GescovApplication;
 import com.example.gescov.viewlayer.Singletons.LoggedInUser;
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -28,11 +33,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import com.example.gescov.R;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NavigationMenu extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout drawer;
+    private CircleImageView userImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +53,8 @@ public class NavigationMenu extends AppCompatActivity {
         fab.hide();
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        initMenuUserData(navigationView);
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -59,6 +70,29 @@ public class NavigationMenu extends AppCompatActivity {
         logoutButton.setOnMenuItemClickListener(e -> {
             logoutPrompt();
             return true;
+        });
+    }
+
+    private void initMenuUserData(NavigationView navigationView) {
+        TextView email = (TextView) navigationView.getHeaderView(0).findViewById(R.id.email_view);
+        email.setText(PresentationControlFactory.getViewLayerController().getUserEmail());
+        TextView user_name = (TextView) navigationView.getHeaderView(0).findViewById(R.id.user_name);
+        userImage = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.profile_image);
+
+        User loggedUser = PresentationControlFactory.getViewLayerController().getUserLoggedIn();
+        user_name.setText(loggedUser.getName());
+        loadImageFromUrl(loggedUser.getPic());
+    }
+
+    private void loadImageFromUrl(String pic) {
+        Picasso.with(GescovApplication.getContext()).load(pic).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).noFade().into(userImage, new com.squareup.picasso.Callback() {
+            public void onSuccess() {
+                //it returns nothing
+            }
+            @Override
+            public void onError() {
+                Log.i("loadingImage","error on loading image");
+            }
         });
     }
 
