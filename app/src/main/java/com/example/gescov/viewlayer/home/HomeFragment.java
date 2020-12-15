@@ -29,6 +29,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.squareup.picasso.Picasso;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
@@ -37,7 +39,7 @@ public class HomeFragment extends Fragment {
     private Button riskButton;
     private TextView nameText;
     private User user;
-    private ImageView userImage;
+    private CircleImageView userImage;
     private FusedLocationProviderClient fusedLocationProviderClient;
 
     @Override
