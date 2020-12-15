@@ -52,6 +52,10 @@ public class MessageModel {
         return chatID;
     }
 
+    public String getHour() {
+        return hour;
+    }
+
     public void print() {
         System.out.println(chatID);
         System.out.println(creatorID);
