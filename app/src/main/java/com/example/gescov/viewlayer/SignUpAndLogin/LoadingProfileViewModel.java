@@ -62,4 +62,8 @@ public class LoadingProfileViewModel extends ViewModel {
     public User getLoggedInUser() {
         return PresentationControlFactory.getLoadingProfileController().getLoggedInUser();
     }
+
+    public void retryVerifyToken() {
+        checkTokenWithServer();
+    }
 }
