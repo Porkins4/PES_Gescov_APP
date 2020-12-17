@@ -11,6 +11,7 @@ import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.SchoolRequest;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
+import com.example.gescov.domainlayer.Singletons.LoginRespository;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
@@ -346,5 +347,9 @@ public class ModelController {
 
     public void deactivatePolling() {
         DomainControlFactory.getChatModelController().deactivatePolling();
+    }
+
+    public String getUserEmail() {
+        return LoginRespository.getEmail();
     }
 }

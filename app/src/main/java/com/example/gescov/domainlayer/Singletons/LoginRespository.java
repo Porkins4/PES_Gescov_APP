@@ -12,6 +12,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginRespository {
 
@@ -19,7 +21,9 @@ public class LoginRespository {
     private static GoogleSignInOptions gso;
     private static GoogleSignInAccount googleSignInAccount;
 
-    public LoginRespository() {}
+
+    public LoginRespository() {
+    }
 
     public static GoogleSignInClient getGoogleSignInClient(String serverClientID) {
         initClientAndGso(serverClientID);
@@ -61,4 +65,10 @@ public class LoginRespository {
     public static String getToken() {
         return googleSignInAccount.getIdToken();
     }
+
+    public static String getEmail() {
+        return googleSignInAccount.getEmail();
+    }
+
+
 }

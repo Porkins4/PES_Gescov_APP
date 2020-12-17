@@ -6,6 +6,8 @@ import android.widget.Toast;
 
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.navigation.NavigationMenu;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -75,4 +77,5 @@ public class LoadingProfileActivity extends AppCompatActivity {
         super.onResume();
         setVerificationListener();
     }
+
 }

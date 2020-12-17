@@ -17,6 +17,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gescov"
         android:usesCleartextTraffic="true">
+
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionListActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.AccessSchoolByCodeActivity" />
@@ -76,6 +85,8 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCh_d-WKGRiQXnUvKng5HOtSrPfNcg8BDQ" />
+
+
     </application>
 
 </manifest>
