@@ -41,7 +41,7 @@ public class LoadingProfileActivity extends AppCompatActivity {
                 error -> {
                     if (!error) {
                         retrieveUserInformation();
-                    } else System.out.println("error with token verification");
+                    } else loadingProfileViewModel.retryVerifyToken();
                 }
         );
     }
@@ -51,7 +51,7 @@ public class LoadingProfileActivity extends AppCompatActivity {
                 error -> {
                     if (!error) {
                         succesfulLogin();
-                    } else System.out.println("error while gettin user info");
+                    }
                 }
         );
     }
