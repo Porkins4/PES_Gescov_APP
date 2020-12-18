@@ -15,19 +15,21 @@ import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseC
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpdateSchoolClassroomResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpdateSchoolRequestStatusResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpdateUserRiskResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.mapsretrofit.RefreshCoordinatesFromAddressResponseController;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.AssignmentServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.ChatServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.ClassroomServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.ContagionServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.SchoolServiceImplementor;
+import com.example.gescov.domainlayer.Services.Volley.Implementors.SubjectsServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.UserServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IAssignmentService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IChatService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IClassroomService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IContagionService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
+import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISubjectsService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IUserService;
-import com.example.gescov.domainlayer.Services.Retrofit.mapsretrofit.RefreshCoordinatesFromAddressResponseController;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -45,6 +47,7 @@ public class ServicesFactory {
     private static IClassroomService classroomService;
     private static IAssignmentService assignmentService;
     private static IChatService chatService;
+    private static ISubjectsService subjectsService;
 
     //retrofit
     private static DeleteSchoolResponseController deleteSchoolResponseController;
@@ -215,5 +218,11 @@ public class ServicesFactory {
         if (createRequestToSchoolResponseController != null) return createRequestToSchoolResponseController;
         createRequestToSchoolResponseController = new CreateRequestToSchoolResponseController(getRetrofit());
         return createRequestToSchoolResponseController;
+    }
+
+    public static ISubjectsService getSubjectsService() {
+        if (subjectsService != null) return subjectsService;
+        subjectsService = new SubjectsServiceImplementor();
+        return subjectsService;
     }
 }

@@ -1,17 +1,17 @@
 package com.example.gescov.viewlayer.ClassroomActivities.ClassroomDistribution;
 
+import android.content.Intent;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.gridlayout.widget.GridLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Intent;
-import android.os.Bundle;
-
+import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Classroom;
-import com.example.gescov.R;
 import com.example.gescov.viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroom;
 
 import java.util.List;

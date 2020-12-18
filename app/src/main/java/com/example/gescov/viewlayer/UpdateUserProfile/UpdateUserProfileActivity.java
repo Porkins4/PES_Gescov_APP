@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class UpdateUserProfileActivity extends AppCompatActivity {
 

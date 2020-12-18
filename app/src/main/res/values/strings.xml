@@ -225,5 +225,8 @@
     <string name="months">Mesos</string>
     <string name="axeYContagions">Contagis</string>
 
+    <!-- Strings for the Ranking -->
+    <string name="show_subject">veure assignatures</string>
+
 
 </resources>

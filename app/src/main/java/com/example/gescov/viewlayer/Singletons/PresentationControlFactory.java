@@ -1,32 +1,27 @@
 package com.example.gescov.viewlayer.Singletons;
 
 
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.gescov.viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroomController;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionController;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionController;
-
-
-import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUsersController;
-import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
-
 import com.example.gescov.viewlayer.Map.MapController;
-import com.example.gescov.viewlayer.home.HomeController;
-import com.example.gescov.viewlayer.ranking.RankingController;
-
-import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
-import com.example.gescov.viewlayer.SignUpAndLogin.LoadingProfileController;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassroomsCrontroller;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionController;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolsCrontroller;
-
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectController;
+import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUsersController;
+import com.example.gescov.viewlayer.SignUpAndLogin.LoadingProfileController;
 import com.example.gescov.viewlayer.UpdateUserProfile.UpdateUserProfileController;
 import com.example.gescov.viewlayer.ViewLayerController;
 import com.example.gescov.viewlayer.chat.chatlist.ChatListController;
 import com.example.gescov.viewlayer.chat.chatview.ChatViewController;
+import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
+import com.example.gescov.viewlayer.home.HomeController;
 import com.example.gescov.viewlayer.home.NotifyContagionController;
 import com.example.gescov.viewlayer.home.TracingTestController;
-
-
-import androidx.lifecycle.ViewModelProvider;
+import com.example.gescov.viewlayer.ranking.RankingController;
+import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
 
 public class PresentationControlFactory {
     private static ViewLayerController viewLayerController;
@@ -46,7 +41,7 @@ public class PresentationControlFactory {
     private static ChatListController chatListController;
     private static SchoolUsersController schoolUsersController;
     private static CreateChatController createChatController;
-
+    private static SubjectController subjectController;
     private static HomeController homeController;
 
     private static ChatViewController chatViewController;
@@ -184,5 +179,12 @@ public class PresentationControlFactory {
         chatViewController = new ChatViewController();
         return chatViewController;
 
+    }
+
+    public static SubjectController getSubjectController() {
+        if (subjectController != null)
+            return subjectController;
+        subjectController = new SubjectController();
+        return subjectController;
     }
 }

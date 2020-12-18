@@ -3,6 +3,8 @@ package com.example.gescov.viewlayer;
 import android.location.Location;
 import android.util.Pair;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
@@ -10,6 +12,7 @@ import com.example.gescov.domainlayer.Classmodels.Classroom;
 import com.example.gescov.domainlayer.Classmodels.MessageModel;
 import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.SchoolRequest;
+import com.example.gescov.domainlayer.Classmodels.Subject;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
@@ -24,8 +27,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import org.json.JSONException;
 
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
 
 
 public class ViewLayerController {
@@ -365,5 +366,13 @@ public class ViewLayerController {
 
     public String getUserEmail() {
         return DomainControlFactory.getModelController().getUserEmail();
+    }
+
+    public void getSubjects(String schooldID) {
+        DomainControlFactory.getModelController().getSubjects(schooldID);
+    }
+
+    public void sendResponseOfSubjects(List<Subject> subjects) {
+        PresentationControlFactory.getSubjectController().sendResponseOfSubjects(subjects);
     }
 }

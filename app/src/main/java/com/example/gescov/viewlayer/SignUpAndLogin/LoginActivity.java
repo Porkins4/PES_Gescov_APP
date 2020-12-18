@@ -1,15 +1,14 @@
 package com.example.gescov.viewlayer.SignUpAndLogin;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.gescov.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.common.SignInButton;
 
 public class LoginActivity extends AppCompatActivity {
 
