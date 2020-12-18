@@ -1,5 +1,7 @@
 package com.example.gescov.domainlayer.Services.Volley.Implementors;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -23,8 +25,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-
-import androidx.lifecycle.MutableLiveData;
 
 public class SchoolServiceImplementor implements ISchoolService {
     private Conection conection;

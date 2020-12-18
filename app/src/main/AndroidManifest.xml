@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-
     <application
         android:name=".viewlayer.Singletons.GescovApplication"
         android:allowBackup="true"
@@ -17,7 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gescov"
         android:usesCleartextTraffic="true">
-        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionListActivity"
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectDetailActivity"></activity>
+        <activity
+            android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
+        <activity
+            android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionListActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.AccessSchoolByCodeActivity" />
         <activity
@@ -36,13 +40,15 @@
             android:name=".viewlayer.schoolrequests.SchoolRequestsListActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.UpdateUserProfile.UpdateUserProfileActivity" />
-        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity"
+        <activity
+            android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.home.DailyTestActivity" />
-        <activity android:name=".viewlayer.SignUpAndLogin.LoginActivity"
+        <activity
+            android:name=".viewlayer.SignUpAndLogin.LoginActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.CreateClassroomFormActivity" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.EditClassroomFormActivity" />
@@ -51,7 +57,8 @@
             android:name=".viewlayer.ClassroomActivities.ClassroomDistribution.ClassroomDistributionActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroom" />
-        <activity android:name=".viewlayer.home.CovidNotificationActivity"
+        <activity
+            android:name=".viewlayer.home.CovidNotificationActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassromListActivity"

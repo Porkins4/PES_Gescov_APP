@@ -3,10 +3,10 @@ package com.example.gescov.viewlayer.Templates;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import com.example.gescov.R;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.example.gescov.R;
 
 public abstract class GescovModelListedActivity extends AppCompatActivity {
     @Override

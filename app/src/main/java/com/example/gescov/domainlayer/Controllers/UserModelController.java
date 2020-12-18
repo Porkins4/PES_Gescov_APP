@@ -2,15 +2,16 @@ package com.example.gescov.domainlayer.Controllers;
 
 import android.location.Location;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.domainlayer.Classmodels.User;
-import com.example.gescov.domainlayer.Singletons.LoginRespository;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
+import com.example.gescov.domainlayer.Singletons.LoginRespository;
 import com.example.gescov.domainlayer.Singletons.ServicesFactory;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
-import com.example.gescov.viewlayer.Singletons.LoggedInUser;
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
@@ -21,8 +22,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
 
 public class UserModelController {
     private User loggedUser;
@@ -320,5 +319,12 @@ public class UserModelController {
 
     public String getIdContagion() {
         return loggedUser.getIdContagion();
+    }
+
+    public void setSubjectID(String subjectID, boolean error) {
+        if (! error ) {
+            loggedUser.addSubjectID(subjectID);
+        }
+        DomainControlFactory.getModelController().notifyAssignStudent(error);
     }
 }

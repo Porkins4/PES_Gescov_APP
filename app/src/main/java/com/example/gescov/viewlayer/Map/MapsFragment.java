@@ -1,7 +1,6 @@
 package com.example.gescov.viewlayer.Map;
 
 import android.Manifest;
-
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -19,8 +18,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.R;
+import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -29,7 +28,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
-
 
 import java.util.List;
 

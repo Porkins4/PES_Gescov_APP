@@ -7,9 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.domainlayer.Services.Volley.VolleyServices;
-import com.example.gescov.R;
 import com.example.gescov.viewlayer.Templates.ModelListViewAdapter;
 import com.squareup.picasso.Picasso;
 

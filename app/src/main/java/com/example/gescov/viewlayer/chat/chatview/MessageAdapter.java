@@ -11,8 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gescov.domainlayer.Classmodels.MessageModel;
 import com.example.gescov.R;
+import com.example.gescov.domainlayer.Classmodels.MessageModel;
 import com.example.gescov.viewlayer.Singletons.GescovApplication;
 import com.squareup.picasso.Picasso;
 

@@ -5,9 +5,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IUserService;
 import com.example.gescov.domainlayer.Services.Volley.VolleyServices;
+import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 
 import org.json.JSONObject;
 
