@@ -1,6 +1,7 @@
 package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -17,8 +18,19 @@ public class SubjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subject);
         String schooldID = getIntent().getStringExtra("schoolID");
-        listView = findViewById(R.id.subject_list_view);
+        listView = (ListView) findViewById(R.id.subject_list_view);
         setObeserver(schooldID);
+        initViewComponents();
+    }
+
+    private void initViewComponents() {
+        initToolbar();
+    }
+
+    private void initToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.subjects_activity_title);
     }
 
     private void setObeserver(String schooldID) {
