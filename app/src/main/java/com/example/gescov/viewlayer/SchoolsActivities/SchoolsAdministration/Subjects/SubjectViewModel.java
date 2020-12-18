@@ -14,6 +14,7 @@ import java.util.List;
 public class SubjectViewModel extends ViewModel {
     private SubjectAdapter adapter;
     private MutableLiveData<Boolean> received;
+    private MutableLiveData<Boolean> assignedStudent;
     private List<Subject> subjects;
 
 
@@ -35,5 +36,16 @@ public class SubjectViewModel extends ViewModel {
     public void sendResponseOfSubjects(List<Subject> subjects) {
         this.subjects = subjects;
         received.setValue(true);
+    }
+
+    public MutableLiveData<Boolean> assignStudent(String subjectID) {
+        assignedStudent = new MutableLiveData<>();
+        PresentationControlFactory.getSubjectController().setSubjectViewModel(this);
+        PresentationControlFactory.getSubjectController().assignStudent(subjectID);
+        return  assignedStudent;
+    }
+
+    public void notifyAssignStudent(boolean error) {
+        assignedStudent.setValue(error);
     }
 }

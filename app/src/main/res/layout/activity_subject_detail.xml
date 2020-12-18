@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectDetailActivity">
+
+    <Button
+        android:id="@+id/add_teacher_to_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_teacher_to_subject"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/assign_student"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_student_to_subject"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_teacher_to_subject" />
+
+    <TextView
+        android:id="@+id/subject_text"
+        style="@style/Theme.Gescov"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/add_teacher_to_subject"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

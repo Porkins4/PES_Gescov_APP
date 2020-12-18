@@ -320,4 +320,11 @@ public class UserModelController {
     public String getIdContagion() {
         return loggedUser.getIdContagion();
     }
+
+    public void setSubjectID(String subjectID, boolean error) {
+        if (! error ) {
+            loggedUser.addSubjectID(subjectID);
+        }
+        DomainControlFactory.getModelController().notifyAssignStudent(error);
+    }
 }

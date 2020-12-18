@@ -118,9 +118,7 @@ public class ViewLayerController {
     public void refreshSchoolList(List<School> schoolsList) {
         try {
             PresentationControlFactory.getSchoolsCrontroller().refreshSchoolsList(schoolsList);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (AdapterNotSetException e) {
+        } catch (JSONException  | AdapterNotSetException e) {
             e.printStackTrace();
         }
     }
@@ -374,5 +372,13 @@ public class ViewLayerController {
 
     public void sendResponseOfSubjects(List<Subject> subjects) {
         PresentationControlFactory.getSubjectController().sendResponseOfSubjects(subjects);
+    }
+
+    public void assignStudent(String subjectID) {
+        DomainControlFactory.getModelController().assignStudent(subjectID);
+    }
+
+    public void notifyAssignStudent(boolean error) {
+        PresentationControlFactory.getSubjectController().notifyAssignStudent(error);
     }
 }

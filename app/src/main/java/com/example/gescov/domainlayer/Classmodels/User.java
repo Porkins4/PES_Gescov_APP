@@ -21,6 +21,7 @@ public class User {
 
 
 
+
     public enum UserProfileType {
         STUDENT ("STUDENT"),
         TEACHER ("TEACHER");
@@ -57,7 +58,7 @@ public class User {
     private Boolean risk;
     private UserProfileType profileType;
     private String tokenId;
-
+    private List<String> subjectsID;
     private Location location;
 
     private String pic;
@@ -91,6 +92,11 @@ public class User {
 
 
     }
+
+    public void addSubjectID(String subjectID) {
+        subjectsID.add(subjectID);
+    }
+
     public Location getLocation() {
         return this.location;
     }
@@ -107,6 +113,7 @@ public class User {
         this.tokenId = tokenId;
         this.email = email;
         this.pic = pic;
+        subjectsID = new ArrayList<>();
     }
     //----------------------------------
 

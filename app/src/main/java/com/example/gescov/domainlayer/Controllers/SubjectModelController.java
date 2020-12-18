@@ -42,4 +42,8 @@ public class SubjectModelController {
         DomainControlFactory.getModelController().sendResponseOfSubjects(subjects);
 
     }
+
+    public void assignStudent(String subjectID, String userID) {
+        ServicesFactory.getSubjectsService().assignStudent(subjectID,userID);
+    }
 }

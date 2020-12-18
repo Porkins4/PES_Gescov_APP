@@ -361,4 +361,13 @@ public class ModelController {
     public void sendResponseOfSubjects(List<Subject> subjects) {
         PresentationControlFactory.getViewLayerController().sendResponseOfSubjects(subjects);
     }
+
+    public void assignStudent(String subjectID) {
+        String userID = DomainControlFactory.getUserModelController().getUserId();
+        DomainControlFactory.getSubjectModelController().assignStudent(subjectID,userID);
+    }
+
+    public void notifyAssignStudent(boolean error) {
+        PresentationControlFactory.getViewLayerController().notifyAssignStudent(error);
+    }
 }

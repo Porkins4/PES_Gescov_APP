@@ -1,14 +1,13 @@
 package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects;
 
+import android.os.Bundle;
+import android.widget.ListView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.os.Bundle;
-import android.widget.ListView;
-
 import com.example.gescov.R;
-
 public class SubjectActivity extends AppCompatActivity {
 
      ListView listView;
@@ -18,10 +17,11 @@ public class SubjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subject);
         String schooldID = getIntent().getStringExtra("schoolID");
-        listView = (ListView) findViewById(R.id.subject_list_view);
+        listView = findViewById(R.id.subject_list_view);
         setObeserver(schooldID);
         initViewComponents();
     }
+
 
     private void initViewComponents() {
         initToolbar();

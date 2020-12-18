@@ -19,4 +19,12 @@ public class SubjectController {
     public void sendResponseOfSubjects(List<Subject> subjects) {
         subjectViewModel.sendResponseOfSubjects(subjects);
     }
+
+    public void assignStudent(String subjectID) {
+        PresentationControlFactory.getViewLayerController().assignStudent(subjectID);
+    }
+
+    public void notifyAssignStudent(boolean error) {
+        subjectViewModel.notifyAssignStudent(error);
+    }
 }
