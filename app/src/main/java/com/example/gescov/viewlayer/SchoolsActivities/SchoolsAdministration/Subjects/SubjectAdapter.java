@@ -32,6 +32,7 @@ public class SubjectAdapter extends ModelListViewAdapter {
             Intent intent = new Intent(v.getContext(), SubjectDetailActivity.class);
             intent.putExtra("subjectName",subject.getName());
             intent.putExtra("subjectID",subject.getId());
+            intent.putExtra("schoolID",subject.getSchoolID());
             v.getContext().startActivity(intent);
         });
     }

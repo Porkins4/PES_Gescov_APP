@@ -263,8 +263,8 @@ public class ModelController {
         return DomainControlFactory.getSchoolsModelCrontroller().getUserSchools();
     }
 
-    public void getContactsFromCenter(String schoolID) {
-        DomainControlFactory.getSchoolsModelCrontroller().getContactsFromCenter(schoolID);
+    public void getContactsFromCenter(String schoolID, int activityIdentifier) {
+        DomainControlFactory.getSchoolsModelCrontroller().getContactsFromCenter(schoolID, activityIdentifier);
     }
 
     public void updateContactsFromCreateChat() {
@@ -362,12 +362,24 @@ public class ModelController {
         PresentationControlFactory.getViewLayerController().sendResponseOfSubjects(subjects);
     }
 
-    public void assignStudent(String subjectID) {
+    public void assignStudentToSubject(String subjectID, int activityIdentifier) {
         String userID = DomainControlFactory.getUserModelController().getUserId();
-        DomainControlFactory.getSubjectModelController().assignStudent(subjectID,userID);
+        DomainControlFactory.getSubjectModelController().assignUserToSubject(subjectID,userID,activityIdentifier);
     }
 
     public void notifyAssignStudent(boolean error) {
         PresentationControlFactory.getViewLayerController().notifyAssignStudent(error);
+    }
+
+    public void notifyListOfTeachersReceivedToAddSubject(List<User> contactsFromSelectedCenter) {
+        PresentationControlFactory.getViewLayerController().notifyListOfTeachersReceivedToAddSubject(contactsFromSelectedCenter);
+    }
+
+    public void assignTeacherToSubject(String id, String subjectID, int activityIdentifier) {
+        DomainControlFactory.getSubjectModelController().assignUserToSubject(subjectID,id,activityIdentifier);
+    }
+
+    public void notifyAssignedTeacher(boolean error) {
+        PresentationControlFactory.getViewLayerController().notifyAssignedTeacher(error);
     }
 }

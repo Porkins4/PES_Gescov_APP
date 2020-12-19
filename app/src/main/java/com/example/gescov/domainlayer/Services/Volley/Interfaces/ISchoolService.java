@@ -33,7 +33,7 @@ public interface ISchoolService {
 
     void getSchool(String school);
 
-    void getContactsFromCenter(String schoolID);
+    void getContactsFromCenter(String schoolID, int activityIdentifier);
 
     void getNumContagionPerSchool(int from);
 

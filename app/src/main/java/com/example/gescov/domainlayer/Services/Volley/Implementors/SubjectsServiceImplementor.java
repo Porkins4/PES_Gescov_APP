@@ -28,21 +28,16 @@ public class SubjectsServiceImplementor implements ISubjectsService {
     }
 
     @Override
-    public void assignStudent(String subjectID, String userID) {
-        //{specific}?id=5fd7a37db762197df050d295&userId=5fcac8a2349ec432db90b7b3
-        RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
-
+    public void assignUserToSubject(String subjectID, String userID, int activityIdentifier) {
         StringRequest stringRequest = new StringRequest(
                 Request.Method.PUT, ADD_STUDENT_SUBJECT + "{specific}?id="+ subjectID+"&userId="+userID,
                 response -> {
-                    DomainControlFactory.getUserModelController().setSubjectID(subjectID,false);
+                    DomainControlFactory.getUserModelController().setSubjectID(subjectID,false, activityIdentifier);
                 },
                 error -> {
-                    DomainControlFactory.getUserModelController().setSubjectID(subjectID,true);
+                    DomainControlFactory.getUserModelController().setSubjectID(subjectID,true, activityIdentifier);
                 });
-
-        requestQueue.add(stringRequest);
-
+        VolleyServices.getRequestQueue().add(stringRequest);
     }
 
 

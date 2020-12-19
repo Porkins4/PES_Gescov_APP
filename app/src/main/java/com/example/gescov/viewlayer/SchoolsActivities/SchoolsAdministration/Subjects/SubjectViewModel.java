@@ -41,7 +41,7 @@ public class SubjectViewModel extends ViewModel {
     public MutableLiveData<Boolean> assignStudent(String subjectID) {
         assignedStudent = new MutableLiveData<>();
         PresentationControlFactory.getSubjectController().setSubjectViewModel(this);
-        PresentationControlFactory.getSubjectController().assignStudent(subjectID);
+        PresentationControlFactory.getSubjectController().assignStudent(subjectID,1);
         return  assignedStudent;
     }
 

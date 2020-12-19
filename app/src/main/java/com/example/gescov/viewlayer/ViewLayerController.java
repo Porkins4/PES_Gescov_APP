@@ -254,8 +254,11 @@ public class ViewLayerController {
         return DomainControlFactory.getModelController().getUserSchools();
     }
 
-    public void getContactsFromCenter(String schoolID) {
-        DomainControlFactory.getModelController().getContactsFromCenter(schoolID);
+    //ActivityIdentifier indicates which activity has to be warn that the result has been received
+    // activityIdentifier = 1 => CreateChatActivity
+    // activityIdentifier = 2 => AddTeacherToSubject
+    public void getContactsFromCenter(String schoolID, int activityIdentifier) {
+        DomainControlFactory.getModelController().getContactsFromCenter(schoolID,activityIdentifier);
     }
 
     public void updateContactsFromCreateChat() {
@@ -374,11 +377,27 @@ public class ViewLayerController {
         PresentationControlFactory.getSubjectController().sendResponseOfSubjects(subjects);
     }
 
-    public void assignStudent(String subjectID) {
-        DomainControlFactory.getModelController().assignStudent(subjectID);
+    //ActivityIdentifier indicates which activity has to be warn that the result has been received
+    // activityIdentifier = 1 => SubjectDetailsActivity
+    // activityIdentifier = 2 => AddTeacherToSubject
+    public void assignStudentToSubject(String subjectID, int activityIdentifier) {
+        DomainControlFactory.getModelController().assignStudentToSubject(subjectID,activityIdentifier);
     }
 
     public void notifyAssignStudent(boolean error) {
         PresentationControlFactory.getSubjectController().notifyAssignStudent(error);
+    }
+
+    public void notifyListOfTeachersReceivedToAddSubject(List<User> contactsFromSelectedCenter) {
+        PresentationControlFactory.getSubjectController().notifyListOfTeachersReceivedToAddSubject(contactsFromSelectedCenter);
+
+    }
+
+    public void assignTeacherToSubject(String id, String subjectID, int activityIdentifier) {
+        DomainControlFactory.getModelController().assignTeacherToSubject(id,subjectID,activityIdentifier);
+    }
+
+    public void notifyAssignedTeacher(boolean error) {
+        PresentationControlFactory.getSubjectController().notifyAssignedTeacher(error);
     }
 }
