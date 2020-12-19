@@ -53,7 +53,7 @@ public class AddTeacherToSubjectActivity extends AppCompatActivity {
                                 if (error) Toast.makeText(this,R.string.teacher_not_added,Toast.LENGTH_SHORT).show();
                                 else {
                                     Toast.makeText(this,R.string.teacher_added_succesfully,Toast.LENGTH_SHORT).show();
-                                    //viewModel.deleteIthTeacher(position);
+                                    //viewModel.deleteIthTeacher(position);s
                                 }
                             });
                 }
