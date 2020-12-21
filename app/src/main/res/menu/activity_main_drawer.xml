@@ -21,33 +21,38 @@
             android:title="@string/mapa_text" />
 
         <item
-
-            android:id="@+id/user_schools"
-            android:icon="@drawable/universidad"
-            android:title="@string/my_schools_title" />
-
-            android:id="@+id/ranking_fragment"
-            android:title="@string/ranking_name" />
-        <item
             android:id="@+id/ranking_fragment"
             android:icon="@drawable/trofeo"
             android:title="@string/ranking_name" />
 
+        <item
+            android:id="@+id/menu_subjects"
+            android:icon="@drawable/books_stack_of_three"
+            android:title="@string/subjects" />
 
+        <item
+            android:id="@+id/menu_forum"
+            android:icon="@drawable/discussion"
+            android:title="@string/forum" />
+    </group>
 
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="none">
 
+        <item
+
+            android:id="@+id/user_schools"
+            android:icon="@drawable/graduation_hat"
+            android:title="@string/my_schools_title" />
         <item
             android:id="@+id/user_all_schools"
             android:icon="@drawable/universidad"
             android:title="@string/user_all_schools_title" />
-    </group>
-    <group />
-    <group
-        android:id="@+id/group2"
-        android:checkableBehavior="none">
+
         <item
             android:id="@+id/schoolAdministration"
-            android:icon="@drawable/universidad"
+            android:icon="@drawable/director"
             android:title="@string/menu_schools_administration" />
         <item
             android:id="@+id/logout"

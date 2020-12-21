@@ -56,7 +56,7 @@ public class NavigationMenu extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.schoolAdministration,R.id.chat_list,R.id.user_all_schools,R.id.user_schools,R.id.map_id,R.id.ranking_fragment)
+                R.id.nav_home, R.id.schoolAdministration,R.id.chat_list,R.id.user_all_schools,R.id.user_schools,R.id.map_id,R.id.ranking_fragment,R.id.menu_subjects,R.id.menu_forum)
 
                 .setDrawerLayout(drawer)
                 .build();
