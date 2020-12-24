@@ -2,6 +2,8 @@ package com.example.gescov.domainlayer.Classmodels;
 
 import android.location.Location;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IContagionService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
@@ -15,9 +17,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.lifecycle.MutableLiveData;
-
 public class User {
+
 
 
 
@@ -57,7 +58,7 @@ public class User {
     private Boolean risk;
     private UserProfileType profileType;
     private String tokenId;
-
+    private List<String> subjectsID;
     private Location location;
 
     private String pic;
@@ -91,6 +92,11 @@ public class User {
 
 
     }
+
+    public void addSubjectID(String subjectID) {
+        subjectsID.add(subjectID);
+    }
+
     public Location getLocation() {
         return this.location;
     }
@@ -107,6 +113,7 @@ public class User {
         this.tokenId = tokenId;
         this.email = email;
         this.pic = pic;
+        subjectsID = new ArrayList<>();
     }
     //----------------------------------
 

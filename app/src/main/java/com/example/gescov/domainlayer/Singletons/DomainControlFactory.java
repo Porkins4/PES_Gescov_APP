@@ -2,10 +2,11 @@ package com.example.gescov.domainlayer.Singletons;
 
 import com.example.gescov.domainlayer.Controllers.AssignmentsModelController;
 import com.example.gescov.domainlayer.Controllers.ChatModelController;
-import com.example.gescov.domainlayer.Controllers.ModelController;
 import com.example.gescov.domainlayer.Controllers.ClassroomsModelController;
+import com.example.gescov.domainlayer.Controllers.ModelController;
 import com.example.gescov.domainlayer.Controllers.SchoolRequestModelController;
 import com.example.gescov.domainlayer.Controllers.SchoolsModelController;
+import com.example.gescov.domainlayer.Controllers.SubjectModelController;
 import com.example.gescov.domainlayer.Controllers.UserModelController;
 
 public class DomainControlFactory {
@@ -16,6 +17,7 @@ public class DomainControlFactory {
     private static AssignmentsModelController assignmentsModelController;
     private static SchoolRequestModelController schoolRequestModelController;
     private static ChatModelController chatModelController;
+    private static SubjectModelController subjectModelController;
 
     public static SchoolsModelController getSchoolsModelCrontroller() {
         if (schoolsModelController != null)
@@ -64,5 +66,12 @@ public class DomainControlFactory {
             return chatModelController;
         chatModelController = new ChatModelController();
         return chatModelController;
+    }
+
+    public static SubjectModelController getSubjectModelController() {
+        if (subjectModelController != null)
+            return subjectModelController;
+        subjectModelController = new SubjectModelController();
+        return subjectModelController;
     }
 }

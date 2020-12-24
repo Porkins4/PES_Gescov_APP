@@ -69,6 +69,12 @@
     <string name="title_school_details">Detalls de l\'escola</string>
 
 
+    <!-- School user lists -->
+    <string name="school_user_list_admin">Administrador</string>
+    <string name="school_user_list_creator">Creador</string>
+    <string name="school_user_list_teacher">Professor</string>
+    <string name="school_user_list_student">Estudiant</string>
+
     <!-- School Requests -->
     <string name="school_requests_title">Sol·licituds de l´escola</string>
     <!-- School Requests list item -->
@@ -225,5 +231,13 @@
     <string name="months">Mesos</string>
     <string name="axeYContagions">Contagis</string>
 
+    <!-- Strings for the Subjects -->
+    <string name="show_subject">veure assignatures</string>
+    <string name="subjects_activity_title">Assignatures del centre</string>
+    <string name="add_teacher_to_subject">afegir profesor</string>
+    <string name="add_student_to_subject">matricular-me</string>
+    <string name="assigned_successfuly">Afegit a l\'assignatura correctament</string>
+    <string name="subjects">Assignatures</string>
+    <string name="forum">Noticies</string>
 
 </resources>

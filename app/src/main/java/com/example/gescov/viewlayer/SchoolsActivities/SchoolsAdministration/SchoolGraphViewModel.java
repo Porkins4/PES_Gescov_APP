@@ -5,7 +5,9 @@ import android.util.Pair;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+
 import java.util.List;
 
 public class SchoolGraphViewModel extends ViewModel {

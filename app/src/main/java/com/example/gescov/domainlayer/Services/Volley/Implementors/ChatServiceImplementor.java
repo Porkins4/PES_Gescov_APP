@@ -18,10 +18,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import okhttp3.OkHttpClient;
-import okhttp3.WebSocket;
-import okhttp3.WebSocketListener;
-
 public class ChatServiceImplementor implements IChatService {
     private static final String GESCOV_CHAT_URI = "https://gescov.herokuapp.com/api/chats";
     private boolean polling;

@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.User;
-import com.example.gescov.R;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.Templates.ModelListViewAdapter;
 
@@ -30,7 +30,15 @@ public class SchoolUsersListViewAdapter extends ModelListViewAdapter {
         User user = (User) modelList.get(position);
         School currentSchool = PresentationControlFactory.getSchoolsCrontroller().getCurrentSchool();
         userName.setText(user.getName());
-        userProfile.setText(user.getProfileType() != null ? user.getProfileType().getText() : "");
+        if (user.getProfileType() == User.UserProfileType.STUDENT) {
+            userProfile.setText(v.getResources().getText(R.string.school_user_list_student));
+        } else if (currentSchool.getCreator().equals(user.getId())) {
+            userProfile.setText(v.getResources().getText(R.string.school_user_list_creator));
+        } else if (currentSchool.getAdministratorsList().contains(user.getId())) {
+            userProfile.setText(v.getResources().getText(R.string.school_user_list_admin));
+        } else {
+            userProfile.setText(v.getResources().getText(R.string.school_user_list_teacher));
+        }
 
         if (isLoggedUserCreator() && user.getProfileType().equals(User.UserProfileType.TEACHER) && !user.getId().equals(currentSchool.getCreator())) {
             v.setOnLongClickListener(e -> {

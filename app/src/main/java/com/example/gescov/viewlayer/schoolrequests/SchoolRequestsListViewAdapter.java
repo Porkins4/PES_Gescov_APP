@@ -6,9 +6,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.gescov.domainlayer.Classmodels.SchoolRequest;
 import com.example.gescov.R;
-
+import com.example.gescov.domainlayer.Classmodels.SchoolRequest;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.Templates.ModelListViewAdapter;
 

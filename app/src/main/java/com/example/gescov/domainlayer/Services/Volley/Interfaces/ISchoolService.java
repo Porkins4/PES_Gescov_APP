@@ -1,13 +1,13 @@
 
 package com.example.gescov.domainlayer.Services.Volley.Interfaces;
 
-import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
 
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
 
 public interface ISchoolService {
 

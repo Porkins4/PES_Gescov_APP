@@ -2,6 +2,8 @@ package com.example.gescov.domainlayer.Controllers;
 
 import android.util.Pair;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
@@ -9,6 +11,7 @@ import com.example.gescov.domainlayer.Classmodels.Classroom;
 import com.example.gescov.domainlayer.Classmodels.MessageModel;
 import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.SchoolRequest;
+import com.example.gescov.domainlayer.Classmodels.Subject;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 import com.example.gescov.domainlayer.Singletons.LoginRespository;
@@ -23,8 +26,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import org.json.JSONException;
 
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
 
 public class ModelController {
 
@@ -351,5 +352,22 @@ public class ModelController {
 
     public String getUserEmail() {
         return LoginRespository.getUserEmail();//esto se debería buscar desde el modelo
+    }
+
+    public void getSubjects(String schooldID) {
+        DomainControlFactory.getSubjectModelController().getSubjects(schooldID);
+    }
+
+    public void sendResponseOfSubjects(List<Subject> subjects) {
+        PresentationControlFactory.getViewLayerController().sendResponseOfSubjects(subjects);
+    }
+
+    public void assignStudent(String subjectID) {
+        String userID = DomainControlFactory.getUserModelController().getUserId();
+        DomainControlFactory.getSubjectModelController().assignStudent(subjectID,userID);
+    }
+
+    public void notifyAssignStudent(boolean error) {
+        PresentationControlFactory.getViewLayerController().notifyAssignStudent(error);
     }
 }
