@@ -19,7 +19,8 @@
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.addteachertosubject.AddTeacherToSubjectActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
 
-        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectDetailActivity" />
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectDetailActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
