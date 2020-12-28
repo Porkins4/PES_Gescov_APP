@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.User;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.addteachertosubject.AddTeacherToSubjectActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 public class SubjectDetailActivity extends AppCompatActivity {
@@ -35,18 +36,23 @@ public class SubjectDetailActivity extends AppCompatActivity {
     }
 
     private void setComponents() {
-        /*initToolbar();
+        initToolbar();
         setSubjectName();
-        initButtons();*/
-        String subjectName = getIntent().getStringExtra("subjectName");
-        TextView subName = findViewById(R.id.subject_text);
-        subName.setText(subjectName);
+        initButtons();
+    }
+
+    private void initButtons() {
         addTeacher = findViewById(R.id.add_teacher_to_subject);
         addStudent = findViewById(R.id.assign_student);
         checkClassSessions = findViewById(R.id.check_class_session_button);
         createClassSession = findViewById(R.id.create_class_session_button);
-        addTeacher.setVisibility(loggedUser.getProfileType().equals(User.UserProfileType.TEACHER) ? View.VISIBLE : View.GONE);
-        addStudent.setVisibility(loggedUser.getProfileType().equals(User.UserProfileType.TEACHER) ? View.GONE : View.VISIBLE);
+
+        if (loggedUser.getProfileType().equals(User.UserProfileType.TEACHER)) {
+            addStudent.setVisibility(View.GONE);
+        } else {
+            createClassSession.setVisibility(View.GONE);
+            addTeacher.setVisibility(View.GONE);
+        }
     }
 
     private void initToolbar() {
