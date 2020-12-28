@@ -307,21 +307,11 @@ public class SchoolServiceImplementor implements ISchoolService {
     }
 
     @Override
-    public void getContactsFromCenter(String schoolID) {
+    public void getContactsFromCenter(String schoolID, int activityIdentifier) {
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET, GET_CHECK_LOGIN + "/school?schoolID=" + schoolID,null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        DomainControlFactory.getUserModelController().setContactsFromSelectedCenter(response);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                }
+                response -> DomainControlFactory.getUserModelController().setContactsFromSelectedCenter(response, activityIdentifier),
+                error -> {}
         );
         VolleyServices.getRequestQueue().add(request);
     }

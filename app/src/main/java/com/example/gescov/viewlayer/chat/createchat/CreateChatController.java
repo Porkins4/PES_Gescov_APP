@@ -28,7 +28,7 @@ public class CreateChatController {
     }
 
     public void getContactsFromCenter(String schoolID) {
-        PresentationControlFactory.getViewLayerController().getContactsFromCenter(schoolID);
+        PresentationControlFactory.getViewLayerController().getContactsFromCenter(schoolID,1);
     }
 
     public void updateContactsFromCreateChat() {

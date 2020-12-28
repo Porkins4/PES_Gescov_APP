@@ -1,12 +1,16 @@
 package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects;
 
 import com.example.gescov.domainlayer.Classmodels.Subject;
+import com.example.gescov.domainlayer.Classmodels.User;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.addteachertosubject.AddTeacherToSubjectViewModel;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 import java.util.List;
 
 public class SubjectController {
+
     private SubjectViewModel subjectViewModel;
+    private AddTeacherToSubjectViewModel addTeacherToSubjectViewModel;
 
     public void setSubjectViewModel(SubjectViewModel subjectViewModel) {
         this.subjectViewModel = subjectViewModel;
@@ -20,11 +24,32 @@ public class SubjectController {
         subjectViewModel.sendResponseOfSubjects(subjects);
     }
 
-    public void assignStudent(String subjectID) {
-        PresentationControlFactory.getViewLayerController().assignStudent(subjectID);
+    public void assignStudent(String subjectID, int activityIdentifier) {
+        PresentationControlFactory.getViewLayerController().assignStudentToSubject(subjectID, activityIdentifier);
     }
 
     public void notifyAssignStudent(boolean error) {
         subjectViewModel.notifyAssignStudent(error);
+    }
+
+    public void setAddTeacherToSubjectViewModel(AddTeacherToSubjectViewModel addTeacherToSubjectViewModel) {
+        this.addTeacherToSubjectViewModel = addTeacherToSubjectViewModel;
+    }
+
+    public void getTeachersOfSchool(String schoolID) {
+        PresentationControlFactory.getViewLayerController().getContactsFromCenter(schoolID, 2);
+    }
+
+    public void notifyListOfTeachersReceivedToAddSubject(List<User> contactsFromSelectedCenter) {
+        this.addTeacherToSubjectViewModel.notifyListOfTeachersReceivedToAddSubject(contactsFromSelectedCenter);
+
+    }
+
+    public void assignTeacherToSubject(String id, String subjectID, int activityIdentifier) {
+        PresentationControlFactory.getViewLayerController().assignTeacherToSubject(id,subjectID,activityIdentifier);
+    }
+
+    public void notifyAssignedTeacher(boolean error) {
+        this.addTeacherToSubjectViewModel.notifyAssignedTeacher(error);
     }
 }
