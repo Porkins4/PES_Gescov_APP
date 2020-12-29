@@ -21,6 +21,7 @@ import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.Singletons.LoggedInUser;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+import com.example.gescov.viewlayer.event.EventActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -82,6 +83,15 @@ public class HomeFragment extends Fragment {
         });
 
         initViewComponents();
+
+        Button event = root.findViewById(R.id.eventfrm);
+        event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getActivity(), EventActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         return root;
