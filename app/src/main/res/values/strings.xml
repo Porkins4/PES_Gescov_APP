@@ -238,6 +238,8 @@
     <string name="create_class_session_button">Crear una sessió de classe</string>
     <string name="check_class_session_button">Veure sessions de classe</string>
     <string name="subjects_details_activity_title">Detalls de l\'assignatura</string>
+    <string name="check_class_session_activity_title">Sessions de classe</string>
+    <string name="create_class_session_activity_title">Crear sessió de classe</string>
 
     <string name="forum">Noticies</string>
 </resources>
