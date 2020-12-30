@@ -27,12 +27,11 @@
         </service>
 
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.addteachertosubject.AddTeacherToSubjectActivity"
-        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.createclasssession.CreateClassSessionActivity"></activity>
-        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.checkclasssession.CheckClassSessionActivity" />
-        <activity
-            android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.addteachertosubject.AddTeacherToSubjectActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.createclasssession.CreateClassSessionActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.checkclasssession.CheckClassSessionActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectDetailActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
