@@ -400,4 +400,12 @@ public class ViewLayerController {
     public void notifyAssignedTeacher(boolean error) {
         PresentationControlFactory.getSubjectController().notifyAssignedTeacher(error);
     }
+
+    public void setUserToken(String token) {
+        DomainControlFactory.getModelController().setUserToken(token);
+    }
+
+    public void deleteUserToken(String token) {
+        DomainControlFactory.getModelController().deleteUserToken(token);
+    }
 }

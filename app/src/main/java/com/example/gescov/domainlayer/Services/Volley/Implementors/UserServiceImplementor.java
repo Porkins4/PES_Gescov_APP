@@ -1,14 +1,17 @@
 package com.example.gescov.domainlayer.Services.Volley.Implementors;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IUserService;
 import com.example.gescov.domainlayer.Services.Volley.VolleyServices;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class UserServiceImplementor implements IUserService {
@@ -73,5 +76,51 @@ public class UserServiceImplementor implements IUserService {
         });
 
         VolleyServices.getRequestQueue().add(jsonObjectRequest);
+    }
+
+    @Override
+    public void setUserToken(String userID, String token) {
+        try {
+            JSONObject postData = new JSONObject();
+            postData.put("deviceToken",token);
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                    Request.Method.PUT, GESCOV_USERS_URI + userID + "/deviceToken", postData,
+                    response -> {
+                        System.out.println("tot ok");
+                    }, error -> {
+                if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
+                    System.out.println("something went wrong :(");
+                }
+            });
+
+            VolleyServices.getRequestQueue().add(jsonObjectRequest);
+
+        } catch (JSONException e) {
+            System.out.println("Error while creating data for the reservation");
+        }
+    }
+
+    @Override
+    public void deleteUserToken(String userID, String token) {
+        try {
+            JSONObject postData = new JSONObject();
+            postData.put("deviceToken",token);
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                    Request.Method.DELETE, GESCOV_USERS_URI + userID + "/deviceToken", postData,
+                    response -> {
+                        System.out.println("tot ok");
+                    }, error -> {
+                if (error.networkResponse != null) {
+                    System.out.println("something went wrong :(");
+                }
+            });
+
+            VolleyServices.getRequestQueue().add(jsonObjectRequest);
+
+        } catch (JSONException e) {
+            System.out.println("Error while creating data for the reservation");
+        }
     }
 }

@@ -94,8 +94,6 @@ public class SchoolServiceImplementor implements ISchoolService {
             postData.put("posRow",row);
             postData.put("studentID",studentID);
 
-            RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
-
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.POST, POST_ASSIGNMENT_URI, postData,
                     response -> {
@@ -106,7 +104,7 @@ public class SchoolServiceImplementor implements ISchoolService {
                         }
                     });
 
-            requestQueue.add(jsonObjectRequest);
+            VolleyServices.getRequestQueue().add(jsonObjectRequest);
 
         } catch (JSONException e) {
             System.out.println("Error while creating data for the reservation");

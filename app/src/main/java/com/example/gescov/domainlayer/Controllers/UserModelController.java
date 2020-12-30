@@ -12,6 +12,7 @@ import com.example.gescov.domainlayer.Singletons.ServicesFactory;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
@@ -287,6 +288,7 @@ public class UserModelController {
     }
 
     private void addUserToContactList(User u, int activityIdentifier) {
+        if (loggedUser.getId().equals(u.getId())) return;
         if (activityIdentifier == 1) {
             if (loggedUser.getProfileType() == User.UserProfileType.STUDENT && u.getProfileType() == User.UserProfileType.TEACHER)
                 contactsFromSelectedCenter.add(u);
@@ -338,5 +340,13 @@ public class UserModelController {
         }
         if (activityIdentifier == 1) DomainControlFactory.getModelController().notifyAssignStudent(error);
         else DomainControlFactory.getModelController().notifyAssignedTeacher(error);
+    }
+
+    public void setUserToken(String token) {
+        ServicesFactory.getUserService().setUserToken(loggedUser.getId(),token);
+    }
+
+    public void deleteUserToken(String token) {
+        ServicesFactory.getUserService().deleteUserToken(loggedUser.getId(),token);
     }
 }

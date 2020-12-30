@@ -382,4 +382,12 @@ public class ModelController {
     public void notifyAssignedTeacher(boolean error) {
         PresentationControlFactory.getViewLayerController().notifyAssignedTeacher(error);
     }
+
+    public void setUserToken(String token) {
+        DomainControlFactory.getUserModelController().setUserToken(token);
+    }
+
+    public void deleteUserToken(String token) {
+        DomainControlFactory.getUserModelController().deleteUserToken(token);
+    }
 }

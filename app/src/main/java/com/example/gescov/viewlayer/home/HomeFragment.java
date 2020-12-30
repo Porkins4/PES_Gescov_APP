@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.User;
+import com.example.gescov.viewlayer.Singletons.GescovApplication;
 import com.example.gescov.viewlayer.Singletons.LoggedInUser;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -100,7 +101,8 @@ public class HomeFragment extends Fragment {
                         }
 
                         String token = task.getResult();
-
+                        homeViewModel.setUserToken(token);
+                        GescovApplication.setNotToken(token);
                         //System.out.println("this is your token: " + token);
                     }
                 });
