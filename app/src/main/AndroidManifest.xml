@@ -35,9 +35,6 @@
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-        <activity
-            android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionListActivity"
-
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionListActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.AccessSchoolByCodeActivity" />

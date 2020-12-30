@@ -99,11 +99,9 @@ public class HomeFragment extends Fragment {
                             return;
                         }
 
-                        // Get new FCM registration token
                         String token = task.getResult();
 
-                        // Log and toast
-                        System.out.println("this is your token: " + token);
+                        //System.out.println("this is your token: " + token);
                     }
                 });
     }
