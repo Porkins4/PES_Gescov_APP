@@ -1,12 +1,11 @@
 package com.example.gescov.domainlayer.Services.Volley.Implementors;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IUserService;
 import com.example.gescov.domainlayer.Services.Volley.VolleyServices;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
@@ -84,17 +83,27 @@ public class UserServiceImplementor implements IUserService {
             JSONObject postData = new JSONObject();
             postData.put("deviceToken",token);
 
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                    Request.Method.PUT, GESCOV_USERS_URI + userID + "/deviceToken", postData,
+            StringRequest stringRequest = new StringRequest(
+                    Request.Method.PUT, GESCOV_USERS_URI + userID + "/deviceToken",
                     response -> {
                         System.out.println("tot ok");
                     }, error -> {
                 if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
                     System.out.println("something went wrong :(");
                 }
-            });
+            }) {
+                @Override
+                public byte[] getBody() throws AuthFailureError {
+                    return token.getBytes();
+                }
 
-            VolleyServices.getRequestQueue().add(jsonObjectRequest);
+                @Override
+                public String getBodyContentType() {
+                    return "application/json";
+                }
+            };
+
+            VolleyServices.getRequestQueue().add(stringRequest);
 
         } catch (JSONException e) {
             System.out.println("Error while creating data for the reservation");

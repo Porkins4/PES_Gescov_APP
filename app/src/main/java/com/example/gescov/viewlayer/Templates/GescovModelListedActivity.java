@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
-import com.example.gescov.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.example.gescov.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public abstract class GescovModelListedActivity extends AppCompatActivity {
     private FloatingActionButton fab;

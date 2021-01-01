@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Context;
 
 import com.example.gescov.domainlayer.Services.Volley.VolleyServices;
-import com.google.firebase.FirebaseApp;
 
 public class GescovApplication extends Application {
 

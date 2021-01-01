@@ -3,6 +3,9 @@ package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration;
 import android.os.Bundle;
 import android.util.Pair;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
@@ -17,9 +20,6 @@ import com.example.gescov.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 
 public class SchoolGraphActivity extends AppCompatActivity {
 
