@@ -25,18 +25,8 @@ public class UserServiceImplementor implements IUserService {
         System.out.println(GESCOV_USERS_URI + userId + "/" + metaIsStudent.toString());
         StringRequest request = new StringRequest(
                 Request.Method.PUT, GESCOV_USERS_URI + userId + "/" + metaIsStudent.toString(),
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        DomainControlFactory.getUserModelController().setUserType(metaIsStudent.toString());
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        System.out.println("something went wrong");
-                    }
-                }
+                response -> DomainControlFactory.getUserModelController().setUserType(metaIsStudent.toString()),
+                error -> System.out.println("something went wrong")
         );
         VolleyServices.getRequestQueue().add(request);
     }
@@ -79,57 +69,41 @@ public class UserServiceImplementor implements IUserService {
 
     @Override
     public void setUserToken(String userID, String token) {
-        try {
-            JSONObject postData = new JSONObject();
-            postData.put("deviceToken",token);
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.PUT, GESCOV_USERS_URI + userID + "/deviceToken",
+                response -> { },
+                error -> {}
+        ) {
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                return token.getBytes();
+            }
 
-            StringRequest stringRequest = new StringRequest(
-                    Request.Method.PUT, GESCOV_USERS_URI + userID + "/deviceToken",
-                    response -> {
-                        System.out.println("tot ok");
-                    }, error -> {
-                if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
-                    System.out.println("something went wrong :(");
-                }
-            }) {
-                @Override
-                public byte[] getBody() throws AuthFailureError {
-                    return token.getBytes();
-                }
-
-                @Override
-                public String getBodyContentType() {
-                    return "application/json";
-                }
-            };
-
-            VolleyServices.getRequestQueue().add(stringRequest);
-
-        } catch (JSONException e) {
-            System.out.println("Error while creating data for the reservation");
-        }
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+        };
+        VolleyServices.getRequestQueue().add(stringRequest);
     }
 
     @Override
     public void deleteUserToken(String userID, String token) {
-        try {
-            JSONObject postData = new JSONObject();
-            postData.put("deviceToken",token);
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.DELETE, GESCOV_USERS_URI + userID + "/deviceToken",
+                response -> { },
+                error -> { }
+        ) {
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                return token.getBytes();
+            }
 
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                    Request.Method.DELETE, GESCOV_USERS_URI + userID + "/deviceToken", postData,
-                    response -> {
-                        System.out.println("tot ok");
-                    }, error -> {
-                if (error.networkResponse != null) {
-                    System.out.println("something went wrong :(");
-                }
-            });
-
-            VolleyServices.getRequestQueue().add(jsonObjectRequest);
-
-        } catch (JSONException e) {
-            System.out.println("Error while creating data for the reservation");
-        }
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+        };
+        VolleyServices.getRequestQueueCustomDeleteStringRequest().add(stringRequest);
     }
 }

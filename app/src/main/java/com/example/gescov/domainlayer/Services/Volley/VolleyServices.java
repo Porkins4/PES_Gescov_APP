@@ -10,6 +10,7 @@ import com.android.volley.toolbox.Volley;
 public class VolleyServices {
     private static VolleyServices instance;
     private static RequestQueue requestQueue;
+    private static RequestQueue requestQueue2;
     private static Context ctx;
 
     private VolleyServices() {
@@ -23,6 +24,12 @@ public class VolleyServices {
     public static RequestQueue getRequestQueue() {
         if (requestQueue == null) requestQueue = Volley.newRequestQueue(ctx);
         return requestQueue;
+    }
+
+    public static RequestQueue getRequestQueueCustomDeleteStringRequest() {
+        customHurlStack customHurlStack = new customHurlStack();
+        if (requestQueue2 == null) requestQueue2 = Volley.newRequestQueue(ctx,customHurlStack);
+        return requestQueue2;
     }
 
     public static void addJSONArrayRequest(JsonArrayRequest request) {

@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
+import com.example.gescov.domainlayer.Classmodels.ClassSessionModel;
 import com.example.gescov.domainlayer.Classmodels.Classroom;
 import com.example.gescov.domainlayer.Classmodels.MessageModel;
 import com.example.gescov.domainlayer.Classmodels.School;
@@ -427,11 +428,21 @@ public class ViewLayerController {
         return DomainControlFactory.getModelController().getSchoolById(schoolId);
     }
 
+
     public void getResults(String userID) {
         DomainControlFactory.getModelController().getResults(userID);
     }
 
     public void sendTestAnswers(List<TracingTest> results) {
         PresentationControlFactory.getTracingTestController().sendTestAnswers(results);
+    }
+
+    public void getClassSessions(String subjectID) {
+        DomainControlFactory.getModelController().getClassSessions(subjectID);
+    }
+
+    public void getClassSessionsResult(boolean error, List<ClassSessionModel> classSessions) {
+        PresentationControlFactory.getSubjectController().getClassSessionsResult(error,classSessions);
+
     }
 }
