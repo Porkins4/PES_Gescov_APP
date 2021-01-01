@@ -1,4 +1,4 @@
-package com.example.gescov.domainlayer.Services.Volley.Implementors;
+qqpackage com.example.gescov.domainlayer.Services.Volley.Implementors;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -79,57 +79,49 @@ public class UserServiceImplementor implements IUserService {
 
     @Override
     public void setUserToken(String userID, String token) {
-        try {
-            JSONObject postData = new JSONObject();
-            postData.put("deviceToken",token);
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.PUT, GESCOV_USERS_URI + userID + "/deviceToken",
+                response -> {
+                    System.out.println("tot ok");
+                }, error -> {
+            if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
+                System.out.println("something went wrong :(");
+            }
+        }) {
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                return token.getBytes();
+            }
 
-            StringRequest stringRequest = new StringRequest(
-                    Request.Method.PUT, GESCOV_USERS_URI + userID + "/deviceToken",
-                    response -> {
-                        System.out.println("tot ok");
-                    }, error -> {
-                if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
-                    System.out.println("something went wrong :(");
-                }
-            }) {
-                @Override
-                public byte[] getBody() throws AuthFailureError {
-                    return token.getBytes();
-                }
-
-                @Override
-                public String getBodyContentType() {
-                    return "application/json";
-                }
-            };
-
-            VolleyServices.getRequestQueue().add(stringRequest);
-
-        } catch (JSONException e) {
-            System.out.println("Error while creating data for the reservation");
-        }
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+        };
+        VolleyServices.getRequestQueue().add(stringRequest);
     }
 
     @Override
     public void deleteUserToken(String userID, String token) {
-        try {
-            JSONObject postData = new JSONObject();
-            postData.put("deviceToken",token);
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.DELETE, GESCOV_USERS_URI + userID + "/deviceToken",
+                response -> {
+                    System.out.println("toKEN BORRADO");
+                }, error -> {
+            if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
+                System.out.println("something went wrong :(");
+            }
+        }) {
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                return token.getBytes();
+            }
 
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                    Request.Method.DELETE, GESCOV_USERS_URI + userID + "/deviceToken", postData,
-                    response -> {
-                        System.out.println("tot ok");
-                    }, error -> {
-                if (error.networkResponse != null) {
-                    System.out.println("something went wrong :(");
-                }
-            });
-
-            VolleyServices.getRequestQueue().add(jsonObjectRequest);
-
-        } catch (JSONException e) {
-            System.out.println("Error while creating data for the reservation");
-        }
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+        };
+        VolleyServices.getRequestQueueCustomDeleteStringRequest().add(stringRequest);
     }
 }
