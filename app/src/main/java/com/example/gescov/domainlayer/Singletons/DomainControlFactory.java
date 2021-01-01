@@ -8,6 +8,7 @@ import com.example.gescov.domainlayer.Controllers.ModelController;
 import com.example.gescov.domainlayer.Controllers.SchoolRequestModelController;
 import com.example.gescov.domainlayer.Controllers.SchoolsModelController;
 import com.example.gescov.domainlayer.Controllers.SubjectModelController;
+import com.example.gescov.domainlayer.Controllers.TracingTestResultController;
 import com.example.gescov.domainlayer.Controllers.UserModelController;
 
 public class DomainControlFactory {
@@ -20,6 +21,7 @@ public class DomainControlFactory {
     private static ChatModelController chatModelController;
     private static SubjectModelController subjectModelController;
     private static ForumModelController forumModelController;
+    private static TracingTestResultController tracingTestResultController;
 
     public static SchoolsModelController getSchoolsModelCrontroller() {
         if (schoolsModelController != null)
@@ -82,5 +84,12 @@ public class DomainControlFactory {
             return forumModelController;
         forumModelController = new ForumModelController();
         return forumModelController;
+    }
+
+    public static TracingTestResultController getTracingTestResultModel() {
+        if (tracingTestResultController != null)
+            return tracingTestResultController;
+        tracingTestResultController = new TracingTestResultController();
+        return tracingTestResultController;
     }
 }

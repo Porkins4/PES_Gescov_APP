@@ -348,4 +348,5 @@ public class UserModelController {
     public void deleteUserToken(String token) {
         ServicesFactory.getUserService().deleteUserToken(loggedUser.getId(),token);
     }
+
 }

@@ -19,4 +19,5 @@ public class ContagionController {
     public String getIdContagion() {
         return PresentationControlFactory.getViewLayerController().getIdContagion();
     }
+
 }

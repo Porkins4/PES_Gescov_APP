@@ -13,6 +13,7 @@ import com.example.gescov.domainlayer.Classmodels.MessageModel;
 import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.SchoolRequest;
 import com.example.gescov.domainlayer.Classmodels.Subject;
+import com.example.gescov.domainlayer.Classmodels.TracingTest;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.domainlayer.Classmodels.WallEntry;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
@@ -424,5 +425,13 @@ public class ViewLayerController {
 
     public School getSchoolById(String schoolId) {
         return DomainControlFactory.getModelController().getSchoolById(schoolId);
+    }
+
+    public void getResults(String userID) {
+        DomainControlFactory.getModelController().getResults(userID);
+    }
+
+    public void sendTestAnswers(List<TracingTest> results) {
+        PresentationControlFactory.getTracingTestController().sendTestAnswers(results);
     }
 }
