@@ -3,8 +3,6 @@ package com.example.gescov.viewlayer;
 import android.location.Location;
 import android.util.Pair;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
@@ -14,6 +12,7 @@ import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.SchoolRequest;
 import com.example.gescov.domainlayer.Classmodels.Subject;
 import com.example.gescov.domainlayer.Classmodels.User;
+import com.example.gescov.domainlayer.Classmodels.WallEntry;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
@@ -27,6 +26,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import org.json.JSONException;
 
 import java.util.List;
+
+import androidx.lifecycle.MutableLiveData;
 
 
 public class ViewLayerController {
@@ -380,5 +381,21 @@ public class ViewLayerController {
 
     public void notifyAssignStudent(boolean error) {
         PresentationControlFactory.getSubjectController().notifyAssignStudent(error);
+    }
+
+    public void createForumEntry(String textEntry, String schoolId) {
+        DomainControlFactory.getModelController().createForumEntry(textEntry, schoolId);
+    }
+
+    public void refreshLoggedUserSchoolsWallEntries() {
+        DomainControlFactory.getModelController().refreshLoggedUserSchoolsWallEntries();
+    }
+
+    public void refreshLoggedUserSchoolsWallEntries(List<WallEntry> wallEntryList) {
+        PresentationControlFactory.getForumController().refreshList(wallEntryList);
+    }
+
+    public School getSchoolById(String schoolId) {
+        return DomainControlFactory.getModelController().getSchoolById(schoolId);
     }
 }

@@ -10,28 +10,19 @@
         android:id="@+id/wall_entry_list_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="5dp"
         android:text="TextView"
         android:textColor="@color/dark_green"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/wall_item_list_item_date" />
 
     <TextView
         android:id="@+id/wall_item_list_item_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/wall_entry_list_item_title"
-        app:layout_constraintStart_toEndOf="@+id/wall_entry_list_item_title" />
-
-    <TextView
-        android:id="@+id/classroom_rows"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="15dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,21 +30,21 @@
         app:layout_constraintTop_toBottomOf="@+id/wall_entry_list_item_title" />
 
     <TextView
-        android:id="@+id/classroom_columns"
+        android:id="@+id/wall_item_list_item_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/classroom_rows"
-        app:layout_constraintStart_toEndOf="@+id/classroom_rows" />
+        app:layout_constraintStart_toStartOf="@+id/wall_entry_list_item_school"
+        app:layout_constraintTop_toBottomOf="@+id/wall_entry_list_item_school" />
 
-    <Button
-        android:id="@+id/classroom_list_item_edit_button"
+    <TextView
+        android:id="@+id/wall_entry_list_item_school"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="@string/edit"
-        app:layout_constraintBottom_toBottomOf="@+id/classroom_rows"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/wall_entry_list_item_title" />
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/wall_entry_list_item_title"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

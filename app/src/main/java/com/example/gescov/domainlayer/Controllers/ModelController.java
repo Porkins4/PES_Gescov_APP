@@ -2,8 +2,6 @@ package com.example.gescov.domainlayer.Controllers;
 
 import android.util.Pair;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
@@ -13,6 +11,7 @@ import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.SchoolRequest;
 import com.example.gescov.domainlayer.Classmodels.Subject;
 import com.example.gescov.domainlayer.Classmodels.User;
+import com.example.gescov.domainlayer.Classmodels.WallEntry;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 import com.example.gescov.domainlayer.Singletons.LoginRespository;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
@@ -26,6 +25,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import org.json.JSONException;
 
 import java.util.List;
+
+import androidx.lifecycle.MutableLiveData;
 
 public class ModelController {
 
@@ -369,5 +370,21 @@ public class ModelController {
 
     public void notifyAssignStudent(boolean error) {
         PresentationControlFactory.getViewLayerController().notifyAssignStudent(error);
+    }
+
+    public void createForumEntry(String textEntry, String schoolId) {
+        DomainControlFactory.getForumModelController().createForumEntry(textEntry, schoolId);
+    }
+
+    public void refreshLoggedUserSchoolsWallEntries() {
+        DomainControlFactory.getForumModelController().refreshLoggedUserSchoolsWallEntries();
+    }
+
+    public void refreshLoggedUserSchoolsWallEntries(List<WallEntry> wallEntryList) {
+        PresentationControlFactory.getViewLayerController().refreshLoggedUserSchoolsWallEntries(wallEntryList);
+    }
+
+    public School getSchoolById(String schoolId) {
+       return DomainControlFactory.getSchoolsModelCrontroller().getSchoolById(schoolId);
     }
 }

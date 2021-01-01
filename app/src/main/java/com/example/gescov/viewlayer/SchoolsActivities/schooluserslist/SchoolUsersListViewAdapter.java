@@ -25,8 +25,8 @@ public class SchoolUsersListViewAdapter extends ModelListViewAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View v = inflater.inflate(R.layout.user_list_item, null);
-        TextView userName = v.findViewById(R.id.user_list_item_name);
-        TextView userProfile = v.findViewById(R.id.user_list_item_profile);
+        TextView userName = v.findViewById(R.id.wall_entry_list_item_title);
+        TextView userProfile = v.findViewById(R.id.wall_item_list_item_content);
         User user = (User) modelList.get(position);
         School currentSchool = PresentationControlFactory.getSchoolsCrontroller().getCurrentSchool();
         userName.setText(user.getName());
