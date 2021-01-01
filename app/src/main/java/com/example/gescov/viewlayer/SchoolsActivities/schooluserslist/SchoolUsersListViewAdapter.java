@@ -3,6 +3,7 @@ package com.example.gescov.viewlayer.SchoolsActivities.schooluserslist;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.Templates.ModelListViewAdapter;
+import com.example.gescov.viewlayer.tracingTestResult.TracingTestResultActivity;
 
 import java.util.List;
 
@@ -20,10 +22,11 @@ public class SchoolUsersListViewAdapter extends ModelListViewAdapter {
     public SchoolUsersListViewAdapter(Context context, List list) {
         super(context, list);
     }
+    private User loggedUser;
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
+        loggedUser = PresentationControlFactory.getViewLayerController().getLoggedUserInfo();
         View v = inflater.inflate(R.layout.user_list_item, null);
         TextView userName = v.findViewById(R.id.wall_entry_list_item_title);
         TextView userProfile = v.findViewById(R.id.wall_item_list_item_content);
@@ -46,6 +49,20 @@ public class SchoolUsersListViewAdapter extends ModelListViewAdapter {
                         builder.setTitle(e.getResources().getString(R.string.options))
                                 .setItems(isUserAdmin(user) ? R.array.admin_option_menu_items : R.array.user_option_menu_items, (dialog, which) -> {
                                     if (which == 0) confirmSetAdministratorPrompt(e, user, isUserAdmin(user));
+                                    else if (which == 1) getResultsOfTests(user,v);
+                                });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                        return false;
+                    }
+            );
+        }
+        if (loggedUser.getProfileType() == User.UserProfileType.TEACHER)  {
+            v.setOnLongClickListener(e -> {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(e.getContext());
+                        builder.setTitle(e.getResources().getString(R.string.options))
+                                .setItems( R.array.teacher_option_menu_items , (dialog, which) -> {
+                                    if (which == 0) getResultsOfTests(user,v);
                                 });
                         AlertDialog dialog = builder.create();
                         dialog.show();
@@ -56,6 +73,15 @@ public class SchoolUsersListViewAdapter extends ModelListViewAdapter {
         return v;
     }
 
+    private void getResultsOfTests(User user, View v) {
+        Intent intent = new Intent(v.getContext(), TracingTestResultActivity.class);
+        intent.putExtra("name", user.getName());
+        intent.putExtra("userID", user.getId());
+        intent.putExtra("picture",user.getPic());
+        v.getContext().startActivity(intent);
+    }
+
+
     private boolean isUserAdmin(User user) {
         School school = PresentationControlFactory.getSchoolsCrontroller().getCurrentSchool();
         return school.getAdministratorsList().contains(user.getId());
@@ -63,7 +89,7 @@ public class SchoolUsersListViewAdapter extends ModelListViewAdapter {
 
     private boolean isLoggedUserCreator() {
         School school = PresentationControlFactory.getSchoolsCrontroller().getCurrentSchool();
-        return school.getCreator().equals(PresentationControlFactory.getViewLayerController().getLoggedUserInfo().getId());
+        return school.getCreator().equals(loggedUser.getId());
     }
 
     private void confirmSetAdministratorPrompt(View v, User user, boolean isUserAdmin) {

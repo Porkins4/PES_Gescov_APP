@@ -9,6 +9,7 @@ import com.example.gescov.domainlayer.Controllers.ModelController;
 import com.example.gescov.domainlayer.Controllers.SchoolRequestModelController;
 import com.example.gescov.domainlayer.Controllers.SchoolsModelController;
 import com.example.gescov.domainlayer.Controllers.SubjectModelController;
+import com.example.gescov.domainlayer.Controllers.TracingTestResultController;
 import com.example.gescov.domainlayer.Controllers.UserModelController;
 
 public class DomainControlFactory {
@@ -21,6 +22,7 @@ public class DomainControlFactory {
     private static ChatModelController chatModelController;
     private static SubjectModelController subjectModelController;
     private static ForumModelController forumModelController;
+    private static TracingTestResultController tracingTestResultController;
     private static ClassSessionController classSessionController;
 
     public static SchoolsModelController getSchoolsModelCrontroller() {
@@ -86,10 +88,18 @@ public class DomainControlFactory {
         return forumModelController;
     }
 
+
+    public static TracingTestResultController getTracingTestResultModel() {
+        if (tracingTestResultController != null)
+            return tracingTestResultController;
+        tracingTestResultController = new TracingTestResultController();
+        return tracingTestResultController;
+    }
     public static ClassSessionController getClassSessionsModelController() {
         if (classroomsController != null)
             return classSessionController;
             classSessionController = new ClassSessionController();
         return classSessionController;
+
     }
 }

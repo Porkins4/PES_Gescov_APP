@@ -96,7 +96,7 @@ public class PresentationControlFactory {
         return studentsInClassSessionController;
     }
 
-    public static TracingTestController getTracingTestControllerController() {
+    public static TracingTestController getTracingTestController() {
         if (tracingTestController != null)
             return tracingTestController;
         tracingTestController = new TracingTestController();
