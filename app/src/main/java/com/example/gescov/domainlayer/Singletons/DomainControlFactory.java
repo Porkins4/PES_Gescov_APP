@@ -2,6 +2,7 @@ package com.example.gescov.domainlayer.Singletons;
 
 import com.example.gescov.domainlayer.Controllers.AssignmentsModelController;
 import com.example.gescov.domainlayer.Controllers.ChatModelController;
+import com.example.gescov.domainlayer.Controllers.ClassSessionController;
 import com.example.gescov.domainlayer.Controllers.ClassroomsModelController;
 import com.example.gescov.domainlayer.Controllers.ForumModelController;
 import com.example.gescov.domainlayer.Controllers.ModelController;
@@ -20,6 +21,7 @@ public class DomainControlFactory {
     private static ChatModelController chatModelController;
     private static SubjectModelController subjectModelController;
     private static ForumModelController forumModelController;
+    private static ClassSessionController classSessionController;
 
     public static SchoolsModelController getSchoolsModelCrontroller() {
         if (schoolsModelController != null)
@@ -82,5 +84,12 @@ public class DomainControlFactory {
             return forumModelController;
         forumModelController = new ForumModelController();
         return forumModelController;
+    }
+
+    public static ClassSessionController getClassSessionsModelController() {
+        if (classroomsController != null)
+            return classSessionController;
+            classSessionController = new ClassSessionController();
+        return classSessionController;
     }
 }

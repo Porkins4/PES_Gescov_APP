@@ -1,4 +1,4 @@
-qqpackage com.example.gescov.domainlayer.Services.Volley.Implementors;
+package com.example.gescov.domainlayer.Services.Volley.Implementors;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -25,18 +25,8 @@ public class UserServiceImplementor implements IUserService {
         System.out.println(GESCOV_USERS_URI + userId + "/" + metaIsStudent.toString());
         StringRequest request = new StringRequest(
                 Request.Method.PUT, GESCOV_USERS_URI + userId + "/" + metaIsStudent.toString(),
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        DomainControlFactory.getUserModelController().setUserType(metaIsStudent.toString());
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        System.out.println("something went wrong");
-                    }
-                }
+                response -> DomainControlFactory.getUserModelController().setUserType(metaIsStudent.toString()),
+                error -> System.out.println("something went wrong")
         );
         VolleyServices.getRequestQueue().add(request);
     }
@@ -81,13 +71,9 @@ public class UserServiceImplementor implements IUserService {
     public void setUserToken(String userID, String token) {
         StringRequest stringRequest = new StringRequest(
                 Request.Method.PUT, GESCOV_USERS_URI + userID + "/deviceToken",
-                response -> {
-                    System.out.println("tot ok");
-                }, error -> {
-            if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
-                System.out.println("something went wrong :(");
-            }
-        }) {
+                response -> { },
+                error -> {}
+        ) {
             @Override
             public byte[] getBody() throws AuthFailureError {
                 return token.getBytes();
@@ -105,13 +91,9 @@ public class UserServiceImplementor implements IUserService {
     public void deleteUserToken(String userID, String token) {
         StringRequest stringRequest = new StringRequest(
                 Request.Method.DELETE, GESCOV_USERS_URI + userID + "/deviceToken",
-                response -> {
-                    System.out.println("toKEN BORRADO");
-                }, error -> {
-            if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
-                System.out.println("something went wrong :(");
-            }
-        }) {
+                response -> { },
+                error -> { }
+        ) {
             @Override
             public byte[] getBody() throws AuthFailureError {
                 return token.getBytes();
