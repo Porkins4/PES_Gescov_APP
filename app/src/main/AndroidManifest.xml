@@ -11,8 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gescov"
         android:usesCleartextTraffic="true">
+
         <activity android:name=".viewlayer.forum.CreateForumEntryFormActivity"></activity>
-        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectDetailActivity" />
 
         <!-- notification -->
         <service
