@@ -10,6 +10,7 @@ import com.example.gescov.domainlayer.Singletons.ServicesFactory;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
@@ -272,19 +273,31 @@ public class UserModelController {
         DomainControlFactory.getSchoolsModelCrontroller().updateSchools(loggedUser.getSchoolsID());
     }
 
-    public void setContactsFromSelectedCenter(JSONArray response) {
+    public void setContactsFromSelectedCenter(JSONArray response, int activityIdentifier) {
         contactsFromSelectedCenter = new ArrayList<>();
         for (int i = 0; i < response.length(); ++i) {
             try {
                 User u = getUserFromJSONObject(response.getJSONObject(i)); //reusar esta operación
-                System.out.println(u.getProfileType());
-                if (loggedUser.getProfileType() == User.UserProfileType.STUDENT && u.getProfileType() == User.UserProfileType.TEACHER) contactsFromSelectedCenter.add(u);
-                else if (loggedUser.getProfileType() == User.UserProfileType.TEACHER) contactsFromSelectedCenter.add(u);
+                addUserToContactList(u,activityIdentifier);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-        DomainControlFactory.getModelController().updateContactsFromCreateChat();
+        if (activityIdentifier == 1) DomainControlFactory.getModelController().updateContactsFromCreateChat();
+        else DomainControlFactory.getModelController().notifyListOfTeachersReceivedToAddSubject(contactsFromSelectedCenter);
+    }
+
+    private void addUserToContactList(User u, int activityIdentifier) {
+        if (loggedUser.getId().equals(u.getId())) return;
+        if (activityIdentifier == 1) {
+            if (loggedUser.getProfileType() == User.UserProfileType.STUDENT && u.getProfileType() == User.UserProfileType.TEACHER)
+                contactsFromSelectedCenter.add(u);
+            else if (loggedUser.getProfileType() == User.UserProfileType.TEACHER)
+                contactsFromSelectedCenter.add(u);
+        } else {
+            if (u.getProfileType() == User.UserProfileType.TEACHER)
+                contactsFromSelectedCenter.add(u);
+        }
     }
 
     public List<User> getContacts() {
@@ -321,10 +334,19 @@ public class UserModelController {
         return loggedUser.getIdContagion();
     }
 
-    public void setSubjectID(String subjectID, boolean error) {
+    public void setSubjectID(String subjectID, boolean error, int activityIdentifier) {
         if (! error ) {
             loggedUser.addSubjectID(subjectID);
         }
-        DomainControlFactory.getModelController().notifyAssignStudent(error);
+        if (activityIdentifier == 1) DomainControlFactory.getModelController().notifyAssignStudent(error);
+        else DomainControlFactory.getModelController().notifyAssignedTeacher(error);
+    }
+
+    public void setUserToken(String token) {
+        ServicesFactory.getUserService().setUserToken(loggedUser.getId(),token);
+    }
+
+    public void deleteUserToken(String token) {
+        ServicesFactory.getUserService().deleteUserToken(loggedUser.getId(),token);
     }
 }

@@ -8,4 +8,8 @@ public class HomeController {
     public void setLocation(Location location) {
         PresentationControlFactory.getViewLayerController().setLocation(location);
     }
+
+    public void setUserToken(String token) {
+        PresentationControlFactory.getViewLayerController().setUserToken(token);
+    }
 }

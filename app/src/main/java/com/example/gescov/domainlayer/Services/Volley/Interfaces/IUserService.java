@@ -7,4 +7,8 @@ public interface IUserService {
     void getUserID(String token);
 
     void getUserInfo(String id);
+
+    void setUserToken(String userID, String token);
+
+    void deleteUserToken(String userID, String token);
 }

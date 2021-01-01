@@ -149,8 +149,8 @@ public class SchoolsModelController {
         return userSchools;
     }
 
-    public void getContactsFromCenter(String schoolID) {
-        ServicesFactory.getSchoolService().getContactsFromCenter(schoolID);
+    public void getContactsFromCenter(String schoolID, int activityIdentifier) {
+        ServicesFactory.getSchoolService().getContactsFromCenter(schoolID, activityIdentifier);
     }
 
     public void addNewAdminToSchool(String newAdminID) {

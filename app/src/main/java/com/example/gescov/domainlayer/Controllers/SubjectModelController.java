@@ -43,7 +43,7 @@ public class SubjectModelController {
 
     }
 
-    public void assignStudent(String subjectID, String userID) {
-        ServicesFactory.getSubjectsService().assignStudent(subjectID,userID);
+    public void assignUserToSubject(String subjectID, String userID, int activityIdentifier) {
+        ServicesFactory.getSubjectsService().assignUserToSubject(subjectID,userID,activityIdentifier);
     }
 }

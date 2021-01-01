@@ -1,10 +1,8 @@
 package com.example.gescov.domainlayer.Services.Volley.Implementors;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISubjectsService;
 import com.example.gescov.domainlayer.Services.Volley.VolleyServices;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
@@ -12,7 +10,7 @@ import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 
 public class SubjectsServiceImplementor implements ISubjectsService {
     private static final String  SCHOOL_SUBJECTS = "https://gescov.herokuapp.com/api/subjects/schools/";
-    private static final String ADD_STUDENT_SUBJECT = "https://gescov.herokuapp.com/api/subjects/new/";
+    private static final String ADD_USER_SUBJECT = "https://gescov.herokuapp.com/api/subjects/";
 
 
     @Override
@@ -28,21 +26,16 @@ public class SubjectsServiceImplementor implements ISubjectsService {
     }
 
     @Override
-    public void assignStudent(String subjectID, String userID) {
-        //{specific}?id=5fd7a37db762197df050d295&userId=5fcac8a2349ec432db90b7b3
-        RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
-
+    public void assignUserToSubject(String subjectID, String userID, int activityIdentifier) {
         StringRequest stringRequest = new StringRequest(
-                Request.Method.PUT, ADD_STUDENT_SUBJECT + "{specific}?id="+ subjectID+"&userId="+userID,
+                Request.Method.PUT, ADD_USER_SUBJECT + subjectID + "?userID=" +userID,
                 response -> {
-                    DomainControlFactory.getUserModelController().setSubjectID(subjectID,false);
+                    DomainControlFactory.getUserModelController().setSubjectID(subjectID,false, activityIdentifier);
                 },
                 error -> {
-                    DomainControlFactory.getUserModelController().setSubjectID(subjectID,true);
+                    DomainControlFactory.getUserModelController().setSubjectID(subjectID,true, activityIdentifier);
                 });
-
-        requestQueue.add(stringRequest);
-
+        VolleyServices.getRequestQueue().add(stringRequest);
     }
 
 
