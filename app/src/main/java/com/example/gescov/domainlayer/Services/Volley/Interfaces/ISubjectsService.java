@@ -4,4 +4,6 @@ public interface ISubjectsService {
     void getSubjects(String schooldID);
 
     void assignUserToSubject(String subjectID, String userID, int activityIdentifier);
+
+    void getClassSessions(String subjectID);
 }
