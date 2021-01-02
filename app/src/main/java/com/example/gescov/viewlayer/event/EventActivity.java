@@ -50,11 +50,12 @@ public class EventActivity extends AppCompatActivity {
             intent.putExtra(CalendarContract.Events.TITLE,title.getText().toString());
             intent.putExtra(CalendarContract.Events.DESCRIPTION,description.getText().toString());
             //intent.putExtra(CalendarContract.Events.CALENDAR_ID,1);
-            String emails = null;
+            String emails = "";
             for (int i = 0; i < guests.size(); ++i ) {
                 emails += guests.get(i).getEmail();
                 if ( i != guests.size() -1 ) emails += ',';
             }
+            System.out.println(emails);
             intent.putExtra(Intent.EXTRA_EMAIL,emails);
             // checking if there is any app that can handel this type of intent which is calendar.
             if (intent.resolveActivity(getPackageManager()) != null) {
@@ -64,8 +65,8 @@ public class EventActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        title = findViewById(R.id.event_title_txt);
-        description = findViewById(R.id.event_description_txt);
+        title = findViewById(R.id.event_title);
+        description = findViewById(R.id.event_description);
         addEvent = findViewById(R.id.add_event);
         initToolBar();
 
