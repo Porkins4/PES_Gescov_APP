@@ -41,4 +41,12 @@ public class CheckClassSessionViewModel extends ViewModel {
     public ClassSessionAdapter getAdapter(Context c) {
         return new ClassSessionAdapter(c,classSessions);
     }
+
+    public String getClassroomID(int position) {
+        return classSessions.get(position).getClassroomID();
+    }
+
+    public String getClassroomSessionID(int position) {
+        return classSessions.get(position).getId();
+    }
 }

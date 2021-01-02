@@ -1,7 +1,9 @@
 package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.checkclasssession;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -11,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.R;
+import com.example.gescov.viewlayer.ClassroomActivities.ClassroomDistribution.ClassroomDistributionActivity;
 
 public class CheckClassSessionActivity extends AppCompatActivity {
 
@@ -58,9 +61,21 @@ public class CheckClassSessionActivity extends AppCompatActivity {
 
     private void initViewComponents() {
         initToolbar();
-        this.listView = (ListView) findViewById(R.id.list_view);
+        initListView();
         this.error = (LinearLayout) findViewById(R.id.error);
         this.errorMessage = (TextView) findViewById(R.id.error_message);
+    }
+
+    private void initListView() {
+        this.listView = (ListView) findViewById(R.id.list_view);
+        listView.setOnItemClickListener(
+                (parent, view, position, id) -> {
+                    Intent intent = new Intent(this, ClassroomDistributionActivity.class);
+                    intent.putExtra("classroom", viewModel.getClassroomID(position));
+                    intent.putExtra("classSession", viewModel.getClassroomSessionID(position));
+                    startActivity(intent);
+                }
+        );
     }
 
     private void initToolbar() {
