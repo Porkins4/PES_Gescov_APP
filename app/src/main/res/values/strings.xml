@@ -255,4 +255,8 @@
 
     <string name="forum">Noticies</string>
     <string name="general_error_message">S\'ha produït un error</string>
+    <string name="no_subjects_from_user">No t\'has apuntat a cap asignatura encara</string>
+    <string name="subjects_fragment_title">Assignatures</string>
+    <string name="enrolled_professors_text_item">"Professors: "</string>
+    <string name="enrolled_users_text_item">"Matriculats: "</string>
 </resources>
