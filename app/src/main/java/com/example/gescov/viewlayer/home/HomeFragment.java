@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.User;
+import com.example.gescov.viewlayer.Singletons.GescovApplication;
 import com.example.gescov.viewlayer.Singletons.LoggedInUser;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.event.EventActivity;
@@ -26,6 +27,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -84,6 +86,7 @@ public class HomeFragment extends Fragment {
 
         initViewComponents();
 
+
         Button event = root.findViewById(R.id.eventfrm);
         event.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +97,28 @@ public class HomeFragment extends Fragment {
         });
 
 
+        initNotification();
+
+
         return root;
+    }
+
+    private void initNotification() {
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            System.out.println("Fetching FCM registration token failed" + task.getException());
+                            return;
+                        }
+
+                        String token = task.getResult();
+                        homeViewModel.setUserToken(token);
+                        GescovApplication.setNotToken(token);
+                        //System.out.println("this is your token: " + token);
+                    }
+                });
     }
 
     private void checkPermision() {

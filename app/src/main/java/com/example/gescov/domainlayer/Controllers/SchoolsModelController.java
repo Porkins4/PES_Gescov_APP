@@ -100,6 +100,7 @@ public class SchoolsModelController {
     }
 
     public School getSchoolById(String id) {
+        if (schoolsList != null)
         for (School school : schoolsList) {
             if (school.getId().equals(id))
                 return school;

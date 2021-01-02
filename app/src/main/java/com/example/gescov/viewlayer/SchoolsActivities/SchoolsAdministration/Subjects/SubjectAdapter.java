@@ -21,9 +21,15 @@ public class SubjectAdapter extends ModelListViewAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = inflater.inflate(R.layout.subject_list_item,null);
         TextView subjectName = v.findViewById(R.id.subject_name);
+        TextView enrolledTeachers = v.findViewById(R.id.enrolled_teachers);
+        TextView enrolledUsers = v.findViewById(R.id.enrolled_users);
+        TextView schoolName = v.findViewById(R.id.school_name);
         Subject subject = (Subject) getItem(position);
         subjectName.setText(subject.getName());
+        schoolName.setVisibility(View.GONE);
         setClickListener(v,subject);
+        enrolledTeachers.setText(context.getString(R.string.enrolled_professors_text_item) + subject.getTeachers().size());
+        enrolledUsers.setText(context.getString(R.string.enrolled_users_text_item) + subject.getStudents().size());
         return v;
     }
 

@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+
 public class HomeViewModel extends ViewModel {
 
     private MutableLiveData<Boolean> risk;
@@ -29,5 +31,9 @@ public class HomeViewModel extends ViewModel {
 
     public void setName(String name) {
         this.name.setValue(name);
+    }
+
+    public void setUserToken(String token) {
+        PresentationControlFactory.getHomeController().setUserToken(token);
     }
 }

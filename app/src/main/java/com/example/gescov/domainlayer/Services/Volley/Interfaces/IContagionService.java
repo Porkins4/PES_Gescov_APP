@@ -19,4 +19,6 @@ public interface IContagionService {
     void notifyPossibleContagion(String id, MutableLiveData<ContagionRequestResult> result);
 
     void getContagionID(String id);
+
+    void getTestResults(String userID);
 }

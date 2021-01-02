@@ -8,12 +8,15 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
+import com.example.gescov.domainlayer.Classmodels.ClassSessionModel;
 import com.example.gescov.domainlayer.Classmodels.Classroom;
 import com.example.gescov.domainlayer.Classmodels.MessageModel;
 import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.SchoolRequest;
 import com.example.gescov.domainlayer.Classmodels.Subject;
+import com.example.gescov.domainlayer.Classmodels.TracingTest;
 import com.example.gescov.domainlayer.Classmodels.User;
+import com.example.gescov.domainlayer.Classmodels.WallEntry;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
@@ -401,11 +404,63 @@ public class ViewLayerController {
         PresentationControlFactory.getSubjectController().notifyAssignedTeacher(error);
     }
 
+
     public void getGuests(String subjectID) {
         DomainControlFactory.getModelController().getGuests(subjectID);
     }
 
     public void sendResponseOfGuests(List<User> guests) {
         PresentationControlFactory.getEventController().sendResponseOfGuests(guests);
+    }
+
+    public void setUserToken(String token) {
+        DomainControlFactory.getModelController().setUserToken(token);
+    }
+
+    public void deleteUserToken(String token) {
+        DomainControlFactory.getModelController().deleteUserToken(token);
+    }
+
+    public void createForumEntry(String textEntry, String schoolId) {
+        DomainControlFactory.getModelController().createForumEntry(textEntry, schoolId);
+    }
+
+    public void refreshLoggedUserSchoolsWallEntries() {
+        DomainControlFactory.getModelController().refreshLoggedUserSchoolsWallEntries();
+    }
+
+    public void refreshLoggedUserSchoolsWallEntries(List<WallEntry> wallEntryList) {
+        PresentationControlFactory.getForumController().refreshList(wallEntryList);
+    }
+
+    public School getSchoolById(String schoolId) {
+        return DomainControlFactory.getModelController().getSchoolById(schoolId);
+    }
+
+
+    public void getResults(String userID) {
+        DomainControlFactory.getModelController().getResults(userID);
+    }
+
+    public void sendTestAnswers(List<TracingTest> results) {
+        PresentationControlFactory.getTracingTestController().sendTestAnswers(results);
+    }
+
+    public void getClassSessions(String subjectID) {
+        DomainControlFactory.getModelController().getClassSessions(subjectID);
+    }
+
+    public void getClassSessionsResult(boolean error, List<ClassSessionModel> classSessions) {
+        PresentationControlFactory.getSubjectController().getClassSessionsResult(error,classSessions);
+
+    }
+
+    public void getSubjectsFromUser() {
+        DomainControlFactory.getModelController().getSubjectsFromUser();
+    }
+
+    public void setSubjectsFromUserResult(boolean error, List<Subject> userSubjects) {
+        PresentationControlFactory.getSubjectController().setSubjectsFromUserResult(error,userSubjects);
+
     }
 }

@@ -14,6 +14,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.addteachertosubject.AddTeacherToSubjectActivity;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.checkclasssession.CheckClassSessionActivity;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.createclasssession.CreateClassSessionActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 public class SubjectDetailActivity extends AppCompatActivity {
@@ -23,6 +25,7 @@ public class SubjectDetailActivity extends AppCompatActivity {
     private Button addTeacher;
     private Button createClassSession;
     private Button checkClassSessions;
+    private String subjectID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +33,8 @@ public class SubjectDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_subject_detail);
         loggedUser = PresentationControlFactory.getViewLayerController().getLoggedUserInfo();
         setComponents();
-        String subjectID = getIntent().getStringExtra("subjectID");
-        setStudentToSubject(subjectID);
-        setTeacherToSubject(subjectID);
+        subjectID = getIntent().getStringExtra("subjectID");
+
     }
 
     private void setComponents() {
@@ -46,6 +48,10 @@ public class SubjectDetailActivity extends AppCompatActivity {
         addStudent = findViewById(R.id.assign_student);
         checkClassSessions = findViewById(R.id.check_class_session_button);
         createClassSession = findViewById(R.id.create_class_session_button);
+        listenerStudentToSubject();
+        listenerTeacherToSubject();
+        listenerCheckClassSessions();
+        listenerCreateClassSession();
 
         if (loggedUser.getProfileType().equals(User.UserProfileType.TEACHER)) {
             addStudent.setVisibility(View.GONE);
@@ -53,6 +59,26 @@ public class SubjectDetailActivity extends AppCompatActivity {
             createClassSession.setVisibility(View.GONE);
             addTeacher.setVisibility(View.GONE);
         }
+    }
+
+    private void listenerCreateClassSession() {
+        createClassSession.setOnClickListener(
+                v -> {
+                    Intent i = new Intent(this, CreateClassSessionActivity.class);
+                    i.putExtra("subjectID",subjectID);
+                    startActivity(i);
+                }
+        );
+    }
+
+    private void listenerCheckClassSessions() {
+        checkClassSessions.setOnClickListener(
+                v -> {
+                    Intent i = new Intent(this, CheckClassSessionActivity.class);
+                    i.putExtra("subjectID",subjectID);
+                    startActivity(i);
+                }
+        );
     }
 
     private void initToolbar() {
@@ -67,7 +93,7 @@ public class SubjectDetailActivity extends AppCompatActivity {
         subName.setText(subjectName);
     }
 
-    private void setStudentToSubject(String subjectID) {
+    private void listenerStudentToSubject() {
         addStudent.setOnClickListener(v -> {
             SubjectViewModel subjectViewModel = new ViewModelProvider(this).get(SubjectViewModel.class);
             subjectViewModel.assignStudent(subjectID).observe(this, error -> {
@@ -79,7 +105,7 @@ public class SubjectDetailActivity extends AppCompatActivity {
         });
     }
 
-    private void setTeacherToSubject(String subjectID) {
+    private void listenerTeacherToSubject() {
         addTeacher.setOnClickListener(v -> {
             Intent intent = new Intent(this, AddTeacherToSubjectActivity.class);
             intent.putExtra("subjectID", subjectID);

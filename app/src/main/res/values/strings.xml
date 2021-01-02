@@ -32,6 +32,12 @@
     <!-- School Administration -->
     <string name="menu_home">Inici</string>
 
+    <!-- Forum -->
+    <string name="forum_title">Mur de noticies</string>
+    <string name="create_forum_entry_button">Crea publicació</string>
+    <string name="create_forum_check_content">El contingut no pot ser buit.</string>
+    <string name="create_forum_check_title">El títol no pot ser buit.</string>
+
 
     <!-- School Administration -->
     <string name="create_school_form_school_name">Nom d´escola</string>
@@ -68,6 +74,12 @@
     <string name="school_details_confirm_delete_message">Segur de que vols eliminar aquesta escola?</string>
     <string name="title_school_details">Detalls de l\'escola</string>
 
+
+    <!-- School user lists -->
+    <string name="school_user_list_admin">Administrador</string>
+    <string name="school_user_list_creator">Creador</string>
+    <string name="school_user_list_teacher">Professor</string>
+    <string name="school_user_list_student">Estudiant</string>
 
     <!-- School Requests -->
     <string name="school_requests_title">Sol·licituds de l´escola</string>
@@ -146,6 +158,12 @@
     <string name="fifthQuestion">Tens febre? (+37.7°C)  </string>
     <string name="titleTests">Quins símptomes tens? </string>
     <string name="sendAnswers">Finalitzar Test </string>
+    <string name="userAnswer">Resposta de l\'usuari: </string>
+    <string name="user_test_response">Respostas del Test: </string>
+    <string name="all_tests"> Tots el tests</string>
+    <string name="test_done_in">Test fet el </string>
+    <string name="error_no_tests">No hi ha cap test </string>
+
 
     <!-- Strings notifying the state -->
     <string name="notify_state">Notificar Estat</string>
@@ -207,7 +225,7 @@
     <string name="access_school_by_code_title">Codi d´escola</string>
     <string name="access_school_by_code_button">Solicita accés</string>
 
-    <!-- Strings for the Ranking -->
+    <!-- Strings for the graph -->
     <string name="view_graph">visualitzar gràfic</string>
     <string name="first_month">Gener</string>
     <string name="second_month">Febrer</string>
@@ -238,8 +256,11 @@
     <string name="create_class_session_button">Crear una sessió de classe</string>
     <string name="check_class_session_button">Veure sessions de classe</string>
     <string name="subjects_details_activity_title">Detalls de l\'assignatura</string>
+    <string name="check_class_session_activity_title">Sessions de classe</string>
+    <string name="create_class_session_activity_title">Crear sessió de classe</string>
 
     <string name="forum">Noticies</string>
+
 
 
     <!-- Strings for the event -->
@@ -248,5 +269,11 @@
     <string name="event_form">Esdeveniment Form</string>
     <string name="event_prepare">Prepara Tu Esdeveniment</string>
     <string name="create_event">Crear Esdeveniment</string>
+
+    <string name="general_error_message">S\'ha produït un error</string>
+    <string name="no_subjects_from_user">No t\'has apuntat a cap asignatura encara</string>
+    <string name="subjects_fragment_title">Assignatures</string>
+    <string name="enrolled_professors_text_item">"Professors: "</string>
+    <string name="enrolled_users_text_item">"Matriculats: "</string>
 
 </resources>

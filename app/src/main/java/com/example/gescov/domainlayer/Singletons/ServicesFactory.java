@@ -1,6 +1,10 @@
 package com.example.gescov.domainlayer.Singletons;
 
+
 import com.example.gescov.domainlayer.Controllers.EventModelController;
+
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.CreateForumEntryResponseController;
+
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.CreateRequestToSchoolResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteSchoolAdminResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteSchoolClassroomResponseController;
@@ -11,6 +15,7 @@ import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseC
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshSchoolResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshStudentSchoolsResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshUsersBySchoolIdResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshWallEntriesBySchoolIdResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RequestAccessSchoolByCodeResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpdateSchoolAdminResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpdateSchoolClassroomResponseController;
@@ -72,6 +77,8 @@ public class ServicesFactory {
     //retrofit maps
     private static RefreshCoordinatesFromAddressResponseController refreshCoordinatesFromAddressResponseController;
     private static CreateRequestToSchoolResponseController createRequestToSchoolResponseController;
+    private static CreateForumEntryResponseController createForumEntryResponseController;
+    private static RefreshWallEntriesBySchoolIdResponseController refreshWallEntriesBySchoolIdResponseController;
 
     private static Retrofit getRetrofit() {
         if (retrofit != null) return retrofit;
@@ -230,9 +237,23 @@ public class ServicesFactory {
         return subjectsService;
     }
 
+
     public static IEventService getEventService() {
         if (eventService != null) return eventService;
         eventService = new EventServiceImplementor();
         return eventService;
+    }
+
+    public static CreateForumEntryResponseController getCreateForumEntryResponseController() {
+        if (createForumEntryResponseController != null) return createForumEntryResponseController;
+        createForumEntryResponseController = new CreateForumEntryResponseController(getRetrofit());
+        return createForumEntryResponseController;
+    }
+
+    public static RefreshWallEntriesBySchoolIdResponseController getRefreshWallEntriesBySchoolIdResponseController() {
+        if (refreshWallEntriesBySchoolIdResponseController != null) return refreshWallEntriesBySchoolIdResponseController;
+        refreshWallEntriesBySchoolIdResponseController = new RefreshWallEntriesBySchoolIdResponseController(getRetrofit());
+        return refreshWallEntriesBySchoolIdResponseController;
+
     }
 }

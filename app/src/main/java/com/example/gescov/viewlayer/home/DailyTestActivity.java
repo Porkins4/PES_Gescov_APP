@@ -27,7 +27,7 @@ public class DailyTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_test);
-        tracingTestController = PresentationControlFactory.getTracingTestControllerController();
+        tracingTestController = PresentationControlFactory.getTracingTestController();
         answers = new ArrayList<>();
         Button sendTest = findViewById(R.id.sendTest);
         sendTest.setOnClickListener(new View.OnClickListener() {

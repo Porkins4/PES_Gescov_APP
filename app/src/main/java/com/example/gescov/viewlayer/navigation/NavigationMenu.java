@@ -110,6 +110,7 @@ public class NavigationMenu extends AppCompatActivity {
     }
 
     private void logoutFunc() {
+        deleteUserToken();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(this,gso);
         googleSignInClient.signOut()
@@ -120,6 +121,10 @@ public class NavigationMenu extends AppCompatActivity {
                         showLoginView();
                     }
                 });
+    }
+
+    private void deleteUserToken() {
+        PresentationControlFactory.getViewLayerController().deleteUserToken(GescovApplication.getNotificationToken());
     }
 
     private void logoutPrompt() {

@@ -75,8 +75,8 @@ public class SchoolsAdministrationFagment extends Fragment {
                              Bundle savedInstanceState) {
 
         View thisView = inflater.inflate(R.layout.fragment_school_administration, container, false);
-        createSchoolButton = thisView.findViewById(R.id.add_school_button);
-        ListView list = (ListView) thisView.findViewById(R.id.schools_list);
+        createSchoolButton = thisView.findViewById(R.id.add_forum_entry_button);
+        ListView list = (ListView) thisView.findViewById(R.id.news_list);
         createSchoolListViewAdapter(list.getContext());
         SchoolListViewAdapter adapter = getAdapter();
 
