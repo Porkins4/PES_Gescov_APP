@@ -426,4 +426,12 @@ public class ModelController {
     public void getClassSessionsResult(boolean error, List<ClassSessionModel> classSessions) {
         PresentationControlFactory.getViewLayerController().getClassSessionsResult(error,classSessions);
     }
+
+    public void getSubjectsFromUser() {
+        DomainControlFactory.getSubjectModelController().getSubjectsFromUser();
+    }
+
+    public void setSubjectsFromUserResult(boolean error, List<Subject> userSubjects) {
+        PresentationControlFactory.getViewLayerController().setSubjectsFromUserResult(error,userSubjects);
+    }
 }

@@ -6,4 +6,6 @@ public interface ISubjectsService {
     void assignUserToSubject(String subjectID, String userID, int activityIdentifier);
 
     void getClassSessions(String subjectID);
+
+    void getSubjectsFromUser(String userID);
 }

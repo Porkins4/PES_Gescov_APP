@@ -43,8 +43,8 @@
         tools:layout="@layout/fragment_ranking" />
     <fragment
         android:id="@+id/menu_subjects"
-        android:name="com.example.gescov.viewlayer.Fragments.BlankFragment"
-        android:label="fragment_blank"
+        android:name="com.example.gescov.viewlayer.subjectsofuser.SubjectsFromUserFragment"
+        android:label="@string/subjects_fragment_title"
         tools:layout="@layout/fragment_subjects" />
     <fragment
         android:id="@+id/menu_forum"

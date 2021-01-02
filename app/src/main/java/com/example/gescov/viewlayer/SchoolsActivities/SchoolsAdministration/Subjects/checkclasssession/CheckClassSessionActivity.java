@@ -41,11 +41,9 @@ public class CheckClassSessionActivity extends AppCompatActivity {
     private void getClassSessions() {
         viewModel.getClassSessions().observe(this,
                 error -> {
-                    if (!error) {
-                        showClassSessions();
-                    } else {
-                        showErrorUI();
-                    }
+                    if (!error) showClassSessions();
+                    else showErrorUI();
+
                 });
     }
 
