@@ -1,0 +1,257 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Gescov</string>
+    <string name="app_name_menu">Gescov S.L. </string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_register">Register</string>
+    <string name="action_log_in">Log in</string>
+    <string name="welcome">"Benvingut"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="username">Username</string>
+    <string name="GescovVersion">V1.0.0</string>
+    <string name="title_activity_navigation_menu">NavigationMenu</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">gescov19@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Configuration</string>
+
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_schools_administration">Schools administration</string>
+    <string name="Catalan_visualizar_aula">View classroom</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- School Administration -->
+    <string name="menu_home">Inicio</string>
+
+    <!-- Forum -->
+    <string name="forum_title">News wall</string>
+    <string name="create_forum_entry_button">Create post</string>
+    <string name="create_forum_check_content">Content can not be empty</string>
+    <string name="create_forum_check_title">Title can not be empty</string>
+
+
+    <!-- School Administration -->
+    <string name="create_school_form_school_name">Shool name</string>
+    <string name="create_school_form_school_code">School code</string>
+    <string name="create_school_form_school_button">Create School</string>
+    <string name="create_school_form_school_phone">Telephone number</string>
+    <string name="create_school_form_school_website">Web page</string>
+    <string name="create_school_form_school_address_example">nº Street Name, Town</string>
+    <string name="create_school_form_latitude">Latitude</string>
+    <string name="create_school_form_longitude">Longitude</string>
+
+
+    <!-- User all schools -->
+    <string name="user_all_schools_title">All the schools</string>
+
+    <!-- User my schools -->
+    <string name="my_schools_title">My schools</string>
+
+    <string name="Catalan_create_school_form_school_name">School Name</string>
+    <string name="Catalan_create_school_form_school_address">School Address</string>
+    <string name="Catalan_create_school_form_school_state">School state</string>
+    <string name="Catalan_create_school_form_school_code">School code</string>
+    <string name="Catalan_create_school_form_school_button">Create school</string>
+    <string name="create_school_validate_fields">Validate the fields, please.</string>
+
+
+    <!-- School Details -->
+    <string name="school_details_delete_school">Delete school</string>
+    <string name="school_details_protocol_access">Protocols</string>
+    <string name="school_details_users_list">Users list</string>
+    <string name="school_details_classrooms_list">Classrooms list</string>
+    <string name="school_details_request_list">Requests</string>
+    <string name="school_details_join">Request access</string>
+    <string name="school_details_confirm_delete_message">Are you sure to delete this school?</string>
+    <string name="title_school_details">School details</string>
+
+
+    <!-- School user lists -->
+    <string name="school_user_list_admin">Administrator</string>
+    <string name="school_user_list_creator">Creator</string>
+    <string name="school_user_list_teacher">Teacher</string>
+    <string name="school_user_list_student">Student</string>
+
+    <!-- School Requests -->
+    <string name="school_requests_title">School requests</string>
+    <!-- School Requests list item -->
+    <string name="school_requests_list_item_accept">Acceptr</string>
+    <string name="school_requests_list_item_reject">Reject</string>
+
+    <!-- User School list item -->
+    <string name="user_school_make_admin_message_1">Do you want to upgrade </string>
+    <string name="user_school_make_admin_message_2"> as an administrator of this center?</string>
+    <string name="user_school_unmake_admin_message_1">Do you want </string>
+    <string name="user_school_unmake_admin_message_2"> to lose the administrator privileges of this center?</string>
+
+
+    <!-- Classrooms -->
+    <string name="classroom_rows">Rows</string>
+    <string name="classroom_cols">Columns</string>
+    <string name="classroom_capacity">Places</string>
+    <string name="create_classroom_form_delete">Delete classroom</string>
+    <string name="classroom_confirm_delete_message">Are you sure to delete this classroom?</string>
+
+
+    <!-- Classroom distribution -->
+    <string name="Catalan_classroom_name">Classroom</string>
+    <string name="Catalan_mark_position">Check position</string>
+    <string name="Catalan_confirmation_Question">Do you want to check your assistance in this position?</string>
+    <string name="Catalan_table_already_assigned">This place is already used by somebody.</string>
+    <string name="Catalan_table_not_available">You can not take this place.</string>
+    <string name="Catalan_successful_reservation">Reservation completed successfully</string>
+    <string name="catalan_tableStatus_Free">Free</string>
+    <string name="create_classroom_form_name">Classroom name</string>
+    <string name="create_classroom_form_capacity">Capacity</string>
+    <string name="create_classroom_form_rows">Rows</string>
+    <string name="create_classroom_form_cols">Columns</string>
+    <string name="create_classroom_form_button">Create classroom</string>
+
+
+    <!-- Llista de Contagis -->
+    <string name="contagionlist">Contagion List</string>
+    <string name="contagion_list">Contagion List</string>
+    <string name="title_activity_school_classrom_list">Classrooms</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="title_activity_contagion_list">Contagion List</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- Sign in -->
+    <string name="welcome_hint">Bienvenido</string>
+    <string name="name_hint">Nombre y apellido</string>
+    <string name="introduce_email_hint">Correo electronico</string>
+    <string name="Password_hint">Contraseña</string>
+    <string name="sign_in_button_text">Registrate</string>
+    <string name="sign_in_text">Iniciar sessión</string>
+    <string name="server_client_id">"673967911868-q9jgm7i3ijsjn0ft3bs6avvpot02a0nl.apps.googleusercontent.com"</string>
+
+
+    <!-- Log out-->
+    <string name="logout_text">Close session</string>
+    <string name="logout_successful">Session closed successfully</string>
+    <string name="confirm_logout">Are you sure to close this session?</string>
+
+
+    <!-- Strings used for daily test -->
+    <string name="dailyTest">Do your tracking test</string>
+    <string name="firstQuestion">Have you got continued dry cough?</string>
+    <string name="yes">Si</string> <!-- also used on chatlist fragment -->
+    <string name="no">No</string> <!-- also used on chatlist fragment -->
+    <string name="secondQuestion">Have you got muscular pain?</string>
+    <string name="thirdQuestion">Did you recently have taste or smell lose?</string>
+    <string name="fourthQuestion">Do you feel lacking of air?</string>
+    <string name="fifthQuestion">Do you have fever? (+37.7°C)  </string>
+    <string name="titleTests">Which symptoms do you have? </string>
+    <string name="sendAnswers">End test </string>
+
+    <!-- Strings notifying the state -->
+    <string name="notify_state">Notify state</string>
+    <string name="succesPositiveNotification">Your positive has been notified successfully.</string>
+    <string name="succesRecoveryNotification">Your recovery has been notified successfully.</string>
+    <string name="succesPossiblePositiveNotification">You contagion has been notified successfully.</string>
+    <string name="notify_positive">Notify your positive.</string>
+    <string name="notify_possible">Notify your possible positive.</string>
+    <string name="notify_recovery">Notify your recovery</string>
+    <string name="covid_notification_title">COVID notification</string>
+
+    <!-- home -->
+    <string name="home_risk">Risk user</string>
+    <string name="home_not_risk">Non-risk user</string>
+
+    <!-- default -->
+    <string name="edit">Edit</string>
+    <string name="update">Update</string>
+    <string name="apply">Accept</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+
+    <!-- Strings students in classroom Record -->
+    <string name="class_record_activity_title">Users record in a classroom</string>
+    <string name="alummne_assegut_a">"Student sit in the row "</string>
+    <string name="alumne_assegut_a_columna">", column: "</string>
+    <string name="error_no_students_in_this_classroom">No student has been in this classroom yet.</string>
+    <string name="title_activity_classroom_distribution">Classroom distribution</string>
+
+    <!-- Chat Fragment -->
+    <string name="chat_fragment_menu_text">Chats</string>
+    <string name="your_chats_text">My personal chats</string>
+    <string name="options">Options</string>
+    <string name="confirm_delete_chat_message">Are you sure to delete this chat?</string>
+    <string name="yes_delete_chat">Delete</string>
+    <string name="no_delete_chat">Cancel</string>
+
+
+    <!-- Create chat -->
+
+    <string name="title_activity_create_chat">Contacts from this school</string>
+    <string name="loading_user_schools_text">Loading your schools information</string>
+    <string name="loading_afiliates_from_selected_center">Loading school contacts</string>
+    <string name="creating_chat_text">Creating chat...</string>
+
+    <!-- Strings for the Map -->
+    <string name="mapa_text">Map</string>
+    <string name="write_message_hint">Write your message</string>
+
+    <!-- Strings for the Ranking -->
+    <string name="ranking_name">School ranking</string>
+    <string name="error_while_creating_chat">There has been an error while the chat was being created</string>
+    <string name="no_messages_yet_text">No messages sent yet</string>
+
+
+    <!-- Access school by code activity -->
+    <string name="access_school_by_code_entry">Write your code here</string>
+    <string name="access_school_by_code_title">School code</string>
+    <string name="access_school_by_code_button">Request access</string>
+
+    <!-- Strings for the Ranking -->
+    <string name="view_graph">View Graphic</string>
+    <string name="first_month">January</string>
+    <string name="second_month">February</string>
+    <string name="third_month">March</string>
+    <string name="fourth_month">April</string>
+    <string name="fifth_month">May</string>
+    <string name="sixth_month">Jun</string>
+    <string name="seventh_month">July</string>
+    <string name="eighth_month">August</string>
+    <string name="nineth_month">September</string>
+    <string name="tenth_month">October</string>
+    <string name="elventh_month">November</string>
+    <string name="twelvth_month">December</string>
+    <string name="evolution">"Contagion evolution in "</string>
+    <string name="months">months</string>
+    <string name="axeYContagions">Contagion</string>
+
+    <!-- Strings for the Subjects -->
+    <string name="show_subject">See subjects</string>
+    <string name="subjects_activity_title">School subjects</string>
+    <string name="add_teacher_to_subject">Add teacher</string>
+    <string name="add_student_to_subject">Subscribe</string>
+    <string name="assigned_successfuly">Added to the subject successfully</string>
+    <string name="subjects">Subjects</string>
+    <string name="title_activity_add_teacher_subject">Add teacher to a subject</string>
+    <string name="teacher_added_succesfully">Teacher has been added successfully</string>
+    <string name="teacher_not_added">Teacher could not be added to the subject.</string>
+    <string name="create_class_session_button">Create class session</string>
+    <string name="check_class_session_button">See class session</string>
+    <string name="subjects_details_activity_title">Subject details</string>
+    <string name="check_class_session_activity_title">Class session</string>
+    <string name="create_class_session_activity_title">Create class sessions</string>
+
+    <string name="forum">News</string>
+</resources>
