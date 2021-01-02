@@ -240,4 +240,13 @@
     <string name="subjects_details_activity_title">Detalls de l\'assignatura</string>
 
     <string name="forum">Noticies</string>
+
+
+    <!-- Strings for the event -->
+    <string name="event_title">Titol:</string>
+    <string name="event_description">Descripció:</string>
+    <string name="event_form">Esdeveniment Form</string>
+    <string name="event_prepare">Prepara Tu Esdeveniment</string>
+    <string name="create_event">Crear Esdeveniment</string>
+
 </resources>

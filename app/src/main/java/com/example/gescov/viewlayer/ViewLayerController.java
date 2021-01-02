@@ -400,4 +400,12 @@ public class ViewLayerController {
     public void notifyAssignedTeacher(boolean error) {
         PresentationControlFactory.getSubjectController().notifyAssignedTeacher(error);
     }
+
+    public void getGuests(String subjectID) {
+        DomainControlFactory.getModelController().getGuests(subjectID);
+    }
+
+    public void sendResponseOfGuests(List<User> guests) {
+        PresentationControlFactory.getEventController().sendResponseOfGuests(guests);
+    }
 }

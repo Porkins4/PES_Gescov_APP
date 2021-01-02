@@ -382,4 +382,12 @@ public class ModelController {
     public void notifyAssignedTeacher(boolean error) {
         PresentationControlFactory.getViewLayerController().notifyAssignedTeacher(error);
     }
+
+    public void getGuests(String subjectID) {
+        DomainControlFactory.getEventModelController().getGuests(subjectID);
+    }
+
+    public void sendResponseOfGuests(List<User> guests) {
+        PresentationControlFactory.getViewLayerController().sendResponseOfGuests(guests);
+    }
 }

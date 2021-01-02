@@ -1,5 +1,6 @@
 package com.example.gescov.domainlayer.Singletons;
 
+import com.example.gescov.domainlayer.Controllers.EventModelController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.CreateRequestToSchoolResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteSchoolAdminResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteSchoolClassroomResponseController;
@@ -20,6 +21,7 @@ import com.example.gescov.domainlayer.Services.Volley.Implementors.AssignmentSer
 import com.example.gescov.domainlayer.Services.Volley.Implementors.ChatServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.ClassroomServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.ContagionServiceImplementor;
+import com.example.gescov.domainlayer.Services.Volley.Implementors.EventServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.SchoolServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.SubjectsServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.UserServiceImplementor;
@@ -27,6 +29,7 @@ import com.example.gescov.domainlayer.Services.Volley.Interfaces.IAssignmentServ
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IChatService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IClassroomService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IContagionService;
+import com.example.gescov.domainlayer.Services.Volley.Interfaces.IEventService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISubjectsService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IUserService;
@@ -48,6 +51,7 @@ public class ServicesFactory {
     private static IAssignmentService assignmentService;
     private static IChatService chatService;
     private static ISubjectsService subjectsService;
+    private static IEventService eventService;
 
     //retrofit
     private static DeleteSchoolResponseController deleteSchoolResponseController;
@@ -224,5 +228,11 @@ public class ServicesFactory {
         if (subjectsService != null) return subjectsService;
         subjectsService = new SubjectsServiceImplementor();
         return subjectsService;
+    }
+
+    public static IEventService getEventService() {
+        if (eventService != null) return eventService;
+        eventService = new EventServiceImplementor();
+        return eventService;
     }
 }

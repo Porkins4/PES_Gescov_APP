@@ -136,6 +136,10 @@ public class User {
         this.schoolsID = schoolsID;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public String getId() {
         return id;
     }

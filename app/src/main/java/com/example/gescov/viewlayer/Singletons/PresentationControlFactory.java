@@ -17,6 +17,7 @@ import com.example.gescov.viewlayer.ViewLayerController;
 import com.example.gescov.viewlayer.chat.chatlist.ChatListController;
 import com.example.gescov.viewlayer.chat.chatview.ChatViewController;
 import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
+import com.example.gescov.viewlayer.event.EventController;
 import com.example.gescov.viewlayer.home.HomeController;
 import com.example.gescov.viewlayer.home.NotifyContagionController;
 import com.example.gescov.viewlayer.home.TracingTestController;
@@ -45,6 +46,7 @@ public class PresentationControlFactory {
     private static HomeController homeController;
 
     private static ChatViewController chatViewController;
+    private static EventController eventController;
 
 
     public static ViewLayerController getViewLayerController() {
@@ -186,5 +188,12 @@ public class PresentationControlFactory {
             return subjectController;
         subjectController = new SubjectController();
         return subjectController;
+    }
+
+    public static EventController getEventController() {
+        if (eventController != null)
+            return eventController;
+        eventController = new EventController();
+        return eventController;
     }
 }
