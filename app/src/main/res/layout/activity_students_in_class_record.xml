@@ -75,7 +75,7 @@
         app:layout_constraintStart_toStartOf="@+id/students_in_class_record_list_view">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/error_image"
             android:layout_width="349dp"
             android:layout_height="93dp"
             app:srcCompat="?android:attr/alertDialogIcon" />

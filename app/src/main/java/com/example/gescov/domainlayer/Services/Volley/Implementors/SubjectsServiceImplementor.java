@@ -10,7 +10,8 @@ import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 
 public class SubjectsServiceImplementor implements ISubjectsService {
     private static final String  SCHOOL_SUBJECTS = "https://gescov.herokuapp.com/api/subjects/schools/";
-    private static final String ADD_USER_SUBJECT = "https://gescov.herokuapp.com/api/subjects/";
+    private static final String SUBJECTS_URI = "https://gescov.herokuapp.com/api/subjects/";
+    private static final String  CLASS_SESSION_BY_SUBJECT = "https://gescov.herokuapp.com/api/classSessions/subject/";
 
 
     @Override
@@ -28,7 +29,7 @@ public class SubjectsServiceImplementor implements ISubjectsService {
     @Override
     public void assignUserToSubject(String subjectID, String userID, int activityIdentifier) {
         StringRequest stringRequest = new StringRequest(
-                Request.Method.PUT, ADD_USER_SUBJECT + subjectID + "?userID=" +userID,
+                Request.Method.PUT, SUBJECTS_URI + subjectID + "?userID=" +userID,
                 response -> {
                     DomainControlFactory.getUserModelController().setSubjectID(subjectID,false, activityIdentifier);
                 },
@@ -36,6 +37,26 @@ public class SubjectsServiceImplementor implements ISubjectsService {
                     DomainControlFactory.getUserModelController().setSubjectID(subjectID,true, activityIdentifier);
                 });
         VolleyServices.getRequestQueue().add(stringRequest);
+    }
+
+    @Override
+    public void getClassSessions(String subjectID) {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET, CLASS_SESSION_BY_SUBJECT + subjectID, null,
+                response -> DomainControlFactory.getClassSessionsModelController().setClassSessionsResult(false,response),
+                error -> DomainControlFactory.getClassSessionsModelController().setClassSessionsResult(true,null)
+                );
+        VolleyServices.getRequestQueue().add(jsonArrayRequest);
+    }
+
+    @Override
+    public void getSubjectsFromUser(String userID) {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET, SUBJECTS_URI + "user/" + userID, null,
+                response -> DomainControlFactory.getSubjectModelController().setSubjectsFromUserResult(false,response),
+                error -> DomainControlFactory.getSubjectModelController().setSubjectsFromUserResult(true,null)
+        );
+        VolleyServices.getRequestQueue().add(jsonArrayRequest);
     }
 
 

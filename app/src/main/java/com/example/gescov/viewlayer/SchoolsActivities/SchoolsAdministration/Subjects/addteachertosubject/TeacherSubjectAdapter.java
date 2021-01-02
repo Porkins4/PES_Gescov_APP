@@ -3,7 +3,6 @@ package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Sub
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gescov.R;

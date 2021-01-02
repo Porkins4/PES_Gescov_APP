@@ -1,6 +1,9 @@
 package com.example.gescov.viewlayer.Singletons;
 
 
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.gescov.domainlayer.Classmodels.Subject;
 import com.example.gescov.viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroomController;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionController;
 import com.example.gescov.viewlayer.Map.MapController;
@@ -15,14 +18,17 @@ import com.example.gescov.viewlayer.ViewLayerController;
 import com.example.gescov.viewlayer.chat.chatlist.ChatListController;
 import com.example.gescov.viewlayer.chat.chatview.ChatViewController;
 import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
+
+import com.example.gescov.viewlayer.event.EventController;
 import com.example.gescov.viewlayer.forum.ForumController;
+
 import com.example.gescov.viewlayer.home.HomeController;
 import com.example.gescov.viewlayer.home.NotifyContagionController;
 import com.example.gescov.viewlayer.home.TracingTestController;
 import com.example.gescov.viewlayer.ranking.RankingController;
 import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
 
-import androidx.lifecycle.ViewModelProvider;
+import java.util.List;
 
 public class PresentationControlFactory {
     private static ViewLayerController viewLayerController;
@@ -46,7 +52,11 @@ public class PresentationControlFactory {
     private static HomeController homeController;
 
     private static ChatViewController chatViewController;
+
+    private static EventController eventController;
+
     private static ForumController forumController;
+
 
 
     public static ViewLayerController getViewLayerController() {
@@ -96,7 +106,7 @@ public class PresentationControlFactory {
         return studentsInClassSessionController;
     }
 
-    public static TracingTestController getTracingTestControllerController() {
+    public static TracingTestController getTracingTestController() {
         if (tracingTestController != null)
             return tracingTestController;
         tracingTestController = new TracingTestController();
@@ -190,11 +200,18 @@ public class PresentationControlFactory {
         return subjectController;
     }
 
+
+    public static EventController getEventController() {
+        if (eventController != null)
+            return eventController;
+        eventController = new EventController();
+        return eventController;
+    }
+
     public static ForumController getForumController() {
         if (forumController != null)
             return forumController;
         forumController = new ForumController();
         return forumController;
     }
-
 }

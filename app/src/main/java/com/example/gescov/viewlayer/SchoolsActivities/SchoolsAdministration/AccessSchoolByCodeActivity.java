@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class AccessSchoolByCodeActivity extends AppCompatActivity {
 

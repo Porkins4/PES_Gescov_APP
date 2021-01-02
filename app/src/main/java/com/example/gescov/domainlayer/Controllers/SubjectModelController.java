@@ -12,6 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SubjectModelController {
+
+    private List<Subject> userSubjects;
+
+    public SubjectModelController() {
+        userSubjects = new ArrayList<>();
+    }
+
     public void getSubjects(String schooldID) {
         ServicesFactory.getSubjectsService().getSubjects(schooldID);
     }
@@ -20,20 +27,7 @@ public class SubjectModelController {
         List<Subject> subjects = new ArrayList<>();
         for ( int i = 0; i < response.length(); ++i) {
             try {
-                JSONObject subjectJson = response.getJSONObject(i);
-                JSONArray students = subjectJson.getJSONArray("studentsID");
-                List<String> studentsID = new ArrayList<>();
-               for (int j  = 0; j < students.length(); ++j) {
-                   String studentID = students.getString(j);
-                   studentsID.add(studentID);
-               }
-               JSONArray teachers = subjectJson.getJSONArray("teachersID");
-                List<String> teachersID = new ArrayList<>();
-               for (int j = 0; j < teachers.length(); ++j) {
-                   String teacherID = teachers.getString(j);
-                   teachersID.add(teacherID);
-               }
-               Subject subject = new Subject(subjectJson.getString("id"),subjectJson.getString("name"), subjectJson.getString("schoolID"),studentsID,teachersID);
+               Subject subject = Subject.fromJSONtoSubject(response.getJSONObject(i));
                subjects.add(subject);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -45,5 +39,24 @@ public class SubjectModelController {
 
     public void assignUserToSubject(String subjectID, String userID, int activityIdentifier) {
         ServicesFactory.getSubjectsService().assignUserToSubject(subjectID,userID,activityIdentifier);
+    }
+
+    public void getSubjectsFromUser() {
+        ServicesFactory.getSubjectsService().getSubjectsFromUser(DomainControlFactory.getUserModelController().getUserId());
+    }
+
+    public void setSubjectsFromUserResult(boolean error, JSONArray response) {
+        userSubjects = new ArrayList<>();
+        if (!error) {
+            try {
+                for (int i = 0; i < response.length(); ++i) {
+                        Subject s = Subject.fromJSONtoSubject(response.getJSONObject(i));
+                        userSubjects.add(s);
+                }
+            } catch (JSONException e) {
+                error = true;
+            }
+        }
+        DomainControlFactory.getModelController().setSubjectsFromUserResult(error,userSubjects);
     }
 }

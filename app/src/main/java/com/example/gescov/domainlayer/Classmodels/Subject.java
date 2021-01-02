@@ -1,5 +1,12 @@
 package com.example.gescov.domainlayer.Classmodels;
 
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Subject {
@@ -8,6 +15,7 @@ public class Subject {
     private List<String> teachers;
     private String schoolID;
     private List<String> students;
+    private String schoolName;
 
     public Subject(String id, String name,  String schoolID, List<String> students, List<String> teachers) {
         this.id = id;
@@ -15,6 +23,30 @@ public class Subject {
         this.teachers = teachers;
         this.schoolID = schoolID;
         this.students = students;
+    }
+
+    public static Subject fromJSONtoSubject(JSONObject response) {
+        try {
+            String id = response.getString("id");
+            String name = response.getString("name");
+            String schoolID = response.getString("schoolID");
+            List<String> studentsID = new ArrayList<>();
+            JSONArray students = response.getJSONArray("studentsID");
+            for (int i  = 0; i < students.length(); ++i) {
+                String studentID = students.getString(i);
+                studentsID.add(studentID);
+            }
+            List<String> teachersID = new ArrayList<>();
+            JSONArray teachers = response.getJSONArray("teachersID");
+            for (int i  = 0; i < teachers.length(); ++i) {
+                String teacherID = teachers.getString(i);
+                teachersID.add(teacherID);
+            }
+            return new Subject(id,name,schoolID,studentsID,teachersID);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public String getId() {

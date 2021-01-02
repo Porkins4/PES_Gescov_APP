@@ -2,14 +2,18 @@ package com.example.gescov.domainlayer.Controllers;
 
 import android.util.Pair;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
+import com.example.gescov.domainlayer.Classmodels.ClassSessionModel;
 import com.example.gescov.domainlayer.Classmodels.Classroom;
 import com.example.gescov.domainlayer.Classmodels.MessageModel;
 import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.SchoolRequest;
 import com.example.gescov.domainlayer.Classmodels.Subject;
+import com.example.gescov.domainlayer.Classmodels.TracingTest;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.domainlayer.Classmodels.WallEntry;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
@@ -25,8 +29,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import org.json.JSONException;
 
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
 
 public class ModelController {
 
@@ -384,6 +386,15 @@ public class ModelController {
         PresentationControlFactory.getViewLayerController().notifyAssignedTeacher(error);
     }
 
+
+    public void getGuests(String subjectID) {
+        DomainControlFactory.getEventModelController().getGuests(subjectID);
+    }
+
+    public void sendResponseOfGuests(List<User> guests) {
+        PresentationControlFactory.getViewLayerController().sendResponseOfGuests(guests);
+    }
+
     public void setUserToken(String token) {
         DomainControlFactory.getUserModelController().setUserToken(token);
     }
@@ -406,5 +417,30 @@ public class ModelController {
 
     public School getSchoolById(String schoolId) {
        return DomainControlFactory.getSchoolsModelCrontroller().getSchoolById(schoolId);
+    }
+
+
+    public void getResults(String userID) {
+        DomainControlFactory.getTracingTestResultModel().getTestResults(userID);
+    }
+
+    public void sendTestAnswers(List<TracingTest> results) {
+        PresentationControlFactory.getViewLayerController().sendTestAnswers(results);
+    }
+
+    public void getClassSessions(String subjectID) {
+        DomainControlFactory.getClassSessionsModelController().getClassSessions(subjectID);
+    }
+
+    public void getClassSessionsResult(boolean error, List<ClassSessionModel> classSessions) {
+        PresentationControlFactory.getViewLayerController().getClassSessionsResult(error,classSessions);
+    }
+
+    public void getSubjectsFromUser() {
+        DomainControlFactory.getSubjectModelController().getSubjectsFromUser();
+    }
+
+    public void setSubjectsFromUserResult(boolean error, List<Subject> userSubjects) {
+        PresentationControlFactory.getViewLayerController().setSubjectsFromUserResult(error,userSubjects);
     }
 }

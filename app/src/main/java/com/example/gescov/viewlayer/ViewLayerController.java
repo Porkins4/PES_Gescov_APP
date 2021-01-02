@@ -3,14 +3,18 @@ package com.example.gescov.viewlayer;
 import android.location.Location;
 import android.util.Pair;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
+import com.example.gescov.domainlayer.Classmodels.ClassSessionModel;
 import com.example.gescov.domainlayer.Classmodels.Classroom;
 import com.example.gescov.domainlayer.Classmodels.MessageModel;
 import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.SchoolRequest;
 import com.example.gescov.domainlayer.Classmodels.Subject;
+import com.example.gescov.domainlayer.Classmodels.TracingTest;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.domainlayer.Classmodels.WallEntry;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
@@ -26,8 +30,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import org.json.JSONException;
 
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
 
 
 public class ViewLayerController {
@@ -402,6 +404,15 @@ public class ViewLayerController {
         PresentationControlFactory.getSubjectController().notifyAssignedTeacher(error);
     }
 
+
+    public void getGuests(String subjectID) {
+        DomainControlFactory.getModelController().getGuests(subjectID);
+    }
+
+    public void sendResponseOfGuests(List<User> guests) {
+        PresentationControlFactory.getEventController().sendResponseOfGuests(guests);
+    }
+
     public void setUserToken(String token) {
         DomainControlFactory.getModelController().setUserToken(token);
     }
@@ -424,5 +435,32 @@ public class ViewLayerController {
 
     public School getSchoolById(String schoolId) {
         return DomainControlFactory.getModelController().getSchoolById(schoolId);
+    }
+
+
+    public void getResults(String userID) {
+        DomainControlFactory.getModelController().getResults(userID);
+    }
+
+    public void sendTestAnswers(List<TracingTest> results) {
+        PresentationControlFactory.getTracingTestController().sendTestAnswers(results);
+    }
+
+    public void getClassSessions(String subjectID) {
+        DomainControlFactory.getModelController().getClassSessions(subjectID);
+    }
+
+    public void getClassSessionsResult(boolean error, List<ClassSessionModel> classSessions) {
+        PresentationControlFactory.getSubjectController().getClassSessionsResult(error,classSessions);
+
+    }
+
+    public void getSubjectsFromUser() {
+        DomainControlFactory.getModelController().getSubjectsFromUser();
+    }
+
+    public void setSubjectsFromUserResult(boolean error, List<Subject> userSubjects) {
+        PresentationControlFactory.getSubjectController().setSubjectsFromUserResult(error,userSubjects);
+
     }
 }
