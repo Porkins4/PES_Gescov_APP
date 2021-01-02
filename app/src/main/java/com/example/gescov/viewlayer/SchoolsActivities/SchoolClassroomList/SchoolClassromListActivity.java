@@ -32,8 +32,6 @@ public class SchoolClassromListActivity extends AppCompatActivity {
         controller.setListViewAdapter(this);
         ClassroomListViewAdapter adapter = controller.getListViewAdapter();
         list.setAdapter(adapter);
-
         controller.refreshList();
-
     }
 }
