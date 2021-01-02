@@ -404,6 +404,15 @@ public class ViewLayerController {
         PresentationControlFactory.getSubjectController().notifyAssignedTeacher(error);
     }
 
+
+    public void getGuests(String subjectID) {
+        DomainControlFactory.getModelController().getGuests(subjectID);
+    }
+
+    public void sendResponseOfGuests(List<User> guests) {
+        PresentationControlFactory.getEventController().sendResponseOfGuests(guests);
+    }
+
     public void setUserToken(String token) {
         DomainControlFactory.getModelController().setUserToken(token);
     }
@@ -452,5 +461,6 @@ public class ViewLayerController {
 
     public void setSubjectsFromUserResult(boolean error, List<Subject> userSubjects) {
         PresentationControlFactory.getSubjectController().setSubjectsFromUserResult(error,userSubjects);
+
     }
 }

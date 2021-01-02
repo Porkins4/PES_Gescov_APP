@@ -260,9 +260,20 @@
     <string name="create_class_session_activity_title">Crear sessió de classe</string>
 
     <string name="forum">Noticies</string>
+
+
+
+    <!-- Strings for the event -->
+    <string name="event_title">Titol:</string>
+    <string name="event_description">Descripció:</string>
+    <string name="event_form">Esdeveniment Form</string>
+    <string name="event_prepare">Prepara Tu Esdeveniment</string>
+    <string name="create_event">Crear Esdeveniment</string>
+
     <string name="general_error_message">S\'ha produït un error</string>
     <string name="no_subjects_from_user">No t\'has apuntat a cap asignatura encara</string>
     <string name="subjects_fragment_title">Assignatures</string>
     <string name="enrolled_professors_text_item">"Professors: "</string>
     <string name="enrolled_users_text_item">"Matriculats: "</string>
+
 </resources>

@@ -386,6 +386,15 @@ public class ModelController {
         PresentationControlFactory.getViewLayerController().notifyAssignedTeacher(error);
     }
 
+
+    public void getGuests(String subjectID) {
+        DomainControlFactory.getEventModelController().getGuests(subjectID);
+    }
+
+    public void sendResponseOfGuests(List<User> guests) {
+        PresentationControlFactory.getViewLayerController().sendResponseOfGuests(guests);
+    }
+
     public void setUserToken(String token) {
         DomainControlFactory.getUserModelController().setUserToken(token);
     }

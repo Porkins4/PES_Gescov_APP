@@ -4,13 +4,18 @@ import com.example.gescov.domainlayer.Controllers.AssignmentsModelController;
 import com.example.gescov.domainlayer.Controllers.ChatModelController;
 import com.example.gescov.domainlayer.Controllers.ClassSessionController;
 import com.example.gescov.domainlayer.Controllers.ClassroomsModelController;
+
+import com.example.gescov.domainlayer.Controllers.EventModelController;
+
 import com.example.gescov.domainlayer.Controllers.ForumModelController;
+
 import com.example.gescov.domainlayer.Controllers.ModelController;
 import com.example.gescov.domainlayer.Controllers.SchoolRequestModelController;
 import com.example.gescov.domainlayer.Controllers.SchoolsModelController;
 import com.example.gescov.domainlayer.Controllers.SubjectModelController;
 import com.example.gescov.domainlayer.Controllers.TracingTestResultController;
 import com.example.gescov.domainlayer.Controllers.UserModelController;
+import com.example.gescov.viewlayer.event.EventController;
 
 public class DomainControlFactory {
     private static SchoolsModelController schoolsModelController;
@@ -21,9 +26,13 @@ public class DomainControlFactory {
     private static SchoolRequestModelController schoolRequestModelController;
     private static ChatModelController chatModelController;
     private static SubjectModelController subjectModelController;
+
+    private static EventModelController eventModelController;
+
     private static ForumModelController forumModelController;
     private static TracingTestResultController tracingTestResultController;
     private static ClassSessionController classSessionController;
+
 
     public static SchoolsModelController getSchoolsModelCrontroller() {
         if (schoolsModelController != null)
@@ -79,6 +88,14 @@ public class DomainControlFactory {
             return subjectModelController;
         subjectModelController = new SubjectModelController();
         return subjectModelController;
+    }
+
+
+    public static EventModelController getEventModelController() {
+        if (eventModelController != null)
+            return eventModelController;
+        eventModelController = new EventModelController();
+        return eventModelController;
     }
 
     public static ForumModelController getForumModelController() {
