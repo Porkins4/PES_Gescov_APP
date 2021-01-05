@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects;
+package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.subjects;
 
 import com.example.gescov.domainlayer.Classmodels.ClassSessionModel;
 import com.example.gescov.domainlayer.Classmodels.Subject;
@@ -6,6 +6,7 @@ import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.addteachertosubject.AddTeacherToSubjectViewModel;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.checkclasssession.CheckClassSessionViewModel;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.createsubject.CreateSubjectViewModel;
 import com.example.gescov.viewlayer.subjectsofuser.SubjectsFromUserViewModel;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class SubjectController {
     private AddTeacherToSubjectViewModel addTeacherToSubjectViewModel;
     private CheckClassSessionViewModel checkClassSessionViewModel;
     private SubjectsFromUserViewModel subjectsFromUserViewModel;
+    private CreateSubjectViewModel createSubjectViewModel;
 
     public void setSubjectViewModel(SubjectViewModel subjectViewModel) {
         this.subjectViewModel = subjectViewModel;
@@ -80,5 +82,17 @@ public class SubjectController {
 
     public void setSubjectsFromUserResult(boolean error, List<Subject> userSubjects) {
         this.subjectsFromUserViewModel.setSubjectsFromUserResult(error,userSubjects);
+    }
+
+    public void setCreateSubjectViewModel(CreateSubjectViewModel createSubjectViewModel) {
+        this.createSubjectViewModel = createSubjectViewModel;
+    }
+
+    public void createSubject(String subjectName, String schoolID) {
+        PresentationControlFactory.getViewLayerController().createSubject(subjectName, schoolID);
+    }
+
+    public void setCreateSubjectResult(boolean error) {
+        createSubjectViewModel.setCreateSubjectResult(error);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer.event;
+package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.event;
 
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;

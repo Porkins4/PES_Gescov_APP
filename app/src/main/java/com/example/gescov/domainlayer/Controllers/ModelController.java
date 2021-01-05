@@ -443,4 +443,12 @@ public class ModelController {
     public void setSubjectsFromUserResult(boolean error, List<Subject> userSubjects) {
         PresentationControlFactory.getViewLayerController().setSubjectsFromUserResult(error,userSubjects);
     }
+
+    public void createSubject(String subjectName, String schoolID) {
+        DomainControlFactory.getSubjectModelController().createSubject(subjectName,schoolID);
+    }
+
+    public void setCreateSubjectResult(boolean error) {
+        PresentationControlFactory.getViewLayerController().setCreateSubjectResult(error);
+    }
 }

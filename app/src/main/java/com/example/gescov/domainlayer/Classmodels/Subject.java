@@ -17,32 +17,39 @@ public class Subject {
     private List<String> students;
     private String schoolName;
 
-    public Subject(String id, String name,  String schoolID, List<String> students, List<String> teachers) {
+    public Subject(String id, String name,  String schoolID, String schoolName, List<String> students, List<String> teachers) {
         this.id = id;
         this.name = name;
         this.teachers = teachers;
         this.schoolID = schoolID;
+        this.schoolName = schoolName;
         this.students = students;
     }
 
     public static Subject fromJSONtoSubject(JSONObject response) {
         try {
-            String id = response.getString("id");
-            String name = response.getString("name");
-            String schoolID = response.getString("schoolID");
+            JSONObject first = null;
+            String schoolName = "test";
+            if (response.has("first")) {
+                first = response.getJSONObject("first");
+                schoolName = response.getString("second");
+            } else first = response;
+            String id = first.getString("id");
+            String name = first.getString("name");
+            String schoolID = first.getString("schoolID");
             List<String> studentsID = new ArrayList<>();
-            JSONArray students = response.getJSONArray("studentsID");
+            JSONArray students = first.getJSONArray("studentsID");
             for (int i  = 0; i < students.length(); ++i) {
                 String studentID = students.getString(i);
                 studentsID.add(studentID);
             }
             List<String> teachersID = new ArrayList<>();
-            JSONArray teachers = response.getJSONArray("teachersID");
+            JSONArray teachers = first.getJSONArray("teachersID");
             for (int i  = 0; i < teachers.length(); ++i) {
                 String teacherID = teachers.getString(i);
                 teachersID.add(teacherID);
             }
-            return new Subject(id,name,schoolID,studentsID,teachersID);
+            return new Subject(id,name,schoolID,schoolName,studentsID,teachersID);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -59,6 +66,10 @@ public class Subject {
 
     public String getName() {
         return name;
+    }
+
+    public String getSchoolName() {
+        return schoolName;
     }
 
     public void setName(String name) {

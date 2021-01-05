@@ -463,4 +463,12 @@ public class ViewLayerController {
         PresentationControlFactory.getSubjectController().setSubjectsFromUserResult(error,userSubjects);
 
     }
+
+    public void createSubject(String subjectName, String schoolID) {
+        DomainControlFactory.getModelController().createSubject(subjectName, schoolID);
+    }
+
+    public void setCreateSubjectResult(boolean error) {
+        PresentationControlFactory.getSubjectController().setCreateSubjectResult(error);
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer.event;
+package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.event;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -12,9 +12,10 @@ import java.util.List;
 public class EventViewModel extends ViewModel {
     private MutableLiveData<Boolean> received;
     List<User> guests;
-
+    private String subjectID;
 
     public LiveData<Boolean> getGuests(String subjectID) {
+        this.subjectID = subjectID;
         received = new MutableLiveData<>();
         PresentationControlFactory.getEventController().setViewModel(this);
         PresentationControlFactory.getEventController().getGuests(subjectID);
@@ -28,5 +29,9 @@ public class EventViewModel extends ViewModel {
 
     public List<User> getListGuests() {
         return  guests;
+    }
+
+    public void createEvent() {
+
     }
 }
