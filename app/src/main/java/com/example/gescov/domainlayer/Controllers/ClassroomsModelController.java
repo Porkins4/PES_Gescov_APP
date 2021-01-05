@@ -28,8 +28,13 @@ public class ClassroomsModelController {
         try {
             response = new JSONArray(classroomsString);
             for (int i = 0; i < response.length(); ++i) {
-                Classroom c = Classroom.fromJSONtoClassroom(response.getJSONObject(i));
-                classroomsList.add(c);
+                JSONObject aux = response.getJSONObject(i);
+                String id = aux.getString("id");
+                String name = aux.getString("name");
+                int rows = aux.getInt("numRows");
+                int columns = aux.getInt("numCols");
+                String schoolID = aux.getString("schoolID");
+                classroomsList.add(new Classroom(id, name, rows, columns,schoolID));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -66,7 +71,17 @@ public class ClassroomsModelController {
     public void updateClassroomDistributionClassInfo(JSONObject response, boolean b) {
         Classroom c = new Classroom();
         if (!b) {
-            c = Classroom.fromJSONtoClassroom(response);
+            String classID = null;
+            try {
+                classID = response.getString("id");
+                String name = response.getString("name");
+                int rows = response.getInt("numRows");
+                int cols = response.getInt("numCols");
+                String schoolID = response.getString("schoolID");
+                c = new Classroom(classID,name,rows,cols,schoolID);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
         DomainControlFactory.getModelController().refreshClassroomDistributionClassInfo(c,b);
     }
