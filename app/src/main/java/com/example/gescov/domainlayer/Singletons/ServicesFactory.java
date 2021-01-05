@@ -1,10 +1,7 @@
 package com.example.gescov.domainlayer.Singletons;
 
 
-import com.example.gescov.domainlayer.Controllers.EventModelController;
-
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.CreateForumEntryResponseController;
-
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.CreateRequestToSchoolResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteSchoolAdminResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteSchoolClassroomResponseController;

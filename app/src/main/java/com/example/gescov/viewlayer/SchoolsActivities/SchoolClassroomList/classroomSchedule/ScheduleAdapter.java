@@ -7,22 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.anychart.core.Base;
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.Subject;
-import com.example.gescov.viewlayer.Templates.ModelListViewAdapter;
 
 import java.util.List;
 
 public class ScheduleAdapter extends BaseAdapter {
     private List<Subject> subjects;
-    private List<String> subjectsOfDay;
+    private List<Subject> subjectsOfDay;
     private LayoutInflater mInflater;
 
-    public ScheduleAdapter(Context c, List<String> list) {
+    public ScheduleAdapter(Context c, List<Subject> list) {
         subjectsOfDay = list;
         mInflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -43,7 +40,7 @@ public class ScheduleAdapter extends BaseAdapter {
         return position;
     }
 
-    public List<String> getSubjectsOfDay() {
+    public List<Subject> getSubjectsOfDay() {
         return subjectsOfDay;
     }
 
@@ -53,10 +50,12 @@ public class ScheduleAdapter extends BaseAdapter {
 
         TextView time = v.findViewById(R.id.time);
         TextView subjectName = v.findViewById(R.id.subject);
-        if ( !subjectsOfDay.isEmpty() && subjectsOfDay.get(position) != null ) subjectName.setText(subjectsOfDay.get(position));
+        if ( !subjectsOfDay.isEmpty() && subjectsOfDay.get(position) != null ) subjectName.setText(subjectsOfDay.get(position).getName());
         Integer from = position + 8;
         Integer end = from +1 ;
-        time.setText(from.toString() + "AM " +"- "+ end.toString()+"AM");
+        if ( from == 11 )time.setText(from.toString() + "AM " +"- "+ end.toString()+"PM");
+        else if ( from < 11) time.setText(from.toString() + "AM " +"- "+ end.toString()+"AM");
+        else time.setText(from.toString() + "PM " +"- "+ end.toString()+"PM");
         setListenerEdit(edit,v, position);
 
         return v;
@@ -70,7 +69,7 @@ public class ScheduleAdapter extends BaseAdapter {
             for (int i = 0 ; i  < subjects.size(); ++i)
                 options[i] = subjects.get(i).getName();
             builder.setItems(options,(dialog, which) -> {
-                subjectsOfDay.add(position, subjects.get(which).getName());
+                subjectsOfDay.add(position, subjects.get(which));
                 notifyDataSetChanged();
             });
             AlertDialog dialog = builder.create();

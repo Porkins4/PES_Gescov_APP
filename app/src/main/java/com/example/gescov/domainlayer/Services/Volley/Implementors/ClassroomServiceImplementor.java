@@ -60,4 +60,18 @@ public class ClassroomServiceImplementor implements IClassroomService {
         RequestQueue q = VolleyServices.getRequestQueue();
         q.add(request);
     }
+
+    @Override
+    public void setSchedule( JSONObject classSchedule,String classID) {
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST, GESCOV_CLASSROOMS_URI + classID+'/',classSchedule,
+                response -> {
+                },
+                error -> {
+                }
+        );
+        RequestQueue q = VolleyServices.getRequestQueue();
+        q.add(request);
+
+    }
 }

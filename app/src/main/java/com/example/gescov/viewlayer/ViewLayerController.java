@@ -471,4 +471,8 @@ public class ViewLayerController {
     public void setCreateSubjectResult(boolean error) {
         PresentationControlFactory.getSubjectController().setCreateSubjectResult(error);
     }
+
+    public void setSchedule(String classID, List<Subject> l1, List<Subject> l2, List<Subject> l3, List<Subject> l4, List<Subject> l5) {
+        DomainControlFactory.getModelController().setSchedule(classID,l1,l2,l3,l4,l5);
+    }
 }
