@@ -7,6 +7,7 @@ import com.example.gescov.viewlayer.ClassroomActivities.MarkPositionInClassroom.
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionController;
 import com.example.gescov.viewlayer.Map.MapController;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassroomsCrontroller;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.classroomSchedule.ScheduleController;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionController;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolsCrontroller;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectController;
@@ -19,7 +20,9 @@ import com.example.gescov.viewlayer.chat.chatview.ChatViewController;
 import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
 import com.example.gescov.viewlayer.event.EventController;
 import com.example.gescov.viewlayer.forum.ForumController;
+
 import com.example.gescov.viewlayer.forum.forumreply.ForumRepliesController;
+
 import com.example.gescov.viewlayer.home.HomeController;
 import com.example.gescov.viewlayer.home.NotifyContagionController;
 import com.example.gescov.viewlayer.home.TracingTestController;
@@ -54,7 +57,12 @@ public class PresentationControlFactory {
     private static EventController eventController;
 
     private static ForumController forumController;
+
+    private static ScheduleController scheduleController;
+
+
     private static ForumRepliesController forumRepliesController;
+
 
 
     public static ViewLayerController getViewLayerController() {
@@ -211,6 +219,14 @@ public class PresentationControlFactory {
             return forumController;
         forumController = new ForumController();
         return forumController;
+    }
+
+
+    public static ScheduleController getScheduleController() {
+        if (scheduleController != null)
+            return scheduleController;
+        scheduleController = new ScheduleController();
+        return scheduleController;
     }
 
     public static ForumRepliesController getForumRepliesController() {

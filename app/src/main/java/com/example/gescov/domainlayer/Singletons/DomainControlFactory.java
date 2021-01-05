@@ -4,17 +4,16 @@ import com.example.gescov.domainlayer.Controllers.AssignmentsModelController;
 import com.example.gescov.domainlayer.Controllers.ChatModelController;
 import com.example.gescov.domainlayer.Controllers.ClassSessionController;
 import com.example.gescov.domainlayer.Controllers.ClassroomsModelController;
-
 import com.example.gescov.domainlayer.Controllers.EventModelController;
-
 import com.example.gescov.domainlayer.Controllers.ForumModelController;
-
 import com.example.gescov.domainlayer.Controllers.ModelController;
+import com.example.gescov.domainlayer.Controllers.ScheduleModelController;
 import com.example.gescov.domainlayer.Controllers.SchoolRequestModelController;
 import com.example.gescov.domainlayer.Controllers.SchoolsModelController;
 import com.example.gescov.domainlayer.Controllers.SubjectModelController;
 import com.example.gescov.domainlayer.Controllers.TracingTestResultController;
 import com.example.gescov.domainlayer.Controllers.UserModelController;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.classroomSchedule.ScheduleController;
 
 public class DomainControlFactory {
     private static SchoolsModelController schoolsModelController;
@@ -31,6 +30,7 @@ public class DomainControlFactory {
     private static ForumModelController forumModelController;
     private static TracingTestResultController tracingTestResultController;
     private static ClassSessionController classSessionController;
+    private static ScheduleModelController scheduleModelController;
 
 
     public static SchoolsModelController getSchoolsModelCrontroller() {
@@ -117,5 +117,12 @@ public class DomainControlFactory {
             classSessionController = new ClassSessionController();
         return classSessionController;
 
+    }
+
+    public static ScheduleModelController getScheduleModelController() {
+        if (scheduleModelController != null)
+            return scheduleModelController;
+        scheduleModelController = new ScheduleModelController();
+        return scheduleModelController;
     }
 }

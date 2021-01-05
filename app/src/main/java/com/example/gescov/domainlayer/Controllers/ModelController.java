@@ -460,7 +460,13 @@ public class ModelController {
         PresentationControlFactory.getViewLayerController().setCreateSubjectResult(error);
     }
 
+
+    public void setSchedule(String classID, List<Subject> l1, List<Subject> l2, List<Subject> l3, List<Subject> l4, List<Subject> l5) {
+        DomainControlFactory.getScheduleModelController().setSchedule(classID,l1,l2,l3,l4,l5);
+    }
+
     public void deleteWallEntry(String wallEntryId) {
         DomainControlFactory.getForumModelController().deleteWallEntry(wallEntryId);
+
     }
 }
