@@ -1,5 +1,6 @@
 package com.example.gescov.domainlayer.Classmodels;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,21 +13,6 @@ public class Classroom {
     private String schoolID;
 
     public Classroom() {}
-
-    //{
-    //    "id": "string",
-    //        "scheduleList": [
-    //    {
-    //        "subjectID": "string",
-    //            "start": "string",
-    //            "end": "string",
-    //            "day": "MONDAY"
-    //    }
-    //],
-    //    "name": "string",
-    //        "numRows": 0,
-    //        "numCols": 0,
-    //        "schoolID": "string"
 
     public Classroom(String id, String name, int rows, int columns, String schoolID) {
         this.id = id;
@@ -45,6 +31,7 @@ public class Classroom {
             int numRows = jsonObject.getInt("numRows");
             int numCols = jsonObject.getInt("numCols");
             String schoolID = jsonObject.getString("schoolID");
+            JSONArray scheduleRAW = jsonObject.getJSONArray("schedule");
             return new Classroom(id,name,numRows,numCols,schoolID);
         } catch (JSONException e) {
             e.printStackTrace();

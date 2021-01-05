@@ -274,8 +274,6 @@ public class UserModelController {
 
     public void setContactsFromSelectedCenter(JSONArray response, int activityIdentifier) {
         contactsFromSelectedCenter = new ArrayList<>();
-        System.out.println("holaaaaa");
-        System.out.println(response.toString());
         for (int i = 0; i < response.length(); ++i) {
             try {
                 User u = getUserFromJSONObject(response.getJSONObject(i)); //reusar esta operación
@@ -290,7 +288,7 @@ public class UserModelController {
     }
 
     private void addUserToContactList(User u, int activityIdentifier) {
-        if (loggedUser.getId().equals(u.getId())) return;
+        if (loggedUser.getId().equals(u.getId()) && activityIdentifier != 3) return;
         if (activityIdentifier == 1) {
             if (loggedUser.getProfileType() == User.UserProfileType.STUDENT && u.getProfileType() == User.UserProfileType.TEACHER)
                 contactsFromSelectedCenter.add(u);
