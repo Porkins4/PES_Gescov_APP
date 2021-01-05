@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.R;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectDetailActivity;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.subjects.SubjectDetailActivity;
 
 /**
  * A simple {@link Fragment} subclass.

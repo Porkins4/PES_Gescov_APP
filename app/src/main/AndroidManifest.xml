@@ -42,10 +42,10 @@
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.checkclasssession.CheckClassSessionActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
-            android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectDetailActivity"
+            android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.subjects.SubjectDetailActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
-            android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectActivity"
+            android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.subjects.SubjectActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionListActivity"

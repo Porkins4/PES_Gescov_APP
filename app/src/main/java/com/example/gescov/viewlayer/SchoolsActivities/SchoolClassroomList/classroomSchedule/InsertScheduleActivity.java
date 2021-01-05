@@ -9,7 +9,7 @@ import android.widget.ListView;
 
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.Subject;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectViewModel;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.subjects.SubjectViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

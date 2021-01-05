@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects;
+package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.subjects;
 
 import android.content.Intent;
 import android.os.Bundle;
