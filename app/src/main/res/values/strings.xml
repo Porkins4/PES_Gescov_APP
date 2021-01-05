@@ -249,4 +249,15 @@
     <string name="event_prepare">Prepara Tu Esdeveniment</string>
     <string name="create_event">Crear Esdeveniment</string>
 
+
+    <!-- Strings for class schedule -->
+    <string name="insert_schedule">Inserir Horari</string>
+    <string name="monday">Dilluns</string>
+    <string name="tuesday">Dimarts</string>
+    <string name="wedensday">Dimecres</string>
+    <string name="thursday">Dijous</string>
+    <string name="friday">Divendres</string>
+    <string name="modify_schedule">Editar</string>
+
+
 </resources>

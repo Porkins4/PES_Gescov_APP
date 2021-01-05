@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.gescov.domainlayer.Classmodels.Subject;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.classroomSchedule.ScheduleAdapter;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class SubjectViewModel extends ViewModel {
     private MutableLiveData<Boolean> received;
     private MutableLiveData<Boolean> assignedStudent;
     private List<Subject> subjects;
+
 
 
     public SubjectAdapter getAdapter(Context c) {
@@ -45,7 +47,13 @@ public class SubjectViewModel extends ViewModel {
         return  assignedStudent;
     }
 
+    public List<Subject> getListOfSubjects() {
+        return subjects;
+    }
+
     public void notifyAssignStudent(boolean error) {
         assignedStudent.setValue(error);
     }
+
+
 }

@@ -52,4 +52,5 @@ public class SubjectController {
     public void notifyAssignedTeacher(boolean error) {
         this.addTeacherToSubjectViewModel.notifyAssignedTeacher(error);
     }
+    
 }

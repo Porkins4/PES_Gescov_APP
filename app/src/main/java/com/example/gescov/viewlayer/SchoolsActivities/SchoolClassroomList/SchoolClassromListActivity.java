@@ -31,6 +31,7 @@ public class SchoolClassromListActivity extends AppCompatActivity {
         SchoolClassroomsCrontroller controller = PresentationControlFactory.getClassroomsCrontroller();
         controller.setListViewAdapter(this);
         ClassroomListViewAdapter adapter = controller.getListViewAdapter();
+        adapter.setSchoolID(getIntent().getStringExtra("schooldID"));
         list.setAdapter(adapter);
 
         controller.refreshList();
