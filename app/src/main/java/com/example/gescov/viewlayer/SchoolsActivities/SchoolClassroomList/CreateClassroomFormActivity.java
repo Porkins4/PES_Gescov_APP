@@ -15,6 +15,7 @@ public class CreateClassroomFormActivity extends AppCompatActivity {
     protected EditText classroomColumns;
     protected Button createClassroomButton;
     protected Button deleteClassroomButton;
+    protected  Button insertSchedule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class CreateClassroomFormActivity extends AppCompatActivity {
         classroomColumns = (EditText) findViewById(R.id.create_classroom_form_columns);
         createClassroomButton = (Button) findViewById(R.id.create_classroom_form_create_button);
         deleteClassroomButton = (Button) findViewById(R.id.create_classroom_form_delete);
+        insertSchedule = (Button) findViewById(R.id.insert_schedule);
 
         createClassroomButton.setOnClickListener(e -> {
             setMainButtonActions();

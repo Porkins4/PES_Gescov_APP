@@ -24,6 +24,7 @@ public class ClassroomListViewAdapter extends BaseAdapter {
     private List<Classroom> classroomList;
     private LayoutInflater mInflater;
     private Context context;
+    private String schoolID;
 
     public ClassroomListViewAdapter(Context c, List<Classroom> l) {
         context = c;
@@ -64,10 +65,16 @@ public class ClassroomListViewAdapter extends BaseAdapter {
         TextView columns = (TextView) v.findViewById(R.id.classroom_columns);
         Button editButton = v.findViewById(R.id.classroom_list_item_edit_button);
 
+
+
+
         editButton.setOnClickListener(e-> {
             SchoolClassroomsCrontroller controller = PresentationControlFactory.getClassroomsCrontroller();
             Intent intent = new Intent(context, EditClassroomFormActivity.class);
             intent.putExtra("classroom_position", position);
+            intent.putExtra("classID",classroomList.get(position).getId());
+            intent.putExtra("schoolID",schoolID);
+
             context.startActivity(intent);
         });
         //-----------------------------------------------------------------------
@@ -94,8 +101,13 @@ public class ClassroomListViewAdapter extends BaseAdapter {
         return v;
     }
 
+
     public void setList(List<Classroom> classroomsList) {
         this.classroomList = classroomsList;
         notifyDataSetChanged();
+    }
+
+    public void setSchoolID(String schooldID) {
+        this.schoolID = schooldID;
     }
 }

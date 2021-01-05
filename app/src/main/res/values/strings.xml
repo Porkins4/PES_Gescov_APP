@@ -278,4 +278,15 @@
     <string name="create_subject_title">Crear assignatura</string>
     <string name="succesfull_subject_creation">S\'ha creat l\'assignatura correctament</string>
 
+
+    <!-- Strings for class schedule -->
+    <string name="insert_schedule">Inserir Horari</string>
+    <string name="monday">Dilluns</string>
+    <string name="tuesday">Dimarts</string>
+    <string name="wedensday">Dimecres</string>
+    <string name="thursday">Dijous</string>
+    <string name="friday">Divendres</string>
+    <string name="modify_schedule">Editar</string>
+
+
 </resources>
