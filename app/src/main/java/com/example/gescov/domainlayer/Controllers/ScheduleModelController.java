@@ -41,27 +41,29 @@ public class ScheduleModelController {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        ServicesFactory.getClassroomService().setSchedule(classSchedule,classID);
+        ServicesFactory.getClassroomService().setSchedule(scheduleList,classID);
 
     }
 
     private void ConvertToJson(List<Subject> l1, String day, JSONArray scheduleList) {
         try {
             for (int i = 0; i < l1.size(); ++i) {
-                JSONObject subjectSchedule = new JSONObject();
-                String start;
-                String end;
-                Integer aux = i + 8;
-                if ( aux < 10 ) start= "0"+aux.toString() + ":00";
-                else start = aux.toString() + ":00";
-                aux = i+9;
-                if ( aux < 10 ) end = "0"+aux.toString() + ":00";
-                else end = aux.toString() + ":00";
-                subjectSchedule.put("subjectID",l1.get(i).getId());
-                subjectSchedule.put("day",day);
-                subjectSchedule.put("start",start);
-                subjectSchedule.put("start",end);
-                scheduleList.put(subjectSchedule);
+                if (l1.get(i).getName() != "EMPTY") {
+                    JSONObject subjectSchedule = new JSONObject();
+                    String start;
+                    String end;
+                    Integer aux = i + 8;
+                    if (aux < 10) start = "0" + aux.toString() + ":00";
+                    else start = aux.toString() + ":00";
+                    aux = i + 9;
+                    if (aux < 10) end = "0" + aux.toString() + ":00";
+                    else end = aux.toString() + ":00";
+                    subjectSchedule.put("subjectID", l1.get(i).getId());
+                    subjectSchedule.put("day", day);
+                    subjectSchedule.put("start", start);
+                    subjectSchedule.put("end", end);
+                    scheduleList.put(subjectSchedule);
+                }
             }
 
 
