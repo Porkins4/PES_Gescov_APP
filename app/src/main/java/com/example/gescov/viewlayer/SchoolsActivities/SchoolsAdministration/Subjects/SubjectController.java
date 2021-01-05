@@ -1,5 +1,6 @@
 package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects;
 
+import com.example.gescov.domainlayer.Classmodels.ClassSessionModel;
 import com.example.gescov.domainlayer.Classmodels.Subject;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.addteachertosubject.AddTeacherToSubjectViewModel;
