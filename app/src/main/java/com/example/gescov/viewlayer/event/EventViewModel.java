@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.event;
+package com.example.gescov.viewlayer.event;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
