@@ -264,7 +264,13 @@
     <string name="enrolled_professors_text_item">"Professors: "</string>
     <string name="enrolled_users_text_item">"Matriculats: "</string>
 
+    <!-- Strings for the forum -->
     <string name="forum">Noticies</string>
+    <string name="create_forum_entry_title">Títol</string>
+    <string name="create_forum_entry_content">Contingut</string>
+    <string name="create_wall_entry_reply_form_text">Escriu el teu comentari aquí.</string>
+    <string name="create_wall_entry_reply_form_button">Afegir comentari</string>
+
 
     <!-- Strings for the event -->
     <string name="event_title">Titol:</string>
@@ -288,6 +294,9 @@
     <string name="friday">Divendres</string>
     <string name="modify_schedule">Editar</string>
     <string name="save_schedule">Guardar Horari</string>
+
+    <string name="forum_entry_list_delete_message">Estàs segur d\'esborrar aquesta entrada?</string>
+
 
 
 </resources>

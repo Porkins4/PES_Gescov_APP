@@ -253,5 +253,11 @@
     <string name="check_class_session_activity_title">Sesiones de clase</string>
     <string name="create_class_session_activity_title">Crear sesión de clase</string>
 
-    <string name="forum">Noticies</string>
+    <!-- Strings for the forum -->
+    <string name="forum">Notícias</string>
+    <string name="create_forum_entry_title">Título</string>
+    <string name="create_forum_entry_content">Contenido</string>
+    <string name="create_wall_entry_reply_form_text">Escribe tu comentario aquí.</string>
+    <string name="create_wall_entry_reply_form_button">Añadir comentario</string>
+    <string name="forum_entry_list_delete_message">Estás seguro de borrar esta entrada?</string>
 </resources>

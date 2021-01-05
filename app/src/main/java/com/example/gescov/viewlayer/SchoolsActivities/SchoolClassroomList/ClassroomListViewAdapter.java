@@ -60,7 +60,7 @@ public class ClassroomListViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = mInflater.inflate(R.layout.classroom_list_item, null);
         TextView name = (TextView) v.findViewById(R.id.wall_entry_list_item_title);
-        TextView capacity = (TextView) v.findViewById(R.id.wall_item_list_item_content);
+        TextView capacity = (TextView) v.findViewById(R.id.wall_item_reply_list_item_content);
         TextView rows = (TextView) v.findViewById(R.id.classroom_rows);
         TextView columns = (TextView) v.findViewById(R.id.classroom_columns);
         Button editButton = v.findViewById(R.id.classroom_list_item_edit_button);

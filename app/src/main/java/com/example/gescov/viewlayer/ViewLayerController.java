@@ -3,8 +3,6 @@ package com.example.gescov.viewlayer;
 import android.location.Location;
 import android.util.Pair;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
@@ -30,6 +28,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import org.json.JSONException;
 
 import java.util.List;
+
+import androidx.lifecycle.MutableLiveData;
 
 
 public class ViewLayerController {
@@ -421,8 +421,8 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().deleteUserToken(token);
     }
 
-    public void createForumEntry(String textEntry, String schoolId) {
-        DomainControlFactory.getModelController().createForumEntry(textEntry, schoolId);
+    public void createForumEntry(String titleEntry, String textEntry, String schoolId) {
+        DomainControlFactory.getModelController().createForumEntry(titleEntry, textEntry, schoolId);
     }
 
     public void refreshLoggedUserSchoolsWallEntries() {
@@ -464,6 +464,14 @@ public class ViewLayerController {
 
     }
 
+    public void createForumEntryReply(String wallEntryId, String content) {
+        DomainControlFactory.getModelController().createForumEntryReply(wallEntryId, content);
+    }
+
+    public void refreshWallEntryReplies(WallEntry wallEntry) {
+        PresentationControlFactory.getForumRepliesController().refreshWallEntryReplies(wallEntry);
+    }
+
     public void createSubject(String subjectName, String schoolID) {
         DomainControlFactory.getModelController().createSubject(subjectName, schoolID);
     }
@@ -472,7 +480,12 @@ public class ViewLayerController {
         PresentationControlFactory.getSubjectController().setCreateSubjectResult(error);
     }
 
+
     public void setSchedule(String classID, List<Subject> l1, List<Subject> l2, List<Subject> l3, List<Subject> l4, List<Subject> l5) {
         DomainControlFactory.getModelController().setSchedule(classID,l1,l2,l3,l4,l5);
+    }
+
+    public void deleteWallEntry(String wallEntryId) {
+        DomainControlFactory.getModelController().deleteWallEntry(wallEntryId);
     }
 }

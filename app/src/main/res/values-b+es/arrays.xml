@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="chat_options_menu_items">
-        <item>Eliminar xat</item>
+        <item>Eliminar chat</item>
     </string-array>
 
     <string-array name="school_administration_menu_items">
-    <item>Eliminar escola</item>
+    <item>Eliminar escuela</item>
     </string-array>
 
     <string-array name="wall_entry_menu_item">
@@ -13,22 +13,22 @@
     </string-array>
 
     <string-array name="user_option_menu_items">
-        <item>Fer administrador</item>
+        <item>Hacer administrador</item>
     </string-array>
 
     <string-array name="admin_option_menu_items">
-        <item>Desfer administrador</item>
-        <item> Veure resultats dels tests</item>
+        <item>Quitar administrador</item>
+        <item> Ver los resultados de los test</item>
 
     </string-array>
 
     <string-array name="teacher_option_menu_items">
-        <item> Veure resultats dels tests</item>
+        <item>Ver los resultados de los test</item>
     </string-array>
 
     <string-array name="join_school_menu_items">
         <item>Generar solicitud</item>
-        <item>Accés per codi</item>
+        <item>Acceso por código</item>
     </string-array>
 
 </resources>

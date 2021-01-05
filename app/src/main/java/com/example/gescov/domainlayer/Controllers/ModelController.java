@@ -2,8 +2,6 @@ package com.example.gescov.domainlayer.Controllers;
 
 import android.util.Pair;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
@@ -29,6 +27,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import org.json.JSONException;
 
 import java.util.List;
+
+import androidx.lifecycle.MutableLiveData;
 
 public class ModelController {
 
@@ -403,8 +403,8 @@ public class ModelController {
         DomainControlFactory.getUserModelController().deleteUserToken(token);
     }
 
-    public void createForumEntry(String textEntry, String schoolId) {
-        DomainControlFactory.getForumModelController().createForumEntry(textEntry, schoolId);
+    public void createForumEntry(String titleEntry, String textEntry, String schoolId) {
+        DomainControlFactory.getForumModelController().createForumEntry(titleEntry, textEntry, schoolId);
     }
 
     public void refreshLoggedUserSchoolsWallEntries() {
@@ -444,6 +444,14 @@ public class ModelController {
         PresentationControlFactory.getViewLayerController().setSubjectsFromUserResult(error,userSubjects);
     }
 
+    public void createForumEntryReply(String wallEntryId, String content) {
+        DomainControlFactory.getForumModelController().createForumEntryReply(wallEntryId, content, DomainControlFactory.getUserModelController().getLoggedUser().getId());
+    }
+
+    public void refreshWallEntryReplies(WallEntry wallEntry) {
+        PresentationControlFactory.getViewLayerController().refreshWallEntryReplies(wallEntry);
+    }
+
     public void createSubject(String subjectName, String schoolID) {
         DomainControlFactory.getSubjectModelController().createSubject(subjectName,schoolID);
     }
@@ -452,7 +460,13 @@ public class ModelController {
         PresentationControlFactory.getViewLayerController().setCreateSubjectResult(error);
     }
 
+
     public void setSchedule(String classID, List<Subject> l1, List<Subject> l2, List<Subject> l3, List<Subject> l4, List<Subject> l5) {
         DomainControlFactory.getScheduleModelController().setSchedule(classID,l1,l2,l3,l4,l5);
+    }
+
+    public void deleteWallEntry(String wallEntryId) {
+        DomainControlFactory.getForumModelController().deleteWallEntry(wallEntryId);
+
     }
 }

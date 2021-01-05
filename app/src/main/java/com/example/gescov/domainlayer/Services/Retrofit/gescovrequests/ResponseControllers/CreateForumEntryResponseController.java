@@ -31,11 +31,12 @@ public class CreateForumEntryResponseController implements Callback<String> {
     public void onFailure(Call<String> call, Throwable t) {
     }
 
-    public void createForumEntry(String textEntry, String schoolId, String creatorId) {
+    public void createForumEntry(String titleEntry, String textEntry, String schoolId, String creatorId) {
         ICreateForumEntryService service = retrofit.create(ICreateForumEntryService.class);
         JSONObject forumEntry = new JSONObject();
 
         try {
+            forumEntry.put("title", titleEntry);
             forumEntry.put("text", textEntry);
             forumEntry.put("schoolID", schoolId);
             RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), String.valueOf(forumEntry));
