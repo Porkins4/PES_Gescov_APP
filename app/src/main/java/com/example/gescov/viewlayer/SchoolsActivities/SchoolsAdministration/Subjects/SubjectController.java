@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.subjects;
+package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects;
 
 import com.example.gescov.domainlayer.Classmodels.ClassSessionModel;
 import com.example.gescov.domainlayer.Classmodels.Subject;
