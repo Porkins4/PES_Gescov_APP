@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects;
+package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.subjects;
 
 import android.content.Context;
 
@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.gescov.domainlayer.Classmodels.Subject;
+import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 import java.util.List;
@@ -47,5 +48,9 @@ public class SubjectViewModel extends ViewModel {
 
     public void notifyAssignStudent(boolean error) {
         assignedStudent.setValue(error);
+    }
+
+    public User getLoggedInUser() {
+        return PresentationControlFactory.getViewLayerController().getUserLoggedIn();
     }
 }

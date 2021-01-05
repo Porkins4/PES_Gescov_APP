@@ -50,13 +50,21 @@ public class SubjectModelController {
         if (!error) {
             try {
                 for (int i = 0; i < response.length(); ++i) {
-                        Subject s = Subject.fromJSONtoSubject(response.getJSONObject(i));
-                        userSubjects.add(s);
+                    Subject s = Subject.fromJSONtoSubject(response.getJSONObject(i));
+                    userSubjects.add(s);
                 }
             } catch (JSONException e) {
                 error = true;
             }
         }
         DomainControlFactory.getModelController().setSubjectsFromUserResult(error,userSubjects);
+    }
+
+    public void createSubject(String subjectName, String schoolID) {
+        ServicesFactory.getSubjectsService().createSubject(subjectName, schoolID, DomainControlFactory.getUserModelController().getUserId());
+    }
+
+    public void setCreateSubjectResult(boolean error, JSONObject response) {
+        DomainControlFactory.getModelController().setCreateSubjectResult(error);
     }
 }

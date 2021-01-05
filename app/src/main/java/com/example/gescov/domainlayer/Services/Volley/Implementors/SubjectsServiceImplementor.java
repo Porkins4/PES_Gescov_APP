@@ -2,10 +2,14 @@ package com.example.gescov.domainlayer.Services.Volley.Implementors;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISubjectsService;
 import com.example.gescov.domainlayer.Services.Volley.VolleyServices;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class SubjectsServiceImplementor implements ISubjectsService {
@@ -57,6 +61,27 @@ public class SubjectsServiceImplementor implements ISubjectsService {
                 error -> DomainControlFactory.getSubjectModelController().setSubjectsFromUserResult(true,null)
         );
         VolleyServices.getRequestQueue().add(jsonArrayRequest);
+    }
+
+    @Override
+    public void createSubject(String subjectName, String schoolID, String userId) {
+        try {
+            JSONObject postData = new JSONObject();
+            postData.put("schoolID", schoolID);
+            postData.put("name",subjectName);
+            postData.put("school","");
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                    Request.Method.POST, SUBJECTS_URI + "?creator=" + userId, postData,
+                    response -> DomainControlFactory.getSubjectModelController().setCreateSubjectResult(false,response),
+                    error -> DomainControlFactory.getSubjectModelController().setCreateSubjectResult(true,null)
+                );
+
+            VolleyServices.getRequestQueue().add(jsonObjectRequest);
+
+        } catch (JSONException e) {
+            System.out.println("Error while creating data for the reservation");
+        }
     }
 
 

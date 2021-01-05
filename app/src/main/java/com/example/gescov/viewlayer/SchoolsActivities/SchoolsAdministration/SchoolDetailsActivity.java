@@ -21,7 +21,7 @@ import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.PopErrorAddStudentToCenter;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassromListActivity;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionListActivity;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectActivity;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.subjects.SubjectActivity;
 import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsListActivity;

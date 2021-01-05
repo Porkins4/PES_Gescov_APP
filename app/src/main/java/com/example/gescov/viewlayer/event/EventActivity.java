@@ -20,6 +20,7 @@ public class EventActivity extends AppCompatActivity {
     TextView description;
     Button addEvent;
     List<User> guests;
+    private EventViewModel viewModel;
 
 
     @Override
@@ -33,12 +34,11 @@ public class EventActivity extends AppCompatActivity {
     }
 
     private void getEmails() {
-        EventViewModel eventViewModel =  new ViewModelProvider(this).get(EventViewModel.class);
-        eventViewModel.getGuests("5fe2703700ed232346186fdc").observe(this, received -> {
+        viewModel =  new ViewModelProvider(this).get(EventViewModel.class);
+        viewModel.getGuests(getIntent().getStringExtra("subjectID")).observe(this, received -> {
             if ( received ) {
-                guests = eventViewModel.getListGuests();
+                guests = viewModel.getListGuests();
             }
-
         });
     }
 
@@ -60,8 +60,13 @@ public class EventActivity extends AppCompatActivity {
             // checking if there is any app that can handel this type of intent which is calendar.
             if (intent.resolveActivity(getPackageManager()) != null) {
                 startActivity(intent);
+                createEvent();
             }
         });
+    }
+
+    private void createEvent() {
+        viewModel.createEvent();
     }
 
     private void initComponents() {
@@ -69,7 +74,6 @@ public class EventActivity extends AppCompatActivity {
         description = findViewById(R.id.event_description);
         addEvent = findViewById(R.id.add_event);
         initToolBar();
-
     }
 
     private void initToolBar() {

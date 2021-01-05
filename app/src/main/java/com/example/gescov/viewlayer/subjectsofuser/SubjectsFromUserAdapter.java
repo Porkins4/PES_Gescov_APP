@@ -26,7 +26,7 @@ public class SubjectsFromUserAdapter extends ModelListViewAdapter {
         TextView enrolledTeachers = (TextView) v.findViewById(R.id.enrolled_teachers);
         Subject s = (Subject) modelList.get(position);
         subjectName.setText(s.getName());
-        subjectSchool.setText(s.getSchoolID());
+        subjectSchool.setText(s.getSchoolName());
         enrolledUsers.setVisibility(View.GONE);
         enrolledTeachers.setVisibility(View.GONE);
         return v;

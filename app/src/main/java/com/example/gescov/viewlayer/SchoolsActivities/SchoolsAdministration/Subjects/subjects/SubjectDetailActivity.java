@@ -1,4 +1,4 @@
-package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects;
+package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.subjects;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.addteachertosubject.AddTeacherToSubjectActivity;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.checkclasssession.CheckClassSessionActivity;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.createclasssession.CreateClassSessionActivity;
+import com.example.gescov.viewlayer.event.EventActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 public class SubjectDetailActivity extends AppCompatActivity {
@@ -64,7 +64,7 @@ public class SubjectDetailActivity extends AppCompatActivity {
     private void listenerCreateClassSession() {
         createClassSession.setOnClickListener(
                 v -> {
-                    Intent i = new Intent(this, CreateClassSessionActivity.class);
+                    Intent i = new Intent(this, EventActivity.class);
                     i.putExtra("subjectID",subjectID);
                     startActivity(i);
                 }

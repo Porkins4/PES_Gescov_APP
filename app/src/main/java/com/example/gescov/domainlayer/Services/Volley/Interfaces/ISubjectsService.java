@@ -8,4 +8,6 @@ public interface ISubjectsService {
     void getClassSessions(String subjectID);
 
     void getSubjectsFromUser(String userID);
+
+    void createSubject(String subjectName, String schoolID, String userId);
 }
