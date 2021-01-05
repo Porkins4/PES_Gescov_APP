@@ -451,4 +451,12 @@ public class ModelController {
     public void refreshWallEntryReplies(WallEntry wallEntry) {
         PresentationControlFactory.getViewLayerController().refreshWallEntryReplies(wallEntry);
     }
+
+    public void createSubject(String subjectName, String schoolID) {
+        DomainControlFactory.getSubjectModelController().createSubject(subjectName,schoolID);
+    }
+
+    public void setCreateSubjectResult(boolean error) {
+        PresentationControlFactory.getViewLayerController().setCreateSubjectResult(error);
+    }
 }

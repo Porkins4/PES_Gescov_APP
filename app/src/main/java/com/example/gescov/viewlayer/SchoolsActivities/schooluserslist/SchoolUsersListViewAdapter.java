@@ -43,6 +43,20 @@ public class SchoolUsersListViewAdapter extends ModelListViewAdapter {
             userProfile.setText(v.getResources().getText(R.string.school_user_list_teacher));
         }
 
+        if (loggedUser.getProfileType() == User.UserProfileType.TEACHER)  {
+            v.setOnLongClickListener(e -> {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(e.getContext());
+                        builder.setTitle(e.getResources().getString(R.string.options))
+                                .setItems( R.array.teacher_option_menu_items , (dialog, which) -> {
+                                    if (which == 0) getResultsOfTests(user,v);
+                                });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                        return false;
+                    }
+            );
+        }
+
         if (isLoggedUserCreator() && user.getProfileType().equals(User.UserProfileType.TEACHER) && !user.getId().equals(currentSchool.getCreator())) {
             v.setOnLongClickListener(e -> {
                         AlertDialog.Builder builder = new AlertDialog.Builder(e.getContext());
@@ -57,19 +71,7 @@ public class SchoolUsersListViewAdapter extends ModelListViewAdapter {
                     }
             );
         }
-        if (loggedUser.getProfileType() == User.UserProfileType.TEACHER)  {
-            v.setOnLongClickListener(e -> {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(e.getContext());
-                        builder.setTitle(e.getResources().getString(R.string.options))
-                                .setItems( R.array.teacher_option_menu_items , (dialog, which) -> {
-                                    if (which == 0) getResultsOfTests(user,v);
-                                });
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
-                        return false;
-                    }
-            );
-        }
+
         return v;
     }
 
