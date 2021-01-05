@@ -16,7 +16,11 @@ import java.util.List;
 
 public class ClassroomsModelController {
 
+    private List<Classroom> classroomsFromCurrentSchool;
 
+    public ClassroomsModelController() {
+        classroomsFromCurrentSchool = new ArrayList<>();
+    }
 
     public void setClassroomList(String classroomsString) {
         JSONArray response = null;
@@ -24,13 +28,8 @@ public class ClassroomsModelController {
         try {
             response = new JSONArray(classroomsString);
             for (int i = 0; i < response.length(); ++i) {
-
-                JSONObject aux = response.getJSONObject(i);
-                String id = aux.getString("id");
-                String name = aux.getString("name");
-                int rows = aux.getInt("numRows");
-                int columns = aux.getInt("numCols");
-                classroomsList.add(new Classroom(id, name, rows, columns));
+                Classroom c = Classroom.fromJSONtoClassroom(response.getJSONObject(i));
+                classroomsList.add(c);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -67,17 +66,32 @@ public class ClassroomsModelController {
     public void updateClassroomDistributionClassInfo(JSONObject response, boolean b) {
         Classroom c = new Classroom();
         if (!b) {
-            String classID = null;
+            c = Classroom.fromJSONtoClassroom(response);
+        }
+        DomainControlFactory.getModelController().refreshClassroomDistributionClassInfo(c,b);
+    }
+
+    public void getClassroomsOfSchool(String schoolID) {
+        ServicesFactory.getClassroomService().getClassroomsBySchoolID(schoolID);
+    }
+
+
+
+
+    public void SetClassroomsBySchoolIDResponse(boolean error, JSONArray response) {
+        System.out.println(response.toString());
+        classroomsFromCurrentSchool = new ArrayList<>();
+        if (!error) {
             try {
-                classID = response.getString("id");
-                String name = response.getString("name");
-                int rows = response.getInt("numRows");
-                int cols = response.getInt("numCols");
-                c = new Classroom(classID,name,rows,cols);
+                for (int i = 0; i < response.length(); ++i) {
+                    Classroom c = Classroom.fromJSONtoClassroom(response.getJSONObject(i));
+                    c.print();
+                    classroomsFromCurrentSchool.add(c);
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            DomainControlFactory.getModelController().SetClassroomsBySchoolIDResponse(error,classroomsFromCurrentSchool);
         }
-        DomainControlFactory.getModelController().refreshClassroomDistributionClassInfo(c,b);
     }
 }

@@ -283,17 +283,18 @@ public class UserModelController {
             }
         }
         if (activityIdentifier == 1) DomainControlFactory.getModelController().updateContactsFromCreateChat();
-        else DomainControlFactory.getModelController().notifyListOfTeachersReceivedToAddSubject(contactsFromSelectedCenter);
+        else if (activityIdentifier == 2) DomainControlFactory.getModelController().notifyListOfTeachersReceivedToAddSubject(contactsFromSelectedCenter);
+        else DomainControlFactory.getModelController().notifyListOfTeachersReceivedToCreateEvent(contactsFromSelectedCenter);
     }
 
     private void addUserToContactList(User u, int activityIdentifier) {
-        if (loggedUser.getId().equals(u.getId())) return;
+        if (loggedUser.getId().equals(u.getId()) && activityIdentifier != 3) return;
         if (activityIdentifier == 1) {
             if (loggedUser.getProfileType() == User.UserProfileType.STUDENT && u.getProfileType() == User.UserProfileType.TEACHER)
                 contactsFromSelectedCenter.add(u);
             else if (loggedUser.getProfileType() == User.UserProfileType.TEACHER)
                 contactsFromSelectedCenter.add(u);
-        } else {
+        } else { //activiti identifier 2 or 3
             if (u.getProfileType() == User.UserProfileType.TEACHER)
                 contactsFromSelectedCenter.add(u);
         }

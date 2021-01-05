@@ -87,4 +87,14 @@ public class ClassroomServiceImplementor implements IClassroomService {
         RequestQueue q = VolleyServices.getRequestQueue();
         q.add(request);
     }
+
+    @Override
+    public void getClassroomsBySchoolID(String schoolID) {
+        JsonArrayRequest request = new JsonArrayRequest(
+                Request.Method.GET, GESCOV_CLASSROOMS_URI + "school/" + schoolID,null,
+                response -> DomainControlFactory.getClassroomModelController().SetClassroomsBySchoolIDResponse(false, response),
+                error -> DomainControlFactory.getClassroomModelController().SetClassroomsBySchoolIDResponse(true, null)
+        );
+        VolleyServices.getRequestQueue().add(request);
+    }
 }

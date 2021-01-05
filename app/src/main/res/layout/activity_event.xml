@@ -16,36 +16,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/Theme.Gescov.PopupOverlay" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.Gescov.PopupOverlay" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/event_form"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        android:text="@string/event_prepare"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <LinearLayout
+        android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent">
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
         <TextView
             android:id="@+id/event_title_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:text="@string/event_title"
             android:textSize="18sp" />
 
@@ -53,23 +48,29 @@
             android:id="@+id/event_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="66dp"
-            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout9"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent">
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
         <TextView
             android:id="@+id/event_description_txt"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
+            android:layout_marginRight="10dp"
             android:text="@string/event_description"
             android:textSize="18sp" />
 
@@ -77,23 +78,188 @@
             android:id="@+id/event_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
             tools:layout_editor_absoluteX="88dp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/event_start_time_pick"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/event_start_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="12"
+            android:inputType="time"
+            android:maxLength="2"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_weight="0"
+            android:text=":"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/event_estart_minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="00"
+            android:inputType="time"
+            android:maxLength="2"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="0dp"
+            android:text="@string/event_end_time_pick"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/event_end_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="14"
+            android:inputType="time"
+            android:maxLength="2"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:text=":"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/event_end_minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="00"
+            android:inputType="time"
+            android:maxLength="2"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/event_select_teacher"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/teacher_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/event_select_classroom"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/classroom_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <CalendarView
+        android:id="@+id/calendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/add_event"
+        app:layout_constraintTop_toBottomOf="@+id/textView20"
+        tools:layout_editor_absoluteX="0dp" />
+
     <Button
         android:id="@+id/add_event"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="448dp"
-        android:layout_marginBottom="123dp"
+        android:layout_marginBottom="6dp"
         android:text="@string/create_event"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:text="@string/event_select_date"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/event_form" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout12" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

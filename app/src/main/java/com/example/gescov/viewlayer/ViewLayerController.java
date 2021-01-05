@@ -260,6 +260,7 @@ public class ViewLayerController {
     //ActivityIdentifier indicates which activity has to be warn that the result has been received
     // activityIdentifier = 1 => CreateChatActivity
     // activityIdentifier = 2 => AddTeacherToSubject
+    // activityIdentifier = 3 => CreateEvent
     public void getContactsFromCenter(String schoolID, int activityIdentifier) {
         DomainControlFactory.getModelController().getContactsFromCenter(schoolID,activityIdentifier);
     }
@@ -478,6 +479,18 @@ public class ViewLayerController {
 
     public void setCreateSubjectResult(boolean error) {
         PresentationControlFactory.getSubjectController().setCreateSubjectResult(error);
+    }
+
+    public void getClassroomsOfSchool(String schoolID) {
+        DomainControlFactory.getModelController().getClassroomsOfSchool(schoolID);
+    }
+
+    public void SetClassroomsBySchoolIDResponse(boolean error, List<Classroom> classroomsFromCurrentSchool) {
+        PresentationControlFactory.getEventController().SetClassroomsBySchoolIDResponse(error,classroomsFromCurrentSchool);
+    }
+
+    public void notifyListOfTeachersReceivedToCreateEvent(List<User> contactsFromSelectedCenter) {
+        PresentationControlFactory.getEventController().notifyListOfTeachersReceivedToCreateEvent(contactsFromSelectedCenter);
     }
 
 

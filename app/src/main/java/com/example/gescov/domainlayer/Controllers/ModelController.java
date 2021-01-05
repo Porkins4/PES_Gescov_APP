@@ -469,4 +469,16 @@ public class ModelController {
         DomainControlFactory.getForumModelController().deleteWallEntry(wallEntryId);
 
     }
+
+    public void getClassroomsOfSchool(String schoolID) {
+        DomainControlFactory.getClassroomModelController().getClassroomsOfSchool(schoolID);
+    }
+
+    public void SetClassroomsBySchoolIDResponse(boolean error, List<Classroom> classroomsFromCurrentSchool) {
+        PresentationControlFactory.getViewLayerController().SetClassroomsBySchoolIDResponse(error,classroomsFromCurrentSchool);
+    }
+
+    public void notifyListOfTeachersReceivedToCreateEvent(List<User> contactsFromSelectedCenter) {
+        PresentationControlFactory.getViewLayerController().notifyListOfTeachersReceivedToCreateEvent(contactsFromSelectedCenter);
+    }
 }
