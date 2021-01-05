@@ -20,16 +20,12 @@ import com.example.gescov.viewlayer.chat.chatview.ChatViewController;
 import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
 import com.example.gescov.viewlayer.event.EventController;
 import com.example.gescov.viewlayer.forum.ForumController;
-
 import com.example.gescov.viewlayer.forum.forumreply.ForumRepliesController;
-
 import com.example.gescov.viewlayer.home.HomeController;
 import com.example.gescov.viewlayer.home.NotifyContagionController;
 import com.example.gescov.viewlayer.home.TracingTestController;
 import com.example.gescov.viewlayer.ranking.RankingController;
 import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
-
-import androidx.lifecycle.ViewModelProvider;
 
 public class PresentationControlFactory {
     private static ViewLayerController viewLayerController;

@@ -24,8 +24,10 @@ public class Subject {
         this.students = students;
     }
 
-    public Subject(String name ) {
+
+    public Subject (String name, String id) {
         this.name = name;
+        this.id = id;
     }
 
     public static Subject fromJSONtoSubject(JSONObject response) {

@@ -7,6 +7,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
@@ -16,8 +18,6 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class CreateForumEntryFormActivity extends AppCompatActivity {
 

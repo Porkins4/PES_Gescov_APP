@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -25,21 +26,25 @@ public class InsertScheduleActivity extends AppCompatActivity {
     ScheduleAdapter adapter;
     int current;
     String classID;
+    Boolean admin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_schedule);
+        admin  = true;
+        if (getIntent().hasExtra("admin")) admin = getIntent().getExtras().getBoolean("admin");
+        System.out.println(admin +" el admin");
         initComponents();
-        for (int i = 0; i < 12; ++i){
-            Subject aux = new Subject("EMPTY");
+        /*for (int i = 0; i < 12; ++i){
+            Subject aux = new Subject("EMPTY","EMPTY");
             l1.add(aux);
             l2.add(aux);
             l3.add(aux);
             l4.add(aux);
             l5.add(aux);
-        }
-        getSchoolSubjects();
+        }*/
+        getSchedule();
         setListenerMonday();
         setListenerTuesday();
         setListenerWednesday();
@@ -49,30 +54,64 @@ public class InsertScheduleActivity extends AppCompatActivity {
 
     }
 
+    private void getSchedule() {
+        ScheduleViewModel scheduleViewModel = new  ViewModelProvider(this).get(ScheduleViewModel.class);
+        scheduleViewModel.getSchedule(classID).observe(this, received -> {
+            if ( received) {
+                l1 = scheduleViewModel.getL1();
+                l2 = scheduleViewModel.getL2();
+                l3 = scheduleViewModel.getL3();
+                l4 = scheduleViewModel.getL4();
+                l5 = scheduleViewModel.getL5();
+                adapter = new ScheduleAdapter(this,l1);
+                adapter.sendTypeUser(admin);
+                listView.setAdapter(adapter);
+                getSchoolSubjects();
+
+            }
+
+        });
+
+    }
+
     private void setListenerSave() {
         saveSchedule.setOnClickListener(v -> {
             setPreviousList(current);
             PresentationControlFactory.getScheduleController().setSchedule(classID,l1,l2,l3,l4,l5);
-
+            Toast.makeText(this,R.string.sucessModifySchedule,Toast.LENGTH_SHORT).show();
 
         });
     }
 
     private void setListenerFriday() {
-        monday.setOnClickListener(v -> {
+        friday.setOnClickListener(v -> {
             setPreviousList(current);
             current = 5;
             adapter = new ScheduleAdapter(this,l5);
+            adapter.sendTypeUser(admin);
             adapter.setSubjects(schoolSubjects);
             listView.setAdapter(adapter);
         });
     }
 
+    private void setListenerMonday() {
+        monday.setOnClickListener(v -> {
+            setPreviousList(current);
+            current = 1;
+            adapter = new ScheduleAdapter(this,l1);
+            adapter.sendTypeUser(admin);
+            adapter.setSubjects(schoolSubjects);
+            listView.setAdapter(adapter);
+        });
+
+    }
+
     private void setListenerThursday() {
-        tuesday.setOnClickListener(v -> {
+        thursday.setOnClickListener(v -> {
             setPreviousList(current);
             current = 4;
             adapter = new ScheduleAdapter(this,l4);
+            adapter.sendTypeUser(admin);
             adapter.setSubjects(schoolSubjects);
             listView.setAdapter(adapter);
         });
@@ -86,6 +125,7 @@ public class InsertScheduleActivity extends AppCompatActivity {
             setPreviousList(current);
             current = 3;
             adapter = new ScheduleAdapter(this,l3);
+            adapter.sendTypeUser(admin);
             adapter.setSubjects(schoolSubjects);
             listView.setAdapter(adapter);
         });
@@ -93,25 +133,17 @@ public class InsertScheduleActivity extends AppCompatActivity {
     }
 
     private void setListenerTuesday() {
-        thursday.setOnClickListener(v -> {
+        tuesday.setOnClickListener(v -> {
             setPreviousList(current);
             current = 2;
             adapter = new ScheduleAdapter(this,l2);
+            adapter.sendTypeUser(admin);
             adapter.setSubjects(schoolSubjects);
             listView.setAdapter(adapter);
         });
     }
 
-    private void setListenerMonday() {
-        friday.setOnClickListener(v -> {
-            setPreviousList(current);
-            current = 1;
-            adapter = new ScheduleAdapter(this,l1);
-            adapter.setSubjects(schoolSubjects);
-            listView.setAdapter(adapter);
-        });
 
-    }
 
     private void getSchoolSubjects() {
         SubjectViewModel subjectViewModel = new ViewModelProvider(this).get(SubjectViewModel.class);
@@ -119,9 +151,8 @@ public class InsertScheduleActivity extends AppCompatActivity {
         subjectViewModel.getSubjects(schoolID).observe(this, received -> {
             if ( received) {
                 schoolSubjects = subjectViewModel.getListOfSubjects();
-                adapter = new ScheduleAdapter(this,l1);
                 adapter.setSubjects(schoolSubjects);
-                listView.setAdapter(adapter);
+
             }
         });
     }
@@ -143,6 +174,8 @@ public class InsertScheduleActivity extends AppCompatActivity {
         friday = findViewById(R.id.friday);
         listView = findViewById(R.id.schedule_list);
         saveSchedule = findViewById(R.id.save_schedule);
+        if ( admin) saveSchedule.setVisibility(View.VISIBLE);
+        else saveSchedule.setVisibility(View.GONE);
         classID = getIntent().getStringExtra("classID");
     }
 

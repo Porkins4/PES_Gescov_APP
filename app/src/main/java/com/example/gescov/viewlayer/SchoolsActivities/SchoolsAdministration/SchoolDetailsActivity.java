@@ -77,6 +77,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         classroomsListButton.setOnClickListener(e -> {
             Intent intent = new Intent(this, SchoolClassromListActivity.class);
             intent.putExtra("schooldID",school.getId());
+            intent.putExtra("admin",GescovUtils.isUserSchoolAdmin(loggedUser, school));
             startActivity(intent);
         });
 

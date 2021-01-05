@@ -2,6 +2,8 @@ package com.example.gescov.domainlayer.Controllers;
 
 import android.util.Pair;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
@@ -27,8 +29,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import org.json.JSONException;
 
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
 
 public class ModelController {
 
@@ -480,5 +480,13 @@ public class ModelController {
 
     public void notifyListOfTeachersReceivedToCreateEvent(List<User> contactsFromSelectedCenter) {
         PresentationControlFactory.getViewLayerController().notifyListOfTeachersReceivedToCreateEvent(contactsFromSelectedCenter);
+    }
+
+    public void getSchedule(String classID) {
+        DomainControlFactory.getScheduleModelController().getSchedule(classID);
+    }
+
+    public void sendResponseOfSchedule(List<Subject> l1, List<Subject> l2, List<Subject> l3, List<Subject> l4, List<Subject> l5) {
+        PresentationControlFactory.getViewLayerController().sendResponseOfSchedule(l1,l2,l3,l4,l5);
     }
 }

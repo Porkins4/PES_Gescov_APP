@@ -18,6 +18,7 @@ public class ScheduleAdapter extends BaseAdapter {
     private List<Subject> subjects;
     private List<Subject> subjectsOfDay;
     private LayoutInflater mInflater;
+    private Boolean admin;
 
     public ScheduleAdapter(Context c, List<Subject> list) {
         subjectsOfDay = list;
@@ -47,6 +48,8 @@ public class ScheduleAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = mInflater.inflate(R.layout.schedule_item,null);
         Button edit = v.findViewById(R.id.modify_schedule);
+        if ( admin ) edit.setVisibility(View.VISIBLE);
+        else edit.setVisibility(View.INVISIBLE);
 
         TextView time = v.findViewById(R.id.time);
         TextView subjectName = v.findViewById(R.id.subject);
@@ -82,4 +85,7 @@ public class ScheduleAdapter extends BaseAdapter {
     }
 
 
+    public void sendTypeUser(Boolean admin) {
+        this.admin = admin;
+    }
 }
