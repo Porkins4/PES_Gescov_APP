@@ -459,4 +459,8 @@ public class ModelController {
     public void setCreateSubjectResult(boolean error) {
         PresentationControlFactory.getViewLayerController().setCreateSubjectResult(error);
     }
+
+    public void deleteWallEntry(String wallEntryId) {
+        DomainControlFactory.getForumModelController().deleteWallEntry(wallEntryId);
+    }
 }

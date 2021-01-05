@@ -259,4 +259,5 @@
     <string name="create_forum_entry_content">Content</string>
     <string name="create_wall_entry_reply_form_text">Write your comment here.</string>
     <string name="create_wall_entry_reply_form_button">Add comment</string>
+    <string name="forum_entry_list_delete_message">Are you sure to delete this wall entry?</string>
 </resources>

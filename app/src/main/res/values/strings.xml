@@ -293,7 +293,7 @@
     <string name="thursday">Dijous</string>
     <string name="friday">Divendres</string>
     <string name="modify_schedule">Editar</string>
-
+    <string name="forum_entry_list_delete_message">Estàs segur d\'esborrar aquesta entrada?</string>
 
 
 </resources>

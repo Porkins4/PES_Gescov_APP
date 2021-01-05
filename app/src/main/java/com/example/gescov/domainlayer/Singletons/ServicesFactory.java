@@ -7,6 +7,7 @@ import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseC
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteSchoolAdminResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteSchoolClassroomResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteSchoolResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteWallEntryResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshCurrentSchoolResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshSchoolClassroomsResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshSchoolRequestsBySchoolIdResponseController;
@@ -78,6 +79,7 @@ public class ServicesFactory {
     private static CreateForumEntryResponseController createForumEntryResponseController;
     private static RefreshWallEntriesBySchoolIdResponseController refreshWallEntriesBySchoolIdResponseController;
     private static CreateForumEntryReplyResponseController createForumEntryReplyResponseController;
+    private static DeleteWallEntryResponseController deleteWallEntryResponseController;
 
     private static Retrofit getRetrofit() {
         if (retrofit != null) return retrofit;
@@ -260,5 +262,11 @@ public class ServicesFactory {
         if (createForumEntryReplyResponseController != null) return createForumEntryReplyResponseController;
         createForumEntryReplyResponseController = new CreateForumEntryReplyResponseController(getRetrofit());
         return createForumEntryReplyResponseController;
+    }
+
+    public static DeleteWallEntryResponseController getDeleteWallEntryResponseController() {
+        if (deleteWallEntryResponseController != null) return deleteWallEntryResponseController;
+        deleteWallEntryResponseController = new DeleteWallEntryResponseController(getRetrofit());
+        return deleteWallEntryResponseController;
     }
 }

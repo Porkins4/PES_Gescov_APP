@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="10dp">
 
     <TextView
         android:id="@+id/wall_item_reply_list_item_content"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
         android:text="Content"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/wall_item_reply_list_item_date"
         app:layout_constraintTop_toBottomOf="@+id/wall_item_reply_list_item_date" />
 
@@ -29,8 +29,8 @@
         android:id="@+id/wall_entry_reply_list_item_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="12dp"
         android:text="Author"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

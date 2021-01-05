@@ -1,6 +1,8 @@
 package com.example.gescov.viewlayer.forum;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,11 +46,45 @@ public class ForumEntryListViewAdapter extends ModelListViewAdapter {
             content = content.substring(0, 197) + "...";
         contentTextView.setText(content);
 
+        WallEntry we = ((WallEntry) modelList.get(position));
+
         v.setOnClickListener(e-> {
             Intent intent = new Intent(context, ForumReplyListActivity.class);
-            intent.putExtra("wallEntry", ((WallEntry) modelList.get(position)).getId());
+            intent.putExtra("wallEntry", we.getId());
             context.startActivity(intent);
         });
+
+        v.setOnLongClickListener(e -> {
+            if (isLoggedUserAdmin(school)) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(e.getContext());
+                builder.setTitle(e.getResources().getString(R.string.options))
+                        .setItems(R.array.school_administration_menu_items, (dialog, which) -> {
+                            if (which == 0) confirmDeleteSchoolPrompt(v, school, we.getId());
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                }
+            return false;
+        });
+
         return v;
+    }
+
+    private void confirmDeleteSchoolPrompt(View v, School school, String wallEntryId) {
+        DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
+            if (which == DialogInterface.BUTTON_POSITIVE) {
+                PresentationControlFactory.getForumController().deleteWallEntry(wallEntryId);
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+        builder.setMessage(v.getContext().getString(R.string.forum_entry_list_delete_message)).setPositiveButton(v.getContext().getString(R.string.delete), dialogClickListener)
+                .setNegativeButton(v.getContext().getString(R.string.cancel), dialogClickListener);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private boolean isLoggedUserAdmin(School school) {
+        return school.getAdministratorsList().contains(PresentationControlFactory.getViewLayerController().getLoggedUserInfo().getId());
     }
 }

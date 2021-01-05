@@ -479,4 +479,8 @@ public class ViewLayerController {
     public void setCreateSubjectResult(boolean error) {
         PresentationControlFactory.getSubjectController().setCreateSubjectResult(error);
     }
+
+    public void deleteWallEntry(String wallEntryId) {
+        DomainControlFactory.getModelController().deleteWallEntry(wallEntryId);
+    }
 }

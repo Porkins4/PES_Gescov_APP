@@ -97,4 +97,9 @@ public class ForumModelController {
         DomainControlFactory.getModelController().refreshWallEntryReplies(wallEntry);
         DomainControlFactory.getModelController().refreshLoggedUserSchoolsWallEntries(wallEntryList);
     }
+
+    public void deleteWallEntry(String wallEntryId) {
+        String userId = DomainControlFactory.getModelController().getLoggedInUser().getId();
+        ServicesFactory.getDeleteWallEntryResponseController().deleteWallEntry(wallEntryId, userId);
+    }
 }

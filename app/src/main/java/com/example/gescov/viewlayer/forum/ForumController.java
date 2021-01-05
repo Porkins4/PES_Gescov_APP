@@ -39,4 +39,8 @@ public class ForumController extends GescovModelListedController {
     public void createForumEntryReply(String wallEntryId, String content) {
         PresentationControlFactory.getViewLayerController().createForumEntryReply(wallEntryId, content);
     }
+
+    public void deleteWallEntry(String wallEntryId) {
+        PresentationControlFactory.getViewLayerController().deleteWallEntry(wallEntryId);
+    }
 }
