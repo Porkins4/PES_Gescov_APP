@@ -84,7 +84,8 @@ public class ForumModelController {
     public void refreshWallEntry(WallEntry wallEntry) {
         for (WallEntry we : wallEntryList) {
             if (we.getId().equals(wallEntry.getId())) {
-                we = wallEntry;
+                wallEntryList.remove(we);
+                wallEntryList.add(wallEntry);
                 return;
             }
         }
@@ -94,5 +95,6 @@ public class ForumModelController {
     public void refreshWallEntryReplies(WallEntry wallEntry) {
         refreshWallEntry(wallEntry);
         DomainControlFactory.getModelController().refreshWallEntryReplies(wallEntry);
+        DomainControlFactory.getModelController().refreshLoggedUserSchoolsWallEntries(wallEntryList);
     }
 }
