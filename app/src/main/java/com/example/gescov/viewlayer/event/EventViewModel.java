@@ -96,4 +96,8 @@ public class EventViewModel extends ViewModel {
         }
         return result;
     }
+
+    public boolean emptyClassrooms() {
+        return classrooms.isEmpty();
+    }
 }
