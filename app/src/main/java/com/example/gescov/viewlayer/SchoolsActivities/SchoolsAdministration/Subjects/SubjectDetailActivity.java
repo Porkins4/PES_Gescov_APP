@@ -66,6 +66,7 @@ public class SubjectDetailActivity extends AppCompatActivity {
                 v -> {
                     Intent i = new Intent(this, EventActivity.class);
                     i.putExtra("subjectID",subjectID);
+                    i.putExtra("schoolID",getIntent().getStringExtra("schoolID"));
                     startActivity(i);
                 }
         );

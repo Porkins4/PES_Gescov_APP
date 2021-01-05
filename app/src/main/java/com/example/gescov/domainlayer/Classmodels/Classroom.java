@@ -1,20 +1,55 @@
 package com.example.gescov.domainlayer.Classmodels;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Classroom {
-    String id;
-    String name;
-    int rows;
-    int columns;
-    int capacity;
+    private String id;
+    private String name;
+    private int rows;
+    private int columns;
+    private int capacity;
+    private String schoolID;
 
     public Classroom() {}
 
-    public Classroom(String id, String name, int rows, int columns) {
+    //{
+    //    "id": "string",
+    //        "scheduleList": [
+    //    {
+    //        "subjectID": "string",
+    //            "start": "string",
+    //            "end": "string",
+    //            "day": "MONDAY"
+    //    }
+    //],
+    //    "name": "string",
+    //        "numRows": 0,
+    //        "numCols": 0,
+    //        "schoolID": "string"
+
+    public Classroom(String id, String name, int rows, int columns, String schoolID) {
         this.id = id;
         this.name = name;
         this.rows = rows;
         this.columns = columns;
         this.capacity = rows*columns;
+        this.schoolID = schoolID;
+    }
+
+    public static Classroom fromJSONtoClassroom(JSONObject jsonObject) {
+        Classroom result = new Classroom();
+        try {
+            String id = jsonObject.getString("id");
+            String name = jsonObject.getString("name");
+            int numRows = jsonObject.getInt("numRows");
+            int numCols = jsonObject.getInt("numCols");
+            String schoolID = jsonObject.getString("schoolID");
+            return new Classroom(id,name,numRows,numCols,schoolID);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     public String getId() {
@@ -58,5 +93,11 @@ public class Classroom {
     }
 
 
-
+    public void print() {
+        System.out.println(id);
+        System.out.println(name);
+        System.out.println(rows);
+        System.out.println(columns);
+        System.out.println(capacity);
+    }
 }

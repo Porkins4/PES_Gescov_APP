@@ -274,6 +274,8 @@ public class UserModelController {
 
     public void setContactsFromSelectedCenter(JSONArray response, int activityIdentifier) {
         contactsFromSelectedCenter = new ArrayList<>();
+        System.out.println("holaaaaa");
+        System.out.println(response.toString());
         for (int i = 0; i < response.length(); ++i) {
             try {
                 User u = getUserFromJSONObject(response.getJSONObject(i)); //reusar esta operación
@@ -283,7 +285,8 @@ public class UserModelController {
             }
         }
         if (activityIdentifier == 1) DomainControlFactory.getModelController().updateContactsFromCreateChat();
-        else DomainControlFactory.getModelController().notifyListOfTeachersReceivedToAddSubject(contactsFromSelectedCenter);
+        else if (activityIdentifier == 2) DomainControlFactory.getModelController().notifyListOfTeachersReceivedToAddSubject(contactsFromSelectedCenter);
+        else DomainControlFactory.getModelController().notifyListOfTeachersReceivedToCreateEvent(contactsFromSelectedCenter);
     }
 
     private void addUserToContactList(User u, int activityIdentifier) {
@@ -293,7 +296,7 @@ public class UserModelController {
                 contactsFromSelectedCenter.add(u);
             else if (loggedUser.getProfileType() == User.UserProfileType.TEACHER)
                 contactsFromSelectedCenter.add(u);
-        } else {
+        } else { //activiti identifier 2 or 3
             if (u.getProfileType() == User.UserProfileType.TEACHER)
                 contactsFromSelectedCenter.add(u);
         }
