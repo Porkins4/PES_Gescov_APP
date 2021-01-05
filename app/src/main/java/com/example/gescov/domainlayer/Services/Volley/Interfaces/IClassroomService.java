@@ -10,4 +10,6 @@ public interface IClassroomService {
     void setSchedule(JSONArray classSchedule, String classID);
 
     void getClassroomsBySchoolID(String schoolID);
+
+    void getSchedule(String classID);
 }

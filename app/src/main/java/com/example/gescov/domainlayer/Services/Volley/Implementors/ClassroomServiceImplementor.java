@@ -11,7 +11,6 @@ import com.example.gescov.domainlayer.Services.Volley.VolleyServices;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ClassroomServiceImplementor implements IClassroomService {
@@ -67,16 +66,6 @@ public class ClassroomServiceImplementor implements IClassroomService {
     @Override
     public void setSchedule( JSONArray classSchedule,String classID) {
 
-        for (int i = 0; i < classSchedule.length(); ++i) {
-            JSONObject aux = null;
-            try {
-                aux = classSchedule.getJSONObject(i);
-                System.out.println(aux);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-        }
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.POST, GESCOV_CLASSROOMS_URI + classID+"/schedule",classSchedule,
                 response -> {
@@ -96,5 +85,22 @@ public class ClassroomServiceImplementor implements IClassroomService {
                 error -> DomainControlFactory.getClassroomModelController().SetClassroomsBySchoolIDResponse(true, null)
         );
         VolleyServices.getRequestQueue().add(request);
+    }
+
+    @Override
+    public void getSchedule(String classID) {
+
+        JsonArrayRequest request = new JsonArrayRequest(
+                Request.Method.GET, GESCOV_CLASSROOMS_URI + classID+"/schedule",null,
+                response -> {
+                    DomainControlFactory.getScheduleModelController().sendResponseOfSchedule(response);
+                },
+                error -> {
+                }
+        );
+        VolleyServices.getRequestQueue().add(request);
+
+
+
     }
 }

@@ -9,11 +9,14 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.gescov.GescovUtils;
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.Classroom;
+import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.ClassroomActivities.ClassroomDistribution.ClassroomDistributionActivity;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.classroomSchedule.InsertScheduleActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 import java.util.ArrayList;
@@ -25,6 +28,7 @@ public class ClassroomListViewAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private Context context;
     private String schoolID;
+    private Boolean admin;
 
     public ClassroomListViewAdapter(Context c, List<Classroom> l) {
         context = c;
@@ -65,18 +69,26 @@ public class ClassroomListViewAdapter extends BaseAdapter {
         TextView columns = (TextView) v.findViewById(R.id.classroom_columns);
         Button editButton = v.findViewById(R.id.classroom_list_item_edit_button);
 
+        if ( admin ) {
+            editButton.setOnClickListener(e -> {
+                SchoolClassroomsCrontroller controller = PresentationControlFactory.getClassroomsCrontroller();
+                Intent intent = new Intent(context, EditClassroomFormActivity.class);
+                intent.putExtra("classroom_position", position);
+                intent.putExtra("classID", classroomList.get(position).getId());
+                intent.putExtra("schoolID", schoolID);
 
-
-
-        editButton.setOnClickListener(e-> {
-            SchoolClassroomsCrontroller controller = PresentationControlFactory.getClassroomsCrontroller();
-            Intent intent = new Intent(context, EditClassroomFormActivity.class);
-            intent.putExtra("classroom_position", position);
-            intent.putExtra("classID",classroomList.get(position).getId());
-            intent.putExtra("schoolID",schoolID);
-
-            context.startActivity(intent);
-        });
+                context.startActivity(intent);
+            });
+        } else {
+            editButton.setText(context.getString(R.string.see_schedule));
+            editButton.setOnClickListener(v1 -> {
+                Intent intent = new Intent(context, InsertScheduleActivity.class);
+                intent.putExtra("classID", classroomList.get(position).getId());
+                intent.putExtra("schoolID", schoolID);
+                intent.putExtra("admin",admin);
+                context.startActivity(intent);
+            });
+        }
         //-----------------------------------------------------------------------
         if (PresentationControlFactory.getUpdateUserProfileController().getUserType() == User.UserProfileType.TEACHER) {
             name.setOnClickListener(e-> {
@@ -109,5 +121,10 @@ public class ClassroomListViewAdapter extends BaseAdapter {
 
     public void setSchoolID(String schooldID) {
         this.schoolID = schooldID;
+    }
+
+    public void setIfAdmin(boolean admin) {
+        this.admin = admin;
+
     }
 }

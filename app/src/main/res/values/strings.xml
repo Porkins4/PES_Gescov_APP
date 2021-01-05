@@ -300,6 +300,8 @@
     <string name="friday">Divendres</string>
     <string name="modify_schedule">Editar</string>
     <string name="save_schedule">Guardar Horari</string>
+    <string name="see_schedule">Veure Horari</string>
+    <string name="sucessModifySchedule">" Actualitzat Correctament"</string>
 
     <string name="forum_entry_list_delete_message">Estàs segur d\'esborrar aquesta entrada?</string>
 

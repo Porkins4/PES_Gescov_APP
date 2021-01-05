@@ -13,7 +13,6 @@ import com.example.gescov.domainlayer.Controllers.SchoolsModelController;
 import com.example.gescov.domainlayer.Controllers.SubjectModelController;
 import com.example.gescov.domainlayer.Controllers.TracingTestResultController;
 import com.example.gescov.domainlayer.Controllers.UserModelController;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.classroomSchedule.ScheduleController;
 
 public class DomainControlFactory {
     private static SchoolsModelController schoolsModelController;
@@ -125,4 +124,6 @@ public class DomainControlFactory {
         scheduleModelController = new ScheduleModelController();
         return scheduleModelController;
     }
+
+
 }
