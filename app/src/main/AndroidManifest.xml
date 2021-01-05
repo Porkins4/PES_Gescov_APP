@@ -5,12 +5,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
-
     <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
         android:name=".viewlayer.Singletons.GescovApplication"
@@ -21,10 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gescov"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".viewlayer.event.EventActivity"></activity>
-
-        <activity android:name=".viewlayer.tracingTestResult.TestDetailsActivity"></activity>
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.createsubject.CreateSubjectActivity"></activity>
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.event.EventActivity" />
+        <activity android:name=".viewlayer.tracingTestResult.TestDetailsActivity" />
         <activity android:name=".viewlayer.tracingTestResult.TracingTestResultActivity" />
         <activity android:name=".viewlayer.forum.CreateForumEntryFormActivity" /> <!-- notification -->
         <service
@@ -39,17 +35,16 @@
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.addteachertosubject.AddTeacherToSubjectActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
-
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.createclasssession.CreateClassSessionActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.checkclasssession.CheckClassSessionActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
-            android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectDetailActivity"
+            android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.subjects.SubjectDetailActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
-            android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectActivity"
+            android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.subjects.SubjectActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionListActivity"

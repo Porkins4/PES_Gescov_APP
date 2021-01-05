@@ -1,14 +1,12 @@
 package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.checkclasssession;
 
 import android.content.Context;
-import android.widget.ListAdapter;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.gescov.domainlayer.Classmodels.ClassSessionModel;
-import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionAdapter;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 import java.util.List;

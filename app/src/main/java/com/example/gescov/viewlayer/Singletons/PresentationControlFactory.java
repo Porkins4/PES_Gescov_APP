@@ -3,14 +3,13 @@ package com.example.gescov.viewlayer.Singletons;
 
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.gescov.domainlayer.Classmodels.Subject;
 import com.example.gescov.viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroomController;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionController;
 import com.example.gescov.viewlayer.Map.MapController;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassroomsCrontroller;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionController;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolsCrontroller;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectController;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.subjects.SubjectController;
 import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUsersController;
 import com.example.gescov.viewlayer.SignUpAndLogin.LoadingProfileController;
 import com.example.gescov.viewlayer.UpdateUserProfile.UpdateUserProfileController;
@@ -19,7 +18,7 @@ import com.example.gescov.viewlayer.chat.chatlist.ChatListController;
 import com.example.gescov.viewlayer.chat.chatview.ChatViewController;
 import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
 
-import com.example.gescov.viewlayer.event.EventController;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.event.EventController;
 import com.example.gescov.viewlayer.forum.ForumController;
 
 import com.example.gescov.viewlayer.home.HomeController;
@@ -27,8 +26,6 @@ import com.example.gescov.viewlayer.home.NotifyContagionController;
 import com.example.gescov.viewlayer.home.TracingTestController;
 import com.example.gescov.viewlayer.ranking.RankingController;
 import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
-
-import java.util.List;
 
 public class PresentationControlFactory {
     private static ViewLayerController viewLayerController;

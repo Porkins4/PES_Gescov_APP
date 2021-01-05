@@ -159,7 +159,7 @@
     <string name="titleTests">Quins símptomes tens? </string>
     <string name="sendAnswers">Finalitzar Test </string>
     <string name="userAnswer">Resposta de l\'usuari: </string>
-    <string name="user_test_response">Respostas del Test: </string>
+    <string name="user_test_response">Respostes del test</string>
     <string name="all_tests"> Tots el tests</string>
     <string name="test_done_in">Test fet el </string>
     <string name="error_no_tests">No hi ha cap test </string>
@@ -258,10 +258,13 @@
     <string name="subjects_details_activity_title">Detalls de l\'assignatura</string>
     <string name="check_class_session_activity_title">Sessions de classe</string>
     <string name="create_class_session_activity_title">Crear sessió de classe</string>
+    <string name="general_error_message">S\'ha produït un error</string>
+    <string name="no_subjects_from_user">No t\'has apuntat a cap asignatura encara</string>
+    <string name="subjects_fragment_title">Assignatures</string>
+    <string name="enrolled_professors_text_item">"Professors: "</string>
+    <string name="enrolled_users_text_item">"Matriculats: "</string>
 
     <string name="forum">Noticies</string>
-
-
 
     <!-- Strings for the event -->
     <string name="event_title">Titol:</string>
@@ -270,10 +273,9 @@
     <string name="event_prepare">Prepara Tu Esdeveniment</string>
     <string name="create_event">Crear Esdeveniment</string>
 
-    <string name="general_error_message">S\'ha produït un error</string>
-    <string name="no_subjects_from_user">No t\'has apuntat a cap asignatura encara</string>
-    <string name="subjects_fragment_title">Assignatures</string>
-    <string name="enrolled_professors_text_item">"Professors: "</string>
-    <string name="enrolled_users_text_item">"Matriculats: "</string>
+    <!-- Strings for creating subjects -->
+    <string name="create_subject_text_button">Crear assignatura</string>
+    <string name="create_subject_title">Crear assignatura</string>
+    <string name="succesfull_subject_creation">S\'ha creat l\'assignatura correctament</string>
 
 </resources>
