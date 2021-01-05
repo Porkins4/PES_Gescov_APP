@@ -26,7 +26,9 @@
 
         <activity android:name=".viewlayer.tracingTestResult.TestDetailsActivity"></activity>
         <activity android:name=".viewlayer.tracingTestResult.TracingTestResultActivity" />
-        <activity android:name=".viewlayer.forum.CreateForumEntryFormActivity" /> <!-- notification -->
+        <activity android:name=".viewlayer.forum.CreateForumEntryFormActivity" />
+        <activity android:name=".viewlayer.forum.forumreply.ForumReplyListActivity" />
+        <!-- notification -->
         <service
             android:name=".FirebaseNotificationController"
             android:exported="false">

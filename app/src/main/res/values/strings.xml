@@ -259,7 +259,13 @@
     <string name="check_class_session_activity_title">Sessions de classe</string>
     <string name="create_class_session_activity_title">Crear sessió de classe</string>
 
+    <!-- Strings for the forum -->
     <string name="forum">Noticies</string>
+    <string name="create_forum_entry_title">Títol</string>
+    <string name="create_forum_entry_content">Contingut</string>
+    <string name="create_wall_entry_reply_form_text">Escriu el teu comentari aquí.</string>
+    <string name="create_wall_entry_reply_form_button">Afegir comentari</string>
+
 
 
 
@@ -275,5 +281,6 @@
     <string name="subjects_fragment_title">Assignatures</string>
     <string name="enrolled_professors_text_item">"Professors: "</string>
     <string name="enrolled_users_text_item">"Matriculats: "</string>
+
 
 </resources>

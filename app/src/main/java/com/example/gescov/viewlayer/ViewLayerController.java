@@ -3,8 +3,6 @@ package com.example.gescov.viewlayer;
 import android.location.Location;
 import android.util.Pair;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
@@ -30,6 +28,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import org.json.JSONException;
 
 import java.util.List;
+
+import androidx.lifecycle.MutableLiveData;
 
 
 public class ViewLayerController {
@@ -421,8 +421,8 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().deleteUserToken(token);
     }
 
-    public void createForumEntry(String textEntry, String schoolId) {
-        DomainControlFactory.getModelController().createForumEntry(textEntry, schoolId);
+    public void createForumEntry(String titleEntry, String textEntry, String schoolId) {
+        DomainControlFactory.getModelController().createForumEntry(titleEntry, textEntry, schoolId);
     }
 
     public void refreshLoggedUserSchoolsWallEntries() {
@@ -462,5 +462,13 @@ public class ViewLayerController {
     public void setSubjectsFromUserResult(boolean error, List<Subject> userSubjects) {
         PresentationControlFactory.getSubjectController().setSubjectsFromUserResult(error,userSubjects);
 
+    }
+
+    public void createForumEntryReply(String wallEntryId, String content) {
+        DomainControlFactory.getModelController().createForumEntryReply(wallEntryId, content);
+    }
+
+    public void refreshWallEntryReplies(WallEntry wallEntry) {
+        PresentationControlFactory.getForumRepliesController().refreshWallEntryReplies(wallEntry);
     }
 }

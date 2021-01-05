@@ -1,10 +1,8 @@
 package com.example.gescov.domainlayer.Singletons;
 
 
-import com.example.gescov.domainlayer.Controllers.EventModelController;
-
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.CreateForumEntryReplyResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.CreateForumEntryResponseController;
-
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.CreateRequestToSchoolResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteSchoolAdminResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteSchoolClassroomResponseController;
@@ -79,6 +77,7 @@ public class ServicesFactory {
     private static CreateRequestToSchoolResponseController createRequestToSchoolResponseController;
     private static CreateForumEntryResponseController createForumEntryResponseController;
     private static RefreshWallEntriesBySchoolIdResponseController refreshWallEntriesBySchoolIdResponseController;
+    private static CreateForumEntryReplyResponseController createForumEntryReplyResponseController;
 
     private static Retrofit getRetrofit() {
         if (retrofit != null) return retrofit;
@@ -255,5 +254,11 @@ public class ServicesFactory {
         refreshWallEntriesBySchoolIdResponseController = new RefreshWallEntriesBySchoolIdResponseController(getRetrofit());
         return refreshWallEntriesBySchoolIdResponseController;
 
+    }
+
+    public static CreateForumEntryReplyResponseController getCreateForumEntryReplyResponseController() {
+        if (createForumEntryReplyResponseController != null) return createForumEntryReplyResponseController;
+        createForumEntryReplyResponseController = new CreateForumEntryReplyResponseController(getRetrofit());
+        return createForumEntryReplyResponseController;
     }
 }

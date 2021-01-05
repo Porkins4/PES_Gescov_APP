@@ -7,8 +7,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
@@ -19,6 +17,8 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class CreateForumEntryFormActivity extends AppCompatActivity {
 
     private CreateForumEntryViewModel viewModel;
@@ -28,6 +28,7 @@ public class CreateForumEntryFormActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_forum_entry_form);
         EditText noticeText = findViewById(R.id.create_forum_entry_text_entry);
+        EditText titleText = findViewById(R.id.create_forum_entry_text_title);
         Button button = findViewById(R.id.create_forum_entry_button);
         Spinner schoolSpinner = findViewById(R.id.create_forum_entry_school_spinner);
         viewModel = PresentationControlFactory.getSchoolsCrontroller().getCreateForumEntryViewModel();
@@ -48,14 +49,16 @@ public class CreateForumEntryFormActivity extends AppCompatActivity {
 
 
         button.setOnClickListener(e -> {
-            if (noticeText.getText() != null && !noticeText.getText().toString().equals("") && !schoolSpinner.getSelectedItem().toString().equals("") ) {
+            if (noticeText.getText() != null && !noticeText.getText().toString().equals("") && !schoolSpinner.getSelectedItem().toString().equals("") && titleText.getText() != null && !titleText.getText().toString().equals("")) {
                 String schoolId = getSchoolIdByName(schoolSpinner.getSelectedItem().toString());
                 if (schoolId != null) {
-                    PresentationControlFactory.getForumController().createForumEntry(noticeText.getText().toString(), schoolId);
+                    PresentationControlFactory.getForumController().createForumEntry(titleText.getText().toString(), noticeText.getText().toString(), schoolId);
                     finish();
-                } else
-                    Toast.makeText(this, getResources().getText(R.string.create_forum_check_content), Toast.LENGTH_SHORT).show();
-;            }
+                }
+;            } else if (noticeText.getText() == null || noticeText.getText().toString().equals(""))
+                Toast.makeText(this, getResources().getText(R.string.create_forum_check_content), Toast.LENGTH_SHORT).show();
+            else if (titleText.getText() == null || titleText.getText().toString().equals(""))
+                Toast.makeText(this, getResources().getText(R.string.create_forum_check_title), Toast.LENGTH_SHORT).show();
         });
     }
 
