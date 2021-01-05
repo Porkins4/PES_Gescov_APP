@@ -1,11 +1,14 @@
 package com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.Classroom;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.classroomSchedule.InsertScheduleActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 public class EditClassroomFormActivity extends CreateClassroomFormActivity {
@@ -24,7 +27,21 @@ public class EditClassroomFormActivity extends CreateClassroomFormActivity {
             classroomsCrontroller.deleteClassroom(classroom.getId());
             finish();
         });
+
+        setScheduleListener(insertSchedule);
         fillFields();
+
+
+
+    }
+
+    private void setScheduleListener(Button insertSchedule) {
+        insertSchedule.setOnClickListener(v -> {
+            Intent intent = new Intent(this, InsertScheduleActivity.class);
+            intent.putExtra("schoolID",getIntent().getStringExtra("schoolID"));
+            intent.putExtra("classID",classroom.getId());
+            startActivity(intent);
+        });
 
     }
 

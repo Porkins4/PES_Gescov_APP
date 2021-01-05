@@ -76,6 +76,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
 
         classroomsListButton.setOnClickListener(e -> {
             Intent intent = new Intent(this, SchoolClassromListActivity.class);
+            intent.putExtra("schooldID",school.getId());
             startActivity(intent);
         });
 

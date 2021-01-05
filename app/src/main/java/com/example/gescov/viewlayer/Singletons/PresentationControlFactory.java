@@ -18,7 +18,7 @@ import com.example.gescov.viewlayer.chat.chatlist.ChatListController;
 import com.example.gescov.viewlayer.chat.chatview.ChatViewController;
 import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
 
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.event.EventController;
+import com.example.gescov.viewlayer.event.EventController;
 import com.example.gescov.viewlayer.forum.ForumController;
 
 import com.example.gescov.viewlayer.home.HomeController;

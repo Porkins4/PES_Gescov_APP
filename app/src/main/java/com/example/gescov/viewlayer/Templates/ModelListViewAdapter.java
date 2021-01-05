@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.BaseAdapter;
 
+import com.example.gescov.domainlayer.Classmodels.Subject;
+
 import java.util.List;
 
 public abstract  class ModelListViewAdapter extends BaseAdapter {

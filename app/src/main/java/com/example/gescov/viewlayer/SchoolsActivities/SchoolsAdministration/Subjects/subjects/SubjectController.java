@@ -95,4 +95,5 @@ public class SubjectController {
     public void setCreateSubjectResult(boolean error) {
         createSubjectViewModel.setCreateSubjectResult(error);
     }
+
 }

@@ -15,7 +15,7 @@ import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.addteachertosubject.AddTeacherToSubjectActivity;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.checkclasssession.CheckClassSessionActivity;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.event.EventActivity;
+import com.example.gescov.viewlayer.event.EventActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 public class SubjectDetailActivity extends AppCompatActivity {
