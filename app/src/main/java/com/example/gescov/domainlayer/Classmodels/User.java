@@ -19,9 +19,6 @@ import java.util.List;
 
 public class User {
 
-
-
-
     public enum UserProfileType {
         STUDENT ("STUDENT"),
         TEACHER ("TEACHER");
@@ -282,4 +279,9 @@ public class User {
     private void setEmail(String email) {
         this.email = email;
     }
+
+    public boolean isMySchool(String schoolID) {
+        return schoolsID.contains(schoolID);
+    }
+
 }
