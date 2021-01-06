@@ -90,8 +90,8 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().getSchoolClassrooms(schoolName);
     }
 
-    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
-        DomainControlFactory.getModelController().getStudentsInClassSession(studentsResult);
+    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult, String classSession) {
+        DomainControlFactory.getModelController().getStudentsInClassSession(studentsResult, classSession);
     }
   
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
@@ -528,6 +528,11 @@ public class ViewLayerController {
     public boolean isMySchool(String schoolID) {
         return DomainControlFactory.getModelController().isMySchool(schoolID);
     }
+
+    public void setSendReservationRequestResponse(boolean error, int errorCode) {
+        PresentationControlFactory.getStudentsInClassSessionController().setSendReservationRequestResponse(error,errorCode);
+    }
+}
 
 }
 

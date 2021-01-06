@@ -38,71 +38,108 @@
 
         <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.classroomSchedule.InsertScheduleActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
+
+        <activity android:name=".viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.addteachertosubject.AddTeacherToSubjectActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.createclasssession.CreateClassSessionActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.checkclasssession.CheckClassSessionActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectDetailActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionListActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.AccessSchoolByCodeActivity" />
+
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.AccessSchoolByCodeActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.chat.createchat.CreatingChatActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.chat.chatview.ChatViewActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.chat.createchat.CreateChatActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.schoolrequests.SchoolRequestsListActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-        <activity android:name=".viewlayer.UpdateUserProfile.UpdateUserProfileActivity" />
+
+        <activity android:name=".viewlayer.UpdateUserProfile.UpdateUserProfileActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity android:name=".viewlayer.home.DailyTestActivity"
                   android:theme="@style/Theme.Gescov.NoActionBar"/>
+
         <activity
             android:name=".viewlayer.SignUpAndLogin.LoginActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-        <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.CreateClassroomFormActivity" />
-        <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.EditClassroomFormActivity" />
-        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolGraphActivity" />
+
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.CreateClassroomFormActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
+
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.EditClassroomFormActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
+
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolGraphActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.ClassroomActivities.ClassroomDistribution.ClassroomDistributionActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-        <activity android:name=".viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroom" />
+
+        <activity android:name=".viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroom"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.home.CovidNotificationActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassromListActivity"
             android:label="@string/title_activity_school_classrom_list"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.CreateSchoolFormActivity" />
+
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.CreateSchoolFormActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.navigation.NavigationMenu"
             android:label="@string/title_activity_navigation_menu"
             android:theme="@style/Theme.Gescov.NoActionBar" />
+
         <activity
             android:name=".viewlayer.SignUpAndLogin.LoadingProfileActivity"
             android:label="@string/app_name"

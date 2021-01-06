@@ -1,16 +1,19 @@
 package com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession;
 
+import com.example.gescov.domainlayer.Classmodels.Assignment;
+import com.example.gescov.domainlayer.Classmodels.ClassSessionModel;
+
 import java.util.List;
 
 public class StudentsInClassSessionResult {
     private Boolean error;
-    private List<String> studentNames;
+    private List<Assignment> studentNames;
 
     public StudentsInClassSessionResult() {
 
     }
 
-    StudentsInClassSessionResult(Boolean error, List<String> studentNames) {
+    StudentsInClassSessionResult(Boolean error, List<Assignment> studentNames) {
         this.error = error;
         this.studentNames = studentNames;
     }
@@ -19,7 +22,7 @@ public class StudentsInClassSessionResult {
         return error;
     }
 
-    public List<String> getStudentNames() {
+    public List<Assignment> getStudentNames() {
         return studentNames;
     }
 
@@ -27,7 +30,7 @@ public class StudentsInClassSessionResult {
         this.error = error;
     }
 
-    public void setStudentNames(List<String> studentNames) {
+    public void setStudentNames(List<Assignment> studentNames) {
         this.studentNames = studentNames;
     }
 }

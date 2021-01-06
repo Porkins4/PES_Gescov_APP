@@ -3,6 +3,7 @@ package com.example.gescov.viewlayer.ClassroomActivities.ClassroomDistribution;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.gridlayout.widget.GridLayout;
@@ -17,16 +18,17 @@ import java.util.List;
 
 public class ClassroomDistributionActivity extends AppCompatActivity {
 
-    private ClassroomDistributionController controller;
+    private static final int SUCCESS_RESERVATION_REQUEST_CODE = 200;
     private GridLayout gridLayout;
     private ClassroomDistributionTableWidget [][] distribution;
     private ClassroomDsitributionViewModel classroomDsitributionViewModel;
+    private int row;
+    private int col;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classroom_ditribution);
-        controller = new ClassroomDistributionController();
         initViewComponents();
     }
 
@@ -41,13 +43,9 @@ public class ClassroomDistributionActivity extends AppCompatActivity {
     }
 
     private void initResponseListener() {
-        String classroomId = getIntent().getStringExtra("classroom");
         classroomDsitributionViewModel = new ViewModelProvider(this).get(ClassroomDsitributionViewModel.class);
         classroomDsitributionViewModel.getData(getIntent().getStringExtra("classSession")).observe(this,
-                classroomDistributionInfo -> {
-                    if (!classroomDistributionInfo.isError()) getClassroomInfo();
-                    else getClassroomInfo();//class without assignments
-                }
+                classroomDistributionInfo -> getClassroomInfo()
         );
     }
 
@@ -76,6 +74,7 @@ public class ClassroomDistributionActivity extends AppCompatActivity {
                 y.setParent(this);
                 y.setColPos(j);
                 y.setRowPos(i);
+                if ((i % 2 == 0 && j % 2 == 0) || (i % 2 != 0 && j % 2 != 0)) y.initTable("-1");
                 distribution[i][j] = y;
                 gridLayout.addView(y.getTableLayout());
             }
@@ -91,11 +90,21 @@ public class ClassroomDistributionActivity extends AppCompatActivity {
     }
 
 
-    public void launchMarkPosition(String studentId, int rowPos, int colPos) {
+    public void launchMarkPosition(int rowPos, int colPos) {
         Intent i = new Intent(this, MarkPositionInClassroom.class);
+        row = rowPos;
+        col = colPos;
         i.putExtra("row",rowPos);
         i.putExtra("col",colPos);
         i.putExtra("classSessionID",getIntent().getStringExtra("classSession"));
-        startActivity(i);
+        startActivityForResult(i,SUCCESS_RESERVATION_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SUCCESS_RESERVATION_REQUEST_CODE && resultCode == RESULT_OK) {
+                distribution[row][col].initTable(classroomDsitributionViewModel.getUserName().getName());
+        }
     }
 }

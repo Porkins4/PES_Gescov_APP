@@ -87,22 +87,6 @@ public class ClassroomListViewAdapter extends BaseAdapter {
                 context.startActivity(intent);
             });
         }
-        //-----------------------------------------------------------------------
-        if (PresentationControlFactory.getUpdateUserProfileController().getUserType() == User.UserProfileType.TEACHER) {
-            name.setOnClickListener(e-> {
-                Intent intent = new Intent(context, StudentsInClassRecordActivity.class);
-                intent.putExtra("classroom", classroomList.get(position).getId());
-                context.startActivity(intent);
-            });
-        } else {
-            name.setOnClickListener(e-> {
-                Intent intent = new Intent(context, ClassroomDistributionActivity.class);
-                intent.putExtra("classroom", classroomList.get(position).getId());
-                context.startActivity(intent);
-            });
-        }
-        //-----------------------------------------------------------------------
-
 
         name.setText(classroomList.get(position).getName());
         capacity.setText(String.valueOf(classroomList.get(position).getCapacity() + " " + v.getResources().getText(R.string.classroom_capacity)));

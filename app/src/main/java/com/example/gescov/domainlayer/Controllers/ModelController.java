@@ -105,8 +105,8 @@ public class ModelController {
     }
 
 
-    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
-        userModelController.getStudentsInClassSession(studentsResult);
+    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult, String classSession) {
+        userModelController.getStudentsInClassSession(studentsResult, classSession);
     }
   
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
@@ -504,6 +504,10 @@ public class ModelController {
 
     public void getTeachersBySubjectID(String subjectID) {
         DomainControlFactory.getUserModelController().getTeachersBySubjectID(subjectID);
+    }
+
+    public void setSendReservationRequestResponse(boolean error, int errorCode) {
+        PresentationControlFactory.getViewLayerController().setSendReservationRequestResponse(error,errorCode);
     }
 
     public boolean isMySchool(String schoolID) {

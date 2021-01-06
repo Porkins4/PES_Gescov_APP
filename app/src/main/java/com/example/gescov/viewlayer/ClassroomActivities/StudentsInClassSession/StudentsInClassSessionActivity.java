@@ -8,12 +8,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class StudentsInClassSessionView extends AppCompatActivity {
+public class StudentsInClassSessionActivity extends AppCompatActivity {
 
     private ListView listView;
     private Context context;
@@ -33,6 +34,9 @@ public class StudentsInClassSessionView extends AppCompatActivity {
         initPrivateAttribs();
         setResponseListener();
         initUpdateButton();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.title_assignments_class_session);
     }
 
     private void initPrivateAttribs() {
@@ -40,22 +44,23 @@ public class StudentsInClassSessionView extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list_view_students_in_class_session);
         progressBar = (ProgressBar) findViewById(R.id.progress_bar_students_in_class_session);
         loadingTextView = (TextView) findViewById(R.id.loading_text_view_students_in_class_session);
-
+        studentsInClassSessionViewModel = new ViewModelProvider(this).get(StudentsInClassSessionViewModel.class);
+        studentsInClassSessionViewModel.init(getIntent().getStringExtra("classSession"));
         loadingTextView.setText("cargando...");
     }
 
     private void setResponseListener() {
-        studentsInClassSessionViewModel = new ViewModelProvider(this).get(StudentsInClassSessionViewModel.class);
-        studentsInClassSessionViewModel.getStudents().observe(this, studentNames -> {
-            adapter = new StudentsInClassSessionAdapter(context,studentNames.getStudentNames());
-            listView.setAdapter(adapter);
-            loadingTextView.setVisibility(View.INVISIBLE);
-            progressBar.setVisibility(View.INVISIBLE);
-        });
+        studentsInClassSessionViewModel.getStudents().observe(this,
+                studentNames -> {
+                    adapter = new StudentsInClassSessionAdapter(context,studentNames.getStudentNames());
+                    listView.setAdapter(adapter);
+                    loadingTextView.setVisibility(View.INVISIBLE);
+                    progressBar.setVisibility(View.INVISIBLE);
+                });
     }
 
     private void initUpdateButton() {
-        FloatingActionButton updateButton = (FloatingActionButton) findViewById(R.id.update_button_students_in_class_session);
+        FloatingActionButton updateButton = findViewById(R.id.update_button_students_in_class_session);
         updateButton.setOnClickListener(
                 v -> {
                     //------------------------
@@ -65,11 +70,8 @@ public class StudentsInClassSessionView extends AppCompatActivity {
                     loadingTextView.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.VISIBLE);
                     //------------------------
-
                     studentsInClassSessionViewModel.update();
                 }
         );
     }
-
-
 }
