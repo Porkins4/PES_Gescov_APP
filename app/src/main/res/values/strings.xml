@@ -169,12 +169,14 @@
     <!-- Strings notifying the state -->
     <string name="notify_state">Notificar Estat</string>
     <string name="succesPositiveNotification">S\'ha notificat correctament el teu positiu</string>
-    <string name="succesRecoveryNotification">S\'ha notificat la teva recuperació correctament</string>
-    <string name="succesPossiblePositiveNotification">S\'ha notificat el teu possible contagi</string>
     <string name="notify_positive">notifica el teu positiu</string>
     <string name="notify_possible">notificar com possible positiu</string>
     <string name="notify_recovery">notifica la teva recuperació</string>
     <string name="covid_notification_title">Notificació de COVID</string>
+    <string name="conflict_notify_possitive">Encara no ha passat un dia des que t\'has recuperat </string>
+    <string name="already_positive">Ja ets registrat com contagiat o com possible contagiat </string>
+    <string name="already_recovered">Ja ets registrat com recuperat </string>
+    <string name="success_Notification">Registrat correctament </string>
 
     <!-- home -->
     <string name="home_risk">Usuari de risc</string>
@@ -219,9 +221,13 @@
     <string name="ranking_name">Ranking de centres</string>
     <string name="error_while_creating_chat">S\'ha produit un error mentre es creava el xat</string>
     <string name="no_messages_yet_text">Cap missatge enviat</string>
+
     <string name="share_text">La meva escola</string>
     <string name="share2_text">està a la posició</string>
     <string name="share3_text">en el rànquing de Gescov.</string>
+    <string name="num_contagions_singular">contagi</string>
+    <string name="num_contagions_plural">contagis</string>
+
 
 
     <!-- Access school by code activity -->

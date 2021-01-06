@@ -7,15 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import androidx.fragment.app.Fragment;
-
+import com.example.gescov.GescovUtils;
 import com.example.gescov.R;
+import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -91,12 +93,14 @@ public class ForumFragment extends Fragment {
 
         //if the user is not admin of any school, hide the fab
         boolean isUserAdmin = false;
-        for (String schoolId : user.getSchoolsID()) {
-            if (PresentationControlFactory.getSchoolsCrontroller().getSchoolById(schoolId).getAdministratorsList().contains(user.getId())) {
-              isUserAdmin = true;
-              break;
+        if (user != null)
+            for (String schoolId : user.getSchoolsID()) {
+                School school = PresentationControlFactory.getSchoolsCrontroller().getSchoolById(schoolId);
+                if (school != null && GescovUtils.isUserSchoolAdmin(user, school)) {
+                    isUserAdmin = true;
+                    break;
+                }
             }
-        }
 
         if (isUserAdmin)
             fab.setOnClickListener(e -> {
