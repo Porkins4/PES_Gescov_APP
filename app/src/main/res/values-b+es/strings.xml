@@ -149,7 +149,7 @@
 
 
     <!-- Strings used for daily test -->
-    <string name="dailyTest">Realiza tu prueva de seguimiento</string>
+    <string name="dailyTest">Realiza tu prueba de seguimiento</string>
     <string name="firstQuestion">¿Tienes tos seca y persistente?  </string>
     <string name="yes">Si</string> <!-- also used on chatlist fragment -->
     <string name="no">No</string> <!-- also used on chatlist fragment -->
