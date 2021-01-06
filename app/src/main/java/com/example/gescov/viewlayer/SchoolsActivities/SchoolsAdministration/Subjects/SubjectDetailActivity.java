@@ -15,8 +15,8 @@ import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.addteachertosubject.AddTeacherToSubjectActivity;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.checkclasssession.CheckClassSessionActivity;
-import com.example.gescov.viewlayer.event.EventActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+import com.example.gescov.viewlayer.event.EventActivity;
 
 public class SubjectDetailActivity extends AppCompatActivity {
 
@@ -66,6 +66,7 @@ public class SubjectDetailActivity extends AppCompatActivity {
                 v -> {
                     Intent i = new Intent(this, EventActivity.class);
                     i.putExtra("subjectID",subjectID);
+                    i.putExtra("schoolID",getIntent().getStringExtra("schoolID"));
                     startActivity(i);
                 }
         );

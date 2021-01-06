@@ -10,7 +10,6 @@ import com.example.gescov.domainlayer.Services.Volley.Interfaces.IUserService;
 import com.example.gescov.domainlayer.Services.Volley.VolleyServices;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class UserServiceImplementor implements IUserService {

@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
@@ -14,8 +16,6 @@ import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
-
-import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.

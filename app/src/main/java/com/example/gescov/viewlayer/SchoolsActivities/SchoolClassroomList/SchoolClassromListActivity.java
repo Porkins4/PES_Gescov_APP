@@ -32,6 +32,7 @@ public class SchoolClassromListActivity extends AppCompatActivity {
         controller.setListViewAdapter(this);
         ClassroomListViewAdapter adapter = controller.getListViewAdapter();
         adapter.setSchoolID(getIntent().getStringExtra("schooldID"));
+        adapter.setIfAdmin(getIntent().getExtras().getBoolean("admin"));
         list.setAdapter(adapter);
         controller.refreshList();
     }

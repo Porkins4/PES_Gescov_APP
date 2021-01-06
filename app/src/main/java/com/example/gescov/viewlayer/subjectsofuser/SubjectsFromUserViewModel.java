@@ -1,7 +1,6 @@
 package com.example.gescov.viewlayer.subjectsofuser;
 
 import android.content.Context;
-import android.widget.ListAdapter;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

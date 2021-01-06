@@ -1,7 +1,5 @@
 package com.example.gescov.domainlayer.Classmodels;
 
-import com.android.volley.toolbox.JsonArrayRequest;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,6 +22,12 @@ public class Subject {
         this.schoolID = schoolID;
         this.schoolName = schoolName;
         this.students = students;
+    }
+
+
+    public Subject (String name, String id) {
+        this.name = name;
+        this.id = id;
     }
 
     public static Subject fromJSONtoSubject(JSONObject response) {

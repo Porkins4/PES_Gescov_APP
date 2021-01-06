@@ -19,9 +19,12 @@
         android:theme="@style/Theme.Gescov"
         android:usesCleartextTraffic="true">
         <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.createsubject.CreateSubjectActivity"></activity>
-        <activity android:name=".viewlayer.event.EventActivity" />
-        <activity android:name=".viewlayer.tracingTestResult.TestDetailsActivity" />
-        <activity android:name=".viewlayer.tracingTestResult.TracingTestResultActivity" />
+        <activity android:name=".viewlayer.event.EventActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
+        <activity android:name=".viewlayer.tracingTestResult.TestDetailsActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
+        <activity android:name=".viewlayer.tracingTestResult.TracingTestResultActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.forum.CreateForumEntryFormActivity" />
         <activity android:name=".viewlayer.forum.forumreply.ForumReplyListActivity" />
         <!-- notification -->

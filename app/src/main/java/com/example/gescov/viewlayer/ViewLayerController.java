@@ -3,6 +3,8 @@ package com.example.gescov.viewlayer;
 import android.location.Location;
 import android.util.Pair;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
@@ -28,8 +30,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import org.json.JSONException;
 
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
 
 
 public class ViewLayerController {
@@ -480,11 +480,36 @@ public class ViewLayerController {
         PresentationControlFactory.getSubjectController().setCreateSubjectResult(error);
     }
 
+    public void getClassroomsOfSchool(String schoolID) {
+        DomainControlFactory.getModelController().getClassroomsOfSchool(schoolID);
+    }
+
+    public void SetClassroomsBySchoolIDResponse(boolean error, List<Classroom> classroomsFromCurrentSchool) {
+        PresentationControlFactory.getEventController().SetClassroomsBySchoolIDResponse(error,classroomsFromCurrentSchool);
+    }
+
+    public void notifyListOfTeachersReceivedToCreateEvent(List<User> contactsFromSelectedCenter) {
+        PresentationControlFactory.getEventController().notifyListOfTeachersReceivedToCreateEvent(contactsFromSelectedCenter);
+    }
+
+
+    public void setSchedule(String classID, List<Subject> l1, List<Subject> l2, List<Subject> l3, List<Subject> l4, List<Subject> l5) {
+        DomainControlFactory.getModelController().setSchedule(classID,l1,l2,l3,l4,l5);
+    }
+
     public void deleteWallEntry(String wallEntryId) {
         DomainControlFactory.getModelController().deleteWallEntry(wallEntryId);
     }
 
     public void toastMessage(int resourceMessage) {
         PresentationControlFactory.getMessagesManager().toastMessage(resourceMessage);
+    }
+
+    public void getSchedule(String classID) {
+        DomainControlFactory.getModelController().getSchedule(classID);
+    }
+
+    public void sendResponseOfSchedule(List<Subject> l1, List<Subject> l2, List<Subject> l3, List<Subject> l4, List<Subject> l5) {
+        PresentationControlFactory.getScheduleController().sendResponseOfSchedule(l1,l2,l3,l4,l5);
     }
 }

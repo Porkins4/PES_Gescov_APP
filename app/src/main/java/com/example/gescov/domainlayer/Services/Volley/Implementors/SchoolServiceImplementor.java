@@ -307,7 +307,7 @@ public class SchoolServiceImplementor implements ISchoolService {
     @Override
     public void getContactsFromCenter(String schoolID, int activityIdentifier) {
         JsonArrayRequest request = new JsonArrayRequest(
-                Request.Method.GET, GET_CHECK_LOGIN + "/school?schoolID=" + schoolID,null,
+                Request.Method.GET, GET_CHECK_LOGIN + "school?schoolID=" + schoolID,null,
                 response -> DomainControlFactory.getUserModelController().setContactsFromSelectedCenter(response, activityIdentifier),
                 error -> {}
         );
