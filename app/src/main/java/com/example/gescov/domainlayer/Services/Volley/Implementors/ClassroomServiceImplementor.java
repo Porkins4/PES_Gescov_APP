@@ -1,5 +1,7 @@
 package com.example.gescov.domainlayer.Services.Volley.Implementors;
 
+import android.widget.Toast;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -16,6 +18,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.ls.LSOutput;
+
+import java.io.UnsupportedEncodingException;
 
 public class ClassroomServiceImplementor implements IClassroomService {
 
@@ -120,10 +124,15 @@ public class ClassroomServiceImplementor implements IClassroomService {
         System.out.println(postData.toString());
 
         JsonObjectRequest request = new JsonObjectRequest(
-                Request.Method.POST, GESCOV_CLASS_SESSION_URI,postData,
-                response ->  System.out.println("oki"),
-                error -> System.out.println("wtf")
-        );
+                Request.Method.POST, GESCOV_CLASS_SESSION_URI, postData,
+                response -> DomainControlFactory.getClassSessionsModelController().notifyCreateEventResponse(false, 200, response),
+                new Response.ErrorListener() { //do not transform to lambda function (network response will not be recognized)
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        DomainControlFactory.getClassSessionsModelController().notifyCreateEventResponse(true, error.networkResponse.statusCode, null);
+                    }
+                }
+                );
         VolleyServices.getRequestQueue().add(request);
     }
 }

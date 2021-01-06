@@ -10,4 +10,6 @@ public interface ISubjectsService {
     void getSubjectsFromUser(String userID);
 
     void createSubject(String subjectName, String schoolID, String userId);
+
+    void getUsersBySubjectID(String subjectID);
 }

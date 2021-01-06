@@ -34,11 +34,15 @@ public class EventController {
         eventViewModel.SetClassroomsBySchoolIDResponse(error, classroomsFromCurrentSchool);
     }
 
-    public void getTeachersOfTheSchool(String schoolID) {
-        PresentationControlFactory.getViewLayerController().getContactsFromCenter(schoolID,3);
+    public void getTeachersOfTheSchool(String subjectID) {
+        PresentationControlFactory.getViewLayerController().getTeachersBySubjectID(subjectID);
     }
 
     public void notifyListOfTeachersReceivedToCreateEvent(List<User> contactsFromSelectedCenter) {
         eventViewModel.notifyListOfTeachersReceivedToCreateEvent(contactsFromSelectedCenter);
+    }
+
+    public void notifyCreateEventResponse(boolean error, int errorCode) {
+        eventViewModel.notifyCreateEventResponse(error, errorCode);
     }
 }

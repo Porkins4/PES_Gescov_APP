@@ -19,6 +19,7 @@ public class EventViewModel extends ViewModel {
     private List<User> teachers;
     private String subjectID;
     private String schoolID;
+    private int networkResponseCode;
 
     public EventViewModel() {
         PresentationControlFactory.getEventController().setViewModel(this);
@@ -70,7 +71,7 @@ public class EventViewModel extends ViewModel {
 
     public LiveData<Boolean> getTeachersOfTheSchool() {
         received = new MutableLiveData<>();
-        PresentationControlFactory.getEventController().getTeachersOfTheSchool(schoolID);
+        PresentationControlFactory.getEventController().getTeachersOfTheSchool(subjectID);
         return received;
     }
 
@@ -105,5 +106,18 @@ public class EventViewModel extends ViewModel {
 
     public String getClassroomID(int indexClassroom) {
         return classrooms.get(indexClassroom).getId();
+    }
+
+    public void notifyCreateEventResponse(boolean error, int errorCode) {
+        this.networkResponseCode = errorCode;
+        received.setValue(error);
+    }
+
+    public int getErrorCode() {
+        return networkResponseCode;
+    }
+
+    public User getTeacher(int indexTeacher) {
+        return teachers.get(indexTeacher);
     }
 }

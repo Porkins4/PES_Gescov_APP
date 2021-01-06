@@ -12,6 +12,7 @@ import android.provider.CalendarContract;
 import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,9 +23,11 @@ import android.widget.Toast;
 
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.User;
+import com.google.android.gms.common.util.ScopeUtil;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -36,12 +39,13 @@ public class EventActivity extends AppCompatActivity {
     private TextView endHour, endMin;
     private Button addEvent;
     private CalendarView calendar;
-    private String currentDate;
+    private Date currentDate;
     private int indexClassroom;
     private int indexTeacher;
 
     List<User> guests;
     private EventViewModel viewModel;
+    private boolean eventCreated;
 
 
     @Override
@@ -57,14 +61,6 @@ public class EventActivity extends AppCompatActivity {
             Pair<Boolean,String> result = validateFields();
             if (result.first) Toast.makeText(this,result.second,Toast.LENGTH_SHORT).show();
             else createEvent();
-            //addEvent.setEnabled(false);
-            //SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            //String date = sdf.format(new Date(calendar.getDate()));
-            //System.out.println(currentDate);
-            //System.out.println();
-            //System.out.println(description.getText().toString());
-            //System.out.println(startHour.getText().toString() + ":" + startMin.getText().toString());
-            //System.out.println(endHour.getText().toString() + ":" + endMin.getText().toString());
         });
     }
 
@@ -79,11 +75,7 @@ public class EventActivity extends AppCompatActivity {
 
     private Pair<Boolean,String> validateFields() {
         boolean previousDate = false;
-        try {
-            previousDate = (new SimpleDateFormat("yyyy/MM/dd").parse(currentDate).before(new Date()));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        previousDate = (currentDate.before(new Date()));
 
         if (title.getText().toString().isEmpty()) return new Pair<>(true,getString(R.string.empty_title_error));
         else if (description.getText().toString().isEmpty()) return new Pair<>(true,getString(R.string.empty_description_error));
@@ -93,32 +85,60 @@ public class EventActivity extends AppCompatActivity {
     }
 
     private void startGoogleCalendar() {
-        Intent intent = new Intent(Intent.ACTION_INSERT);
-        intent.setData(CalendarContract.Events.CONTENT_URI);
-        intent.putExtra(CalendarContract.Events.TITLE,title.getText().toString());
-        intent.putExtra(CalendarContract.Events.DESCRIPTION,description.getText().toString());
-        //intent.putExtra(CalendarContract.Events.CALENDAR_ID,1);
-        String emails = "";
-        for (int i = 0; i < guests.size(); ++i ) {
-            emails += guests.get(i).getEmail();
-            if ( i != guests.size() -1 ) emails += ',';
-        }
-        System.out.println(emails);
-        intent.putExtra(Intent.EXTRA_EMAIL,emails);
-        // checking if there is any app that can handel this type of intent which is calendar.
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-            createEvent();
-        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.create_in_google_calendar_request)
+                .setPositiveButton(R.string.okey_text, (dialog, id) -> {
+                    //----------------------------------------------
+                    //date operations
+                    long calID = 3;
+                    long startMillis = 0;
+                    long endMillis = 0;
+                    int startH = Integer.parseInt(startHour.getText().toString());
+                    int startM = Integer.parseInt(startMin.getText().toString());
+                    int endH = Integer.parseInt(endHour.getText().toString());
+                    int endM = Integer.parseInt(endMin.getText().toString());
+                    Calendar beginTime = Calendar.getInstance();
+                    beginTime.setTime(currentDate);
+                    beginTime.set(beginTime.get(Calendar.YEAR), beginTime.get(Calendar.MONTH), beginTime.get(Calendar.DAY_OF_MONTH), startH, startM);
+                    Calendar endTime = Calendar.getInstance();
+                    endTime.set(beginTime.get(Calendar.YEAR), beginTime.get(Calendar.MONTH), beginTime.get(Calendar.DAY_OF_MONTH), endH, endM);
+                    //----------------------------------------------
+                    Intent intent = new Intent(Intent.ACTION_INSERT);
+                    intent.setData(CalendarContract.Events.CONTENT_URI);
+                    intent.putExtra(CalendarContract.Events.TITLE,title.getText().toString());
+                    intent.putExtra(CalendarContract.Events.DESCRIPTION,description.getText().toString());
+                    intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,beginTime.getTimeInMillis());
+                    intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,endTime.getTimeInMillis());
+                    String emails = "";
+                    guests.add(viewModel.getTeacher(indexTeacher));
+                    for (int i = 0; i < guests.size(); ++i ) {
+                        emails += guests.get(i).getEmail();
+                        if ( i != guests.size() -1 ) emails += ',';
+                    }
+                    System.out.println(emails);
+                    intent.putExtra(Intent.EXTRA_EMAIL,emails);
+                    // checking if there is any app that can handel this type of intent which is calendar.
+                    if (intent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton(R.string.no, (dialog, id) -> finish());
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void createEvent() {
-        System.out.println(currentDate);
-        viewModel.createEvent(title.getText().toString(),startHour.getText().toString() + ":" + startMin.getText().toString(),endHour.getText().toString() + ":" + endMin.getText().toString(),currentDate,viewModel.getTeacherID(indexTeacher),viewModel.getClassroomID(indexClassroom),getIntent().getStringExtra("subjectID")).observe(
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDateString = sdf.format(currentDate);
+        viewModel.createEvent(title.getText().toString(),startHour.getText().toString() + ":" + startMin.getText().toString(),endHour.getText().toString() + ":" + endMin.getText().toString(),currentDateString,viewModel.getTeacherID(indexTeacher),viewModel.getClassroomID(indexClassroom),getIntent().getStringExtra("subjectID")).observe(
                 this, error -> {
-                    if (error) Toast.makeText(this,R.string.general_error_message,Toast.LENGTH_SHORT).show();
-                    else {
-
+                    if (error) {
+                        if (viewModel.getErrorCode() == 409) {
+                            popUpError(getString(R.string.timeline_already_reserved),false);
+                        } else popUpError(getString(R.string.general_error_message),false);
+                    } else {
+                        eventCreated = true;
+                        startGoogleCalendar();
                     }
                 }
         );
@@ -130,6 +150,7 @@ public class EventActivity extends AppCompatActivity {
     }
 
     private void initActivityInfo() {
+        eventCreated = false;
         viewModel =  new ViewModelProvider(this).get(EventViewModel.class);
         viewModel.init(getIntent().getStringExtra("schoolID"), getIntent().getStringExtra("subjectID"));
         indexClassroom = 0;
@@ -150,20 +171,23 @@ public class EventActivity extends AppCompatActivity {
         viewModel.getClassrooms().observe(this,
                 error -> {
                     if (!error) {
-                        if (viewModel.emptyClassrooms()) popUpError(getString(R.string.error_no_classrooms_in_school));
+                        if (viewModel.emptyClassrooms()) {
+                            popUpError(getString(R.string.error_no_classrooms_in_school),true);
+                            addEvent.setEnabled(false);
+                        }
                         else getTeachersOfTheSchool();
-
                     }
                 });
     }
 
-    private void popUpError(String message) {
+    private void popUpError(String message, Boolean close) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message)
-                .setPositiveButton(R.string.okey_text, (dialog, id) -> finish());
+                .setPositiveButton(R.string.okey_text, (dialog, id) -> {
+                    if (close) finish();
+                });
         AlertDialog dialog = builder.create();
         dialog.show();
-        finish();
     }
 
     private void getTeachersOfTheSchool() {
@@ -219,10 +243,15 @@ public class EventActivity extends AppCompatActivity {
 
     private void initCalendarListener() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        currentDate = sdf.format(calendar.getDate());
+        String currentDateString = sdf.format(calendar.getDate());
+        try {
+            currentDate = sdf.parse(currentDateString);
+            System.out.println("Data inicial: " + sdf.format(currentDate));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         calendar.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
-            Date temp = new GregorianCalendar(year,month,dayOfMonth).getTime();
-            currentDate = sdf.format(temp);
+            currentDate = new GregorianCalendar(year,month,dayOfMonth).getTime();
         });
     }
 
@@ -241,5 +270,17 @@ public class EventActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.event_form);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (eventCreated) finish();
     }
 }

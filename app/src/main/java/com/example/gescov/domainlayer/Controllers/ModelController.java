@@ -485,4 +485,12 @@ public class ModelController {
     public void createEvent(ClassSessionModel classSession) {
         DomainControlFactory.getClassSessionsModelController().createEvent(classSession);
     }
+
+    public void notifyCreateEventResponse(boolean error, int errorCode) {
+        PresentationControlFactory.getViewLayerController().notifyCreateEventResponse(error,errorCode);
+    }
+
+    public void getTeachersBySubjectID(String subjectID) {
+        DomainControlFactory.getUserModelController().getTeachersBySubjectID(subjectID);
+    }
 }
