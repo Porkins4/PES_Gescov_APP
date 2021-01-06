@@ -64,10 +64,19 @@ public class NavigationMenu extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         MenuItem logoutButton = navigationView.getMenu().findItem(R.id.logout);
+        MenuItem openCalendar = navigationView.getMenu().findItem(R.id.open_calendar);
 
         logoutButton.setOnMenuItemClickListener(e -> {
             logoutPrompt();
             return true;
+        });
+
+        openCalendar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                openCalendar();
+                return true;
+            }
         });
     }
 
@@ -107,6 +116,15 @@ public class NavigationMenu extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    private void openCalendar() {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_MAIN);
+        intent.addCategory(intent.CATEGORY_APP_CALENDAR);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     private void logoutFunc() {
