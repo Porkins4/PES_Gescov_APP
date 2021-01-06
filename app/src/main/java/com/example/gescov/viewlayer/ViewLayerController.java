@@ -524,4 +524,10 @@ public class ViewLayerController {
     public void getTeachersBySubjectID(String subjectID) {
         DomainControlFactory.getModelController().getTeachersBySubjectID(subjectID);
     }
+
+    public boolean isMySchool(String schoolID) {
+        return DomainControlFactory.getModelController().isMySchool(schoolID);
+    }
+
 }
+

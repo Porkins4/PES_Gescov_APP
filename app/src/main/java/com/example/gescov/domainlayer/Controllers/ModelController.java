@@ -505,4 +505,9 @@ public class ModelController {
     public void getTeachersBySubjectID(String subjectID) {
         DomainControlFactory.getUserModelController().getTeachersBySubjectID(subjectID);
     }
+
+    public boolean isMySchool(String schoolID) {
+        return DomainControlFactory.getUserModelController().isMySchool(schoolID);
+    }
+
 }

@@ -364,4 +364,9 @@ public class UserModelController {
         }
         DomainControlFactory.getModelController().notifyListOfTeachersReceivedToCreateEvent(contactsFromSelectedCenter);
     }
+
+    public boolean isMySchool(String schoolID) {
+        return loggedUser.isMySchool(schoolID);
+    }
+
 }
