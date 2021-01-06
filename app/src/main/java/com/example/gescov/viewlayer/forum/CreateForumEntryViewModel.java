@@ -1,14 +1,14 @@
 package com.example.gescov.viewlayer.forum;
 
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+
 import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 public class CreateForumEntryViewModel extends ViewModel {
     private MutableLiveData<List<School>> list;
