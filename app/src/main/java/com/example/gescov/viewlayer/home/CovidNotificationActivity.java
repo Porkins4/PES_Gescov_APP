@@ -30,7 +30,7 @@ public class CovidNotificationActivity extends AppCompatActivity {
             public void onChanged(ContagionRequestResult contagionRequestResult) {
 
                 Pair<String,Boolean> response = contagionRequestResult.getError();
-                if (response.first == "notifyPositive" ) {
+                if (response.first.equals("notifyPositive")) {
                     if (response.second ) {
                         OpenPopup("notifyPositive");
                     }
@@ -38,7 +38,7 @@ public class CovidNotificationActivity extends AppCompatActivity {
                         succesfulContagionRequest(contagionRequestResult);
                     }
                 }
-                else if ( response.first == "notifyRecovery" ) {
+                else if (response.first.equals("notifyRecovery")) {
                     if (response.second ) {
                         OpenPopup("notifyRecovery");
                     }
@@ -46,7 +46,7 @@ public class CovidNotificationActivity extends AppCompatActivity {
                         succesfulRecovery();
                     }
                 }
-                else if (response.first == "notifyPossiblePositive") {
+                else if (response.first.equals("notifyPossiblePositive")) {
                     if ( response.second ) {
                         OpenPopup("notifyPossiblePositive");
                     }
