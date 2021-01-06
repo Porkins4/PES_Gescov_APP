@@ -6,81 +6,139 @@
     android:layout_height="match_parent"
     tools:context=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:theme="@style/Theme.Gescov.AppBarOverlay"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.Gescov.PopupOverlay" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:theme="@style/Theme.Gescov.AppBarOverlay">
 
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    app:popupTheme="@style/Theme.Gescov.PopupOverlay" />
 
-    <TextView
-        android:id="@+id/school_details_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="TextView"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+            </com.google.android.material.appbar.AppBarLayout>
 
-    <com.google.android.gms.maps.MapView
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/mapView"
-        android:layout_width="340dp"
-        android:layout_height="178dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/school_details_name"
-        map:cameraZoom="13"
-        map:mapType="normal"
-        map:liteMode="true"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/school_details_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapView" />
+                <TextView
+                    android:id="@+id/school_details_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="@dimen/activity_horizontal_margin"
+                    android:text="TextView"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/school_details_telf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/school_details_address" />
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapView"
+                    android:layout_width="0dp"
+                    android:layout_height="178dp"
+                    android:layout_marginTop="10dp"
+                    app:cameraZoom="13"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/school_details_name"
+                    app:liteMode="true"
+                    app:mapType="normal" />
 
-    <TextView
-        android:id="@+id/school_details_webpage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/school_details_telf" />
+                <TextView
+                    android:id="@+id/school_details_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="TextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mapView" />
+
+                <TextView
+                    android:id="@+id/school_details_telf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="TextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/school_details_address" />
+
+                <TextView
+                    android:id="@+id/school_details_webpage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="TextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/school_details_telf" />
+
+                <TextView
+                    android:id="@+id/school_details_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="TextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/school_details_webpage" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/school_details_classroom_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/school_details_classrooms_list" />
+
+            <Button
+                android:id="@+id/graf_school"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/view_graph" />
+
+            <Button
+                android:id="@+id/join_school_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/school_details_join" />
+
+            <Button
+                android:id="@+id/school_details_student_list_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/school_details_users_list" />
+
+            <Button
+                android:id="@+id/subject_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/show_subject" />
+
+            <Button
+                android:id="@+id/contagion_list_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/contagion_list" />
+        </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -94,42 +152,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:id="@+id/subject_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/show_subject" />
-
-        <Button
-            android:id="@+id/graf_school"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/view_graph" />
-
-        <Button
-            android:id="@+id/school_details_student_list_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/school_details_users_list" />
-
-        <Button
-            android:id="@+id/join_school_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/school_details_join" />
-
-        <Button
-            android:id="@+id/contagion_list_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/contagion_list" />
-
-        <Button
-            android:id="@+id/school_details_classroom_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/school_details_classrooms_list" />
 
     </LinearLayout>
 

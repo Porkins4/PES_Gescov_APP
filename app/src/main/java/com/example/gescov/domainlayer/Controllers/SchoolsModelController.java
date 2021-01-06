@@ -33,6 +33,7 @@ public class SchoolsModelController {
             String nameSchool = aux.getString("name");
             String stateSchool = aux.getString("state");
             String addressSchool = aux.getString("address");
+            String entryCode = aux.getString("entryCode");
             String emailSchool = null;//aux.getString("email");
             String phone = aux.getString("phone");
             double longitude = aux.getDouble("longitude");
@@ -44,7 +45,7 @@ public class SchoolsModelController {
             }
             ;
             String creatorSchoolID = aux.getString("creatorID");
-            schoolsList.add(new School(idSchool, nameSchool, addressSchool, stateSchool, creatorSchoolID, emailSchool, phone, longitude, latitude, listAdminsID));
+            schoolsList.add(new School(idSchool, nameSchool, addressSchool, stateSchool, creatorSchoolID, emailSchool, phone, longitude, latitude, entryCode, listAdminsID));
         }
     }
 

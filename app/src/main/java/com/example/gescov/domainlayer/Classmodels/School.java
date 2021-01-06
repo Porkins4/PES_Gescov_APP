@@ -87,6 +87,14 @@ public class School {
         return id;
     }
 
+    public String getAccessCode() {
+        return accessCode;
+    }
+
+    public void setAccessCode(String accessCode) {
+        this.accessCode = accessCode;
+    }
+
     public void setId(String id) {
         this.id = id;
     }

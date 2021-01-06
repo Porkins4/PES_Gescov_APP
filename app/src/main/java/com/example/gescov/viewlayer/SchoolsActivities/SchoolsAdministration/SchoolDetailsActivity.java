@@ -10,10 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.ViewModelProvider;
-
 import com.example.gescov.GescovUtils;
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.School;
@@ -31,6 +27,10 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
 
 public class SchoolDetailsActivity extends AppCompatActivity {
     private SchoolsCrontroller schoolsCrontroller;
@@ -57,6 +57,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         TextView address = (TextView) findViewById(R.id.school_details_address);
         TextView telf = (TextView) findViewById(R.id.school_details_telf);
         TextView webpage = (TextView) findViewById(R.id.school_details_webpage);
+        TextView code = (TextView) findViewById(R.id.school_details_code);
         //TextView email = (TextView) findViewById(R.id.school_details_email);
         Button usersListButton = (Button) findViewById(R.id.school_details_student_list_button);
         Button classroomsListButton = (Button) findViewById(R.id.school_details_classroom_button);
@@ -113,6 +114,10 @@ public class SchoolDetailsActivity extends AppCompatActivity {
                     Intent intent = new Intent(this, SchoolRequestsListActivity.class);
                     startActivity(intent);
                 });
+
+                code.setText(school.getAccessCode());
+            } else {
+                code.setVisibility(View.INVISIBLE);
             }
         }
         
