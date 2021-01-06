@@ -31,6 +31,8 @@ import org.json.JSONException;
 
 import java.util.List;
 
+import androidx.lifecycle.MutableLiveData;
+
 
 public class ViewLayerController {
 
@@ -508,5 +510,17 @@ public class ViewLayerController {
 
     public void sendResponseOfSchedule(List<Subject> l1, List<Subject> l2, List<Subject> l3, List<Subject> l4, List<Subject> l5) {
         PresentationControlFactory.getScheduleController().sendResponseOfSchedule(l1,l2,l3,l4,l5);
+    }
+
+    public void createEvent(ClassSessionModel classSession) {
+        DomainControlFactory.getModelController().createEvent(classSession);
+    }
+
+    public void notifyCreateEventResponse(boolean error, int errorCode) {
+        PresentationControlFactory.getEventController().notifyCreateEventResponse(error,errorCode);
+    }
+
+    public void getTeachersBySubjectID(String subjectID) {
+        DomainControlFactory.getModelController().getTeachersBySubjectID(subjectID);
     }
 }

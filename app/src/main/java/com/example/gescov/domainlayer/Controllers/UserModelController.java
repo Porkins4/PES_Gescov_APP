@@ -283,18 +283,17 @@ public class UserModelController {
             }
         }
         if (activityIdentifier == 1) DomainControlFactory.getModelController().updateContactsFromCreateChat();
-        else if (activityIdentifier == 2) DomainControlFactory.getModelController().notifyListOfTeachersReceivedToAddSubject(contactsFromSelectedCenter);
-        else DomainControlFactory.getModelController().notifyListOfTeachersReceivedToCreateEvent(contactsFromSelectedCenter);
+        else DomainControlFactory.getModelController().notifyListOfTeachersReceivedToAddSubject(contactsFromSelectedCenter);
     }
 
     private void addUserToContactList(User u, int activityIdentifier) {
-        if (loggedUser.getId().equals(u.getId()) && activityIdentifier != 3) return;
+        if (loggedUser.getId().equals(u.getId())) return;
         if (activityIdentifier == 1) {
             if (loggedUser.getProfileType() == User.UserProfileType.STUDENT && u.getProfileType() == User.UserProfileType.TEACHER)
                 contactsFromSelectedCenter.add(u);
             else if (loggedUser.getProfileType() == User.UserProfileType.TEACHER)
                 contactsFromSelectedCenter.add(u);
-        } else { //activiti identifier 2 or 3
+        } else {
             if (u.getProfileType() == User.UserProfileType.TEACHER)
                 contactsFromSelectedCenter.add(u);
         }
@@ -350,4 +349,19 @@ public class UserModelController {
         ServicesFactory.getUserService().deleteUserToken(loggedUser.getId(),token);
     }
 
+    public void getTeachersBySubjectID(String subjectID) {
+        ServicesFactory.getSubjectsService().getUsersBySubjectID(subjectID);
+    }
+
+    public void setUsersBySubjectIDResult(JSONArray response) {
+        contactsFromSelectedCenter = new ArrayList<>();
+        for (int i = 0; i < response.length(); ++i) {
+            try {
+                contactsFromSelectedCenter.add(getUserFromJSONObject(response.getJSONObject(i)));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        DomainControlFactory.getModelController().notifyListOfTeachersReceivedToCreateEvent(contactsFromSelectedCenter);
+    }
 }

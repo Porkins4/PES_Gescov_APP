@@ -6,6 +6,7 @@ import com.example.gescov.domainlayer.Singletons.ServicesFactory;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,5 +36,13 @@ public class ClassSessionController {
             }
         }
         DomainControlFactory.getModelController().getClassSessionsResult(error, classSessions);
+    }
+
+    public void createEvent(ClassSessionModel classSession) {
+        ServicesFactory.getClassroomService().createEvent(classSession);
+    }
+
+    public void notifyCreateEventResponse(boolean error, int errorCode, JSONObject response) {
+        DomainControlFactory.getModelController().notifyCreateEventResponse(error, errorCode);
     }
 }

@@ -1,5 +1,7 @@
 package com.example.gescov.domainlayer.Services.Volley.Interfaces;
 
+import com.example.gescov.domainlayer.Classmodels.ClassSessionModel;
+
 import org.json.JSONArray;
 
 public interface IClassroomService {
@@ -12,4 +14,6 @@ public interface IClassroomService {
     void getClassroomsBySchoolID(String schoolID);
 
     void getSchedule(String classID);
+
+    void createEvent(ClassSessionModel classSession);
 }

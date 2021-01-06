@@ -31,7 +31,6 @@ public class Classroom {
             int numRows = jsonObject.getInt("numRows");
             int numCols = jsonObject.getInt("numCols");
             String schoolID = jsonObject.getString("schoolID");
-            JSONArray scheduleRAW = jsonObject.getJSONArray("schedule");
             return new Classroom(id,name,numRows,numCols,schoolID);
         } catch (JSONException e) {
             e.printStackTrace();

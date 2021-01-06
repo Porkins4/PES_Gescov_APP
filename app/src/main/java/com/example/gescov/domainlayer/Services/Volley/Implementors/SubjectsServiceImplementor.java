@@ -84,5 +84,13 @@ public class SubjectsServiceImplementor implements ISubjectsService {
         }
     }
 
-
+    @Override
+    public void getUsersBySubjectID(String subjectID) {
+        JsonArrayRequest request = new JsonArrayRequest(
+                Request.Method.GET, SUBJECTS_URI + subjectID + "/teachers",null,
+                response -> DomainControlFactory.getUserModelController().setUsersBySubjectIDResult(response),
+                error -> {}
+        );
+        VolleyServices.getRequestQueue().add(request);
+    }
 }
