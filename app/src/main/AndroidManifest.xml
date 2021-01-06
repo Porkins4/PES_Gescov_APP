@@ -79,7 +79,8 @@
         <activity
             android:name=".viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-        <activity android:name=".viewlayer.home.DailyTestActivity" />
+        <activity android:name=".viewlayer.home.DailyTestActivity"
+                  android:theme="@style/Theme.Gescov.NoActionBar"/>
         <activity
             android:name=".viewlayer.SignUpAndLogin.LoginActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />

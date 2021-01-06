@@ -163,6 +163,7 @@
     <string name="all_tests"> Tots el tests</string>
     <string name="test_done_in">Test fet el </string>
     <string name="error_no_tests">No hi ha cap test </string>
+    <string name="dail_test_title">Test de seguiment </string>
 
 
     <!-- Strings notifying the state -->
