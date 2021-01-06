@@ -25,8 +25,10 @@
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity android:name=".viewlayer.tracingTestResult.TracingTestResultActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-        <activity android:name=".viewlayer.forum.CreateForumEntryFormActivity" />
-        <activity android:name=".viewlayer.forum.forumreply.ForumReplyListActivity" />
+        <activity android:name=".viewlayer.forum.CreateForumEntryFormActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />/>
+        <activity android:name=".viewlayer.forum.forumreply.ForumReplyListActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />/>
         <!-- notification -->
         <service
             android:name=".FirebaseNotificationController"
