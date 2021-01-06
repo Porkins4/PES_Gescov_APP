@@ -534,5 +534,3 @@ public class ViewLayerController {
     }
 }
 
-}
-
