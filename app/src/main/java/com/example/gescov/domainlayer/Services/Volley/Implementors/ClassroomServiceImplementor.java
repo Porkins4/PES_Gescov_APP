@@ -6,18 +6,22 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.gescov.domainlayer.Classmodels.ClassSessionModel;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IClassroomService;
 import com.example.gescov.domainlayer.Services.Volley.VolleyServices;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
+import com.google.android.gms.common.util.JsonUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.ls.LSOutput;
 
 public class ClassroomServiceImplementor implements IClassroomService {
 
     private static final String GESCOV_ASSIGNMENTS_URI = "https://gescov.herokuapp.com/api/assignments/";
     private static final String GESCOV_CLASSROOMS_URI = "https://gescov.herokuapp.com/api/classrooms/";
+    private static final String GESCOV_CLASS_SESSION_URI = "https://gescov.herokuapp.com/api/classSessions/";
 
     public ClassroomServiceImplementor(){}
 
@@ -94,6 +98,31 @@ public class ClassroomServiceImplementor implements IClassroomService {
                 Request.Method.GET, GESCOV_CLASSROOMS_URI + "school/" + schoolID,null,
                 response -> DomainControlFactory.getClassroomModelController().SetClassroomsBySchoolIDResponse(false, response),
                 error -> DomainControlFactory.getClassroomModelController().SetClassroomsBySchoolIDResponse(true, null)
+        );
+        VolleyServices.getRequestQueue().add(request);
+    }
+
+    @Override
+    public void createEvent(ClassSessionModel classSession) {
+        JSONObject postData = new JSONObject();
+        try {
+            postData.put("classroomID", classSession.getClassroomID());
+            postData.put("subjectID", classSession.getSubjectID());
+            postData.put("teacherID", classSession.getTeacherID());
+            postData.put("concept",classSession.getConcept());
+            postData.put("hour", classSession.getHour());
+            postData.put("finishHour", classSession.getFinishHour());
+            postData.put("date",classSession.getDate());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(postData.toString());
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST, GESCOV_CLASS_SESSION_URI,postData,
+                response ->  System.out.println("oki"),
+                error -> System.out.println("wtf")
         );
         VolleyServices.getRequestQueue().add(request);
     }

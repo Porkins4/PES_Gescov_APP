@@ -24,9 +24,9 @@ public class ClassSessionAdapter extends ModelListViewAdapter {
         TextView dateTime = (TextView) v.findViewById(R.id.date_data);
         TextView teacherName = (TextView) v.findViewById(R.id.teacher_name);
         ClassSessionModel cs = (ClassSessionModel) modelList.get(position);
-        concept.setText(cs.getConcept() + " (" + cs.getClassroomID() + ")");
+        concept.setText(cs.getConcept() + " (" + cs.getClassroomName() + ")");
         dateTime.setText(cs.getDate() + " [" + cs.getHour().substring(0,2) + ":" + cs.getHour().substring(3,5) + " - " + cs.getFinishHour().substring(0,2) + ":" + cs.getFinishHour().substring(3,5) + "]");
-        teacherName.setText(cs.getTeacherID());
+        teacherName.setText(cs.getTeacherName());
         return v;
     }
 }

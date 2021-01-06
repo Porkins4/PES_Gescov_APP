@@ -501,4 +501,8 @@ public class ViewLayerController {
     public void deleteWallEntry(String wallEntryId) {
         DomainControlFactory.getModelController().deleteWallEntry(wallEntryId);
     }
+
+    public void createEvent(ClassSessionModel classSession) {
+        DomainControlFactory.getModelController().createEvent(classSession);
+    }
 }

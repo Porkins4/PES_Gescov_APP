@@ -36,4 +36,8 @@ public class ClassSessionController {
         }
         DomainControlFactory.getModelController().getClassSessionsResult(error, classSessions);
     }
+
+    public void createEvent(ClassSessionModel classSession) {
+        ServicesFactory.getClassroomService().createEvent(classSession);
+    }
 }

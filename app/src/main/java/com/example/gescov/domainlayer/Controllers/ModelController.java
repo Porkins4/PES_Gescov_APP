@@ -481,4 +481,8 @@ public class ModelController {
     public void notifyListOfTeachersReceivedToCreateEvent(List<User> contactsFromSelectedCenter) {
         PresentationControlFactory.getViewLayerController().notifyListOfTeachersReceivedToCreateEvent(contactsFromSelectedCenter);
     }
+
+    public void createEvent(ClassSessionModel classSession) {
+        DomainControlFactory.getClassSessionsModelController().createEvent(classSession);
+    }
 }

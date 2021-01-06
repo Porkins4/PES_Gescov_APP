@@ -45,6 +45,7 @@ public class EventViewModel extends ViewModel {
     public LiveData<Boolean> createEvent(String concept, String hour, String finishHour, String date, String teacherID, String classroomID, String subjectID) {
         received = new MutableLiveData<>();
         ClassSessionModel classSession= new ClassSessionModel("",hour,finishHour,date,classroomID,subjectID,teacherID,concept);
+        classSession.print();
         PresentationControlFactory.getEventController().createEvent(classSession);
         return received;
     }
@@ -81,7 +82,6 @@ public class EventViewModel extends ViewModel {
     public String[] getTeacherNames() {
         String[] result = new String[teachers.size()];
         for (int i = 0; i < teachers.size(); ++i) {
-            System.out.println(teachers.get(i).getName());
             result[i] = teachers.get(i).getName();
         }
         return result;
@@ -89,9 +89,7 @@ public class EventViewModel extends ViewModel {
 
     public String[] getClassroomNames() {
         String[] result = new String[classrooms.size()];
-        System.out.println("--------------");
         for (int i = 0; i < classrooms.size(); ++i) {
-            System.out.println(classrooms.get(i).getName());
             result[i] = classrooms.get(i).getName();
         }
         return result;
@@ -99,5 +97,13 @@ public class EventViewModel extends ViewModel {
 
     public boolean emptyClassrooms() {
         return classrooms.isEmpty();
+    }
+
+    public String getTeacherID(int indexTeacher) {
+        return teachers.get(indexTeacher).getId();
+    }
+
+    public String getClassroomID(int indexClassroom) {
+        return classrooms.get(indexClassroom).getId();
     }
 }

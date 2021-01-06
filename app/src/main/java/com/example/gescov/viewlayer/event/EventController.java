@@ -23,7 +23,7 @@ public class EventController {
     }
 
     public void createEvent(ClassSessionModel classSession) {
-
+        PresentationControlFactory.getViewLayerController().createEvent(classSession);
     }
 
     public void getClassroomsOfSchool(String schoolID) {

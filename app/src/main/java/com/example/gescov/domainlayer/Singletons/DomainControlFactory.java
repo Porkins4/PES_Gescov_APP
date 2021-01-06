@@ -112,7 +112,7 @@ public class DomainControlFactory {
         return tracingTestResultController;
     }
     public static ClassSessionController getClassSessionsModelController() {
-        if (classroomsController != null)
+        if (classSessionController != null)
             return classSessionController;
             classSessionController = new ClassSessionController();
         return classSessionController;

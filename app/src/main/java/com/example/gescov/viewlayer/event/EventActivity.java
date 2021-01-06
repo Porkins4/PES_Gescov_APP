@@ -57,7 +57,7 @@ public class EventActivity extends AppCompatActivity {
             Pair<Boolean,String> result = validateFields();
             if (result.first) Toast.makeText(this,result.second,Toast.LENGTH_SHORT).show();
             else createEvent();
-            addEvent.setEnabled(false);
+            //addEvent.setEnabled(false);
             //SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             //String date = sdf.format(new Date(calendar.getDate()));
             //System.out.println(currentDate);
@@ -113,7 +113,8 @@ public class EventActivity extends AppCompatActivity {
     }
 
     private void createEvent() {
-        viewModel.createEvent(title.getText().toString(),startHour.getText().toString() + ":" + startMin.getText().toString(),endHour.getText().toString() + ":" + endMin.getText().toString(),currentDate,"","",getIntent().getStringExtra("subjectID")).observe(
+        System.out.println(currentDate);
+        viewModel.createEvent(title.getText().toString(),startHour.getText().toString() + ":" + startMin.getText().toString(),endHour.getText().toString() + ":" + endMin.getText().toString(),currentDate,viewModel.getTeacherID(indexTeacher),viewModel.getClassroomID(indexClassroom),getIntent().getStringExtra("subjectID")).observe(
                 this, error -> {
                     if (error) Toast.makeText(this,R.string.general_error_message,Toast.LENGTH_SHORT).show();
                     else {
@@ -159,13 +160,10 @@ public class EventActivity extends AppCompatActivity {
     private void popUpError(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message)
-                .setPositiveButton(R.string.okey_text, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        finish();
-                    }
-                });
+                .setPositiveButton(R.string.okey_text, (dialog, id) -> finish());
         AlertDialog dialog = builder.create();
         dialog.show();
+        finish();
     }
 
     private void getTeachersOfTheSchool() {
@@ -220,7 +218,7 @@ public class EventActivity extends AppCompatActivity {
     }
 
     private void initCalendarListener() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         currentDate = sdf.format(calendar.getDate());
         calendar.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
             Date temp = new GregorianCalendar(year,month,dayOfMonth).getTime();
@@ -243,18 +241,5 @@ public class EventActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.event_form);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        // If we've received a touch notification that the user has touched
-        // outside the app, finish the activity.
-        if (MotionEvent.ACTION_OUTSIDE == event.getAction()) {
-            finish();
-            return true;
-        }
-
-        // Delegate everything else to Activity.
-        return super.onTouchEvent(event);
     }
 }
