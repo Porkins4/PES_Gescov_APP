@@ -184,8 +184,7 @@ public class User {
 
 
     public void sendReservationRequest(String aula, int row, int col) {
-        ISchoolService schoolService = ServicesFactory.getSchoolService();
-        schoolService.sendReservationRequest(id,aula,row,col);
+        ServicesFactory.getSchoolService().sendReservationRequest(id,aula,row,col);
     }
 
 

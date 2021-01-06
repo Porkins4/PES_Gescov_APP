@@ -1,6 +1,7 @@
 package com.example.gescov.viewlayer.home;
 
 import android.Manifest;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -51,6 +52,7 @@ public class HomeFragment extends Fragment {
         PresentationControlFactory.setViewModelProvider(new ViewModelProvider(this));
         homeViewModel = PresentationControlFactory.getViewModelProvider().get(HomeViewModel.class);
         root = inflater.inflate(R.layout.fragment_home, container, false);
+
 
         Button takeTest = root.findViewById(R.id.takeTest);
         String url = LoggedInUser.getPhotoURL();

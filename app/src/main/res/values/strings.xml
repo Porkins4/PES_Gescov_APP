@@ -327,7 +327,11 @@
     <string name="schedule_title_activity">Horari de l\'aula</string>
     <string name="cannot_access_by_code">No s\'ha pogut accedir amb aquest codi.</string>
     <string name="cannot_delete_wall_entry">No s\'ha pogut borrar aquesta entrada</string>
-
+    <string name="open_calendar">Obrir calendari</string>
+    <string name="mark_position_in_classroom_title">Reserva de lloc</string>
+    <string name="succesfull_reservation">S\'ha reservat la taula de manera exitosa</string>
+    <string name="already_has_reservation">L\'usuari ja té una reserva a aquesta aula</string>
+    <string name="title_assignments_class_session">Asistents</string>
 
 
 </resources>

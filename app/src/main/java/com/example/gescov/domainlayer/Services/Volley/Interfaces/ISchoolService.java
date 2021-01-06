@@ -23,7 +23,7 @@ public interface ISchoolService {
 
     void createClassroomRequest(String schoolName, String classroomName, int classroomRows, int classroomCols);
 
-    void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult);
+    void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult, String classSession);
 
     void checkUserLogin(MutableLiveData<TokenVerificationResult> r);
 

@@ -12,7 +12,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.R;
+import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.ClassroomActivities.ClassroomDistribution.ClassroomDistributionActivity;
+import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity;
+import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionActivity;
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 public class CheckClassSessionActivity extends AppCompatActivity {
 
@@ -69,10 +73,16 @@ public class CheckClassSessionActivity extends AppCompatActivity {
         this.listView = (ListView) findViewById(R.id.list_view);
         listView.setOnItemClickListener(
                 (parent, view, position, id) -> {
-                    Intent intent = new Intent(this, ClassroomDistributionActivity.class);
-                    intent.putExtra("classroom", viewModel.getClassroomID(position));
-                    intent.putExtra("classSession", viewModel.getClassroomSessionID(position));
-                    startActivity(intent);
+                    if (PresentationControlFactory.getUpdateUserProfileController().getUserType() == User.UserProfileType.TEACHER) {
+                        Intent intent = new Intent(this, StudentsInClassSessionActivity.class);
+                        intent.putExtra("classSession", viewModel.getClassroomSessionID(position));
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(this, ClassroomDistributionActivity.class);
+                        intent.putExtra("classroom", viewModel.getClassroomID(position));
+                        intent.putExtra("classSession", viewModel.getClassroomSessionID(position));
+                        startActivity(intent);
+                    }
                 }
         );
     }

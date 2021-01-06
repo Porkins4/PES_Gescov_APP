@@ -8,25 +8,26 @@ import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 public class StudentsInClassSessionViewModel extends ViewModel {
     private MutableLiveData<StudentsInClassSessionResult> studentsResult;
+    private String classSession;
 
     public LiveData<StudentsInClassSessionResult> getStudents() {
         if (studentsResult == null) {
             studentsResult = new MutableLiveData<>();
-            getStudentsFromCloud();
+            PresentationControlFactory.getStudentsInClassSessionController().getStudentsInClassSession(studentsResult, classSession);
         }
         return studentsResult;
     }
 
-    private void getStudentsFromCloud() {
-        PresentationControlFactory.getStudentsInClassSessionController().getStudentsInClassSession(studentsResult);
-    }
-
     public void update() {
-        getStudentsFromCloud();
+        PresentationControlFactory.getStudentsInClassSessionController().getStudentsInClassSession(studentsResult, classSession);
     }
 
     public void clearDataset() {
         StudentsInClassSessionResult k = studentsResult.getValue();
         k.getStudentNames().clear();
+    }
+
+    public void init(String classSession) {
+        this.classSession = classSession;
     }
 }
