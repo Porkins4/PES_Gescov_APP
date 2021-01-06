@@ -2,8 +2,6 @@ package com.example.gescov.domainlayer.Controllers;
 
 import android.location.Location;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
@@ -22,6 +20,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import androidx.lifecycle.MutableLiveData;
 
 public class UserModelController {
     private User loggedUser;
@@ -133,7 +133,7 @@ public class UserModelController {
 
     public void refreshLoggedUser(JSONObject response) {
         loggedUser = getUserFromJSONObject(response);
-        DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName(), loggedUser.getRisk());
+        //DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName());
     }
 
     public User getLoggedUser() {
@@ -160,7 +160,7 @@ public class UserModelController {
         }
         User user = getUserFromJSONObject(response);
         userHash.put(user.getId(), user);
-        DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName(), loggedUser.getRisk());
+        //DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName());
     }
 
     public void addStudentToCenter(String schoolId, MutableLiveData<SchoolRequestResult> result) {
@@ -235,9 +235,8 @@ public class UserModelController {
             String email = response.getString("email");
             String pic = response.getString("pic");
             boolean isStudent = response.getBoolean("student");
-            boolean risk = response.getBoolean("risk");
             String tokenId = response.getString("id");
-            user = new User(name, id, schoolsList, risk, isStudent, email, tokenId, pic);
+            user = new User(name, id, schoolsList, isStudent, email, tokenId, pic);
         } catch (JSONException e) {
             e.printStackTrace();
         }

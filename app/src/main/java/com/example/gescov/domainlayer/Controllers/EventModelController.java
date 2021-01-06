@@ -25,7 +25,6 @@ public class EventModelController {
                 String id = element.getString("id");
                 String name = element.getString("name");
                 String pic = element.getString("pic");
-                Boolean risk = element.getBoolean("risk");
                 Boolean isStudent = element.getBoolean("student");
                 String tokenID = element.getString("tokenID");
                 JSONArray schoolsID = element.getJSONArray("schoolsID");
@@ -35,7 +34,7 @@ public class EventModelController {
                     schools.add(school);
                 }
                 //String name, String id, List<String> schools, boolean risk, boolean isStudent, String email, String tokenId, String pic
-                User user = new User(name,id,schools,risk,isStudent,email,tokenID,pic);
+                User user = new User(name,id,schools,isStudent,email,tokenID,pic);
                 guests.add(user);
             } catch (JSONException e) {
                 e.printStackTrace();
