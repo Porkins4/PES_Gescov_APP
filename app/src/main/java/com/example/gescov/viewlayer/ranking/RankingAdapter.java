@@ -46,8 +46,8 @@ public class RankingAdapter extends ModelListViewAdapter {
         } else if ( pos == 3 ) {
             image.setImageResource(R.drawable.medical_mask_bronze);
         }
-        if ( school.second == 1 ) numContagions.setText(school.second.toString()+ " contagi");
-        else numContagions.setText(school.second.toString() + " contagis");
+        if ( school.second == 1 ) numContagions.setText(school.second.toString()+ " "+ v.getContext().getString(R.string.num_contagions_singular));
+        else numContagions.setText(school.second.toString() + " "+ v.getContext().getString(R.string.num_contagions_plural));
 
         v.setOnClickListener(e-> {
             SchoolsCrontroller controller = PresentationControlFactory.getSchoolsCrontroller();
