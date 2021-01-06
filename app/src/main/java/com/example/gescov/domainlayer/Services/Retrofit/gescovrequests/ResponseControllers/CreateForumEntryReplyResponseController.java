@@ -31,9 +31,7 @@ public class CreateForumEntryReplyResponseController implements Callback<String>
              } catch (JSONException e) {
                  e.printStackTrace();
              }
-
          }
-
     }
 
     @Override
