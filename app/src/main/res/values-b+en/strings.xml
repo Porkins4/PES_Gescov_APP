@@ -48,6 +48,7 @@
     <string name="create_school_form_school_address_example">nº Street Name, Town</string>
     <string name="create_school_form_latitude">Latitude</string>
     <string name="create_school_form_longitude">Longitude</string>
+    <string name="cannot_access_by_code">You couldn\'t access an school by this code</string>
 
 
     <!-- User all schools -->
@@ -260,4 +261,5 @@
     <string name="create_wall_entry_reply_form_text">Write your comment here.</string>
     <string name="create_wall_entry_reply_form_button">Add comment</string>
     <string name="forum_entry_list_delete_message">Are you sure to delete this wall entry?</string>
+    <string name="cannot_delete_wall_entry">You couldn\'t delete this entry</string>
 </resources>

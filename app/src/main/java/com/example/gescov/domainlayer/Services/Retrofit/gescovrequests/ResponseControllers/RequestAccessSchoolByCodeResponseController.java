@@ -1,5 +1,6 @@
 package com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers;
 
+import com.example.gescov.R;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.Interfaces.IRequestAccessSchoolByCodeService;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 
@@ -19,9 +20,13 @@ public class RequestAccessSchoolByCodeResponseController implements Callback<Res
 
     @Override
     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-        DomainControlFactory.getSchoolsModelCrontroller().refreshCurrentSchool();
-        DomainControlFactory.getUserModelController().refreshLoggedUser();
-        DomainControlFactory.getUserModelController().refreshSchoolList();
+        if (response.code() == 200) {
+            DomainControlFactory.getSchoolsModelCrontroller().refreshCurrentSchool();
+            DomainControlFactory.getUserModelController().refreshLoggedUser();
+            DomainControlFactory.getUserModelController().refreshSchoolList();
+        } else {
+            DomainControlFactory.getModelController().toastMessage(R.string.cannot_access_by_code);
+        }
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers;
 
+import com.example.gescov.R;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.Interfaces.IDeleteWallEntryService;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 
@@ -18,7 +19,9 @@ public class DeleteWallEntryResponseController implements Callback<String> {
 
     @Override
     public void onResponse(Call<String> call, Response<String> response) {
-        DomainControlFactory.getForumModelController().refreshLoggedUserSchoolsWallEntries();
+        if (response.code() == 200)
+            DomainControlFactory.getForumModelController().refreshLoggedUserSchoolsWallEntries();
+        else DomainControlFactory.getModelController().toastMessage(R.string.cannot_delete_wall_entry);
     }
 
     @Override
@@ -29,7 +32,7 @@ public class DeleteWallEntryResponseController implements Callback<String> {
     public void deleteWallEntry(String wallEntryId, String userID) {
         IDeleteWallEntryService service = retrofit.create(IDeleteWallEntryService.class);
 
-        Call<String> call = service.deleteWallEntry(wallEntryId);
+        Call<String> call = service.deleteWallEntry(wallEntryId, userID);
         call.enqueue(this);
     }
 }

@@ -1,8 +1,9 @@
 package com.example.gescov.viewlayer.Singletons;
 
 
-import androidx.lifecycle.ViewModelProvider;
+import android.content.Context;
 
+import com.example.gescov.domainlayer.MessagesManager;
 import com.example.gescov.viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroomController;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionController;
 import com.example.gescov.viewlayer.Map.MapController;
@@ -29,6 +30,8 @@ import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
 import androidx.lifecycle.ViewModelProvider;
 
 public class PresentationControlFactory {
+
+    private static Context applicationContext;
     private static ViewLayerController viewLayerController;
     private static SchoolsCrontroller schoolsCrontroller;
     private static SchoolClassroomsCrontroller classroomsCrontroller;
@@ -55,7 +58,11 @@ public class PresentationControlFactory {
 
     private static ForumController forumController;
     private static ForumRepliesController forumRepliesController;
+    private static MessagesManager messagesManager;
 
+    public static void setApplicationContext (Context context) {
+        applicationContext = context;
+    }
 
     public static ViewLayerController getViewLayerController() {
         if (viewLayerController != null)
@@ -218,5 +225,12 @@ public class PresentationControlFactory {
             return forumRepliesController;
         forumRepliesController = new ForumRepliesController();
         return forumRepliesController;
+    }
+
+    public static MessagesManager getMessagesManager() {
+        if (messagesManager != null)
+            return messagesManager;
+        messagesManager = new MessagesManager(applicationContext);
+        return messagesManager;
     }
 }

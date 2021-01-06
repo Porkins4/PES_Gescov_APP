@@ -483,4 +483,8 @@ public class ViewLayerController {
     public void deleteWallEntry(String wallEntryId) {
         DomainControlFactory.getModelController().deleteWallEntry(wallEntryId);
     }
+
+    public void toastMessage(int resourceMessage) {
+        PresentationControlFactory.getMessagesManager().toastMessage(resourceMessage);
+    }
 }

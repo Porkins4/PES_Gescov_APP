@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.gescov.R;
+import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -86,9 +87,22 @@ public class ForumFragment extends Fragment {
         list.setAdapter(adapter);
         refreshList();
 
-        fab.setOnClickListener(e -> {
-            setCreateButtonActions();
-        });
+        User user = PresentationControlFactory.getLoadingProfileController().getLoggedInUser();
+
+        //if the user is not admin of any school, hide the fab
+        boolean isUserAdmin = false;
+        for (String schoolId : user.getSchoolsID()) {
+            if (PresentationControlFactory.getSchoolsCrontroller().getSchoolById(schoolId).getAdministratorsList().contains(user.getId())) {
+              isUserAdmin = true;
+              break;
+            }
+        }
+
+        if (isUserAdmin)
+            fab.setOnClickListener(e -> {
+                setCreateButtonActions();
+            });
+        else fab.setVisibility(View.INVISIBLE);
         return view;
     }
 

@@ -463,4 +463,8 @@ public class ModelController {
     public void deleteWallEntry(String wallEntryId) {
         DomainControlFactory.getForumModelController().deleteWallEntry(wallEntryId);
     }
+
+    public void toastMessage(int resourceMessage) {
+        PresentationControlFactory.getViewLayerController().toastMessage(resourceMessage);
+    }
 }
