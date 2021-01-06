@@ -43,8 +43,8 @@ public class StudentsInClassSessionController {
         classroomDsitributionViewModel.setAssignmentsResponse(r,b);
     }
 
-    public void getAssignmentsForClassSession(String classroomID, String date, String hour) {
-        PresentationControlFactory.getViewLayerController().getAssignmentsForClassSession(classroomID,date,hour);
+    public void getAssignmentsForClassSession(String classSessionID) {
+        PresentationControlFactory.getViewLayerController().getAssignmentsForClassSession(classSessionID);
     }
 
     public void getStudentsInClassRecord(String classroomId, String date) {

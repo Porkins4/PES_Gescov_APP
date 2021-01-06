@@ -36,7 +36,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.classroomSchedule.InsertScheduleActivity"></activity>
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.classroomSchedule.InsertScheduleActivity"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.addteachertosubject.AddTeacherToSubjectActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
@@ -78,7 +79,8 @@
         <activity
             android:name=".viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-        <activity android:name=".viewlayer.home.DailyTestActivity" />
+        <activity android:name=".viewlayer.home.DailyTestActivity"
+                  android:theme="@style/Theme.Gescov.NoActionBar"/>
         <activity
             android:name=".viewlayer.SignUpAndLogin.LoginActivity"
             android:theme="@style/Theme.Gescov.NoActionBar" />

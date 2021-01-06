@@ -187,8 +187,8 @@ public class ModelController {
         DomainControlFactory.getUserModelController().notifyPossibleContagion(result);
     }
 
-    public void getAssignmentsForClassSession(String classroomID, String date, String hour) {
-        DomainControlFactory.getAssignmentModelController().getAssignmentsForClassSession(classroomID,date,hour);
+    public void getAssignmentsForClassSession(String classSessionID) {
+        DomainControlFactory.getAssignmentModelController().getAssignmentsForClassSession(classSessionID);
     }
 
     public void refreshClassroomDistributionAssignments(List<Assignment> r, boolean b) {
@@ -492,5 +492,17 @@ public class ModelController {
 
     public void toastMessage(int resourceMessage) {
         PresentationControlFactory.getViewLayerController().toastMessage(resourceMessage);
+    }
+
+    public void createEvent(ClassSessionModel classSession) {
+        DomainControlFactory.getClassSessionsModelController().createEvent(classSession);
+    }
+
+    public void notifyCreateEventResponse(boolean error, int errorCode) {
+        PresentationControlFactory.getViewLayerController().notifyCreateEventResponse(error,errorCode);
+    }
+
+    public void getTeachersBySubjectID(String subjectID) {
+        DomainControlFactory.getUserModelController().getTeachersBySubjectID(subjectID);
     }
 }

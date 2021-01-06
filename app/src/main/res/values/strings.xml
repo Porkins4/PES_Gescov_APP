@@ -163,6 +163,7 @@
     <string name="all_tests"> Tots el tests</string>
     <string name="test_done_in">Test fet el </string>
     <string name="error_no_tests">No hi ha cap test </string>
+    <string name="dail_test_title">Test de seguiment </string>
 
 
     <!-- Strings notifying the state -->
@@ -304,6 +305,15 @@
     <string name="sucessModifySchedule">" Actualitzat Correctament"</string>
 
     <string name="forum_entry_list_delete_message">Estàs segur d\'esborrar aquesta entrada?</string>
+    <string name="empty_title_error">El títol no pot estar buit</string>
+    <string name="past_date_error">La data seleccionada ha de ser posterior al dia d\'avui</string>
+    <string name="empty_description_error">La descripció no pot ser buida</string>
+    <string name="bad_time_format">Les dades de hora han de contenir dos digits i han de trobar-se en el rang de 0 - 24 hores</string>
+    <string name="error_no_classrooms_in_school">Encara no hi ha aules en aquesta escola, primer crea una aula</string>
+    <string name="okey_text">D\'acord</string>
+    <string name="timeline_already_reserved">Aquesta franja horaria ja te un event relacionat, canvia el dia o la hora de reserva</string>
+    <string name="create_in_google_calendar_request">Desitjes afegir aquest event al Google Calendar?</string>
+    <string name="schedule_title_activity">Horari de l\'aula</string>
     <string name="cannot_access_by_code">No s\'ha pogut accedir amb aquest codi.</string>
     <string name="cannot_delete_wall_entry">No s\'ha pogut borrar aquesta entrada</string>
 

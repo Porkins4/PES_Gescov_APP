@@ -176,8 +176,8 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().notifyPossibleContagion(result);
     }
 
-    public void getAssignmentsForClassSession(String classroomID, String date, String hour) {
-        DomainControlFactory.getModelController().getAssignmentsForClassSession(classroomID,date,hour);
+    public void getAssignmentsForClassSession(String classSessionID) {
+        DomainControlFactory.getModelController().getAssignmentsForClassSession(classSessionID);
     }
 
     public void refreshClassroomDistributionAssignments(List<Assignment> r, boolean b) {
@@ -511,5 +511,17 @@ public class ViewLayerController {
 
     public void sendResponseOfSchedule(List<Subject> l1, List<Subject> l2, List<Subject> l3, List<Subject> l4, List<Subject> l5) {
         PresentationControlFactory.getScheduleController().sendResponseOfSchedule(l1,l2,l3,l4,l5);
+    }
+
+    public void createEvent(ClassSessionModel classSession) {
+        DomainControlFactory.getModelController().createEvent(classSession);
+    }
+
+    public void notifyCreateEventResponse(boolean error, int errorCode) {
+        PresentationControlFactory.getEventController().notifyCreateEventResponse(error,errorCode);
+    }
+
+    public void getTeachersBySubjectID(String subjectID) {
+        DomainControlFactory.getModelController().getTeachersBySubjectID(subjectID);
     }
 }

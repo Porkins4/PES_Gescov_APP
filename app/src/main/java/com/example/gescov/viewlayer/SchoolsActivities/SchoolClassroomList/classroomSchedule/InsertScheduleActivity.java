@@ -7,6 +7,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.R;
@@ -36,14 +37,6 @@ public class InsertScheduleActivity extends AppCompatActivity {
         if (getIntent().hasExtra("admin")) admin = getIntent().getExtras().getBoolean("admin");
         System.out.println(admin +" el admin");
         initComponents();
-        /*for (int i = 0; i < 12; ++i){
-            Subject aux = new Subject("EMPTY","EMPTY");
-            l1.add(aux);
-            l2.add(aux);
-            l3.add(aux);
-            l4.add(aux);
-            l5.add(aux);
-        }*/
         getSchedule();
         setListenerMonday();
         setListenerTuesday();
@@ -177,6 +170,14 @@ public class InsertScheduleActivity extends AppCompatActivity {
         if ( admin) saveSchedule.setVisibility(View.VISIBLE);
         else saveSchedule.setVisibility(View.GONE);
         classID = getIntent().getStringExtra("classID");
+
+        initToolBar();
+    }
+
+    private void initToolBar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.schedule_title_activity);
     }
 
     private void setPreviousList(int current) {

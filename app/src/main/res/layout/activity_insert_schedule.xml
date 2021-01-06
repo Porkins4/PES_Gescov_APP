@@ -1,17 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".viewlayer.SchoolsActivities.SchoolClassroomList.classroomSchedule.InsertScheduleActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:theme="@style/Theme.Gescov.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.Gescov.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="680dp"
-        android:layout_weight="0"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_height="wrap_content"
+        android:layout_weight="0">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -23,12 +39,19 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
                 android:layout_weight="0"
                 android:backgroundTint="@color/schedule_button"
                 android:text="@string/monday"
                 android:textColor="@color/dark_green"
-                android:textSize="12sp"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="|"
+                android:textColor="@color/normalText"
                 android:textStyle="bold" />
 
             <Button
@@ -36,12 +59,19 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
                 android:layout_weight="0"
                 android:backgroundTint="@color/schedule_button"
                 android:text="@string/tuesday"
                 android:textColor="@color/dark_green"
-                android:textSize="12sp"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="|"
+                android:textColor="@color/normalText"
                 android:textStyle="bold" />
 
             <Button
@@ -49,12 +79,19 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
                 android:layout_weight="0"
                 android:backgroundTint="@color/schedule_button"
                 android:text="@string/wedensday"
                 android:textColor="@color/dark_green"
-                android:textSize="12sp"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="|"
+                android:textColor="@color/normalText"
                 android:textStyle="bold" />
 
             <Button
@@ -62,12 +99,19 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
                 android:layout_weight="0"
                 android:backgroundTint="@color/schedule_button"
                 android:text="@string/thursday"
                 android:textColor="@color/dark_green"
-                android:textSize="12sp"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="|"
+                android:textColor="@color/normalText"
                 android:textStyle="bold" />
 
             <Button
@@ -75,13 +119,11 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
                 android:layout_weight="0"
                 android:backgroundTint="@color/schedule_button"
                 android:text="@string/friday"
                 android:textColor="@color/dark_green"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -89,21 +131,15 @@
         android:id="@+id/schedule_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/save_schedule"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/save_schedule"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/schedule_list" />
+        android:layout_weight="0"
+        android:text="@string/save_schedule" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

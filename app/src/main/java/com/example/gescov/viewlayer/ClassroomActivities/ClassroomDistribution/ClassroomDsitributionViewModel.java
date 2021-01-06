@@ -14,17 +14,17 @@ public class ClassroomDsitributionViewModel extends ViewModel {
     private MutableLiveData<ClassroomDistributionInfo> data;
     private MutableLiveData<ClassroomDistributionClassInfo> classInfo;
 
-    public LiveData<ClassroomDistributionInfo> getData(String classroomID,String date, String hour) {
+    public LiveData<ClassroomDistributionInfo> getData(String classSessionID) {
         if (data == null) {
             data = new MutableLiveData<>();
-            getAssignmentsInfo(classroomID,date,hour);
+            getAssignmentsInfo(classSessionID);
         }
         return data;
     }
 
-    public void getAssignmentsInfo(String classroomID,String date, String hour) {
+    public void getAssignmentsInfo(String classSessionID) {
         PresentationControlFactory.getStudentsInClassSessionController().setClassroomDsitributionViewModel(this);
-        PresentationControlFactory.getStudentsInClassSessionController().getAssignmentsForClassSession(classroomID,date,hour);
+        PresentationControlFactory.getStudentsInClassSessionController().getAssignmentsForClassSession(classSessionID);
     }
 
     public void setAssignmentsResponse(List<Assignment> r, boolean b) {

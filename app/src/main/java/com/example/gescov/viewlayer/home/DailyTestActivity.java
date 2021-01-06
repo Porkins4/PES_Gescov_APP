@@ -8,6 +8,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
@@ -29,6 +30,7 @@ public class DailyTestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_daily_test);
         tracingTestController = PresentationControlFactory.getTracingTestController();
         answers = new ArrayList<>();
+        initToolBar();
         Button sendTest = findViewById(R.id.sendTest);
         sendTest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +38,13 @@ public class DailyTestActivity extends AppCompatActivity {
                 sendTests();
             }
         });
+    }
+
+    private void initToolBar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.dail_test_title);
+
     }
 
     private void sendTests() {
