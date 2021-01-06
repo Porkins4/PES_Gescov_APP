@@ -219,8 +219,9 @@
     <string name="ranking_name">Ranking de centres</string>
     <string name="error_while_creating_chat">S\'ha produit un error mentre es creava el xat</string>
     <string name="no_messages_yet_text">Cap missatge enviat</string>
-    <string name="share_text">La meva escola està a la posició</string>
-    <string name="share2_text">en el rànquing de Gescov.</string>
+    <string name="share_text">La meva escola</string>
+    <string name="share2_text">està a la posició</string>
+    <string name="share3_text">en el rànquing de Gescov.</string>
 
 
     <!-- Access school by code activity -->

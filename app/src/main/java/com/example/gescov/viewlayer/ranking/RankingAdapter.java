@@ -39,7 +39,7 @@ public class RankingAdapter extends ModelListViewAdapter {
 
         if (isMySchool(school.first.getId())) share.setVisibility(View.VISIBLE);
         else share.setVisibility(View.INVISIBLE);
-        setListenerShare(v, share, pos);
+        setListenerShare(v, share, pos, school.first.getName());
 
         name.setText(school.first.getName());
         positionRank.setText((pos).toString() +". ");
@@ -68,13 +68,13 @@ public class RankingAdapter extends ModelListViewAdapter {
         return PresentationControlFactory.getRankingController().isMySchool(schoolID);
     }
 
-    private void setListenerShare(View v, ImageButton share, Integer pos) {
+    private void setListenerShare(View v, ImageButton share, Integer pos, String name) {
         Context con = v.getContext();
         share.setOnClickListener(view -> {
             Intent shareIntent = new Intent();
             shareIntent.setAction(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, con.getString(R.string.share_text) + " " + pos + " " + con.getString(R.string.share2_text));
+            shareIntent.putExtra(Intent.EXTRA_TEXT, con.getString(R.string.share_text) + " (" + name + ") " + con.getString(R.string.share2_text) + " " + pos + " " + con.getString(R.string.share3_text));
             con.startActivity(Intent.createChooser(shareIntent, "Share your ranking"));
         });
     }

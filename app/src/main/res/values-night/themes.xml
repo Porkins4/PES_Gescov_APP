@@ -46,7 +46,6 @@
 
     <!-- General colors -->
     <color name="normalText">@color/white</color>
-    <color name="shareText">@color/black</color>
 
     <!-- Login Button Color -->
     <color name="loginButtonColor">#888888</color>
