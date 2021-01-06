@@ -265,4 +265,8 @@
     <string name="timeline_already_reserved">Aquesta franja horaria ja te un event relacionat, canvia el dia o la hora de reserva</string>
     <string name="create_in_google_calendar_request">Desitjes afegir aquest event al Google Calendar?</string>
     <string name="schedule_title_activity">Horari de l\'aula</string>
+    <string name="mark_position_in_classroom_title">Reserva de lloc</string>
+    <string name="succesfull_reservation">S\'ha reservat la taula de manera exitosa</string>
+    <string name="already_has_reservation">L\'usuari ja té una reserva a aquesta aula</string>
+    <string name="title_assignments_class_session">Persones en aquesta sessió</string>
 </resources>

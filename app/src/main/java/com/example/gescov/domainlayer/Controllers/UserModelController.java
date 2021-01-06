@@ -92,9 +92,9 @@ public class UserModelController {
     }
 
 
-    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
+    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult, String classSession) {
         ISchoolService iSchoolService = ServicesFactory.getSchoolService();
-        iSchoolService.getStudentsInClassSession(studentsResult);
+        iSchoolService.getStudentsInClassSession(studentsResult, classSession);
     }
 
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
@@ -363,5 +363,9 @@ public class UserModelController {
             }
         }
         DomainControlFactory.getModelController().notifyListOfTeachersReceivedToCreateEvent(contactsFromSelectedCenter);
+    }
+
+    public void setSendReservationRequestResponse(boolean error, int errorCode, JSONObject response) {
+        DomainControlFactory.getModelController().setSendReservationRequestResponse(error,errorCode);
     }
 }

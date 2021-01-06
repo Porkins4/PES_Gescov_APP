@@ -8,8 +8,6 @@ public class ClassroomDistributionInfo {
     private boolean error;
     private List<Assignment> students;
 
-    ClassroomDistributionInfo() {}
-
     ClassroomDistributionInfo(List<Assignment> students, Boolean error) {
         this.error = error;
         this.students = students;

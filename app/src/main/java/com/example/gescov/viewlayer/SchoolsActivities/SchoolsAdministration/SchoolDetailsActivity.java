@@ -10,6 +10,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.gescov.GescovUtils;
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.School;
@@ -27,10 +31,6 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.ViewModelProvider;
 
 public class SchoolDetailsActivity extends AppCompatActivity {
     private SchoolsCrontroller schoolsCrontroller;

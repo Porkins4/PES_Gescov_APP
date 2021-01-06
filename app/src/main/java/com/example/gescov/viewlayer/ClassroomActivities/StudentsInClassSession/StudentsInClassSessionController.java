@@ -29,8 +29,8 @@ public class StudentsInClassSessionController {
     public StudentsInClassSessionController() {//constructor without colateral actions
     }
 
-    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
-        PresentationControlFactory.getViewLayerController().getStudentsInClassSession(studentsResult);
+    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult, String classSession) {
+        PresentationControlFactory.getViewLayerController().getStudentsInClassSession(studentsResult, classSession);
     }
 
 
@@ -57,5 +57,13 @@ public class StudentsInClassSessionController {
 
     public void refreshClassroomDistributionClassInfo(Classroom c, boolean b) {
         classroomDsitributionViewModel.setClassInfo(c,b);
+    }
+
+    public void sendReservationRequest(String aula, int row, int col) {
+        PresentationControlFactory.getViewLayerController().sendReservationRequest(aula, row, col);
+    }
+
+    public void setSendReservationRequestResponse(boolean error, int errorCode) {
+        classroomDsitributionViewModel.setSendReservationRequestResponse(error,errorCode);
     }
 }
