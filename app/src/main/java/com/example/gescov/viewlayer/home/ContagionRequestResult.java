@@ -3,10 +3,8 @@ package com.example.gescov.viewlayer.home;
 import android.util.Pair;
 
 public class ContagionRequestResult {
-    //private Boolean error;
     private Pair<String,Boolean> error;
 
-    public ContagionRequestResult (){}
 
     public Pair<String,Boolean> getError() {
         return error;

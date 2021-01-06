@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,8 +33,13 @@ public class RankingAdapter extends ModelListViewAdapter {
         TextView numContagions = v.findViewById(R.id.num_of_contagion);
         TextView positionRank = v.findViewById(R.id.position_school);
         TextView address = v.findViewById(R.id.school_address_Rank);
+        ImageButton share = v.findViewById(R.id.share_button);
         Pair <School,Integer> school =  (Pair<School,Integer>) getItem(position);
         Integer pos = position + 1;
+
+        if (isMySchool(school.first.getId())) share.setVisibility(View.VISIBLE);
+        else share.setVisibility(View.INVISIBLE);
+        setListenerShare(v, share, pos, school.first.getName());
 
         name.setText(school.first.getName());
         positionRank.setText((pos).toString() +". ");
@@ -46,8 +52,8 @@ public class RankingAdapter extends ModelListViewAdapter {
         } else if ( pos == 3 ) {
             image.setImageResource(R.drawable.medical_mask_bronze);
         }
-        if ( school.second == 1 ) numContagions.setText(school.second.toString()+ " contagi");
-        else numContagions.setText(school.second.toString() + " contagis");
+        if ( school.second == 1 ) numContagions.setText(school.second.toString()+ " "+ v.getContext().getString(R.string.num_contagions_singular));
+        else numContagions.setText(school.second.toString() + " "+ v.getContext().getString(R.string.num_contagions_plural));
 
         v.setOnClickListener(e-> {
             SchoolsCrontroller controller = PresentationControlFactory.getSchoolsCrontroller();
@@ -56,5 +62,20 @@ public class RankingAdapter extends ModelListViewAdapter {
             v.getContext().startActivity(intent);
         });
         return v;
+    }
+
+    private boolean isMySchool(String schoolID) {
+        return PresentationControlFactory.getRankingController().isMySchool(schoolID);
+    }
+
+    private void setListenerShare(View v, ImageButton share, Integer pos, String name) {
+        Context con = v.getContext();
+        share.setOnClickListener(view -> {
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, con.getString(R.string.share_text) + " (" + name + ") " + con.getString(R.string.share2_text) + " " + pos + " " + con.getString(R.string.share3_text));
+            con.startActivity(Intent.createChooser(shareIntent, "Share your ranking"));
+        });
     }
 }
