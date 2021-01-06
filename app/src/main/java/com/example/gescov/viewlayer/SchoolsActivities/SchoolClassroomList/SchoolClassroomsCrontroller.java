@@ -58,8 +58,8 @@ public class SchoolClassroomsCrontroller {
     }
 
 
-    public void getAssignmentsForClassSession(String classroomID, String date, String hour) {
+    /*public void getAssignmentsForClassSession(String classroomID, String date, String hour) {
         PresentationControlFactory.getViewLayerController().getAssignmentsForClassSession(classroomID,date,hour);
-    }
+    }*/
 
 }

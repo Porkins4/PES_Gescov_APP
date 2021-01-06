@@ -30,8 +30,6 @@ import org.json.JSONException;
 
 import java.util.List;
 
-import androidx.lifecycle.MutableLiveData;
-
 public class ModelController {
 
     private UserModelController userModelController;
@@ -189,8 +187,8 @@ public class ModelController {
         DomainControlFactory.getUserModelController().notifyPossibleContagion(result);
     }
 
-    public void getAssignmentsForClassSession(String classroomID, String date, String hour) {
-        DomainControlFactory.getAssignmentModelController().getAssignmentsForClassSession(classroomID,date,hour);
+    public void getAssignmentsForClassSession(String classSessionID) {
+        DomainControlFactory.getAssignmentModelController().getAssignmentsForClassSession(classSessionID);
     }
 
     public void refreshClassroomDistributionAssignments(List<Assignment> r, boolean b) {

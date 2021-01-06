@@ -18,12 +18,14 @@ public class AssignmentServiceImplementor implements IAssignmentService {
     public AssignmentServiceImplementor () {}
 
     @Override
-    public void getAssignmentsForClassSession(String classroomID, String date, String hour) {//cuando se pueda escoger la class session: classDateHour?classroomID=5fbad920572f3d4f08fa36bb&date=03-02-2020&hour=15%3A00
+    public void getAssignmentsForClassSession(String classSessionID) {//cuando se pueda escoger la class session: classDateHour?classroomID=5fbad920572f3d4f08fa36bb&date=03-02-2020&hour=15%3A00
+        System.out.println( "" + classSessionID);
         JsonArrayRequest request = new JsonArrayRequest(
-                Request.Method.GET, GESCOV_ASSIGNMENTS_URI + "classroom/" + classroomID,null,
+                Request.Method.GET, GESCOV_ASSIGNMENTS_URI + "classSession/" + classSessionID,null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        System.out.println(response);
                         DomainControlFactory.getAssignmentModelController().updateStudentsInClassSession(response,false);
                     }
                 },

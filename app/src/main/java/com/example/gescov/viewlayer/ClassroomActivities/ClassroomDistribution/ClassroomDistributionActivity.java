@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.gridlayout.widget.GridLayout;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.R;
@@ -44,30 +43,19 @@ public class ClassroomDistributionActivity extends AppCompatActivity {
     private void initResponseListener() {
         String classroomId = getIntent().getStringExtra("classroom");
         classroomDsitributionViewModel = new ViewModelProvider(this).get(ClassroomDsitributionViewModel.class);
-        classroomDsitributionViewModel.getData(classroomId,null,null).observe(this,
-                new Observer<ClassroomDistributionInfo>() {
-                    @Override
-                    public void onChanged(ClassroomDistributionInfo classroomDistributionInfo) {
-                        if (!classroomDistributionInfo.isError()) {
-                            System.out.println("tot ok");
-                            getClassroomInfo();
-                        } else {//class without assignments
-                            getClassroomInfo();
-                        }
-                    }
+        classroomDsitributionViewModel.getData(getIntent().getStringExtra("classSession")).observe(this,
+                classroomDistributionInfo -> {
+                    if (!classroomDistributionInfo.isError()) getClassroomInfo();
+                    else getClassroomInfo();//class without assignments
                 }
         );
     }
 
     private void getClassroomInfo() {
         classroomDsitributionViewModel.getClassroom(getIntent().getStringExtra("classroom")).observe(this,
-                new Observer<ClassroomDistributionClassInfo>() {
-                    @Override
-                    public void onChanged(ClassroomDistributionClassInfo classroomDistributionClassInfo) {
-                        System.out.println("tot ok x2");
-                        if (!classroomDistributionClassInfo.isError()) {
-                            showDistribution();
-                        }
+                classroomDistributionClassInfo -> {
+                    if (!classroomDistributionClassInfo.isError()) {
+                        showDistribution();
                     }
                 }
         );
@@ -107,7 +95,7 @@ public class ClassroomDistributionActivity extends AppCompatActivity {
         Intent i = new Intent(this, MarkPositionInClassroom.class);
         i.putExtra("row",rowPos);
         i.putExtra("col",colPos);
-        i.putExtra("classSessionID","5fc825d2c93e4419dd64fafb");
+        i.putExtra("classSessionID",getIntent().getStringExtra("classSession"));
         startActivity(i);
     }
 }

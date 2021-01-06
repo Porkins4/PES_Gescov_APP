@@ -1,7 +1,5 @@
 package com.example.gescov.domainlayer.Classmodels;
 
-import com.google.android.gms.common.util.JsonUtils;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 

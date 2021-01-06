@@ -31,8 +31,6 @@ import org.json.JSONException;
 
 import java.util.List;
 
-import androidx.lifecycle.MutableLiveData;
-
 
 public class ViewLayerController {
 
@@ -178,8 +176,8 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().notifyPossibleContagion(result);
     }
 
-    public void getAssignmentsForClassSession(String classroomID, String date, String hour) {
-        DomainControlFactory.getModelController().getAssignmentsForClassSession(classroomID,date,hour);
+    public void getAssignmentsForClassSession(String classSessionID) {
+        DomainControlFactory.getModelController().getAssignmentsForClassSession(classSessionID);
     }
 
     public void refreshClassroomDistributionAssignments(List<Assignment> r, boolean b) {

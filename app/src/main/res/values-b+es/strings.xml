@@ -262,4 +262,5 @@
     <string name="forum_entry_list_delete_message">Estás seguro de borrar esta entrada?</string>
     <string name="timeline_already_reserved">Aquesta franja horaria ja te un event relacionat, canvia el dia o la hora de reserva</string>
     <string name="create_in_google_calendar_request">Desitjes afegir aquest event al Google Calendar?</string>
+    <string name="schedule_title_activity">Horari de l\'aula</string>
 </resources>

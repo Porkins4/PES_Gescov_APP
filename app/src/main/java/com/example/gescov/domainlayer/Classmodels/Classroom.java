@@ -1,6 +1,5 @@
 package com.example.gescov.domainlayer.Classmodels;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 

@@ -1,18 +1,10 @@
 package com.example.gescov.viewlayer.event;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.ViewModelProvider;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.util.Pair;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,9 +13,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.User;
-import com.google.android.gms.common.util.ScopeUtil;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -192,9 +188,7 @@ public class EventActivity extends AppCompatActivity {
 
     private void getTeachersOfTheSchool() {
         viewModel.getTeachersOfTheSchool().observe(this,
-                received -> {
-                    initSpinners();
-                });
+                received -> initSpinners());
     }
 
     private void initSpinners() {
@@ -250,9 +244,7 @@ public class EventActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        calendar.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
-            currentDate = new GregorianCalendar(year,month,dayOfMonth).getTime();
-        });
+        calendar.setOnDateChangeListener((view, year, month, dayOfMonth) -> currentDate = new GregorianCalendar(year,month,dayOfMonth).getTime());
     }
 
     private void initAttributes() {
