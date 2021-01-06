@@ -20,11 +20,12 @@
 
             <Button
                 android:id="@+id/monday"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_weight="0"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="@color/schedule_button"
                 android:text="@string/monday"
                 android:textColor="@color/dark_green"
                 android:textSize="12sp"
@@ -32,11 +33,12 @@
 
             <Button
                 android:id="@+id/tuesday"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_weight="0"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="@color/schedule_button"
                 android:text="@string/tuesday"
                 android:textColor="@color/dark_green"
                 android:textSize="12sp"
@@ -44,11 +46,12 @@
 
             <Button
                 android:id="@+id/wedensday"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_weight="0"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="@color/schedule_button"
                 android:text="@string/wedensday"
                 android:textColor="@color/dark_green"
                 android:textSize="12sp"
@@ -56,11 +59,12 @@
 
             <Button
                 android:id="@+id/thursday"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_weight="0"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="@color/schedule_button"
                 android:text="@string/thursday"
                 android:textColor="@color/dark_green"
                 android:textSize="12sp"
@@ -68,11 +72,12 @@
 
             <Button
                 android:id="@+id/friday"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_weight="0"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="@color/schedule_button"
                 android:text="@string/friday"
                 android:textColor="@color/dark_green"
                 android:textSize="12sp"

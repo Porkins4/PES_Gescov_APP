@@ -86,7 +86,7 @@ public class ScheduleModelController {
         l3 = new ArrayList<>();
         l4 = new ArrayList<>();
         l5 = new ArrayList<>();
-        for(int i = 0; i < 9; ++i) {
+        for(int i = 0; i < 13; ++i) {
             Subject empty = new Subject("EMPTY","EMPTY");
             l1.add(empty);
             l2.add(empty);

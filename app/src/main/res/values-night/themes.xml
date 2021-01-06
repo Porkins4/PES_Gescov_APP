@@ -49,4 +49,6 @@
 
     <!-- Login Button Color -->
     <color name="loginButtonColor">#888888</color>
+
+    <color name = "schedule_button"> #000000 </color>
 </resources>

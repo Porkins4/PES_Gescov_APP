@@ -12,7 +12,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="15dp"
         android:text="TextView"
-        android:textColor="#000000"
+        android:textColor="@color/normalText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +23,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="15dp"
         android:text="TextView"
-        android:textColor="#000000"
+        android:textColor="@color/normalText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/name" />
