@@ -1,4 +1,4 @@
-package com.example.gescov.domainlayer;
+package com.example.gescov.viewlayer;
 
 import android.content.Context;
 import android.widget.Toast;

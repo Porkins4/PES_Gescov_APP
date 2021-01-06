@@ -3,7 +3,7 @@ package com.example.gescov.viewlayer.Singletons;
 
 import android.content.Context;
 
-import com.example.gescov.domainlayer.MessagesManager;
+import com.example.gescov.viewlayer.MessagesManager;
 import com.example.gescov.viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroomController;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionController;
 import com.example.gescov.viewlayer.Map.MapController;
@@ -27,6 +27,8 @@ import com.example.gescov.viewlayer.home.NotifyContagionController;
 import com.example.gescov.viewlayer.home.TracingTestController;
 import com.example.gescov.viewlayer.ranking.RankingController;
 import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
+
+import androidx.lifecycle.ViewModelProvider;
 
 public class PresentationControlFactory {
 
