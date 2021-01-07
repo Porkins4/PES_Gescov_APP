@@ -532,5 +532,9 @@ public class ViewLayerController {
     public void setSendReservationRequestResponse(boolean error, int errorCode) {
         PresentationControlFactory.getStudentsInClassSessionController().setSendReservationRequestResponse(error,errorCode);
     }
+
+    public void sendError() {
+        PresentationControlFactory.getTracingTestController().sendError();
+    }
 }
 

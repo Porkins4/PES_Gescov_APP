@@ -35,7 +35,7 @@ public class TracingTestResultActivity extends AppCompatActivity {
         tracingTestViewModel = new ViewModelProvider(this).get(TracingTestViewModel.class);
         tracingTestViewModel.getResults(userID).observe(this, received -> {
             if ( received) {
-                if ( tracingTestViewModel.empty()) {
+                if ( tracingTestViewModel.empty() ) {
                     listView.setVisibility(View.GONE);
                     LinearLayout linearLayout = findViewById(R.id.error);
                     linearLayout.setVisibility(View.VISIBLE);
@@ -44,6 +44,11 @@ public class TracingTestResultActivity extends AppCompatActivity {
                     listView.setAdapter(tracingTestViewModel.getAdapter(this));
                     initOnItemClick();
                 }
+            } else {
+                listView.setVisibility(View.GONE);
+                LinearLayout linearLayout = findViewById(R.id.error);
+                linearLayout.setVisibility(View.VISIBLE);
+
             }
         });
 
