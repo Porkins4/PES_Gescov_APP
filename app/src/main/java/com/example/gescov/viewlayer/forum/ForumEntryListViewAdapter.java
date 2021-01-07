@@ -35,7 +35,7 @@ public class ForumEntryListViewAdapter extends ModelListViewAdapter {
             titleTextView.setText(wallEntry.getTitle());
         else
             titleTextView.setText(wallEntry.getId());
-        dateTextView.setText(wallEntry.getHour());
+        dateTextView.setText(wallEntry.getTime());
         
         School school = PresentationControlFactory.getSchoolsCrontroller().getSchoolById(wallEntry.getSchoolId());
         schoolTextView.setText(school == null ? wallEntry.getSchoolId() : school.getName());

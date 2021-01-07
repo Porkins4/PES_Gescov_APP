@@ -1,22 +1,24 @@
 package com.example.gescov.domainlayer.Classmodels;
 
+import com.example.gescov.GescovUtils;
+
 public class WallEntryReply {
-    private String hour;
+    private String time;
     private String text;
     private String username;
 
-    public WallEntryReply (String hour, String text, String username) {
-        this.hour = hour;
+    public WallEntryReply (String time, String text, String username) {;
+        this.time = GescovUtils.getNormalizedTime(time);
         this.text = text;
         this.username = username;
     }
 
-    public String getHour() {
-        return hour;
+    public String getTime() {
+        return time;
     }
 
-    public void setHour(String hour) {
-        this.hour = hour;
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getText() {

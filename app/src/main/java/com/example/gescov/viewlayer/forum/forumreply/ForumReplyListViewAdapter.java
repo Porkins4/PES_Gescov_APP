@@ -30,7 +30,7 @@ public class ForumReplyListViewAdapter extends ModelListViewAdapter {
         WallEntryReply wallEntryReply = (WallEntryReply) modelList.get(position);
 
         weAuthor.setText(wallEntryReply.getUsername());
-        weDate.setText(wallEntryReply.getHour());;
+        weDate.setText(wallEntryReply.getTime());;
         weContent.setText(wallEntryReply.getText());
 
         return v;

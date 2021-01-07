@@ -62,7 +62,7 @@ public class ForumReplyListActivity extends AppCompatActivity {
 
             weTitle.setText(wallEntry.getTitle());
             weContent.setText(wallEntry.getContent());
-            weHour.setText(wallEntry.getHour());
+            weHour.setText(wallEntry.getTime());
             School school = PresentationControlFactory.getSchoolsCrontroller().getSchoolById(wallEntry.getSchoolId());
             weSchool.setText(school == null ? wallEntry.getSchoolId() : school.getName());
         }

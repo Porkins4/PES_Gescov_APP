@@ -23,4 +23,12 @@ public class GescovUtils {
         }
         return false;
     }
+
+    public static String getNormalizedTime(String time) {
+        String year = time.substring(0, 4);
+        String month = time.substring(5,7);
+        String day = time.substring(8, 10);
+        String hour = time.substring(11, 16);
+        return day + "/" + month + "/" + year + " " + hour;
+    }
 }

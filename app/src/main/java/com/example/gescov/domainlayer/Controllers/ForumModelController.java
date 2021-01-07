@@ -39,12 +39,12 @@ public class ForumModelController {
     public WallEntry getWallEntryFromJSON(JSONObject jsonWE) {
         try {
             String id = jsonWE.getString("id");
-            String hour = jsonWE.getString("hour");
+            String time = jsonWE.getString("time");
             String title = jsonWE.getString("title");
             String schoolId = jsonWE.getString("schoolID");
             String content = jsonWE.getString("text");
             List<WallEntryReply> replies = getRepliesFromJSON(jsonWE.getJSONArray("replies"));
-            return new WallEntry(id, title, content, hour, schoolId, replies);
+            return new WallEntry(id, title, content, time, schoolId, replies);
         } catch (JSONException e) {
             e.printStackTrace();
         }
