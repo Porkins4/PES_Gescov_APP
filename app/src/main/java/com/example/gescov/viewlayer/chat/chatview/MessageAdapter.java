@@ -51,9 +51,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
         MessageModel message = messages.get(position);
-        holder.message_text.setText(message.getText());
-        holder.message_hour.setText(message.getHour().substring(0,5));
-        if (holder.profile_image != null) loadImageFromUrl(holder.profile_image,pic);
+        holder.messageText.setText(message.getText());
+        holder.messageHour.setText(message.getHour().substring(0,5));
+        if (holder.profileImage != null) loadImageFromUrl(holder.profileImage,pic);
     }
 
     @Override
@@ -82,20 +82,20 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     }
 
     public boolean empty() {
-        return messages.size() == 0;
+        return messages.isEmpty();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView message_text;
-        public TextView message_hour;
-        public ImageView profile_image;
+        public TextView messageText;
+        public TextView messageHour;
+        public ImageView profileImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            message_text = itemView.findViewById(R.id.message_text);
-            profile_image = itemView.findViewById(R.id.profile_image);
-            message_hour = itemView.findViewById(R.id.message_hour);
+            messageText = itemView.findViewById(R.id.message_text);
+            profileImage = itemView.findViewById(R.id.profile_image);
+            messageHour = itemView.findViewById(R.id.message_hour);
         }
     }
 

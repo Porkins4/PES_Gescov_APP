@@ -1,14 +1,11 @@
 package com.example.gescov.viewlayer.chat.chatlist;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.R;
+import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
 import com.example.gescov.viewlayer.chat.chatview.ChatViewActivity;
 import com.example.gescov.viewlayer.chat.createchat.CreateChatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -24,11 +22,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ChatListFragment extends Fragment {
 
-    private static final int SUCCESS_RESERVATION_REQUEST_CODE = 200;
+    private static final int SUCCESS_CREATE_CHAT = 200;
     private ChatListViewModel mViewModel;
     private ListView listView;
     private FloatingActionButton floatingActionButton;
     private View root;
+    private boolean chatCreated;
+    private String chatCreatedID;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -40,6 +40,7 @@ public class ChatListFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        chatCreated = false;
         initViewComponents();
     }
 
@@ -49,7 +50,7 @@ public class ChatListFragment extends Fragment {
         floatingActionButton.setOnClickListener(
                 v -> {
                     Intent i = new Intent(getActivity(), CreateChatActivity.class);
-                    startActivity(i);
+                    startActivityForResult(i,SUCCESS_CREATE_CHAT);
                 }
         );
         listView.setOnItemClickListener(
@@ -81,7 +82,15 @@ public class ChatListFragment extends Fragment {
         if (mViewModel == null) mViewModel = new ViewModelProvider(this).get(ChatListViewModel.class);
         mViewModel.getChatPreviewModels().observe(getActivity(), error -> {
             if (!error) {
-                listView.setAdapter(mViewModel.getAdapter(this.getContext()));
+                if (chatCreated) {
+                    Intent i = new Intent(getActivity(), ChatViewActivity.class);
+                    ChatPreviewModel newChat = mViewModel.getChatByPreviewByID(chatCreatedID);
+                    i.putExtra("chatID", newChat.getChatID());
+                    i.putExtra("targetName", newChat.getTarget());
+                    i.putExtra("targetPic", newChat.getTargetPic());
+                    startActivity(i);
+                    chatCreated = false;
+                } else listView.setAdapter(mViewModel.getAdapter(this.getContext()));
             }
         });
     }
@@ -95,8 +104,10 @@ public class ChatListFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == SUCCESS_RESERVATION_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            //dummy
+        if (requestCode == SUCCESS_CREATE_CHAT && resultCode == Activity.RESULT_OK) {
+            chatCreated = true;
+            chatCreatedID = data.getStringExtra("chatID");
+            initViewModelData();
         }
     }
 

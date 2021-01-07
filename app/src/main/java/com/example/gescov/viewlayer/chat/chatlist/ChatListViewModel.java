@@ -40,9 +40,7 @@ public class ChatListViewModel extends ViewModel {
     }
 
     public LiveData<Boolean> getChatPreviewModels() {
-        if (updateChatPreviews == null) {
-            updateChatPreviews = new MutableLiveData<>();
-        }
+        updateChatPreviews = new MutableLiveData<>();
         updateList();
         return updateChatPreviews;
     }
@@ -50,7 +48,6 @@ public class ChatListViewModel extends ViewModel {
     public void setUpdateResult(List<ChatPreviewModel> chatPreviewModels, boolean error) {
         if (!error) {
             this.chatPreviewModels = chatPreviewModels;
-            for (ChatPreviewModel x: chatPreviewModels) x.print();
         }
         updateChatPreviews.setValue(error);
     }
@@ -70,5 +67,14 @@ public class ChatListViewModel extends ViewModel {
 
     public String getTargetPic(int position) {
         return chatPreviewModels.get(position).getTargetPic();
+    }
+
+    public ChatPreviewModel getChatByPreviewByID(String chatCreatedID) {
+        for (int i = 0; i < chatPreviewModels.size(); ++i) {
+            if (chatPreviewModels.get(i).getChatID().equals(chatCreatedID)) {
+                return chatPreviewModels.get(i);
+            }
+        }
+        return new ChatPreviewModel();
     }
 }

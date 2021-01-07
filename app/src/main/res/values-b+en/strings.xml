@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">Gescov</string>
     <string name="app_name_menu">Gescov S.L. </string>
     <!-- Strings related to login -->
@@ -211,7 +211,7 @@
 
     <!-- Strings for the Ranking -->
     <string name="ranking_name">School ranking</string>
-    <string name="error_while_creating_chat">There has been an error while the chat was being created</string>
+    <string name="error_chat_already_created">There has been an error while the chat was being created</string>
     <string name="no_messages_yet_text">No messages sent yet</string>
 
 

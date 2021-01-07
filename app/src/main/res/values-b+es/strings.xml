@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">Gescov</string>
     <string name="app_name_menu">Gescov S.L. </string>
     <!-- Strings related to login -->
@@ -211,7 +211,7 @@
 
     <!-- Strings for the Ranking -->
     <string name="ranking_name">Ranking de centros</string>
-    <string name="error_while_creating_chat">Se ha producido un error mientras se creába el chat</string>
+    <string name="error_chat_already_created">Se ha producido un error mientras se creába el chat</string>
     <string name="no_messages_yet_text">Ningún mensaje enviado</string>
 
 

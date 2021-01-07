@@ -14,12 +14,9 @@ public class ChatViewController {
         this.chatViewViewModel = chatViewViewModel;
     }
 
-    public void getChatMessages(String chatID) {
-        PresentationControlFactory.getViewLayerController().getChatMessages(chatID);
-    }
 
     public void notifyChatMessagesResponse(List<MessageModel> messages, boolean error) {
-        chatViewViewModel.notifyChatMessagesResponse(messages, error);
+        chatViewViewModel.notifyGetChatMessagesResponse(messages, error);
     }
 
     public User getLoggedUser() {
@@ -30,18 +27,15 @@ public class ChatViewController {
         PresentationControlFactory.getViewLayerController().sendMessage(chatID,message);
     }
 
-    public void notifyChatUpdated() {
-        chatViewViewModel.notifyChatUpdated();
-    }
-
     public void startGettingChat(String chatID) {
         PresentationControlFactory.getViewLayerController().startGettingChat(chatID);
     }
 
-    public void setChatObserver() {
-    }
-
     public void deactivatePolling() {
         PresentationControlFactory.getViewLayerController().deactivatePolling();
+    }
+
+    public void startPolling(String chatID) {
+        PresentationControlFactory.getViewLayerController().startPollingChat(chatID);
     }
 }

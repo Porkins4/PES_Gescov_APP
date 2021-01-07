@@ -1,7 +1,6 @@
 package com.example.gescov.viewlayer.home;
 
 import android.Manifest;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;

@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">Gescov</string>
     <string name="app_name_menu">Gescov S.L. </string>
     <!-- Strings related to login -->
@@ -221,7 +221,7 @@
 
     <!-- Strings for the Ranking -->
     <string name="ranking_name">Ranking de centres</string>
-    <string name="error_while_creating_chat">S\'ha produit un error mentre es creava el xat</string>
+    <string name="error_chat_already_created">Ja tens un xat amb aquesta persona</string>
     <string name="no_messages_yet_text">Cap missatge enviat</string>
 
     <string name="share_text">La meva escola</string>
@@ -332,6 +332,7 @@
     <string name="succesfull_reservation">S\'ha reservat la taula de manera exitosa</string>
     <string name="already_has_reservation">L\'usuari ja té una reserva a aquesta aula</string>
     <string name="title_assignments_class_session">Asistents</string>
+    <string name="testeo">funciona mi pana</string>
 
 
 </resources>

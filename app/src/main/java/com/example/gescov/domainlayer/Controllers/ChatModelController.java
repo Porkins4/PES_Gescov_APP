@@ -10,7 +10,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ChatModelController {
@@ -55,13 +58,11 @@ public class ChatModelController {
             DomainControlFactory.getModelController().chatPreviewsUpdated(chatPreviewModels,error);
         } else DomainControlFactory.getModelController().chatPreviewsUpdated(chatPreviewModels,error);
     }
-    public void getMessages(String chatID) {
-        ServicesFactory.getChatService().getMessages(chatID);
-    }
+
 
     public void updateChatMessages(JSONArray response, String chatID, boolean error) {
+        List<MessageModel> messages = new ArrayList<>();
         if (!error) {
-            List<MessageModel> messages = new ArrayList<>();
             for (int i = 0;  i < response.length(); ++i) {
                 try {
                     messages.add(MessageModel.fromJSONtoMessage(response.getJSONObject(i)));
@@ -69,10 +70,14 @@ public class ChatModelController {
                     e.printStackTrace();
                 }
             }
-            //messages.get(messages.size()-1).print();
             searchAndReplaceMessages(messages,chatID);
-            DomainControlFactory.getModelController().notifyChatMessagesResponse(messages, error);
-        } else DomainControlFactory.getModelController().notifyChatMessagesResponse(null, error);
+        }
+        DomainControlFactory.getModelController().notifyChatMessagesResponse(messages, error);
+    }
+
+    public void startPollingChat(String chatID) {
+        ServicesFactory.getChatService().setPolling(true);
+        ServicesFactory.getChatService().startPollingChat(chatID);
     }
 
     private void searchAndReplaceMessages(List<MessageModel> messages, String chatID) {
@@ -89,34 +94,34 @@ public class ChatModelController {
         ServicesFactory.getChatService().sendMessage(chatID,message,DomainControlFactory.getUserModelController().getLoggedUser().getId());
     }
 
-    public void addMessageToChat(JSONObject response) {
-        MessageModel message = MessageModel.fromJSONtoMessage(response);
-        for (int i = 0; i < chatPreviewModels.size(); ++i) {
-            if (chatPreviewModels.get(i).getChatID().equals(message.getChatID())) {
-                chatPreviewModels.get(i).addMessage(message);
-            }
-        }
-        DomainControlFactory.getModelController().notifyChatUpdated();
-    }
 
-    public void startGettingChat(String chatID) {
-        ServicesFactory.getChatService().setPolling(true);
-        ServicesFactory.getChatService().startPollingChat(chatID);
-        getMessages(chatID);
-        DomainControlFactory.getModelController().notifyChatMessagesResponse(getChatPreviewBychatID(chatID).getMessages(),false);
+    public void getMessages(String chatID) {
+        ServicesFactory.getChatService().getMessages(chatID);
     }
 
     public void checkForNewMessages(JSONObject response, String chatID) {
-        ChatPreviewModel temp = ChatPreviewModel.FromJSONtoChatPreview(response);
+        ChatPreviewModel last = ChatPreviewModel.FromJSONtoChatPreview(response);
         ChatPreviewModel current = getChatPreviewBychatID(chatID);
-        String tempData = temp.getDate() == null ? "n/a" : temp.getDate();
-        String tempHour = temp.getHour() == null ? "n/a" : temp.getHour();
-        String currentData = current.getDate() == null ? "n/a" : current.getDate();
-        String currentHour = current.getHour() == null ? "n/a" : current.getHour();
-        if (!currentHour.equals(tempHour) ||  !currentData.equals(currentData)) {
-            current.setHour(temp.getHour());
-            current.setDate(temp.getDate());
-            getMessages(chatID);
+        if (last.getDate() != null) {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            boolean update = false;
+            if (current.getDate() != null) {
+                try {
+                    Date currentDate = formatter.parse(current.getDate() + " " + current.getHour());
+                    Date lastDate = formatter.parse(last.getDate() + " " + last.getHour());
+                    if (currentDate.before(lastDate)) {
+                        System.out.println("este caso");
+                        update = true;
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            } else update = true;
+
+            if (update) {
+                System.out.println("nuevo");
+                getMessages(chatID);
+            }
         }
         ServicesFactory.getChatService().startPollingChat(chatID);
     }
@@ -126,7 +131,7 @@ public class ChatModelController {
             ChatPreviewModel aux = chatPreviewModels.get(i);
             if (aux.getChatID().equals(chatID)) return aux;
         }
-        return null;
+        return new ChatPreviewModel();
     }
 
     public void deactivatePolling() {
