@@ -49,4 +49,8 @@ public class LoadingProfileController {
     public static GoogleSignInClient getGoogleSignInClient(String serverClientID) {
         return PresentationControlFactory.getViewLayerController().getGoogleSignInClient(serverClientID);
     }
+
+    public void upgradeRole(String role) {
+        PresentationControlFactory.getViewLayerController().upgradeRole(role);
+    }
 }

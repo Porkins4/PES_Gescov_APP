@@ -278,4 +278,11 @@
     <string name="create_school_validate_address">Address can not be empty.</string>
     <string name="create_school_validate_phone">The phone number must have 9 digits.</string>
     <string name="create_school_validate_web">The webpage must start with http:// or https://</string>
+    <string name="home_upgrade_role">Role promotion</string>
+    <string name="role_promotion_title">Promotion code</string>
+    <string name="role_promotion_button">Promote</string>
+    <string name="code_not_correct">Code not correct</string>
+
+    <string name="user_promoted">User has ben promoted successfully</string>
+    <string name="user_not_promoted">User could not be promoted</string>
 </resources>

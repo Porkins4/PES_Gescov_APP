@@ -66,31 +66,24 @@ public class NavigationMenu extends AppCompatActivity {
         MenuItem logoutButton = navigationView.getMenu().findItem(R.id.logout);
         MenuItem openCalendar = navigationView.getMenu().findItem(R.id.open_calendar);
         MenuItem schoolAdministration = navigationView.getMenu().findItem(R.id.school_administration);
-
         logoutButton.setOnMenuItemClickListener(e -> {
             logoutPrompt();
             return true;
         });
 
-        openCalendar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                openCalendar();
-                return true;
-            }
+        openCalendar.setOnMenuItemClickListener(e-> {
+            openCalendar();
+            return true;
         });
 
-        schoolAdministration.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    if (!GescovUtils.isUserAdminInAnySchool(PresentationControlFactory.getLoadingProfileController().getLoggedInUser())) {
-                        PresentationControlFactory.getMessagesManager().toastMessage(R.string.user_not_admin);
-                    } else {
-                        navController.navigate(R.id.school_administration);
-                        drawer.closeDrawers();
-                    }
-                    return true;
-                }
+        schoolAdministration.setOnMenuItemClickListener(e-> {
+            if (!GescovUtils.isUserAdminInAnySchool(PresentationControlFactory.getLoadingProfileController().getLoggedInUser())) {
+                PresentationControlFactory.getMessagesManager().toastMessage(R.string.user_not_admin);
+            } else {
+                navController.navigate(R.id.school_administration);
+                drawer.closeDrawers();
+            }
+            return true;
         });
     }
 

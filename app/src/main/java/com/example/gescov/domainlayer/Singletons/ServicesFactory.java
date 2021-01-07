@@ -21,6 +21,7 @@ import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseC
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpdateSchoolClassroomResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpdateSchoolRequestStatusResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpdateUserRiskResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpgradeUserRoleResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.mapsretrofit.RefreshCoordinatesFromAddressResponseController;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.AssignmentServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.ChatServiceImplementor;
@@ -81,6 +82,7 @@ public class ServicesFactory {
     private static RefreshWallEntriesBySchoolIdResponseController refreshWallEntriesBySchoolIdResponseController;
     private static CreateForumEntryReplyResponseController createForumEntryReplyResponseController;
     private static DeleteWallEntryResponseController deleteWallEntryResponseController;
+    private static UpgradeUserRoleResponseController upgradeUserRoleResponseController;
 
     private static Retrofit getRetrofit() {
         if (retrofit != null) return retrofit;
@@ -269,5 +271,11 @@ public class ServicesFactory {
         if (deleteWallEntryResponseController != null) return deleteWallEntryResponseController;
         deleteWallEntryResponseController = new DeleteWallEntryResponseController(getRetrofit());
         return deleteWallEntryResponseController;
+    }
+
+    public static UpgradeUserRoleResponseController getUpgradeUserRoleResponseController() {
+        if (upgradeUserRoleResponseController != null) return upgradeUserRoleResponseController;
+        upgradeUserRoleResponseController = new UpgradeUserRoleResponseController(getRetrofit());
+        return upgradeUserRoleResponseController;
     }
 }
