@@ -1,7 +1,6 @@
 package com.example.gescov.viewlayer.chat.chatlist;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.R;
+import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
 import com.example.gescov.viewlayer.chat.chatview.ChatViewActivity;
 import com.example.gescov.viewlayer.chat.createchat.CreateChatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,14 +22,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ChatListFragment extends Fragment {
 
+    private static final int SUCCESS_CREATE_CHAT = 200;
     private ChatListViewModel mViewModel;
     private ListView listView;
     private FloatingActionButton floatingActionButton;
     private View root;
-
-    public static ChatListFragment newInstance() {
-        return new ChatListFragment();
-    }
+    private boolean chatCreated;
+    private String chatCreatedID;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -38,37 +37,34 @@ public class ChatListFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        chatCreated = false;
+        initViewComponents();
+    }
+
     private void initViewComponents() {
         listView = (ListView) root.findViewById(R.id.chat_fragment_list_view);
         floatingActionButton = (FloatingActionButton) root.findViewById(R.id.create_new_chat_button);
-        setGetChatsListener();
-        initAddCreateChatButton();
-        setListViewItemsListener();//ojo que a lo mejor peta por hacerlo al principio del todo
-    }
-
-    private void setGetChatsListener() {
-        mViewModel.getChatPreviewModels().observe(getActivity(), error -> {
-            if (!error) initListView();
-        });
-    }
-
-    private void initListView() {
-        listView.setAdapter(mViewModel.getAdapter(this.getContext()));
-    }
-
-    private void initAddCreateChatButton() {
         floatingActionButton.setOnClickListener(
-                v -> startCreateChatActivity()
+                v -> {
+                    Intent i = new Intent(getActivity(), CreateChatActivity.class);
+                    startActivityForResult(i,SUCCESS_CREATE_CHAT);
+                }
         );
-    }
+        listView.setOnItemClickListener(
+                (parent, view, position, id) -> {
+                    Intent i = new Intent(getActivity(), ChatViewActivity.class);
+                    i.putExtra("chatID",mViewModel.getChatID(position));
+                    i.putExtra("targetName",mViewModel.getTargetName(position));
+                    i.putExtra("targetPic",mViewModel.getTargetPic(position));
+                    startActivity(i);
+                }
+        );
 
-    private void startCreateChatActivity() {
-        Intent i = new Intent(getActivity(), CreateChatActivity.class);
-        startActivity(i);
-    }
-
-    private void setListViewItemsListener() {
-        listView.setOnItemLongClickListener(
+        //Code to delete chat if implemented
+        /*listView.setOnItemLongClickListener(
                 (parent, view, position, id) -> {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setTitle(getString(R.string.options))
@@ -79,20 +75,44 @@ public class ChatListFragment extends Fragment {
                     dialog.show();
                     return true;
                 }
-        );
-
-        listView.setOnItemClickListener(
-                (parent, view, position, id) -> {
-                    Intent i = new Intent(getActivity(), ChatViewActivity.class);
-                    i.putExtra("chatID",mViewModel.getChatID(position));
-                    i.putExtra("targetName",mViewModel.getTargetName(position));
-                    i.putExtra("targetPic",mViewModel.getTargetPic(position));
-                    startActivity(i);
-                }
-        );
+        );*/
     }
 
-    private void confirmDeleteChatPrompt(int position) {
+    private void initViewModelData() {
+        if (mViewModel == null) mViewModel = new ViewModelProvider(this).get(ChatListViewModel.class);
+        mViewModel.getChatPreviewModels().observe(getActivity(), error -> {
+            if (!error) {
+                if (chatCreated) {
+                    Intent i = new Intent(getActivity(), ChatViewActivity.class);
+                    ChatPreviewModel newChat = mViewModel.getChatByPreviewByID(chatCreatedID);
+                    i.putExtra("chatID", newChat.getChatID());
+                    i.putExtra("targetName", newChat.getTarget());
+                    i.putExtra("targetPic", newChat.getTargetPic());
+                    startActivity(i);
+                    chatCreated = false;
+                } else listView.setAdapter(mViewModel.getAdapter(this.getContext()));
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initViewModelData();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SUCCESS_CREATE_CHAT && resultCode == Activity.RESULT_OK) {
+            chatCreated = true;
+            chatCreatedID = data.getStringExtra("chatID");
+            initViewModelData();
+        }
+    }
+
+    //Code to delete chat if implemented
+    /*private void confirmDeleteChatPrompt(int position) {
         DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
             if (which == DialogInterface.BUTTON_POSITIVE) setDeleteChatListener(position);
         };
@@ -109,19 +129,5 @@ public class ChatListFragment extends Fragment {
                 error -> {
                     if (!error) mViewModel.deleteChatFromAdapter(position);
                 });
-    }
-
-
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ChatListViewModel.class);
-        initViewComponents();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
+    }*/
 }

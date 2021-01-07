@@ -21,6 +21,7 @@ import java.time.format.DateTimeFormatter;
 public class ChatServiceImplementor implements IChatService {
     private static final String GESCOV_CHAT_URI = "https://gescov.herokuapp.com/api/chats";
     private boolean polling;
+    private boolean finish;
 
     private static final String DATE_FORMAT = "dd-MM-yyyy";
 
@@ -52,18 +53,8 @@ public class ChatServiceImplementor implements IChatService {
     public void updateChatPreview(String userid) {
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET, GESCOV_CHAT_URI + "/previews?userID=" + userid,null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        DomainControlFactory.getChatModelController().updateChatPreviewCallBack(response,false);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        DomainControlFactory.getChatModelController().updateChatPreviewCallBack(null,true);
-                    }
-                }
+                response -> DomainControlFactory.getChatModelController().updateChatPreviewCallBack(response,false),
+                error -> DomainControlFactory.getChatModelController().updateChatPreviewCallBack(null,true)
         );
         RequestQueue q = VolleyServices.getRequestQueue();
         q.add(request);
@@ -71,6 +62,7 @@ public class ChatServiceImplementor implements IChatService {
 
     @Override
     public void getMessages(String chatID) {
+        finish = false;
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET, GESCOV_CHAT_URI + "/" + chatID + "/messages/",null,
                 response -> DomainControlFactory.getChatModelController().updateChatMessages(response, chatID, false),
@@ -98,12 +90,8 @@ public class ChatServiceImplementor implements IChatService {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.POST, GESCOV_CHAT_URI+"/new", postData,
                     response -> {
-                        DomainControlFactory.getChatModelController().addMessageToChat(response);
-                    }, error -> {
-                if (error.networkResponse != null) {
-
-                }
-            });
+                    }, error -> { }
+                    );
 
             VolleyServices.getRequestQueue().add(jsonObjectRequest);
 
@@ -120,18 +108,12 @@ public class ChatServiceImplementor implements IChatService {
     public void startPollingChat(String chatID) {
         if (polling) {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                    Request.Method.GET, GESCOV_CHAT_URI+"/preview?chatID=" + chatID,null,
-                    response -> {
-                        DomainControlFactory.getChatModelController().checkForNewMessages(response,chatID);
-                    }, error -> {
-                if (error.networkResponse != null) {
-
-                }
-            });
+                    Request.Method.GET, GESCOV_CHAT_URI + "/preview?chatID=" + chatID,null,
+                    response -> DomainControlFactory.getChatModelController().checkForNewMessages(response,chatID),
+                    error -> { }
+                    );
 
             VolleyServices.getRequestQueue().add(jsonObjectRequest);
         }
     }
-
-
 }

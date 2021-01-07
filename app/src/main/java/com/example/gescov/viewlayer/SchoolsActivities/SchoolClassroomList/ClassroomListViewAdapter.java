@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.Classroom;
+import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.classroomSchedule.InsertScheduleActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
@@ -71,7 +72,6 @@ public class ClassroomListViewAdapter extends BaseAdapter {
                 intent.putExtra("classroom_position", position);
                 intent.putExtra("classID", classroomList.get(position).getId());
                 intent.putExtra("schoolID", schoolID);
-
                 context.startActivity(intent);
             });
         } else {
@@ -85,13 +85,22 @@ public class ClassroomListViewAdapter extends BaseAdapter {
             });
         }
 
+        if (admin || PresentationControlFactory.getViewLayerController().getLoggedUserInfo().isTeacher()) {
+            name.setOnClickListener(
+                    v12 -> {
+                        Intent intent = new Intent(context, StudentsInClassRecordActivity.class);
+                        intent.putExtra("classSession", classroomList.get(position).getId());
+                        context.startActivity(intent);
+                    }
+            );
+        }
+
         name.setText(classroomList.get(position).getName());
         capacity.setText(String.valueOf(classroomList.get(position).getCapacity() + " " + v.getResources().getText(R.string.classroom_capacity)));
         rows.setText(String.valueOf(classroomList.get(position).getRows() + " " + v.getResources().getText(R.string.classroom_rows)));
         columns.setText(String.valueOf(classroomList.get(position).getColumns() + " " + v.getResources().getText(R.string.classroom_cols)));
         return v;
     }
-
 
     public void setList(List<Classroom> classroomsList) {
         this.classroomList = classroomsList;

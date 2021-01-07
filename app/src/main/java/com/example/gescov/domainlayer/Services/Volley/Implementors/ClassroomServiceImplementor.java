@@ -24,7 +24,7 @@ public class ClassroomServiceImplementor implements IClassroomService {
     public ClassroomServiceImplementor(){}
 
     @Override
-    public void getStudentsInClassRecord(String classroomId, String date) {
+    public void getStudentsInClassRecord(String classroomId) {
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET, GESCOV_ASSIGNMENTS_URI + "classroom/" + classroomId,null,
                 new Response.Listener<JSONArray>() {

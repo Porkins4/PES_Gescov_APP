@@ -5,7 +5,7 @@ import com.example.gescov.domainlayer.Classmodels.ClassSessionModel;
 import org.json.JSONArray;
 
 public interface IClassroomService {
-    public void getStudentsInClassRecord(String classroomId, String date);
+    void getStudentsInClassRecord(String classroomId);
 
     void getClassroomInfo(String classroomID);
 
