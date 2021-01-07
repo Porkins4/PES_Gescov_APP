@@ -273,4 +273,8 @@
 
 
     <string name="user_not_admin">El usuario no es administrador, si fue promocionado recientemente, reiniciar la aplicación.</string>
+    <string name="create_school_validate_name">El nombre del centro no puede estar ni vacío ni repetido.</string>
+    <string name="create_school_validate_address">La dirección no puede estar vacía.</string>
+    <string name="create_school_validate_phone">El número de teléfono deve tener 9 digitos.</string>
+    <string name="create_school_validate_web">La página web deve empezar con http:// o https://</string>
 </resources>

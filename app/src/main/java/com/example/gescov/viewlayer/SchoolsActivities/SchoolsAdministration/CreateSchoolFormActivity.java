@@ -7,12 +7,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LifecycleOwner;
-
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Singletons.ServicesFactory;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
 
 
 public class CreateSchoolFormActivity extends AppCompatActivity {
@@ -43,11 +43,20 @@ public class CreateSchoolFormActivity extends AppCompatActivity {
 
         createSchoolButton.setOnClickListener(e -> {
             SchoolsCrontroller schoolsCrontroller = PresentationControlFactory.getSchoolsCrontroller();
-             if (validateSchoolName(schoolName.getText()) && validateAddress(schoolAddress.getText()) && validateTelephone(schoolPhone.getText()) && validateWeb(schoolWeb.getText())) {
+             if (!validateSchoolName(schoolName.getText())) {
+                 Toast.makeText(this, getResources().getText(R.string.create_school_validate_name), Toast.LENGTH_SHORT).show();
+             } else if (!validateAddress(schoolAddress.getText())) {
+                 Toast.makeText(this, getResources().getText(R.string.create_school_validate_address), Toast.LENGTH_SHORT).show();
+
+             } else if (!validateTelephone(schoolPhone.getText())) {
+                 Toast.makeText(this, getResources().getText(R.string.create_school_validate_phone), Toast.LENGTH_SHORT).show();
+
+             } else if (!validateWeb(schoolWeb.getText())) {
+                 Toast.makeText(this, getResources().getText(R.string.create_school_validate_web), Toast.LENGTH_SHORT).show();
+
+             } else {
                  schoolsCrontroller.createSchool(schoolName.getText().toString(), schoolAddress.getText().toString(), schoolPhone.getText().toString(), schoolWeb.getText().toString(), viewModel.getLatitude().getValue(), viewModel.getLongitude().getValue());
                  finish();
-             } else {
-                 Toast.makeText(this, getResources().getText(R.string.create_school_validate_fields), Toast.LENGTH_SHORT).show();
              }
         });
         initViewModelListeners();
@@ -71,7 +80,7 @@ public class CreateSchoolFormActivity extends AppCompatActivity {
     }
 
     private boolean validateSchoolName(Editable text) {
-        return (text != null);
+        return (text != null && text.length()>0);
     }
 
     private boolean validateTelephone(Editable text) {
