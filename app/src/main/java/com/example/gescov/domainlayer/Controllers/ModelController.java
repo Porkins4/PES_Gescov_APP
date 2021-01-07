@@ -514,4 +514,7 @@ public class ModelController {
         return DomainControlFactory.getUserModelController().isMySchool(schoolID);
     }
 
+    public void sendError() {
+        PresentationControlFactory.getViewLayerController().sendError();
+    }
 }

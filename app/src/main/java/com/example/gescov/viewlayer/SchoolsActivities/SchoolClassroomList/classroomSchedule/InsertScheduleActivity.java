@@ -80,6 +80,7 @@ public class InsertScheduleActivity extends AppCompatActivity {
         friday.setOnClickListener(v -> {
             setPreviousList(current);
             current = 5;
+            friday.setTextColor(getColor(R.color.normalText));
             adapter = new ScheduleAdapter(this,l5);
             adapter.sendTypeUser(admin);
             adapter.setSubjects(schoolSubjects);
@@ -91,6 +92,7 @@ public class InsertScheduleActivity extends AppCompatActivity {
         monday.setOnClickListener(v -> {
             setPreviousList(current);
             current = 1;
+            monday.setTextColor(getColor(R.color.normalText));
             adapter = new ScheduleAdapter(this,l1);
             adapter.sendTypeUser(admin);
             adapter.setSubjects(schoolSubjects);
@@ -103,6 +105,7 @@ public class InsertScheduleActivity extends AppCompatActivity {
         thursday.setOnClickListener(v -> {
             setPreviousList(current);
             current = 4;
+            thursday.setTextColor(getColor(R.color.normalText));
             adapter = new ScheduleAdapter(this,l4);
             adapter.sendTypeUser(admin);
             adapter.setSubjects(schoolSubjects);
@@ -117,6 +120,7 @@ public class InsertScheduleActivity extends AppCompatActivity {
         wednesday.setOnClickListener(v -> {
             setPreviousList(current);
             current = 3;
+            wednesday.setTextColor(getColor(R.color.normalText));
             adapter = new ScheduleAdapter(this,l3);
             adapter.sendTypeUser(admin);
             adapter.setSubjects(schoolSubjects);
@@ -129,6 +133,7 @@ public class InsertScheduleActivity extends AppCompatActivity {
         tuesday.setOnClickListener(v -> {
             setPreviousList(current);
             current = 2;
+            tuesday.setTextColor(getColor(R.color.normalText));
             adapter = new ScheduleAdapter(this,l2);
             adapter.sendTypeUser(admin);
             adapter.setSubjects(schoolSubjects);
@@ -170,7 +175,7 @@ public class InsertScheduleActivity extends AppCompatActivity {
         if ( admin) saveSchedule.setVisibility(View.VISIBLE);
         else saveSchedule.setVisibility(View.GONE);
         classID = getIntent().getStringExtra("classID");
-
+        monday.setTextColor(getColor(R.color.normalText));
         initToolBar();
     }
 
@@ -183,14 +188,19 @@ public class InsertScheduleActivity extends AppCompatActivity {
     private void setPreviousList(int current) {
         switch (current){
             case 1:  l1 = adapter.getSubjectsOfDay();
+                     monday.setTextColor(getColor(R.color.dark_green));
                 break;
             case 2:  l2 = adapter.getSubjectsOfDay();
+                     tuesday.setTextColor(getColor(R.color.dark_green));
                 break;
             case 3:  l3 = adapter.getSubjectsOfDay();
+                     wednesday.setTextColor(getColor(R.color.dark_green));
                 break;
             case 4:  l4 = adapter.getSubjectsOfDay();
+                     thursday.setTextColor(getColor(R.color.dark_green));
                 break;
             case 5:  l5 = adapter.getSubjectsOfDay();
+                     friday.setTextColor(getColor(R.color.dark_green));
                 break;
             default:
                 System.out.println("not in range");

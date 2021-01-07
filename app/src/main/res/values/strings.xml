@@ -254,6 +254,7 @@
     <string name="evolution">"Evolució dels contagis en "</string>
     <string name="months">Mesos</string>
     <string name="axeYContagions">Contagis</string>
+    <string name="no_contagion">"No hi ha cap contagi "</string>
 
     <!-- Strings for the Subjects -->
     <string name="show_subject">veure assignatures</string>
@@ -337,6 +338,7 @@
     <string name="create_school_validate_address">L\'adreça no pot estar buida.</string>
     <string name="create_school_validate_phone">El número de telèfon ha de tenir 9 digits.</string>
     <string name="create_school_validate_web">La pàgina web ha de començar amb http:// o https://</string>
+
 
 
 </resources>

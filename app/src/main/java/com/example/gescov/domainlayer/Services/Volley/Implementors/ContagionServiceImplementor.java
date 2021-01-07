@@ -154,8 +154,8 @@ public class ContagionServiceImplementor implements IContagionService {
     public void getTestResults(String userID) {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET, TRACING_TEST_LINK +"?userID="+userID,null,
-                response -> DomainControlFactory.getTracingTestResultModel().sendTestAnswers(response), error -> {
-
+                response -> DomainControlFactory.getTracingTestResultModel().sendTestAnswers(response),
+                error -> { DomainControlFactory.getTracingTestResultModel().sendError();
                 });
         VolleyServices.getRequestQueue().add(jsonArrayRequest);
 

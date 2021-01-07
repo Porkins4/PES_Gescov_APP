@@ -1,12 +1,15 @@
 package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,8 +40,8 @@ public class SchoolDetailsActivity extends AppCompatActivity {
     private School school;
     private SchoolDetailsViewModel schoolDetailsViewModel;
     private User loggedUser;
-
-    private Button graphButton;
+    private Button graphButton,usersListButton,classroomsListButton,joinSchoolButton,contagionListButton,subjectButton;
+    private TextView name,address,webpage,code,telf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,42 +53,17 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         schoolsCrontroller = PresentationControlFactory.getSchoolsCrontroller();
         school = schoolsCrontroller.getCurrentSchool();
         setMap(savedInstanceState);
-
         loggedUser = PresentationControlFactory.getViewLayerController().getLoggedUserInfo();
-
-        TextView name = (TextView) findViewById(R.id.school_details_name);
-        TextView address = (TextView) findViewById(R.id.school_details_address);
-        TextView telf = (TextView) findViewById(R.id.school_details_telf);
-        TextView webpage = (TextView) findViewById(R.id.school_details_webpage);
-        TextView code = (TextView) findViewById(R.id.school_details_code);
-        //TextView email = (TextView) findViewById(R.id.school_details_email);
-        Button usersListButton = (Button) findViewById(R.id.school_details_student_list_button);
-        Button classroomsListButton = (Button) findViewById(R.id.school_details_classroom_button);
-        Button joinSchoolButton = (Button) findViewById(R.id.join_school_button);
-        Button contagionListButton = findViewById(R.id.contagion_list_button);
-        Button subjectButton = findViewById(R.id.subject_button);
-        setSubjectListener(subjectButton);
-        graphButton = findViewById(R.id.graf_school);
-
-
+        initComponents();
+        setSubjectListener();
         name.setText(school.getName());
 
         setVisibilityAndValue(address, school.getAddress());
         setVisibilityAndValue(telf, school.getTelephoneNumber());
         setVisibilityAndValue(webpage, school.getWebpage());
        // setVisibilityAndValue(email, school.getEmail());
-
-        classroomsListButton.setOnClickListener(e -> {
-            Intent intent = new Intent(this, SchoolClassromListActivity.class);
-            intent.putExtra("schooldID",school.getId());
-            intent.putExtra("admin",GescovUtils.isUserSchoolAdmin(loggedUser, school));
-            startActivity(intent);
-        });
-
-        usersListButton.setOnClickListener(e -> {
-            Intent intent = new Intent(this, SchoolUsersListActivity.class);
-            startActivity(intent);
-        });
+        setListenerClassroomsListButton();
+        setListenerUsersListButton();
 
         if (!GescovUtils.isUserInSchool(loggedUser, school)) {
             joinSchoolButton.setText(getResources().getText(R.string.school_details_join));
@@ -120,11 +98,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
                 code.setVisibility(View.INVISIBLE);
             }
         }
-        
-        classroomsListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) ? View.VISIBLE : View.GONE);
-        joinSchoolButton.setVisibility(!GescovUtils.isUserInSchool(loggedUser, school) || GescovUtils.isUserSchoolAdmin(loggedUser, school) ? View.VISIBLE : View.GONE);
-        usersListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) && loggedUser.getProfileType().equals(User.UserProfileType.TEACHER) ? View.VISIBLE : View.GONE);
-        contagionListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) && loggedUser.getProfileType().equals(User.UserProfileType.TEACHER) ? View.VISIBLE : View.GONE);
+        setVisibilities();
 
         schoolDetailsViewModel = new ViewModelProvider(this).get(SchoolDetailsViewModel.class);
         schoolDetailsViewModel.getPutResult().observe(this, schoolRequestResult -> {
@@ -134,10 +108,48 @@ public class SchoolDetailsActivity extends AppCompatActivity {
 
         });
         setGraphListener();
-        setContagionListListener(contagionListButton);
+        setContagionListListener();
     }
 
-    private void setSubjectListener(Button subjectButton) {
+    private void setVisibilities() {
+        classroomsListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) ? View.VISIBLE : View.GONE);
+        joinSchoolButton.setVisibility(!GescovUtils.isUserInSchool(loggedUser, school) || GescovUtils.isUserSchoolAdmin(loggedUser, school) ? View.VISIBLE : View.GONE);
+        usersListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) && loggedUser.getProfileType().equals(User.UserProfileType.TEACHER) ? View.VISIBLE : View.GONE);
+        contagionListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) && loggedUser.getProfileType().equals(User.UserProfileType.TEACHER) ? View.VISIBLE : View.GONE);
+    }
+
+    private void setListenerUsersListButton() {
+        usersListButton.setOnClickListener(e -> {
+            Intent intent = new Intent(this, SchoolUsersListActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    private void setListenerClassroomsListButton() {
+        classroomsListButton.setOnClickListener(e -> {
+            Intent intent = new Intent(this, SchoolClassromListActivity.class);
+            intent.putExtra("schooldID",school.getId());
+            intent.putExtra("admin", GescovUtils.isUserSchoolAdmin(loggedUser, school));
+            startActivity(intent);
+        });
+    }
+
+    private void initComponents() {
+        name = (TextView) findViewById(R.id.school_details_name);
+        address = (TextView) findViewById(R.id.school_details_address);
+        telf = (TextView) findViewById(R.id.school_details_telf);
+        webpage = (TextView) findViewById(R.id.school_details_webpage);
+        code = (TextView) findViewById(R.id.school_details_code);
+        //TextView email = (TextView) findViewById(R.id.school_details_email);
+        usersListButton = (Button) findViewById(R.id.school_details_student_list_button);
+        classroomsListButton = (Button) findViewById(R.id.school_details_classroom_button);
+        joinSchoolButton = (Button) findViewById(R.id.join_school_button);
+        contagionListButton = findViewById(R.id.contagion_list_button);
+        subjectButton = findViewById(R.id.subject_button);
+        graphButton = findViewById(R.id.graf_school);
+    }
+
+    private void setSubjectListener() {
         subjectButton.setOnClickListener(v -> {
             Intent intentSubject = new Intent(this,SubjectActivity.class);
             intentSubject.putExtra("schoolID",school.getId());
@@ -149,6 +161,22 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.title_school_details);
+        setIconsColor();
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void setIconsColor() {
+        int nightModeFlags = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
+            ImageView addressIcon = findViewById(R.id.adress_icon);
+            ImageView phoneIcon = findViewById(R.id.phone_icon);
+            ImageView webIcon = findViewById(R.id.web_icon);
+            ImageView codeIcon = findViewById(R.id.code_icon);
+            addressIcon.setImageDrawable(getDrawable(R.drawable.hogar_blanco));
+            phoneIcon.setImageDrawable(getDrawable(R.drawable.llamada_telefonica_blanco));
+            webIcon.setImageDrawable(getDrawable(R.drawable.red_mundial_blanco));
+            codeIcon.setImageDrawable(getDrawable(R.drawable.codigo_qr_blanco));
+        }
     }
 
     private void setMap(Bundle savedInstanceState) {
@@ -174,7 +202,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         });
     }
 
-    private void setContagionListListener(Button contagionListButton) {
+    private void setContagionListListener() {
             contagionListButton.setOnClickListener(v -> {
             Intent contagionListIntent = new Intent(this, ContagionListActivity.class);
             contagionListIntent.putExtra("schoolID",school.getId());

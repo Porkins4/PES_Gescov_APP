@@ -24,4 +24,8 @@ public class TracingTestController {
     public void sendTestAnswers(List<TracingTest> results) {
         tracingTestViewModel.sendTestAnswers(results);
     }
+
+    public void sendError() {
+        tracingTestViewModel.sendError();
+    }
 }

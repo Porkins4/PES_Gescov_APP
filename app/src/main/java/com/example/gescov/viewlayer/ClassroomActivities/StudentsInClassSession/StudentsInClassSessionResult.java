@@ -1,7 +1,6 @@
 package com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession;
 
 import com.example.gescov.domainlayer.Classmodels.Assignment;
-import com.example.gescov.domainlayer.Classmodels.ClassSessionModel;
 
 import java.util.List;
 

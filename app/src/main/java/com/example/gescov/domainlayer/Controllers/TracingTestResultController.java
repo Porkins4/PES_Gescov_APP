@@ -37,4 +37,8 @@ public class TracingTestResultController {
         }
         DomainControlFactory.getModelController().sendTestAnswers(results);
     }
+
+    public void sendError() {
+        DomainControlFactory.getModelController().sendError();
+    }
 }

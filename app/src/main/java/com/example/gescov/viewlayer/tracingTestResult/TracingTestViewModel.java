@@ -17,6 +17,7 @@ public class TracingTestViewModel extends ViewModel {
     private MutableLiveData<Boolean> received;
     private List<TracingTest> answers;
     private TracingTestAdapter adapter;
+    private Boolean error;
 
     public  ListAdapter getAdapter(Context c) {
         adapter = new TracingTestAdapter(c,answers);
@@ -41,6 +42,14 @@ public class TracingTestViewModel extends ViewModel {
     }
 
     public boolean empty() {
-        return answers.isEmpty();
+        return answers.isEmpty() ;
+    }
+
+    public void sendError() {
+        received.setValue(false);
+    }
+
+    public Boolean isError() {
+        return error;
     }
 }

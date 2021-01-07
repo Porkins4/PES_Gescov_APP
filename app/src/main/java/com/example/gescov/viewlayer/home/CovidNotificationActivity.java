@@ -1,6 +1,7 @@
 package com.example.gescov.viewlayer.home;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
 import android.widget.Button;
@@ -15,6 +16,8 @@ import com.example.gescov.R;
 
 public class CovidNotificationActivity extends AppCompatActivity {
     private CovidNotificationViewModel covidNotificationViewModel;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,5 +68,13 @@ public class CovidNotificationActivity extends AppCompatActivity {
                 .setPositiveButton("Ok", (dialog, which) -> {
                 });
         builder.create().show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent resultIntent = new Intent();
+        setResult(0,resultIntent);
+        finish();
     }
 }
