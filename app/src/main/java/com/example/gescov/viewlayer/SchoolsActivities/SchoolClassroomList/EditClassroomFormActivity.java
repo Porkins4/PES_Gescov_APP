@@ -49,7 +49,9 @@ public class EditClassroomFormActivity extends CreateClassroomFormActivity {
         createClassroomButton.setText(getResources().getText(R.string.update));
         classroomName.setText(classroom.getName());
         classroomRows = (EditText) findViewById(R.id.create_classroom_form_rows);
+        classroomRows.setText(String.valueOf(classroom.getRows()));
         classroomColumns = (EditText) findViewById(R.id.create_classroom_form_columns);
+        classroomColumns.setText(String.valueOf(classroom.getColumns()));
     }
 
     @Override
