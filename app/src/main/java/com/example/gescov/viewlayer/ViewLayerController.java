@@ -150,8 +150,8 @@ public class ViewLayerController {
         return DomainControlFactory.getModelController().getUserType();
     }
 
-    public void getStudentsInClassRecord(String classroomId, String date) {
-        DomainControlFactory.getModelController().getStudentsInClassRecord(classroomId,date);
+    public void getStudentsInClassRecord(String classroomId) {
+        DomainControlFactory.getModelController().getStudentsInClassRecord(classroomId);
     }
 
     public void refreshStudentsInClassRecordView(List<Pair<User, Pair<Integer,Integer>>> r, boolean b) {

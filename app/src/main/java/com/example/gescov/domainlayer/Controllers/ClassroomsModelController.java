@@ -42,8 +42,8 @@ public class ClassroomsModelController {
         DomainControlFactory.getModelController().refreshSchoolClassroomsListInView(classroomsList);
     }
 
-    public void getStudentsInClassRecord(String classroomId, String date) {
-        ServicesFactory.getClassroomService().getStudentsInClassRecord(classroomId,date);
+    public void getStudentsInClassRecord(String classroomId) {
+        ServicesFactory.getClassroomService().getStudentsInClassRecord(classroomId);
     }
 
     public void updateStudentsInClassRecordView(JSONArray response,boolean b) {

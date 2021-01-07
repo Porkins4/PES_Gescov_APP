@@ -43,11 +43,11 @@ public class ChatModelController {
     }
 
     public void updateChatPreviewCallBack(JSONArray response, boolean error) {
+        chatPreviewModels = new ArrayList<>();
         if (!error) {
             for (int i = 0; i < response.length(); ++i) {
                 try {
                     chatPreviewModels.add(ChatPreviewModel.FromJSONtoChatPreview(response.getJSONObject(i)));
-                    //chatPreviewModels.get(chatPreviewModels.size()-1).print();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -117,7 +117,6 @@ public class ChatModelController {
             current.setHour(temp.getHour());
             current.setDate(temp.getDate());
             getMessages(chatID);
-            System.out.println("new message bro :)");
         }
         ServicesFactory.getChatService().startPollingChat(chatID);
     }

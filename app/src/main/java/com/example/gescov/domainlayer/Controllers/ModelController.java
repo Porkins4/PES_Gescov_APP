@@ -163,8 +163,8 @@ public class ModelController {
         return userModelController.getProfileType();
     }
 
-    public void getStudentsInClassRecord(String classroomId, String date) {
-        DomainControlFactory.getClassroomModelController().getStudentsInClassRecord(classroomId,date);
+    public void getStudentsInClassRecord(String classroomId) {
+        DomainControlFactory.getClassroomModelController().getStudentsInClassRecord(classroomId);
     }
 
     public void refreshStudentsInClassRecordView(List<Pair<User, Pair<Integer,Integer>>> r, boolean b) {

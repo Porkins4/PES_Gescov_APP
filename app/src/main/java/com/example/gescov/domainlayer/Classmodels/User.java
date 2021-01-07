@@ -19,6 +19,10 @@ import androidx.lifecycle.MutableLiveData;
 
 public class User {
 
+    public boolean isTeacher() {
+        return profileType.equals(User.UserProfileType.TEACHER);
+    }
+
     public enum UserProfileType {
         STUDENT ("STUDENT"),
         TEACHER ("TEACHER");
