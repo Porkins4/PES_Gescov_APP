@@ -163,8 +163,8 @@ public class ModelController {
         return userModelController.getProfileType();
     }
 
-    public void getStudentsInClassRecord(String classroomId, String date) {
-        DomainControlFactory.getClassroomModelController().getStudentsInClassRecord(classroomId,date);
+    public void getStudentsInClassRecord(String classroomId) {
+        DomainControlFactory.getClassroomModelController().getStudentsInClassRecord(classroomId);
     }
 
     public void refreshStudentsInClassRecordView(List<Pair<User, Pair<Integer,Integer>>> r, boolean b) {
@@ -309,9 +309,6 @@ public class ModelController {
         PresentationControlFactory.getViewLayerController().chatPreviewsUpdated(chatPreviewModels, error);
     }
 
-    public void getChatMessages(String chatID) {
-        DomainControlFactory.getChatModelController().getMessages(chatID);
-    }
 
     public void notifyChatMessagesResponse(List<MessageModel> messages, boolean error) {
         PresentationControlFactory.getViewLayerController().notifyChatMessagesResponse(messages,error);
@@ -319,10 +316,6 @@ public class ModelController {
 
     public void sendMessage(String chatID, String message) {
         DomainControlFactory.getChatModelController().sendMessage(chatID,message);
-    }
-
-    public void notifyChatUpdated() {
-        PresentationControlFactory.getViewLayerController().notifyChatUpdated();
     }
 
     public void deleteSchoolAdmin(String adminID) {
@@ -346,7 +339,7 @@ public class ModelController {
     }
 
     public void startGettingChat(String chatID) {
-        DomainControlFactory.getChatModelController().startGettingChat(chatID);
+        DomainControlFactory.getChatModelController().getMessages(chatID);
     }
 
     public void deactivatePolling() {
@@ -514,6 +507,13 @@ public class ModelController {
         return DomainControlFactory.getUserModelController().isMySchool(schoolID);
     }
 
+    public void sendError() {
+        PresentationControlFactory.getViewLayerController().sendError();
+    }
+
+    public void startPollingChat(String chatID) {
+        DomainControlFactory.getChatModelController().startPollingChat(chatID);
+    }
     public void upgradeRole(String role) {
         DomainControlFactory.getUserModelController().upgradeRole(role);
     }

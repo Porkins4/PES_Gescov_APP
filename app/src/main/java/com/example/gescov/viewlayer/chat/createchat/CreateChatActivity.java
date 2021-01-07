@@ -101,10 +101,12 @@ public class CreateChatActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CREATE_CHAT_REQUEST_CODE) {
+            Intent resultIntent = new Intent();
             if (resultCode == RESULT_OK) {
-                String result = data.getStringExtra("chatID");
-                System.out.println("creat correctament: " + result);
-            } else Toast.makeText(getApplicationContext(), getString(R.string.error_while_creating_chat), Toast.LENGTH_SHORT).show();
+                resultIntent.putExtra("chatID", data.getStringExtra("chatID"));
+                setResult(RESULT_OK,resultIntent);
+                finish();
+            } else Toast.makeText(getApplicationContext(), getString(R.string.error_chat_already_created), Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -41,7 +41,7 @@ public class StudentsInClassRecordActivity extends AppCompatActivity {
 
     private void initResponseListener() {
         studentsInClassRecordViewModel = new ViewModelProvider(this).get(StudentsInClassRecordViewModel.class);
-        studentsInClassRecordViewModel.getStudents(getIntent().getStringExtra("classroom"), "03-02-2020").observe(this, new Observer<StudentsInClassRecordResult>() { //de momento fecha hardcoded
+        studentsInClassRecordViewModel.getStudents(getIntent().getStringExtra("classSession")).observe(this, new Observer<StudentsInClassRecordResult>() { //de momento fecha hardcoded
                     @Override
                     public void onChanged(StudentsInClassRecordResult studentsInClassRecordResult) {
                         System.out.println("entro");

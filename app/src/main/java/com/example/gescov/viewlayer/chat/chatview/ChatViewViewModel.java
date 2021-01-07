@@ -13,77 +13,59 @@ public class ChatViewViewModel extends ViewModel {
 
     private String userName;
     private String targetPic;
-    private MutableLiveData<Boolean> updated;
     private List<MessageModel> messages;
     private String chatID;
-    private MessageAdapter adapter;
 
     //polling method
     private MutableLiveData<Boolean> messageReceived;
 
+    public ChatViewViewModel() {
+        PresentationControlFactory.getChatViewController().setChatViewViewModel(this);
+    }
 
-    public void setUserInfo(String targetName, String targetPic) {
+    public void setUserInfo(String targetName, String targetPic, String chatID) {
         this.userName = targetName;
         this.targetPic = targetPic;
+        this.chatID = chatID;
     }
+
 
     public String getUserName() {
         return userName;
     }
 
-    public LiveData<Boolean> updateChat() {
-        if (updated == null) {
-            updated = new MutableLiveData<>();
-            PresentationControlFactory.getChatViewController().setChatViewViewModel(this);
-            PresentationControlFactory.getChatViewController().getChatMessages(chatID);
-        }
-        return updated;
-    }
-
-    public void notifyChatMessagesResponse(List<MessageModel> messages, boolean error) {
-        if (!error) {
-            this.messages = messages;
-        }
-        //updated.setValue(error);
-        messageReceived.setValue(error);
-    }
-
-    public MessageAdapter getAdapter(ChatViewActivity instance) {
-        String userID = PresentationControlFactory.getChatViewController().getLoggedUser().getId();
-        adapter = new MessageAdapter(instance,messages,userID,targetPic);
-        return adapter;
-    }
-
-    public void setChatID(String chatID) {
-        this.chatID =chatID;
-    }
 
     public void sendMessage(String message) {
         PresentationControlFactory.getChatViewController().sendMessage(chatID, message);
     }
 
-    public int getLastElemPos() {
-        return messages.size()-1;
-    }
-
-    public void notifyChatUpdated() {
-        adapter.notifyDataSetChanged();
-    }
-
     public LiveData<Boolean> getMessages() {
         if (messageReceived == null) {
             messageReceived = new MutableLiveData<>();
-            PresentationControlFactory.getChatViewController().setChatViewViewModel(this);
             PresentationControlFactory.getChatViewController().startGettingChat(chatID);
         }
         return messageReceived;
     }
 
-    public void updateMessages() {
-        PresentationControlFactory.getChatViewController().setChatObserver();
+
+    public void notifyGetChatMessagesResponse(List<MessageModel> messages, boolean error) {
+        this.messages = messages;
+        messageReceived.setValue(error);
     }
+
+    public MessageAdapter getAdapter(ChatViewActivity instance) {
+        String userID = PresentationControlFactory.getChatViewController().getLoggedUser().getId();
+        return new MessageAdapter(instance,messages,userID,targetPic);
+    }
+
 
     public void deactivatePolling() {
         PresentationControlFactory.getChatViewController().deactivatePolling();
+    }
+
+    public LiveData<Boolean> startPolling() {
+        messageReceived = new MutableLiveData<>();
+        PresentationControlFactory.getChatViewController().startPolling(chatID);
+        return messageReceived;
     }
 }

@@ -47,8 +47,8 @@ public class StudentsInClassSessionController {
         PresentationControlFactory.getViewLayerController().getAssignmentsForClassSession(classSessionID);
     }
 
-    public void getStudentsInClassRecord(String classroomId, String date) {
-        PresentationControlFactory.getViewLayerController().getStudentsInClassRecord(classroomId,date);
+    public void getStudentsInClassRecord(String classroomId) {
+        PresentationControlFactory.getViewLayerController().getStudentsInClassRecord(classroomId);
     }
 
     public void getClassroomInfo(String classroomID) {

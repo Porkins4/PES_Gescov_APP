@@ -150,8 +150,8 @@ public class ViewLayerController {
         return DomainControlFactory.getModelController().getUserType();
     }
 
-    public void getStudentsInClassRecord(String classroomId, String date) {
-        DomainControlFactory.getModelController().getStudentsInClassRecord(classroomId,date);
+    public void getStudentsInClassRecord(String classroomId) {
+        DomainControlFactory.getModelController().getStudentsInClassRecord(classroomId);
     }
 
     public void refreshStudentsInClassRecordView(List<Pair<User, Pair<Integer,Integer>>> r, boolean b) {
@@ -324,9 +324,6 @@ public class ViewLayerController {
        DomainControlFactory.getSchoolsModelCrontroller().requestAccessSchoolByCode(userId, schoolId, schoolCode);
     }
 
-    public void getChatMessages(String chatID) {
-        DomainControlFactory.getModelController().getChatMessages(chatID);
-    }
 
     public void notifyChatMessagesResponse(List<MessageModel> messages, boolean error) {
         PresentationControlFactory.getChatViewController().notifyChatMessagesResponse(messages, error);
@@ -334,10 +331,6 @@ public class ViewLayerController {
 
     public void sendMessage(String chatID, String message) {
         DomainControlFactory.getModelController().sendMessage(chatID,message);
-    }
-
-    public void notifyChatUpdated() {
-        PresentationControlFactory.getChatViewController().notifyChatUpdated();
     }
 
     public void deleteSchoolAdmin(String adminID) {
@@ -535,6 +528,14 @@ public class ViewLayerController {
 
     public void upgradeRole(String role) {
         DomainControlFactory.getModelController().upgradeRole(role);
+    }
+
+    public void startPollingChat(String chatID) {
+        DomainControlFactory.getModelController().startPollingChat(chatID);
+    }
+
+    public void sendError() {
+        PresentationControlFactory.getTracingTestController().sendError();
     }
 }
 

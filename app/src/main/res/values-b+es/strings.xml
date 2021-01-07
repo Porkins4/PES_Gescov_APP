@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">Gescov</string>
     <string name="app_name_menu">Gescov S.L. </string>
     <!-- Strings related to login -->
@@ -211,7 +211,7 @@
 
     <!-- Strings for the Ranking -->
     <string name="ranking_name">Ranking de centros</string>
-    <string name="error_while_creating_chat">Se ha producido un error mientras se creába el chat</string>
+    <string name="error_chat_already_created">Se ha producido un error mientras se creába el chat</string>
     <string name="no_messages_yet_text">Ningún mensaje enviado</string>
 
 
@@ -220,7 +220,7 @@
     <string name="access_school_by_code_title">Código del centro</string>
     <string name="access_school_by_code_button">Solicita acceso</string>
 
-    <!-- Strings for the Ranking -->
+    <!-- Strings for the graph -->
     <string name="view_graph">Visualizar gráfico</string>
     <string name="first_month">Enero</string>
     <string name="second_month">Febrero</string>
@@ -237,6 +237,7 @@
     <string name="evolution">"Evolución dels contagios en "</string>
     <string name="months">Mesos</string>
     <string name="axeYContagions">Contagios</string>
+    <string name="no_contagion">"No hi ha cap contagi "</string>
 
     <!-- Strings for the Subjects -->
     <string name="show_subject">ver asignaturas</string>
@@ -270,8 +271,6 @@
     <string name="succesfull_reservation">S\'ha reservat la taula de manera exitosa</string>
     <string name="already_has_reservation">L\'usuari ja té una reserva a aquesta aula</string>
     <string name="title_assignments_class_session">Persones en aquesta sessió</string>
-
-
     <string name="user_not_admin">El usuario no es administrador, si fue promocionado recientemente, reiniciar la aplicación.</string>
     <string name="create_school_validate_name">El nombre del centro no puede estar ni vacío ni repetido.</string>
     <string name="create_school_validate_address">La dirección no puede estar vacía.</string>

@@ -57,7 +57,14 @@ public class ChatPreviewModel {
     }
 
     public ChatPreviewModel() {
-
+        this.chatID = "";
+        this.previewID = "";
+        this.lastMessage = "";
+        this.date = "";
+        this.hour = "";
+        this.target = "";
+        this.targetPic = "";
+        messages = new ArrayList<>();
     }
 
     public static ChatPreviewModel FromJSONtoChatPreview(JSONObject o) {

@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">Gescov</string>
     <string name="app_name_menu">Gescov S.L. </string>
     <!-- Strings related to login -->
@@ -221,7 +221,7 @@
 
     <!-- Strings for the Ranking -->
     <string name="ranking_name">Ranking de centres</string>
-    <string name="error_while_creating_chat">S\'ha produit un error mentre es creava el xat</string>
+    <string name="error_chat_already_created">Ja tens un xat amb aquesta persona</string>
     <string name="no_messages_yet_text">Cap missatge enviat</string>
 
     <string name="share_text">El meu centre</string>
@@ -253,6 +253,7 @@
     <string name="evolution">"Evolució dels contagis en "</string>
     <string name="months">Mesos</string>
     <string name="axeYContagions">Contagis</string>
+    <string name="no_contagion">"No hi ha cap contagi "</string>
 
     <!-- Strings for the Subjects -->
     <string name="show_subject">veure assignatures</string>
