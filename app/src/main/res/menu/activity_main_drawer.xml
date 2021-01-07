@@ -55,7 +55,7 @@
             android:title="@string/user_all_schools_title" />
 
         <item
-            android:id="@+id/schoolAdministration"
+            android:id="@+id/school_administration"
             android:icon="@drawable/director"
             android:title="@string/menu_schools_administration" />
         <item

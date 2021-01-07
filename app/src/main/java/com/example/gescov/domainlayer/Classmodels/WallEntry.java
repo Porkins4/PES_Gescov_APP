@@ -1,5 +1,7 @@
 package com.example.gescov.domainlayer.Classmodels;
 
+import com.example.gescov.GescovUtils;
+
 import java.util.List;
 
 public class WallEntry {
@@ -7,16 +9,16 @@ public class WallEntry {
 
     private List<WallEntryReply> replies;
     private String content;
-    private String hour;
+    private String time;
     private String id;
     private String title;
     private String schoolId;
 
-    public WallEntry(String id, String title, String content, String hour, String schoolId, List<WallEntryReply> replies) {
+    public WallEntry(String id, String title, String content, String time, String schoolId, List<WallEntryReply> replies) {
         this.id = id;
         this.content = content;
         this.title = title;
-        this.hour = hour;
+        this.time = GescovUtils.getNormalizedTime(time);
         this.schoolId = schoolId;
         this.replies = replies;
     }
@@ -37,12 +39,12 @@ public class WallEntry {
         this.content = content;
     }
 
-    public String getHour() {
-        return hour;
+    public String getTime() {
+        return time;
     }
 
-    public void setHour(String hour) {
-        this.hour = hour;
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getId() {

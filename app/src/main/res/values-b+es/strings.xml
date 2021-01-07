@@ -40,9 +40,9 @@
 
 
     <!-- School Administration -->
-    <string name="create_school_form_school_name">Nombre de la escuela</string>
-    <string name="create_school_form_school_code">Código de la escuela</string>
-    <string name="create_school_form_school_button">Crear escuela</string>
+    <string name="create_school_form_school_name">Nombre del centro</string>
+    <string name="create_school_form_school_code">Código del centro</string>
+    <string name="create_school_form_school_button">Crear centro</string>
     <string name="create_school_form_school_phone">Número de Teléfono</string>
     <string name="create_school_form_school_website">Página WEB</string>
     <string name="create_school_form_school_address_example">nº Nombre Calle, Municipio</string>
@@ -52,28 +52,28 @@
 
 
     <!-- User all schools -->
-    <string name="user_all_schools_title">Todas las escuelas</string>
+    <string name="user_all_schools_title">Todos los centros</string>
 
     <!-- User my schools -->
-    <string name="my_schools_title">Mis escuelas</string>
+    <string name="my_schools_title">Mis centros</string>
 
-    <string name="Catalan_create_school_form_school_name">Nombre Escuela</string>
-    <string name="Catalan_create_school_form_school_address">Dirección Escuela</string>
-    <string name="Catalan_create_school_form_school_state">Estado Escuela</string>
-    <string name="Catalan_create_school_form_school_code">Código Escuela</string>
-    <string name="Catalan_create_school_form_school_button">Crea Escuela</string>
-    <string name="create_school_validate_fields">Valida los camposs, por favor.</string>
+    <string name="Catalan_create_school_form_school_name">Nombre Centro</string>
+    <string name="Catalan_create_school_form_school_address">Dirección Centro</string>
+    <string name="Catalan_create_school_form_school_state">Estado Centro</string>
+    <string name="Catalan_create_school_form_school_code">Código Centro</string>
+    <string name="Catalan_create_school_form_school_button">Crea Centro</string>
+    <string name="create_school_validate_fields">Valida los campos, por favor.</string>
 
 
     <!-- School Details -->
-    <string name="school_details_delete_school">Elimina escuela</string>
+    <string name="school_details_delete_school">Elimina Centros</string>
     <string name="school_details_protocol_access">Protocolos</string>
     <string name="school_details_users_list">Lista de usuarios</string>
     <string name="school_details_classrooms_list">Lista Aulas</string>
     <string name="school_details_request_list">Solicitudes</string>
     <string name="school_details_join">Solicitar acceso</string>
-    <string name="school_details_confirm_delete_message">¿Seguro que quieres eliminar esta escuela?</string>
-    <string name="title_school_details">Detalles de la escuela</string>
+    <string name="school_details_confirm_delete_message">¿Seguro que quieres eliminar este centro?</string>
+    <string name="title_school_details">Detalles del centros</string>
 
 
     <!-- School user lists -->
@@ -83,7 +83,7 @@
     <string name="school_user_list_student">Estudiante</string>
 
     <!-- School Requests -->
-    <string name="school_requests_title">Solicitudes de la escuela</string>
+    <string name="school_requests_title">Solicitudes del centro</string>
     <!-- School Requests list item -->
     <string name="school_requests_list_item_accept">Aceptar</string>
     <string name="school_requests_list_item_reject">Denegar</string>
@@ -201,7 +201,7 @@
     <!-- Create chat -->
 
     <string name="title_activity_create_chat">Contactos del centro</string>
-    <string name="loading_user_schools_text">Cargando información de tus escuelas</string>
+    <string name="loading_user_schools_text">Cargando información de tus centros</string>
     <string name="loading_afiliates_from_selected_center">Cargando contactos del centro</string>
     <string name="creating_chat_text">Creando chat...</string>
 
@@ -217,10 +217,10 @@
 
     <!-- Access school by code activity -->
     <string name="access_school_by_code_entry">Escribe tu código aquí</string>
-    <string name="access_school_by_code_title">Código de escuela</string>
+    <string name="access_school_by_code_title">Código del centro</string>
     <string name="access_school_by_code_button">Solicita acceso</string>
 
-    <!-- Strings for the Ranking -->
+    <!-- Strings for the graph -->
     <string name="view_graph">Visualizar gráfico</string>
     <string name="first_month">Enero</string>
     <string name="second_month">Febrero</string>
@@ -237,6 +237,7 @@
     <string name="evolution">"Evolución dels contagios en "</string>
     <string name="months">Mesos</string>
     <string name="axeYContagions">Contagios</string>
+    <string name="no_contagion">"No hi ha cap contagi "</string>
 
     <!-- Strings for the Subjects -->
     <string name="show_subject">ver asignaturas</string>
@@ -270,5 +271,9 @@
     <string name="succesfull_reservation">S\'ha reservat la taula de manera exitosa</string>
     <string name="already_has_reservation">L\'usuari ja té una reserva a aquesta aula</string>
     <string name="title_assignments_class_session">Persones en aquesta sessió</string>
-    <string name="no_contagion">"No hi ha cap contagi "</string>
+    <string name="user_not_admin">El usuario no es administrador, si fue promocionado recientemente, reiniciar la aplicación.</string>
+    <string name="create_school_validate_name">El nombre del centro no puede estar ni vacío ni repetido.</string>
+    <string name="create_school_validate_address">La dirección no puede estar vacía.</string>
+    <string name="create_school_validate_phone">El número de teléfono deve tener 9 digitos.</string>
+    <string name="create_school_validate_web">La página web deve empezar con http:// o https://</string>
 </resources>

@@ -23,7 +23,7 @@
 
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_schools_administration">Administració d´escoles</string>
+    <string name="menu_schools_administration">Administració de centres</string>
     <string name="Catalan_visualizar_aula">Visualitzar Aula</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -40,9 +40,9 @@
 
 
     <!-- School Administration -->
-    <string name="create_school_form_school_name">Nom d´escola</string>
+    <string name="create_school_form_school_name">Nom del centre</string>
     <string name="create_school_form_school_code">Nom de codi</string>
-    <string name="create_school_form_school_button">Crear escola</string>
+    <string name="create_school_form_school_button">Crear centre</string>
     <string name="create_school_form_school_phone">Número de Telèfon</string>
     <string name="create_school_form_school_website">Pàgina WEB</string>
     <string name="create_school_form_school_address_example">nº Nom Carrer, Municipi</string>
@@ -51,28 +51,28 @@
 
 
     <!-- User all schools -->
-    <string name="user_all_schools_title">Totes les escoles</string>
+    <string name="user_all_schools_title">Tots els centres</string>
 
     <!-- User my schools -->
-    <string name="my_schools_title">Les meves escoles</string>
+    <string name="my_schools_title">Els meus centres</string>
 
-    <string name="Catalan_create_school_form_school_name">Nom Escola</string>
-    <string name="Catalan_create_school_form_school_address">Adreça Escola</string>
-    <string name="Catalan_create_school_form_school_state">Estat Escola</string>
-    <string name="Catalan_create_school_form_school_code">Codi Escola</string>
-    <string name="Catalan_create_school_form_school_button">Crea Escola</string>
+    <string name="Catalan_create_school_form_school_name">Nom Centre</string>
+    <string name="Catalan_create_school_form_school_address">Adreça Centre</string>
+    <string name="Catalan_create_school_form_school_state">Estat Centre</string>
+    <string name="Catalan_create_school_form_school_code">Codi Centre</string>
+    <string name="Catalan_create_school_form_school_button">Crea Centre</string>
     <string name="create_school_validate_fields">Valida els camps, si us plau.</string>
 
 
     <!-- School Details -->
-    <string name="school_details_delete_school">Elimina escola</string>
+    <string name="school_details_delete_school">Elimina centre</string>
     <string name="school_details_protocol_access">Protocols</string>
     <string name="school_details_users_list">Llista d´usuaris</string>
     <string name="school_details_classrooms_list">Llista Aules</string>
     <string name="school_details_request_list">Sol·licituds</string>
     <string name="school_details_join">Sol·licitar accés</string>
-    <string name="school_details_confirm_delete_message">Segur que vols eliminar aquesta escola?</string>
-    <string name="title_school_details">Detalls de l\'escola</string>
+    <string name="school_details_confirm_delete_message">Segur que vols eliminar aquest centre?</string>
+    <string name="title_school_details">Detalls del centre</string>
 
 
     <!-- School user lists -->
@@ -82,7 +82,7 @@
     <string name="school_user_list_student">Estudiant</string>
 
     <!-- School Requests -->
-    <string name="school_requests_title">Sol·licituds de l´escola</string>
+    <string name="school_requests_title">Sol·licituds del centre</string>
     <!-- School Requests list item -->
     <string name="school_requests_list_item_accept">Acceptar</string>
     <string name="school_requests_list_item_reject">Rebutjar</string>
@@ -211,7 +211,7 @@
     <!-- Create chat -->
 
     <string name="title_activity_create_chat">Contactes del centre</string>
-    <string name="loading_user_schools_text">Carregant informació de les teves escoles</string>
+    <string name="loading_user_schools_text">Carregant informació dels teus centres</string>
     <string name="loading_afiliates_from_selected_center">Carregant contactes del centre: </string>
     <string name="creating_chat_text">Creant xat...</string>
 
@@ -224,7 +224,7 @@
     <string name="error_while_creating_chat">S\'ha produit un error mentre es creava el xat</string>
     <string name="no_messages_yet_text">Cap missatge enviat</string>
 
-    <string name="share_text">La meva escola</string>
+    <string name="share_text">El meu centre</string>
     <string name="share2_text">està a la posició</string>
     <string name="share3_text">en el rànquing de Gescov.</string>
     <string name="num_contagions_singular">contagi</string>
@@ -234,7 +234,7 @@
 
     <!-- Access school by code activity -->
     <string name="access_school_by_code_entry">escriu el teu codi aquí</string>
-    <string name="access_school_by_code_title">Codi d´escola</string>
+    <string name="access_school_by_code_title">Codi de centre</string>
     <string name="access_school_by_code_button">Solicita accés</string>
 
     <!-- Strings for the graph -->
@@ -321,7 +321,7 @@
     <string name="past_date_error">La data seleccionada ha de ser posterior al dia d\'avui</string>
     <string name="empty_description_error">La descripció no pot ser buida</string>
     <string name="bad_time_format">Les dades de hora han de contenir dos digits i han de trobar-se en el rang de 0 - 24 hores</string>
-    <string name="error_no_classrooms_in_school">Encara no hi ha aules en aquesta escola, primer crea una aula</string>
+    <string name="error_no_classrooms_in_school">Encara no hi ha aules en aquest centre, primer crea una aula</string>
     <string name="okey_text">D\'acord</string>
     <string name="timeline_already_reserved">Aquesta franja horaria ja te un event relacionat, canvia el dia o la hora de reserva</string>
     <string name="create_in_google_calendar_request">Desitjes afegir aquest event al Google Calendar?</string>
@@ -333,6 +333,11 @@
     <string name="succesfull_reservation">S\'ha reservat la taula de manera exitosa</string>
     <string name="already_has_reservation">L\'usuari ja té una reserva a aquesta aula</string>
     <string name="title_assignments_class_session">Asistents</string>
+    <string name="user_not_admin">L\'usuari no és administrador, si s\'ha promocionat a administrador recentment reiniciar l\'aplicació.</string>
+    <string name="create_school_validate_name">El nom del centre no pot estar buit ni repetit.</string>
+    <string name="create_school_validate_address">L\'adreça no pot estar buida.</string>
+    <string name="create_school_validate_phone">El número de telèfon ha de tenir 9 digits.</string>
+    <string name="create_school_validate_web">La pàgina web ha de començar amb http:// o https://</string>
 
 
 

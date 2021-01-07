@@ -237,6 +237,7 @@
     <string name="evolution">"Contagion evolution in "</string>
     <string name="months">months</string>
     <string name="axeYContagions">Contagion</string>
+    <string name="no_contagion">"No hi ha cap contagi "</string>
 
     <!-- Strings for the Subjects -->
     <string name="show_subject">See subjects</string>
@@ -270,5 +271,11 @@
     <string name="succesfull_reservation">S\'ha reservat la taula de manera exitosa</string>
     <string name="already_has_reservation">L\'usuari ja té una reserva a aquesta aula</string>
     <string name="title_assignments_class_session">Persones en aquesta sessió</string>
-    <string name="no_contagion">"No hi ha cap contagi "</string>
+    
+
+    <string name="user_not_admin">The user is not admin, if you have been promoted recently, restart the application.</string>
+    <string name="create_school_validate_name">Center\'s name can not be empty or repeated.</string>
+    <string name="create_school_validate_address">Address can not be empty.</string>
+    <string name="create_school_validate_phone">The phone number must have 9 digits.</string>
+    <string name="create_school_validate_web">The webpage must start with http:// or https://</string>
 </resources>
