@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -83,15 +82,12 @@ public class ChatListFragment extends Fragment {
         );
 
         listView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent i = new Intent(getActivity(), ChatViewActivity.class);
-                        i.putExtra("chatID",mViewModel.getChatID(position));
-                        i.putExtra("targetName",mViewModel.getTargetName(position));
-                        i.putExtra("targetPic",mViewModel.getTargetPic(position));
-                        startActivity(i);
-                    }
+                (parent, view, position, id) -> {
+                    Intent i = new Intent(getActivity(), ChatViewActivity.class);
+                    i.putExtra("chatID",mViewModel.getChatID(position));
+                    i.putExtra("targetName",mViewModel.getTargetName(position));
+                    i.putExtra("targetPic",mViewModel.getTargetPic(position));
+                    startActivity(i);
                 }
         );
     }

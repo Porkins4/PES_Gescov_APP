@@ -9,12 +9,15 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/appBarLayout"
@@ -32,118 +35,149 @@
 
             </com.google.android.material.appbar.AppBarLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TextView
+                android:id="@+id/school_details_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="TextView"
+                android:textSize="18sp" />
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="170dp"
+                android:layout_weight="0" />
 
-                <TextView
-                    android:id="@+id/school_details_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="@dimen/activity_horizontal_margin"
-                    android:text="TextView"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-                <com.google.android.gms.maps.MapView
-                    android:id="@+id/mapView"
-                    android:layout_width="0dp"
-                    android:layout_height="178dp"
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="22dp"
+                    android:layout_height="19dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
                     android:layout_marginTop="10dp"
-                    app:cameraZoom="13"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/school_details_name"
-                    app:liteMode="true"
-                    app:mapType="normal" />
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="0dp"
+                    app:srcCompat="@drawable/hogar" />
 
                 <TextView
                     android:id="@+id/school_details_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="0dp"
                     android:layout_marginTop="10dp"
-                    android:text="TextView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/mapView" />
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:text="TextView" />
+            </LinearLayout>
 
-                <TextView
-                    android:id="@+id/school_details_telf"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="22dp"
+                    android:layout_height="19dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
                     android:layout_marginTop="10dp"
-                    android:text="TextView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/school_details_address" />
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="0dp"
+                    app:srcCompat="@drawable/red_mundial" />
 
                 <TextView
                     android:id="@+id/school_details_webpage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
                     android:layout_marginTop="10dp"
-                    android:text="TextView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/school_details_telf" />
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="22dp"
+                    android:layout_height="19dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="0dp"
+                    app:srcCompat="@drawable/llamada_telefonica" />
+
+                <TextView
+                    android:id="@+id/school_details_telf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="22dp"
+                    android:layout_height="19dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="0dp"
+                    app:srcCompat="@drawable/codigo_qr" />
 
                 <TextView
                     android:id="@+id/school_details_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="0dp"
                     android:layout_marginTop="10dp"
-                    android:text="TextView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/school_details_webpage" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:text="TextView" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/school_details_classroom_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/school_details_classrooms_list" />
-
-            <Button
-                android:id="@+id/graf_school"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/view_graph" />
-
-            <Button
-                android:id="@+id/join_school_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/school_details_join" />
-
-            <Button
-                android:id="@+id/school_details_student_list_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/school_details_users_list" />
-
-            <Button
-                android:id="@+id/subject_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/show_subject" />
-
-            <Button
-                android:id="@+id/contagion_list_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/contagion_list" />
         </LinearLayout>
     </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="408dp"
+        android:layout_marginTop="400dp"
         android:gravity="center"
         android:orientation="vertical"
         android:paddingStart="15dp"
@@ -153,6 +187,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <Button
+            android:id="@+id/school_details_classroom_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/school_details_classrooms_list" />
+
+        <Button
+            android:id="@+id/contagion_list_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/contagion_list" />
+
+        <Button
+            android:id="@+id/graf_school"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/view_graph" />
+
+        <Button
+            android:id="@+id/join_school_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/school_details_join" />
+
+        <Button
+            android:id="@+id/school_details_student_list_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/school_details_users_list" />
+
+        <Button
+            android:id="@+id/subject_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/show_subject" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
