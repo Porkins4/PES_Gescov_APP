@@ -270,4 +270,7 @@
     <string name="succesfull_reservation">S\'ha reservat la taula de manera exitosa</string>
     <string name="already_has_reservation">L\'usuari ja té una reserva a aquesta aula</string>
     <string name="title_assignments_class_session">Persones en aquesta sessió</string>
+
+
+    <string name="user_not_admin">The user is not admin, if you have been promoted recently, restart the application.</string>
 </resources>

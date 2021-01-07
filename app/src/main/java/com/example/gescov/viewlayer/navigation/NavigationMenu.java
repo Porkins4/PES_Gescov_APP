@@ -10,15 +10,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
+import com.example.gescov.GescovUtils;
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.SignUpAndLogin.LoginActivity;
@@ -33,6 +25,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NavigationMenu extends AppCompatActivity {
@@ -56,7 +56,7 @@ public class NavigationMenu extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.schoolAdministration,R.id.chat_list,R.id.user_all_schools,R.id.user_schools,R.id.map_id,R.id.ranking_fragment,R.id.menu_subjects,R.id.menu_forum)
+                R.id.nav_home, R.id.school_administration,R.id.chat_list,R.id.user_all_schools,R.id.user_schools,R.id.map_id,R.id.ranking_fragment,R.id.menu_subjects,R.id.menu_forum)
 
                 .setDrawerLayout(drawer)
                 .build();
@@ -65,6 +65,7 @@ public class NavigationMenu extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
         MenuItem logoutButton = navigationView.getMenu().findItem(R.id.logout);
         MenuItem openCalendar = navigationView.getMenu().findItem(R.id.open_calendar);
+        MenuItem schoolAdministration = navigationView.getMenu().findItem(R.id.school_administration);
 
         logoutButton.setOnMenuItemClickListener(e -> {
             logoutPrompt();
@@ -77,6 +78,19 @@ public class NavigationMenu extends AppCompatActivity {
                 openCalendar();
                 return true;
             }
+        });
+
+        schoolAdministration.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    if (!GescovUtils.isUserAdminInAnySchool(PresentationControlFactory.getLoadingProfileController().getLoggedInUser())) {
+                        PresentationControlFactory.getMessagesManager().toastMessage(R.string.user_not_admin);
+                    } else {
+                        navController.navigate(R.id.school_administration);
+                        drawer.closeDrawers();
+                    }
+                    return true;
+                }
         });
     }
 

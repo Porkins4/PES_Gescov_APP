@@ -1,7 +1,6 @@
 package com.example.gescov.viewlayer.home;
 
 import android.Manifest;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -13,13 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.ViewModelProvider;
-
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.User;
+import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.viewlayer.Singletons.GescovApplication;
 import com.example.gescov.viewlayer.Singletons.LoggedInUser;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
@@ -30,6 +25,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.ViewModelProvider;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeFragment extends Fragment {
@@ -46,6 +47,13 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         PresentationControlFactory.setApplicationContext(getContext().getApplicationContext());
+        try {
+            PresentationControlFactory.getSchoolsCrontroller().refreshAllSchoolsList();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (AdapterNotSetException e) {
+            e.printStackTrace();
+        }
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
         checkPermision();
