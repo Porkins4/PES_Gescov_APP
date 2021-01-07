@@ -74,7 +74,6 @@ public class ClassroomDistributionActivity extends AppCompatActivity {
                 y.setParent(this);
                 y.setColPos(j);
                 y.setRowPos(i);
-                if ((i % 2 == 0 && j % 2 == 0) || (i % 2 != 0 && j % 2 != 0)) y.initTable("-1");
                 distribution[i][j] = y;
                 gridLayout.addView(y.getTableLayout());
             }

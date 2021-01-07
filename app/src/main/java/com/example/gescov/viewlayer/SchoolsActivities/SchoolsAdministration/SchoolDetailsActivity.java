@@ -42,6 +42,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
     private User loggedUser;
     private Button graphButton,usersListButton,classroomsListButton,joinSchoolButton,contagionListButton,subjectButton;
     private TextView name,address,webpage,code,telf;
+    private ImageView codeIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +117,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         joinSchoolButton.setVisibility(!GescovUtils.isUserInSchool(loggedUser, school) || GescovUtils.isUserSchoolAdmin(loggedUser, school) ? View.VISIBLE : View.GONE);
         usersListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) && loggedUser.getProfileType().equals(User.UserProfileType.TEACHER) ? View.VISIBLE : View.GONE);
         contagionListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) && loggedUser.getProfileType().equals(User.UserProfileType.TEACHER) ? View.VISIBLE : View.GONE);
+        codeIcon.setVisibility(!GescovUtils.isUserInSchool(loggedUser, school) ||GescovUtils.isUserSchoolAdmin(loggedUser, school) ? View.VISIBLE : View.INVISIBLE);
     }
 
     private void setListenerUsersListButton() {
@@ -135,6 +137,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
+        codeIcon = findViewById(R.id.code_icon);
         name = (TextView) findViewById(R.id.school_details_name);
         address = (TextView) findViewById(R.id.school_details_address);
         telf = (TextView) findViewById(R.id.school_details_telf);
@@ -171,7 +174,6 @@ public class SchoolDetailsActivity extends AppCompatActivity {
             ImageView addressIcon = findViewById(R.id.adress_icon);
             ImageView phoneIcon = findViewById(R.id.phone_icon);
             ImageView webIcon = findViewById(R.id.web_icon);
-            ImageView codeIcon = findViewById(R.id.code_icon);
             addressIcon.setImageDrawable(getDrawable(R.drawable.hogar_blanco));
             phoneIcon.setImageDrawable(getDrawable(R.drawable.llamada_telefonica_blanco));
             webIcon.setImageDrawable(getDrawable(R.drawable.red_mundial_blanco));

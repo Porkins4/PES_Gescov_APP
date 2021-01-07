@@ -11,12 +11,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.gescov.GescovUtils;
 import com.example.gescov.R;
+import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.addteachertosubject.AddTeacherToSubjectActivity;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.checkclasssession.CheckClassSessionActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.event.EventActivity;
+import com.google.android.gms.maps.GoogleMap;
 
 public class SubjectDetailActivity extends AppCompatActivity {
 
@@ -59,6 +62,11 @@ public class SubjectDetailActivity extends AppCompatActivity {
             createClassSession.setVisibility(View.GONE);
             addTeacher.setVisibility(View.GONE);
         }
+
+        User currentUser = PresentationControlFactory.getLoadingProfileController().getLoggedInUser();
+        School currentSchool = PresentationControlFactory.getSchoolsCrontroller().getSchoolById(getIntent().getStringExtra("schoolID"));
+
+        if (GescovUtils.isUserSchoolAdmin(currentUser, currentSchool)) addTeacher.setVisibility(View.GONE);
     }
 
     private void listenerCreateClassSession() {

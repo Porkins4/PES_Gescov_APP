@@ -44,7 +44,7 @@ public class SubjectActivity extends AppCompatActivity {
     }
 
     private void initCreateSubjectButton() {
-        createSubjectButton = (FloatingActionButton) findViewById(R.id.create_subject_button);
+        createSubjectButton = findViewById(R.id.create_subject_button);
         if (isUserAdmin(subjectViewModel.getLoggedInUser())) {
             createSubjectButton.setOnClickListener(
                     v -> {
