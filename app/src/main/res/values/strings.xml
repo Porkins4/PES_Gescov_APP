@@ -338,8 +338,4 @@
     <string name="create_school_validate_address">L\'adreça no pot estar buida.</string>
     <string name="create_school_validate_phone">El número de telèfon ha de tenir 9 digits.</string>
     <string name="create_school_validate_web">La pàgina web ha de començar amb http:// o https://</string>
-
-    <string name="testeo">funciona mi pana</string>
-
-
 </resources>

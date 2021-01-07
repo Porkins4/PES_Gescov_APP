@@ -339,7 +339,7 @@ public class ModelController {
     }
 
     public void startGettingChat(String chatID) {
-        DomainControlFactory.getChatModelController().startGettingChat(chatID);
+        DomainControlFactory.getChatModelController().getMessages(chatID);
     }
 
     public void deactivatePolling() {
