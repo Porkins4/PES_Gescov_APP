@@ -3,8 +3,6 @@ package com.example.gescov.viewlayer;
 import android.location.Location;
 import android.util.Pair;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
@@ -30,6 +28,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import org.json.JSONException;
 
 import java.util.List;
+
+import androidx.lifecycle.MutableLiveData;
 
 
 public class ViewLayerController {
@@ -531,6 +531,10 @@ public class ViewLayerController {
 
     public void setSendReservationRequestResponse(boolean error, int errorCode) {
         PresentationControlFactory.getStudentsInClassSessionController().setSendReservationRequestResponse(error,errorCode);
+    }
+
+    public void upgradeRole(String role) {
+        DomainControlFactory.getModelController().upgradeRole(role);
     }
 }
 

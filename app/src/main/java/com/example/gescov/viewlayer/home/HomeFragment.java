@@ -18,6 +18,7 @@ import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.viewlayer.Singletons.GescovApplication;
 import com.example.gescov.viewlayer.Singletons.LoggedInUser;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+import com.example.gescov.viewlayer.home.upgraderole.UpgradeRoleActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,7 +30,6 @@ import org.json.JSONException;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -38,7 +38,6 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     private Intent intent;
     private View root;
-    private Button riskButton;
     private TextView nameText;
     private User user;
     private CircleImageView userImage;
@@ -67,23 +66,15 @@ public class HomeFragment extends Fragment {
         userImage = root.findViewById(R.id.profile_image);
         loadImageFromUrl(url);
         Button report = root.findViewById(R.id.report);
+        Button upgradeButton = root.findViewById(R.id.home_upgrade_role);
 
         nameText = root.findViewById(R.id.home_user_name);
         nameText.setText("");
-        riskButton = root.findViewById(R.id.home_risk_button);
 
         String ContagionID = PresentationControlFactory.getContagionController().getIdContagion();
         if ( ContagionID == null ) takeTest.setEnabled(false);
         else takeTest.setEnabled(true);
         user = PresentationControlFactory.getViewLayerController().getLoggedUserInfo();
-
-        homeViewModel.getRisk().observe((LifecycleOwner) getContext(), e ->
-                refreshActivity()
-        );
-
-        riskButton.setOnClickListener(e ->
-                PresentationControlFactory.getViewLayerController().updateLoggedUserRisk()
-        );
 
         report.setOnClickListener(v -> {
             intent = new Intent(getActivity(), CovidNotificationActivity.class);
@@ -92,6 +83,11 @@ public class HomeFragment extends Fragment {
 
         takeTest.setOnClickListener(v -> {
             intent = new Intent(getActivity(), DailyTestActivity.class);
+            startActivity(intent);
+        });
+
+        upgradeButton.setOnClickListener(v -> {
+            intent = new Intent(getActivity(), UpgradeRoleActivity.class);
             startActivity(intent);
         });
 
@@ -151,7 +147,6 @@ public class HomeFragment extends Fragment {
     }
   
     public void refreshActivity() {
-        riskButton.setText(getResources().getText(homeViewModel.getRisk().getValue() ? R.string.home_risk : R.string.home_not_risk));
         nameText.setText(user.getName());
 
     }

@@ -372,4 +372,7 @@ public class UserModelController {
         return loggedUser.isMySchool(schoolID);
     }
 
+    public void upgradeRole(String role) {
+        ServicesFactory.getUpgradeUserRoleResponseController().upgradeUserRole(loggedUser.getId(), role);
+    }
 }
