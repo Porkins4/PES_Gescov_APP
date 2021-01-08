@@ -356,4 +356,5 @@
     <string name="classroom_rows_check">Por lo menos tiene que haber una fila.</string>
     <string name="classroom_columns_check">Por lo menos tiene que haber una columna.</string>
     <string name="classroom_name_check">El nombre de la aula no puede estar vacío.</string>
+    <string name="error_user_has_no_school">Antes de iniciar un chat, entra en un centro!</string>
 </resources>

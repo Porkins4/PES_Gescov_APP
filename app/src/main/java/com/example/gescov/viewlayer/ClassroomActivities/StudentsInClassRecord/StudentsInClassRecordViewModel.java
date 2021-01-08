@@ -28,8 +28,8 @@ public class StudentsInClassRecordViewModel extends ViewModel {
         PresentationControlFactory.getStudentsInClassSessionController().getStudentsInClassRecord(classroomId);
     }
 
-    public void setResponse(List<Pair<User, Pair<Integer,Integer>>> r, boolean b) {
-        StudentsInClassRecordResult result = new StudentsInClassRecordResult(r,b);
+    public void setResponse(List<Pair<User, Pair<Integer,Integer>>> r, List<String> dates, boolean b) {
+        StudentsInClassRecordResult result = new StudentsInClassRecordResult(r,dates,b);
         studentsResult.setValue(result);
     }
 }

@@ -56,6 +56,7 @@ public class CreateSubjectActivity extends AppCompatActivity {
                                    createSubjectButton.setEnabled(true);
                                } else {
                                    PresentationControlFactory.getMessagesManager().toastMessage(R.string.succesfull_subject_creation);
+                                   viewModel.updateUserSubjects();
                                    finish();
                                }
                            });

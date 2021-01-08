@@ -67,6 +67,9 @@ public class SubjectDetailActivity extends AppCompatActivity {
                 createClassSession.setVisibility(View.GONE);
             }
         } else {
+            if (!GescovUtils.isEnroled(subjectID)) {
+                checkClassSessions.setEnabled(false);
+            }
             createClassSession.setVisibility(View.GONE);
             addTeacher.setVisibility(View.GONE);
         }
@@ -76,8 +79,8 @@ public class SubjectDetailActivity extends AppCompatActivity {
 
 
         if (!GescovUtils.isUserSchoolAdmin(currentUser, currentSchool)) {
-            System.out.println("HEY PERRO");
             addTeacher.setVisibility(View.GONE);
+
         }
     }
 
@@ -120,6 +123,7 @@ public class SubjectDetailActivity extends AppCompatActivity {
             subjectViewModel.assignStudent(subjectID).observe(this, error -> {
                 if ( ! error ) {
                     addStudent.setEnabled(false);
+                    checkClassSessions.setEnabled(true);
                     Toast.makeText(getApplicationContext(),R.string.assigned_successfuly,Toast.LENGTH_SHORT).show();
                 }
             });
