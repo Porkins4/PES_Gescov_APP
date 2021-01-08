@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".viewlayer.SchoolsActivities.SchoolClassroomList.classroomSchedule.InsertScheduleActivity">
+    tools:context=".viewlayer.SchoolsActivities.SchoolClassroomList.classroomSchedule.InsertScheduleActivity"
+    android:background="@color/bg">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"

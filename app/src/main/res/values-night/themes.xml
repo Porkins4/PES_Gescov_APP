@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.Gescov" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/dark_green</item>
-        <item name="colorPrimaryVariant">@color/dark_green</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/bars</item>
+        <item name="colorPrimaryVariant">@color/bars</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">#0c1424</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
@@ -18,13 +18,13 @@
 
     <style name="Theme">GescovNoActionBar
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/dark_green</item>
-        <item name="colorPrimaryVariant">@color/dark_green</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/bars</item>
+        <item name="colorPrimaryVariant">@color/bars</item>
+        <item name="colorOnPrimary">#0c1424</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">#0c1424</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
@@ -44,16 +44,22 @@
     <color name="sendMessageEdit">@color/sendMessageEditColor</color>
     <color name="sendMessageButton">@color/teal_200</color>
 
+
+
     <!-- General colors -->
     <color name="normalText">@color/white</color>
+
+    <color name="bg">#0c1424</color>
 
     <!-- Login Button Color -->
     <color name="loginButtonColor">#888888</color>
 
-    <color name = "schedule_button"> #000000 </color>
+    <color name = "schedule_button"> #0c1424 </color>
     <!-- School details icons -->
 
+    <color name = "menu_info_color"> #0C3651 </color>
 
+    <color name = "toolbar_color">#0C3651</color>
 
 
 

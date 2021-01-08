@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/theback"
-    tools:context=".viewlayer.forum.CreateForumEntryFormActivity">
+    tools:context=".viewlayer.forum.CreateForumEntryFormActivity"
+    android:background="@color/bg">
 
     <Button
         android:id="@+id/create_forum_entry_button"

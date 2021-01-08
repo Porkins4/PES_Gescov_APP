@@ -23,5 +23,7 @@
     <color name="chatItemColorDark">#4C4C4C</color>
     <color name="sendMessageEditColor">#6E6E6E</color>
 
+    <color name = "bars"> #0C3651 </color>
+
 
 </resources>

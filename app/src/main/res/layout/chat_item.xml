@@ -8,7 +8,8 @@
     android:paddingLeft="10dp"
     android:paddingTop="10dp"
     android:paddingRight="10dp"
-    android:paddingBottom="10dp">
+    android:paddingBottom="10dp"
+    android:background="@color/bg">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"

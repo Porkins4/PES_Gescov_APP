@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewLayer.chatlist.ChatListFragment">
+    tools:context=".ViewLayer.chatlist.ChatListFragment"
+    android:background="@color/bg">
 
     <ListView
         android:id="@+id/chat_fragment_list_view"

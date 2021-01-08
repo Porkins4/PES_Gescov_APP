@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:gravity="center|center_horizontal"
     android:orientation="vertical"
-    tools:context=".viewlayer.home.DailyTestActivity">
+    tools:context=".viewlayer.home.DailyTestActivity"
+    android:background="@color/bg">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
