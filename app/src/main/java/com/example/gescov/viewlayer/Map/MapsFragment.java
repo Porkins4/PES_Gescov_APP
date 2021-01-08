@@ -1,7 +1,6 @@
 package com.example.gescov.viewlayer.Map;
 
 import android.Manifest;
-
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -19,8 +18,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.R;
+import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -29,7 +28,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
-
 
 import java.util.List;
 
@@ -81,11 +79,11 @@ public class MapsFragment extends Fragment {
                 double longitude = schools.get(i).first.getLongitude();
                 double latitude = schools.get(i).first.getLatitude();
                 if (numContagion >= 7) {
-                    mMap.addCircle(new CircleOptions().center(new LatLng(latitude, longitude)).radius(60.0).strokeColor(Color.argb(130, 150, 50, 50)).fillColor(Color.argb(130, 150, 50, 50)));
+                    mMap.addCircle(new CircleOptions().center(new LatLng(latitude, longitude)).radius(80.0).strokeColor(Color.argb(110, 150, 50, 50)).fillColor(Color.argb(130, 150, 50, 50)));
                 } else if (numContagion == 0) {
-                    mMap.addCircle(new CircleOptions().center(new LatLng(latitude, longitude)).radius(50.0).strokeColor(Color.argb(130, 50, 150, 50)).fillColor(Color.argb(130, 50, 150, 50)));
+                    mMap.addCircle(new CircleOptions().center(new LatLng(latitude, longitude)).radius(70.0).strokeColor(Color.argb(110, 50, 150, 50)).fillColor(Color.argb(130, 50, 150, 50)));
                 } else {
-                    mMap.addCircle(new CircleOptions().center(new LatLng(latitude, longitude)).radius(40.0).strokeColor(Color.argb(130, 150, 150, 50)).fillColor(Color.argb(130, 150, 150, 50)));
+                    mMap.addCircle(new CircleOptions().center(new LatLng(latitude, longitude)).radius(60.0).strokeColor(Color.argb(110, 150, 150, 50)).fillColor(Color.argb(130, 150, 150, 50)));
                 }
             }
         }

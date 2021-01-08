@@ -1,8 +1,6 @@
 package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList;
 
 
-
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionListActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 import org.json.JSONException;
@@ -21,4 +19,5 @@ public class ContagionController {
     public String getIdContagion() {
         return PresentationControlFactory.getViewLayerController().getIdContagion();
     }
+
 }

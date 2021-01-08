@@ -1,33 +1,36 @@
 package com.example.gescov.viewlayer.ClassroomActivities.ClassroomDistribution;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.gridlayout.widget.GridLayout;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Intent;
-import android.os.Bundle;
-
+import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Classroom;
-import com.example.gescov.R;
 import com.example.gescov.viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroom;
 
 import java.util.List;
 
 public class ClassroomDistributionActivity extends AppCompatActivity {
 
-    private ClassroomDistributionController controller;
+    private static final int SUCCESS_RESERVATION_REQUEST_CODE = 200;
     private GridLayout gridLayout;
     private ClassroomDistributionTableWidget [][] distribution;
     private ClassroomDsitributionViewModel classroomDsitributionViewModel;
+    private int row;
+    private int col;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classroom_ditribution);
-        controller = new ClassroomDistributionController();
         initViewComponents();
     }
 
@@ -36,38 +39,27 @@ public class ClassroomDistributionActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.title_activity_classroom_distribution);
         gridLayout = (GridLayout) findViewById(R.id.show_distribution_grid);
+        findViewById(R.id.information).setOnClickListener(
+                v -> {
+                    Intent i = new Intent(this, InformationActivity.class);
+                    startActivity(i);
+                }
+        );
         initResponseListener();
-
-
     }
 
     private void initResponseListener() {
-        String classroomId = getIntent().getStringExtra("classroom");
         classroomDsitributionViewModel = new ViewModelProvider(this).get(ClassroomDsitributionViewModel.class);
-        classroomDsitributionViewModel.getData(classroomId,null,null).observe(this,
-                new Observer<ClassroomDistributionInfo>() {
-                    @Override
-                    public void onChanged(ClassroomDistributionInfo classroomDistributionInfo) {
-                        if (!classroomDistributionInfo.isError()) {
-                            System.out.println("tot ok");
-                            getClassroomInfo();
-                        } else {//class without assignments
-                            getClassroomInfo();
-                        }
-                    }
-                }
+        classroomDsitributionViewModel.getData(getIntent().getStringExtra("classSession")).observe(this,
+                classroomDistributionInfo -> getClassroomInfo()
         );
     }
 
     private void getClassroomInfo() {
         classroomDsitributionViewModel.getClassroom(getIntent().getStringExtra("classroom")).observe(this,
-                new Observer<ClassroomDistributionClassInfo>() {
-                    @Override
-                    public void onChanged(ClassroomDistributionClassInfo classroomDistributionClassInfo) {
-                        System.out.println("tot ok x2");
-                        if (!classroomDistributionClassInfo.isError()) {
-                            showDistribution();
-                        }
+                classroomDistributionClassInfo -> {
+                    if (!classroomDistributionClassInfo.isError()) {
+                        showDistribution();
                     }
                 }
         );
@@ -103,11 +95,21 @@ public class ClassroomDistributionActivity extends AppCompatActivity {
     }
 
 
-    public void launchMarkPosition(String studentId, int rowPos, int colPos) {
+    public void launchMarkPosition(int rowPos, int colPos) {
         Intent i = new Intent(this, MarkPositionInClassroom.class);
+        row = rowPos;
+        col = colPos;
         i.putExtra("row",rowPos);
         i.putExtra("col",colPos);
-        i.putExtra("classSessionID","5fc825d2c93e4419dd64fafb");
-        startActivity(i);
+        i.putExtra("classSessionID",getIntent().getStringExtra("classSession"));
+        startActivityForResult(i,SUCCESS_RESERVATION_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SUCCESS_RESERVATION_REQUEST_CODE && resultCode == RESULT_OK) {
+                distribution[row][col].initTable(classroomDsitributionViewModel.getUserName().getName());
+        }
     }
 }

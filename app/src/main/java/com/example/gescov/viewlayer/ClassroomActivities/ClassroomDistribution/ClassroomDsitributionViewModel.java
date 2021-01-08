@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Classroom;
+import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 import java.util.List;
@@ -14,17 +15,28 @@ public class ClassroomDsitributionViewModel extends ViewModel {
     private MutableLiveData<ClassroomDistributionInfo> data;
     private MutableLiveData<ClassroomDistributionClassInfo> classInfo;
 
-    public LiveData<ClassroomDistributionInfo> getData(String classroomID,String date, String hour) {
+    //-----------------------------
+    // Reservation request
+    private MutableLiveData<Boolean> reservationResponse;
+    private int requestResponse;
+    private String classSessionID;
+    private int row;
+    private int col;
+
+    public ClassroomDsitributionViewModel() {
+        PresentationControlFactory.getStudentsInClassSessionController().setClassroomDsitributionViewModel(this);
+    }
+
+    public LiveData<ClassroomDistributionInfo> getData(String classSessionID) {
         if (data == null) {
             data = new MutableLiveData<>();
-            getAssignmentsInfo(classroomID,date,hour);
+            getAssignmentsInfo(classSessionID);
         }
         return data;
     }
 
-    public void getAssignmentsInfo(String classroomID,String date, String hour) {
-        PresentationControlFactory.getStudentsInClassSessionController().setClassroomDsitributionViewModel(this);
-        PresentationControlFactory.getStudentsInClassSessionController().getAssignmentsForClassSession(classroomID,date,hour);
+    public void getAssignmentsInfo(String classSessionID) {
+        PresentationControlFactory.getStudentsInClassSessionController().getAssignmentsForClassSession(classSessionID);
     }
 
     public void setAssignmentsResponse(List<Assignment> r, boolean b) {
@@ -41,7 +53,6 @@ public class ClassroomDsitributionViewModel extends ViewModel {
     }
 
     private void getClassromInfo(String classroomID) {
-        PresentationControlFactory.getStudentsInClassSessionController().setClassroomDsitributionViewModel(this);
         PresentationControlFactory.getStudentsInClassSessionController().getClassroomInfo(classroomID);
     }
 
@@ -56,5 +67,31 @@ public class ClassroomDsitributionViewModel extends ViewModel {
 
     public List<Assignment> getAssignmentsList() {
         return data.getValue().getStudents();
+    }
+
+    public void init(String classSessionID, int row, int col) {
+        this.classSessionID = classSessionID;
+        this.row = row;
+        this.col = col;
+    }
+
+    public LiveData<Boolean> reservationRequest() {
+        if (reservationResponse == null) reservationResponse = new MutableLiveData<>();
+        PresentationControlFactory.getStudentsInClassSessionController().sendReservationRequest(classSessionID, row, col);
+        return reservationResponse;
+    }
+
+    public void setSendReservationRequestResponse(boolean error, int errorCode) {
+        requestResponse = errorCode;
+        System.out.println("codigo de error: " +  errorCode);
+        reservationResponse.setValue(error);
+    }
+
+    public int getErrorCode() {
+        return requestResponse;
+    }
+
+    public User getUserName() {
+        return PresentationControlFactory.getViewLayerController().getLoggedUserInfo();
     }
 }

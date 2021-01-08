@@ -22,4 +22,9 @@ public class RankingController {
     public void getRanking() {
         PresentationControlFactory.getViewLayerController().getNumContagionPerSchool(2);
     }
+
+    public boolean isMySchool(String schoolID) {
+        return PresentationControlFactory.getViewLayerController().isMySchool(schoolID);
+    }
+
 }

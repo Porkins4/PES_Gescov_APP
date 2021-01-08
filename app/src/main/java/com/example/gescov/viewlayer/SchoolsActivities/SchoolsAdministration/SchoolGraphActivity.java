@@ -1,9 +1,11 @@
 package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.util.Pair;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
@@ -15,6 +17,7 @@ import com.anychart.enums.HoverMode;
 import com.anychart.enums.Position;
 import com.anychart.enums.TooltipPositionMode;
 import com.example.gescov.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,9 +46,11 @@ public class SchoolGraphActivity extends AppCompatActivity {
                 List<DataEntry> data = new ArrayList<>();
                 AnyChartView anyChartView = findViewById(R.id.any_chart_view);
                 contagionPerMonth = schoolGraphModel.getContagionPerMonth();
-                //recuerda cambiar esto cuando tengas meses (seria i < contagionPerMont.size())
-                for ( int i = 0; i < contagionPerMonth.size(); ++i ) {
-                    data.add(new ValueDataEntry(getNameOfMonth(i+1), contagionPerMonth.get(i).second));
+                if ( contagionPerMonth.size() == 0 ) data.add(new ValueDataEntry(getString(R.string.no_contagion), 0));
+                else {
+                    for (int i = 0; i < contagionPerMonth.size(); ++i) {
+                        data.add(new ValueDataEntry(getNameOfMonth(i+1), contagionPerMonth.get(i).second));
+                    }
                 }
 
                 Column column = cartesian.column(data);

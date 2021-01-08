@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="15dp"
+    android:paddingTop="5dp"
+    android:paddingEnd="15dp"
+    android:paddingBottom="5dp">
+
+    <TextView
+        android:id="@+id/subject_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nom Assignatura"
+        android:textColor="@color/normalText"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/school_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sant Jaume de la Fep"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/enrolled_users"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Matriculats: 42"
+        android:textSize="18sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/enrolled_teachers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Professors: 5"
+        android:textSize="18sp"
+        android:textStyle="normal" />
+</LinearLayout>

@@ -1,14 +1,14 @@
 package com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassRecord;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.R;
 
@@ -41,7 +41,7 @@ public class StudentsInClassRecordActivity extends AppCompatActivity {
 
     private void initResponseListener() {
         studentsInClassRecordViewModel = new ViewModelProvider(this).get(StudentsInClassRecordViewModel.class);
-        studentsInClassRecordViewModel.getStudents(getIntent().getStringExtra("classroom"), "03-02-2020").observe(this, new Observer<StudentsInClassRecordResult>() { //de momento fecha hardcoded
+        studentsInClassRecordViewModel.getStudents(getIntent().getStringExtra("classSession")).observe(this, new Observer<StudentsInClassRecordResult>() { //de momento fecha hardcoded
                     @Override
                     public void onChanged(StudentsInClassRecordResult studentsInClassRecordResult) {
                         System.out.println("entro");

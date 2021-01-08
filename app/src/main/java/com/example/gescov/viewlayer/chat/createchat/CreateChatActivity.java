@@ -1,10 +1,5 @@
 package com.example.gescov.viewlayer.chat.createchat;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +10,11 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.R;
 
@@ -42,7 +42,16 @@ public class CreateChatActivity extends AppCompatActivity {
         createChatViewModel = new ViewModelProvider(instance).get(CreateChatViewModel.class);
         createChatViewModel.getSchoolsRequest().observe(instance,
                 received -> {
-                    if (received) setSchoolSpinner();
+                    if (received) {
+                        setSchoolSpinner();
+                        if (createChatViewModel.userHasNoCenter()) {
+                            loadingComponents.setVisibility(View.GONE);
+                            LinearLayout error = findViewById(R.id.error);
+                            error.setVisibility(View.VISIBLE);
+                            TextView error_message = findViewById(R.id.error_message);
+                            error_message.setText(R.string.error_user_has_no_school);
+                        }
+                    }
                 }
         );
     }
@@ -101,10 +110,12 @@ public class CreateChatActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CREATE_CHAT_REQUEST_CODE) {
+            Intent resultIntent = new Intent();
             if (resultCode == RESULT_OK) {
-                String result = data.getStringExtra("chatID");
-                System.out.println("creat correctament: " + result);
-            } else Toast.makeText(getApplicationContext(), getString(R.string.error_while_creating_chat), Toast.LENGTH_SHORT).show();
+                resultIntent.putExtra("chatID", data.getStringExtra("chatID"));
+                setResult(RESULT_OK,resultIntent);
+                finish();
+            } else Toast.makeText(getApplicationContext(), getString(R.string.error_chat_already_created), Toast.LENGTH_SHORT).show();
         }
     }
 

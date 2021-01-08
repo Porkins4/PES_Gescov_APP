@@ -1,34 +1,38 @@
 package com.example.gescov.viewlayer.Singletons;
 
 
+import android.content.Context;
+
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.gescov.viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroomController;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionController;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionController;
-
-
-import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUsersController;
-import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
-
 import com.example.gescov.viewlayer.Map.MapController;
-import com.example.gescov.viewlayer.home.HomeController;
-import com.example.gescov.viewlayer.ranking.RankingController;
-
-import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
-import com.example.gescov.viewlayer.SignUpAndLogin.LoadingProfileController;
+import com.example.gescov.viewlayer.MessagesManager;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassroomsCrontroller;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.classroomSchedule.ScheduleController;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionController;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolsCrontroller;
-
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectController;
+import com.example.gescov.viewlayer.SchoolsActivities.schooluserslist.SchoolUsersController;
+import com.example.gescov.viewlayer.SignUpAndLogin.LoadingProfileController;
 import com.example.gescov.viewlayer.UpdateUserProfile.UpdateUserProfileController;
 import com.example.gescov.viewlayer.ViewLayerController;
 import com.example.gescov.viewlayer.chat.chatlist.ChatListController;
 import com.example.gescov.viewlayer.chat.chatview.ChatViewController;
+import com.example.gescov.viewlayer.chat.createchat.CreateChatController;
+import com.example.gescov.viewlayer.event.EventController;
+import com.example.gescov.viewlayer.forum.ForumController;
+import com.example.gescov.viewlayer.forum.forumreply.ForumRepliesController;
+import com.example.gescov.viewlayer.home.HomeController;
 import com.example.gescov.viewlayer.home.NotifyContagionController;
 import com.example.gescov.viewlayer.home.TracingTestController;
-
-
-import androidx.lifecycle.ViewModelProvider;
+import com.example.gescov.viewlayer.ranking.RankingController;
+import com.example.gescov.viewlayer.schoolrequests.SchoolRequestsController;
 
 public class PresentationControlFactory {
+
+    private static Context applicationContext;
     private static ViewLayerController viewLayerController;
     private static SchoolsCrontroller schoolsCrontroller;
     private static SchoolClassroomsCrontroller classroomsCrontroller;
@@ -46,10 +50,24 @@ public class PresentationControlFactory {
     private static ChatListController chatListController;
     private static SchoolUsersController schoolUsersController;
     private static CreateChatController createChatController;
-
+    private static SubjectController subjectController;
     private static HomeController homeController;
 
     private static ChatViewController chatViewController;
+
+    private static EventController eventController;
+
+    private static ForumController forumController;
+
+    private static ScheduleController scheduleController;
+
+
+    private static ForumRepliesController forumRepliesController;
+    private static MessagesManager messagesManager;
+
+    public static void setApplicationContext (Context context) {
+        applicationContext = context;
+    }
 
 
     public static ViewLayerController getViewLayerController() {
@@ -99,7 +117,7 @@ public class PresentationControlFactory {
         return studentsInClassSessionController;
     }
 
-    public static TracingTestController getTracingTestControllerController() {
+    public static TracingTestController getTracingTestController() {
         if (tracingTestController != null)
             return tracingTestController;
         tracingTestController = new TracingTestController();
@@ -184,5 +202,49 @@ public class PresentationControlFactory {
         chatViewController = new ChatViewController();
         return chatViewController;
 
+    }
+
+    public static SubjectController getSubjectController() {
+        if (subjectController != null)
+            return subjectController;
+        subjectController = new SubjectController();
+        return subjectController;
+    }
+
+
+    public static EventController getEventController() {
+        if (eventController != null)
+            return eventController;
+        eventController = new EventController();
+        return eventController;
+    }
+
+    public static ForumController getForumController() {
+        if (forumController != null)
+            return forumController;
+        forumController = new ForumController();
+        return forumController;
+    }
+
+
+    public static ScheduleController getScheduleController() {
+        if (scheduleController != null)
+            return scheduleController;
+        scheduleController = new ScheduleController();
+        return scheduleController;
+    }
+
+    public static ForumRepliesController getForumRepliesController() {
+        if (forumRepliesController != null)
+            return forumRepliesController;
+        forumRepliesController = new ForumRepliesController();
+        return forumRepliesController;
+    }
+
+    public static MessagesManager getMessagesManager() {
+        if (messagesManager != null)
+            return messagesManager;
+        messagesManager = new MessagesManager(applicationContext);
+        return messagesManager;
     }
 }

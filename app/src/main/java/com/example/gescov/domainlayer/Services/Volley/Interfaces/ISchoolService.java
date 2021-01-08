@@ -1,13 +1,13 @@
 
 package com.example.gescov.domainlayer.Services.Volley.Interfaces;
 
-import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
-import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
+import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
+import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
 
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
 
 public interface ISchoolService {
 
@@ -23,7 +23,7 @@ public interface ISchoolService {
 
     void createClassroomRequest(String schoolName, String classroomName, int classroomRows, int classroomCols);
 
-    void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult);
+    void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult, String classSession);
 
     void checkUserLogin(MutableLiveData<TokenVerificationResult> r);
 
@@ -33,7 +33,7 @@ public interface ISchoolService {
 
     void getSchool(String school);
 
-    void getContactsFromCenter(String schoolID);
+    void getContactsFromCenter(String schoolID, int activityIdentifier);
 
     void getNumContagionPerSchool(int from);
 

@@ -5,12 +5,17 @@ import android.util.Pair;
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
+import com.example.gescov.domainlayer.Classmodels.ClassSessionModel;
 import com.example.gescov.domainlayer.Classmodels.Classroom;
 import com.example.gescov.domainlayer.Classmodels.MessageModel;
 import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.SchoolRequest;
+import com.example.gescov.domainlayer.Classmodels.Subject;
+import com.example.gescov.domainlayer.Classmodels.TracingTest;
 import com.example.gescov.domainlayer.Classmodels.User;
+import com.example.gescov.domainlayer.Classmodels.WallEntry;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
+import com.example.gescov.domainlayer.Singletons.LoginRespository;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
@@ -100,8 +105,8 @@ public class ModelController {
     }
 
 
-    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
-        userModelController.getStudentsInClassSession(studentsResult);
+    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult, String classSession) {
+        userModelController.getStudentsInClassSession(studentsResult, classSession);
     }
   
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
@@ -158,12 +163,12 @@ public class ModelController {
         return userModelController.getProfileType();
     }
 
-    public void getStudentsInClassRecord(String classroomId, String date) {
-        DomainControlFactory.getClassroomModelController().getStudentsInClassRecord(classroomId,date);
+    public void getStudentsInClassRecord(String classroomId) {
+        DomainControlFactory.getClassroomModelController().getStudentsInClassRecord(classroomId);
     }
 
-    public void refreshStudentsInClassRecordView(List<Pair<User, Pair<Integer,Integer>>> r, boolean b) {
-        viewLayerController.refreshStudentsInClassRecordView(r,b);
+    public void refreshStudentsInClassRecordView(List<Pair<User, Pair<Integer,Integer>>> r, List<String> dates, boolean b) {
+        viewLayerController.refreshStudentsInClassRecordView(r,dates,b);
     }
 
     public User getLoggedUser() {
@@ -182,8 +187,8 @@ public class ModelController {
         DomainControlFactory.getUserModelController().notifyPossibleContagion(result);
     }
 
-    public void getAssignmentsForClassSession(String classroomID, String date, String hour) {
-        DomainControlFactory.getAssignmentModelController().getAssignmentsForClassSession(classroomID,date,hour);
+    public void getAssignmentsForClassSession(String classSessionID) {
+        DomainControlFactory.getAssignmentModelController().getAssignmentsForClassSession(classSessionID);
     }
 
     public void refreshClassroomDistributionAssignments(List<Assignment> r, boolean b) {
@@ -261,8 +266,8 @@ public class ModelController {
         return DomainControlFactory.getSchoolsModelCrontroller().getUserSchools();
     }
 
-    public void getContactsFromCenter(String schoolID) {
-        DomainControlFactory.getSchoolsModelCrontroller().getContactsFromCenter(schoolID);
+    public void getContactsFromCenter(String schoolID, int activityIdentifier) {
+        DomainControlFactory.getSchoolsModelCrontroller().getContactsFromCenter(schoolID, activityIdentifier);
     }
 
     public void updateContactsFromCreateChat() {
@@ -304,9 +309,6 @@ public class ModelController {
         PresentationControlFactory.getViewLayerController().chatPreviewsUpdated(chatPreviewModels, error);
     }
 
-    public void getChatMessages(String chatID) {
-        DomainControlFactory.getChatModelController().getMessages(chatID);
-    }
 
     public void notifyChatMessagesResponse(List<MessageModel> messages, boolean error) {
         PresentationControlFactory.getViewLayerController().notifyChatMessagesResponse(messages,error);
@@ -314,10 +316,6 @@ public class ModelController {
 
     public void sendMessage(String chatID, String message) {
         DomainControlFactory.getChatModelController().sendMessage(chatID,message);
-    }
-
-    public void notifyChatUpdated() {
-        PresentationControlFactory.getViewLayerController().notifyChatUpdated();
     }
 
     public void deleteSchoolAdmin(String adminID) {
@@ -341,10 +339,186 @@ public class ModelController {
     }
 
     public void startGettingChat(String chatID) {
-        DomainControlFactory.getChatModelController().startGettingChat(chatID);
+        DomainControlFactory.getChatModelController().getMessages(chatID);
     }
 
     public void deactivatePolling() {
         DomainControlFactory.getChatModelController().deactivatePolling();
+    }
+
+    public String getUserEmail() {
+        return LoginRespository.getUserEmail();//esto se debería buscar desde el modelo
+    }
+
+    public void getSubjects(String schooldID) {
+        DomainControlFactory.getSubjectModelController().getSubjects(schooldID);
+    }
+
+    public void sendResponseOfSubjects(List<Subject> subjects) {
+        PresentationControlFactory.getViewLayerController().sendResponseOfSubjects(subjects);
+    }
+
+    public void assignStudentToSubject(String subjectID, int activityIdentifier) {
+        String userID = DomainControlFactory.getUserModelController().getUserId();
+        DomainControlFactory.getSubjectModelController().assignUserToSubject(subjectID,userID,activityIdentifier);
+    }
+
+    public void notifyAssignStudent(boolean error) {
+        PresentationControlFactory.getViewLayerController().notifyAssignStudent(error);
+    }
+
+    public void notifyListOfTeachersReceivedToAddSubject(List<User> contactsFromSelectedCenter) {
+        PresentationControlFactory.getViewLayerController().notifyListOfTeachersReceivedToAddSubject(contactsFromSelectedCenter);
+    }
+
+    public void assignTeacherToSubject(String id, String subjectID, int activityIdentifier) {
+        DomainControlFactory.getSubjectModelController().assignUserToSubject(subjectID,id,activityIdentifier);
+    }
+
+    public void notifyAssignedTeacher(boolean error) {
+        PresentationControlFactory.getViewLayerController().notifyAssignedTeacher(error);
+    }
+
+
+    public void getGuests(String subjectID) {
+        DomainControlFactory.getEventModelController().getGuests(subjectID);
+    }
+
+    public void sendResponseOfGuests(List<User> guests) {
+        PresentationControlFactory.getViewLayerController().sendResponseOfGuests(guests);
+    }
+
+    public void setUserToken(String token) {
+        DomainControlFactory.getUserModelController().setUserToken(token);
+    }
+
+    public void deleteUserToken(String token) {
+        DomainControlFactory.getUserModelController().deleteUserToken(token);
+    }
+
+    public void createForumEntry(String titleEntry, String textEntry, String schoolId) {
+        DomainControlFactory.getForumModelController().createForumEntry(titleEntry, textEntry, schoolId);
+    }
+
+    public void refreshLoggedUserSchoolsWallEntries() {
+        DomainControlFactory.getForumModelController().refreshLoggedUserSchoolsWallEntries();
+    }
+
+    public void refreshLoggedUserSchoolsWallEntries(List<WallEntry> wallEntryList) {
+        PresentationControlFactory.getViewLayerController().refreshLoggedUserSchoolsWallEntries(wallEntryList);
+    }
+
+    public School getSchoolById(String schoolId) {
+       return DomainControlFactory.getSchoolsModelCrontroller().getSchoolById(schoolId);
+    }
+
+
+    public void getResults(String userID) {
+        DomainControlFactory.getTracingTestResultModel().getTestResults(userID);
+    }
+
+    public void sendTestAnswers(List<TracingTest> results) {
+        PresentationControlFactory.getViewLayerController().sendTestAnswers(results);
+    }
+
+    public void getClassSessions(String subjectID) {
+        DomainControlFactory.getClassSessionsModelController().getClassSessions(subjectID);
+    }
+
+    public void getClassSessionsResult(boolean error, List<ClassSessionModel> classSessions) {
+        PresentationControlFactory.getViewLayerController().getClassSessionsResult(error,classSessions);
+    }
+
+    public void getSubjectsFromUser(int activityIdentifier) {
+        DomainControlFactory.getSubjectModelController().getSubjectsFromUser(activityIdentifier);
+    }
+
+    public void setSubjectsFromUserResult(boolean error, List<Subject> userSubjects) {
+        PresentationControlFactory.getViewLayerController().setSubjectsFromUserResult(error,userSubjects);
+    }
+
+    public void createForumEntryReply(String wallEntryId, String content) {
+        DomainControlFactory.getForumModelController().createForumEntryReply(wallEntryId, content, DomainControlFactory.getUserModelController().getLoggedUser().getId());
+    }
+
+    public void refreshWallEntryReplies(WallEntry wallEntry) {
+        PresentationControlFactory.getViewLayerController().refreshWallEntryReplies(wallEntry);
+    }
+
+    public void createSubject(String subjectName, String schoolID) {
+        DomainControlFactory.getSubjectModelController().createSubject(subjectName,schoolID);
+    }
+
+    public void setCreateSubjectResult(boolean error, int responseCode) {
+        PresentationControlFactory.getViewLayerController().setCreateSubjectResult(error, responseCode);
+    }
+
+
+    public void setSchedule(String classID, List<Subject> l1, List<Subject> l2, List<Subject> l3, List<Subject> l4, List<Subject> l5) {
+        DomainControlFactory.getScheduleModelController().setSchedule(classID,l1,l2,l3,l4,l5);
+    }
+
+    public void deleteWallEntry(String wallEntryId) {
+        DomainControlFactory.getForumModelController().deleteWallEntry(wallEntryId);
+
+    }
+
+    public void getClassroomsOfSchool(String schoolID) {
+        DomainControlFactory.getClassroomModelController().getClassroomsOfSchool(schoolID);
+    }
+
+    public void SetClassroomsBySchoolIDResponse(boolean error, List<Classroom> classroomsFromCurrentSchool) {
+        PresentationControlFactory.getViewLayerController().SetClassroomsBySchoolIDResponse(error,classroomsFromCurrentSchool);
+    }
+
+    public void notifyListOfTeachersReceivedToCreateEvent(List<User> contactsFromSelectedCenter) {
+        PresentationControlFactory.getViewLayerController().notifyListOfTeachersReceivedToCreateEvent(contactsFromSelectedCenter);
+    }
+
+    public void getSchedule(String classID) {
+        DomainControlFactory.getScheduleModelController().getSchedule(classID);
+    }
+
+    public void sendResponseOfSchedule(List<Subject> l1, List<Subject> l2, List<Subject> l3, List<Subject> l4, List<Subject> l5) {
+        PresentationControlFactory.getViewLayerController().sendResponseOfSchedule(l1,l2,l3,l4,l5);
+    }
+
+    public void toastMessage(int resourceMessage) {
+        PresentationControlFactory.getViewLayerController().toastMessage(resourceMessage);
+    }
+
+    public void toastMessage(int resourceMessage, String endString) {
+        PresentationControlFactory.getViewLayerController().toastMessage(resourceMessage, endString);
+    }
+
+    public void createEvent(ClassSessionModel classSession) {
+        DomainControlFactory.getClassSessionsModelController().createEvent(classSession);
+    }
+
+    public void notifyCreateEventResponse(boolean error, int errorCode) {
+        PresentationControlFactory.getViewLayerController().notifyCreateEventResponse(error,errorCode);
+    }
+
+    public void getTeachersBySubjectID(String subjectID) {
+        DomainControlFactory.getUserModelController().getTeachersBySubjectID(subjectID);
+    }
+
+    public void setSendReservationRequestResponse(boolean error, int errorCode) {
+        PresentationControlFactory.getViewLayerController().setSendReservationRequestResponse(error,errorCode);
+    }
+
+    public boolean isMySchool(String schoolID) {
+        return DomainControlFactory.getUserModelController().isMySchool(schoolID);
+    }
+
+    public void sendError() {
+        PresentationControlFactory.getViewLayerController().sendError();
+    }
+
+    public void startPollingChat(String chatID) {
+        DomainControlFactory.getChatModelController().startPollingChat(chatID);
+    }
+    public void upgradeRole(String role) {
+        DomainControlFactory.getUserModelController().upgradeRole(role);
     }
 }

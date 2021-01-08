@@ -1,14 +1,14 @@
 package com.example.gescov.viewlayer.SignUpAndLogin;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gescov.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.common.SignInButton;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -19,6 +19,15 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initGoogleButton();
+        initAppBar();
+    }
+
+    private void initAppBar() {
+        View decorView = getWindow().getDecorView();
+        // Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+
     }
 
     private void initGoogleButton() {
@@ -37,5 +46,11 @@ public class LoginActivity extends AppCompatActivity {
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initAppBar();
     }
 }

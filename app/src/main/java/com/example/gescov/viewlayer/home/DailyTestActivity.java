@@ -1,16 +1,16 @@
 package com.example.gescov.viewlayer.home;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,21 +26,24 @@ public class DailyTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_test);
-        tracingTestController = PresentationControlFactory.getTracingTestControllerController();
+        tracingTestController = PresentationControlFactory.getTracingTestController();
         answers = new ArrayList<>();
+        initToolBar();
         Button sendTest = findViewById(R.id.sendTest);
-        sendTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendTests();
-            }
-        });
+        sendTest.setOnClickListener(v -> sendTests());
+    }
+
+    private void initToolBar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.dail_test_title);
+
     }
 
     private void sendTests() {
         fillAnswers();
         tracingTestController.sendAnswers(answers);
-        Toast.makeText( this, "Respostes enviades :)", Toast.LENGTH_LONG).show();
+        PresentationControlFactory.getMessagesManager().toastMessage(R.string.daily_test_succesfully_sent_toast);
         finish();
     }
 

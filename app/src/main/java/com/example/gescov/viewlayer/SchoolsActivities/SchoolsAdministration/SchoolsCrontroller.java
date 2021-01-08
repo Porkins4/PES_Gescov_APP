@@ -3,19 +3,20 @@ package com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration;
 import android.content.Context;
 import android.util.Pair;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.SchoolsActivities.studentschools.allSchools.SchoolListViewAdapter;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+import com.example.gescov.viewlayer.forum.CreateForumEntryViewModel;
 
 import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
 
 public class SchoolsCrontroller{
 
@@ -27,6 +28,7 @@ public class SchoolsCrontroller{
 
     private SchoolGraphViewModel schoolGraphViewModel;
     private SchoolCreateFormViewModel schoolCreateFormViewModel;
+    private CreateForumEntryViewModel createForumEntryViewModel;
 
 
     public void createSchoolListViewAdapter(Context context) {
@@ -78,6 +80,10 @@ public class SchoolsCrontroller{
             getAdminSchoolListViewAdapter().setList(schoolsList);
             getAdminSchoolListViewAdapter().notifyDataSetChanged();
         }
+
+        if (createForumEntryViewModel!= null) {
+            createForumEntryViewModel.setSchoolList(schoolsList);
+        }
     }
 
     public void createSchool(String schoolName, String schoolAddress, String schoolTelephone, String schoolWebsite, String latitude, String longitude) {
@@ -126,6 +132,12 @@ public class SchoolsCrontroller{
         return schoolCreateFormViewModel;
     }
 
+    public CreateForumEntryViewModel getCreateForumEntryViewModel() {
+        if (createForumEntryViewModel == null)
+            createForumEntryViewModel = new CreateForumEntryViewModel();
+        return createForumEntryViewModel;
+    }
+
     public void deleteSchoolAdmin(String adminID) {
         PresentationControlFactory.getViewLayerController().deleteSchoolAdmin(adminID);
     }
@@ -140,5 +152,9 @@ public class SchoolsCrontroller{
 
     public void updateCoordinatesSchoolCreationForm(String latitude, String longitude) {
         schoolCreateFormViewModel.updateCoordinates(latitude, longitude);
+    }
+
+    public School getSchoolById(String schoolId) {
+        return PresentationControlFactory.getViewLayerController().getSchoolById(schoolId);
     }
 }

@@ -29,26 +29,26 @@ public class StudentsInClassSessionController {
     public StudentsInClassSessionController() {//constructor without colateral actions
     }
 
-    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
-        PresentationControlFactory.getViewLayerController().getStudentsInClassSession(studentsResult);
+    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult, String classSession) {
+        PresentationControlFactory.getViewLayerController().getStudentsInClassSession(studentsResult, classSession);
     }
 
 
 
-    public void refreshStudentsInClassRecordView(List<Pair<User, Pair<Integer,Integer>>> r, boolean b) {
-        studentsInClassRecordViewModel.setResponse(r,b);
+    public void refreshStudentsInClassRecordView(List<Pair<User, Pair<Integer,Integer>>> r, List<String> dates, boolean b) {
+        studentsInClassRecordViewModel.setResponse(r,dates,b);
     }
 
     public void refreshClassroomDistributionAssignments(List<Assignment> r, boolean b) {
         classroomDsitributionViewModel.setAssignmentsResponse(r,b);
     }
 
-    public void getAssignmentsForClassSession(String classroomID, String date, String hour) {
-        PresentationControlFactory.getViewLayerController().getAssignmentsForClassSession(classroomID,date,hour);
+    public void getAssignmentsForClassSession(String classSessionID) {
+        PresentationControlFactory.getViewLayerController().getAssignmentsForClassSession(classSessionID);
     }
 
-    public void getStudentsInClassRecord(String classroomId, String date) {
-        PresentationControlFactory.getViewLayerController().getStudentsInClassRecord(classroomId,date);
+    public void getStudentsInClassRecord(String classroomId) {
+        PresentationControlFactory.getViewLayerController().getStudentsInClassRecord(classroomId);
     }
 
     public void getClassroomInfo(String classroomID) {
@@ -57,5 +57,13 @@ public class StudentsInClassSessionController {
 
     public void refreshClassroomDistributionClassInfo(Classroom c, boolean b) {
         classroomDsitributionViewModel.setClassInfo(c,b);
+    }
+
+    public void sendReservationRequest(String aula, int row, int col) {
+        PresentationControlFactory.getViewLayerController().sendReservationRequest(aula, row, col);
+    }
+
+    public void setSendReservationRequestResponse(boolean error, int errorCode) {
+        classroomDsitributionViewModel.setSendReservationRequestResponse(error,errorCode);
     }
 }

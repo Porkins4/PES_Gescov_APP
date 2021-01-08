@@ -2,15 +2,12 @@ package com.example.gescov.domainlayer.Services.Volley.Implementors;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IChatService;
 import com.example.gescov.domainlayer.Services.Volley.VolleyServices;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,13 +15,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import okhttp3.OkHttpClient;
-import okhttp3.WebSocket;
-import okhttp3.WebSocketListener;
-
 public class ChatServiceImplementor implements IChatService {
     private static final String GESCOV_CHAT_URI = "https://gescov.herokuapp.com/api/chats";
     private boolean polling;
+    private boolean finish;
 
     private static final String DATE_FORMAT = "dd-MM-yyyy";
 
@@ -56,18 +50,8 @@ public class ChatServiceImplementor implements IChatService {
     public void updateChatPreview(String userid) {
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET, GESCOV_CHAT_URI + "/previews?userID=" + userid,null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        DomainControlFactory.getChatModelController().updateChatPreviewCallBack(response,false);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        DomainControlFactory.getChatModelController().updateChatPreviewCallBack(null,true);
-                    }
-                }
+                response -> DomainControlFactory.getChatModelController().updateChatPreviewCallBack(response,false),
+                error -> DomainControlFactory.getChatModelController().updateChatPreviewCallBack(null,true)
         );
         RequestQueue q = VolleyServices.getRequestQueue();
         q.add(request);
@@ -75,6 +59,7 @@ public class ChatServiceImplementor implements IChatService {
 
     @Override
     public void getMessages(String chatID) {
+        finish = false;
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET, GESCOV_CHAT_URI + "/" + chatID + "/messages/",null,
                 response -> DomainControlFactory.getChatModelController().updateChatMessages(response, chatID, false),
@@ -102,12 +87,8 @@ public class ChatServiceImplementor implements IChatService {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.POST, GESCOV_CHAT_URI+"/new", postData,
                     response -> {
-                        DomainControlFactory.getChatModelController().addMessageToChat(response);
-                    }, error -> {
-                if (error.networkResponse != null) {
-
-                }
-            });
+                    }, error -> { }
+                    );
 
             VolleyServices.getRequestQueue().add(jsonObjectRequest);
 
@@ -124,18 +105,12 @@ public class ChatServiceImplementor implements IChatService {
     public void startPollingChat(String chatID) {
         if (polling) {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                    Request.Method.GET, GESCOV_CHAT_URI+"/preview?chatID=" + chatID,null,
-                    response -> {
-                        DomainControlFactory.getChatModelController().checkForNewMessages(response,chatID);
-                    }, error -> {
-                if (error.networkResponse != null) {
-
-                }
-            });
+                    Request.Method.GET, GESCOV_CHAT_URI + "/preview?chatID=" + chatID,null,
+                    response -> DomainControlFactory.getChatModelController().checkForNewMessages(response,chatID),
+                    error -> { }
+                    );
 
             VolleyServices.getRequestQueue().add(jsonObjectRequest);
         }
     }
-
-
 }

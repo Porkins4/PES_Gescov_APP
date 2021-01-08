@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="chat_options_menu_items">
+        <item>Eliminar chat</item>
+    </string-array>
+
+    <string-array name="school_administration_menu_items">
+    <item>Eliminar escuela</item>
+    </string-array>
+
+    <string-array name="wall_entry_menu_item">
+        <item>Eliminar entrada</item>
+    </string-array>
+
+    <string-array name="user_option_menu_items">
+        <item>Hacer administrador</item>
+        <item>Ver resultados de los tests</item>
+    </string-array>
+
+    <string-array name="admin_option_menu_items">
+        <item>Quitar administrador</item>
+        <item> Ver los resultados de los test</item>
+
+    </string-array>
+
+    <string-array name="teacher_option_menu_items">
+        <item>Ver los resultados de los test</item>
+    </string-array>
+
+    <string-array name="join_school_menu_items">
+        <item>Generar solicitud</item>
+        <item>Acceso por código</item>
+    </string-array>
+
+</resources>

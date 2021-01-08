@@ -50,11 +50,9 @@ public class SchoolListViewAdapter extends BaseAdapter {
         View v = inflater.inflate(R.layout.school_list_item, null);
         TextView name = (TextView) v.findViewById(R.id.school_name);
         TextView address = (TextView) v.findViewById(R.id.school_address);
-        TextView state = (TextView) v.findViewById(R.id.school_state);
 
         name.setText(schoolList.get(position).getName());
         address.setText(schoolList.get(position).getAddress());
-        state.setText(schoolList.get(position).getState());
 
         v.setOnClickListener(e-> {
             SchoolsCrontroller controller = PresentationControlFactory.getSchoolsCrontroller();

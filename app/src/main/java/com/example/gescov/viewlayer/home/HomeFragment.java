@@ -10,70 +10,78 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.R;
+import com.example.gescov.domainlayer.Classmodels.User;
+import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
+import com.example.gescov.viewlayer.Singletons.GescovApplication;
 import com.example.gescov.viewlayer.Singletons.LoggedInUser;
-import com.example.gescov.viewlayer.UpdateUserProfile.UpdateUserProfileActivity;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+import com.example.gescov.viewlayer.home.upgraderole.UpgradeRoleActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private Intent intent;
     private View root;
-    private Button riskButton;
+    private Button takeTest;
     private TextView nameText;
     private User user;
-    private ImageView userImage;
+    private CircleImageView userImage;
     private FusedLocationProviderClient fusedLocationProviderClient;
+    private static final int SUCCESS_NOTIFICATION_COVID = 200;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        PresentationControlFactory.setApplicationContext(getContext().getApplicationContext());
+        try {
+            PresentationControlFactory.getSchoolsCrontroller().refreshAllSchoolsList();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (AdapterNotSetException e) {
+            e.printStackTrace();
+        }
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
         checkPermision();
         PresentationControlFactory.setViewModelProvider(new ViewModelProvider(this));
         homeViewModel = PresentationControlFactory.getViewModelProvider().get(HomeViewModel.class);
         root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        Button takeTest = root.findViewById(R.id.takeTest);
+
+        takeTest = root.findViewById(R.id.takeTest);
         String url = LoggedInUser.getPhotoURL();
         userImage = root.findViewById(R.id.profile_image);
         loadImageFromUrl(url);
         Button report = root.findViewById(R.id.report);
+        Button upgradeButton = root.findViewById(R.id.home_upgrade_role);
 
         nameText = root.findViewById(R.id.home_user_name);
         nameText.setText("");
-        riskButton = root.findViewById(R.id.home_risk_button);
 
-        String ContagionID = PresentationControlFactory.getContagionController().getIdContagion();
-        if ( ContagionID == null ) takeTest.setEnabled(false);
-        else takeTest.setEnabled(true);
+        String contagionID = PresentationControlFactory.getContagionController().getIdContagion();
+        takeTest.setEnabled(contagionID != null);
         user = PresentationControlFactory.getViewLayerController().getLoggedUserInfo();
-
-        homeViewModel.getRisk().observe((LifecycleOwner) getContext(), e ->
-                refreshActivity()
-        );
-
-        riskButton.setOnClickListener(e ->
-                PresentationControlFactory.getViewLayerController().updateLoggedUserRisk()
-        );
 
         report.setOnClickListener(v -> {
             intent = new Intent(getActivity(), CovidNotificationActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, SUCCESS_NOTIFICATION_COVID);
         });
 
         takeTest.setOnClickListener(v -> {
@@ -81,29 +89,37 @@ public class HomeFragment extends Fragment {
             startActivity(intent);
         });
 
+        upgradeButton.setOnClickListener(v -> {
+            intent = new Intent(getActivity(), UpgradeRoleActivity.class);
+            startActivity(intent);
+        });
+
         initViewComponents();
+
+        initNotification();
 
 
         return root;
     }
 
+    private void initNotification() {
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(task -> {
+                    String token = task.getResult();
+                    homeViewModel.setUserToken(token);
+                    GescovApplication.setNotToken(token);
+                });
+    }
+
     private void checkPermision() {
         if (getActivity().getApplicationContext().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)  {
             Task<Location> locationResult = fusedLocationProviderClient.getLastLocation();
-            locationResult.addOnCompleteListener(getActivity(), new OnCompleteListener<Location>() {
-                @Override
-                public void onComplete(@NonNull Task<Location> task) {
-                    if ( task.isSuccessful()) {
-                        Location userLoc = task.getResult();
-                        PresentationControlFactory.getHomeController().setLocation(userLoc);
-                    }
+            locationResult.addOnCompleteListener(getActivity(), task -> {
+                if ( task.isSuccessful()) {
+                    Location userLoc = task.getResult();
+                    PresentationControlFactory.getHomeController().setLocation(userLoc);
                 }
             });
-            /*fusedLocationProviderClient.getLastLocation().addOnSuccessListener(location -> {
-                if ( location != null ) {
-                    PresentationControlFactory.getHomeController().setLocation(location);
-                }
-            });*/
 
         }else {
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
@@ -117,7 +133,6 @@ public class HomeFragment extends Fragment {
     }
   
     public void refreshActivity() {
-        riskButton.setText(getResources().getText(homeViewModel.getRisk().getValue() ? R.string.home_risk : R.string.home_not_risk));
         nameText.setText(user.getName());
 
     }
@@ -143,6 +158,16 @@ public class HomeFragment extends Fragment {
                 // in your app.
                 checkPermision();
             }
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SUCCESS_NOTIFICATION_COVID && resultCode == 0) {
+            String contagionID = PresentationControlFactory.getContagionController().getIdContagion();
+            takeTest.setEnabled(contagionID != null);
         }
     }
 }

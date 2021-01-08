@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/schoolAdministration"
+        android:id="@+id/school_administration"
         android:name="com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.SchoolsAdministrationFagment"
         android:label="@string/menu_schools_administration"
         tools:layout="@layout/fragment_school_administration" />
@@ -41,6 +41,16 @@
         android:name="com.example.gescov.viewlayer.ranking.RankingFragment"
         android:label="@string/ranking_name"
         tools:layout="@layout/fragment_ranking" />
+    <fragment
+        android:id="@+id/menu_subjects"
+        android:name="com.example.gescov.viewlayer.subjectsofuser.SubjectsFromUserFragment"
+        android:label="@string/subjects_fragment_title"
+        tools:layout="@layout/fragment_subjects" />
+    <fragment
+        android:id="@+id/menu_forum"
+        android:name="com.example.gescov.viewlayer.forum.ForumFragment"
+        android:label="@string/forum_title"
+        tools:layout="@layout/fragment_forum" />
 
 
 </navigation>

@@ -15,21 +15,21 @@ public class StudentsInClassRecordViewModel extends ViewModel {
 
     private MutableLiveData<StudentsInClassRecordResult> studentsResult;
 
-    public LiveData<StudentsInClassRecordResult> getStudents(String classroomID, String date) {
+    public LiveData<StudentsInClassRecordResult> getStudents(String classroomID) {
         if (studentsResult == null) {
             studentsResult = new MutableLiveData<>();
-            getStudentsInClassRecord(classroomID,date);
+            getStudentsInClassRecord(classroomID);
         }
         return studentsResult;
     }
 
-    private void getStudentsInClassRecord(String classroomId, String date) {
+    private void getStudentsInClassRecord(String classroomId) {
         PresentationControlFactory.getStudentsInClassSessionController().setStudentsInClassRecordViewModel(this);
-        PresentationControlFactory.getStudentsInClassSessionController().getStudentsInClassRecord(classroomId,date);
+        PresentationControlFactory.getStudentsInClassSessionController().getStudentsInClassRecord(classroomId);
     }
 
-    public void setResponse(List<Pair<User, Pair<Integer,Integer>>> r, boolean b) {
-        StudentsInClassRecordResult result = new StudentsInClassRecordResult(r,b);
+    public void setResponse(List<Pair<User, Pair<Integer,Integer>>> r, List<String> dates, boolean b) {
+        StudentsInClassRecordResult result = new StudentsInClassRecordResult(r,dates,b);
         studentsResult.setValue(result);
     }
 }

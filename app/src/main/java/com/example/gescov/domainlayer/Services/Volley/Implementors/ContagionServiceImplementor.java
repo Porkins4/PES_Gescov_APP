@@ -5,16 +5,15 @@ import android.util.Pair;
 import androidx.lifecycle.MutableLiveData;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.example.gescov.R;
 import com.example.gescov.domainlayer.Services.Conection;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IContagionService;
 import com.example.gescov.domainlayer.Services.Volley.VolleyServices;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
+import com.example.gescov.viewlayer.Singletons.GescovApplication;
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
 
 import org.json.JSONArray;
@@ -26,60 +25,56 @@ import java.util.concurrent.ExecutionException;
 
 public class ContagionServiceImplementor implements IContagionService {
 
-    private Conection conection;
-    private RequestQueue queue;
-    private final String ContagionLink = "https://gescov.herokuapp.com/api/contagions";
-    private final String TracingTestLink = "https://gescov.herokuapp.com/api/tracingTests";
 
-    public ContagionServiceImplementor() {}
+    private static final String CONTAGION_LINK = "https://gescov.herokuapp.com/api/contagions";
+    private static final String TRACING_TEST_LINK = "https://gescov.herokuapp.com/api/tracingTests";
+
 
     @Override
     public void sendAnswers(List<Boolean> answers, String idContagion) {
-        queue =  Volley.newRequestQueue(VolleyServices.getCtx());
         try {
             JSONArray jsonUserAnswers = new JSONArray(answers);
             JSONObject userAnswers = new JSONObject();
             userAnswers.put("answers",jsonUserAnswers);
             userAnswers.put("contID",idContagion);
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                    (Request.Method.POST,TracingTestLink, userAnswers, response -> {
+                    (Request.Method.POST, TRACING_TEST_LINK, userAnswers, response -> {
                     }, error -> {
 
                     });
-            queue.add(jsonObjectRequest);
+            VolleyServices.getRequestQueue().add(jsonObjectRequest);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
     public void notifyPossibleContagion(String id, MutableLiveData<ContagionRequestResult> result) {
-        queue =  Volley.newRequestQueue(VolleyServices.getCtx());
         JSONObject contagion;
         try {
             contagion = new JSONObject();
             contagion.put("infectedID",id);
             contagion.put("inCon",false);
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                    (Request.Method.POST, ContagionLink, contagion, response -> {
+                    (Request.Method.POST, CONTAGION_LINK, contagion, response -> {
                         try {
                             String idContagion = response.getString("id");
                             ContagionRequestResult aux = new ContagionRequestResult();
-                            aux.setError(new Pair<String,Boolean>("notifyPossiblePositive",false));
+                            aux.setError(new Pair<>("", false));
                             DomainControlFactory.getUserModelController().updateContagionID(idContagion);
                             result.setValue(aux);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }, error -> {
-                        // TODO: Handle error
                         ContagionRequestResult aux = new ContagionRequestResult();
-                        aux.setError(new Pair<String,Boolean> ("notifyPossiblePositive",true));
-                        if(error.networkResponse == null ) aux.setError(new Pair<String,Boolean> ("notifyPositive",false));
+                        if (error.networkResponse.statusCode == 409) {
+                            aux.setError(new Pair<>(GescovApplication.getContext().getString(R.string.conflict_notify_possitive),true));
+                        }
+                        else aux.setError(new Pair<>(GescovApplication.getContext().getString(R.string.already_positive),true));
                         result.setValue(aux);
                     });
-            queue.add(jsonObjectRequest);
+            VolleyServices.getRequestQueue().add(jsonObjectRequest);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -87,47 +82,44 @@ public class ContagionServiceImplementor implements IContagionService {
 
     @Override
     public String getContagionList(String schoolId) {
-        conection = new Conection();
+        Conection conection = new Conection();
         String response = null;
         try {
-            response = conection.execute(ContagionLink+"/now/"+schoolId).get();
+            response = conection.execute(CONTAGION_LINK +"/now/"+schoolId).get();
         } catch (ExecutionException  | InterruptedException e ){
             e.printStackTrace();
         }
-        if (response == null) return "Error";//TODO
+        if (response == null) return "Error";
         return response;
     }
 
 
-    public void notifyContagion(MutableLiveData<ContagionRequestResult> result,String ConfirmedInfected, String id) {
-        queue =  Volley.newRequestQueue(VolleyServices.getCtx());
+    public void notifyContagion(MutableLiveData<ContagionRequestResult> result,String confirmedInfected, String id) {
         JSONObject contagion;
         try {
             contagion = new JSONObject();
             contagion.put("infectedID",id);
-            contagion.put("inCon",ConfirmedInfected);
+            contagion.put("inCon",confirmedInfected);
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                    (Request.Method.POST, ContagionLink, contagion, response -> {
+                    (Request.Method.POST, CONTAGION_LINK, contagion, response -> {
                         try {
                             String idContagion = response.getString("id");
                             ContagionRequestResult aux = new ContagionRequestResult();
-                            aux.setError(new Pair<String,Boolean>("notifyPositive",false));
+                            aux.setError(new Pair<>("", false));
                             DomainControlFactory.getUserModelController().updateContagionID(idContagion);
                             result.setValue(aux);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            // TODO: Handle error
-                            ContagionRequestResult aux = new ContagionRequestResult();
-                            aux.setError(new Pair<String,Boolean> ("notifyPositive",true));
-                            if(error.networkResponse == null ) aux.setError(new Pair<String,Boolean> ("notifyPositive",false));
-                            result.setValue(aux);
+                    }, error -> {
+                        ContagionRequestResult aux = new ContagionRequestResult();
+                        if (error.networkResponse.statusCode == 409) {
+                            aux.setError(new Pair<>(GescovApplication.getContext().getString(R.string.conflict_notify_possitive),true));
                         }
+                        else aux.setError(new Pair<>(GescovApplication.getContext().getString(R.string.already_positive),true));
+                        result.setValue(aux);
                     });
-            queue.add(jsonObjectRequest);
+            VolleyServices.getRequestQueue().add(jsonObjectRequest);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -135,44 +127,38 @@ public class ContagionServiceImplementor implements IContagionService {
 
     @Override
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result,String id) {
-        queue =  Volley.newRequestQueue(VolleyServices.getCtx());
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, ContagionLink+"/"+id,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        ContagionRequestResult aux = new ContagionRequestResult();
-                        aux.setError(new Pair<String,Boolean> ("notifyRecovery",false));
-                        DomainControlFactory.getUserModelController().updateContagionID(null);
-                        result.setValue(aux);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                ContagionRequestResult aux = new ContagionRequestResult();
-                aux.setError(new Pair<String,Boolean> ("notifyRecovery",true));
-                result.setValue(aux);
-            }
-        });
-        queue.add(stringRequest);
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, CONTAGION_LINK +"/"+id,
+                response -> {
+                    ContagionRequestResult aux = new ContagionRequestResult();
+                    aux.setError(new Pair<>("", false));
+                    DomainControlFactory.getUserModelController().updateContagionID(null);
+                    result.setValue(aux);
+                }, error -> {
+                    ContagionRequestResult aux = new ContagionRequestResult();
+                    aux.setError(new Pair<>(GescovApplication.getContext().getString(R.string.already_recovered),true));
+                    result.setValue(aux);
+                });
+        VolleyServices.getRequestQueue().add(stringRequest);
     }
 
-    //-------------------------------------------------------------
-    //limpio
+
     @Override
     public void getContagionID(String id) {
         StringRequest stringRequest = new StringRequest(
-                Request.Method.GET, ContagionLink + "/student/"+id,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String contagionID) {
-                        DomainControlFactory.getUserModelController().setContagionId(contagionID, false);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                DomainControlFactory.getUserModelController().setContagionId(null, false);
-            }
-        });
+                Request.Method.GET, CONTAGION_LINK + "/student/"+id,
+                contagionID -> DomainControlFactory.getUserModelController().setContagionId(contagionID, false),
+                error -> DomainControlFactory.getUserModelController().setContagionId(null, false));
         VolleyServices.getRequestQueue().add(stringRequest);
+    }
+
+    @Override
+    public void getTestResults(String userID) {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET, TRACING_TEST_LINK +"?userID="+userID,null,
+                response -> DomainControlFactory.getTracingTestResultModel().sendTestAnswers(response),
+                error -> { DomainControlFactory.getTracingTestResultModel().sendError();
+                });
+        VolleyServices.getRequestQueue().add(jsonArrayRequest);
+
     }
 }

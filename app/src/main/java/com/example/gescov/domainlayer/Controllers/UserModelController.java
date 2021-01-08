@@ -2,15 +2,17 @@ package com.example.gescov.domainlayer.Controllers;
 
 import android.location.Location;
 
+import androidx.lifecycle.MutableLiveData;
+
+import com.example.gescov.domainlayer.Classmodels.Subject;
 import com.example.gescov.domainlayer.Classmodels.User;
-import com.example.gescov.domainlayer.Singletons.LoginRespository;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
+import com.example.gescov.domainlayer.Singletons.LoginRespository;
 import com.example.gescov.domainlayer.Singletons.ServicesFactory;
 import com.example.gescov.viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionResult;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolClassroomList.SchoolRequestResult;
 import com.example.gescov.viewlayer.SignUpAndLogin.TokenVerificationResult;
-import com.example.gescov.viewlayer.Singletons.LoggedInUser;
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
@@ -21,8 +23,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
 
 public class UserModelController {
     private User loggedUser;
@@ -93,9 +93,9 @@ public class UserModelController {
     }
 
 
-    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult) {
+    public void getStudentsInClassSession(MutableLiveData<StudentsInClassSessionResult> studentsResult, String classSession) {
         ISchoolService iSchoolService = ServicesFactory.getSchoolService();
-        iSchoolService.getStudentsInClassSession(studentsResult);
+        iSchoolService.getStudentsInClassSession(studentsResult, classSession);
     }
 
     public void notifyRecovery(MutableLiveData<ContagionRequestResult> result) {
@@ -134,7 +134,7 @@ public class UserModelController {
 
     public void refreshLoggedUser(JSONObject response) {
         loggedUser = getUserFromJSONObject(response);
-        DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName(), loggedUser.getRisk());
+        //DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName());
     }
 
     public User getLoggedUser() {
@@ -161,7 +161,7 @@ public class UserModelController {
         }
         User user = getUserFromJSONObject(response);
         userHash.put(user.getId(), user);
-        DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName(), loggedUser.getRisk());
+        //DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName());
     }
 
     public void addStudentToCenter(String schoolId, MutableLiveData<SchoolRequestResult> result) {
@@ -236,9 +236,8 @@ public class UserModelController {
             String email = response.getString("email");
             String pic = response.getString("pic");
             boolean isStudent = response.getBoolean("student");
-            boolean risk = response.getBoolean("risk");
             String tokenId = response.getString("id");
-            user = new User(name, id, schoolsList, risk, isStudent, email, tokenId, pic);
+            user = new User(name, id, schoolsList, isStudent, email, tokenId, pic);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -256,7 +255,7 @@ public class UserModelController {
 
     public void setContagionId(String contagionId, Boolean error) {
         loggedUser.setIdContagion(contagionId);
-        DomainControlFactory.getModelController().setUserRetrieveResult(error);
+        DomainControlFactory.getSubjectModelController().getSubjectsFromUser(2);
     }
 
     public void updateContagionID(String contagionId) {
@@ -273,19 +272,31 @@ public class UserModelController {
         DomainControlFactory.getSchoolsModelCrontroller().updateSchools(loggedUser.getSchoolsID());
     }
 
-    public void setContactsFromSelectedCenter(JSONArray response) {
+    public void setContactsFromSelectedCenter(JSONArray response, int activityIdentifier) {
         contactsFromSelectedCenter = new ArrayList<>();
         for (int i = 0; i < response.length(); ++i) {
             try {
                 User u = getUserFromJSONObject(response.getJSONObject(i)); //reusar esta operación
-                System.out.println(u.getProfileType());
-                if (loggedUser.getProfileType() == User.UserProfileType.STUDENT && u.getProfileType() == User.UserProfileType.TEACHER) contactsFromSelectedCenter.add(u);
-                else if (loggedUser.getProfileType() == User.UserProfileType.TEACHER) contactsFromSelectedCenter.add(u);
+                addUserToContactList(u,activityIdentifier);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-        DomainControlFactory.getModelController().updateContactsFromCreateChat();
+        if (activityIdentifier == 1) DomainControlFactory.getModelController().updateContactsFromCreateChat();
+        else DomainControlFactory.getModelController().notifyListOfTeachersReceivedToAddSubject(contactsFromSelectedCenter);
+    }
+
+    private void addUserToContactList(User u, int activityIdentifier) {
+        if (loggedUser.getId().equals(u.getId())) return;
+        if (activityIdentifier == 1) {
+            if (loggedUser.getProfileType() == User.UserProfileType.STUDENT && u.getProfileType() == User.UserProfileType.TEACHER)
+                contactsFromSelectedCenter.add(u);
+            else if (loggedUser.getProfileType() == User.UserProfileType.TEACHER)
+                contactsFromSelectedCenter.add(u);
+        } else {
+            if (u.getProfileType() == User.UserProfileType.TEACHER)
+                contactsFromSelectedCenter.add(u);
+        }
     }
 
     public List<User> getContacts() {
@@ -320,5 +331,50 @@ public class UserModelController {
 
     public String getIdContagion() {
         return loggedUser.getIdContagion();
+    }
+
+    public void setSubjectID(String subjectID, boolean error, int activityIdentifier) {
+        if (! error ) {
+            DomainControlFactory.getSubjectModelController().getSubjectsFromUser(-1);
+            loggedUser.addSubjectID(subjectID);
+        }
+        if (activityIdentifier == 1) DomainControlFactory.getModelController().notifyAssignStudent(error);
+        else DomainControlFactory.getModelController().notifyAssignedTeacher(error);
+    }
+
+    public void setUserToken(String token) {
+        ServicesFactory.getUserService().setUserToken(loggedUser.getId(),token);
+    }
+
+    public void deleteUserToken(String token) {
+        ServicesFactory.getUserService().deleteUserToken(loggedUser.getId(),token);
+    }
+
+    public void getTeachersBySubjectID(String subjectID) {
+        ServicesFactory.getSubjectsService().getUsersBySubjectID(subjectID);
+    }
+
+    public void setUsersBySubjectIDResult(JSONArray response) {
+        contactsFromSelectedCenter = new ArrayList<>();
+        for (int i = 0; i < response.length(); ++i) {
+            try {
+                contactsFromSelectedCenter.add(getUserFromJSONObject(response.getJSONObject(i)));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        DomainControlFactory.getModelController().notifyListOfTeachersReceivedToCreateEvent(contactsFromSelectedCenter);
+    }
+
+    public void setSendReservationRequestResponse(boolean error, int errorCode, JSONObject response) {
+        DomainControlFactory.getModelController().setSendReservationRequestResponse(error,errorCode);
+    }
+
+    public boolean isMySchool(String schoolID) {
+        return loggedUser.isMySchool(schoolID);
+    }
+
+    public void upgradeRole(String role) {
+        ServicesFactory.getUpgradeUserRoleResponseController().upgradeUserRole(loggedUser.getId(), role);
     }
 }

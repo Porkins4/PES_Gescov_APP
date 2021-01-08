@@ -1,11 +1,11 @@
 package com.example.gescov.viewlayer.SignUpAndLogin;
 
-import com.example.gescov.domainlayer.Classmodels.User;
-import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.example.gescov.domainlayer.Classmodels.User;
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 public class LoadingProfileViewModel extends ViewModel {
     private MutableLiveData<Boolean> loginResult, userRetrieve, tokenVerificationResult;
@@ -61,5 +61,9 @@ public class LoadingProfileViewModel extends ViewModel {
 
     public User getLoggedInUser() {
         return PresentationControlFactory.getLoadingProfileController().getLoggedInUser();
+    }
+
+    public void retryVerifyToken() {
+        checkTokenWithServer();
     }
 }

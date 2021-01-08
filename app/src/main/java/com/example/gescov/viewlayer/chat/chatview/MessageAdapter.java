@@ -11,8 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gescov.domainlayer.Classmodels.MessageModel;
 import com.example.gescov.R;
+import com.example.gescov.domainlayer.Classmodels.MessageModel;
 import com.example.gescov.viewlayer.Singletons.GescovApplication;
 import com.squareup.picasso.Picasso;
 
@@ -51,8 +51,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
         MessageModel message = messages.get(position);
-        holder.message_text.setText(message.getText());
-        if (holder.profile_image != null) loadImageFromUrl(holder.profile_image,pic);
+        holder.messageText.setText(message.getText());
+        holder.messageHour.setText(message.getHour().substring(0,5));
+        if (holder.profileImage != null) loadImageFromUrl(holder.profileImage,pic);
     }
 
     @Override
@@ -81,17 +82,20 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     }
 
     public boolean empty() {
-        return messages.size() == 0;
+        return messages.isEmpty();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView message_text;
-        public ImageView profile_image;
+        public TextView messageText;
+        public TextView messageHour;
+        public ImageView profileImage;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            message_text = itemView.findViewById(R.id.message_text);
-            profile_image = itemView.findViewById(R.id.profile_image);
+            messageText = itemView.findViewById(R.id.message_text);
+            profileImage = itemView.findViewById(R.id.profile_image);
+            messageHour = itemView.findViewById(R.id.message_hour);
         }
     }
 

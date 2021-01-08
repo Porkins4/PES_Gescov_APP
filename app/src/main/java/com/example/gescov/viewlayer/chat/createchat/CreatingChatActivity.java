@@ -1,12 +1,11 @@
 package com.example.gescov.viewlayer.chat.createchat;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.R;
 
@@ -25,16 +24,13 @@ public class CreatingChatActivity extends AppCompatActivity {
     private void initListener() {
         createChatViewModel = new ViewModelProvider(this).get(CreateChatViewModel.class);
         createChatViewModel.setTarget(getIntent().getExtras().getString("targetName"),getIntent().getExtras().getString("targetID"));
-        createChatViewModel.sendChatRequest().observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean error) {
-                Intent resultIntent = new Intent();
-                if (!error) {
-                    resultIntent.putExtra("chatID",createChatViewModel.getChatID());
-                    setResult(RESULT_OK,resultIntent);
-                } else setResult(RESULT_CANCELED, resultIntent);
-                finish();
-            }
+        createChatViewModel.sendChatRequest().observe(this, error -> {
+            Intent resultIntent = new Intent();
+            if (!error) {
+                resultIntent.putExtra("chatID",createChatViewModel.getChatID());
+                setResult(RESULT_OK,resultIntent);
+            } else setResult(RESULT_CANCELED, resultIntent);
+            finish();
         });
     }
 

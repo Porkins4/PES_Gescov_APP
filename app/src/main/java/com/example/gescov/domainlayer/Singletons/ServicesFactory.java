@@ -1,33 +1,44 @@
 package com.example.gescov.domainlayer.Singletons;
 
+
+
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.CreateForumEntryReplyResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.CreateForumEntryResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.CreateRequestToSchoolResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteSchoolAdminResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteSchoolClassroomResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteSchoolResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.DeleteWallEntryResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshCurrentSchoolResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshSchoolClassroomsResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshSchoolRequestsBySchoolIdResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshSchoolResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshStudentSchoolsResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshUsersBySchoolIdResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RefreshWallEntriesBySchoolIdResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.RequestAccessSchoolByCodeResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpdateSchoolAdminResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpdateSchoolClassroomResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpdateSchoolRequestStatusResponseController;
 import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpdateUserRiskResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.gescovrequests.ResponseControllers.UpgradeUserRoleResponseController;
+import com.example.gescov.domainlayer.Services.Retrofit.mapsretrofit.RefreshCoordinatesFromAddressResponseController;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.AssignmentServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.ChatServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.ClassroomServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.ContagionServiceImplementor;
+import com.example.gescov.domainlayer.Services.Volley.Implementors.EventServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.SchoolServiceImplementor;
+import com.example.gescov.domainlayer.Services.Volley.Implementors.SubjectsServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Implementors.UserServiceImplementor;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IAssignmentService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IChatService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IClassroomService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IContagionService;
+import com.example.gescov.domainlayer.Services.Volley.Interfaces.IEventService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
+import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISubjectsService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IUserService;
-import com.example.gescov.domainlayer.Services.Retrofit.mapsretrofit.RefreshCoordinatesFromAddressResponseController;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -45,6 +56,8 @@ public class ServicesFactory {
     private static IClassroomService classroomService;
     private static IAssignmentService assignmentService;
     private static IChatService chatService;
+    private static ISubjectsService subjectsService;
+    private static IEventService eventService;
 
     //retrofit
     private static DeleteSchoolResponseController deleteSchoolResponseController;
@@ -65,6 +78,11 @@ public class ServicesFactory {
     //retrofit maps
     private static RefreshCoordinatesFromAddressResponseController refreshCoordinatesFromAddressResponseController;
     private static CreateRequestToSchoolResponseController createRequestToSchoolResponseController;
+    private static CreateForumEntryResponseController createForumEntryResponseController;
+    private static RefreshWallEntriesBySchoolIdResponseController refreshWallEntriesBySchoolIdResponseController;
+    private static CreateForumEntryReplyResponseController createForumEntryReplyResponseController;
+    private static DeleteWallEntryResponseController deleteWallEntryResponseController;
+    private static UpgradeUserRoleResponseController upgradeUserRoleResponseController;
 
     private static Retrofit getRetrofit() {
         if (retrofit != null) return retrofit;
@@ -215,5 +233,49 @@ public class ServicesFactory {
         if (createRequestToSchoolResponseController != null) return createRequestToSchoolResponseController;
         createRequestToSchoolResponseController = new CreateRequestToSchoolResponseController(getRetrofit());
         return createRequestToSchoolResponseController;
+    }
+
+    public static ISubjectsService getSubjectsService() {
+        if (subjectsService != null) return subjectsService;
+        subjectsService = new SubjectsServiceImplementor();
+        return subjectsService;
+    }
+
+
+    public static IEventService getEventService() {
+        if (eventService != null) return eventService;
+        eventService = new EventServiceImplementor();
+        return eventService;
+    }
+
+    public static CreateForumEntryResponseController getCreateForumEntryResponseController() {
+        if (createForumEntryResponseController != null) return createForumEntryResponseController;
+        createForumEntryResponseController = new CreateForumEntryResponseController(getRetrofit());
+        return createForumEntryResponseController;
+    }
+
+    public static RefreshWallEntriesBySchoolIdResponseController getRefreshWallEntriesBySchoolIdResponseController() {
+        if (refreshWallEntriesBySchoolIdResponseController != null) return refreshWallEntriesBySchoolIdResponseController;
+        refreshWallEntriesBySchoolIdResponseController = new RefreshWallEntriesBySchoolIdResponseController(getRetrofit());
+        return refreshWallEntriesBySchoolIdResponseController;
+
+    }
+
+    public static CreateForumEntryReplyResponseController getCreateForumEntryReplyResponseController() {
+        if (createForumEntryReplyResponseController != null) return createForumEntryReplyResponseController;
+        createForumEntryReplyResponseController = new CreateForumEntryReplyResponseController(getRetrofit());
+        return createForumEntryReplyResponseController;
+    }
+
+    public static DeleteWallEntryResponseController getDeleteWallEntryResponseController() {
+        if (deleteWallEntryResponseController != null) return deleteWallEntryResponseController;
+        deleteWallEntryResponseController = new DeleteWallEntryResponseController(getRetrofit());
+        return deleteWallEntryResponseController;
+    }
+
+    public static UpgradeUserRoleResponseController getUpgradeUserRoleResponseController() {
+        if (upgradeUserRoleResponseController != null) return upgradeUserRoleResponseController;
+        upgradeUserRoleResponseController = new UpgradeUserRoleResponseController(getRetrofit());
+        return upgradeUserRoleResponseController;
     }
 }

@@ -68,7 +68,7 @@ public class ClassroomDistributionTableWidget {
                         int toastTime = Toast.LENGTH_SHORT;
                         if (table.getText().equals("x")) Toast.makeText(parentActivity,table.getResources().getText(R.string.Catalan_table_not_available),toastTime).show();
                         else if (table.getText().equals("")) Toast.makeText(parentActivity,table.getResources().getText(R.string.Catalan_table_already_assigned),toastTime).show();
-                        else parentActivity.launchMarkPosition(studentId,rowPos,colPos);
+                        else parentActivity.launchMarkPosition(rowPos,colPos);
                         //------------------------------------------------------------------
 
                     }

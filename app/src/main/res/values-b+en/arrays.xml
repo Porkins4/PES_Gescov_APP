@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="chat_options_menu_items">
+        <item>Delete chat</item>
+    </string-array>
+
+    <string-array name="school_administration_menu_items">
+    <item>Delete school</item>
+    </string-array>
+
+    <string-array name="wall_entry_menu_item">
+        <item>Delete Entry</item>
+    </string-array>
+
+    <string-array name="user_option_menu_items">
+        <item>Upgrade to administrator</item>
+        <item>Check test results</item>
+    </string-array>
+
+    <string-array name="admin_option_menu_items">
+        <item>Remove administrator</item>
+        <item>Check test results</item>
+
+    </string-array>
+
+    <string-array name="teacher_option_menu_items">
+        <item>See test results</item>
+    </string-array>
+
+    <string-array name="join_school_menu_items">
+        <item>Create request</item>
+        <item>Access with code</item>
+    </string-array>
+
+</resources>

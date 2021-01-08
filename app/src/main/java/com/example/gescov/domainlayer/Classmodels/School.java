@@ -23,8 +23,9 @@ public class School {
     private String webpage;
     private List<String> listAdministratorsID;
     private String email;
+    private String accessCode;
 
-    public School(String id, String name, String address, String state, String creatorID, String email, List<String> listAdministratorsID) {
+    public School(String id, String name, String address, String state, String creatorID, String email, String accessCode, List<String> listAdministratorsID, String webpage) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -33,6 +34,8 @@ public class School {
         this.creatorID = creatorID;
         this.listAdministratorsID = listAdministratorsID;
         longitude = latitude = 0;
+        this.accessCode = accessCode;
+        this.webpage = webpage;
     }
 
     public School(String name) {
@@ -42,7 +45,7 @@ public class School {
 
     public School(){}
 
-    public School(String id, String name, String address, String state, String creatorID, String email, String telephoneNumber, double longitude, double latitude, List<String> listAdministratorsID) {
+    public School(String id, String name, String address, String state, String creatorID, String email, String telephoneNumber, double longitude, double latitude, String accessCode, List<String> listAdministratorsID, String webpage) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -53,6 +56,8 @@ public class School {
         this.listAdministratorsID = listAdministratorsID;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.accessCode = accessCode;
+        this.webpage = webpage;
     }
 
     public static School fromJsonToSchool(JSONObject response) {
@@ -62,8 +67,10 @@ public class School {
             String nameSchool = response.getString("name");
             String stateSchool = response.getString("state");
             String addressSchool = response.getString("address");
+            String accessCode = response.getString("entryCode");
             String emailSchool = null;//aux.getString("email");
             String phone = response.getString("phone");
+            String webpage = response.getString("website");
             double longitude = response.getDouble("longitude");
             double latitude = response.getDouble("latitude");
             List<String> listAdminsID = new ArrayList<>();
@@ -72,7 +79,7 @@ public class School {
                 listAdminsID.add(adminsArray.getString(admin));
             };
             String creatorSchoolID = response.getString("creatorID");
-            res = new School(idSchool, nameSchool, addressSchool, stateSchool, creatorSchoolID, emailSchool, phone, longitude, latitude, listAdminsID);
+            res = new School(idSchool, nameSchool, addressSchool, stateSchool, creatorSchoolID, emailSchool, phone, longitude, latitude, accessCode, listAdminsID,webpage);
         } catch (JSONException e) {
             res.setId("null"); //not received correctly
         }
@@ -81,6 +88,14 @@ public class School {
 
     public String getId() {
         return id;
+    }
+
+    public String getAccessCode() {
+        return accessCode;
+    }
+
+    public void setAccessCode(String accessCode) {
+        this.accessCode = accessCode;
     }
 
     public void setId(String id) {

@@ -28,7 +28,6 @@ public class MessageModel {
         try {
             String chatID = response.getString("chatID");
             String creatorID = response.getString("creatorID");
-            //String creator = response.getString("creator");
             String date = response.getString("date");
             String hour = response.getString("hour");
             String id = response.getString("id");
@@ -50,6 +49,10 @@ public class MessageModel {
 
     public String getChatID() {
         return chatID;
+    }
+
+    public String getHour() {
+        return hour;
     }
 
     public void print() {

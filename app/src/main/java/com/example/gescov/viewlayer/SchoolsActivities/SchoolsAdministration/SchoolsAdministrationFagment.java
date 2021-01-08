@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.Exceptions.AdapterNotSetException;
 import com.example.gescov.viewlayer.SchoolsActivities.studentschools.allSchools.SchoolListViewAdapter;
@@ -15,8 +17,6 @@ import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
-
-import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,8 +75,8 @@ public class SchoolsAdministrationFagment extends Fragment {
                              Bundle savedInstanceState) {
 
         View thisView = inflater.inflate(R.layout.fragment_school_administration, container, false);
-        createSchoolButton = thisView.findViewById(R.id.add_school_button);
-        ListView list = (ListView) thisView.findViewById(R.id.schools_list);
+        createSchoolButton = thisView.findViewById(R.id.add_forum_entry_button);
+        ListView list = (ListView) thisView.findViewById(R.id.news_list);
         createSchoolListViewAdapter(list.getContext());
         SchoolListViewAdapter adapter = getAdapter();
 

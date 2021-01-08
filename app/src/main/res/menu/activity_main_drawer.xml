@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
@@ -21,33 +20,42 @@
             android:title="@string/mapa_text" />
 
         <item
-
-            android:id="@+id/user_schools"
-            android:icon="@drawable/universidad"
-            android:title="@string/my_schools_title" />
-
-            android:id="@+id/ranking_fragment"
-            android:title="@string/ranking_name" />
-        <item
             android:id="@+id/ranking_fragment"
             android:icon="@drawable/trofeo"
             android:title="@string/ranking_name" />
 
+        <item
+            android:id="@+id/menu_subjects"
+            android:icon="@drawable/books_stack_of_three"
+            android:title="@string/subjects" />
 
+        <item
+            android:id="@+id/menu_forum"
+            android:icon="@drawable/discussion"
+            android:title="@string/forum" />
+        <item
+            android:id="@+id/open_calendar"
+            android:icon="@drawable/calendario"
+            android:title="@string/open_calendar" />
+    </group>
 
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="none">
 
+        <item
+
+            android:id="@+id/user_schools"
+            android:icon="@drawable/graduation_hat"
+            android:title="@string/my_schools_title" />
         <item
             android:id="@+id/user_all_schools"
             android:icon="@drawable/universidad"
             android:title="@string/user_all_schools_title" />
-    </group>
-    <group />
-    <group
-        android:id="@+id/group2"
-        android:checkableBehavior="none">
+
         <item
-            android:id="@+id/schoolAdministration"
-            android:icon="@drawable/universidad"
+            android:id="@+id/school_administration"
+            android:icon="@drawable/director"
             android:title="@string/menu_schools_administration" />
         <item
             android:id="@+id/logout"

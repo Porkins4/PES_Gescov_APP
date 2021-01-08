@@ -2,6 +2,8 @@ package com.example.gescov.domainlayer.Classmodels;
 
 import android.location.Location;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IContagionService;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
@@ -15,11 +17,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.lifecycle.MutableLiveData;
-
 public class User {
 
-
+    public boolean isTeacher() {
+        return profileType.equals(User.UserProfileType.TEACHER);
+    }
 
     public enum UserProfileType {
         STUDENT ("STUDENT"),
@@ -54,10 +56,9 @@ public class User {
     private String email;
     private String idContagion;
     private String ConfirmedInfected;
-    private Boolean risk;
     private UserProfileType profileType;
     private String tokenId;
-
+    private List<String> subjectsID;
     private Location location;
 
     private String pic;
@@ -91,6 +92,11 @@ public class User {
 
 
     }
+
+    public void addSubjectID(String subjectID) {
+        subjectsID.add(subjectID);
+    }
+
     public Location getLocation() {
         return this.location;
     }
@@ -98,15 +104,15 @@ public class User {
     //----------------------------------
     public void setIdContagion(String idContagion) { this.idContagion = idContagion; }
 
-    public User (String name, String id, List<String> schools, boolean risk, boolean isStudent, String email, String tokenId, String pic) {
+    public User (String name, String id, List<String> schools, boolean isStudent, String email, String tokenId, String pic) {
         this.name = name;
         this.schoolsID =  schools;
         this.id = id;
-        this.risk = risk;
         this.profileType = UserProfileType.getUserProfileFromBoolean(isStudent);
         this.tokenId = tokenId;
         this.email = email;
         this.pic = pic;
+        subjectsID = new ArrayList<>();
     }
     //----------------------------------
 
@@ -129,6 +135,10 @@ public class User {
         this.schoolsID = schoolsID;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public String getId() {
         return id;
     }
@@ -146,10 +156,6 @@ public class User {
     public String getConfirmedInfected() { return ConfirmedInfected; }
 
     public void setConfirmedInfected(String confirmedInfected) { ConfirmedInfected = confirmedInfected; }
-
-    public void setRisk (boolean risk) {
-        this.risk = risk;
-    }
 
     public String getCntagionsOfCenter(String schoolID) {
         IContagionService icontragionService = ServicesFactory.getContagionService();
@@ -182,8 +188,7 @@ public class User {
 
 
     public void sendReservationRequest(String aula, int row, int col) {
-        ISchoolService schoolService = ServicesFactory.getSchoolService();
-        schoolService.sendReservationRequest(id,aula,row,col);
+        ServicesFactory.getSchoolService().sendReservationRequest(id,aula,row,col);
     }
 
 
@@ -222,7 +227,6 @@ public class User {
             id = response.getString("id");
             name = response.getString("name");
             profileType = UserProfileType.getUserProfileFromString(response.getString("profile"));
-            risk = response.getBoolean("risk");
             JSONArray aux = response.getJSONArray("schoolsID");
             schoolsID = new ArrayList<>();
             for (int i = 0; i < aux.length(); ++i) {
@@ -243,10 +247,6 @@ public class User {
         ServicesFactory.getUserService().changeUserProfile(id, isStudent);
     }
 
-    public boolean getRisk() {
-        return risk;
-    }
-
     public void updateRisk() {
         ServicesFactory.getUpdateUserRiskResponseController().updateRisk(id);
     }
@@ -262,7 +262,6 @@ public class User {
     public void print() {
         System.out.println(name);
         System.out.println(id);
-        System.out.println(risk);
         System.out.println(profileType);
         System.out.println(pic);
         for (String k: schoolsID) System.out.println(k);
@@ -271,4 +270,9 @@ public class User {
     private void setEmail(String email) {
         this.email = email;
     }
+
+    public boolean isMySchool(String schoolID) {
+        return schoolsID.contains(schoolID);
+    }
+
 }

@@ -13,8 +13,8 @@ import java.util.List;
 
 public class AssignmentsModelController {
 
-    public void getAssignmentsForClassSession(String classroomID, String date, String hour) {
-        ServicesFactory.getAssignmentService().getAssignmentsForClassSession(classroomID,date,hour);
+    public void getAssignmentsForClassSession(String classSessionID) {
+        ServicesFactory.getAssignmentService().getAssignmentsForClassSession(classSessionID);
     }
 
     public void updateStudentsInClassSession(JSONArray response, boolean b) {
