@@ -7,12 +7,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
+
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Singletons.ServicesFactory;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LifecycleOwner;
 
 
 public class CreateSchoolFormActivity extends AppCompatActivity {

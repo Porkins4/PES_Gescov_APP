@@ -14,11 +14,12 @@
 
     <string-array name="user_option_menu_items">
         <item>Upgrade to administrator</item>
+        <item>Check test results</item>
     </string-array>
 
     <string-array name="admin_option_menu_items">
         <item>Remove administrator</item>
-        <item>See test results</item>
+        <item>Check test results</item>
 
     </string-array>
 

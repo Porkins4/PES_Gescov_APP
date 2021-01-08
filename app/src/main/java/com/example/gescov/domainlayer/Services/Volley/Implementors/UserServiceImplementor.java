@@ -33,17 +33,8 @@ public class UserServiceImplementor implements IUserService {
     @Override
     public void getUserID(String token) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GESCOV_USERS_URI+token,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String userID) {
-                        DomainControlFactory.getUserModelController().setUserID(false,userID);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                DomainControlFactory.getUserModelController().setUserID(true,null);
-            }
-        });
+                userID -> DomainControlFactory.getUserModelController().setUserID(false,userID),
+                error -> DomainControlFactory.getUserModelController().setUserID(true,null));
         VolleyServices.getRequestQueue().add(stringRequest);
     }
 
@@ -51,17 +42,8 @@ public class UserServiceImplementor implements IUserService {
     public void getUserInfo(String id) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET, GESCOV_USERS_URI+id, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        DomainControlFactory.getUserModelController().setLoggedInUser(false,response);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                DomainControlFactory.getUserModelController().setLoggedInUser(false, null);
-            }
-        });
+                response -> DomainControlFactory.getUserModelController().setLoggedInUser(false,response),
+                error -> DomainControlFactory.getUserModelController().setLoggedInUser(false, null));
 
         VolleyServices.getRequestQueue().add(jsonObjectRequest);
     }

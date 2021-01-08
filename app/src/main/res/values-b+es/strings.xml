@@ -7,11 +7,11 @@
     <string name="action_sign_in">Sign in</string>
     <string name="action_register">Register</string>
     <string name="action_log_in">Log in</string>
-    <string name="welcome">"Benvingut"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-    <string name="username">Username</string>
+    <string name="welcome">"Bienvenido"</string>
+    <string name="invalid_username">Nombre de usuario no válido</string>
+    <string name="invalid_password">La contraseña debe tener como mínimo 6 caracteres</string>
+    <string name="login_failed">Error de inicio de sesion</string>
+    <string name="username">Nombre de usuario</string>
     <string name="GescovVersion">V1.0.0</string>
     <string name="title_activity_navigation_menu">NavigationMenu</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -21,9 +21,9 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Configuración</string>
 
-    <string name="menu_gallery">Gallery</string>
+    <string name="menu_gallery">Galería</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_schools_administration">Administración de colegios</string>
+    <string name="menu_schools_administration">Administración de centros</string>
     <string name="Catalan_visualizar_aula">Visualizar Aula</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -34,9 +34,9 @@
 
     <!-- Forum -->
     <string name="forum_title">Muro de noticias</string>
-    <string name="create_forum_entry_button">Crea publicación</string>
+    <string name="create_forum_entry_button">Crear publicación</string>
     <string name="create_forum_check_content">El contenido no puede estar vacío.</string>
-    <string name="create_forum_check_title">El títol no puede estar vacío.</string>
+    <string name="create_forum_check_title">El título no puede estar vacío.</string>
 
 
     <!-- School Administration -->
@@ -57,23 +57,23 @@
     <!-- User my schools -->
     <string name="my_schools_title">Mis centros</string>
 
-    <string name="Catalan_create_school_form_school_name">Nombre Centro</string>
-    <string name="Catalan_create_school_form_school_address">Dirección Centro</string>
-    <string name="Catalan_create_school_form_school_state">Estado Centro</string>
-    <string name="Catalan_create_school_form_school_code">Código Centro</string>
-    <string name="Catalan_create_school_form_school_button">Crea Centro</string>
+    <string name="Catalan_create_school_form_school_name">Nombre de Centro</string>
+    <string name="Catalan_create_school_form_school_address">Dirección de Centro</string>
+    <string name="Catalan_create_school_form_school_state">Estado de Centro</string>
+    <string name="Catalan_create_school_form_school_code">Código de Centro</string>
+    <string name="Catalan_create_school_form_school_button">Crear Centro</string>
     <string name="create_school_validate_fields">Valida los campos, por favor.</string>
 
 
     <!-- School Details -->
-    <string name="school_details_delete_school">Elimina Centros</string>
+    <string name="school_details_delete_school">Eliminar Centros</string>
     <string name="school_details_protocol_access">Protocolos</string>
     <string name="school_details_users_list">Lista de usuarios</string>
     <string name="school_details_classrooms_list">Lista Aulas</string>
     <string name="school_details_request_list">Solicitudes</string>
     <string name="school_details_join">Solicitar acceso</string>
     <string name="school_details_confirm_delete_message">¿Seguro que quieres eliminar este centro?</string>
-    <string name="title_school_details">Detalles del centros</string>
+    <string name="title_school_details">Detalles de los centros</string>
 
 
     <!-- School user lists -->
@@ -106,12 +106,12 @@
     <!-- Classroom distribution -->
     <string name="Catalan_classroom_name">Aula</string>
     <string name="Catalan_mark_position">Marcar Posición</string>
-    <string name="Catalan_confirmation_Question">¿Deseas marcar tu asistencia en esta posicion?</string>
-    <string name="Catalan_table_already_assigned">La taula ya está ocupada per alguien</string>
+    <string name="Catalan_confirmation_Question">¿Deseas marcar tu asistencia en esta posición?</string>
+    <string name="Catalan_table_already_assigned">La posición ya está ocupada por alguien</string>
     <string name="Catalan_table_not_available">No puedes sentarte en esta posicion</string>
     <string name="Catalan_successful_reservation">Reserva finalizada con éxito</string>
     <string name="catalan_tableStatus_Free">Libre</string>
-    <string name="create_classroom_form_name">Nombre Aula</string>
+    <string name="create_classroom_form_name">Nombre de Aula</string>
     <string name="create_classroom_form_capacity">Capacidad</string>
     <string name="create_classroom_form_rows">Filas</string>
     <string name="create_classroom_form_cols">Columnas</string>
@@ -125,8 +125,8 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="next">Siguiente</string>
+    <string name="previous">Anterior</string>
     <string name="title_activity_contagion_list">Lista de contagios</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
@@ -145,7 +145,7 @@
     <!-- Log out-->
     <string name="logout_text">Cerrar sessión</string>
     <string name="logout_successful">Sessión cerrada correctamente</string>
-    <string name="confirm_logout">¿Segur quieres cerrar la sesión?</string>
+    <string name="confirm_logout">¿Seguro que quieres cerrar la sesión?</string>
 
 
     <!-- Strings used for daily test -->
@@ -158,7 +158,18 @@
     <string name="fourthQuestion">¿Tienes sensación de falta de aire?</string>
     <string name="fifthQuestion">¿Tienes fiebre? (+37.7°C)  </string>
     <string name="titleTests">¿Que simptomás tienes? </string>
-    <string name="sendAnswers">Finalitzar Test </string>
+    <string name="sendAnswers">Finalizar Test </string>
+    <string name="userAnswer">Respuesta del usuario: </string>
+    <string name="user_test_response">Respuestas del test</string>
+    <string name="all_tests"> Todos los tests</string>
+    <string name="test_done_in">Test hecho el </string>
+    <string name="error_no_tests">No hay ningún test </string>
+    <string name="dail_test_title">Test de seguimiento </string>
+    <string name="conflict_notify_possitive">Todavía no ha pasado un día desde que te has recuperado </string>
+    <string name="already_positive">Ya eres registrado como contagiado o como posible contagiado </string>
+    <string name="already_recovered">Ya eres registrado como recuperado </string>
+    <string name="success_Notification">Registrado correctamente </string>
+
 
     <!-- Strings notifying the state -->
     <string name="notify_state">Notificar Estado</string>
@@ -176,15 +187,15 @@
 
     <!-- default -->
     <string name="edit">Editar</string>
-    <string name="update">Actualiza</string>
-    <string name="apply">Acepta</string>
-    <string name="delete">Elimina</string>
+    <string name="update">Actualizar</string>
+    <string name="apply">Aceptar</string>
+    <string name="delete">Eliminar</string>
     <string name="cancel">Cancelar</string>
     <string name="confirm">Confirmar</string>
 
     <!-- Strings students in classroom Record -->
     <string name="class_record_activity_title">Historial de alumnos en la aula</string>
-    <string name="alummne_assegut_a">"Alumne sentado en la fila: "</string>
+    <string name="alummne_assegut_a">"Alumno sentado en la fila: "</string>
     <string name="alumne_assegut_a_columna">", columna: "</string>
     <string name="error_no_students_in_this_classroom">Aún no ha pasado ningún alumno por esta aula.</string>
     <string name="title_activity_classroom_distribution">Distribución de la clase</string>
@@ -193,9 +204,9 @@
     <string name="chat_fragment_menu_text">Chats</string>
     <string name="your_chats_text">Mis chats personales</string>
     <string name="options">Opciones</string>
-    <string name="confirm_delete_chat_message">¿Seguro quieres eliminar este chat?</string>
-    <string name="yes_delete_chat">Elimina</string>
-    <string name="no_delete_chat">Cancela</string>
+    <string name="confirm_delete_chat_message">¿Seguro que quieres eliminar este chat?</string>
+    <string name="yes_delete_chat">Eliminar</string>
+    <string name="no_delete_chat">Cancelar</string>
 
 
     <!-- Create chat -->
@@ -215,10 +226,17 @@
     <string name="no_messages_yet_text">Ningún mensaje enviado</string>
 
 
+    <string name="share_text">Mi centro</string>
+    <string name="share2_text">esta en la posición</string>
+    <string name="share3_text">en el ranking de Gescov.</string>
+    <string name="num_contagions_singular">contagiado</string>
+    <string name="num_contagions_plural">contagios</string>
+
+
     <!-- Access school by code activity -->
     <string name="access_school_by_code_entry">Escribe tu código aquí</string>
     <string name="access_school_by_code_title">Código del centro</string>
-    <string name="access_school_by_code_button">Solicita acceso</string>
+    <string name="access_school_by_code_button">Solicitar acceso</string>
 
     <!-- Strings for the graph -->
     <string name="view_graph">Visualizar gráfico</string>
@@ -235,16 +253,16 @@
     <string name="elventh_month">Noviembre</string>
     <string name="twelvth_month">Diciembre</string>
     <string name="evolution">"Evolución dels contagios en "</string>
-    <string name="months">Mesos</string>
+    <string name="months">Meses</string>
     <string name="axeYContagions">Contagios</string>
-    <string name="no_contagion">"No hi ha cap contagi "</string>
+    <string name="no_contagion">"No hay ningún contagio "</string>
 
     <!-- Strings for the Subjects -->
     <string name="show_subject">ver asignaturas</string>
     <string name="subjects_activity_title">Asignaturas del centro</string>
     <string name="add_teacher_to_subject">Añadir profesor</string>
     <string name="add_student_to_subject">matricularme</string>
-    <string name="assigned_successfuly">Añadir a la asignatura correctamente</string>
+    <string name="assigned_successfuly">Añadido a la asignatura correctamente</string>
     <string name="subjects">Asignaturas</string>
     <string name="title_activity_add_teacher_subject">Añadir profesor a asignatura</string>
     <string name="teacher_added_succesfully">Se ha añadido correctamente el profesor/a</string>
@@ -254,6 +272,11 @@
     <string name="subjects_details_activity_title">Detalles de la asignatura</string>
     <string name="check_class_session_activity_title">Sesiones de clase</string>
     <string name="create_class_session_activity_title">Crear sesión de clase</string>
+    <string name="general_error_message">Se ha producido un error</string>
+    <string name="no_subjects_from_user">Todavía no te has apuntado a ninguna asignatura</string>
+    <string name="subjects_fragment_title">Asignaturas</string>
+    <string name="enrolled_professors_text_item">"Profesores: "</string>
+    <string name="enrolled_users_text_item">"Matriculadoss: "</string>
 
     <!-- Strings for the forum -->
     <string name="forum">Notícias</string>
@@ -261,25 +284,72 @@
     <string name="create_forum_entry_content">Contenido</string>
     <string name="create_wall_entry_reply_form_text">Escribe tu comentario aquí.</string>
     <string name="create_wall_entry_reply_form_button">Añadir comentario</string>
-    <string name="forum_entry_list_delete_message">Estás seguro de borrar esta entrada?</string>
+    <string name="forum_entry_list_delete_message">Estás seguro de que quieres borrar esta entrada?</string>
     <string name="cannot_access_by_code">No se pudo acceder con este código</string>
-    <string name="timeline_already_reserved">Aquesta franja horaria ja te un event relacionat, canvia el dia o la hora de reserva</string>
-    <string name="create_in_google_calendar_request">Desitjes afegir aquest event al Google Calendar?</string>
-    <string name="schedule_title_activity">Horari de l\'aula</string>
+    <string name="timeline_already_reserved">Esta franja horaria ya tiene un evento relacionado, cambia el día o la hora de reserva</string>
+    <string name="create_in_google_calendar_request">¿Deseas añadir este evento al Google calendar?</string>
+    <string name="schedule_title_activity">Horario del aula</string>
     <string name="open_calendar">Abrir calendario</string>
-    <string name="mark_position_in_classroom_title">Reserva de lloc</string>
-    <string name="succesfull_reservation">S\'ha reservat la taula de manera exitosa</string>
-    <string name="already_has_reservation">L\'usuari ja té una reserva a aquesta aula</string>
-    <string name="title_assignments_class_session">Persones en aquesta sessió</string>
-    <string name="user_not_admin">El usuario no es profesor, si fue promocionado recientemente, reiniciar la aplicación.</string>
+    <string name="mark_position_in_classroom_title">Reservar sitio</string>
+    <string name="succesfull_reservation">Se ha reservado el sitio de manera exitosa</string>
+    <string name="already_has_reservation">El usuario ya tiene una reserva en este sitio</string>
+    <string name="title_assignments_class_session">Personas en esta sesión</string>
+    <string name="user_not_admin">El usuario no es administrador, si se ha promocionado recientemente, por favor reinicia la aplicación.</string>
     <string name="create_school_validate_name">El nombre del centro no puede estar ni vacío ni repetido.</string>
     <string name="create_school_validate_address">La dirección no puede estar vacía.</string>
     <string name="create_school_validate_phone">El número de teléfono debe tener 9 digitos.</string>
-    <string name="create_school_validate_web">La página web deve empezar con http:// o https://</string>
+    <string name="create_school_validate_web">La página web debe empezar con http:// o https://</string>
     <string name="home_upgrade_role">Promoción de rol</string>
     <string name="role_promotion_title">Código de promoción</string>
     <string name="role_promotion_button">Promociona</string>
     <string name="code_not_correct">Código incorrecto</string>
     <string name="user_promoted">El usuario se promocionó correctamente</string>
     <string name="user_not_promoted">El usuario no se pudo promocionar</string>
+    <string name="daily_test_succesfully_sent_toast">S\'han enviat les respostes correctament :)</string>
+
+
+    <!-- Strings for the event -->
+    <string name="event_title">Titulo:</string>
+    <string name="event_description">Descripción:</string>
+    <string name="event_form">Crear evento</string>
+    <string name="event_prepare">Introduce los datos para crear el evento</string>
+    <string name="create_event">Crear evento</string>
+    <string name="event_start_time_pick">Hora de inicio: </string>
+    <string name="event_end_time_pick">Hora fin: </string>
+    <string name="event_select_teacher">Profesor: </string>
+    <string name="event_select_classroom">Aula: </string>
+    <string name="event_select_date">Escoge una fecha</string>
+
+
+    <!-- Strings for creating subjects -->
+    <string name="create_subject_text_button">Crear asignatura</string>
+    <string name="create_subject_title">Crear asignatura</string>
+    <string name="succesfull_subject_creation">Se ha creado la asignatura correctamente</string>
+
+    <!-- Strings for class schedule -->
+    <string name="insert_schedule">Insertar Horario</string>
+    <string name="monday">Lunes</string>
+    <string name="tuesday">Martes</string>
+    <string name="wedensday">Miercoles</string>
+    <string name="thursday">Jueves</string>
+    <string name="friday">Viernes</string>
+    <string name="modify_schedule">Editar</string>
+    <string name="save_schedule">Guardar Horario</string>
+    <string name="see_schedule">Ver Horario</string>
+    <string name="sucessModifySchedule">"Actualitzado Correctamente"</string>
+
+
+    <string name="empty_title_error">El título no puede estar vacío</string>
+    <string name="past_date_error">La fecha seleccionada debe ser posterior al día de hoy</string>
+    <string name="empty_description_error">La descripción no puede ser vacía</string>
+    <string name="bad_time_format">Los datos de la hora deben contener dos dígitos y deben encontrarse en el rango de 0 – 24 horas</string>
+    <string name="error_no_classrooms_in_school">Todavía no hay aulas en este centro, primero crea un aula</string>
+    <string name="okey_text">D\'acord</string>
+
+    <string name="error_subject_already_exists">Ya existe una asignatura con este nombre</string>
+    <string name="error_no_assistants_to_class_session">Esta sesión aún no tiene asistentes</string>
+    <string name="error_subject_has_no_class_session">La asignatura todavía no tiene sesiones de clase</string>
+    <string name="select_reservation_place_message">Toca un botón para reservar un asiento</string>
+    <string name="information_text">Recuerda que para todo tipo de actividad presencial, ya sea en clase o al aire libre, se ha de mantener una distancia de seguridad de 1,5 metros.\n\nEn el caso de que tu centro educativo no pueda garantizar la distancia de seguridad, procura reservar sitio en una mesa con el mínimo riesgo posible y recuerda llevar siempre la mascarilla.\n\nRecuerda, si ves que en el aula hay muchas reservas, de tal manera que el aforo está llegando a su límite, intenta seguir las sesiones de clase de manera no presencial.</string>
+    <string name="title_information">Información importante</string>
 </resources>

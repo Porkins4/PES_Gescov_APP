@@ -76,8 +76,8 @@ public class SubjectController {
         this.subjectsFromUserViewModel = subjectsFromUserViewModel;
     }
 
-    public void getSubjectsFromUser() {
-        PresentationControlFactory.getViewLayerController().getSubjectsFromUser();
+    public void getSubjectsFromUser(int activityIdentifier) {
+        PresentationControlFactory.getViewLayerController().getSubjectsFromUser(activityIdentifier);
     }
 
     public void setSubjectsFromUserResult(boolean error, List<Subject> userSubjects) {
@@ -92,8 +92,8 @@ public class SubjectController {
         PresentationControlFactory.getViewLayerController().createSubject(subjectName, schoolID);
     }
 
-    public void setCreateSubjectResult(boolean error) {
-        createSubjectViewModel.setCreateSubjectResult(error);
+    public void setCreateSubjectResult(boolean error, int responseCode) {
+        createSubjectViewModel.setCreateSubjectResult(error, responseCode);
     }
 
 }

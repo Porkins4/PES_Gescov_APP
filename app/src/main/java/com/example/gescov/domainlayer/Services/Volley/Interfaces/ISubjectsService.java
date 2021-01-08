@@ -7,7 +7,7 @@ public interface ISubjectsService {
 
     void getClassSessions(String subjectID);
 
-    void getSubjectsFromUser(String userID);
+    void getSubjectsFromUser(String userID, int activityIdentifier);
 
     void createSubject(String subjectName, String schoolID, String userId);
 

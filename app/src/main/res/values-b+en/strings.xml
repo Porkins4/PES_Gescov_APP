@@ -7,7 +7,7 @@
     <string name="action_sign_in">Sign in</string>
     <string name="action_register">Register</string>
     <string name="action_log_in">Log in</string>
-    <string name="welcome">"Benvingut"</string>
+    <string name="welcome">"Welcome "</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
@@ -72,7 +72,7 @@
     <string name="school_details_classrooms_list">Classrooms list</string>
     <string name="school_details_request_list">Requests</string>
     <string name="school_details_join">Request access</string>
-    <string name="school_details_confirm_delete_message">Are you sure to delete this school?</string>
+    <string name="school_details_confirm_delete_message">Are you sure you want to delete this school?</string>
     <string name="title_school_details">School details</string>
 
 
@@ -85,14 +85,14 @@
     <!-- School Requests -->
     <string name="school_requests_title">School requests</string>
     <!-- School Requests list item -->
-    <string name="school_requests_list_item_accept">Acceptr</string>
+    <string name="school_requests_list_item_accept">Accept</string>
     <string name="school_requests_list_item_reject">Reject</string>
 
     <!-- User School list item -->
     <string name="user_school_make_admin_message_1">Do you want to upgrade </string>
     <string name="user_school_make_admin_message_2"> as an administrator of this center?</string>
     <string name="user_school_unmake_admin_message_1">Do you want </string>
-    <string name="user_school_unmake_admin_message_2"> to lose the administrator privileges of this center?</string>
+    <string name="user_school_unmake_admin_message_2"> to remove the administrator privileges of this center?</string>
 
 
     <!-- Classrooms -->
@@ -100,7 +100,7 @@
     <string name="classroom_cols">Columns</string>
     <string name="classroom_capacity">Places</string>
     <string name="create_classroom_form_delete">Delete classroom</string>
-    <string name="classroom_confirm_delete_message">Are you sure to delete this classroom?</string>
+    <string name="classroom_confirm_delete_message">Are you sure you want to delete this classroom?</string>
 
 
     <!-- Classroom distribution -->
@@ -133,19 +133,19 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <!-- Sign in -->
-    <string name="welcome_hint">Bienvenido</string>
-    <string name="name_hint">Nombre y apellido</string>
-    <string name="introduce_email_hint">Correo electronico</string>
-    <string name="Password_hint">Contraseña</string>
-    <string name="sign_in_button_text">Registrate</string>
-    <string name="sign_in_text">Iniciar sessión</string>
+    <string name="welcome_hint">Welcome</string>
+    <string name="name_hint">Name and surname</string>
+    <string name="introduce_email_hint">Email address</string>
+    <string name="Password_hint">Password</string>
+    <string name="sign_in_button_text">Register</string>
+    <string name="sign_in_text">Log in</string>
     <string name="server_client_id">"673967911868-q9jgm7i3ijsjn0ft3bs6avvpot02a0nl.apps.googleusercontent.com"</string>
 
 
     <!-- Log out-->
     <string name="logout_text">Close session</string>
     <string name="logout_successful">Session closed successfully</string>
-    <string name="confirm_logout">Are you sure to close this session?</string>
+    <string name="confirm_logout">Are you sure you want to close this session?</string>
 
 
     <!-- Strings used for daily test -->
@@ -159,6 +159,12 @@
     <string name="fifthQuestion">Do you have fever? (+37.7°C)  </string>
     <string name="titleTests">Which symptoms do you have? </string>
     <string name="sendAnswers">End test </string>
+    <string name="userAnswer">User\'s answer: </string>
+    <string name="user_test_response">Test answers</string>
+    <string name="all_tests"> All tests</string>
+    <string name="test_done_in">Test done on </string>
+    <string name="error_no_tests">There isn\'t any test </string>
+    <string name="dail_test_title">Tracing test </string>
 
     <!-- Strings notifying the state -->
     <string name="notify_state">Notify state</string>
@@ -169,6 +175,10 @@
     <string name="notify_possible">Notify your possible positive.</string>
     <string name="notify_recovery">Notify your recovery</string>
     <string name="covid_notification_title">COVID notification</string>
+    <string name="conflict_notify_possitive">Not a day has passed since you\'ve recovered  </string>
+    <string name="already_positive">You are already registered as infected or as possible infected </string>
+    <string name="already_recovered">Ya are already registered as recovered </string>
+    <string name="success_Notification">Registered Successfully </string>
 
     <!-- home -->
     <string name="home_risk">Risk user</string>
@@ -193,9 +203,11 @@
     <string name="chat_fragment_menu_text">Chats</string>
     <string name="your_chats_text">My personal chats</string>
     <string name="options">Options</string>
-    <string name="confirm_delete_chat_message">Are you sure to delete this chat?</string>
+    <string name="confirm_delete_chat_message">Are you sure you want to delete this chat?</string>
     <string name="yes_delete_chat">Delete</string>
     <string name="no_delete_chat">Cancel</string>
+    <string name="error_chat_already_created">There has been an error while the chat was being created</string>
+    <string name="no_messages_yet_text">No messages sent yet</string>
 
 
     <!-- Create chat -->
@@ -211,8 +223,14 @@
 
     <!-- Strings for the Ranking -->
     <string name="ranking_name">School ranking</string>
-    <string name="error_chat_already_created">There has been an error while the chat was being created</string>
-    <string name="no_messages_yet_text">No messages sent yet</string>
+    <string name="share_text">My center</string>
+    <string name="share2_text">is at the position</string>
+    <string name="share3_text">in ranking of Gescov.</string>
+    <string name="num_contagions_singular">contagion</string>
+    <string name="num_contagions_plural">contagions</string>
+
+
+
 
 
     <!-- Access school by code activity -->
@@ -220,7 +238,7 @@
     <string name="access_school_by_code_title">School code</string>
     <string name="access_school_by_code_button">Request access</string>
 
-    <!-- Strings for the Ranking -->
+    <!-- Strings for the graph -->
     <string name="view_graph">View Graphic</string>
     <string name="first_month">January</string>
     <string name="second_month">February</string>
@@ -234,10 +252,10 @@
     <string name="tenth_month">October</string>
     <string name="elventh_month">November</string>
     <string name="twelvth_month">December</string>
-    <string name="evolution">"Contagion evolution in "</string>
-    <string name="months">months</string>
+    <string name="evolution">Contagion evolution in</string>
+    <string name="months">Months</string>
     <string name="axeYContagions">Contagion</string>
-    <string name="no_contagion">"No hi ha cap contagi "</string>
+    <string name="no_contagion">There isn\'t any infected</string>
 
     <!-- Strings for the Subjects -->
     <string name="show_subject">See subjects</string>
@@ -254,6 +272,11 @@
     <string name="subjects_details_activity_title">Subject details</string>
     <string name="check_class_session_activity_title">Class session</string>
     <string name="create_class_session_activity_title">Create class sessions</string>
+    <string name="general_error_message">An error has occurred</string>
+    <string name="no_subjects_from_user">You have not yet signed up for any subject</string>
+    <string name="subjects_fragment_title">Subjects</string>
+    <string name="enrolled_professors_text_item">"Professors: "</string>
+    <string name="enrolled_users_text_item">"Enrolleds: "</string>
 
         <!-- Strings for the forum -->
     <string name="forum">News</string>
@@ -261,16 +284,60 @@
     <string name="create_forum_entry_content">Content</string>
     <string name="create_wall_entry_reply_form_text">Write your comment here.</string>
     <string name="create_wall_entry_reply_form_button">Add comment</string>
-    <string name="forum_entry_list_delete_message">Are you sure to delete this wall entry?</string>
-    <string name="cannot_delete_wall_entry">You couldn\'t delete this entry</string>
-    <string name="timeline_already_reserved">Aquesta franja horaria ja te un event relacionat, canvia el dia o la hora de reserva</string>
-    <string name="create_in_google_calendar_request">Desitjes afegir aquest event al Google Calendar?</string>
-    <string name="schedule_title_activity">Horari de l\'aula</string>
+    <string name="forum_entry_list_delete_message">Are you sure you want to delete this wall entry?</string>
+    <string name="cannot_delete_wall_entry">You can not delete this entry</string>
+
+    <!-- Strings for the event -->
+    <string name="event_title">Title:</string>
+    <string name="event_description">Description:</string>
+    <string name="event_form">Create event</string>
+    <string name="event_prepare">Enter the data to create the event</string>
+    <string name="create_event">Crear event</string>
+    <string name="event_start_time_pick">Start time: </string>
+    <string name="event_end_time_pick">End time: </string>
+    <string name="event_select_teacher">Professor: </string>
+    <string name="event_select_classroom">Classroom: </string>
+    <string name="event_select_date">Choose a date</string>
+
+    <!-- Strings for creating subjects -->
+    <string name="create_subject_text_button">Create subject</string>
+    <string name="create_subject_title">Create subject</string>
+    <string name="succesfull_subject_creation">Subject created successfully</string>
+
+    <!-- Strings for class schedule -->
+    <string name="insert_schedule">Insert schedule</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wedensday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="modify_schedule">Edit</string>
+    <string name="save_schedule">Save schedule</string>
+    <string name="see_schedule">See schedule</string>
+    <string name="sucessModifySchedule">"Updated successfully"</string>
+
+
+    <string name="timeline_already_reserved">This time slot already has a related event, please change the day or time of booking</string>
+    <string name="create_in_google_calendar_request">Do you want to add this event to Google Calendar?</string>
     <string name="open_calendar">Open calendar</string>
-    <string name="mark_position_in_classroom_title">Reserva de lloc</string>
-    <string name="succesfull_reservation">S\'ha reservat la taula de manera exitosa</string>
-    <string name="already_has_reservation">L\'usuari ja té una reserva a aquesta aula</string>
-    <string name="title_assignments_class_session">Persones en aquesta sessió</string>
+    <string name="empty_title_error">Title can\'t be empty</string>
+    <string name="past_date_error">The selected date must be posterior than today</string>
+    <string name="empty_description_error">Description can\'t be empty</string>
+    <string name="bad_time_format">Time data must contain two digits and must be in the range of 0 – 24 hours</string>
+    <string name="error_no_classrooms_in_school">There are no classrooms in this center yet, first create a classroom</string>
+    <string name="okey_text">Okay</string>
+
+
+
+
+    <string name="schedule_title_activity">Classroom schedule</string>
+
+
+
+    <string name="mark_position_in_classroom_title">Reserve seat</string>
+    <string name="succesfull_reservation">Seat successfully reserved</string>
+    <string name="already_has_reservation">The user already has a reservation in this classroom</string>
+    <string name="title_assignments_class_session">People in this session</string>
     
 
     <string name="user_not_admin">The user is not teacher, if you have been promoted recently, restart the application.</string>
@@ -285,4 +352,11 @@
 
     <string name="user_promoted">User has ben promoted successfully</string>
     <string name="user_not_promoted">User could not be promoted</string>
+    <string name="daily_test_succesfully_sent_toast">S\'han enviat les respostes correctament :)</string>
+    <string name="error_subject_already_exists">Already exists a subject with this name</string>
+    <string name="error_no_assistants_to_class_session">This session has no assistants yet</string>
+    <string name="error_subject_has_no_class_session">Subject has no class sessions yet</string>
+    <string name="select_reservation_place_message">Touch one button to reserve a seat</string>
+    <string name="information_text">Remember that for all attended activities, whether in class or outdoors, a safety distance of 1.5 meters must be maintained. \n If your school cannot guarantee the distance of safety, try to reserve a place at a seat with the minimum possible risk and always remember to take the mask with you. Also remember, if you see that there are a lot of reservations in the classroom, such that the capacity of the classroom is reaching its limit, try to follow</string>
+    <string name="title_information">Important information</string>
 </resources>

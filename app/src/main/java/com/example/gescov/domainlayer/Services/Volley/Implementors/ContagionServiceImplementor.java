@@ -146,7 +146,8 @@ public class ContagionServiceImplementor implements IContagionService {
     public void getContagionID(String id) {
         StringRequest stringRequest = new StringRequest(
                 Request.Method.GET, CONTAGION_LINK + "/student/"+id,
-                contagionID -> DomainControlFactory.getUserModelController().setContagionId(contagionID, false), error -> DomainControlFactory.getUserModelController().setContagionId(null, false));
+                contagionID -> DomainControlFactory.getUserModelController().setContagionId(contagionID, false),
+                error -> DomainControlFactory.getUserModelController().setContagionId(null, false));
         VolleyServices.getRequestQueue().add(stringRequest);
     }
 

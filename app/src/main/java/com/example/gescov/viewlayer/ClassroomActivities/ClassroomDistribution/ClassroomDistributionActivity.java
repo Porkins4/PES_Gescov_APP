@@ -2,6 +2,8 @@ package com.example.gescov.viewlayer.ClassroomActivities.ClassroomDistribution;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,9 +39,13 @@ public class ClassroomDistributionActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.title_activity_classroom_distribution);
         gridLayout = (GridLayout) findViewById(R.id.show_distribution_grid);
+        findViewById(R.id.information).setOnClickListener(
+                v -> {
+                    Intent i = new Intent(this, InformationActivity.class);
+                    startActivity(i);
+                }
+        );
         initResponseListener();
-
-
     }
 
     private void initResponseListener() {
@@ -74,7 +80,6 @@ public class ClassroomDistributionActivity extends AppCompatActivity {
                 y.setParent(this);
                 y.setColPos(j);
                 y.setRowPos(i);
-                if ((i % 2 == 0 && j % 2 == 0) || (i % 2 != 0 && j % 2 != 0)) y.initTable("-1");
                 distribution[i][j] = y;
                 gridLayout.addView(y.getTableLayout());
             }

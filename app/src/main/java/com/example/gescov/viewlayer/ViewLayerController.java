@@ -3,6 +3,8 @@ package com.example.gescov.viewlayer;
 import android.location.Location;
 import android.util.Pair;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
@@ -28,8 +30,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import org.json.JSONException;
 
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
 
 
 public class ViewLayerController {
@@ -448,8 +448,11 @@ public class ViewLayerController {
 
     }
 
-    public void getSubjectsFromUser() {
-        DomainControlFactory.getModelController().getSubjectsFromUser();
+    //ActivityIdentifier indicates which activity has to be warn that the result has been received
+    // activityIdentifier = 1 => subjects fragment
+    // activityIdentifier = 2 => login
+    public void getSubjectsFromUser(int activityIdentifier) {
+        DomainControlFactory.getModelController().getSubjectsFromUser(activityIdentifier);
     }
 
     public void setSubjectsFromUserResult(boolean error, List<Subject> userSubjects) {
@@ -469,8 +472,8 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().createSubject(subjectName, schoolID);
     }
 
-    public void setCreateSubjectResult(boolean error) {
-        PresentationControlFactory.getSubjectController().setCreateSubjectResult(error);
+    public void setCreateSubjectResult(boolean error, int responseCode) {
+        PresentationControlFactory.getSubjectController().setCreateSubjectResult(error, responseCode);
     }
 
     public void getClassroomsOfSchool(String schoolID) {

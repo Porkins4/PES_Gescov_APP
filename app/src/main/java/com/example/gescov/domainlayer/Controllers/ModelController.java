@@ -2,6 +2,8 @@ package com.example.gescov.domainlayer.Controllers;
 
 import android.util.Pair;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
@@ -27,8 +29,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import org.json.JSONException;
 
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
 
 public class ModelController {
 
@@ -429,8 +429,8 @@ public class ModelController {
         PresentationControlFactory.getViewLayerController().getClassSessionsResult(error,classSessions);
     }
 
-    public void getSubjectsFromUser() {
-        DomainControlFactory.getSubjectModelController().getSubjectsFromUser();
+    public void getSubjectsFromUser(int activityIdentifier) {
+        DomainControlFactory.getSubjectModelController().getSubjectsFromUser(activityIdentifier);
     }
 
     public void setSubjectsFromUserResult(boolean error, List<Subject> userSubjects) {
@@ -449,8 +449,8 @@ public class ModelController {
         DomainControlFactory.getSubjectModelController().createSubject(subjectName,schoolID);
     }
 
-    public void setCreateSubjectResult(boolean error) {
-        PresentationControlFactory.getViewLayerController().setCreateSubjectResult(error);
+    public void setCreateSubjectResult(boolean error, int responseCode) {
+        PresentationControlFactory.getViewLayerController().setCreateSubjectResult(error, responseCode);
     }
 
 

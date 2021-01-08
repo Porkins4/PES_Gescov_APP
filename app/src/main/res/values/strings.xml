@@ -175,7 +175,7 @@
     <string name="notify_possible">notificar com possible positiu</string>
     <string name="notify_recovery">notifica la teva recuperació</string>
     <string name="covid_notification_title">Notificació de COVID</string>
-    <string name="conflict_notify_possitive">Encara no ha passat un dia des que t\'has recuperat </string>
+    <string name="conflict_notify_possitive">Encara no ha passat un dia des de que t\'has recuperat </string>
     <string name="already_positive">Ja ets registrat com contagiat o com possible contagiat </string>
     <string name="already_recovered">Ja ets registrat com recuperat </string>
     <string name="success_Notification">Registrat correctament </string>
@@ -250,10 +250,10 @@
     <string name="tenth_month">Octubre</string>
     <string name="elventh_month">Novembre</string>
     <string name="twelvth_month">Desembre</string>
-    <string name="evolution">"Evolució dels contagis en "</string>
+    <string name="evolution">Evolució dels contagis en</string>
     <string name="months">Mesos</string>
     <string name="axeYContagions">Contagis</string>
-    <string name="no_contagion">"No hi ha cap contagi "</string>
+    <string name="no_contagion">No hi ha cap contagi</string>
 
     <!-- Strings for the Subjects -->
     <string name="show_subject">veure assignatures</string>
@@ -294,7 +294,7 @@
     <string name="event_end_time_pick">Hora fi: </string>
     <string name="event_select_teacher">Professor: </string>
     <string name="event_select_classroom">Aula: </string>
-    <string name="event_select_date">Escogeix una data</string>
+    <string name="event_select_date">Tria una data</string>
 
 
     <!-- Strings for creating subjects -->
@@ -343,6 +343,14 @@
     <string name="code_not_correct">Codi incorrecte</string>
     <string name="user_promoted">L\'usuari s\'ha promocionat correctament</string>
     <string name="user_not_promoted">L\'usuari no s\'ha pogut promocionar</string>
+    <string name="daily_test_succesfully_sent_toast">S\'han enviat les respostes correctament :)</string>
+    <string name="error_subject_already_exists">Ja existeix una asignatura amb aquest nom</string>
+    <string name="error_no_assistants_to_class_session">Aquesta sessió encara no té assistents</string>
+    <string name="error_subject_has_no_class_session">L\'assignatura no te cap sessió encara</string>
+
+    <string name="select_reservation_place_message">Toca un botó per reservar lloc</string>
+    <string name="information_text">Recorda que per tot tipus d\'activitat presencial, ja sigui a classe o a l\'aire lliure s\'ha de mantenir una distancia de seguretat de 1,5 metres.\n\nEn el cas de que el teu centre educatiu no pugui garantir la distancia de seguretat, procura reservar lloc a una taula amb el minim risc possible i recorda sempre emportar la mascareta.\n\nRecorda, si veus que a l\'aula hi ha moltes reserves, de tal manera que la capacitat de l\'aula està arrivant al seu limit, intenta seguir les sessions de clase de manera no presencial.</string>
+    <string name="title_information">Informació important</string>
 
 
 </resources>

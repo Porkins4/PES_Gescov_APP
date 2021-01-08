@@ -15,6 +15,10 @@ public class Subject {
     private List<String> students;
     private String schoolName;
 
+    public Subject() {
+        this.id = "-1";
+    }
+
     public Subject(String id, String name,  String schoolID, String schoolName, List<String> students, List<String> teachers) {
         this.id = id;
         this.name = name;

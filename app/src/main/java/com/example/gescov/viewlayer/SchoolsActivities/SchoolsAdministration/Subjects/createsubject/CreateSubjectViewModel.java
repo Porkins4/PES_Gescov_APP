@@ -10,6 +10,7 @@ public class CreateSubjectViewModel extends ViewModel {
 
     private MutableLiveData<Boolean> response;
     private String schoolID;
+    private int responseCode;
 
     public CreateSubjectViewModel() {
         PresentationControlFactory.getSubjectController().setCreateSubjectViewModel(this);
@@ -27,7 +28,12 @@ public class CreateSubjectViewModel extends ViewModel {
         return response;
     }
 
-    public void setCreateSubjectResult(boolean error) {
+    public void setCreateSubjectResult(boolean error, int responseCode) {
+        this.responseCode = responseCode;
         response.setValue(error);
+    }
+
+    public int getResponseCode() {
+        return responseCode;
     }
 }

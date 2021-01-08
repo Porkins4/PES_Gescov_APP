@@ -54,11 +54,11 @@ public class SubjectsServiceImplementor implements ISubjectsService {
     }
 
     @Override
-    public void getSubjectsFromUser(String userID) {
+    public void getSubjectsFromUser(String userID, int activityIdentifier) {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET, SUBJECTS_URI + "user/" + userID, null,
-                response -> DomainControlFactory.getSubjectModelController().setSubjectsFromUserResult(false,response),
-                error -> DomainControlFactory.getSubjectModelController().setSubjectsFromUserResult(true,null)
+                response -> DomainControlFactory.getSubjectModelController().setSubjectsFromUserResult(false, response, activityIdentifier),
+                error -> DomainControlFactory.getSubjectModelController().setSubjectsFromUserResult(true,null, activityIdentifier)
         );
         VolleyServices.getRequestQueue().add(jsonArrayRequest);
     }
@@ -73,8 +73,8 @@ public class SubjectsServiceImplementor implements ISubjectsService {
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.POST, SUBJECTS_URI + "?creator=" + userId, postData,
-                    response -> DomainControlFactory.getSubjectModelController().setCreateSubjectResult(false,response),
-                    error -> DomainControlFactory.getSubjectModelController().setCreateSubjectResult(true,null)
+                    response -> DomainControlFactory.getSubjectModelController().setCreateSubjectResult(false, 200, response),
+                    error -> DomainControlFactory.getSubjectModelController().setCreateSubjectResult(true, error.networkResponse.statusCode, null)
                 );
 
             VolleyServices.getRequestQueue().add(jsonObjectRequest);
