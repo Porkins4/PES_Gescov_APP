@@ -17,6 +17,7 @@ import com.example.gescov.domainlayer.Classmodels.School;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.addteachertosubject.AddTeacherToSubjectActivity;
 import com.example.gescov.viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.checkclasssession.CheckClassSessionActivity;
+import com.example.gescov.viewlayer.Singletons.GescovApplication;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 import com.example.gescov.viewlayer.event.EventActivity;
 
@@ -33,9 +34,9 @@ public class SubjectDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subject_detail);
+        subjectID = getIntent().getStringExtra("subjectID");
         loggedUser = PresentationControlFactory.getViewLayerController().getLoggedUserInfo();
         setComponents();
-        subjectID = getIntent().getStringExtra("subjectID");
 
     }
 
@@ -55,8 +56,16 @@ public class SubjectDetailActivity extends AppCompatActivity {
         listenerCheckClassSessions();
         listenerCreateClassSession();
 
+        if (GescovUtils.isEnroled(subjectID)) {
+            addStudent.setEnabled(false);
+        }
+
         if (loggedUser.getProfileType().equals(User.UserProfileType.TEACHER)) {
             addStudent.setVisibility(View.GONE);
+            if (!GescovUtils.isEnroled(subjectID)) {
+                checkClassSessions.setVisibility(View.GONE);
+                createClassSession.setVisibility(View.GONE);
+            }
         } else {
             createClassSession.setVisibility(View.GONE);
             addTeacher.setVisibility(View.GONE);

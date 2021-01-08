@@ -41,11 +41,13 @@ public class SubjectModelController {
         ServicesFactory.getSubjectsService().assignUserToSubject(subjectID,userID,activityIdentifier);
     }
 
-    public void getSubjectsFromUser() {
-        ServicesFactory.getSubjectsService().getSubjectsFromUser(DomainControlFactory.getUserModelController().getUserId());
+    //activityIdentifier = 1 -> notifies subjects fragment in menu
+    //activityIdentifier = 2 -> notifies in user login
+    public void getSubjectsFromUser(int activityIdentifier) {
+        ServicesFactory.getSubjectsService().getSubjectsFromUser(DomainControlFactory.getUserModelController().getUserId(),activityIdentifier);
     }
 
-    public void setSubjectsFromUserResult(boolean error, JSONArray response) {
+    public void setSubjectsFromUserResult(boolean error, JSONArray response, int activityIdentifier) {
         userSubjects = new ArrayList<>();
         if (!error) {
             try {
@@ -57,7 +59,10 @@ public class SubjectModelController {
                 error = true;
             }
         }
-        DomainControlFactory.getModelController().setSubjectsFromUserResult(error,userSubjects);
+
+        //avoid else cases, always check the actovity identifier
+        if (activityIdentifier == 1) DomainControlFactory.getModelController().setSubjectsFromUserResult(error,userSubjects);
+        else if (activityIdentifier == 2) DomainControlFactory.getModelController().setUserRetrieveResult(error);
     }
 
     public void createSubject(String subjectName, String schoolID) {
@@ -66,5 +71,16 @@ public class SubjectModelController {
 
     public void setCreateSubjectResult(boolean error, int responseCode, JSONObject response) {
         DomainControlFactory.getModelController().setCreateSubjectResult(error, responseCode);
+    }
+
+    public Subject getSubjectsFromUserBySubjectID(String subjectID) {
+        for (Subject s: userSubjects){
+            if (s.getId().equals(subjectID)) return s;
+        }
+        return new Subject();
+    }
+
+    public void addSubject(JSONObject response) {
+        userSubjects.add(Subject.fromJSONtoSubject(response));
     }
 }

@@ -23,7 +23,7 @@ public class SubjectsFromUserViewModel extends ViewModel {
 
     public LiveData<Boolean> getSubjectsFromUser() {
         if (result == null) result = new MutableLiveData<>();
-        PresentationControlFactory.getSubjectController().getSubjectsFromUser();
+        PresentationControlFactory.getSubjectController().getSubjectsFromUser(1);
         return result;
     }
 

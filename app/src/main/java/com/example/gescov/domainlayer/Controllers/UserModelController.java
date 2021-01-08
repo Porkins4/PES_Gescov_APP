@@ -4,6 +4,7 @@ import android.location.Location;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.gescov.domainlayer.Classmodels.Subject;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
@@ -254,7 +255,7 @@ public class UserModelController {
 
     public void setContagionId(String contagionId, Boolean error) {
         loggedUser.setIdContagion(contagionId);
-        DomainControlFactory.getModelController().setUserRetrieveResult(error);
+        DomainControlFactory.getSubjectModelController().getSubjectsFromUser(2);
     }
 
     public void updateContagionID(String contagionId) {
@@ -334,6 +335,7 @@ public class UserModelController {
 
     public void setSubjectID(String subjectID, boolean error, int activityIdentifier) {
         if (! error ) {
+            DomainControlFactory.getSubjectModelController().getSubjectsFromUser(-1);
             loggedUser.addSubjectID(subjectID);
         }
         if (activityIdentifier == 1) DomainControlFactory.getModelController().notifyAssignStudent(error);
