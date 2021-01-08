@@ -7,7 +7,7 @@ import com.example.gescov.domainlayer.Services.Volley.VolleyServices;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 
 public class EventServiceImplementor implements IEventService {
-    private final String USERS_BY_SUBJECT_URI = "https://gescov.herokuapp.com/api/subjects/";
+    private static final  String USERS_BY_SUBJECT_URI = "https://gescov.herokuapp.com/api/subjects/";
 
     @Override
     public void getGuests(String subjectID) {

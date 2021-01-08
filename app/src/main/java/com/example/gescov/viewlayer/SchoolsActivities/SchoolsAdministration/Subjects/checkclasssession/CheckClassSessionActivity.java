@@ -21,7 +21,7 @@ public class CheckClassSessionActivity extends AppCompatActivity {
 
     private CheckClassSessionViewModel viewModel;
     private TextView errorMessage;
-    private LinearLayout error;
+    private LinearLayout errorLayout;
     private ListView listView;
 
     @Override
@@ -60,13 +60,13 @@ public class CheckClassSessionActivity extends AppCompatActivity {
 
     private void showErrorUI(String errorMessage) {
         this.errorMessage.setText(errorMessage);
-        error.setVisibility(View.VISIBLE);
+        errorLayout.setVisibility(View.VISIBLE);
     }
 
     private void initViewComponents() {
         initToolbar();
         initListView();
-        this.error = (LinearLayout) findViewById(R.id.error);
+        this.errorLayout = (LinearLayout) findViewById(R.id.error);
         this.errorMessage = (TextView) findViewById(R.id.error_message);
     }
 

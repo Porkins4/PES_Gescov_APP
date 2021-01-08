@@ -47,7 +47,6 @@ public class ClassSessionModel {
         try {
             JSONObject first = response.getJSONObject("first");
             JSONObject second = response.getJSONObject("second");
-            System.out.println(response);
             String id = first.getString("id");
             String hour = first.getString("hour");
             String finishHour = first.getString("finishHour");
@@ -105,14 +104,5 @@ public class ClassSessionModel {
         return teacherName;
     }
 
-    public void print() {
-        System.out.println("class ID: " + id);
-        System.out.println(hour);
-        System.out.println(finishHour);
-        System.out.println(date);
-        System.out.println("class ID: " + classroomID);
-        System.out.println("subject ID: " + subjectID);
-        System.out.println("teacher ID: " + teacherID);
-        System.out.println(concept);
-    }
+
 }

@@ -90,11 +90,11 @@ public class NavigationMenu extends AppCompatActivity {
     private void initMenuUserData(NavigationView navigationView) {
         TextView email = (TextView) navigationView.getHeaderView(0).findViewById(R.id.email_view);
         email.setText(PresentationControlFactory.getViewLayerController().getUserEmail());
-        TextView user_name = (TextView) navigationView.getHeaderView(0).findViewById(R.id.user_name);
+        TextView userName = (TextView) navigationView.getHeaderView(0).findViewById(R.id.user_name);
         userImage = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.profile_image);
 
         User loggedUser = PresentationControlFactory.getViewLayerController().getUserLoggedIn();
-        user_name.setText(loggedUser.getName());
+        userName.setText(loggedUser.getName());
         loadImageFromUrl(loggedUser.getPic());
     }
 
@@ -139,12 +139,9 @@ public class NavigationMenu extends AppCompatActivity {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(this,gso);
         googleSignInClient.signOut()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(getApplicationContext(), R.string.logout_successful, Toast.LENGTH_LONG).show();
-                        showLoginView();
-                    }
+                .addOnCompleteListener(this, task -> {
+                    Toast.makeText(getApplicationContext(), R.string.logout_successful, Toast.LENGTH_LONG).show();
+                    showLoginView();
                 });
     }
 

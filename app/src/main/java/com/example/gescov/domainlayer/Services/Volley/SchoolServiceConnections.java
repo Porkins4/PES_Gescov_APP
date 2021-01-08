@@ -17,7 +17,7 @@ public class SchoolServiceConnections extends AsyncTask<String,String,String> {
         try {
             uri = new URL(strings[0]);
         } catch (MalformedURLException e) {
-            System.out.println("Error while creating URL");
+            e.printStackTrace();
         }
 
         HttpURLConnection connection = null;
@@ -27,7 +27,6 @@ public class SchoolServiceConnections extends AsyncTask<String,String,String> {
             connection.setRequestMethod("GET");
             connection.setRequestProperty("User-Agent","Mozilla/5.0");
             int response = connection.getResponseCode();
-            System.out.println("Response status" + response);
             if (response == HttpURLConnection.HTTP_OK) {
                 BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 String inputLine;
@@ -40,8 +39,8 @@ public class SchoolServiceConnections extends AsyncTask<String,String,String> {
             } else {
                 throw new IOException();
             }
-        } catch (IOException e) {
-            System.out.println("Error while making HTTP request");
+        } catch (IOException | NullPointerException e ) {
+            e.printStackTrace();
         }
         return null;
     }

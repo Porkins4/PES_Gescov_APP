@@ -50,12 +50,11 @@ public class SchoolsCrontroller{
     public List<School> getSchoolsList() {
         if (schoolsList != null)
             return schoolsList;
-        //hardcodedSchoolList();
         schoolsList = new ArrayList<>();
         return schoolsList;
     }
 
-    public void refreshAllSchoolsList() throws JSONException, AdapterNotSetException {
+    public void refreshAllSchoolsList() throws JSONException {
         PresentationControlFactory.getViewLayerController().refreshAllSchools();
     }
     public void refreshStudentSchoolsList() {
@@ -63,7 +62,7 @@ public class SchoolsCrontroller{
     }
 
 
-    public void refreshSchoolsList(List<School> schoolsList) throws JSONException, AdapterNotSetException {
+    public void refreshSchoolsList(List<School> schoolsList){
         this.schoolHash = new HashMap<>();
         this.schoolsList = schoolsList;
         for (School school : schoolsList) {
@@ -98,9 +97,7 @@ public class SchoolsCrontroller{
         PresentationControlFactory.getViewLayerController().deleteSchool(school);
         try {
             refreshAllSchoolsList();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (AdapterNotSetException e) {
+        } catch (JSONException  e) {
             e.printStackTrace();
         }
     }

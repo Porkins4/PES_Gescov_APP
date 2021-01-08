@@ -67,7 +67,6 @@ public class ClassroomListViewAdapter extends BaseAdapter {
 
         if ( admin ) {
             editButton.setOnClickListener(e -> {
-                SchoolClassroomsCrontroller controller = PresentationControlFactory.getClassroomsCrontroller();
                 Intent intent = new Intent(context, EditClassroomFormActivity.class);
                 intent.putExtra("classroom_position", position);
                 intent.putExtra("classID", classroomList.get(position).getId());

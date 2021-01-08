@@ -106,7 +106,7 @@ public class SchoolsAdministrationFagment extends Fragment {
     protected void refreshSchoolsList() {
         try {
             controller.refreshAllSchoolsList();
-        } catch (JSONException | AdapterNotSetException e) {
+        } catch (JSONException  e) {
             e.printStackTrace();
         }
     }

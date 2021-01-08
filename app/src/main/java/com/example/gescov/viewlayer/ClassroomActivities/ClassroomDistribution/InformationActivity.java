@@ -1,14 +1,11 @@
 package com.example.gescov.viewlayer.ClassroomActivities.ClassroomDistribution;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.os.Bundle;
-import android.widget.TextView;
-
 import com.example.gescov.R;
-
-import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
 public class InformationActivity extends AppCompatActivity {
 

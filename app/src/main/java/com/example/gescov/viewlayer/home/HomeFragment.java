@@ -54,8 +54,6 @@ public class HomeFragment extends Fragment {
             PresentationControlFactory.getSchoolsCrontroller().refreshAllSchoolsList();
         } catch (JSONException e) {
             e.printStackTrace();
-        } catch (AdapterNotSetException e) {
-            e.printStackTrace();
         }
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());

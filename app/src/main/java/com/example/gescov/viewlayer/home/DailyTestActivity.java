@@ -50,7 +50,6 @@ public class DailyTestActivity extends AppCompatActivity {
 
     public Boolean checkButton(RadioGroup radiogroup, RadioButton button) {
         int radioId = radiogroup.getCheckedRadioButtonId();
-        System.out.println(radioId);
         RadioButton radiobutton = findViewById(radioId);
         return radiobutton  == button;
     }

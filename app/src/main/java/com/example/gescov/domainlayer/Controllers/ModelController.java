@@ -2,6 +2,8 @@ package com.example.gescov.domainlayer.Controllers;
 
 import android.util.Pair;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
@@ -24,11 +26,7 @@ import com.example.gescov.viewlayer.ViewLayerController;
 import com.example.gescov.viewlayer.home.ContagionRequestResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
-import org.json.JSONException;
-
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
 
 public class ModelController {
 
@@ -45,11 +43,6 @@ public class ModelController {
        return userModelController.getContagionsOfMyCenter(schoolID);
     }
 
-    public void CreateUser(String nameuser) {
-        userModelController = new UserModelController();
-        userModelController.initUser();// remember to modify this when u have an user
-    }
-
 
     //-1 means that user is not linked to the specified school
     public String getClassroomDimensions(String schoolId, String classroomId) {
@@ -61,7 +54,7 @@ public class ModelController {
         return userModelController.getStudentsInClassroom(classroom);
     }
 
-    public void refreshAllSchools() throws JSONException {
+    public void refreshAllSchools() {
         DomainControlFactory.getSchoolsModelCrontroller().refreshSchoolList();
     }
 
@@ -179,10 +172,6 @@ public class ModelController {
         DomainControlFactory.getUserModelController().updateLoggedUserRisk();
     }
 
-    public void updateHomeViewModel(String name, boolean risk) {
-        //PresentationControlFactory.getViewLayerController().updateHomeViewModel(name, risk);
-    }
-
     public void notifyPossibleContagion(MutableLiveData<ContagionRequestResult> result) {
         DomainControlFactory.getUserModelController().notifyPossibleContagion(result);
     }
@@ -215,7 +204,7 @@ public class ModelController {
     }
 
     public void getUserID() {
-        DomainControlFactory.getUserModelController().getUserID();
+        DomainControlFactory.getUserModelController().getUserByToken();
     }
 
     public void setUserIDVerificationResult(boolean error) {
@@ -467,7 +456,7 @@ public class ModelController {
         DomainControlFactory.getClassroomModelController().getClassroomsOfSchool(schoolID);
     }
 
-    public void SetClassroomsBySchoolIDResponse(boolean error, List<Classroom> classroomsFromCurrentSchool) {
+    public void setClassroomsBySchoolIDResponse(boolean error, List<Classroom> classroomsFromCurrentSchool) {
         PresentationControlFactory.getViewLayerController().SetClassroomsBySchoolIDResponse(error,classroomsFromCurrentSchool);
     }
 

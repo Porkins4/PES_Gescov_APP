@@ -25,7 +25,6 @@ public class Conection extends AsyncTask<String,String,String> {
             connection.setRequestMethod("GET");
             connection.setRequestProperty("User-Agent","Mozilla/5.0");
             int response = connection.getResponseCode();
-            System.out.println("Response status" + response);
             if (response == HttpURLConnection.HTTP_OK) {
 
                 BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));

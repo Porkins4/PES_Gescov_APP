@@ -2,15 +2,11 @@ package com.example.gescov.domainlayer.Services.Volley.Implementors;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IUserService;
 import com.example.gescov.domainlayer.Services.Volley.VolleyServices;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
-
-import org.json.JSONObject;
 
 public class UserServiceImplementor implements IUserService {
 
@@ -21,11 +17,11 @@ public class UserServiceImplementor implements IUserService {
     @Override
     public void changeUserProfile(String userId, boolean isStudent) {
         Boolean metaIsStudent = isStudent;
-        System.out.println(GESCOV_USERS_URI + userId + "/" + metaIsStudent.toString());
         StringRequest request = new StringRequest(
                 Request.Method.PUT, GESCOV_USERS_URI + userId + "/" + metaIsStudent.toString(),
                 response -> DomainControlFactory.getUserModelController().setUserType(metaIsStudent.toString()),
-                error -> System.out.println("something went wrong")
+                error -> {
+                }
         );
         VolleyServices.getRequestQueue().add(request);
     }

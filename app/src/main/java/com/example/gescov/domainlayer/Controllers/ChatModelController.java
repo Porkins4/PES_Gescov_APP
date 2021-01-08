@@ -110,7 +110,6 @@ public class ChatModelController {
                     Date currentDate = formatter.parse(current.getDate() + " " + current.getHour());
                     Date lastDate = formatter.parse(last.getDate() + " " + last.getHour());
                     if (currentDate.before(lastDate)) {
-                        System.out.println("este caso");
                         update = true;
                     }
                 } catch (ParseException e) {
@@ -119,7 +118,6 @@ public class ChatModelController {
             } else update = true;
 
             if (update) {
-                System.out.println("nuevo");
                 getMessages(chatID);
             }
         }

@@ -23,8 +23,8 @@ public class ClassroomsModelController {
     }
 
     public void setClassroomList(String classroomsString) {
-        JSONArray response = null;
-        List<Classroom> classroomsList = new ArrayList();
+        JSONArray response;
+        List<Classroom> classroomsList = new ArrayList<>();
         try {
             response = new JSONArray(classroomsString);
             for (int i = 0; i < response.length(); ++i) {
@@ -55,7 +55,7 @@ public class ClassroomsModelController {
                     JSONObject x = response.getJSONObject(i);
                     JSONObject classSessionInfo = new JSONObject(x.getString("first"));
                     User u = new User(x.getString("second"), classSessionInfo.getString("id"));
-                    Pair<User, Pair<Integer,Integer>> studentInfo = new Pair<>(u, new Pair<Integer, Integer>(classSessionInfo.getInt("posRow"),classSessionInfo.getInt("posCol")));
+                    Pair<User, Pair<Integer,Integer>> studentInfo = new Pair<>(u, new Pair<>(classSessionInfo.getInt("posRow"),classSessionInfo.getInt("posCol")));
                     r.add(studentInfo);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -94,20 +94,18 @@ public class ClassroomsModelController {
 
 
 
-    public void SetClassroomsBySchoolIDResponse(boolean error, JSONArray response) {
-        System.out.println(response.toString());
+    public void setClassroomsBySchoolIDResponse(boolean error, JSONArray response) {
         classroomsFromCurrentSchool = new ArrayList<>();
         if (!error) {
             try {
                 for (int i = 0; i < response.length(); ++i) {
                     Classroom c = Classroom.fromJSONtoClassroom(response.getJSONObject(i));
-                    c.print();
                     classroomsFromCurrentSchool.add(c);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            DomainControlFactory.getModelController().SetClassroomsBySchoolIDResponse(error,classroomsFromCurrentSchool);
+            DomainControlFactory.getModelController().setClassroomsBySchoolIDResponse(error,classroomsFromCurrentSchool);
         }
     }
 }

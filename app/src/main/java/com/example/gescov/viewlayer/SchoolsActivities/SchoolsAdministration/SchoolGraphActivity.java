@@ -46,7 +46,7 @@ public class SchoolGraphActivity extends AppCompatActivity {
                 List<DataEntry> data = new ArrayList<>();
                 AnyChartView anyChartView = findViewById(R.id.any_chart_view);
                 contagionPerMonth = schoolGraphModel.getContagionPerMonth();
-                if ( contagionPerMonth.size() == 0 ) data.add(new ValueDataEntry(getString(R.string.no_contagion), 0));
+                if ( contagionPerMonth.isEmpty() ) data.add(new ValueDataEntry(getString(R.string.no_contagion), 0));
                 else {
                     for (int i = 0; i < contagionPerMonth.size(); ++i) {
                         data.add(new ValueDataEntry(getNameOfMonth(i+1), contagionPerMonth.get(i).second));

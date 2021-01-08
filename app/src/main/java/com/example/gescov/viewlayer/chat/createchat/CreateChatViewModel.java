@@ -39,10 +39,6 @@ public class CreateChatViewModel extends ViewModel {
         getSchoolsRequest.setValue(true);
     }
 
-    public void test() {
-        for (School s: userschools) s.print();
-    }
-
     public String[] getSchoolNames() {
         String[] res = new String[userschools.size()];
         for (int i = 0; i < res.length; ++i) {

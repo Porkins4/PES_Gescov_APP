@@ -82,8 +82,8 @@ public class User {
         schoolsID = new ArrayList<>();
     }
 
-    public User(String Name, String userID) {
-        this.name = Name;
+    public User(String name, String userID) {
+        this.name = name;
         this.id = userID;
     }
 
@@ -194,8 +194,6 @@ public class User {
 
     public void deleteSchool(String schoolId) {
         ServicesFactory.getDeleteSchoolResponseController().deleteSchoolRequest(schoolId, this.id);
-
-        //ISchoolService schoolService = retrofit.create(ISchoolService.class);
     }
 
     public void getSchoolClassrooms(String schoolName) {
@@ -257,18 +255,6 @@ public class User {
 
     public void notifyPossibleContagion(MutableLiveData<ContagionRequestResult> result) {
         ServicesFactory.getContagionService().notifyPossibleContagion(id,result);
-    }
-
-    public void print() {
-        System.out.println(name);
-        System.out.println(id);
-        System.out.println(profileType);
-        System.out.println(pic);
-        for (String k: schoolsID) System.out.println(k);
-    }
-
-    private void setEmail(String email) {
-        this.email = email;
     }
 
     public boolean isMySchool(String schoolID) {

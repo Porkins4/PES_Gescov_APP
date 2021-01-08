@@ -151,13 +151,13 @@
     <!-- Strings used for daily test -->
     <string name="dailyTest">Realiza tu prueba de seguimiento</string>
     <string name="firstQuestion">¿Tienes tos seca y persistente?  </string>
-    <string name="yes">Si</string> <!-- also used on chatlist fragment -->
+    <string name="yes">Sí</string> <!-- also used on chatlist fragment -->
     <string name="no">No</string> <!-- also used on chatlist fragment -->
-    <string name="secondQuestion">¿Tiens dolor muscular?  </string>
-    <string name="thirdQuestion">¿Recientemente tuviste perdidas de gusto y/o olfato?</string>
+    <string name="secondQuestion">¿Tienes dolor muscular?  </string>
+    <string name="thirdQuestion">¿Recientemente tuviste pérdidas de gusto y/o olfato?</string>
     <string name="fourthQuestion">¿Tienes sensación de falta de aire?</string>
     <string name="fifthQuestion">¿Tienes fiebre? (+37.7°C)  </string>
-    <string name="titleTests">¿Que simptomás tienes? </string>
+    <string name="titleTests">¿Que síntomas tienes? </string>
     <string name="sendAnswers">Finalizar Test </string>
     <string name="userAnswer">Respuesta del usuario: </string>
     <string name="user_test_response">Respuestas del test</string>

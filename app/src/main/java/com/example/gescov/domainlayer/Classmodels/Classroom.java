@@ -77,12 +77,4 @@ public class Classroom {
         this.capacity = capacity;
     }
 
-
-    public void print() {
-        System.out.println(id);
-        System.out.println(name);
-        System.out.println(rows);
-        System.out.println(columns);
-        System.out.println(capacity);
-    }
 }

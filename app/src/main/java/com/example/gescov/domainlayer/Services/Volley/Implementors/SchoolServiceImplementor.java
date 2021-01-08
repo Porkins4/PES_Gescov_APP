@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
@@ -29,17 +28,17 @@ import java.util.concurrent.ExecutionException;
 
 public class SchoolServiceImplementor implements ISchoolService {
     private Conection conection;
-    private final String GET_CLASSROOM_DIMENSIONS_URI = "https://gescov.herokuapp.com/api/classrooms/distribution";
-    private final String GET_CLASSROOM_STUDENTS_URI = "https://gescov.herokuapp.com/api/assignments/classroom";
-    private final String ASSIGNMENT_URI = "https://gescov.herokuapp.com/api/assignments";
-    private final String POST_CREATE_SCHOOL_URI = "https://gescov.herokuapp.com/api/schools";
-    private final String POST_CREATE_CLASSROOM_URI = "https://gescov.herokuapp.com/api/classrooms";
-    private final String GET_STUDENTS_IN_CLASS_SESSION = "https://gescov.herokuapp.com/api/assignments/classroom";
-    private final String GET_CHECK_LOGIN = "https://gescov.herokuapp.com/api/users/";
-    private final String PUT_USER_TO_SCHOOL = "https://gescov.herokuapp.com/api/users/school/";
-    private final String  SCHOOL_PUNTUATIONS = "https://gescov.herokuapp.com/api/schools/scores";
+    private static final String GET_CLASSROOM_DIMENSIONS_URI = "https://gescov.herokuapp.com/api/classrooms/distribution";
+    private static final String GET_CLASSROOM_STUDENTS_URI = "https://gescov.herokuapp.com/api/assignments/classroom";
+    private static final String ASSIGNMENT_URI = "https://gescov.herokuapp.com/api/assignments";
+    private static final String POST_CREATE_SCHOOL_URI = "https://gescov.herokuapp.com/api/schools";
+    private static final String POST_CREATE_CLASSROOM_URI = "https://gescov.herokuapp.com/api/classrooms";
+    private static final String GET_STUDENTS_IN_CLASS_SESSION = "https://gescov.herokuapp.com/api/assignments/classroom";
+    private static final String GET_CHECK_LOGIN = "https://gescov.herokuapp.com/api/users/";
+    private static final String PUT_USER_TO_SCHOOL = "https://gescov.herokuapp.com/api/users/school/";
+    private static final String  SCHOOL_PUNTUATIONS = "https://gescov.herokuapp.com/api/schools/scores";
 
-    private final String GESCOV_SCHOOLS_URI = "https://gescov.herokuapp.com/api/schools/";
+    private static final String GESCOV_SCHOOLS_URI = "https://gescov.herokuapp.com/api/schools/";
     
     public SchoolServiceImplementor() {
         //Empty constructor
@@ -81,7 +80,7 @@ public class SchoolServiceImplementor implements ISchoolService {
         } catch (ExecutionException | InterruptedException e ){
             e.printStackTrace();
         }
-        if (response == null) return "Something went wrong";//TODO
+        if (response == null) return "Something went wrong";
         return response;
     }
 
@@ -128,18 +127,12 @@ public class SchoolServiceImplementor implements ISchoolService {
                         DomainControlFactory.getUserModelController().refreshLoggedUser();
                     },
                     error -> {
-                        if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
-                            System.out.println("something went wrong :(");
-                            for (String header : error.networkResponse.headers.values()) {
-                                System.out.println(header);
-                            }
-                        }
                     });
 
             requestQueue.add(jsonObjectRequest);
 
         } catch (JSONException e) {
-            System.out.println("Error while creating data for the reservation");
+            e.printStackTrace();
         }
 
     }
@@ -163,7 +156,7 @@ public class SchoolServiceImplementor implements ISchoolService {
                 Request.Method.POST, POST_CREATE_CLASSROOM_URI, classroom,
                 response -> DomainControlFactory.getUserModelController().refreshSchoolClassrooms(DomainControlFactory.getSchoolsModelCrontroller().getCurrentSchool().getName()), error -> {
                     if (error.networkResponse != null  && error.networkResponse.statusCode == 400  ) {
-                        System.out.println("something went wrong :(");
+                        return;
                     }
                 });
 
@@ -225,16 +218,8 @@ public class SchoolServiceImplementor implements ISchoolService {
         RequestQueue requestQueue = Volley.newRequestQueue(VolleyServices.getCtx());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET, GET_CHECK_LOGIN+id, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        DomainControlFactory.getUserModelController().refreshLoggedUser(response);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        });
+                response -> DomainControlFactory.getUserModelController().refreshLoggedUser(response), error -> {
+                });
 
         requestQueue.add(jsonObjectRequest);
     }

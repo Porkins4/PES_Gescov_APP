@@ -3,6 +3,8 @@ package com.example.gescov.viewlayer;
 import android.location.Location;
 import android.util.Pair;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
@@ -28,8 +30,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import org.json.JSONException;
 
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
 
 
 public class ViewLayerController {
@@ -119,11 +119,7 @@ public class ViewLayerController {
     }
 
     public void refreshSchoolList(List<School> schoolsList) {
-        try {
-            PresentationControlFactory.getSchoolsCrontroller().refreshSchoolsList(schoolsList);
-        } catch (JSONException  | AdapterNotSetException e) {
-            e.printStackTrace();
-        }
+        PresentationControlFactory.getSchoolsCrontroller().refreshSchoolsList(schoolsList);
     }
 
     public void refreshSchoolClassroomList(List<Classroom> classroomsList) {
@@ -481,7 +477,7 @@ public class ViewLayerController {
     }
 
     public void SetClassroomsBySchoolIDResponse(boolean error, List<Classroom> classroomsFromCurrentSchool) {
-        PresentationControlFactory.getEventController().SetClassroomsBySchoolIDResponse(error,classroomsFromCurrentSchool);
+        PresentationControlFactory.getEventController().setClassroomsBySchoolIDResponse(error,classroomsFromCurrentSchool);
     }
 
     public void notifyListOfTeachersReceivedToCreateEvent(List<User> contactsFromSelectedCenter) {

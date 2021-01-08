@@ -30,8 +30,8 @@ public class EventController {
         PresentationControlFactory.getViewLayerController().getClassroomsOfSchool(schoolID);
     }
 
-    public void SetClassroomsBySchoolIDResponse(boolean error, List<Classroom> classroomsFromCurrentSchool) {
-        eventViewModel.SetClassroomsBySchoolIDResponse(error, classroomsFromCurrentSchool);
+    public void setClassroomsBySchoolIDResponse(boolean error, List<Classroom> classroomsFromCurrentSchool) {
+        eventViewModel.setClassroomsBySchoolIDResponse(error, classroomsFromCurrentSchool);
     }
 
     public void getTeachersOfTheSchool(String subjectID) {

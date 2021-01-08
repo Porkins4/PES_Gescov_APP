@@ -33,17 +33,14 @@ public class LoginRespository {
             LoggedInUser.setCurrentLoggedUser(googleSignInAccount);
             DomainControlFactory.getModelController().setLoginResul(false);
         } else {
-            task.addOnCompleteListener(new OnCompleteListener<GoogleSignInAccount>() {
-                @Override
-                public void onComplete(@NonNull Task<GoogleSignInAccount> task) {
-                    try {
-                        googleSignInAccount = task.getResult(ApiException.class);
-                        LoggedInUser.setCurrentLoggedUser(googleSignInAccount);
-                        DomainControlFactory.getModelController().setLoginResul(false);
-                    } catch (ApiException apiException) {
-                        //no user logged in
-                        DomainControlFactory.getModelController().setLoginResul(true);
-                    }
+            task.addOnCompleteListener(task1 -> {
+                try {
+                    googleSignInAccount = task1.getResult(ApiException.class);
+                    LoggedInUser.setCurrentLoggedUser(googleSignInAccount);
+                    DomainControlFactory.getModelController().setLoginResul(false);
+                } catch (ApiException apiException) {
+                    //no user logged in
+                    DomainControlFactory.getModelController().setLoginResul(true);
                 }
             });
         }

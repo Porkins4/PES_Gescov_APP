@@ -23,18 +23,6 @@ public class ChatListViewModel extends ViewModel {
         return adapter;
     }
 
-    public LiveData<Boolean> deleteChat(int position) {
-        deleteChatResponse = new MutableLiveData<>();
-        PresentationControlFactory.getChatListController().setChatListViewModel(this);
-        PresentationControlFactory.getChatListController().deleteChat(adapter.chatID(position));
-        return deleteChatResponse;
-    }
-
-    public void deleteChatFromAdapter(int position) {
-        adapter.delete(position);
-        adapter.notifyDataSetChanged();
-    }
-
     public void setDeleteResult(boolean error) {
         deleteChatResponse.setValue(error);
     }

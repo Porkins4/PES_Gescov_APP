@@ -22,7 +22,6 @@ public class RefreshCoordinatesFromAddressResponseController implements Callback
 
     @Override
     public void onResponse(Call<String> call, Response<String> response) {
-        String s = response.body().toString();
         try {
             JSONObject resp = new JSONObject(response.body());
             JSONArray data = resp.getJSONArray("data");

@@ -35,7 +35,7 @@ public class AdminSchoolListViewAdapter extends SchoolListViewAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = super.getView(position, convertView, parent);
-        School school = (School) schoolList.get(position);
+        School school = schoolList.get(position);
         if (isLoggedUserCreator(school)) {
             v.setOnLongClickListener(e -> {
                         AlertDialog.Builder builder = new AlertDialog.Builder(e.getContext());

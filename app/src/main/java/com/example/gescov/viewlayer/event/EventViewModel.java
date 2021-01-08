@@ -46,7 +46,6 @@ public class EventViewModel extends ViewModel {
     public LiveData<Boolean> createEvent(String concept, String hour, String finishHour, String date, String teacherID, String classroomID, String subjectID) {
         received = new MutableLiveData<>();
         ClassSessionModel classSession= new ClassSessionModel("",hour,finishHour,date,classroomID,subjectID,teacherID,concept);
-        classSession.print();
         PresentationControlFactory.getEventController().createEvent(classSession);
         return received;
     }
@@ -62,7 +61,7 @@ public class EventViewModel extends ViewModel {
         return received;
     }
 
-    public void SetClassroomsBySchoolIDResponse(boolean error, List<Classroom> classroomsFromCurrentSchool) {
+    public void setClassroomsBySchoolIDResponse(boolean error, List<Classroom> classroomsFromCurrentSchool) {
         if (!error) {
             this.classrooms = classroomsFromCurrentSchool;
         }

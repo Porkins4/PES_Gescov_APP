@@ -61,7 +61,7 @@ public class ContagionServiceImplementor implements IContagionService {
                             String idContagion = response.getString("id");
                             ContagionRequestResult aux = new ContagionRequestResult();
                             aux.setError(new Pair<>("", false));
-                            DomainControlFactory.getUserModelController().updateContagionID(idContagion);
+                            DomainControlFactory.getUserModelController().setContagionID(idContagion);
                             result.setValue(aux);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -106,7 +106,7 @@ public class ContagionServiceImplementor implements IContagionService {
                             String idContagion = response.getString("id");
                             ContagionRequestResult aux = new ContagionRequestResult();
                             aux.setError(new Pair<>("", false));
-                            DomainControlFactory.getUserModelController().updateContagionID(idContagion);
+                            DomainControlFactory.getUserModelController().setContagionID(idContagion);
                             result.setValue(aux);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -131,7 +131,7 @@ public class ContagionServiceImplementor implements IContagionService {
                 response -> {
                     ContagionRequestResult aux = new ContagionRequestResult();
                     aux.setError(new Pair<>("", false));
-                    DomainControlFactory.getUserModelController().updateContagionID(null);
+                    DomainControlFactory.getUserModelController().setContagionID(null);
                     result.setValue(aux);
                 }, error -> {
                     ContagionRequestResult aux = new ContagionRequestResult();

@@ -7,7 +7,7 @@ public class WallEntryReply {
     private String text;
     private String username;
 
-    public WallEntryReply (String time, String text, String username) {;
+    public WallEntryReply (String time, String text, String username) {
         this.time = GescovUtils.getNormalizedTime(time);
         this.text = text;
         this.username = username;

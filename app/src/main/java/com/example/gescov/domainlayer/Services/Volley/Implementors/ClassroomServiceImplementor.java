@@ -2,8 +2,6 @@ package com.example.gescov.domainlayer.Services.Volley.Implementors;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.gescov.domainlayer.Classmodels.ClassSessionModel;
@@ -27,18 +25,8 @@ public class ClassroomServiceImplementor implements IClassroomService {
     public void getStudentsInClassRecord(String classroomId) {
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET, GESCOV_ASSIGNMENTS_URI + "classroom/" + classroomId,null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        DomainControlFactory.getClassroomModelController().updateStudentsInClassRecordView(response,false);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        DomainControlFactory.getClassroomModelController().updateStudentsInClassRecordView(null,true);
-                    }
-                }
+                response -> DomainControlFactory.getClassroomModelController().updateStudentsInClassRecordView(response,false),
+                error -> DomainControlFactory.getClassroomModelController().updateStudentsInClassRecordView(null,true)
         );
         VolleyServices.getRequestQueue().add(request);
     }
@@ -47,18 +35,8 @@ public class ClassroomServiceImplementor implements IClassroomService {
     public void getClassroomInfo(String classroomId) {
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET, GESCOV_CLASSROOMS_URI + classroomId,null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        DomainControlFactory.getClassroomModelController().updateClassroomDistributionClassInfo(response,false);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        DomainControlFactory.getClassroomModelController().updateClassroomDistributionClassInfo(null,true);
-                    }
-                }
+                response -> DomainControlFactory.getClassroomModelController().updateClassroomDistributionClassInfo(response,false),
+                error -> DomainControlFactory.getClassroomModelController().updateClassroomDistributionClassInfo(null,true)
         );
         RequestQueue q = VolleyServices.getRequestQueue();
         q.add(request);
@@ -84,8 +62,8 @@ public class ClassroomServiceImplementor implements IClassroomService {
     public void getClassroomsBySchoolID(String schoolID) {
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET, GESCOV_CLASSROOMS_URI + "school/" + schoolID,null,
-                response -> DomainControlFactory.getClassroomModelController().SetClassroomsBySchoolIDResponse(false, response),
-                error -> DomainControlFactory.getClassroomModelController().SetClassroomsBySchoolIDResponse(true, null)
+                response -> DomainControlFactory.getClassroomModelController().setClassroomsBySchoolIDResponse(false, response),
+                error -> DomainControlFactory.getClassroomModelController().setClassroomsBySchoolIDResponse(true, null)
         );
         VolleyServices.getRequestQueue().add(request);
     }
@@ -122,18 +100,13 @@ public class ClassroomServiceImplementor implements IClassroomService {
             e.printStackTrace();
         }
 
-        System.out.println(postData.toString());
 
+        //do not transform to lambda function (network response will not be recognized)
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST, GESCOV_CLASS_SESSION_URI, postData,
                 response -> DomainControlFactory.getClassSessionsModelController().notifyCreateEventResponse(false, 200, response),
-                new Response.ErrorListener() { //do not transform to lambda function (network response will not be recognized)
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        DomainControlFactory.getClassSessionsModelController().notifyCreateEventResponse(true, error.networkResponse.statusCode, null);
-                    }
-                }
-                );
+                error -> DomainControlFactory.getClassSessionsModelController().notifyCreateEventResponse(true, error.networkResponse.statusCode, null)
+        );
         VolleyServices.getRequestQueue().add(request);
     }
 }

@@ -97,21 +97,9 @@ public class ChatPreviewModel {
         return result;
     }
 
-    public void print() {
-        System.out.println(chatID);
-        System.out.println(previewID);
-        System.out.println(lastMessage);
-        System.out.println(hour);
-        System.out.println(target);
-        System.out.println(targetPic);
-    }
 
     public void setMessages(List<MessageModel> messages) {
         this.messages = messages;
-    }
-
-    public void addMessage(MessageModel message) {
-        messages.add(message);
     }
 
 

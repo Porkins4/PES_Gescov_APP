@@ -80,7 +80,7 @@ public class SubjectsServiceImplementor implements ISubjectsService {
             VolleyServices.getRequestQueue().add(jsonObjectRequest);
 
         } catch (JSONException e) {
-            System.out.println("Error while creating data for the reservation");
+            e.printStackTrace();
         }
     }
 

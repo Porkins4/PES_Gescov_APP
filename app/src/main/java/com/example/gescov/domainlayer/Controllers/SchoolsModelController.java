@@ -10,7 +10,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class SchoolsModelController {
 
     public void setSchoolsList(String schoolsString) throws JSONException {
         JSONArray response = new JSONArray(schoolsString);
-        schoolsList = new ArrayList();
+        schoolsList = new ArrayList<>();
         for (int i = 0; i < response.length(); ++i) {
 
             JSONObject aux = response.getJSONObject(i);
@@ -35,7 +34,7 @@ public class SchoolsModelController {
             String stateSchool = aux.getString("state");
             String addressSchool = aux.getString("address");
             String entryCode = aux.getString("entryCode");
-            String emailSchool = null;//aux.getString("email");
+            String emailSchool = null;
             String phone = aux.getString("phone");
             String webpage = aux.getString("website");
             double longitude = aux.getDouble("longitude");
@@ -45,7 +44,6 @@ public class SchoolsModelController {
             for (int admin = 0; admin < adminsArray.length(); admin++) {
                 listAdminsID.add(adminsArray.getString(admin));
             }
-            ;
             String creatorSchoolID = aux.getString("creatorID");
             schoolsList.add(new School(idSchool, nameSchool, addressSchool, stateSchool, creatorSchoolID, emailSchool, phone, longitude, latitude, entryCode, listAdminsID,webpage));
         }
@@ -95,7 +93,7 @@ public class SchoolsModelController {
         School schoolaux = null;
         for ( int i = 0; i < schoolsList.size() && (!found) ; ++i) {
              schoolaux = schoolsList.get(i);
-            if (schoolaux.getName() == name ) {
+            if (schoolaux.getName().equals(name)  ) {
                 found = true;
             }
         }
@@ -103,11 +101,12 @@ public class SchoolsModelController {
     }
 
     public School getSchoolById(String id) {
-        if (schoolsList != null)
-        for (School school : schoolsList) {
-            if (school.getId().equals(id))
-                return school;
+        if (schoolsList != null) {
+            for (School school : schoolsList) {
+                if (school.getId().equals(id)) return school;
+            }
         }
+
         return null;
     }
 

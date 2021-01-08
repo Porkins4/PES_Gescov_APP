@@ -2,14 +2,10 @@ package com.example.gescov.domainlayer.Services.Volley.Implementors;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.IAssignmentService;
 import com.example.gescov.domainlayer.Services.Volley.VolleyServices;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
-
-import org.json.JSONArray;
 
 public class AssignmentServiceImplementor implements IAssignmentService {
 
@@ -19,22 +15,12 @@ public class AssignmentServiceImplementor implements IAssignmentService {
 
     @Override
     public void getAssignmentsForClassSession(String classSessionID) {//cuando se pueda escoger la class session: classDateHour?classroomID=5fbad920572f3d4f08fa36bb&date=03-02-2020&hour=15%3A00
-        System.out.println( "" + classSessionID);
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET, GESCOV_ASSIGNMENTS_URI + "classSession/" + classSessionID,null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        System.out.println(response);
-                        DomainControlFactory.getAssignmentModelController().updateStudentsInClassSession(response,false);
-                    }
+                response -> {
+                    DomainControlFactory.getAssignmentModelController().updateStudentsInClassSession(response,false);
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        DomainControlFactory.getAssignmentModelController().updateStudentsInClassSession(null,true);
-                    }
-                }
+                error -> DomainControlFactory.getAssignmentModelController().updateStudentsInClassSession(null,true)
         );
         RequestQueue q = VolleyServices.getRequestQueue();
         q.add(request);

@@ -51,11 +51,4 @@ public class AddTeacherToSubjectViewModel extends ViewModel {
         teacherAssignedResult.setValue(error);
     }
 
-    public void deleteIthTeacher(int position) {
-        System.out.println("Target: " + position);
-        System.out.println("antes: " + teachers.size());
-        teachers.remove(position);
-        adapter.notifyDataSetChanged();
-        System.out.println("despues: " + teachers.size());
-    }
 }

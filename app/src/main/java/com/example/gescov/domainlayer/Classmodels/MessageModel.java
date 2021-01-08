@@ -6,7 +6,6 @@ import org.json.JSONObject;
 public class MessageModel {
     private String chatID;
     private String creatorID;
-    private String creator;
     private String date;
     private String hour;
     private String id;
@@ -55,11 +54,4 @@ public class MessageModel {
         return hour;
     }
 
-    public void print() {
-        System.out.println(chatID);
-        System.out.println(creatorID);
-        System.out.println(date);
-        System.out.println(hour);
-        System.out.println(text);
-    }
 }

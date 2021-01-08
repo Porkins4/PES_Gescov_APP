@@ -113,7 +113,7 @@ public class DomainControlFactory {
     public static ClassSessionController getClassSessionsModelController() {
         if (classSessionController != null)
             return classSessionController;
-            classSessionController = new ClassSessionController();
+        classSessionController = new ClassSessionController();
         return classSessionController;
 
     }

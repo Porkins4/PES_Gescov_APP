@@ -56,10 +56,5 @@ public class SchoolClassroomsCrontroller {
     public Classroom getClassroomByListPosition(int position) {
         return classroomsList.size() > position ? classroomsList.get(position) : null;
     }
-
-
-    /*public void getAssignmentsForClassSession(String classroomID, String date, String hour) {
-        PresentationControlFactory.getViewLayerController().getAssignmentsForClassSession(classroomID,date,hour);
-    }*/
-
+    
 }

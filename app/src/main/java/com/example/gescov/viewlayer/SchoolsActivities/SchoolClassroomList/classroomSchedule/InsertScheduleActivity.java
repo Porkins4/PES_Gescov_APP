@@ -35,7 +35,6 @@ public class InsertScheduleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_insert_schedule);
         admin  = true;
         if (getIntent().hasExtra("admin")) admin = getIntent().getExtras().getBoolean("admin");
-        System.out.println(admin +" el admin");
         initComponents();
         getSchedule();
         setListenerMonday();
@@ -203,7 +202,6 @@ public class InsertScheduleActivity extends AppCompatActivity {
                      friday.setTextColor(getColor(R.color.dark_green));
                 break;
             default:
-                System.out.println("not in range");
                 break;
         }
     }

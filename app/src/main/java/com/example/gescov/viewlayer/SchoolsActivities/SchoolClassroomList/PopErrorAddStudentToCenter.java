@@ -17,10 +17,7 @@ public class PopErrorAddStudentToCenter extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Error!")
                 .setMessage("Ja ets registrat en aquest centre")
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
+                .setPositiveButton("Ok", (dialog, which) -> {
                 });
         return builder.create();
     }

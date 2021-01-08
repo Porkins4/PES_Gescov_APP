@@ -62,20 +62,6 @@ public class ChatListFragment extends Fragment {
                     startActivity(i);
                 }
         );
-
-        //Code to delete chat if implemented
-        /*listView.setOnItemLongClickListener(
-                (parent, view, position, id) -> {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                    builder.setTitle(getString(R.string.options))
-                            .setItems(R.array.chat_options_menu_items, (dialog, which) -> {
-                                if (which == 0) confirmDeleteChatPrompt(position);
-                            });
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                    return true;
-                }
-        );*/
     }
 
     private void initViewModelData() {
@@ -110,24 +96,4 @@ public class ChatListFragment extends Fragment {
             initViewModelData();
         }
     }
-
-    //Code to delete chat if implemented
-    /*private void confirmDeleteChatPrompt(int position) {
-        DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
-            if (which == DialogInterface.BUTTON_POSITIVE) setDeleteChatListener(position);
-        };
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage(getString(R.string.confirm_delete_chat_message)).setPositiveButton(getString(R.string.yes_delete_chat), dialogClickListener)
-                .setNegativeButton(getString(R.string.no_delete_chat), dialogClickListener);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
-
-    private void setDeleteChatListener(int position) {
-        mViewModel.deleteChat(position).observe(getViewLifecycleOwner(),
-                error -> {
-                    if (!error) mViewModel.deleteChatFromAdapter(position);
-                });
-    }*/
 }

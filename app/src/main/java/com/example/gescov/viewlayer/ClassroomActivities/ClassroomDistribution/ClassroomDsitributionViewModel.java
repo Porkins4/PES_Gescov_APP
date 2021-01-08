@@ -83,7 +83,6 @@ public class ClassroomDsitributionViewModel extends ViewModel {
 
     public void setSendReservationRequestResponse(boolean error, int errorCode) {
         requestResponse = errorCode;
-        System.out.println("codigo de error: " +  errorCode);
         reservationResponse.setValue(error);
     }
 

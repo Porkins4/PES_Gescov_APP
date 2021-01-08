@@ -18,22 +18,22 @@ public class ScheduleModelController {
         for (int i = 0; i < 5; ++i ) {
             switch (i) {
                 case 0:
-                    ConvertToJson(l1,"MONDAY",scheduleList);
+                    convertToJson(l1,"MONDAY",scheduleList);
                     break;
                 case 1:
-                    ConvertToJson(l2,"TUESDAY", scheduleList);
+                    convertToJson(l2,"TUESDAY", scheduleList);
                     break;
                 case 2:
-                    ConvertToJson(l3,"WEDNESDAY", scheduleList);
+                    convertToJson(l3,"WEDNESDAY", scheduleList);
                     break;
                 case 3:
-                    ConvertToJson(l4,"THURSDAY", scheduleList);
+                    convertToJson(l4,"THURSDAY", scheduleList);
                     break;
                 case 4:
-                    ConvertToJson(l5,"FRIDAY", scheduleList);
+                    convertToJson(l5,"FRIDAY", scheduleList);
                     break;
                 default:
-                    System.out.println("error");
+                    break;
             }
         }
 
@@ -47,10 +47,10 @@ public class ScheduleModelController {
 
     }
 
-    private void ConvertToJson(List<Subject> l1, String day, JSONArray scheduleList) {
+    private void convertToJson(List<Subject> l1, String day, JSONArray scheduleList) {
         try {
             for (int i = 0; i < l1.size(); ++i) {
-                if (l1.get(i).getName() != "EMPTY") {
+                if (l1.get(i).getName().equals("EMPTY")) {
                     JSONObject subjectSchedule = new JSONObject();
                     String start;
                     String end;
@@ -135,7 +135,7 @@ public class ScheduleModelController {
                 l5.add(pos ,element);
                 break;
             default:
-                System.out.println("error");
+                break;
         }
 
     }

@@ -4,7 +4,6 @@ import android.location.Location;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.gescov.domainlayer.Classmodels.Subject;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.domainlayer.Services.Volley.Interfaces.ISchoolService;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
@@ -134,7 +133,6 @@ public class UserModelController {
 
     public void refreshLoggedUser(JSONObject response) {
         loggedUser = getUserFromJSONObject(response);
-        //DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName());
     }
 
     public User getLoggedUser() {
@@ -161,7 +159,6 @@ public class UserModelController {
         }
         User user = getUserFromJSONObject(response);
         userHash.put(user.getId(), user);
-        //DomainControlFactory.getModelController().updateHomeViewModel(loggedUser.getName());
     }
 
     public void addStudentToCenter(String schoolId, MutableLiveData<SchoolRequestResult> result) {
@@ -200,7 +197,7 @@ public class UserModelController {
         LoginRespository.checkuserAlreadyLoggedInOnthisDevice(serverClientID);
     }
 
-    public void getUserID() {
+    public void getUserByToken() {
         ServicesFactory.getUserService().getUserID(LoginRespository.getToken());
     }
 
@@ -258,7 +255,7 @@ public class UserModelController {
         DomainControlFactory.getSubjectModelController().getSubjectsFromUser(2);
     }
 
-    public void updateContagionID(String contagionId) {
+    public void setContagionID(String contagionId) {
         loggedUser.setIdContagion(contagionId);
     }
 

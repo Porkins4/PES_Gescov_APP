@@ -68,7 +68,7 @@ public class School {
             String stateSchool = response.getString("state");
             String addressSchool = response.getString("address");
             String accessCode = response.getString("entryCode");
-            String emailSchool = null;//aux.getString("email");
+            String emailSchool = null;
             String phone = response.getString("phone");
             String webpage = response.getString("website");
             double longitude = response.getDouble("longitude");
@@ -77,7 +77,7 @@ public class School {
             JSONArray adminsArray = response.getJSONArray("administratorsID");
             for (int admin = 0; admin < adminsArray.length(); admin++) {
                 listAdminsID.add(adminsArray.getString(admin));
-            };
+            }
             String creatorSchoolID = response.getString("creatorID");
             res = new School(idSchool, nameSchool, addressSchool, stateSchool, creatorSchoolID, emailSchool, phone, longitude, latitude, accessCode, listAdminsID,webpage);
         } catch (JSONException e) {
@@ -165,15 +165,9 @@ public class School {
     public double getLongitude() {
         return longitude;
     }
+
     public List<String> getAdministratorsList() {
         return listAdministratorsID;
-    }
-
-    public void print() {
-        System.out.println(id);
-        System.out.println(name);
-        System.out.println(creatorID);
-        System.out.println(telephoneNumber);
     }
 
     public String getCreator() {

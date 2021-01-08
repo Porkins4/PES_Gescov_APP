@@ -42,8 +42,6 @@ public class CreateForumEntryFormActivity extends AppCompatActivity {
             PresentationControlFactory.getSchoolsCrontroller().refreshAllSchoolsList();
         } catch (JSONException e) {
             e.printStackTrace();
-        } catch (AdapterNotSetException e) {
-            e.printStackTrace();
         }
 
 
@@ -55,7 +53,7 @@ public class CreateForumEntryFormActivity extends AppCompatActivity {
                     PresentationControlFactory.getForumController().createForumEntry(titleText.getText().toString(), noticeText.getText().toString(), schoolId);
                     finish();
                 }
-;            } else if (noticeText.getText() == null || noticeText.getText().toString().equals(""))
+            } else if (noticeText.getText() == null || noticeText.getText().toString().equals(""))
                 Toast.makeText(this, getResources().getText(R.string.create_forum_check_content), Toast.LENGTH_SHORT).show();
             else if (titleText.getText() == null || titleText.getText().toString().equals(""))
                 Toast.makeText(this, getResources().getText(R.string.create_forum_check_title), Toast.LENGTH_SHORT).show();
