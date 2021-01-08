@@ -2,6 +2,8 @@ package com.example.gescov.domainlayer.Controllers;
 
 import android.util.Pair;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.gescov.domainlayer.Classmodels.Assignment;
 import com.example.gescov.domainlayer.Classmodels.Chat;
 import com.example.gescov.domainlayer.Classmodels.ChatPreviewModel;
@@ -27,8 +29,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import org.json.JSONException;
 
 import java.util.List;
-
-import androidx.lifecycle.MutableLiveData;
 
 public class ModelController {
 

@@ -71,7 +71,7 @@ public class EventActivity extends AppCompatActivity {
 
     private Pair<Boolean,String> validateFields() {
         boolean previousDate = false;
-        previousDate = (currentDate.before(new Date()));
+        //previousDate = (currentDate.before(new Date()));
 
         if (title.getText().toString().isEmpty()) return new Pair<>(true,getString(R.string.empty_title_error));
         else if (description.getText().toString().isEmpty()) return new Pair<>(true,getString(R.string.empty_description_error));

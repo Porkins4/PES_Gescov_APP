@@ -17,115 +17,151 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gescov"
-        android:screenOrientation="portrait"
         android:usesCleartextTraffic="true">
-        <activity android:name=".viewlayer.home.upgraderole.UpgradeRoleActivity"></activity>
-        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.createsubject.CreateSubjectActivity" />
+        <activity android:name=".viewlayer.home.upgraderole.UpgradeRoleActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
+        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.createsubject.CreateSubjectActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.event.EventActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.tracingTestResult.TestDetailsActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.tracingTestResult.TracingTestResultActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.forum.CreateForumEntryFormActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.forum.forumreply.ForumReplyListActivity"
-            android:theme="@style/Theme.Gescov.NoActionBar" /> <!-- notification -->
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.classroomSchedule.InsertScheduleActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-
         <activity
             android:name=".viewlayer.ClassroomActivities.StudentsInClassSession.StudentsInClassSessionActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.addteachertosubject.AddTeacherToSubjectActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.createclasssession.CreateClassSessionActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.checkclasssession.CheckClassSessionActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectDetailActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.SubjectActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.ContagionList.ContagionListActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.AccessSchoolByCodeActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.chat.createchat.CreatingChatActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.chat.chatview.ChatViewActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.ClassroomActivities.StudentsInClassRecord.StudentsInClassRecordActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.chat.createchat.CreateChatActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.schoolrequests.SchoolRequestsListActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.UpdateUserProfile.UpdateUserProfileActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolDetailsActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.schooluserslist.SchoolUsersListActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.home.DailyTestActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SignUpAndLogin.LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.CreateClassroomFormActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.EditClassroomFormActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.SchoolGraphActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.ClassroomActivities.ClassroomDistribution.ClassroomDistributionActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.ClassroomActivities.MarkPositionInClassroom.MarkPositionInClassroom"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.home.CovidNotificationActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassromListActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_school_classrom_list"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.CreateSchoolFormActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.navigation.NavigationMenu"
             android:label="@string/title_activity_navigation_menu"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SignUpAndLogin.LoadingProfileActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -137,6 +173,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCh_d-WKGRiQXnUvKng5HOtSrPfNcg8BDQ" />
 
+        <!-- notification -->
         <service
             android:name=".FirebaseNotificationController"
             android:exported="false">

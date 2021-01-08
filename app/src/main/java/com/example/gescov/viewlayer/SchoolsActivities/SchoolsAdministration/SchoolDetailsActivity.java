@@ -56,6 +56,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         setMap(savedInstanceState);
         loggedUser = PresentationControlFactory.getViewLayerController().getLoggedUserInfo();
         initComponents();
+        setIconsColor();
         setSubjectListener();
         name.setText(school.getName());
 
@@ -164,7 +165,7 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.title_school_details);
-        setIconsColor();
+
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
