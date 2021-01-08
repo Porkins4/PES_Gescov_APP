@@ -285,4 +285,5 @@
 
     <string name="user_promoted">User has ben promoted successfully</string>
     <string name="user_not_promoted">User could not be promoted</string>
+    <string name="daily_test_succesfully_sent_toast">S\'han enviat les respostes correctament :)</string>
 </resources>

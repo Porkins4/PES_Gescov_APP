@@ -343,6 +343,7 @@
     <string name="code_not_correct">Codi incorrecte</string>
     <string name="user_promoted">L\'usuari s\'ha promocionat correctament</string>
     <string name="user_not_promoted">L\'usuari no s\'ha pogut promocionar</string>
+    <string name="daily_test_succesfully_sent_toast">S\'han enviat les respostes correctament :)</string>
 
 
 </resources>

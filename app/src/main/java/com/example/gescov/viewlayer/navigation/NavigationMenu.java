@@ -19,7 +19,6 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.gescov.GescovUtils;
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.SignUpAndLogin.LoginActivity;

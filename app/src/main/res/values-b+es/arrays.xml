@@ -14,6 +14,7 @@
 
     <string-array name="user_option_menu_items">
         <item>Hacer administrador</item>
+        <item>Ver resultados de los tests</item>
     </string-array>
 
     <string-array name="admin_option_menu_items">

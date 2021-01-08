@@ -1,11 +1,9 @@
 package com.example.gescov.viewlayer.home;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -32,12 +30,7 @@ public class DailyTestActivity extends AppCompatActivity {
         answers = new ArrayList<>();
         initToolBar();
         Button sendTest = findViewById(R.id.sendTest);
-        sendTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendTests();
-            }
-        });
+        sendTest.setOnClickListener(v -> sendTests());
     }
 
     private void initToolBar() {
@@ -50,7 +43,7 @@ public class DailyTestActivity extends AppCompatActivity {
     private void sendTests() {
         fillAnswers();
         tracingTestController.sendAnswers(answers);
-        Toast.makeText( this, "Respostes enviades :)", Toast.LENGTH_LONG).show();
+        PresentationControlFactory.getMessagesManager().toastMessage(R.string.daily_test_succesfully_sent_toast);
         finish();
     }
 
