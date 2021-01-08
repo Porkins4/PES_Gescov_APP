@@ -273,7 +273,7 @@
     <string name="title_assignments_class_session">Persones en aquesta sessió</string>
     
 
-    <string name="user_not_admin">The user is not admin, if you have been promoted recently, restart the application.</string>
+    <string name="user_not_admin">The user is not teacher, if you have been promoted recently, restart the application.</string>
     <string name="create_school_validate_name">Center\'s name can not be empty or repeated.</string>
     <string name="create_school_validate_address">Address can not be empty.</string>
     <string name="create_school_validate_phone">The phone number must have 9 digits.</string>

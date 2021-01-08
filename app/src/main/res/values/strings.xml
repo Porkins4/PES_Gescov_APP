@@ -332,7 +332,7 @@
     <string name="succesfull_reservation">S\'ha reservat la taula de manera exitosa</string>
     <string name="already_has_reservation">L\'usuari ja té una reserva a aquesta aula</string>
     <string name="title_assignments_class_session">Asistents</string>
-    <string name="user_not_admin">L\'usuari no és administrador, si s\'ha promocionat a administrador recentment reiniciar l\'aplicació.</string>
+    <string name="user_not_admin">L\'usuari no és professor, si s\'ha promocionat a professor recentment reiniciar l\'aplicació.</string>
     <string name="create_school_validate_name">El nom del centre no pot estar buit ni repetit.</string>
     <string name="create_school_validate_address">L\'adreça no pot estar buida.</string>
     <string name="create_school_validate_phone">El número de telèfon ha de tenir 9 digits.</string>

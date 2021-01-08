@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gescov.GescovUtils;
 import com.example.gescov.R;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.viewlayer.SignUpAndLogin.LoginActivity;
@@ -77,7 +76,7 @@ public class NavigationMenu extends AppCompatActivity {
         });
 
         schoolAdministration.setOnMenuItemClickListener(e-> {
-            if (!GescovUtils.isUserAdminInAnySchool(PresentationControlFactory.getLoadingProfileController().getLoggedInUser())) {
+            if (!PresentationControlFactory.getLoadingProfileController().getLoggedInUser().isTeacher()) {
                 PresentationControlFactory.getMessagesManager().toastMessage(R.string.user_not_admin);
             } else {
                 navController.navigate(R.id.school_administration);
