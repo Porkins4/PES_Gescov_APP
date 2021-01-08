@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -137,7 +138,10 @@ public class SchoolsModelController {
         userSchools = new ArrayList<>();
         num_schools = schoolsID.size();
         num_received_schools = 0;
-        for (String school: schoolsID) ServicesFactory.getSchoolService().getSchool(school);
+        if (num_schools == 0) DomainControlFactory.getModelController().notifySchoolsReceivedToCreateChatActivity();
+        else {
+            for (String school: schoolsID) ServicesFactory.getSchoolService().getSchool(school);
+        }
     }
 
 

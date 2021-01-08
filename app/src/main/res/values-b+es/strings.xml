@@ -352,4 +352,5 @@
     <string name="select_reservation_place_message">Toca un botón para reservar un asiento</string>
     <string name="information_text">Recuerda que para todo tipo de actividad presencial, ya sea en clase o al aire libre, se ha de mantener una distancia de seguridad de 1,5 metros.\n\nEn el caso de que tu centro educativo no pueda garantizar la distancia de seguridad, procura reservar sitio en una mesa con el mínimo riesgo posible y recuerda llevar siempre la mascarilla.\n\nRecuerda, si ves que en el aula hay muchas reservas, de tal manera que el aforo está llegando a su límite, intenta seguir las sesiones de clase de manera no presencial.</string>
     <string name="title_information">Información importante</string>
+    <string name="error_user_has_no_school">Antes de iniciar un chat, entra en un centro!</string>
 </resources>

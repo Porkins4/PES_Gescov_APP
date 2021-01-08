@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.gescov.GescovUtils;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 public class CreateSubjectViewModel extends ViewModel {
@@ -35,5 +36,9 @@ public class CreateSubjectViewModel extends ViewModel {
 
     public int getResponseCode() {
         return responseCode;
+    }
+
+    public void updateUserSubjects() {
+        GescovUtils.updateSubjects();
     }
 }

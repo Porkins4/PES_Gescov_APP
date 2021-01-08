@@ -46,8 +46,9 @@ public class ClassroomsModelController {
         ServicesFactory.getClassroomService().getStudentsInClassRecord(classroomId);
     }
 
-    public void updateStudentsInClassRecordView(JSONArray response,boolean b) {
+    public void updateStudentsInClassRecordView(JSONArray response, boolean b) {
         List<Pair<User, Pair<Integer,Integer>>> r = new ArrayList<>();
+        List<String> dates = new ArrayList<>();
         if (!b) {
             for (int i = 0; i < response.length(); ++i) {
                 try {
@@ -61,7 +62,7 @@ public class ClassroomsModelController {
                 }
             }
         }
-        DomainControlFactory.getModelController().refreshStudentsInClassRecordView(r,b);
+        DomainControlFactory.getModelController().refreshStudentsInClassRecordView(r,dates,b);
     }
 
     public void getClassroomInfo(String classroomID) {

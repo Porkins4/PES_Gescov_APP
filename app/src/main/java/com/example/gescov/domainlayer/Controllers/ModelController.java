@@ -167,8 +167,8 @@ public class ModelController {
         DomainControlFactory.getClassroomModelController().getStudentsInClassRecord(classroomId);
     }
 
-    public void refreshStudentsInClassRecordView(List<Pair<User, Pair<Integer,Integer>>> r, boolean b) {
-        viewLayerController.refreshStudentsInClassRecordView(r,b);
+    public void refreshStudentsInClassRecordView(List<Pair<User, Pair<Integer,Integer>>> r, List<String> dates, boolean b) {
+        viewLayerController.refreshStudentsInClassRecordView(r,dates,b);
     }
 
     public User getLoggedUser() {

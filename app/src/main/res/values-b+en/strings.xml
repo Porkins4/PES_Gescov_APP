@@ -359,4 +359,5 @@
     <string name="select_reservation_place_message">Touch one button to reserve a seat</string>
     <string name="information_text">Remember that for all attended activities, whether in class or outdoors, a safety distance of 1.5 meters must be maintained. \n If your school cannot guarantee the distance of safety, try to reserve a place at a seat with the minimum possible risk and always remember to take the mask with you. Also remember, if you see that there are a lot of reservations in the classroom, such that the capacity of the classroom is reaching its limit, try to follow</string>
     <string name="title_information">Important information</string>
+    <string name="error_user_has_no_school">Before starting any chat, join a center!</string>
 </resources>
