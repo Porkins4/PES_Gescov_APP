@@ -104,4 +104,8 @@ public class CreateChatViewModel extends ViewModel {
     public String getChatID() {
         return chatCreated.getID();
     }
+
+    public boolean userHasNoCenter() {
+        return userschools.isEmpty();
+    }
 }

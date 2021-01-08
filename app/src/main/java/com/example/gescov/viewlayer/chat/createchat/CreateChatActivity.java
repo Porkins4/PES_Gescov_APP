@@ -42,7 +42,16 @@ public class CreateChatActivity extends AppCompatActivity {
         createChatViewModel = new ViewModelProvider(instance).get(CreateChatViewModel.class);
         createChatViewModel.getSchoolsRequest().observe(instance,
                 received -> {
-                    if (received) setSchoolSpinner();
+                    if (received) {
+                        setSchoolSpinner();
+                        if (createChatViewModel.userHasNoCenter()) {
+                            loadingComponents.setVisibility(View.GONE);
+                            LinearLayout error = findViewById(R.id.error);
+                            error.setVisibility(View.VISIBLE);
+                            TextView error_message = findViewById(R.id.error_message);
+                            error_message.setText(R.string.error_user_has_no_school);
+                        }
+                    }
                 }
         );
     }

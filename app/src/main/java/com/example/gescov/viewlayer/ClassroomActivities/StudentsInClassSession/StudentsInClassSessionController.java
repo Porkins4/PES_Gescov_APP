@@ -35,8 +35,8 @@ public class StudentsInClassSessionController {
 
 
 
-    public void refreshStudentsInClassRecordView(List<Pair<User, Pair<Integer,Integer>>> r, boolean b) {
-        studentsInClassRecordViewModel.setResponse(r,b);
+    public void refreshStudentsInClassRecordView(List<Pair<User, Pair<Integer,Integer>>> r, List<String> dates, boolean b) {
+        studentsInClassRecordViewModel.setResponse(r,dates,b);
     }
 
     public void refreshClassroomDistributionAssignments(List<Assignment> r, boolean b) {

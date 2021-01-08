@@ -37,4 +37,8 @@ public class GescovUtils {
         Subject s = DomainControlFactory.getSubjectModelController().getSubjectsFromUserBySubjectID(subjectID);
         return s.getId().equals(subjectID);
     }
+
+    public static void updateSubjects() {
+        DomainControlFactory.getSubjectModelController().getSubjectsFromUser(-1);
+    }
 }
