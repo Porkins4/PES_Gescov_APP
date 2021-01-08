@@ -352,6 +352,9 @@
     <string name="information_text">Recorda que per tot tipus d\'activitat presencial, ja sigui a classe o a l\'aire lliure s\'ha de mantenir una distancia de seguretat de 1,5 metres.\n\nEn el cas de que el teu centre educatiu no pugui garantir la distancia de seguretat, procura reservar lloc a una taula amb el minim risc possible i recorda sempre emportar la mascareta.\n\nRecorda, si veus que a l\'aula hi ha moltes reserves, de tal manera que la capacitat de l\'aula està arrivant al seu limit, intenta seguir les sessions de clase de manera no presencial.</string>
     <string name="title_information">Informació important</string>
     <string name="accessed_to_school">S\'ha accedit correctament al centre</string>
+    <string name="classroom_rows_check">Com a mínim hi ha d\'haver una fila.</string>
+    <string name="classroom_columns_check">Com a mínim hi ha d\'haver una columna.</string>
+    <string name="classroom_name_check">El nom de l\'aula no pot estar buit.</string>
 
 
 </resources>

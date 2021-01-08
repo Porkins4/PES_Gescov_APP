@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.gescov.R;
 import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class CreateClassroomFormActivity extends AppCompatActivity {
     protected EditText classroomName;
@@ -35,6 +35,13 @@ public class CreateClassroomFormActivity extends AppCompatActivity {
 
     protected void setMainButtonActions() {
         SchoolClassroomsCrontroller classroomsCrontroller = PresentationControlFactory.getClassroomsCrontroller();
+        if (classroomRows.getText() == null || Integer.valueOf(classroomRows.getText().toString()) < 1) {
+            PresentationControlFactory.getMessagesManager().toastMessage(R.string.classroom_rows_check);
+        } else if (classroomColumns.getText() == null || Integer.valueOf(classroomColumns.getText().toString()) < 1) {
+            PresentationControlFactory.getMessagesManager().toastMessage(R.string.classroom_columns_check);
+        } else if (classroomName.getText() == null || Integer.valueOf(classroomName.getText().length()) < 1) {
+            PresentationControlFactory.getMessagesManager().toastMessage(R.string.classroom_name_check);
+        }
         classroomsCrontroller.createClassroom(classroomName.getText().toString(), Integer.valueOf(classroomRows.getText().toString()), Integer.valueOf(classroomColumns.getText().toString()));
 
         classroomsCrontroller.getListViewAdapter().notifyDataSetChanged();
