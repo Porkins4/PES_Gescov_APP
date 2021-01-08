@@ -57,7 +57,9 @@ public class EditClassroomFormActivity extends CreateClassroomFormActivity {
     @Override
     protected void setMainButtonActions() {
         SchoolClassroomsCrontroller classroomsCrontroller = PresentationControlFactory.getClassroomsCrontroller();
-        classroomsCrontroller.updateClassroom(classroom.getId(), classroomName.getText().toString(), Integer.valueOf(classroomRows.getText().toString()), Integer.valueOf(classroomColumns.getText().toString()));
-        finish();
+        if (checkValues()) {
+            classroomsCrontroller.updateClassroom(classroom.getId(), classroomName.getText().toString(), Integer.valueOf(classroomRows.getText().toString()), Integer.valueOf(classroomColumns.getText().toString()));
+            finish();
+        }
     }
 }

@@ -35,17 +35,30 @@ public class CreateClassroomFormActivity extends AppCompatActivity {
 
     protected void setMainButtonActions() {
         SchoolClassroomsCrontroller classroomsCrontroller = PresentationControlFactory.getClassroomsCrontroller();
-        if (classroomRows.getText() == null || Integer.valueOf(classroomRows.getText().toString()) < 1) {
-            PresentationControlFactory.getMessagesManager().toastMessage(R.string.classroom_rows_check);
-        } else if (classroomColumns.getText() == null || Integer.valueOf(classroomColumns.getText().toString()) < 1) {
-            PresentationControlFactory.getMessagesManager().toastMessage(R.string.classroom_columns_check);
-        } else if (classroomName.getText() == null || Integer.valueOf(classroomName.getText().length()) < 1) {
-            PresentationControlFactory.getMessagesManager().toastMessage(R.string.classroom_name_check);
+        if (checkValues())  {
+            classroomsCrontroller.createClassroom(classroomName.getText().toString(), Integer.valueOf(classroomRows.getText().toString()), Integer.valueOf(classroomColumns.getText().toString()));
+
+            classroomsCrontroller.getListViewAdapter().notifyDataSetChanged();
+
+            finish();
         }
-        classroomsCrontroller.createClassroom(classroomName.getText().toString(), Integer.valueOf(classroomRows.getText().toString()), Integer.valueOf(classroomColumns.getText().toString()));
+    }
 
-        classroomsCrontroller.getListViewAdapter().notifyDataSetChanged();
+    protected boolean checkValues() {
+        if (classroomRows.getText() == null || classroomRows.getText().toString().equals("") || Integer.valueOf(classroomRows.getText().toString()) < 1) {
+            PresentationControlFactory.getMessagesManager().toastMessage(R.string.classroom_rows_check);
+            return false;
+        }
 
-        finish();
+        if (classroomColumns.getText() == null || classroomColumns.getText().toString().equals("") || Integer.valueOf(classroomColumns.getText().toString()) < 1) {
+            PresentationControlFactory.getMessagesManager().toastMessage(R.string.classroom_columns_check);
+            return false;
+        }
+
+        if (classroomName.getText() == null || Integer.valueOf(classroomName.getText().toString().length()) < 1) {
+            PresentationControlFactory.getMessagesManager().toastMessage(R.string.classroom_name_check);
+            return false;
+        }
+        return true;
     }
 }
