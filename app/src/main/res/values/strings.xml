@@ -325,7 +325,7 @@
     <string name="timeline_already_reserved">Aquesta franja horaria ja te un event relacionat, canvia el dia o la hora de reserva</string>
     <string name="create_in_google_calendar_request">Desitjes afegir aquest event al Google Calendar?</string>
     <string name="schedule_title_activity">Horari de l\'aula</string>
-    <string name="cannot_access_by_code">No s\'ha pogut accedir amb aquest codi.</string>
+    <string name="cannot_access_by_code">No s\'ha pogut accedir a cap centre amb aquest codi.</string>
     <string name="cannot_delete_wall_entry">No s\'ha pogut borrar aquesta entrada</string>
     <string name="open_calendar">Obrir calendari</string>
     <string name="mark_position_in_classroom_title">Reserva de lloc</string>
@@ -351,6 +351,7 @@
     <string name="select_reservation_place_message">Toca un botó per reservar lloc</string>
     <string name="information_text">Recorda que per tot tipus d\'activitat presencial, ja sigui a classe o a l\'aire lliure s\'ha de mantenir una distancia de seguretat de 1,5 metres.\n\nEn el cas de que el teu centre educatiu no pugui garantir la distancia de seguretat, procura reservar lloc a una taula amb el minim risc possible i recorda sempre emportar la mascareta.\n\nRecorda, si veus que a l\'aula hi ha moltes reserves, de tal manera que la capacitat de l\'aula està arrivant al seu limit, intenta seguir les sessions de clase de manera no presencial.</string>
     <string name="title_information">Informació important</string>
+    <string name="accessed_to_school">S\'ha accedit correctament al centre</string>
 
 
 </resources>

@@ -48,7 +48,7 @@
     <string name="create_school_form_school_address_example">nº Street Name, Town</string>
     <string name="create_school_form_latitude">Latitude</string>
     <string name="create_school_form_longitude">Longitude</string>
-    <string name="cannot_access_by_code">You couldn\'t access an school by this code</string>
+    <string name="cannot_access_by_code">You couldn\'t access any school by using this code</string>
 
 
     <!-- User all schools -->
@@ -105,7 +105,7 @@
 
     <!-- Classroom distribution -->
     <string name="Catalan_classroom_name">Classroom</string>
-    <string name="Catalan_mark_position">Check position</string>
+    <string name="Catalan_mark_position">Set position</string>
     <string name="Catalan_confirmation_Question">Do you want to check your assistance in this position?</string>
     <string name="Catalan_table_already_assigned">This place is already used by somebody.</string>
     <string name="Catalan_table_not_available">You can not take this place.</string>
@@ -348,7 +348,7 @@
     <string name="home_upgrade_role">Role promotion</string>
     <string name="role_promotion_title">Promotion code</string>
     <string name="role_promotion_button">Promote</string>
-    <string name="code_not_correct">Code not correct</string>
+    <string name="code_not_correct">Incorrect code</string>
 
     <string name="user_promoted">User has ben promoted successfully</string>
     <string name="user_not_promoted">User could not be promoted</string>
@@ -359,4 +359,5 @@
     <string name="select_reservation_place_message">Touch one button to reserve a seat</string>
     <string name="information_text">Remember that for all attended activities, whether in class or outdoors, a safety distance of 1.5 meters must be maintained. \n If your school cannot guarantee the distance of safety, try to reserve a place at a seat with the minimum possible risk and always remember to take the mask with you. Also remember, if you see that there are a lot of reservations in the classroom, such that the capacity of the classroom is reaching its limit, try to follow</string>
     <string name="title_information">Important information</string>
+    <string name="accessed_to_school">You have entered to the center successfully.</string>
 </resources>

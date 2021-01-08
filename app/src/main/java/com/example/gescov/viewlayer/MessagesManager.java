@@ -13,4 +13,9 @@ public class MessagesManager {
         Toast toast = Toast.makeText(context, context.getResources().getText(resourceMessage), Toast.LENGTH_SHORT);
         toast.show();
     }
+
+    public void toastMessage(int resourceMessage, String endString) {
+        Toast toast = Toast.makeText(context, context.getResources().getText(resourceMessage) + " " + endString, Toast.LENGTH_SHORT);
+        toast.show();
+    }
 }

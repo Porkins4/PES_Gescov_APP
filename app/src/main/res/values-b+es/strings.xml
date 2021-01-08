@@ -285,7 +285,7 @@
     <string name="create_wall_entry_reply_form_text">Escribe tu comentario aquí.</string>
     <string name="create_wall_entry_reply_form_button">Añadir comentario</string>
     <string name="forum_entry_list_delete_message">Estás seguro de que quieres borrar esta entrada?</string>
-    <string name="cannot_access_by_code">No se pudo acceder con este código</string>
+    <string name="cannot_access_by_code">No se pudo acceder a ningún centro con este código</string>
     <string name="timeline_already_reserved">Esta franja horaria ya tiene un evento relacionado, cambia el día o la hora de reserva</string>
     <string name="create_in_google_calendar_request">¿Deseas añadir este evento al Google calendar?</string>
     <string name="schedule_title_activity">Horario del aula</string>
@@ -352,4 +352,5 @@
     <string name="select_reservation_place_message">Toca un botón para reservar un asiento</string>
     <string name="information_text">Recuerda que para todo tipo de actividad presencial, ya sea en clase o al aire libre, se ha de mantener una distancia de seguridad de 1,5 metros.\n\nEn el caso de que tu centro educativo no pueda garantizar la distancia de seguridad, procura reservar sitio en una mesa con el mínimo riesgo posible y recuerda llevar siempre la mascarilla.\n\nRecuerda, si ves que en el aula hay muchas reservas, de tal manera que el aforo está llegando a su límite, intenta seguir las sesiones de clase de manera no presencial.</string>
     <string name="title_information">Información importante</string>
+    <string name="accessed_to_school">Se accedió correctamente al centro.</string>
 </resources>
