@@ -346,4 +346,10 @@
     <string name="error_no_classrooms_in_school">Todavía no hay aulas en este centro, primero crea un aula</string>
     <string name="okey_text">D\'acord</string>
 
+    <string name="error_subject_already_exists">Ya existe una asignatura con este nombre</string>
+    <string name="error_no_assistants_to_class_session">Esta sesión aún no tiene asistentes</string>
+    <string name="error_subject_has_no_class_session">La asignatura todavía no tiene sesiones de clase</string>
+    <string name="select_reservation_place_message">Toca un botón para reservar un asiento</string>
+    <string name="information_text">Recuerda que para todo tipo de actividad presencial, ya sea en clase o al aire libre, se ha de mantener una distancia de seguridad de 1,5 metros.\n\nEn el caso de que tu centro educativo no pueda garantizar la distancia de seguridad, procura reservar sitio en una mesa con el mínimo riesgo posible y recuerda llevar siempre la mascarilla.\n\nRecuerda, si ves que en el aula hay muchas reservas, de tal manera que el aforo está llegando a su límite, intenta seguir las sesiones de clase de manera no presencial.</string>
+    <string name="title_information">Información importante</string>
 </resources>

@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.R;
+import com.example.gescov.viewlayer.Singletons.PresentationControlFactory;
 
 public class CreateSubjectActivity extends AppCompatActivity {
 
@@ -46,10 +47,15 @@ public class CreateSubjectActivity extends AppCompatActivity {
                 v -> {
                    createSubjectButton.setEnabled(false);
                    viewModel.createSchool(schoolName.getText().toString()).observe(this,
-                           error -> {
-                               if (error) Toast.makeText(this,R.string.general_error_message,Toast.LENGTH_SHORT).show();
-                               else {
-                                   Toast.makeText(this,R.string.succesfull_subject_creation,Toast.LENGTH_SHORT).show();
+                           error ->
+                           {
+                               if (error) {
+                                   if (viewModel.getResponseCode() == 500) {
+                                       PresentationControlFactory.getMessagesManager().toastMessage(R.string.error_subject_already_exists);
+                                   } else PresentationControlFactory.getMessagesManager().toastMessage(R.string.general_error_message);
+                                   createSubjectButton.setEnabled(true);
+                               } else {
+                                   PresentationControlFactory.getMessagesManager().toastMessage(R.string.succesfull_subject_creation);
                                    finish();
                                }
                            });

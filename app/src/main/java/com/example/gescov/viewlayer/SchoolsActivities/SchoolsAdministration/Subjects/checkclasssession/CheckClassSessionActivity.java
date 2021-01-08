@@ -46,9 +46,11 @@ public class CheckClassSessionActivity extends AppCompatActivity {
     private void getClassSessions() {
         viewModel.getClassSessions().observe(this,
                 error -> {
-                    if (!error) showClassSessions();
-                    else showErrorUI();
-
+                    if (!error) {
+                        if (viewModel.classSessionIsEmpty()) showErrorUI(getString(R.string.error_subject_has_no_class_session));
+                        else showClassSessions();
+                    }
+                    else showErrorUI(getString(R.string.general_error_message));
                 });
     }
 
@@ -56,8 +58,8 @@ public class CheckClassSessionActivity extends AppCompatActivity {
         listView.setAdapter(viewModel.getAdapter(this));
     }
 
-    private void showErrorUI() {
-        errorMessage.setText(getString(R.string.general_error_message));
+    private void showErrorUI(String errorMessage) {
+        this.errorMessage.setText(errorMessage);
         error.setVisibility(View.VISIBLE);
     }
 

@@ -429,8 +429,8 @@ public class ModelController {
         PresentationControlFactory.getViewLayerController().getClassSessionsResult(error,classSessions);
     }
 
-    public void getSubjectsFromUser() {
-        DomainControlFactory.getSubjectModelController().getSubjectsFromUser();
+    public void getSubjectsFromUser(int activityIdentifier) {
+        DomainControlFactory.getSubjectModelController().getSubjectsFromUser(activityIdentifier);
     }
 
     public void setSubjectsFromUserResult(boolean error, List<Subject> userSubjects) {
@@ -449,8 +449,8 @@ public class ModelController {
         DomainControlFactory.getSubjectModelController().createSubject(subjectName,schoolID);
     }
 
-    public void setCreateSubjectResult(boolean error) {
-        PresentationControlFactory.getViewLayerController().setCreateSubjectResult(error);
+    public void setCreateSubjectResult(boolean error, int responseCode) {
+        PresentationControlFactory.getViewLayerController().setCreateSubjectResult(error, responseCode);
     }
 
 

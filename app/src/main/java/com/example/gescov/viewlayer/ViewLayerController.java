@@ -448,8 +448,11 @@ public class ViewLayerController {
 
     }
 
-    public void getSubjectsFromUser() {
-        DomainControlFactory.getModelController().getSubjectsFromUser();
+    //ActivityIdentifier indicates which activity has to be warn that the result has been received
+    // activityIdentifier = 1 => subjects fragment
+    // activityIdentifier = 2 => login
+    public void getSubjectsFromUser(int activityIdentifier) {
+        DomainControlFactory.getModelController().getSubjectsFromUser(activityIdentifier);
     }
 
     public void setSubjectsFromUserResult(boolean error, List<Subject> userSubjects) {
@@ -469,8 +472,8 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().createSubject(subjectName, schoolID);
     }
 
-    public void setCreateSubjectResult(boolean error) {
-        PresentationControlFactory.getSubjectController().setCreateSubjectResult(error);
+    public void setCreateSubjectResult(boolean error, int responseCode) {
+        PresentationControlFactory.getSubjectController().setCreateSubjectResult(error, responseCode);
     }
 
     public void getClassroomsOfSchool(String schoolID) {

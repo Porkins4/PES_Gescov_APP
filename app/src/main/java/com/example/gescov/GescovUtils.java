@@ -1,6 +1,7 @@
 package com.example.gescov;
 
 import com.example.gescov.domainlayer.Classmodels.School;
+import com.example.gescov.domainlayer.Classmodels.Subject;
 import com.example.gescov.domainlayer.Classmodels.User;
 import com.example.gescov.domainlayer.Singletons.DomainControlFactory;
 
@@ -30,5 +31,10 @@ public class GescovUtils {
         String day = time.substring(8, 10);
         String hour = time.substring(11, 16);
         return day + "/" + month + "/" + year + " " + hour;
+    }
+
+    public static boolean isEnroled(String subjectID) {
+        Subject s = DomainControlFactory.getSubjectModelController().getSubjectsFromUserBySubjectID(subjectID);
+        return s.getId().equals(subjectID);
     }
 }
