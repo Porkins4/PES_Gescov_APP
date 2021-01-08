@@ -8,6 +8,12 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".viewlayer.Singletons.GescovApplication"
@@ -18,10 +24,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gescov"
         android:usesCleartextTraffic="true">
-        <activity android:name=".viewlayer.home.upgraderole.UpgradeRoleActivity"
+        <activity android:name=".viewlayer.ClassroomActivities.ClassroomDistribution.InformationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
-        <activity android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.createsubject.CreateSubjectActivity"
+        <activity
+            android:name=".viewlayer.home.upgraderole.UpgradeRoleActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Gescov.NoActionBar" />
+        <activity
+            android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.Subjects.createsubject.CreateSubjectActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
@@ -146,8 +157,8 @@
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.SchoolClassromListActivity"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_school_classrom_list"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolsAdministration.CreateSchoolFormActivity"
@@ -169,11 +180,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCh_d-WKGRiQXnUvKng5HOtSrPfNcg8BDQ" />
-
-        <!-- notification -->
+            android:value="AIzaSyCh_d-WKGRiQXnUvKng5HOtSrPfNcg8BDQ" /> <!-- notification -->
         <service
             android:name=".FirebaseNotificationController"
             android:exported="false">
@@ -182,12 +192,5 @@
             </intent-filter>
         </service>
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_CALENDAR" />
-    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

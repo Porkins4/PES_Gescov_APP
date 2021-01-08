@@ -92,8 +92,8 @@ public class SubjectController {
         PresentationControlFactory.getViewLayerController().createSubject(subjectName, schoolID);
     }
 
-    public void setCreateSubjectResult(boolean error) {
-        createSubjectViewModel.setCreateSubjectResult(error);
+    public void setCreateSubjectResult(boolean error, int responseCode) {
+        createSubjectViewModel.setCreateSubjectResult(error, responseCode);
     }
 
 }

@@ -73,8 +73,8 @@ public class SubjectsServiceImplementor implements ISubjectsService {
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.POST, SUBJECTS_URI + "?creator=" + userId, postData,
-                    response -> DomainControlFactory.getSubjectModelController().setCreateSubjectResult(false,response),
-                    error -> DomainControlFactory.getSubjectModelController().setCreateSubjectResult(true,null)
+                    response -> DomainControlFactory.getSubjectModelController().setCreateSubjectResult(false, 200, response),
+                    error -> DomainControlFactory.getSubjectModelController().setCreateSubjectResult(true, error.networkResponse.statusCode, null)
                 );
 
             VolleyServices.getRequestQueue().add(jsonObjectRequest);

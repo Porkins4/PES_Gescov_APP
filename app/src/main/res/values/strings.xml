@@ -344,6 +344,13 @@
     <string name="user_promoted">L\'usuari s\'ha promocionat correctament</string>
     <string name="user_not_promoted">L\'usuari no s\'ha pogut promocionar</string>
     <string name="daily_test_succesfully_sent_toast">S\'han enviat les respostes correctament :)</string>
+    <string name="error_subject_already_exists">Ja existeix una asignatura amb aquest nom</string>
+    <string name="error_no_assistants_to_class_session">Aquesta sessió encara no té assistents</string>
+    <string name="error_subject_has_no_class_session">L\'assignatura no te cap sessió encara</string>
+
+    <string name="select_reservation_place_message">Toca un botó per reservar lloc</string>
+    <string name="information_text">Recorda que per tot tipus d\'activitat presencial, ja sigui a classe o a l\'aire lliure s\'ha de mantenir una distancia de seguretat de 1,5 metres.\n\nEn el cas de que el teu centre educatiu no pugui garantir la distancia de seguretat, procura reservar lloc a una taula amb el minim risc possible i recorda sempre emportar la mascareta.\n\nRecorda, si veus que a l\'aula hi ha moltes reserves, de tal manera que la capacitat de l\'aula està arrivant al seu limit, intenta seguir les sessions de clase de manera no presencial.</string>
+    <string name="title_information">Informació important</string>
 
 
 </resources>

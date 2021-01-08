@@ -47,4 +47,8 @@ public class CheckClassSessionViewModel extends ViewModel {
     public String getClassroomSessionID(int position) {
         return classSessions.get(position).getId();
     }
+
+    public boolean classSessionIsEmpty() {
+        return classSessions.isEmpty();
+    }
 }

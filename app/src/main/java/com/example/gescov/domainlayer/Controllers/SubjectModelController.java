@@ -64,7 +64,7 @@ public class SubjectModelController {
         ServicesFactory.getSubjectsService().createSubject(subjectName, schoolID, DomainControlFactory.getUserModelController().getUserId());
     }
 
-    public void setCreateSubjectResult(boolean error, JSONObject response) {
-        DomainControlFactory.getModelController().setCreateSubjectResult(error);
+    public void setCreateSubjectResult(boolean error, int responseCode, JSONObject response) {
+        DomainControlFactory.getModelController().setCreateSubjectResult(error, responseCode);
     }
 }

@@ -286,4 +286,10 @@
     <string name="user_promoted">User has ben promoted successfully</string>
     <string name="user_not_promoted">User could not be promoted</string>
     <string name="daily_test_succesfully_sent_toast">S\'han enviat les respostes correctament :)</string>
+    <string name="error_subject_already_exists">Already exists a subject with this name</string>
+    <string name="error_no_assistants_to_class_session">This session has no assistants yet</string>
+    <string name="error_subject_has_no_class_session">Subject has no class sessions yet</string>
+    <string name="select_reservation_place_message">Touch one button to reserve a seat</string>
+    <string name="information_text">Remember that for all attended activities, whether in class or outdoors, a safety distance of 1.5 meters must be maintained. \n If your school cannot guarantee the distance of safety, try to reserve a place at a seat with the minimum possible risk and always remember to take the mask with you. Also remember, if you see that there are a lot of reservations in the classroom, such that the capacity of the classroom is reaching its limit, try to follow</string>
+    <string name="title_information">Important information</string>
 </resources>

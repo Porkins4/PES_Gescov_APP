@@ -449,8 +449,8 @@ public class ModelController {
         DomainControlFactory.getSubjectModelController().createSubject(subjectName,schoolID);
     }
 
-    public void setCreateSubjectResult(boolean error) {
-        PresentationControlFactory.getViewLayerController().setCreateSubjectResult(error);
+    public void setCreateSubjectResult(boolean error, int responseCode) {
+        PresentationControlFactory.getViewLayerController().setCreateSubjectResult(error, responseCode);
     }
 
 

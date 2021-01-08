@@ -469,8 +469,8 @@ public class ViewLayerController {
         DomainControlFactory.getModelController().createSubject(subjectName, schoolID);
     }
 
-    public void setCreateSubjectResult(boolean error) {
-        PresentationControlFactory.getSubjectController().setCreateSubjectResult(error);
+    public void setCreateSubjectResult(boolean error, int responseCode) {
+        PresentationControlFactory.getSubjectController().setCreateSubjectResult(error, responseCode);
     }
 
     public void getClassroomsOfSchool(String schoolID) {

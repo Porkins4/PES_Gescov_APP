@@ -37,13 +37,17 @@
 
             <TextView
                 android:id="@+id/school_details_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
                 android:layout_marginBottom="5dp"
-                android:text="TextView"
-                android:textSize="18sp" />
+                android:text="Facultat d'informàtica de barcelona"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <com.google.android.gms.maps.MapView
                 android:id="@+id/mapView"
