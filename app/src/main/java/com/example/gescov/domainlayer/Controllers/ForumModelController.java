@@ -58,10 +58,10 @@ public class ForumModelController {
 
                 JSONObject aux = wallEntryRepliesArray.getJSONObject(i);
                 String username = aux.getString("username");
-                String hour = aux.getString("hour");
+                String time = aux.getString("time");
                 String content = aux.getString("text");
 
-                list.add(new WallEntryReply(hour, content, username));
+                list.add(new WallEntryReply(time, content, username));
             }
         } catch (JSONException e) {
             e.printStackTrace();
