@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/theback"
+    android:theme="@style/Theme"
     tools:context=".viewlayer.forum.CreateForumEntryFormActivity">
 
     <Button
@@ -32,24 +33,13 @@
         android:hint="@string/create_forum_entry_content"
         android:inputType="textMultiLine"
         android:lineSpacingExtra="8sp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/chatItemColorDark"
         app:layout_constraintBottom_toTopOf="@+id/create_forum_entry_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_forum_entry_text_title" />
-
-    <Spinner
-        android:id="@+id/create_forum_entry_school_spinner"
-        android:layout_width="0dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="15dp"
-        android:background="@color/white"
-        android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="@+id/create_forum_entry_text_entry"
-        app:layout_constraintStart_toStartOf="@+id/create_forum_entry_text_entry"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/create_forum_entry_text_title"
@@ -60,7 +50,23 @@
         android:hint="@string/create_forum_entry_title"
         android:inputType="textPersonName"
         android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/chatItemColorDark"
         app:layout_constraintEnd_toEndOf="@+id/create_forum_entry_school_spinner"
         app:layout_constraintStart_toStartOf="@+id/create_forum_entry_school_spinner"
         app:layout_constraintTop_toBottomOf="@+id/create_forum_entry_school_spinner" />
+
+    <Spinner
+        android:id="@+id/create_forum_entry_school_spinner"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="15dp"
+        android:background="@color/loginButtonColor"
+        android:spinnerMode="dropdown"
+        android:theme="@style/Theme.Gescov"
+        app:layout_constraintEnd_toEndOf="@+id/create_forum_entry_text_entry"
+        app:layout_constraintStart_toStartOf="@+id/create_forum_entry_text_entry"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
