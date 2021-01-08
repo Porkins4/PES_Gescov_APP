@@ -10,12 +10,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gescov.GescovUtils;
 import com.example.gescov.R;
@@ -34,6 +31,10 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
 
 public class SchoolDetailsActivity extends AppCompatActivity {
     private SchoolsCrontroller schoolsCrontroller;
@@ -118,7 +119,8 @@ public class SchoolDetailsActivity extends AppCompatActivity {
         joinSchoolButton.setVisibility(!GescovUtils.isUserInSchool(loggedUser, school) || GescovUtils.isUserSchoolAdmin(loggedUser, school) ? View.VISIBLE : View.GONE);
         usersListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) && loggedUser.getProfileType().equals(User.UserProfileType.TEACHER) ? View.VISIBLE : View.GONE);
         contagionListButton.setVisibility(GescovUtils.isUserInSchool(loggedUser, school) && loggedUser.getProfileType().equals(User.UserProfileType.TEACHER) ? View.VISIBLE : View.GONE);
-        codeIcon.setVisibility(!GescovUtils.isUserInSchool(loggedUser, school) ||GescovUtils.isUserSchoolAdmin(loggedUser, school) ? View.VISIBLE : View.INVISIBLE);
+        LinearLayout codeLayout = findViewById(R.id.school_details_code_layout);
+        codeLayout.setVisibility(GescovUtils.isUserSchoolAdmin(loggedUser, school) ? View.VISIBLE : View.GONE);
     }
 
     private void setListenerUsersListButton() {

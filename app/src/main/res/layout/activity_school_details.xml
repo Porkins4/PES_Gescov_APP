@@ -147,10 +147,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/school_details_code_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/code_icon"
