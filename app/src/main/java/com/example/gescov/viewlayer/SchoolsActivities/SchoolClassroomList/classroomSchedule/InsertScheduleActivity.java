@@ -35,7 +35,6 @@ public class InsertScheduleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_insert_schedule);
         admin  = true;
         if (getIntent().hasExtra("admin")) admin = getIntent().getExtras().getBoolean("admin");
-        System.out.println(admin +" el admin");
         initComponents();
         getSchedule();
         setListenerMonday();

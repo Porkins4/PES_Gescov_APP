@@ -120,19 +120,19 @@ public class ScheduleModelController {
         Subject element = new Subject(subjectName,subjectID);
         switch (day) {
             case "MONDAY":
-                l1.add(pos ,element);
+                l1.set(pos ,element);
                 break;
             case "TUESDAY":
-                l2.add(pos ,element);
+                l2.set(pos ,element);
                 break;
             case "WEDNESDAY":
-                l3.add(pos ,element);
+                l3.set(pos ,element);
                 break;
             case "THURSDAY":
-                l4.add(pos ,element);
+                l4.set(pos ,element);
                 break;
             case "FRIDAY":
-                l5.add(pos ,element);
+                l5.set(pos ,element);
                 break;
             default:
                 System.out.println("error");
