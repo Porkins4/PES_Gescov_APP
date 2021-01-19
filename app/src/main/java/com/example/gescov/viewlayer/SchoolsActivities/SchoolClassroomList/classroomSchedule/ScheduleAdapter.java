@@ -72,7 +72,7 @@ public class ScheduleAdapter extends BaseAdapter {
             for (int i = 0 ; i  < subjects.size(); ++i)
                 options[i] = subjects.get(i).getName();
             builder.setItems(options,(dialog, which) -> {
-                subjectsOfDay.add(position, subjects.get(which));
+                subjectsOfDay.set(position, subjects.get(which));
                 notifyDataSetChanged();
             });
             AlertDialog dialog = builder.create();
