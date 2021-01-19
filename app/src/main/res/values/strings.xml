@@ -355,6 +355,7 @@
     <string name="classroom_rows_check">Com a mínim hi ha d\'haver una fila.</string>
     <string name="classroom_columns_check">Com a mínim hi ha d\'haver una columna.</string>
     <string name="classroom_name_check">El nom de l\'aula no pot estar buit.</string>
+    <string name="title_activity_wall_entry_notice">Comentaris</string>
     <string name="error_user_has_no_school">Abans d\'iniciar un xat,  ingresa a un centre!</string>
 
 

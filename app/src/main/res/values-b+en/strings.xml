@@ -364,4 +364,5 @@
     <string name="classroom_columns_check">There must be a column at least.</string>
     <string name="classroom_name_check">The classroom name cannot be empty</string>
     <string name="error_user_has_no_school">Before starting any chat, join a center!</string>
+    <string name="title_activity_wall_entry_notice">Comments</string>
 </resources>

@@ -54,6 +54,7 @@
         <activity
             android:name=".viewlayer.forum.forumreply.ForumReplyListActivity"
             android:screenOrientation="portrait"
+            android:label="@string/title_activity_wall_entry_notice"
             android:theme="@style/Theme.Gescov.NoActionBar" />
         <activity
             android:name=".viewlayer.SchoolsActivities.SchoolClassroomList.classroomSchedule.InsertScheduleActivity"
